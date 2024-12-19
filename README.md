@@ -1,4 +1,4 @@
-# IPA Research Hub
+# IPA Research and Data Science Hub
 
 Welcome to IPA's Research Hub!
 
