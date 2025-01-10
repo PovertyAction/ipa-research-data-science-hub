@@ -1,22 +1,147 @@
 ---
-title: Stata
-# Editors are the "Maintainers" of the page
-# editors:
-#  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
-
-# Authors are the "Contributors" of the page
-# Add your name to the list if you have contributed to this page
-# author:
-#   - Niall Keleher
+title: "Python"
+execute:
+  eval: true
+#------------------------------------------------------------------
+# Authors
+#------------------------------------------------------------------
+# Authors are the main creators of the site's content, credited
+# for their work and responsible for its core development,
+# including writing and editing.
+#------------------------------------------------------------------
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/niall-keleher)"
+  # - "[Author 2](https://poverty-action.org/people)"
+  # - "[Author 3](https://poverty-action.org/people)"
+#------------------------------------------------------------------
+# Contributors
+#------------------------------------------------------------------
+# Contributors provide support, such as feedback or supplementary
+# materials for the site. They can also be responsible for
+# updating/maintaining the site.
+#------------------------------------------------------------------
+# contributors:
+#   - "[Contributor 1](https://poverty-action.org/people)"
+#   - "[Contributor 2](https://poverty-action.org/people)"
 ---
 
-## What is Stata?
+## What is Python?
 
-Stata is a statistical software package that is commonly used in the social sciences and economics.
-It is widely used at IPA for data analysis and management. It offers a comprehensive
-library of methods for data cleaning, descriptive statistics, and econometric analysis.
-Stata is very well suited for research data workflows and research design tasks,
-including power calculations, sample design adjustments, panel data analysis,
-time series analysis, etc. See [Stata Features](https://www.stata.com/features/)
-for a full list of what Stata makes available.
+Python is a high-level, general-purpose programming language that is widely used in data
+science, machine learning, and web development. It has a large standard library and a
+vibrant community that provides a wide range of libraries and tools for various
+applications. As such, Python provides a general-purpose ecosystem that can be used for
+a wide range of applications.
 
+## How to install Python?
+
+There are many ways to install Python. We recommend using Python in a virtual
+environment to avoid conflicts with other Python installations on your system.
+
+We recommend using [pixi](https://pixi.sh/latest/) as a a simple way to create and
+manage Python virtual environments.
+
+You can manage the python packages that are installed in the virtual
+environment using a `pyproject.toml` file. See the pyproject.toml example in this
+repository for an example of how to manage Python packages. To add package dependencies
+to the virtual environment, using `pixi`, you can run:
+
+First, install `pixi` using `winget` (Windows) or `brew` (MacOS/Linux):
+
+| Platform | Commands             |
+| -------- | -------------------- |
+| Windows  | `winget install prefix-dev.pixi` |
+| MacOS    | `brew install pixi`   |
+| Linux    | `brew install pixi`   |
+
+Add libraries to the virtual environment using `pixi add ...`:
+
+```{python}
+# | eval: false
+> pixi add jupyterlab pandas matplotlib seaborn --pypi
+```
+
+## Coding Conventions
+
+We highly recommend working with a [virtual environment](../guides/venv.qmd) to manage
+Python dependencies. The `pyproject.toml` is the preferred way to keep track of python
+dependencies as well as project-specific python conventions.
+
+We recommend using [Ruff](https://docs.astral.sh/ruff/) to enforce
+[linting](<https://en.wikipedia.org/wiki/Lint_(software)>) and formatting rules. In most
+cases you can use the default linting and formatting rules provided by `ruff`. However,
+you can customize the rules by modifying the `[tool.ruff]` section of the
+`pyproject.toml` file in the root of your project. for more about the configuration
+options, see the [Ruff documentation](https://docs.astral.sh/ruff/configuration/).
+
+If you are working in a virtual environment created in this repository`, you automatically have
+access to `Ruff via  `just lint-py` and `just fmt-python` commands to lint and format your code.
+
+For more inspiration, see the
+[GitLab Data Team's Python Guide](https://handbook.gitlab.com/handbook/business-technology/data-team/platform/python-guide/)
+and [Google's Python Style Guide](https://google.github.io/styleguide/pyguide.html).
+
+## Example Usage
+
+Let's load an example World Bank data via [Gapminder](https://www.gapminder.org/) using
+the [causaldata](https://github.com/NickCH-K/causaldata) package.
+
+```{python}
+# | eval: true
+# | echo: true
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.formula.api as sm
+from causaldata import gapminder
+```
+
+Load the Gapminder data as a pandas DataFrame:
+
+```{python}
+# | echo: true
+df = gapminder.load_pandas().data
+```
+
+We can check the dimensions of the DataFrame using `df.info()`:
+
+```{python}
+# | echo: true
+df.info()
+```
+
+Let's take a look at the first few rows of the DataFrame using `df.head()`:
+
+```{python}
+df.head()
+```
+
+Take a look at the relationship between GDP per Capita and Life Expectancy:
+
+```{python}
+sns.scatterplot(x="gdpPercap", y="lifeExp", hue="continent", data=df).set(
+    xscale="log", ylabel="Life Expectancy", xlabel="GDP per Capita"
+)
+```
+
+Separate the data by year, focusing on 1957 and 2007:
+
+```{python}
+sns.relplot(
+    data=df.where(df["year"].isin([1957, 2007])),
+    x="gdpPercap",
+    y="lifeExp",
+    col="year",
+    hue="continent",
+    col_wrap=1,
+    kind="scatter",
+    palette="muted",
+).set(xscale="log", ylabel="Life Expectancy", xlabel="GDP per Capita")
+```
+
+## Learning Resources
+
+- [The Python Tutorial](https://docs.python.org/3.12/tutorial/index.html)
+- [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
+- [Efficient Python for Data Scientists](https://khuyentran1401.github.io/Efficient_Python_tricks_and_tools_for_data_scientists/README.html)
+- [The Hitchhiker's Guide to Python](https://docs.python-guide.org/)
