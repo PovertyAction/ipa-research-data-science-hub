@@ -17,7 +17,7 @@ Welcome to IPA's Research and Data Science Hub! This repository hosts and centra
 
 ### Branching strategy
 * The `main` branch is the live and most up-to-date version of the Hub, publicly available to all IPA staff and external users. 
-* Use `realease` branches for new content that will be published/released in the short term. It can also include potential topics and ideas worth discussing (both from GRDS and non-GRDS contributors).
+* Use `release` branches for new content that will be published/released in the short term. It can also include potential topics and ideas worth discussing (both from GRDS and non-GRDS contributors).
 * Use `update` branches to update/modify content that is already published in the Hub. 
 * Use `feature` branches for modifications to the hub's infrastructure and scaffolding (e.g., the site's theme, layout, navigation, hierarchy, content blocks, prototypes, etc.).
 * Use `hotfix` branches for critical/time sensitive issues affecting the live version of the Hub. These must be prioritized, fixed, and merged into the `main` branch ASAP.
@@ -44,10 +44,12 @@ git checkout -b feature/amazing-addition
 ```
 3. Draft your changes
 4. Commit your changes, adding a message describing your contribution to the Hub
-```git commit -m 'Add amazing feature'
+```
+git commit -m 'Add amazing feature'
 ```
 5. Push to the branch
-```git push origin feature/amazing-addition
+```
+git push origin feature/amazing-addition
 ```
 6. Open a Pull Request
 
