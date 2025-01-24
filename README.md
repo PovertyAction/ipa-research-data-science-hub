@@ -1,18 +1,20 @@
 # IPA Research and Data Science Hub
 
-This repository hosts and centralizes IPA's research and data science resources.
+Welcome to IPA's Research and Data Science Hub! This repository hosts and centralizes our organization's research and data-oriented resources.
 
 > [!NOTE]
-> This is an early work in progress. Feedback, suggestions and
-> contributions are appreciated! Please create an Issue or submit a pull request if
-> there is anything you'd like to see changed or added.
+> This repository is still work in progress. We are actively developing and updating the contents and site functionalities. Please reach out to GRDS at [researchsupport@poverty-action.org](researchsupport@poverty-action.org) if you have any questions/feedback for the hub.
 
 ## Table of contents
+* [Repository structure](#repository-structure)
 * [Setup](#setup)
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [License](#license)
+* [Contact](#contact)
  
+## Repository structure
+
 ## Setup
 
 ### Software requirements
@@ -25,7 +27,7 @@ This repository hosts and centralizes IPA's research and data science resources.
 
 ## Contributing
 
-We welcome contributions from all IPA staff members! Here are X ways to contribute:
+We welcome contributions from all IPA staff members! Please read our Contributing Guidelines (link) for more details on our code of conduct and development process:
 
 ### "Edit this page"
 
@@ -37,3 +39,6 @@ We welcome contributions from all IPA staff members! Here are X ways to contribu
 
 ## License
 The IPA Research and Data Science Hub is licensed under a [CC-BY license](./LICENSE.txt).
+
+## Contact
+The IPA Research and Data Science Hub is maintained by the Global Research and Data Science (GRDS) team. For questions, feedback, or suggestions, please reach out to us at [researchsupport@poverty-action.org](researchsupport@poverty-action.org).
