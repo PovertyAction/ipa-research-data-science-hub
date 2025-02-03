@@ -1,5 +1,5 @@
 ---
-title: "Twilio Set Up"
+title: "Getting Started with WhatsApp Surveys"
 
 #------------------------------------------------------------------
 # Authors
@@ -23,31 +23,78 @@ contributors:
 ---
 
 :::{.page-subtitle}
-This article introduces WhatsApp surveys as an alternative data collection method available for IPA projects. While there are multiple ways to approach WhatsApp surveys, the GRDS team recommends Twilio as the platform to implement data collection via WhatsApp. 
+This article provides a step-by-step guide to setting up Twilio for WhatsApp surveys, offering practical insights into its implementation and pricing considerations. Explore Twilio Console for service management, follow the step-by-step setup guide, understand Twilio's pricing structure, and obtain WhatsApp approvals for enhanced communication capabilities.
 :::
 
-## WhatsApp Surveys: An Innovative and Low-Cost Solution for Remote Data Collection
+## Introduction to Using Twilio for WhatsApp Surveys
 
-Data collection during the pandemic presented various challenges for researchers. At IPA Colombia, this situation led us to explore and test new tools such as WhatsApp surveys. Here, we would like to share some specific situations in which WhatsApp has been a useful alternative to in-person data collection and some of the lessons we have learned throughout the process.
+In today's digital age, reaching out to participants through efficient and reliable communication channels is crucial for data collection and engagement. WhatsApp, with its widespread usage and user-friendly interface, presents an excellent platform for conducting surveys. Twilio, a cloud communications platform, offers robust tools and APIs to integrate WhatsApp into your survey workflows seamlessly.
+
+By leveraging Twilio's capabilities, researchers and organizations can automate survey distribution, track responses in real-time, and ensure higher engagement rates. This guide will walk you through the process of setting up Twilio for WhatsApp surveys, providing practical insights into its implementation and pricing considerations.
+
+## Key Twilio Concepts for WhatsApp Surveys
+
+To effectively use Twilio for WhatsApp surveys, it's important to understand the following key concepts:
+
+* **Twilio Console**: The centralized interface where users manage and control various Twilio services. It is the primary dashboard for configuring, monitoring, and optimizing communication functionalities.
+* **WhatsApp Functionality**: Enhanced communication capabilities unlocked by upgrading a Twilio account. This includes leveraging WhatsApp for surveys and other interactive communication.
+* **WhatsApp Sender Management**: Within the Twilio Console, users manage WhatsApp senders through the "Messaging" section. This functionality provides oversight and control over sender-related activities.
+* **API Access Request**: Users can create new senders within the Twilio Console, request access to the WhatsApp API, and submit necessary information for approval. This process enables integration with WhatsApp services.
+
+## Setting up a Twilio Console
+
+Follow these steps to set up a Twilio console for WhatsApp data collection:
+
+1. Go to the [Twilio website](www.twilio.com) and sign up for a new account. Provide the required information and complete the registration process.
+2. After signing up, log in to your Twilio account. Verify your email and log in.
+
+![Twilio setup and login](/assets/images/twilio-setup-1.gif){fig-cap="Twilio setup and login" width=75% style="display: block; margin: 0 auto;"}
+
+3. Once logged in, navigate to the Twilio Console, the main dashboard for managing your Twilio services.
+
+4. Click on the "Phone Numbers" dropdown in the top-left corner and select "Manage." Then select "Buy a number" and pick a phone number in the required location.
+
+![Buying a phone number in the Twilio Console](/assets/images/twilio-setup-2.gif){fig-cap="Buying a phone number in the Twilio Console" width=75%}
+
+5. Upgrade the account to access WhatsApp functionalities.
+
+![Upgrading the Twilio Console](/assets/images/twilio-setup-3.gif){fig-cap="Upgrading the Twilio Console" width=75%}
+
+## Twilio Pricing and Fees
+
+Understanding Twilio's pricing structure is crucial for budgeting WhatsApp survey projects. Below are the key pricing details:
+
+For the most up-to-date and detailed pricing information, visit the [Twilio WhatsApp Pricing Page](https://www.twilio.com/en-us/whatsapp/pricing). If you are planning to conduct a WhatsApp survey, consider using the calculations included on the Twilio page to estimate your costs accurately.
+
+* **Conversation initiation cost**: USD 0.010 per 24 hours
+* **User-initiated conversation cost**: USD 0.006 per 24 hours
+* **Fixed monthly cost per WhatsApp number**: USD 1.00
+* **Cost per message sent**: USD 0.005
+
+*These prices might vary depending on the region where the survey is going to take place.*
+
+Twilio requires purchasing a phone number, and automatic top-ups are enabled by default to ensure service continuity.
+
+## Verifying Your Twilio Console
+
+The Twilio console verification process takes approximately **one week**. Once approved, you can proceed with setting up your WhatsApp profile.
+
+1. Navigate to "Messaging" in the Console and select the "Senders" tab to view WhatsApp senders.
+2. Click on "Create New Sender" and fill out the necessary fields, selecting the purchased phone number.
+3. Submit the request for WhatsApp API access.
+
+![Create a new WhastApp sender](/assets/images/twilio-setup-4.gif){fig-cap="Create a new WhastApp sender" width=75%}
+
+For increased trust and improved response rates, consider **Meta Business Verification** to obtain a green tick for your WhatsApp sender.
+
+## Creating a WhatsApp Profile
+
+Finalize your Twilio setup by configuring your WhatsApp profile:
+
+1. Navigate to the created sender and update the profile with an image, name, and description.
+2. Save changes and start your first WhatsApp survey.
+
+![Create a new WhastApp profile](/assets/images/twilio-setup-5.gif){fig-cap="Create a new WhastApp profile" width=75%}
 
 
-![An example of a WhatsApp Survey](/_site/assets/images/whatsapp-survey.jpg){fig-cap="An example of a WhatsApp Survey" width=75%}
-
-Projects like entrepreneurship training and social protection during COVID-19 have used WhatsApp to communicate project information and plan calls for phone surveys. Another project focused on teaching socio-emotional skills to young children used WhatsApp surveys to monitor potential outcomes by checking whether participants in the control group received resources related to the treatment between data collections.
-
-## Advantages and limitations of WhatsApp Surveys
-
-At IPA, we've started to rely on WhatsApp as one method for collecting data remotely, driven by its unique strengths that greatly enhance the efficiency and impact of our initiatives. Here are some of the main reasons why we have selected WhatsApp:
-
-**Pros**
-
-* WhatsApp's massive user base of 2 billion individuals globally ensures that our outreach is extensive and inclusive, covering a diverse range of demographics and geographical regions. This widespread presence enables us to gather insights from different demographic groups.
-WhatsApp has high engagement levels and widespread familiarity. With people across the globe already using WhatsApp for everyday communication, our surveys seamlessly integrate into their digital routines. This familiarity encourages participation and enables respondents to quickly and conveniently share their perspectives using smartphones, fostering a more accessible and inclusive data collection process. 
-* WhatsApp is a cost-effective solution that significantly reduces traditional paper, printing, and fieldwork expenses. 
-* WhatsApp's capability to handle various types of media, including text, images, audio, and video, enriches our surveys with diverse content, ensuring a comprehensive understanding of respondents' perspectives.
-
-**Cons**
-
-* User Trust: Users consider WhatsApp a private and secure messaging platform. If they feel that their data is being collected in ways that violate their privacy or trust, it may lead to a negative perception of the organization or business. Therefore, sensitive information should not be asked via WhatsApp.
-* Opt-In and Consent Challenges: While obtaining opt-in and consent is crucial for ethical data collection on WhatsApp, researchers need to be mindful of the challenges associated with user trust. Due to existing mistrust with WhatsApp, participants may approach data collection interactions skeptically. Researchers must ensure that participants have a clear option to opt out, and it is essential to obtain explicit upfront consent for these interactions. 
-* Simplicity of Surveys: Since this is a remote data collection method, questionnaires must be simple. If presented with a complicated survey, participants may have doubts or concerns that no enumerator can help resolve. Therefore, it is advisable to use simple instruments for data collection to minimize attrition and ensure effective participation.
+*Updated January 2025*
