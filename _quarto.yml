@@ -4,58 +4,109 @@ format:
   html:
     theme:
       light: [cosmo, ./assets/light-theme.scss]
-      dark: [cosmo, ./assets/dark-theme.scss]
+      #dark: [cosmo, ./assets/dark-theme.scss]
     css: ./assets/styles.css
     toc: true
-    template-partials:
+    toc-title: "On this page"
+    #template-partials:
       #- ./assets/title-block.html
-      - ./assets/toc.html
+      #- ./assets/toc.html
     grid:
-      sidebar-width: 350px
-      body-width: 675px
-      margin-width: 350px
+      sidebar-width: 290px
+      body-width: 750px
+      margin-width: 300px
       gutter-width: 2.5rem
 language:
-  search-text-placeholder: Search
+  search-text-placeholder: Search IPA Resources
 website:
   title: "IPA Research and Data Science Hub"
   favicon: "assets/images/ipa-favicon.ico"
   bread-crumbs: true
   # announcement:
-
   #dismissable: false
   #content: "**Welcome!** - The Research Hub is still under construction. Content, pages, and the site are subject to change."
   #position: above-navbar
   #type: warning
   #icon: cone-striped
+  back-to-top-navigation: true
+  page-footer:
+    background: light
   search:
     show-item-context: true
-    location: navbar
+    location: sidebar
     type: textbox
-    limit: 30
+    limit: 40
   repo-url: https://github.com/PovertyAction/ipa-research-data-science-hub
   repo-actions: [edit, issue]
   page-navigation: true
+  
   navbar:
-    title: false
+    search: true
+    title: "Research and Data Science Hub"
     background: white
-    logo: assets/images/ipa-kh-v10.png
+    #logo: assets/images/ipa-kh-v10.png
     #logo: assets/images/ipa-logo-full.jpg
-
-    #logo: assets/images/ipa-logo-abbreviated.png
+    logo: assets/images/ipa-logo-abbreviated.png
     #logo: assets/images/ipa-logo-full.svg
     collapse-below: sm
     tools:
       - icon: github
         href: https://github.com/PovertyAction
         text: IPA Github
+    right:
+      - text: "Research Design"
+        menu:
+          - text: "Ethics and IRB"
+            href: ./PAGE-TEMPLATE.qmd
+          - text: "Data Collection"
+            href: ./PAGE-TEMPLATE.qmd
+          - text: "Data Management"
+            href: ./PAGE-TEMPLATE.qmd  
+          - text: "Software"
+            href: ./PAGE-TEMPLATE.qmd
+      - text: "Ethics and IRB"
+        menu:
+          - text: "Ethics and IRB"
+            href: ./PAGE-TEMPLATE.qmd
+          - text: "Data Collection"
+            href: ./PAGE-TEMPLATE.qmd
+          - text: "Data Management"
+            href: ./PAGE-TEMPLATE.qmd  
+          - text: "Software"
+            href: ./PAGE-TEMPLATE.qmd
+      - text: "Data Management"
+        menu:
+          - text: "Ethics and IRB"
+            href: ./PAGE-TEMPLATE.qmd
+          - text: "Data Collection"
+            href: ./PAGE-TEMPLATE.qmd
+          - text: "Data Management"
+            href: ./PAGE-TEMPLATE.qmd  
+          - text: "Software"
+            href: ./PAGE-TEMPLATE.qmd
+      - text: "Software Guides"
+        menu:
+          - text: "Ethics and IRB"
+            href: ./PAGE-TEMPLATE.qmd
+          - text: "Data Collection"
+            href: ./PAGE-TEMPLATE.qmd
+          - text: "Data Management"
+            href: ./PAGE-TEMPLATE.qmd  
+          - text: "Software"
+            href: ./PAGE-TEMPLATE.qmd            
+
   sidebar:
+    title: "Research and Data Science Hub"
     style: "docked"
-    border: true
+    #logo: assets/images/ipa-logo-abbreviated.png
+    #border: true
+    border: false
     collapse-level: 1
+    search: false
+    pinned: false
     align: left
     contents:
-      - section: "<strong>Research Design</strong>"
+      - section: "Research Design"
         contents:
           - text: "Theory of Change"
             href: ./research-design/theory-of-change.qmd
@@ -65,7 +116,7 @@ website:
             href: ./research-design/measurement.qmd
           - text: "Sample and Power Calculations"
             href: ./research-design/sample-size-power.qmd
-      - section: <strong>Ethics and IRB</strong>
+      - section: Ethics and IRB
         contents:
           - text: "About IPA IRB"
             href: ./ethics-irb/ipa-irb.qmd
@@ -77,7 +128,7 @@ website:
             href: ./ethics-irb/irb-faqs.qmd
           - text: "Reliance Agreements"
             href: ./ethics-irb/irb-reliance-agreements.qmd
-      - section: <strong>Data Collection</strong>
+      - section: Data Collection
         contents:
           - section: "Primary Data Collection"
             contents:
@@ -126,7 +177,7 @@ website:
                 href: ./data-collection/qualitative-methods/ethnographies.qmd
               - text: "Qualitative Observations"
                 href: ./data-collection/qualitative-methods/observations.qmd
-      - section: <strong>Data Management</strong>
+      - section: Data Management
         contents:
           - text: "Data Storage and Security"
             href: ./PAGE-TEMPLATE.qmd
@@ -148,7 +199,7 @@ website:
             href: ./PAGE-TEMPLATE.qmd
           - text: "Version Control"
             href: ./PAGE-TEMPLATE.qmd
-      - section: <strong>Software</strong>
+      - section: Software
         contents:
           - section: "Stata"
             contents:
@@ -191,3 +242,6 @@ website:
             href: ./PAGE-TEMPLATE.qmd
           - text: "SQL*"
             href: ./PAGE-TEMPLATE.qmd
+
+include-in-header: 
+  - ../../progress-bar.html

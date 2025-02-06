@@ -3,8 +3,8 @@
 =============================*/
 
 h1 {
-  font-size: 34px;
-  font-weight: 500px;         
+  font-size: 36px;
+  font-weight: 650;         
   color: #1f2326; 
 }
 
@@ -62,6 +62,18 @@ strong {
   font-weight: 600;
 } 
 
+/* Narrow the main content area */
+#quarto-content {
+  max-width: 1400px;  /* Adjust this value for desired width */
+  margin: 0 auto;  /* Centers content */
+}
+
+/* Ensure full-width elements (like images) don’t break layout */
+.quarto-grid {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
 /*===========================
 Links styles 
 =============================*/
@@ -116,60 +128,95 @@ Top navigation bar
 =============================*/
 
 .navbar {
-  height: 60px ;  
+  height: 64px ;  
   background-color: white;  
   border-bottom: 1px solid rgb(215, 215, 215);
   width: 100%;       
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important; /* Optional: remove any padding if present */    
+  margin-bottom: 0px !important;
+  margin-left: 0px;
+  padding-bottom: 20 !important; /* Optional: remove any padding if present */   
+  position: sticky; 
+  transition: border-bottom 0.3s ease-in-out;
+  z-index: 1000;
+   /*display: none;*/
 }
 
 .navbar a {
-  color: #3e3e3e;           
-  font-weight: normal;
-  font-size: .85rem;          
+  color: #2f2f2f;           
+  font-weight: 600;
+  font-size: .87rem;          
   text-decoration: none;  
-  margin-bottom: 5px;   
+  margin-bottom: 0px; 
+  padding: 0px;
+  margin-left: 0px;
 }
 
 .navbar-nav {
  display: flex; 
- gap: 10px;         
+ gap: 2px;
+ margin-left: -50px;
+}
+
+.navbar-nav a.nav-link:hover {
+  color: #24292f; 
+  font-size: .9rem;          
+  font-weight: 450;
+  /*text-decoration: underline;
+  text-decoration-color: #49AC57;
+  text-decoration-thickness: 5%;   
+  text-underline-offset: 7px ;*/
 }
 
 .navbar-nav a.nav-link.active {
   font-weight: 600;
   color: #3e3e3e; 
-  text-decoration: underline;
+  font-size: .9rem;          
+  /*text-decoration: underline;
   text-decoration-color: #49AC57;
   text-underline-offset: 7px ;
-  text-decoration-thickness: 8%;   
+  text-decoration-thickness: 8%; */
 }
 
-.navbar-nav a.nav-link:hover {
-  color: #3e3e3e; 
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: #49AC57;
-  text-decoration-thickness: 12%;   
-  text-underline-offset: 7px ;
+.navbar-brand {
+  font-weight: 600 !important; /* Bold (use 400 for normal, 300 for lighter) */
+  font-size: 16.5px !important; /* Adjust size as needed */
+  color: #3b3b3c !important; /* Change title color */
+  padding: 0px;
 }
 
 .navbar-brand > img {
-  max-height: 36px;
+  max-height: 40px;
   margin-left: 0px;
-  margin-right: 7px;
-  margin-top: 22px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px; 
 }  
 
-.navbar-brand::after {
-  content: "";
-  width: 1px;              
-  height: 30px;        
-  margin-top: 5px;
-  background-color: #ffffff; 
-  margin-left: 30px; 
-  margin-right: 0px; 
+.navbar-logo {
+  margin-left: 200px !important;
+}
+
+.navbar-title {
+  margin-left: 0px !important;
+}
+
+.navbar .quarto-navbar-tools .quarto-navigation-tool {
+  color: #595959;
+  font-size: 1.2rem;
+  margin-right: 7px;
+  margin-left: 15px;
+  padding: 2px;
+}
+
+#quarto-search input {
+  font-size: .925em;
+}
+
+.navbar .aa-Autocomplete .aa-Form {
+  width: 240px;
+  margin-right: 300px;
+  padding: 2px;
+  /*border-color: #7cb784 !important;*/
 }
 
 /*===========================
@@ -177,44 +224,64 @@ Side navigation bar
 =============================*/
 
 .sidebar {
-  margin-left: 20px;
-  margin-right: 20px; 
+  margin-left: 0px;
+  margin-right: 0px; 
   border-right-color: #303030;
-  padding: 20px;
+  padding: 0px 0px 0px 0px;
 }
 
+/* Sidebar Link Styling */
 .sidebar a {
-  font-size: .9em; 
-  padding: 1.5px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: -5px;
+  font-size: .935em; 
+  text-decoration: none;
+  color: #24292f; 
+  padding: 6.5px 9px;
+  margin: -4.5px 0;    
+  display: block;
+  border-radius: 5px; 
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative; 
 }
 
+/* Sidebar Link Hover Effect */
 .sidebar a:hover {
-  color: #43a450 !important;
-  font-size: .9em; 
-  padding: 1.5px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: -5px;
- /* background-color: rgba(67, 164, 80,0.1);
- /*border-radius: 15px;
- /*padding: 10px; /* Adds space inside the rounded area */
+  font-size: .935em; 
+  background-color: #f3f3f3;  /* Light green background */
+  color: #1f2326;  /* GitHub blue */
 }
 
-.sidebar a.active, .sidebar a.current {
-  color:  #363636; 
-  font-weight: 600; 
-  font-size: .9em; 
-  padding: 1.5px;
-  padding-left: 7px ;
-  border-left: 4px solid #43a450; /* Add border to the left of current link */
-  margin-left: -15px;
-  /* text-decoration: underline !important; 
-  /*text-decoration-color: #49AC57;
-  /*text-underline-offset: 7px ;
-  /*text-decoration-thickness: 12%;  */ 
+/* Sidebar Link Active (if applicable) */
+.sidebar a.active {
+  font-size: .935em; 
+  background-color: #f3f3f3;  /* Light blue for active links */
+  color: #1f2326;
+  font-weight: bold;
+}
+
+/* Active Link - Adding a Colored Left Bar */
+.sidebar a.active::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%); /* Aligns it perfectly in the center */
+  height: 85%;
+  width: 4px;  /* Thickness of the left bar */
+  background-color: #49AC57;
+  border-radius: 2px; /* Optional: Rounds the edges slightly */
+}
+
+/* Sidebar Logo */
+.sidebar-logo {
+  text-align: center; /* Center the logo */
+  padding: 0px 0; /* Adjust spacing */
+  max-width: 4.5rem; /* Adjust size (smaller image) */
+  /*max-width: 350px; */
+  margin-left: -6px;
+  margin-top: -5x;
+  margin-bottom: 8px;
+  opacity: 0; /* Hide by default */
+  transition: opacity 0.3s ease-in-out;
 }
 
 /*===========================
@@ -226,6 +293,7 @@ Breadcrumb
   padding: 7px 40px 25px 3px;
   color: #6d6d6d !important;  
   font-weight: normal !important;
+  margin-bottom: 10px !important;
 } 
 
 .breadcrumb a {
@@ -234,25 +302,24 @@ Breadcrumb
   text-decoration: none !important;  
   text-underline-offset: 4px ;
   text-decoration-color: #49AC57 !important ;
-  font-size: 0.92em; 
 }
 
 .breadcrumb a:hover {
   color: #49AC57 !important; 
   text-decoration: underline !important;  
   text-underline-offset: 4px ;
-  font-size: 0.92em ; 
+  text-decoration-color: #49AC57 !important ;
 }
 
 .breadcrumb li:not(:first-child)::before {
   font-style: normal !important;
-  content: '/' ;            
+  content: '>' ;            
   margin: 0 4px ;          
-  font-size: 0.92em ;     
+  font-size: 0.9em !important;     
 }
 
 .breadcrumb li:last-child {
-  display: inline-block; 
+  visibility: hidden;
 }
 
 .breadcrumb li:last-child a {
@@ -260,24 +327,26 @@ Breadcrumb
 }
 
 .breadcrumb li:first-child a {
-  font-weight: 100 !important;
+  font-weight: normal !important;
+  font-size: 0.92em !important;     
 }
 
 .breadcrumb .breadcrumb-item:first-child a {
 font-weight: bold;
 color: #0056b3 !important;
+font-size: 0.92em !important; 
 }
-
 
 /*===========================
 Page subtitle
 =============================*/
 
 .page-subtitle {
-  font-size: 1.25rem;
-  color: #6d6d6d !important;  
+  font-size: 1.3rem;
+  color: #666565 !important;  
   margin: 0px 35px 55px 0px;  
   line-height: 1.5;
+  border-color: #49AC57;
 }
 
 /*===========================
@@ -358,7 +427,6 @@ main ul {
   margin-bottom: 1em; 
 }
 
-
 main ul li {
   margin-bottom: 0.375em; 
 }
@@ -389,4 +457,83 @@ margin-right: 10px;
 font-weight: bold;
 display: inline-block;
 vertical-align: middle;
+}
+
+/* Style the TOC container */
+#TOC {
+  margin-top: 24.5px; /* Adjust as needed */ 
+  background-color: #ffffff; /* Light background */
+  padding: 0px; 
+  border-radius: 5px;
+  width: 400px; /* Adjust as needed */
+  max-width: 100%; /* Prevent overflow */
+  margin-left: 0px;
+  margin-right: -50px !important;
+}
+
+/* Style TOC links */
+#TOC a {
+  color: #24292f !important; /* Custom link color */
+  text-decoration: none;
+  border-color: white;
+  border-left-color: #e6e6e6;
+  line-height: 1.3rem;
+  margin-bottom: 3px;
+  background-color: #ffffff;  /* Light green background */
+  font-weight: normal; 
+  border-radius: 0; /* Remove rounding on the corners */
+  font-size: .935em; 
+}
+
+#TOC a:hover {
+  color: #24292f !important;
+  background-color: #f6f6f6;  /* Light green background */
+  font-size: .935em; 
+  font-weight: normal; 
+}
+
+/* Sidebar Link Active (if applicable) */
+#TOC a.active {
+  font-size: .935em; 
+  background-color: #ffffff;  /* Light blue for active links */
+  color: #49AC57 !important;
+  font-weight: 600 !important;
+  border-left-color: #49AC57;
+}
+
+/* Active Link - Adding a Colored Left Bar */
+#TOC a.active::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  width: 0px;  /* Thickness of the left bar */
+  background-color: #ffffff;
+  border-radius: 0px; /* Optional: Rounds the edges slightly */
+  font-weight: bold !important; 
+  color: #24292f !important;
+}
+
+#TOC::before {
+  font-weight: bold;
+  font-size: 10px !important;
+  margin-bottom: 15px;
+}
+
+#TOC h2 {
+  margin-bottom: 10px; /* Adjust as needed */
+  font-weight: 600 !important;
+  font-size: 92%;
+  margin-left: 5.5px;
+}
+
+/* Reduce space above the links */
+.toc-actions a {
+  padding: 0px !important;
+}
+
+
+/* Reduce space above the links */
+.quarto-search {
+  width: 300px !important;
 }
