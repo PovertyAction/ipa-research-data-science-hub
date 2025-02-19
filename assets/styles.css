@@ -1,4 +1,13 @@
 /*===========================
+  Page layout
+=============================*/
+
+body {
+  max-width: 100% ;
+  margin: 0 auto ;
+}
+
+/*===========================
   Heading styles
 =============================*/
 
@@ -37,21 +46,7 @@ h1,h3,h4 {
 }
 
 /*===========================
-Subtitle blockquote 
-=============================*/
-
-blockquote {
-  border-left: 5px solid #49AC57;
-  background-color: #6fad7815;
-  padding: 1rem; 
-  font-size: 17px !important;
-  line-height: 1.65 !important;
-  margin-top: 20px !important;
-  margin-bottom: 50px !important;
-}
-
-/*===========================
-Paragraph styles 
+  Paragraph styles 
 =============================*/
 
 p {
@@ -62,27 +57,15 @@ strong {
   font-weight: 600;
 } 
 
-/* Narrow the main content area */
-#quarto-content {
-  max-width: 1400px;  /* Adjust this value for desired width */
-  margin: 0 auto;  /* Centers content */
-}
-
-/* Ensure full-width elements (like images) don’t break layout */
-.quarto-grid {
-  max-width: 1500px;
-  margin: 0 auto;
-}
-
 /*===========================
-Links styles 
+  Links styles 
 =============================*/
 
 a {
-  color: #49AC57  ; 
+  color: #0b0b0b  ; 
   text-decoration: underline ;
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important; 
+  text-decoration-color: #43a450; 
 }
 
 a:hover {
@@ -101,221 +84,395 @@ a:active {
   color: #3e3d3e !important;  
   text-decoration: underline !important; 
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important;
+  text-decoration-color: #12853d !important;
 }
 
 .authors-ipa a:hover {
   text-decoration: underline !important; 
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important;
+  text-decoration-color: #12853d !important;
 }
 
 .contributors a {
   color: #3e3d3e !important;      
   text-decoration: underline !important; 
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important;
+  text-decoration-color: #12853d !important;
 }
 
 .contributors a:hover {
   text-decoration: underline !important; 
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important;
+  text-decoration-color: #12853d !important;
 }
 
 /*===========================
-Top navigation bar 
+  Announcement banner
+=============================*/
+
+#quarto-announcement {
+  color: #ffffff;
+  font-weight: 600;
+  background-color: #156740;
+  font-size: 0.85em;
+  height: 41.5px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  text-align: center; 
+  width: 100%; 
+  position: relative;
+}
+
+#quarto-announcement * {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#quarto-announcement .quarto-announcement-action {
+margin-right: 7px;
+}
+
+/*===========================
+  Site logo (top-left corner)
+=============================*/
+
+.navbar-brand > img {
+  max-height: 35px;
+  margin-left: 0rem;
+  margin-right: -0.1rem;
+  margin-top: 0px;
+  margin-bottom: 0px; 
+}  
+
+/*===========================
+  Site title
+=============================*/
+
+.navbar-brand {
+  font-weight: 600 !important; 
+  font-size: 95% !important; 
+  color: #272727 !important; 
+  letter-spacing: 0em;
+  padding: 0px;
+  margin-right: .5rem;
+}
+
+/*===========================
+  Top navigation bar
 =============================*/
 
 .navbar {
-  height: 64px ;  
-  background-color: white;  
-  border-bottom: 1px solid rgb(215, 215, 215);
-  width: 100%;       
-  margin-bottom: 0px !important;
-  margin-left: 0px;
-  padding-bottom: 20 !important; /* Optional: remove any padding if present */   
-  position: sticky; 
+  height: 3.7rem ;  
+  background-color: none;  
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: -17px ;
+  padding-bottom: 20;
+  position: sticky;
   transition: border-bottom 0.3s ease-in-out;
   z-index: 1000;
-   /*display: none;*/
+}
+
+.navbar-container {
+  width: 82%;
+}
+
+/*===========================
+  Links (top navigation bar)
+=============================*/
+
+.navbar-nav {
+  display: flex; 
+  gap: 1.5rem; 
+  margin-left: 3.75rem;
 }
 
 .navbar a {
-  color: #2f2f2f;           
-  font-weight: 600;
-  font-size: .87rem;          
+  color: #272727;     
+  font-size: 87%;          
+  font-weight: 500;        
   text-decoration: none;  
   margin-bottom: 0px; 
   padding: 0px;
   margin-left: 0px;
 }
 
-.navbar-nav {
- display: flex; 
- gap: 2px;
- margin-left: -50px;
-}
-
 .navbar-nav a.nav-link:hover {
-  color: #24292f; 
-  font-size: .9rem;          
-  font-weight: 450;
-  /*text-decoration: underline;
+  color: #272727; 
+  font-size: 87%;          
+  font-weight: 500;        
+  text-decoration: underline;
   text-decoration-color: #49AC57;
-  text-decoration-thickness: 5%;   
-  text-underline-offset: 7px ;*/
+  text-decoration-thickness: 17%;   
+  text-underline-offset: 11px ;
 }
 
-.navbar-nav a.nav-link.active {
-  font-weight: 600;
-  color: #3e3e3e; 
-  font-size: .9rem;          
-  /*text-decoration: underline;
-  text-decoration-color: #49AC57;
-  text-underline-offset: 7px ;
-  text-decoration-thickness: 8%; */
+.navbar-nav a.nav-link:active {
+  color: #12853d; 
+  font-size: 87%;          
+  font-weight: 500;        
+  text-decoration: underline;
+  text-decoration-color: #272727;
+  text-decoration-thickness: 16%;   
+  text-underline-offset: 11px ;
 }
 
-.navbar-brand {
-  font-weight: 600 !important; /* Bold (use 400 for normal, 300 for lighter) */
-  font-size: 16.5px !important; /* Adjust size as needed */
-  color: #3b3b3c !important; /* Change title color */
-  padding: 0px;
+.navbar .dropdown-toggle::after {
+  display: none
 }
 
-.navbar-brand > img {
-  max-height: 40px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px; 
-}  
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
 
-.navbar-logo {
-  margin-left: 200px !important;
-}
+.navbar .dropdown-toggle::before {
+  content: "\F282";
+  font-family: "bootstrap-icons";
+  font-size: 0.85em;
+  font-weight: normal;
+  color: #272727;
+  position: absolute;
+  right: -10px;
+  top: 56.5%;
+  transform: translateY(-50%);
+} 
 
-.navbar-title {
-  margin-left: 0px !important;
-}
+/*===========================
+  GitHub link/icon
+=============================*/
 
 .navbar .quarto-navbar-tools .quarto-navigation-tool {
-  color: #595959;
-  font-size: 1.2rem;
-  margin-right: 7px;
-  margin-left: 15px;
+  color: #5c5c5c;
+  font-size: 1.15rem;
+  margin-right: 5px;
+  margin-left: 1rem;
   padding: 2px;
 }
 
-#quarto-search input {
-  font-size: .925em;
-}
-
-.navbar .aa-Autocomplete .aa-Form {
-  width: 240px;
-  margin-right: 300px;
+.navbar .quarto-navbar-tools .quarto-navigation-tool:hover {
+  color: #49AC57;
+  font-size: 1.15rem;
+  margin-right: 5px;
+  margin-left: 1rem;
   padding: 2px;
-  /*border-color: #7cb784 !important;*/
 }
 
 /*===========================
-Side navigation bar 
+  Search bar
+=============================*/
+
+.navbar .aa-Autocomplete {
+  border-color: #12853d;
+}
+
+.navbar .aa-Autocomplete .aa-Form {
+  width: 14rem;
+  margin-right: 2.2rem;
+  padding: 7px;
+  height: 2rem;
+  border-color: #e7e7e7;
+}
+
+.navbar .aa-Autocomplete .aa-SubmitIcon {
+  transform: scale(0.8); 
+  margin-left: -4px;
+  margin-right: 3px;
+}
+
+#quarto-search input {
+  font-size: 85%;   
+  margin-left: 0rem;
+  font-weight: 400;
+}
+
+.sidebar .aa-Autocomplete .aa-Form {
+  width: 14.5rem;
+  margin-right: 2.5rem;
+  padding: 7px;
+  height: 1.9rem;
+  border-color: #e7e7e7;
+}
+
+.sidebar .aa-Autocomplete .aa-SubmitIcon {
+  transform: scale(0.8); 
+  margin-left: -4px;
+  margin-right: 7px;
+}
+
+/*===========================
+  Side navigation bar 
 =============================*/
 
 .sidebar {
   margin-left: 0px;
   margin-right: 0px; 
-  border-right-color: #303030;
+  margin-top: 0px;
   padding: 0px 0px 0px 0px;
 }
 
-/* Sidebar Link Styling */
 .sidebar a {
-  font-size: .935em; 
+  font-size: .9em; 
   text-decoration: none;
-  color: #24292f; 
-  padding: 6.5px 9px;
-  margin: -4.5px 0;    
+  color: #272727; 
+  padding: 7.5px 9px;
+  margin: -3.5px 0;    
   display: block;
   border-radius: 5px; 
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   position: relative; 
 }
 
-/* Sidebar Link Hover Effect */
 .sidebar a:hover {
-  font-size: .935em; 
-  background-color: #f3f3f3;  /* Light green background */
-  color: #1f2326;  /* GitHub blue */
+  font-size: .9em; 
+  text-decoration: underline;
+  text-decoration-color: #49AC57;
+  text-decoration-thickness: 8% !important;
+  text-underline-offset: 5px ;
 }
 
-/* Sidebar Link Active (if applicable) */
 .sidebar a.active {
-  font-size: .935em; 
-  background-color: #f3f3f3;  /* Light blue for active links */
-  color: #1f2326;
-  font-weight: bold;
+  font-size: .9em; 
+  background-color: rgba(82, 205, 98, 0.125);
+  color: #272727;
+  font-weight: 600;
 }
 
-/* Active Link - Adding a Colored Left Bar */
 .sidebar a.active::before {
   content: "";
   position: absolute;
   left: -8px;
   top: 50%;
-  transform: translateY(-50%); /* Aligns it perfectly in the center */
-  height: 85%;
-  width: 4px;  /* Thickness of the left bar */
+  transform: translateY(-50%); 
+  height: 75%;
+  width: 4px;  
   background-color: #49AC57;
-  border-radius: 2px; /* Optional: Rounds the edges slightly */
+  border-radius: 2px; 
 }
 
-/* Sidebar Logo */
 .sidebar-logo {
-  text-align: center; /* Center the logo */
-  padding: 0px 0; /* Adjust spacing */
-  max-width: 4.5rem; /* Adjust size (smaller image) */
-  /*max-width: 350px; */
+  text-align: center;
+  padding: 0px 0; 
+  max-width: 10.5rem; 
   margin-left: -6px;
   margin-top: -5x;
-  margin-bottom: 8px;
-  opacity: 0; /* Hide by default */
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+  opacity: 0;
+  visibility: hidden;
 }
 
 /*===========================
-Breadcrumb
+  Table of contents
+=============================*/
+
+#TOC {
+  margin-top: 45px; 
+  background-color: #ffffff;
+  padding: 0px; 
+  border-radius: 5px;
+  margin-left: 0px;
+  margin-right: 0px !important;
+}
+
+#TOC h2 {
+  margin-bottom: -20px;
+  font-weight: 600 !important;
+  font-size: 85% !important;
+  margin-left: 11px;
+}
+
+/* Style TOC links */
+#TOC a {
+  color: #24292f !important;
+  text-decoration: none;
+  border-color: white;
+  border-left-color: #ffffff;
+  line-height: 1.15rem;
+  margin-bottom: 3px;
+  padding-bottom: 3px;
+  background-color: #ffffff;  
+  font-weight: normal; 
+  border-radius: 0; 
+  font-size: .85em; 
+}
+
+#TOC a:hover {
+  color: #49AC57 !important;
+  font-size: .85em; 
+  font-weight: normal; 
+  text-decoration: none;
+  text-decoration-color: #49AC57;
+  text-decoration-thickness: 8% !important;
+  text-underline-offset: 4px ;
+}
+
+#TOC a.active {
+  font-size: .9em; 
+  background-color: #ffffff; 
+  color: #24292f !important;
+  font-weight: normal !important;
+  border-left-color: #ffffff;
+}
+
+#TOC a.active::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  width: 0px;  
+  background-color: #f1f1f1bf;
+  border-radius: 0px; 
+  font-weight: bold !important; 
+  color: #24292f !important;
+}
+
+#TOC::before {
+  font-weight: bold;
+  font-size: 10px !important;
+  margin-bottom: 15px;
+}
+
+.toc-actions {
+  margin-top: 30px !important;
+  margin-left: 10px !important;
+}
+
+.toc-actions a {
+  padding: 0px !important;
+}
+
+/*===========================
+  Breadcrumb
 =============================*/
 
 .breadcrumb {
+  font-size: 0.975em !important; 
   background-color: transparent;
-  padding: 7px 40px 25px 3px;
+  padding: 32px 40px 25px 3px;
   color: #6d6d6d !important;  
   font-weight: normal !important;
   margin-bottom: 10px !important;
 } 
 
 .breadcrumb a {
+  font-size: 0.975em !important; 
   font-style: normal !important;
   color: #6d6d6d !important;       
   text-decoration: none !important;  
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important ;
+  text-decoration-color: #12853d !important ;
 }
 
 .breadcrumb a:hover {
+  font-size: 0.975em !important; 
   color: #49AC57 !important; 
-  text-decoration: underline !important;  
-  text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important ;
+  text-decoration: underline !important;
+  text-decoration-color: #49AC57;
+  text-decoration-thickness: 8% !important;
+  text-underline-offset: 5px ;
 }
 
 .breadcrumb li:not(:first-child)::before {
   font-style: normal !important;
-  content: '>' ;            
+  content: '/' ;            
   margin: 0 4px ;          
-  font-size: 0.9em !important;     
+  font-size: 0.92em !important;     
 }
 
 .breadcrumb li:last-child {
@@ -328,29 +485,91 @@ Breadcrumb
 
 .breadcrumb li:first-child a {
   font-weight: normal !important;
-  font-size: 0.92em !important;     
+  font-size: 0.975em !important; 
 }
 
 .breadcrumb .breadcrumb-item:first-child a {
-font-weight: bold;
-color: #0056b3 !important;
-font-size: 0.92em !important; 
+  font-weight: bold;
+  color: #6d6d6d !important;
+  font-size: 0.975em !important; 
+}
+
+.breadcrumb .breadcrumb-item:first-child a:hover {
+  font-weight: bold;
+  color: #49AC57 !important;
+  font-size: 0.975em !important; 
+  text-decoration: underline !important;
+  text-decoration-color: #49AC57;
+  text-decoration-thickness: 8% !important;
+  text-underline-offset: 5px ;
+  }
+
+.breadcrumb-item {
+  font-size: 0.92em !important; 
+  font-weight: normal !important;
 }
 
 /*===========================
-Page subtitle
+  Summary block
 =============================*/
 
-.page-subtitle {
+.custom-summary-block {
   font-size: 1.3rem;
-  color: #666565 !important;  
-  margin: 0px 35px 55px 0px;  
-  line-height: 1.5;
-  border-color: #49AC57;
+  font-weight: 450;
+  color: #575757 !important;  
+  padding: 0px 20px 0px 0px; 
+  line-height: 1.55em;
+  background-color: transparent;
+  margin-top: -.2em;
+  margin-bottom: 1.5rem;
+}
+
+
+/*===========================
+  Key takeaways callouts
+=============================*/
+
+.callout.callout-style-simple {
+  padding: .5em 1.3em 0em .5em;
+  border-left: 5px solid;
+  border-right: 0px solid #dee2e6;
+  border-top: 0px solid #dee2e6;
+  border-bottom: 0px solid #dee2e6;
+  border-radius: 0px;
+  margin-top: -.4rem;
+  margin-bottom: 3rem;
+  background-color: #ffffff;
+}
+
+.callout.callout-style-simple .callout-title-container {
+  margin-bottom: .8em !important; /* Adjust the value as needed */
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.callout.callout-style-simple .callout-header {
+  color: #12853d !important;
+  opacity: 100% !important;
+  margin-left: .5rem;
+}
+
+.callout.callout-style-simple .callout-body {
+  margin-left: -1.6rem;
+  line-height: 1.5rem;
+  font-size: .92rem;
+}
+
+.callout.callout-style-simple .callout-body ul li {
+  margin-bottom: .2em; 
+}
+
+div.callout-tip.callout-titled .callout-icon::before {
+  background-image: url(./images/light-bulb-ipa.png);
+  color: #49AC57;
 }
 
 /*===========================
-Figures style
+  Figures style
 =============================*/
 
 figure figcaption {
@@ -373,10 +592,9 @@ img {
 }
 
 /*===========================
-Numbered lists
+  Numbered lists
 =============================*/
 
-/* Remove default list styling and set up a custom counter */
 .numbered-list {
   list-style-type: none;
   counter-reset: custom-counter;  
@@ -385,7 +603,6 @@ Numbered lists
   width: 100%; 
 }
 
-/* Style for each list item */
 .numbered-list li {
   position: relative;  
   padding-left: 5px;  
@@ -394,33 +611,26 @@ Numbered lists
   list-style: none;  
 }
 
-/* Style for the number inside the list items */
 .numbered-list li::before {
   content: counter(custom-counter);  
   counter-increment: custom-counter;  
   font-weight: bold; 
-  background-color: #49AC57;  
+  background-color: #12853d;  
   color: white;  
   border-radius: 50%;  
-
-  /* Increase size by 10% from previous 22px */
   width: 24px;  
   height: 24px;  
   font-size: 15.4px; 
-
-  /* Position the number outside the text */
   position: absolute; 
   left: -35px;  
   top: 0; 
-
-  /* Make the number a circle and center the content inside it */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 /*===========================
-Bullet points lists
+  Bullet lists
 =============================*/
 
 main ul {
@@ -431,109 +641,14 @@ main ul li {
   margin-bottom: 0.375em; 
 }
 
+
 /*===========================
-Custom callouts
+  Custom callouts
 =============================*/
 
-.custom-callout-tip {
-padding: 5px 1px 1px 20px; /* Correct padding values */
-border-width: 0 0 0 4px !important; /* Keep the left border */
-border-style: solid !important;
-border-color: #49AC57;
-line-height: 1.6em;
-position: relative;
-}
-
-.custom-callout-tip::before {
-content: "💡 Tip";
-margin-bottom: 10px;
-font-weight: 600;
-display: inline-block;
-vertical-align: middle;
-margin-right: 10px;
-}
-
-.custom-callout-tip-title {
-font-weight: bold;
-display: inline-block;
-vertical-align: middle;
-}
-
-/* Style the TOC container */
-#TOC {
-  margin-top: 24.5px; /* Adjust as needed */ 
-  background-color: #ffffff; /* Light background */
-  padding: 0px; 
-  border-radius: 5px;
-  width: 400px; /* Adjust as needed */
-  max-width: 100%; /* Prevent overflow */
-  margin-left: 0px;
-  margin-right: -50px !important;
-}
-
-/* Style TOC links */
-#TOC a {
-  color: #24292f !important; /* Custom link color */
-  text-decoration: none;
-  border-color: white;
-  border-left-color: #e6e6e6;
-  line-height: 1.3rem;
-  margin-bottom: 3px;
-  background-color: #ffffff;  /* Light green background */
-  font-weight: normal; 
-  border-radius: 0; /* Remove rounding on the corners */
-  font-size: .935em; 
-}
-
-#TOC a:hover {
-  color: #24292f !important;
-  background-color: #f6f6f6;  /* Light green background */
-  font-size: .935em; 
-  font-weight: normal; 
-}
-
-/* Sidebar Link Active (if applicable) */
-#TOC a.active {
-  font-size: .935em; 
-  background-color: #ffffff;  /* Light blue for active links */
-  color: #49AC57 !important;
-  font-weight: 600 !important;
-  border-left-color: #49AC57;
-}
-
-/* Active Link - Adding a Colored Left Bar */
-#TOC a.active::before {
-  content: "";
-  position: absolute;
-  left: 0px;
-  height: 100%;
-  width: 0px;  /* Thickness of the left bar */
-  background-color: #ffffff;
-  border-radius: 0px; /* Optional: Rounds the edges slightly */
-  font-weight: bold !important; 
-  color: #24292f !important;
-}
-
-#TOC::before {
-  font-weight: bold;
-  font-size: 10px !important;
-  margin-bottom: 15px;
-}
-
-#TOC h2 {
-  margin-bottom: 10px; /* Adjust as needed */
-  font-weight: 600 !important;
-  font-size: 92%;
-  margin-left: 5.5px;
-}
-
-/* Reduce space above the links */
-.toc-actions a {
-  padding: 0px !important;
-}
-
-
-/* Reduce space above the links */
-.quarto-search {
-  width: 300px !important;
+.callout {
+  margin-top: 1.2rem;
+  margin-bottom: 1.25rem;
+  border-radius: .25rem;
+  overflow-wrap: break-word;
 }

@@ -2,32 +2,36 @@ project:
   type: website
 format:
   html:
+    include-in-header: 
+      - ../../progress-bar.html
     theme:
       light: [cosmo, ./assets/light-theme.scss]
       #dark: [cosmo, ./assets/dark-theme.scss]
     css: ./assets/styles.css
     toc: true
-    toc-title: "On this page"
-    #template-partials:
+    toc-title: "In this resource"
+    theme-goggle: true
+    template-partials:
       #- ./assets/title-block.html
-      #- ./assets/toc.html
+      - ./assets/toc.html
     grid:
-      sidebar-width: 290px
-      body-width: 750px
-      margin-width: 300px
-      gutter-width: 2.5rem
+      sidebar-width: 250px
+      body-width: 950px
+      margin-width: 210px
+      gutter-width: 3.5em
 language:
   search-text-placeholder: Search IPA Resources
+
 website:
-  title: "IPA Research and Data Science Hub"
+  title: "Research & Data Science Hub"
   favicon: "assets/images/ipa-favicon.ico"
   bread-crumbs: true
-  # announcement:
-  #dismissable: false
-  #content: "**Welcome!** - The Research Hub is still under construction. Content, pages, and the site are subject to change."
-  #position: above-navbar
-  #type: warning
-  #icon: cone-striped
+  announcement:
+    icon: none
+    dismissable: true
+    content: "<span>📢  &#8203; New IRB fee schedule starting March 1. Click <u>here</u> to learn more!</span>"
+    type: light
+    position: above-navbar
   back-to-top-navigation: true
   page-footer:
     background: light
@@ -42,206 +46,180 @@ website:
   
   navbar:
     search: true
-    title: "Research and Data Science Hub"
+    title: "Research & Data Science Hub"
     background: white
-    #logo: assets/images/ipa-kh-v10.png
-    #logo: assets/images/ipa-logo-full.jpg
     logo: assets/images/ipa-logo-abbreviated.png
-    #logo: assets/images/ipa-logo-full.svg
-    collapse-below: sm
+    collapse-below: xxl
+    pinned: true
+    border: false
     tools:
       - icon: github
         href: https://github.com/PovertyAction
         text: IPA Github
-    right:
+    left:
       - text: "Research Design"
         menu:
-          - text: "Ethics and IRB"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Data Collection"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Data Management"
-            href: ./PAGE-TEMPLATE.qmd  
-          - text: "Software"
-            href: ./PAGE-TEMPLATE.qmd
-      - text: "Ethics and IRB"
-        menu:
-          - text: "Ethics and IRB"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Data Collection"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Data Management"
-            href: ./PAGE-TEMPLATE.qmd  
-          - text: "Software"
-            href: ./PAGE-TEMPLATE.qmd
-      - text: "Data Management"
-        menu:
-          - text: "Ethics and IRB"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Data Collection"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Data Management"
-            href: ./PAGE-TEMPLATE.qmd  
-          - text: "Software"
-            href: ./PAGE-TEMPLATE.qmd
-      - text: "Software Guides"
-        menu:
-          - text: "Ethics and IRB"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Data Collection"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Data Management"
-            href: ./PAGE-TEMPLATE.qmd  
-          - text: "Software"
-            href: ./PAGE-TEMPLATE.qmd            
-
-  sidebar:
-    title: "Research and Data Science Hub"
-    style: "docked"
-    #logo: assets/images/ipa-logo-abbreviated.png
-    #border: true
-    border: false
-    collapse-level: 1
-    search: false
-    pinned: false
-    align: left
-    contents:
-      - section: "Research Design"
-        contents:
           - text: "Theory of Change"
             href: ./research-design/theory-of-change.qmd
           - text: "Randomization"
             href: ./research-design/randomization.qmd
           - text: "Measurement and Survey Design"
             href: ./research-design/measurement.qmd
-          - text: "Sample and Power Calculations"
+          - text: "Power Calculations"
             href: ./research-design/sample-size-power.qmd
-      - section: Ethics and IRB
-        contents:
+     
+      - text: "Ethics and IRB"
+        menu:
           - text: "About IPA IRB"
-            href: ./ethics-irb/ipa-irb.qmd
+            href: ./PAGE-TEMPLATE.qmd
           - text: "The IRB Life Cycle"
             href: ./ethics-irb/irb-lifecycle.qmd
           - text: "IRB Forms and Documentation"
             href: ./ethics-irb/irb-docs.qmd
-          - text: "IRB FAQs"
-            href: ./ethics-irb/irb-faqs.qmd
           - text: "Reliance Agreements"
             href: ./ethics-irb/irb-reliance-agreements.qmd
-      - section: Data Collection
-        contents:
-          - section: "Primary Data Collection"
-            contents:
-              - text: "Survey Planning"
-                href: ./PAGE-TEMPLATE.qmd
-              - text: "Survey Programming"
-                href: ./PAGE-TEMPLATE.qmd
-              - text: "Piloting"
-                href: ./PAGE-TEMPLATE.qmd
-              - text: "Working with Survey Firms"
-                href: ./PAGE-TEMPLATE.qmd
-          - text: "Using Secondary Data"
+          - text: "IRB FAQs"
+            href: ./ethics-irb/irb-faqs.qmd 
+     
+      - text: "Data Quality"
+        menu:
+          - text: "IPA Research Protocols"
             href: ./PAGE-TEMPLATE.qmd
-          - section: "Data Quality"
-            contents:
-              - text: "IPA Research Protocols"
-                href: ./PAGE-TEMPLATE.qmd
-              - text: "IPA's Data Management System"
-                href: ./PAGE-TEMPLATE.qmd
-          - section: "Remote Data Collection"
-            contents:
-              - text: "Phone Surveys"
-                href: ./PAGE-TEMPLATE.qmd
-              - section: "WhatsApp Surveys"
-                contents:
-                  - text: "WhatsApp Surveys: Pros and Cons"
-                    href: ./data-collection/whatsapp/whatsapp-pros-cons.qmd
-                  - text: "Getting Started with WhatsApp Surveys"
-                    href: ./data-collection/whatsapp/whatsapp-start.qmd
-                  - text: "Twilio Set Up"
-                    href: ./data-collection/whatsapp/whatsapp-surveys-twilio.qmd
-                  - text: "Designing a WhatsApp Survey"
-                    href: ./data-collection/whatsapp/whatsapp-design.qmd
-                  - text: "Deploying a WhatsApp Survey"
-                    href: ./data-collection/whatsapp/whatsapp-deploy.qmd
-                  - text: "WhatsApp and Data Security"
-                    href: ./data-collection/whatsapp/whatsapp-data-security.qmd
-          - section: "Qualitative Methods"
-            href: ./data-collection/qualitative-methods/index.qmd
-            contents:
-              - text: "Focus Groups"
-                href: ./data-collection/qualitative-methods/focus-groups.qmd
-              - text: "Qualitative Interviews"
-                href: ./data-collection/qualitative-methods/interviews.qmd
-              - text: "Rapid Ethnographic Assessments"
-                href: ./data-collection/qualitative-methods/ethnographies.qmd
-              - text: "Qualitative Observations"
-                href: ./data-collection/qualitative-methods/observations.qmd
-      - section: Data Management
-        contents:
-          - text: "Data Storage and Security"
+          - text: "Survey Planning"
+            href: ./PAGE-TEMPLATE.qmd  
+          - text: "Data Quality Action Plan (DQAP)"
+            href: ./PAGE-TEMPLATE.qmd    
+          - text: "High-Frequency Checks"
+            href: ./PAGE-TEMPLATE.qmd  
+          - text: "Back-Checks"
+            href: ./PAGE-TEMPLATE.qmd   
+            
+      - text: "Data Management"
+        href: ./PAGE-TEMPLATE.qmd
+        menu:
+          - text: "Data Collection"
             href: ./PAGE-TEMPLATE.qmd
-          - section: "Data Cleaning"
-            contents:
-              - text: "Raw Data Management"
-                href: ./PAGE-TEMPLATE.qmd
-              - text: "Variable Management"
-                href: ./PAGE-TEMPLATE.qmd
-              - text: "Data Documentation"
-                href: ./PAGE-TEMPLATE.qmd
-              - text: "Data Aggregation"
-                href: ./PAGE-TEMPLATE.qmd
+          - text: "Data Security"
+            href: ./PAGE-TEMPLATE.qmd 
+          - text: "Data Cleaning"
+            href: ./PAGE-TEMPLATE.qmd 
           - text: "Data Analysis"
-            href: ./data-management/data-cleaning/ipa-gprl-data-cleaning-guide.qmd
+            href: ./PAGE-TEMPLATE.qmd 
           - text: "Data Visualization"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Data Publication"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Version Control"
-            href: ./PAGE-TEMPLATE.qmd
-      - section: Software
-        contents:
-          - section: "Stata"
-            contents:
-              - section: "Introduction to Stata"
-                href: ./software/stata/admin-data.qmd
-                contents:
-                  - text: "Getting Started with Stata"
-                    href: ./software/stata/intro-stata/getting-started-stata.qmd
-                  - text: "Loading and Saving Data"
-                    href: ./software/stata/intro-stata/loading-saving-stata.qmd
-                  - text: "Exploring and Processing Data"
-                    href: ./software/stata/intro-stata/exploring-processing-stata.qmd
-                  - text: "Conditions and Operators"
-                    href: ./software/stata/intro-stata/conditions-operators-stata.qmd
-                  - text: "Reproducibility in Stata"
-                    href: ./software/stata/intro-stata/reproducibility-stata.qmd
-              - text: "Advanced Stata Tips and Tricks"
-                href: ./software/stata/admin-data.qmd
-              - text: "Writing Stata Commands"
-                href: ./software/stata/admin-data.qmd
-              - text: "Detecting Precision Issues with Stata"
-                href: ./software/stata/admin-data.qmd
-              - text: "Regular Expressions in Stata"
-                href: ./software/stata/admin-data.qmd
-              - text: "Data Frames"
-                href: ./software/stata/admin-data.qmd
-              - text: "Creating Maps in Stata"
-                href: ./PAGE-TEMPLATE.qmd
-          - text: "SurveyCTO"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Cryptomator"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Python"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Git and GitHub"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Visual Studio Code"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "Quarto"
-            href: ./PAGE-TEMPLATE.qmd
-          - text: "SQL*"
-            href: ./PAGE-TEMPLATE.qmd
+            href: ./PAGE-TEMPLATE.qmd 
 
-include-in-header: 
-  - ../../progress-bar.html
+      - text: "Software Guides"
+        menu:
+        - text: "Stata"
+          href: ./research-design/sample-size-power.qmd
+        - text: "SurveyCTO"
+          href: ./research-design/sample-size-power.qmd
+        - text: "Cryptomator"
+          href: ./research-design/sample-size-power.qmd
+        - text: "Python"
+          href: ./research-design/sample-size-power.qmd
+        - text: "Git and GitHub"
+          href: ./research-design/sample-size-power.qmd
+        - text: "Visual Studio Code"
+          href: ./research-design/sample-size-power.qmd
+        - text: "Quarto"
+          href: ./research-design/sample-size-power.qmd
+  
+  sidebar:
+    - id: research-design
+      title: "Research Design"
+      style: floating
+      collapse-level: 2
+      align: left
+      contents:
+        - text: "Theory of Change"
+          href: ./research-design/theory-of-change.qmd
+        - text: "Randomization"
+          href: ./research-design/randomization.qmd
+        - text: "Measurement and Survey Design"
+          href: ./research-design/measurement.qmd
+        - text: "Power Calculations"
+          href: ./research-design/sample-size-power.qmd
+
+    - title: "Ethics and IRB"
+      contents:
+        - text: "About IPA IRB"
+          href: ./PAGE-TEMPLATE.qmd
+        - text: "The IRB Life Cycle"
+          href: ./ethics-irb/irb-lifecycle.qmd
+        - text: "IRB Forms and Documentation"
+          href: ./ethics-irb/irb-docs.qmd
+        - text: "Reliance Agreements"
+          href: ./ethics-irb/irb-reliance-agreements.qmd
+        - text: "IRB FAQs"
+          href: ./ethics-irb/irb-faqs.qmd
+    
+    - id: data-management
+      contents:
+        - section: "Data Management"
+          contents:
+          - text: "Data Collection"
+            href: ./PAGE-TEMPLATE.qmd
+            contents:
+              - text: "In-Person Surveys"
+                href: ./PAGE-TEMPLATE.qmd 
+              - text: "Phone Surveys"
+                href: ./PAGE-TEMPLATE.qmd     
+              - text: "WhatsApp Surveys"
+                href: ./PAGE-TEMPLATE.qmd 
+              - text: "Qualitative Methods"
+                href: ./PAGE-TEMPLATE.qmd
+                contents:
+                - text: "Focus Groups"
+                  href: ./data-collection/qualitative-methods/focus-groups.qmd
+                - text: "Interviews"
+                  href: ./data-collection/qualitative-methods/interviews.qmd
+                - text: "Rapid Ethnographic Assessments"
+                  href: ./data-collection/qualitative-methods/ethnographies.qmd
+                - text: "Observations"
+                  href: ./data-collection/qualitative-methods/observations.qmd
+    
+    - title: "Software Guides"
+      contents:
+        - section: "Stata"
+          contents:
+            - section: "Introduction to Stata"
+              href: ./software/stata/admin-data.qmd
+              contents:
+                - text: "Getting Started with Stata"
+                  href: ./software/stata/intro-stata/getting-started-stata.qmd
+                - text: "Loading and Saving Data"
+                  href: ./software/stata/intro-stata/loading-saving-stata.qmd
+                - text: "Exploring and Processing Data"
+                  href: ./software/stata/intro-stata/exploring-processing-stata.qmd
+                - text: "Conditions and Operators"
+                  href: ./software/stata/intro-stata/conditions-operators-stata.qmd
+                - text: "Reproducibility in Stata"
+                  href: ./software/stata/intro-stata/reproducibility-stata.qmd
+            - text: "Advanced Stata Tips and Tricks"
+              href: ./software/stata/admin-data.qmd
+            - text: "Writing Stata Commands"
+              href: ./software/stata/admin-data.qmd
+            - text: "Detecting Precision Issues with Stata"
+              href: ./software/stata/admin-data.qmd
+            - text: "Regular Expressions in Stata"
+              href: ./software/stata/admin-data.qmd
+            - text: "Data Frames"
+              href: ./software/stata/admin-data.qmd
+            - text: "Creating Maps in Stata"
+              href: ./PAGE-TEMPLATE.qmd
+        - text: "SurveyCTO"
+          href: ./PAGE-TEMPLATE.qmd
+        - text: "Cryptomator"
+          href: ./PAGE-TEMPLATE.qmd
+        - text: "Python"
+          href: ./PAGE-TEMPLATE.qmd
+        - text: "Git and GitHub"
+          href: ./PAGE-TEMPLATE.qmd
+        - text: "Visual Studio Code"
+          href: ./PAGE-TEMPLATE.qmd
+        - text: "Quarto"
+          href: ./PAGE-TEMPLATE.qmd
+        - text: "SQL*"
+          href: ./PAGE-TEMPLATE.qmd
+
