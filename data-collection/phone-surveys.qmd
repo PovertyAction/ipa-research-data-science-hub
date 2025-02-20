@@ -1,22 +1,177 @@
 ---
-title: Research Design
-# Editors are the "Maintainers" of the page
-# editors:
-#  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+title: "Phone Surveys: Best Practices and Tools"
 
-# Authors are the "Contributors" of the page
-# Add your name to the list if you have contributed to this page
-# author:
-#   - Niall Keleher
+# Authors
+# Authors are the main creators of the site's content, credited for their work and responsible for its core development, including writing and editing.
+authors-ipa:
+  - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
+
+# Contributors
+# Contributors provide support, such as feedback or supplementary materials for the site. They can also be responsible for updating/maintaining the site.
+contributors:
+  - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
 ---
 
-## What is Stata?
+> Computer-Assisted Telephone Interview (CATI) surveys offer unique advantages, such as the ability to assign enumerators randomly without the logistical constraints of in-person surveys (e.g., geographic area, travel costs). However, challenges like Random Digit Dialing (RDD) and respondent tracking require careful planning. This guide provides best practices and tools for conducting effective CATI surveys.
 
-Stata is a statistical software package that is commonly used in the social sciences and economics.
-It is widely used at IPA for data analysis and management. It offers a comprehensive
-library of methods for data cleaning, descriptive statistics, and econometric analysis.
-Stata is very well suited for research data workflows and research design tasks,
-including power calculations, sample design adjustments, panel data analysis,
-time series analysis, etc. See [Stata Features](https://www.stata.com/features/)
-for a full list of what Stata makes available.
+## CATI Surveys
 
+| Advantages of CATI Surveys | Challenges of CATI Surveys |
+|----------------------------|----------------------------|
+| **Random Enumerator Assignment:** Enumerators can be assigned randomly without geographic or travel constraints. Ensures fairness and reduces bias in data collection. | **Respondent Tracking:** Difficulty in tracking hard-to-reach respondents (e.g., those who refuse to participate or are unavailable). Ensuring representativeness of the sample despite attrition. |
+| **Reduced Logistical Constraints:** No need for travel, reducing costs and time. Enumerators can work remotely, increasing flexibility. | **Language Barriers:** Enumerators may not speak the same language as respondents, requiring re-assignment. Limited availability of multilingual enumerators. |
+| **Cost-Effectiveness:** Lower operational costs compared to in-person surveys (e.g., no transportation or accommodation expenses). Scalable for large sample sizes. | **Call Refusals:** High refusal rates due to respondent fatigue or distrust of phone surveys. Difficulty in convincing respondents to participate. |
+| **Faster Data Collection:** Surveys can be conducted quickly, especially with automated dialing systems. Real-time data entry reduces post-survey processing time. | **Technical Issues:** Dependence on reliable internet and phone connectivity. Challenges with automated dialing systems (e.g., dropped calls, misdials). |
+| **Improved Data Quality:** Computer-assisted systems minimize human errors in data entry. Built-in validation checks ensure accurate responses. | **Data Privacy Concerns:** Respondents may be hesitant to share sensitive information over the phone. Ensuring compliance with data protection regulations (e.g., GDPR, HIPAA). |
+| **Wide Geographic Coverage:** Ability to reach respondents across large or remote areas without physical presence. | **Limited Non-Verbal Cues:** Enumerators cannot observe body language or environmental context, which may affect data interpretation. Difficulty in building rapport with respondents. |
+| **Flexibility in Scheduling:** Surveys can be conducted at convenient times for respondents, improving response rates. | **Call Timing:** Respondents may not answer calls during certain times (e.g., work hours). Balancing call attempts to avoid annoying respondents. |
+| **Enhanced Monitoring:** Supervisors can monitor calls in real time, ensuring quality control. Automated systems track call outcomes (e.g., completed, refused, invalid). | **Complex Survey Design:** Surveys with long or complex questionnaires may lead to respondent fatigue. Difficulty in maintaining respondent engagement over the phone. |
+
+
+## 1. Random Enumerator Assignment
+
+### Why Random Assignment Matters
+
+- Ensures fairness in workload distribution.
+- Improves replicability of survey administration.
+
+### Tools for Random Assignment
+
+#### Using Stata for Replicable Randomization
+To assign enumerators randomly and ensure replicability, use the following Stata script:
+
+
+```stata
+clear all
+
+* Set seed for replicability
+gl seednum 3256545
+set seed $seednum
+set sortseed $seednum
+
+set obs 100
+g var = _n
+g users = ""
+
+* List of enumerator usernames
+gl enumlist = "data001 data002 data003 data013 data032 data035"
+
+* Assign randomly
+g rand = runiform() if mi(users)
+sort rand
+egen enumsl=cut(rand) if mi(users), group(`=wordcount("${enumlist}")')
+recode enumsl (0=`=wordcount("${enumlist}")')
+
+forval user=1/`=wordcount("${enumlist}")' {
+    replace users = "`=word("${enumlist}", `user')'" if enumsl == `user'
+}
+drop enumsl
+```
+
+This code can also be adapted for reassignment if an enumerator is dropped. For example, if an enumerator leaves the project, their cases can be reassigned by replacing their `users` as empty and rerunning the code.
+
+### Matching Enumerators to Respondents
+In some cases, you may need to match enumerators to respondents based on characteristics like language or gender. Considerations include:
+
+- Languages spoken by enumerators.
+- Number of respondents already assigned to each enumerator.
+- Total cases assigned to avoid overloading enumerators (keep cases below 100 for optimal performance).
+
+---
+
+## 2. Enumerator Re-assignment
+
+### Challenges in Re-assignment
+
+- Language barriers.
+- Respondent availability.
+
+### Solutions
+
+- **SurveyCTO Case Management:** Enables language-based re-assignment.
+- **Stata Workflow for Complex Cases:** Re-assign cases systematically when required.
+
+---
+
+## 3. Survey and Respondent Tracking
+
+### Tracking Surveys
+Survey tracking involves monitoring the status of surveys in real time. Key considerations include:
+
+- **Daily Survey Goals**: Estimate the number of surveys to be completed daily by enumerator and overall.
+- **Productivity Monitoring**: Use tools like SurveyCTO’s Data Explorer and Monitor tab to track survey completions.
+- **Field Reports**: Document survey processes, challenges, and outcomes in a field report for the project manual.
+
+#### Tools for Survey Tracking:
+
+- **SurveyCTO**: Tracks surveys in real time and allows data export to Google Sheets for custom productivity tables.
+- **IPA’s Data Management System**: Use the `progreport` command to generate summaries of surveys completed by day and geographic/categorical variables.
+
+### Common Reasons for Non-completion
+Tracking respondents ensures that hard-to-reach individuals are not overlooked. Common reasons for non-completion include:
+
+- Death
+- Refusal
+- Permanent or temporary relocation
+- Unavailability
+
+#### Tools for Respondent Tracking:
+
+- **SurveyCTO Case Management**: Automates respondent assignment and tracks statuses. Enumerators can only see their assigned respondents, and completed cases are removed from their lists.
+- **IPA’s Tracking Survey Template**: Use this template to create a separate dataset for tracking unsuccessful attempts.
+
+---
+
+## 4. Baseline and Endline Considerations
+
+### Baseline Surveys
+
+- **Replacements**: Replace respondents who have died or permanently moved, ensuring replacements are random and representative.
+- **Replacement Rules**: Limit the number of replacements per enumerator to avoid bias. For example, provide 12 households for 10 required surveys, allowing 2 replacements.
+
+### Endline Surveys
+
+- **Attrition**: Track attrition rates daily and make every effort to survey respondents, even if they have moved. High attrition can bias results.
+- **Panel Data**: Collect detailed identification information during the baseline to facilitate endline tracking.
+
+---
+
+## 5. Respondent Information Tracking Tips
+
+### Key Information to Collect:
+
+- **Phone Numbers**: Collect at least one phone number, ideally multiple, to account for network issues.
+- **Contacts**: Gather contact information for people who know the respondent (e.g., family, business associates).
+- **Directions**: Record detailed directions to the respondent’s home and workplace.
+- **Future Contact**: Include future contact details in the informed consent form.
+
+### Training Enumerators:
+
+- Provide clear instructions on the level of detail required for tracking.
+- Use examples to illustrate how to record information (e.g., landmarks, house color).
+
+### Organizing Information:
+
+- Centralize tracking information through a single point person.
+- Use tools like Microsoft Access or mail merge for efficient data management.
+
+---
+
+## 6. Mop-Up Operations
+### Purpose of Mop-Up
+
+- Locating hard-to-reach respondents to reduce survey bias.
+
+Despite best efforts, some respondents will remain difficult to find. Budget time and resources for mop-up operations to track these individuals. Use tools like:
+
+- **IPA’s `progreport` Command**: Track uninterviewed respondents and create a dataset for follow-up.
+- **SurveyCTO Case Management**: Automatically update respondent lists for mop-up teams.
+
+---
+
+## Conclusion
+Effective CATI surveys require careful planning, robust tools, and diligent tracking. By leveraging tools like SurveyCTO and Stata, and following best practices for enumerator assignment and respondent tracking, you can ensure high-quality data collection and minimize bias.
+
+---
+
+_Last updated: february 2025_
