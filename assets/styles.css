@@ -1,10 +1,19 @@
 /*===========================
+  Page layout
+=============================*/
+
+body {
+  max-width: 100% ;
+  margin: 0 auto ;
+}
+
+/*===========================
   Heading styles
 =============================*/
 
 h1 {
-  font-size: 34px;
-  font-weight: 500px;         
+  font-size: 36px;
+  font-weight: 650;         
   color: #1f2326; 
 }
 
@@ -37,21 +46,7 @@ h1,h3,h4 {
 }
 
 /*===========================
-Subtitle blockquote 
-=============================*/
-
-blockquote {
-  border-left: 5px solid #49AC57;
-  background-color: #6fad7815;
-  padding: 1rem; 
-  font-size: 17px !important;
-  line-height: 1.65 !important;
-  margin-top: 20px !important;
-  margin-bottom: 50px !important;
-}
-
-/*===========================
-Paragraph styles 
+  Paragraph styles 
 =============================*/
 
 p {
@@ -63,14 +58,14 @@ strong {
 } 
 
 /*===========================
-Links styles 
+  Links styles 
 =============================*/
 
 a {
-  color: #49AC57  ; 
+  color: #0b0b0b  ; 
   text-decoration: underline ;
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important; 
+  text-decoration-color: #43a450; 
 }
 
 a:hover {
@@ -89,170 +84,408 @@ a:active {
   color: #3e3d3e !important;  
   text-decoration: underline !important; 
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important;
+  text-decoration-color: #12853d !important;
 }
 
 .authors-ipa a:hover {
   text-decoration: underline !important; 
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important;
+  text-decoration-color: #12853d !important;
 }
 
 .contributors a {
   color: #3e3d3e !important;      
   text-decoration: underline !important; 
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important;
+  text-decoration-color: #12853d !important;
 }
 
 .contributors a:hover {
   text-decoration: underline !important; 
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important;
+  text-decoration-color: #12853d !important;
 }
 
 /*===========================
-Top navigation bar 
+  Announcement banner
+=============================*/
+
+#quarto-announcement {
+  color: #ffffff;
+  font-weight: 600;
+  background-color: #156740;
+  font-size: 0.85em;
+  height: 41.5px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  text-align: center; 
+  width: 100%; 
+  position: relative;
+}
+
+#quarto-announcement * {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#quarto-announcement .quarto-announcement-action {
+margin-right: 7px;
+}
+
+/*===========================
+  Site logo (top-left corner)
+=============================*/
+
+.navbar-brand > img {
+  max-height: 35px;
+  margin-left: 0rem;
+  margin-right: -0.1rem;
+  margin-top: 0px;
+  margin-bottom: 0px; 
+}  
+
+/*===========================
+  Site title
+=============================*/
+
+.navbar-brand {
+  font-weight: 600 !important; 
+  font-size: 95% !important; 
+  color: #272727 !important; 
+  letter-spacing: 0em;
+  padding: 0px;
+  margin-right: .5rem;
+}
+
+/*===========================
+  Top navigation bar
 =============================*/
 
 .navbar {
-  height: 60px ;  
-  background-color: white;  
-  border-bottom: 1px solid rgb(215, 215, 215);
-  width: 100%;       
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important; /* Optional: remove any padding if present */    
+  height: 3.7rem ;  
+  background-color: none;  
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: -17px ;
+  padding-bottom: 20;
+  position: sticky;
+  transition: border-bottom 0.3s ease-in-out;
+  z-index: 1000 !important;
+}
+
+.navbar-container {
+  min-width: 82%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 1550px) {
+  .navbar-container {
+    width: 80%;
+  }
+}
+/*===========================
+  Links (top navigation bar)
+=============================*/
+
+.navbar-nav {
+  display: flex; 
+  gap: 1.5rem; 
+  margin-left: 3.7rem;
+  position: static;
 }
 
 .navbar a {
-  color: #3e3e3e;           
-  font-weight: normal;
-  font-size: .85rem;          
+  color: #272727;     
+  font-size: 87%;          
+  font-weight: 500;        
   text-decoration: none;  
-  margin-bottom: 5px;   
-}
-
-.navbar-nav {
- display: flex; 
- gap: 10px;         
-}
-
-.navbar-nav a.nav-link.active {
-  font-weight: 600;
-  color: #3e3e3e; 
-  text-decoration: underline;
-  text-decoration-color: #49AC57;
-  text-underline-offset: 7px ;
-  text-decoration-thickness: 8%;   
+  margin-bottom: 0px; 
+  padding: 0px;
+  margin-left: 0px;
 }
 
 .navbar-nav a.nav-link:hover {
-  color: #3e3e3e; 
-  font-weight: 600;
+  color: #272727; 
+  font-size: 87%;          
+  font-weight: 500;        
   text-decoration: underline;
   text-decoration-color: #49AC57;
-  text-decoration-thickness: 12%;   
-  text-underline-offset: 7px ;
+  text-decoration-thickness: 32%;   
+  text-underline-offset: 24px ;
 }
 
-.navbar-brand > img {
-  max-height: 36px;
-  margin-left: 0px;
-  margin-right: 7px;
-  margin-top: 22px;
-}  
+.navbar-nav a.nav-link:active {
+  color: #12853d; 
+  font-size: 87%;          
+  font-weight: 500;        
+  text-decoration: none;
+  text-decoration-color: #272727;
+  text-decoration-thickness: 16%;   
+  text-underline-offset: 11px ;
+}
 
-.navbar-brand::after {
-  content: "";
-  width: 1px;              
-  height: 30px;        
-  margin-top: 5px;
-  background-color: #ffffff; 
-  margin-left: 30px; 
-  margin-right: 0px; 
+.navbar .dropdown-toggle::after {
+  display: none
+}
+
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
+
+.navbar .dropdown-toggle::before {
+  content: "\F282";
+  font-family: "bootstrap-icons";
+  font-size: 0.85em;
+  font-weight: normal;
+  color: #272727;
+  position: absolute;
+  right: -10px;
+  top: 56.5%;
+  transform: translateY(-50%);
+} 
+
+/*===========================
+  GitHub link/icon
+=============================*/
+
+.navbar .quarto-navbar-tools .quarto-navigation-tool {
+  color: #5c5c5c;
+  font-size: 1.15rem;
+  margin-right: 5px;
+  margin-left: 1rem;
+  padding: 2px;
+}
+
+.navbar .quarto-navbar-tools .quarto-navigation-tool:hover {
+  color: #49AC57;
+  font-size: 1.15rem;
+  margin-right: 5px;
+  margin-left: 1rem;
+  padding: 2px;
 }
 
 /*===========================
-Side navigation bar 
+  Search bar
+=============================*/
+
+.navbar .aa-Autocomplete {
+  border-color: #12853d;
+}
+
+.navbar .aa-Autocomplete .aa-Form {
+  width: 14rem;
+  margin-right: 2.2rem;
+  padding: 7px;
+  height: 2rem;
+  border-color: #c4c4c4;
+  background-color: #ffffff;
+}
+
+.navbar .aa-Autocomplete .aa-SubmitIcon {
+  transform: scale(0.8); 
+  margin-left: -4px;
+  margin-right: 3px;
+}
+
+#quarto-search input {
+  font-size: 85%;   
+  margin-left: 0rem;
+  font-weight: 400;
+}
+
+.sidebar .aa-Autocomplete .aa-Form {
+  width: 14.5rem;
+  margin-right: 2.5rem;
+  padding: 7px;
+  height: 1.9rem;
+  border-color: #e7e7e7;
+}
+
+.sidebar .aa-Autocomplete .aa-SubmitIcon {
+  transform: scale(0.8); 
+  margin-left: -4px;
+  margin-right: 7px;
+}
+
+/*===========================
+  Side navigation bar 
 =============================*/
 
 .sidebar {
-  margin-left: 20px;
-  margin-right: 20px; 
-  border-right-color: #303030;
-  padding: 20px;
+  margin-left: 0px;
+  margin-right: 0px; 
+  margin-top: 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 .sidebar a {
   font-size: .9em; 
-  padding: 1.5px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: -5px;
+  text-decoration: none;
+  color: #272727; 
+  padding: 7.5px 9px;
+  margin: -3.5px 0;    
+  display: block;
+  border-radius: 5px; 
+  position: relative; 
 }
 
 .sidebar a:hover {
-  color: #43a450 !important;
   font-size: .9em; 
-  padding: 1.5px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: -5px;
- /* background-color: rgba(67, 164, 80,0.1);
- /*border-radius: 15px;
- /*padding: 10px; /* Adds space inside the rounded area */
+  text-decoration: underline;
+  text-decoration-color: #49AC57;
+  text-decoration-thickness: 8% !important;
+  text-underline-offset: 5px ;
 }
 
-.sidebar a.active, .sidebar a.current {
-  color:  #363636; 
-  font-weight: 600; 
+.sidebar a.active {
   font-size: .9em; 
-  padding: 1.5px;
-  padding-left: 7px ;
-  border-left: 4px solid #43a450; /* Add border to the left of current link */
-  margin-left: -15px;
-  /* text-decoration: underline !important; 
-  /*text-decoration-color: #49AC57;
-  /*text-underline-offset: 7px ;
-  /*text-decoration-thickness: 12%;  */ 
+  /* background-color: rgba(82, 205, 98, 0.125); */
+  color: #272727;
+  font-weight: 600;
+}
+
+.sidebar a.active::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%); 
+  height: 75%;
+  width: 4px;  
+  background-color: #49AC57;
+  border-radius: 2px; 
+}
+
+.sidebar-logo {
+  text-align: center;
+  padding: 0px 0; 
+  max-width: 10.5rem; 
+  margin-left: -6px;
+  margin-top: -5x;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+  opacity: 0;
+  visibility: hidden;
 }
 
 /*===========================
-Breadcrumb
+  Table of contents
+=============================*/
+
+#TOC {
+  margin-top: 45px; 
+  background-color: #ffffff;
+  padding: 0px; 
+  border-radius: 5px;
+  margin-left: 0px;
+  margin-right: 0px !important;
+}
+
+#TOC h2 {
+  margin-bottom: -20px;
+  font-weight: 600 !important;
+  font-size: 85% !important;
+  margin-left: 11px;
+}
+
+/* Style TOC links */
+#TOC a {
+  color: #24292f !important;
+  text-decoration: none;
+  border-color: white;
+  border-left-color: #ffffff;
+  line-height: 1.15rem;
+  margin-bottom: 3px;
+  padding-bottom: 3px;
+  background-color: #ffffff;  
+  font-weight: normal; 
+  border-radius: 0; 
+  font-size: .85em; 
+}
+
+#TOC a:hover {
+  color: #49AC57 !important;
+  font-size: .85em; 
+  font-weight: normal; 
+  text-decoration: none;
+  text-decoration-color: #49AC57;
+  text-decoration-thickness: 8% !important;
+  text-underline-offset: 4px ;
+}
+
+#TOC a.active {
+  font-size: .9em; 
+  background-color: #ffffff; 
+  color: #24292f !important;
+  font-weight: normal !important;
+  border-left-color: #ffffff;
+}
+
+#TOC a.active::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  width: 0px;  
+  background-color: #f1f1f1bf;
+  border-radius: 0px; 
+  font-weight: bold !important; 
+  color: #24292f !important;
+}
+
+#TOC::before {
+  font-weight: bold;
+  font-size: 10px !important;
+  margin-bottom: 15px;
+}
+
+.toc-actions {
+  margin-top: 30px !important;
+  margin-left: 10px !important;
+}
+
+.toc-actions a {
+  padding: 0px !important;
+}
+
+/*===========================
+  Breadcrumb
 =============================*/
 
 .breadcrumb {
+  font-size: 0.975em !important; 
   background-color: transparent;
-  padding: 7px 40px 25px 3px;
+  padding: 33px 40px 25px 3px;
   color: #6d6d6d !important;  
   font-weight: normal !important;
+  margin-bottom: 5px !important;
 } 
 
 .breadcrumb a {
+  font-size: 0.975em !important; 
   font-style: normal !important;
   color: #6d6d6d !important;       
   text-decoration: none !important;  
   text-underline-offset: 4px ;
-  text-decoration-color: #49AC57 !important ;
-  font-size: 0.92em; 
+  text-decoration-color: #12853d !important ;
 }
 
 .breadcrumb a:hover {
+  font-size: 0.975em !important; 
   color: #49AC57 !important; 
-  text-decoration: underline !important;  
-  text-underline-offset: 4px ;
-  font-size: 0.92em ; 
+  text-decoration: underline !important;
+  text-decoration-color: #49AC57;
+  text-decoration-thickness: 8% !important;
+  text-underline-offset: 5px ;
 }
 
 .breadcrumb li:not(:first-child)::before {
   font-style: normal !important;
   content: '/' ;            
   margin: 0 4px ;          
-  font-size: 0.92em ;     
+  font-size: 0.92em !important;     
 }
 
 .breadcrumb li:last-child {
-  display: inline-block; 
+  visibility: hidden;
 }
 
 .breadcrumb li:last-child a {
@@ -260,28 +493,118 @@ Breadcrumb
 }
 
 .breadcrumb li:first-child a {
-  font-weight: 100 !important;
+  font-weight: normal !important;
+  font-size: 0.975em !important; 
 }
 
 .breadcrumb .breadcrumb-item:first-child a {
-font-weight: bold;
-color: #0056b3 !important;
+  font-weight: bold;
+  color: #6d6d6d !important;
+  font-size: 0.975em !important; 
 }
 
+.breadcrumb .breadcrumb-item:first-child a:hover {
+  font-weight: bold;
+  color: #49AC57 !important;
+  font-size: 0.975em !important; 
+  text-decoration: underline !important;
+  text-decoration-color: #49AC57;
+  text-decoration-thickness: 8% !important;
+  text-underline-offset: 5px ;
+  }
+
+.breadcrumb-item {
+  font-size: 0.92em !important; 
+  font-weight: normal !important;
+}
 
 /*===========================
-Page subtitle
+  Summary block
 =============================*/
 
-.page-subtitle {
+.custom-summary-block {
   font-size: 1.25rem;
-  color: #6d6d6d !important;  
-  margin: 0px 35px 55px 0px;  
-  line-height: 1.5;
+  font-weight: 450;
+  color: #575757 !important;  
+  padding: 0px 2rem 0px 0px; 
+  line-height: 1.55em;
+  background-color: transparent;
+  margin-top: -.1em;
+  margin-bottom: .75rem;
 }
 
 /*===========================
-Figures style
+  Date block
+=============================*/
+
+.custom-date-block {
+  font-size: .85rem;
+  font-weight: 450;
+  color: #7e7e7e !important;  
+  padding: 0px 2rem 0px 0px; 
+  line-height: 1.55em;
+  background-color: transparent;
+  margin-top: -.45em;
+  margin-bottom: 4em;
+}
+
+/*===========================
+  Key takeaways callout
+=============================*/
+
+.callout.callout-style-simple {
+  padding: .4em 2.5em .0em .7em;
+  border-left: 5px solid #43a450 !important;
+  border-right: 0px solid  rgba(18, 133, 61, 0.4) !important;
+  border-top: 0px solid #43a450 !important;
+  border-bottom: 0px solid  rgba(18, 133, 61, 0.4) !important;
+  border-radius: 0px;
+  margin-top: 0rem;
+  margin-bottom: 3.25rem;
+  background-color: rgba(255, 255, 255, 0.09) ; 
+}
+
+.callout.callout-style-simple .callout-title-container {
+  margin-bottom: .9em !important;
+  font-size: 1.02em;
+  font-weight: 700;
+  margin-left: .1em;
+}
+
+.callout.callout-style-simple .callout-header {
+  color: #12853d !important;
+  opacity: 100% !important;
+  margin-left: .475rem;
+}
+
+.callout.callout-style-simple .callout-body {
+  margin-left: -1.5rem;
+  line-height: 1.5rem;
+  font-size: .88rem;
+}
+
+.callout.callout-style-simple .callout-body ul li {
+  margin-bottom: .2em; 
+  list-style-type: none;
+  position: relative;
+  padding-left: .3em;
+}
+
+.callout.callout-style-simple .callout-body ul li::before {
+  content: "\f231";
+  font-family: "bootstrap-icons";
+  position: absolute;
+  left: -1.5em;
+  color: #12853d;
+}
+
+div.callout-tip.callout-titled .callout-icon::before {
+  background-image: url(./images/light-bulb-ipa.png);
+  color: #49AC57;
+}
+
+/*===========================
+  Figures style
 =============================*/
 
 figure figcaption {
@@ -304,10 +627,9 @@ img {
 }
 
 /*===========================
-Numbered lists
+  Numbered lists
 =============================*/
 
-/* Remove default list styling and set up a custom counter */
 .numbered-list {
   list-style-type: none;
   counter-reset: custom-counter;  
@@ -316,7 +638,6 @@ Numbered lists
   width: 100%; 
 }
 
-/* Style for each list item */
 .numbered-list li {
   position: relative;  
   padding-left: 5px;  
@@ -325,68 +646,66 @@ Numbered lists
   list-style: none;  
 }
 
-/* Style for the number inside the list items */
 .numbered-list li::before {
   content: counter(custom-counter);  
   counter-increment: custom-counter;  
   font-weight: bold; 
-  background-color: #49AC57;  
+  background-color: #12853d;  
   color: white;  
   border-radius: 50%;  
-
-  /* Increase size by 10% from previous 22px */
   width: 24px;  
   height: 24px;  
   font-size: 15.4px; 
-
-  /* Position the number outside the text */
   position: absolute; 
   left: -35px;  
   top: 0; 
-
-  /* Make the number a circle and center the content inside it */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 /*===========================
-Bullet points lists
+  Bullet lists
 =============================*/
 
 main ul {
   margin-bottom: 1em; 
 }
 
-
 main ul li {
   margin-bottom: 0.375em; 
 }
 
 /*===========================
-Custom callouts
+  Default callouts
 =============================*/
 
-.custom-callout-tip {
-padding: 5px 1px 1px 20px; /* Correct padding values */
-border-width: 0 0 0 4px !important; /* Keep the left border */
-border-style: solid !important;
-border-color: #49AC57;
-line-height: 1.6em;
-position: relative;
+.callout {
+  margin-top: 2rem;
+  margin-bottom: 1.25rem;
+  border-radius: .25rem;
+  overflow-wrap: break-word;
+  padding: .3em 2.5em .0em .7em;
+  border-left: 2px solid ;
+  border-right: 0px solid  rgba(18, 133, 61, 0.4) !important;
+  border-top: 0px solid #43a450 !important;
+  border-bottom: 0px solid  rgba(18, 133, 61, 0.4) !important;
+  border-radius: 0px;
+  margin-top: 0rem;
+  margin-bottom: 3.25rem;
+  background-color: rgb(255, 255, 255) ; 
 }
 
-.custom-callout-tip::before {
-content: "💡 Tip";
-margin-bottom: 10px;
-font-weight: 600;
-display: inline-block;
-vertical-align: middle;
-margin-right: 10px;
+.callout .callout-title-container {
+  margin-bottom: .3em !important;
+  font-size: 1.02em;
+  font-weight: 600;
+  margin-left: .1em;
 }
 
-.custom-callout-tip-title {
-font-weight: bold;
-display: inline-block;
-vertical-align: middle;
+.callout-header {
+  margin-left: .0rem;
+  background-color: #ffffff !important;
+
 }
+
