@@ -1,0 +1,110 @@
+---
+title: "Bench Test"
+
+#------------------------------------------------------------------
+# Authors
+#------------------------------------------------------------------
+# Authors are the main creators of the site's content, credited
+# for their work and responsible for its core development, 
+# including writing and editing.
+#------------------------------------------------------------------
+authors-ipa:
+    - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
+#------------------------------------------------------------------
+# Contributors
+#------------------------------------------------------------------
+# Contributors provide support, such as feedback or supplementary
+# materials for the site. They can also be responsible for
+# updating/maintaining the site.
+#------------------------------------------------------------------
+contributors:
+    - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
+    - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
+---
+
+
+> This page will guide you through the necessary steps to bench test your survey for skip logic issues and general survey function. Following IPA's Minimum Must Dos, this manual outlines the different steps you should complete to successfully bench test and adjust your survey to avoid data quality issues during data collection.
+
+## What is Bench testing?
+
+:::: {.columns style="display: flex; align-items: center; column-gap: 2em;"}  
+::: {.column width="20%"}  
+![](/assets/images/mmds_training_black.png)  
+:::  
+
+::: {.column width="80%"}  
+Bench testing is the process of thoroughly testing a survey to ensure that it functions correctly and as intended. This involves checking for skip logic issues, verifying that all questions are displayed appropriately, and ensuring that the survey flows smoothly from start to finish. Bench testing helps identify and fix any potential problems before the survey is administered to respondents, thereby improving data quality and reliability.  
+:::  
+:::: 
+
+
+## Bench Testing Priorities
+
+Bench testing simulates different response scenarios to verify that your programmed survey works as intended. A thorough bench test involves systematically reviewing each question while considering these key aspects:
+
+
+- **Survey Flow**: Does the survey run smoothly from start to finish in all scenarios?
+- **Response Options**: Are all possible answers covered, including "don't know" and "refuse"?
+- **Numeric Constraints**: Are appropriate limits set for numeric inputs?
+- **Skip Logic**: Does the branching logic work correctly? Are questions showing or hiding as intended?
+- **Enumerator Guidance**: Are hints provided where needed to ensure consistent question delivery?
+
+The technical review of SurveyCTO xlsform code should focus on:
+
+
+- **Choice Lists**: Check for duplicate or overlapping options
+- **Variable Names**: Ensure they're under 32 characters (shorter in repeat groups)
+- **Best Practices**: Verify compliance with SurveyCTO standards (rosters, audits, etc.)
+
+## How to Bench Test
+
+Effective bench testing requires input from multiple team members and should be an ongoing process throughout survey development.
+
+### In the Office
+
+Key resources for office testing include:
+
+- Field managers
+- Research assistants
+- Project managers
+- Available enumerators
+- Fresh eyes from other teams
+
+Using SurveyCTO's "Test" feature allows you to:
+- Simulate different scenarios without submitting data
+- Save progress for various respondent profiles
+- Review constraints and skip logic in real-time
+- Quickly switch between testing and editing
+
+
+### During Enumerator Training
+
+Enumerator training provides a crucial opportunity for final survey validation:
+
+
+1. **Quality Feedback**: Enumerators can identify:
+     - Unclear wording
+     - Missing answer options
+     - Constraint issues
+     - Skip logic problems
+
+2. **Role-Playing Benefits**:
+     - Creates realistic testing scenarios
+     - Generates dummy data for analysis
+     - Helps standardize question delivery
+     - Familiarizes enumerators with the survey flow
+
+As enumerators inevitably find issues and bugs within the survey, be sure to write these down and track all changes. One solution is to include the "comments" field type in SurveyCTO. SurveyCTO forms allow for a "comments" field type, where enumerators can add comments to survey questions while administering a survey. In order to use this, include a "comments" field type, and name the variable. See the example below:
+
+![Comments field type](/assets/images/bench-test-1.png)
+
+This field type creates an option for every question in the survey where enumerators can comment on the question. This can include survey logic issues, missing options, confusing wording, or any other issues an enumerator has with a question. It appears next to other options as a pencil while administering the survey:
+
+![](/assets/images/bench-test-2.png)
+![](/assets/images/bench-test-3.png)
+
+Any comments collected through this comments feature will be exported as media files, similar to audio audits or images, with their directory under the variable name that you assigned to the comments field type. For this example, they would appear under the variable `q_comments`. IPA's Data Management System includes the command `-ipacheckcomment-`, which compiles these files into a summary sheet in the outputs. There is also a user-written Stata command named `-remedia-` that helps quickly rename and move media files.
+
+This feature helps catch issues while the survey is being administered to quickly change them during data collection. Once you have dummy data from enumerator training or other types of bench testing, it is important to run your entire data flow to test your checks and inspect the format of your data before the survey enters the field.
+
+*Last updated February 2025.*
