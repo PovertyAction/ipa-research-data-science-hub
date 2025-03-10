@@ -5,7 +5,7 @@ title: "Raw Data Management"
 # Authors
 #------------------------------------------------------------------
 # Authors are the main creators of the site's content, credited
-# for their work and responsible for its core development, 
+# for their work and responsible for its core development,
 # including writing and editing.
 #------------------------------------------------------------------
 authors-ipa:
@@ -35,15 +35,15 @@ This article discuss best practices to import and manipulate raw data which can 
 * Implementing proper PII handling procedures, including early de-identification of data, encryption, and separate workflows for identified vs. de-identified data analysis, is crucial for ensuring data security and compliance with research protocols.
 :::
 
-Raw data generally come in the form of the instrument used to generate the data, be it a survey form or a customer relationship management system. These formats usually result from the form best used to capture the data and not to process it. Format conversion from the source format to one usable by statistical software often requires changing file formats, changing data formats, and general error correction. This section of the cleaning guide covers that process, primarily focused on getting data from SurveyCTO to a preferred structure in Stata. 
+Raw data generally come in the form of the instrument used to generate the data, be it a survey form or a customer relationship management system. These formats usually result from the form best used to capture the data and not to process it. Format conversion from the source format to one usable by statistical software often requires changing file formats, changing data formats, and general error correction. This section of the cleaning guide covers that process, primarily focused on getting data from SurveyCTO to a preferred structure in Stata.
 
 ## Survey data
 
 Most IPA research projects include survey data. Survey data has the advantage of being received in a consistent format and a known structure. SurveyCTO data, especially, has tools that aid import into Stata. Deciding the data structure during survey programming provides important benefits for raw data management.
 
-Survey data’s structure also carries unique challenges for data management: formats of survey data and responses need to be standardized for analysis, metadata needs to be added to surveys, and corrections need to be completed. Finally, since survey data often holds many sources of personally identifying information in the raw format, deidentification is often very important and requires specific focus. Changes in survey version content may exacerbate this process and require multiple imports. This section provides information on these tasks. This section does not provide information on how to program surveys to make data management easy.
+Survey data's structure also carries unique challenges for data management: formats of survey data and responses need to be standardized for analysis, metadata needs to be added to surveys, and corrections need to be completed. Finally, since survey data often holds many sources of personally identifying information in the raw format, deidentification is often very important and requires specific focus. Changes in survey version content may exacerbate this process and require multiple imports. This section provides information on these tasks. This section does not provide information on how to program surveys to make data management easy.
 
-IPA has developed tools to support survey implementation and data quality assurance. IPA’s data management system (DMS) provides Excel- and Stata-based resources to handle data quality checks. The DMS is required for all IPA projects. It provides information on data quality and will resolve duplicates before data cleaning begins, among many other features.
+IPA has developed tools to support survey implementation and data quality assurance. IPA's data management system (DMS) provides Excel- and Stata-based resources to handle data quality checks. The DMS is required for all IPA projects. It provides information on data quality and will resolve duplicates before data cleaning begins, among many other features.
 
 ## Administrative data
 Often, administrative data is preprocessed for functional reasons. Working with SQL databases and other data management software provides additional challenges as data fields may change definitions over time and data structure may not be easily amenable to transfer or import into statistical software such as Stata or R.
@@ -53,7 +53,7 @@ There is no one-size fits all process to manage administrative data, but automat
 These problems are exacerbated as data increase in size. Big data requires special data management techniques, especially as data size reaches limitations in statistical software capabilities, processing power, and storage format (Excel, for example, can only store about 1 million observations in .xlsx and 65,000 using .xls). This guide does not cover these challenges in detail, but many resources exist for processing big data in Stata (see NBER and Statalist for tips).
 
 ## Importing into Stata
-Data comes in many forms, from raw text (.txt) files to multi-sheet Excel (.xls and .xlsx) files. Importing data into Stata is necessary if the data is not already in Stata format (.dta file). In general, you should be able to use Stata’s functions and loops to efficiently import data. Stata can import most data formats. If your project’s data was collected using a platform like SurveyCTO, the raw data will come in .csv format and the SurveyCTO server will provide a do file that imports the raw .csv data into the Stata .dta format.
+Data comes in many forms, from raw text (.txt) files to multi-sheet Excel (.xls and .xlsx) files. Importing data into Stata is necessary if the data is not already in Stata format (.dta file). In general, you should be able to use Stata's functions and loops to efficiently import data. Stata can import most data formats. If your project's data was collected using a platform like SurveyCTO, the raw data will come in .csv format and the SurveyCTO server will provide a do file that imports the raw .csv data into the Stata .dta format.
 
 ### Importing different file types
 In Stata 13 and beyond, the import command can import CSV files, excel files, and more depending on the option used (delimited for CSV, excel for excel), and export does the same for exporting. The import excel and import delimited commands provide a number of options that allow for a large amount of control of importing including from where in the workbook data should be imported from and how data should be saved. See help import for details on these options.
@@ -64,17 +64,17 @@ The insheet command remains an alternative for .csv, .tsv, and .txt files. It pe
 
 ### Importing multiple files at once
 
-A useful function for importing multiple files within a folder is the `dir` extended macro function. You can find documentation on this by typing `help extended_fcn` in Stata.  This function allows you to store all the names of the files in a folder in a local so you can loop through them for importing. See example code of this process below. 
+A useful function for importing multiple files within a folder is the `dir` extended macro function. You can find documentation on this by typing `help extended_fcn` in Stata.  This function allows you to store all the names of the files in a folder in a local so you can loop through them for importing. See example code of this process below.
 
 ```stata
-/* This stores all files with the extension .xlsx in the 
+/* This stores all files with the extension .xlsx in the
 "$raw" data folder into a local "files" */
-local files: dir "$raw" files "*.xlsx", respectcase 
-   
-/* Loop through the files to import, clean the file name, 
+local files: dir "$raw" files "*.xlsx", respectcase
+
+/* Loop through the files to import, clean the file name,
 and save as a dta */
 foreach file in `files' {
-	
+
 	*Show your progress of which file you are working on
 	di in red "working on `file'"
 
@@ -86,24 +86,24 @@ foreach file in `files' {
 	qui count
 	// If you know the amount of expected observations
 	assert `r(N)' == [number_of_expected_observations]
-	
-	/*Check that what variables you think should be unique 
+
+	/*Check that what variables you think should be unique
 	identifiers are indeed unique. */
 	isid unique_id_var
-	
+
 	*Check for expected/necessary variables
 	confirm var expected_var_names
 
-	* Edit filename 
-	/*The filenames in the local "files" includes the 
-	extension (in this cas .xlsx). So, I remove these and 
+	* Edit filename
+	/*The filenames in the local "files" includes the
+	extension (in this case .xlsx). So, I remove these and
 	make new clean file name to save the files as.
 	You can edit the filenames however you see fit. */
 	local cleanfilename = subinstr("`file'", ".xlsx","",.)
 
 	*Save the file with the new clean file name as a dta file
 	save "filepath/dtafiles/`cleanfilename'_raw.dta", replace
-}	
+}
 ```
 Note that the new .dta files are no longer saved in the same folder that your raw excel, csv, or any other type of files were saved in. As the imported data are no longer raw, they should be saved in either a temporary or data folder.
 
@@ -115,21 +115,21 @@ It can be helpful set up a "dta" or "temp" folder for you to save these intermed
 ### Wide and Long Data
 
 One way to describe data is if the dataset is stored in a "long" or "wide" format. Long data keeps repeated values as an observation (row):
-  
-  | Household ID | Member ID  | Treatment  | 
+
+  | Household ID | Member ID  | Treatment  |
   | ------------- | ------------- | ------------- |
   | HH001 | 01 | T |
   | HH001 | 02 | C |
 
 Wide data describes data that has similar values as variables (columns). The same example could be displayed wide by expanding the `Member ID` column to be a suffix of the `Treatment` column, like the following:
 
-  | Household ID | Treatment_01  | Treatment_02 
+  | Household ID | Treatment_01  | Treatment_02
   | ------------- | ------------- | ------------- |
   | HH001 | T | C |
 
-There is no correct choice for how data should be stored. You should decided the format to make the data most useable for the analysis being conducted. As a rule of thumb, in a clean dataset each observation is a row, each variable is a column, and each type of observation is a separate dataset [(Wickham, 2014)](https://www.jstatsoft.org/article/view/v059i10). However, the unit of analysis may change for different analyses. An analysis could be conducted at the person-year-level in one analysis, but at the person-level in another. The context of the data being analyzed are required to determine what format the data should be stored in. As long as an ID variable exists for each level of the data (e.g. a long dataset may have a household ID *and* a household member ID). For more guidance on how Stata treats “wide” and “long” datasets as well as how to change between them (reshape the data) type `help reshape` in Stata.
+There is no correct choice for how data should be stored. You should decided the format to make the data most usable for the analysis being conducted. As a rule of thumb, in a clean dataset each observation is a row, each variable is a column, and each type of observation is a separate dataset [(Wickham, 2014)](https://www.jstatsoft.org/article/view/v059i10). However, the unit of analysis may change for different analyses. An analysis could be conducted at the person-year-level in one analysis, but at the person-level in another. The context of the data being analyzed are required to determine what format the data should be stored in. As long as an ID variable exists for each level of the data (e.g. a long dataset may have a household ID *and* a household member ID). For more guidance on how Stata treats “wide” and “long” datasets as well as how to change between them (reshape the data) type `help reshape` in Stata.
 
-When cleaning data, it's generally a good idea to decide how the data will be stored based on how it will be cleaned. For example, if one goal of cleaning is to produce an income variable at the household-level, but income is collected at the respondent-day-level, it may be a good idea to clean the income module separately and keep that dataset long. Then, the income data can be collapsed to the household-level and merged onto the household-level dataset later in the variable construction process. How, or if, that happens is up to you as the analyst. 
+When cleaning data, it's generally a good idea to decide how the data will be stored based on how it will be cleaned. For example, if one goal of cleaning is to produce an income variable at the household-level, but income is collected at the respondent-day-level, it may be a good idea to clean the income module separately and keep that dataset long. Then, the income data can be collapsed to the household-level and merged onto the household-level dataset later in the variable construction process. How, or if, that happens is up to you as the analyst.
 
 There is one point at which the data has a known unit of analysis: during high frequency checks and backchecks. Data is always at the unit of the survey submission when doing quality control. One observation is one survey submission. For multi-day surveys, a survey submission may be a different level of data than the survey.
 
@@ -148,47 +148,47 @@ To convert between wide and long data, Stata uses the `reshape` command. Reshapi
 The following code reshapes a wide dataset by person to a long dataset by person-month. The variable that we want to reshape is `income`.
 
 ```stata
-/*sCount all of the income variables and create 
+/*sCount all of the income variables and create
 a variable for each observations*/
-ds income*           
-local copies : word count `r(varlist)'  
-expand `copies' 
+ds income*
+local copies : word count `r(varlist)'
+expand `copies'
 
 /*Then create a list of all of the vars with each stub
  and manually expand*/
 gen yearmonth = . // create an empty var that will hold the sub-group identifier (this is the j var in reshape)
 foreach var in income {
-    
-    *Save all of the income variables
-    ds `var'_*,                  
-    local reshapevarlist `r(varlist)'   
 
-    /*remove the stub so that we can have the yearmonth 
-    or j identifier foreach var alone while maintaining their order*/        
-    local monthyear = subinstr("`reshapevarlist'", "`var'_", "", .)   
-     
+    *Save all of the income variables
+    ds `var'_*,
+    local reshapevarlist `r(varlist)'
+
+    /*remove the stub so that we can have the yearmonth
+    or j identifier foreach var alone while maintaining their order*/
+    local monthyear = subinstr("`reshapevarlist'", "`var'_", "", .)
+
     *create an empty version of the stub, this will become the long var
-    gen `var' = .      
-     
-    *Loop through each value 
-    forvalues x = 1/`copies' {           
-        
+    gen `var' = .
+
+    *Loop through each value
+    forvalues x = 1/`copies' {
+
         * Replace the variable from the list we defined earlier in the loop
-        /* See "h mod" to understand how mod works, 
-        but in short "if mod(n, `copies') == `x'"" 
-        will only replace the variable for the nth observation 
+        /* See "h mod" to understand how mod works,
+        but in short "if mod(n, `copies') == `x'""
+        will only replace the variable for the nth observation
         in each group defined by
         an ID variable (e.g. the nth or last row created in the expand)
         */
-        local currvar : word `x' of `reshapevarlist'         
+        local currvar : word `x' of `reshapevarlist'
         replace `var' = `currvar' if mod(_n, `copies') == `x'
 
         * Generate the identifier variable
-        local yearmonth : word `x' of `monthyear' 
-        replace yearmonth = `yearmonth' if mod(_n, `copies') == `x'  
-        
+        local yearmonth : word `x' of `monthyear'
+        replace yearmonth = `yearmonth' if mod(_n, `copies') == `x'
+
         *Drop the wide variable
-        drop `currvar' 
+        drop `currvar'
     }
     // end forval x= 1/`copies'
 }
@@ -198,15 +198,15 @@ foreach var in income {
 ## Adding or replacing data
 
 
-Raw data may not contain the full or correct set of data. There are many reasons why this may be the case: survey responses may need to be corrected by enumerators, translations for responses need to be added, admin data may have entry errors, etc. It is relatively simple to make changes in data using statistical software, but it is important to make changes in a systematic way to ensure all modifications are reproducible. 
+Raw data may not contain the full or correct set of data. There are many reasons why this may be the case: survey responses may need to be corrected by enumerators, translations for responses need to be added, admin data may have entry errors, etc. It is relatively simple to make changes in data using statistical software, but it is important to make changes in a systematic way to ensure all modifications are reproducible.
 
-There are at least two common situations in IPA projects where having a standardized data flow for modifying or adding data will increase data quality: replacements and translations. This article suggests best practices to add data collected outside of a survey form. 
+There are at least two common situations in IPA projects where having a standardized data flow for modifying or adding data will increase data quality: replacements and translations. This article suggests best practices to add data collected outside of a survey form.
 
 ### Replacements
 
-As you are collecting data, there will inevitably be errors in your data that need to be manually corrected. It is important to always maintain the raw dataset with the original collected data. Once you have confirmed that a value in your dataset is incorrect and needs to be changed, this replacement should be made and saved in a new dataset, before you have done any other necessary cleaning. 
+As you are collecting data, there will inevitably be errors in your data that need to be manually corrected. It is important to always maintain the raw dataset with the original collected data. Once you have confirmed that a value in your dataset is incorrect and needs to be changed, this replacement should be made and saved in a new dataset, before you have done any other necessary cleaning.
 
-When making a replacement, confirm that you are using a truly unique value for your observation. For example, the `key` variable should be used if you are making replacements in SurveyCTO data, since there can be duplicates in your ID variable, or you may need to make a replacement in the ID variable.  
+When making a replacement, confirm that you are using a truly unique value for your observation. For example, the `key` variable should be used if you are making replacements in SurveyCTO data, since there can be duplicates in your ID variable, or you may need to make a replacement in the ID variable.
 
 For every replacement you make to your dataset, you must record:
 * Who made the original error
@@ -219,10 +219,10 @@ One way to make replacements is using the `replace` command if the `key` variabl
 
 ```stata
 *enum confirmed they added an extra zero to income
-replace income = 1000 if key == "uuid:2b2763e1-71b6-4e1e-8023-c15cdf7fa39d" 
+replace income = 1000 if key == "uuid:2b2763e1-71b6-4e1e-8023-c15cdf7fa39d"
 ```
 
-If you are making multiple replacements, this method can create long datasets and make it difficult to keep track of which replacements have been made. It can also lead to PII appearing in your do files if you are making replacements on PII data or sensitive data. To avoid encrypting your datasets, consider using user-written commands `readreplace` or `ipacheckreadreplace` (ipacheckreadreplace is a wrapper for readreplace). Both commands use an Excel file as an input sheet, where all replacements, notes, original values, and replacements are logged. `ipacheckreadreplace` has a [template replacements Excel file](https://github.com/PovertyAction/high-frequency-checks/blob/master/xlsx/hfc_replacements.xlsm) that you can download when you run the [ipacheck command](https://github.com/PovertyAction/high-frequency-checks). 
+If you are making multiple replacements, this method can create long datasets and make it difficult to keep track of which replacements have been made. It can also lead to PII appearing in your do files if you are making replacements on PII data or sensitive data. To avoid encrypting your datasets, consider using user-written commands `readreplace` or `ipacheckreadreplace` (ipacheckreadreplace is a wrapper for readreplace). Both commands use an Excel file as an input sheet, where all replacements, notes, original values, and replacements are logged. `ipacheckreadreplace` has a [template replacements Excel file](https://github.com/PovertyAction/high-frequency-checks/blob/master/xlsx/hfc_replacements.xlsm) that you can download when you run the [ipacheck command](https://github.com/PovertyAction/high-frequency-checks).
 
 If you are using IPA's Data Management System, this code snippet is included in the master_check do file. You can also use the `ipacheckreadreplace` command in your own code with this format:
 
@@ -235,10 +235,10 @@ ipacheckreadreplace using "hfc_replacements.xlsm", ///
     action("action") ///
     comments("comments") ///
     sheet("sheetname") ///
-    logusing("replacements_log.xlsx") 
+    logusing("replacements_log.xlsx")
  ```
-    
-The Excel template already uses these column names, so you must change the options/column names if you are using your own file or column names. `ipacheckreadreplace` also creates a replacements log, another Excel file that lists all the replacements, notes, and values, as well as a note that specifies if the replacement was successful. A replacement will only be successful in `ipacheckreadreplace` if the unique ID variable and the original value match what was entered in hfc_replacements.xlsx. 
+
+The Excel template already uses these column names, so you must change the options/column names if you are using your own file or column names. `ipacheckreadreplace` also creates a replacements log, another Excel file that lists all the replacements, notes, and values, as well as a note that specifies if the replacement was successful. A replacement will only be successful in `ipacheckreadreplace` if the unique ID variable and the original value match what was entered in hfc_replacements.xlsx.
 
 ### Translation
 
@@ -252,30 +252,30 @@ This workflow is shown below:
 ```stata
 /* MR 10/25/2019:
   Create a file to store translations for question q.
-*/ 
+*/
 
 *Generate translated variable name
 gen q_en = ""
 local vlab : variable label q // extract variable label to copy
 label variable q_en "`vlab', English" // label with translation info
 
-*Save excel file for coding with only those questions that need trasnlating 
+*Save excel file for coding with only those questions that need translating
 export excel id q q_en using "${temp}/q_en.xlsx" if !mi(q), firstrow(variables) replace
 
 ```
 
 This results in a table that looks like this:
 
-  | id | q| q_en | 
+  | id | q| q_en |
   | ----- | ------ | ------ |
-  | 01-0001 | Le dio sus herramientas agrícolas a su primo | | 
-  | 18-0007 | El ID de esta respuesta debe set 18-0008, no 18-0007 | | 
+  | 01-0001 | Le dio sus herramientas agrícolas a su primo | |
+  | 18-0007 | El ID de esta respuesta debe set 18-0008, no 18-0007 | |
 
 The responses would be translated and then the file is then saved *with a different name*. We recommend saving the file as "[filename]\_translated\_[date]\_[initials]". We recommend doing double entry for all manual additions and comparing differences between any added responses. The completed file would have a value for every question below.
 
-  | id | q  | q_en | 
+  | id | q  | q_en |
   | ----- | ------ | ------ |
-  | 01-0001 | Le dio sus herramientas agrícolas a su primo. | This respondent gave their farming tools to their cousin | 
+  | 01-0001 | Le dio sus herramientas agrícolas a su primo. | This respondent gave their farming tools to their cousin |
   | 18-0007 | El ID de esta respuesta debe set 18-0008, no 18-0007 | The ID of this response should be 18-0008, not 18-0007 |
 
 Once these translations are completed, they would be merged on to the do file. The code to complete that looks like this:
@@ -287,10 +287,10 @@ Once these translations are completed, they would be merged on to the do file. T
  	MR translated these data on January 24, 2020 and double entered them.
  	MR's RM double checked conflicting translated entries.
 
- 	If PII was removed as part of the translation process, this will be 
+ 	If PII was removed as part of the translation process, this will be
  	marked with a dummy* and corrected in the response of both languages.
 
- 	*Note: no responses needed PII removal, so this code does not 
+ 	*Note: no responses needed PII removal, so this code does not
  	create the dummy.
 */
 *Load in data and save a tempfile
@@ -306,7 +306,7 @@ confirm variable id q q_en // check have variables
 *Save tempfile to merge
 tempfile q_en
 save `q_en'
-  
+
 restore
 
 *Merge on file
@@ -331,71 +331,71 @@ This process can be repeated for any number of variables. It can also be extende
 
 
 
-Some surveys questions have the option of “check all that apply”, meaning that they allow for multiple responses. If you uncheck the "export select_multiple responses as a series of 1/0 columns" in SurveyCTO desktop, SurveyCTO will export these variables as a string containing all possible answers in the form of a space-separated list (e.g., a variable may have the string “A C E” to indicate responses of A, C, and E). 
+Some surveys questions have the option of “check all that apply”, meaning that they allow for multiple responses. If you uncheck the "export select_multiple responses as a series of 1/0 columns" in SurveyCTO desktop, SurveyCTO will export these variables as a string containing all possible answers in the form of a space-separated list (e.g., a variable may have the string “A C E” to indicate responses of A, C, and E).
 
-For analysis purposes, it’s usually best to split these variables into binary variables, one for each possible choice (A, B, C, D, or E), as well as one for each combination of choices. The IPA-written `stringdum` function can help converting these variables to a more useful form, including separate dummies for each option, variables that count the number of times each option is selected, and several options for naming conventions. The `split` command can also convert these variables, by parsing the variable on spaces. This splits the variable into a new variable after each space (see `help split`). If this is not sufficient, Stata has a number of string functions (`help string functions`). You can also use the `regexm` function to accomplish this, which uses [regular expressions](https://www.stata.com/support/faqs/data-management/regular-expressions/). Below is an example script using both split and regexm to accomplish cleaning a select multiple question manually.
+For analysis purposes, it's usually best to split these variables into binary variables, one for each possible choice (A, B, C, D, or E), as well as one for each combination of choices. The IPA-written `stringdum` function can help converting these variables to a more useful form, including separate dummies for each option, variables that count the number of times each option is selected, and several options for naming conventions. The `split` command can also convert these variables, by parsing the variable on spaces. This splits the variable into a new variable after each space (see `help split`). If this is not sufficient, Stata has a number of string functions (`help string functions`). You can also use the `regexm` function to accomplish this, which uses [regular expressions](https://www.stata.com/support/faqs/data-management/regular-expressions/). Below is an example script using both split and regexm to accomplish cleaning a select multiple question manually.
 
 ``` stata
 * Create a local of all string variables
-qui ds _all, has(type string)                     
-foreach var in `r(varlist)' {                          
+qui ds _all, has(type string)
+foreach var in `r(varlist)' {
     local stringvars `stringvars' `var'
 }
- 
+
 
 /* Exclude from stringvars vars with names that will be too long if we append
-  four characters (“_num”) to them first check using tab that they are not 
+  four characters (“_num”) to them first check using tab that they are not
   select_mult. If the length of the variable name is greater than 27 characters,
     1. manually verify that it is not a select_mult variable
-    2. add it to a special local  
+    2. add it to a special local
 */
 foreach var of varlist _all {
-    if strlen("`var'")>27 {       
-        tab `var'               
-        local too_long_vars `too_long_vars' `var'                           
+    if strlen("`var'")>27 {
+        tab `var'
+        local too_long_vars `too_long_vars' `var'
     }
 }
 
 * Remove the too_long_vars from the string variable list
-local stringvars: list stringvars - too_long_vars     
+local stringvars: list stringvars - too_long_vars
 
-/* For each string variable, 
-   1.  create a tempvar, 
-   2.  an indicator for which have a number-space-number combo and 
-   3. add them to a select multiple local    
-*/   
-foreach var in `stringvars' {         
-    tempvar `var'_num         
-    gen ``var'_num' = (regexm(`var', "[0-9] [0-9]"))    
-    qui sum ``var'_num'                     
-    if r(max) ==1 {                 
+/* For each string variable,
+   1.  create a tempvar,
+   2.  an indicator for which have a number-space-number combo and
+   3. add them to a select multiple local
+*/
+foreach var in `stringvars' {
+    tempvar `var'_num
+    gen ``var'_num' = (regexm(`var', "[0-9] [0-9]"))
+    qui sum ``var'_num'
+    if r(max) ==1 {
         *add the variable to a list of select_multiple variables
-        local select_mult `select_mult' `var'        
+        local select_mult `select_mult' `var'
     }
 }
 
-/* Exclude from the `select_mult' local variables which have been 
-erroneously captured by the process above irregular responses to 
+/* Exclude from the `select_mult' local variables which have been
+erroneously captured by the process above irregular responses to
 the "survey_note" variable are captured by this process */
 local exclude_notes "survey_notes"
-local select_mult: list select_mult - exclude_notes           
+local select_mult: list select_mult - exclude_notes
 
-/*For several otherwise numeric variables, 
+/*For several otherwise numeric variables,
 the option "Not asked in this version" remains; remove it*/
 foreach var in `select_mult' {
 
      *no observations; safe to use this as a numeric indicator for .v
-    tab `var' if `var'=="-444" 
+    tab `var' if `var'=="-444"
     replace `var'="-444" if `var'=="Not asked in this version"
 
-    /* split and de-string vars in the selec_mult list, 
+    /* split and de-string vars in the selec_mult list,
     which now have only numeric characters */
-    split `var', gen(`var'_) destring                  
+    split `var', gen(`var'_) destring
 }
- 
+
 *Re-code missing values in the now-numeric variables
-qui ds _all, has(type numeric)                  
-foreach var in `r(varlist)' {           
+qui ds _all, has(type numeric)
+foreach var in `r(varlist)' {
     replace `var'=.o if `var'==-777
     replace `var'=.d if `var'==-888
     replace `var'=.r if `var'==-999
@@ -421,7 +421,7 @@ gen sort_order = _n
 
 *sort randomly so Stata will sort by foreign again
 /*  sort first checks if it's in order, and doesn't do anything if
-	the data are in the expected order 
+	the data are in the expected order
 */
 gen rand = runiform()
 sort rand
@@ -442,9 +442,9 @@ ID variable should describe data at the [unit of analysis](https://en.wikipedia.
 
 If they are true duplicates across all variables and it is clear why these duplicates were created, you can proceed to remove duplicate copies. If they are not duplicates across all variables, you will need to find why there are multiple observations and develop a rule for choosing which one to keep. Selected values should be reproducible and follow a consistent rule. In general, observations that are more recent and more informative (i.e., have fewer missing values) are better. However, for some projects, it is better to keep the earlier observation. You should check with your PI, the project manager and other staff involved in the survey wave about how to create a rules or rules.  Once you come up with a decision, be sure to document both what you decide to do and why it was decided, as well as when and who made the decision for future reference.
 
-Duplicates may not just exist for an ID variable. Some respondents may take a survey twice and receive two different IDs. See `help duplicates` for guidance on commands that can be useful for this. Apart from dropping duplicates in terms of all variables using `duplicates drop`, check for duplicates in terms of things you suspect may identify the same person (e.g., name, address, phone number, birthday and combinations of the above) using either `duplicates` or `isid`. 
+Duplicates may not just exist for an ID variable. Some respondents may take a survey twice and receive two different IDs. See `help duplicates` for guidance on commands that can be useful for this. Apart from dropping duplicates in terms of all variables using `duplicates drop`, check for duplicates in terms of things you suspect may identify the same person (e.g., name, address, phone number, birthday and combinations of the above) using either `duplicates` or `isid`.
 
-Once you’ve cleaned each dataset individually, it is wise to check that the unique IDs are assigned properly across datasets. For instance, if you have a baseline survey and an endline survey, after merging them based on unique ID, check that the names and birthdate variables from each survey match to the other survey.
+Once you've cleaned each dataset individually, it is wise to check that the unique IDs are assigned properly across datasets. For instance, if you have a baseline survey and an endline survey, after merging them based on unique ID, check that the names and birthdate variables from each survey match to the other survey.
 
 ### ID formats
 
@@ -452,7 +452,7 @@ IDs may not be unique due to how Stata manages numerical formats. If the ID vari
 
 ## De-identifying data
 
-Personally Identifiable Information (or PII) is any data point or combination of data points that allows someone to identify an individual or household with a reasonable degree of certainty. 
+Personally Identifiable Information (or PII) is any data point or combination of data points that allows someone to identify an individual or household with a reasonable degree of certainty.
 
 Examples of individual data points of PII include names, GPS coordinates, national identification numbers and addresses. Depending on the context, certain combinations of demographic data points qualify as PII so long as they can identify an individual or household with a reasonable degree of certainty. For example, the combination of village name, birth date, gender might be identifiable in small communities. Requirements and recommendations around PII apply equally to PII that consist of singular data points and those that consist of combinations of data points.
 
@@ -460,14 +460,14 @@ All PII must remain encrypted in storage and securely transmitted between device
 
 ### When to remove PII
 
-Once you have data, it’s best practise to remove PII as soon as possible. The earlier you can de-identify — i.e., remove all identifying information from the datasets you’re using – the better. Unless it’s necessary, you should not be working with data containing PII as you move forward with analysis. 
+Once you have data, it's best practise to remove PII as soon as possible. The earlier you can de-identify — i.e., remove all identifying information from the datasets you're using – the better. Unless it's necessary, you should not be working with data containing PII as you move forward with analysis.
 
-Some aspects of cleaning and analysis will require including PII. For instance, if you are trying to remove duplicate observations and need to determine if two respondents have the same name, you’ll want that in there. As always, you will need to keep the data encrypted with Boxcryptor at that point. Make sure do-files/scripts are encrypted as well if they include PII. 
+Some aspects of cleaning and analysis will require including PII. For instance, if you are trying to remove duplicate observations and need to determine if two respondents have the same name, you'll want that in there. As always, you will need to keep the data encrypted with Boxcryptor at that point. Make sure do-files/scripts are encrypted as well if they include PII.
 
-Once you’ve reached the point of no longer needing PII, you should strip it from the main dataset. The best practice for de-identifying data is to:
+Once you've reached the point of no longer needing PII, you should strip it from the main dataset. The best practice for de-identifying data is to:
 
 1. Create a first .do file that imports the data, standardizes duplicate observations, completes corrections, and removes PII.
-1. Create a second .do file that performs the data cleaning on the limited or fully deidentified dataset. 
-If need be, you can save this version in an unencrypted folder so that other project members who can access the data. 
+1. Create a second .do file that performs the data cleaning on the limited or fully deidentified dataset.
+If need be, you can save this version in an unencrypted folder so that other project members who can access the data.
 
 This results in a data flow where all data modification happens after the data are deidentified.
