@@ -5,7 +5,7 @@ title: "Designing a WhatsApp Survey"
 # Authors
 #------------------------------------------------------------------
 # Authors are the main creators of the site's content, credited
-# for their work and responsible for its core development, 
+# for their work and responsible for its core development,
 # including writing and editing.
 #------------------------------------------------------------------
 authors-ipa:
@@ -26,54 +26,54 @@ contributors:
 This resource will help you gain proficiency in utilizing Twilio's features. Delve into Twilio's menus and options to navigate its functionalities effortlessly. Learn about WhatsApp templates and how to create them effectively. Gain insights into utilizing and creating basic widgets within a flow and master leveraging functions for seamless integration. By the end, you'll be well-equipped to publish and effectively manage information collected through WhatsApp Surveys.
 :::
 
-## Content Template Builder in Twilio  
+## Content Template Builder in Twilio
 
 The **Twilio Content Template Builder** allows you to create and manage message templates across multiple Twilio-supported messaging channels, including WhatsApp. This tool provides a unified framework for designing structured messages, ensuring a consistent user experience across platforms while simplifying implementation. You can find this tool in the Twilio Console under the **Messaging** dropdown, then **Senders**, and finally **Content Template Builder**.
 
-![Create a new content template](/assets/images/twilio-design-17.png){fig-cap="Create a new content template" width=100%}  
+![Create a new content template](/assets/images/twilio-design-17.png){fig-cap="Create a new content template" width=100%}
 
-### Creating a Content Template  
+### Creating a Content Template
 
 To create a new template, go to the Twilio Console and open the **Content Template Builder**. Click **"Create New"**.
 
-Templates consist of **fixed content and dynamic variables**, allowing you to personalize messages with user-specific details such as names, order confirmations, or appointment times. When creating a template, you need to provide:  
-- A **template name**  
-- The **template language**  
+Templates consist of **fixed content and dynamic variables**, allowing you to personalize messages with user-specific details such as names, order confirmations, or appointment times. When creating a template, you need to provide:
+- A **template name**
+- The **template language**
 - The **Content type**
 
-### Message Content Types in Twilio  
+### Message Content Types in Twilio
 
-1. **text (Text):** A standard text message containing only plain text.  
-2. **media (Media):** A message that includes images, videos, or audio files.  
-3. **quick-reply (Quick Reply):** A message with predefined response buttons for users to select from.  
-4. **call-to-action (Call to Action):** A message with buttons that direct users to a link or initiate a phone call.  
-5. **list-picker (List Picker):** A structured message that presents users with a selectable list of options.  
-6. **card (Card):** A message format that includes an image, title, description, and optional buttons for interaction.  
-7. **card (WhatsApp Card):** A WhatsApp-specific card message with rich media and interactive elements.  
-8. **authentication (Authentication):** A message type designed for sending authentication codes.  
-9. **catalog (Catalog):** A message format for showcasing multiple items in a structured catalog layout.  
+1. **text (Text):** A standard text message containing only plain text.
+2. **media (Media):** A message that includes images, videos, or audio files.
+3. **quick-reply (Quick Reply):** A message with predefined response buttons for users to select from.
+4. **call-to-action (Call to Action):** A message with buttons that direct users to a link or initiate a phone call.
+5. **list-picker (List Picker):** A structured message that presents users with a selectable list of options.
+6. **card (Card):** A message format that includes an image, title, description, and optional buttons for interaction.
+7. **card (WhatsApp Card):** A WhatsApp-specific card message with rich media and interactive elements.
+8. **authentication (Authentication):** A message type designed for sending authentication codes.
+9. **catalog (Catalog):** A message format for showcasing multiple items in a structured catalog layout.
 
-![New content template](/assets/images/twilio-design-18.gif){fig-cap="Create a new content template" width=110%}  
+![New content template](/assets/images/twilio-design-18.gif){fig-cap="Create a new content template" width=110%}
 
 
 WhatsApp requires all templates to go through a review process before they can be used. Manage your templates using the Content Template Builder. Submit templates for WhatsApp approval, monitor approval statuses, delete, or duplicate your templates.
 
-### Adding Interactive Buttons  
+### Adding Interactive Buttons
 
-The **Content Template Builder** makes it easy to add interactive buttons to your templates. Buttons can be configured to:  
-- **Send quick replies** with predefined responses  
-- **Dial a phone number**  
-- **Redirect users to a specific link**  
+The **Content Template Builder** makes it easy to add interactive buttons to your templates. Buttons can be configured to:
+- **Send quick replies** with predefined responses
+- **Dial a phone number**
+- **Redirect users to a specific link**
 
 We will show an example of a quick-reply template that can have buttons for an intro message.
 
-![Create buttons for a content template](/assets/images/twilio-design-19.gif){fig-cap="Create buttons for a content template" width=100%}  
+![Create buttons for a content template](/assets/images/twilio-design-19.gif){fig-cap="Create buttons for a content template" width=100%}
 
-### Using Approved Templates  
+### Using Approved Templates
 
-Once approved, content templates can be used to send messages via the Twilio API. The API dynamically replaces template variables with actual values before sending the message. Here’s an example of an approved WhatsApp message with interactive buttons:  
+Once approved, content templates can be used to send messages via the Twilio API. The API dynamically replaces template variables with actual values before sending the message. Here’s an example of an approved WhatsApp message with interactive buttons:
 
-![Example of a text with buttons](/assets/images/twilio-design-4.png){fig-cap="Example of a text with buttons" width=50%}  
+![Example of a text with buttons](/assets/images/twilio-design-4.png){fig-cap="Example of a text with buttons" width=50%}
 
 <!--  Note: This page will be deprecated, but we want to keep the information here for now.
 ## WhatsApp Templates in Twilio
@@ -193,7 +193,7 @@ exports.handler = function(context, event, callback) { <br>
  setTimeout(function() { <br>
  return callback(null, null) <br>
   }, 1000) <br>
-} 
+}
 :::
 <br>
 7. **Save the Function**: Save the function after pasting the code to ensure your changes are preserved.
