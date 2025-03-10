@@ -148,7 +148,7 @@ If you are interested in more details, Stata Corp's blog has a few good articles
 
 ## Quality Control
 
-Once you’ve finished cleaning a dataset, take some time to inspect the final product by using a command like `codebookout`. This command outputs an excel file that is a codebook of your final data including variable names, labels, types, values and value labels. Check that variables are labeled and take on a range of values that make sense.
+Once you've finished cleaning a dataset, take some time to inspect the final product by using a command like `codebookout`. This command outputs an excel file that is a codebook of your final data including variable names, labels, types, values and value labels. Check that variables are labeled and take on a range of values that make sense.
 
 Another helpful command in quality control is `assert`. You should include many asserts throughout your do files in order to check that your assumptions while cleaning hold. This is especially important if you are going to be collecting more data later.
 
@@ -156,7 +156,7 @@ Finally, you can use the checklist in this folder to perform checks on your data
 
 ### Checking for Consistency Across Datasets
 
-Once you have a grasp on the overall organization of a dataset — including the variable names, labels, and formats, as well as the number of observations — it’s time to dive into the relationships among variables and the distribution of values within each variable. Here, you want to check that things make sense. Can someone who said they don’t have a business really be bringing in $1 million in profits each week? Unlikely. Well-programmed surveys should minimize the need for these tests, although they are still good to implement as a check on the quality of the programming.
+Once you have a grasp on the overall organization of a dataset — including the variable names, labels, and formats, as well as the number of observations — it's time to dive into the relationships among variables and the distribution of values within each variable. Here, you want to check that things make sense. Can someone who said they don't have a business really be bringing in $1 million in profits each week? Unlikely. Well-programmed surveys should minimize the need for these tests, although they are still good to implement as a check on the quality of the programming.
 
 ## Relative references
 
@@ -191,7 +191,7 @@ Note that this names the directory where all project files are stored as the fir
 
 ### Working Default References
 
-What if someone new uses the project that you don’t know their username? Often, it may not be possible to match a system variables stored by Stata to a unique identify a user. There are multiple solutions to this problem. Some master do files will start with a `local user` command that defines who the user is and sets relative references using a conditional:
+What if someone new uses the project that you don't know their username? Often, it may not be possible to match a system variables stored by Stata to a unique identify a user. There are multiple solutions to this problem. Some master do files will start with a `local user` command that defines who the user is and sets relative references using a conditional:
 
 ```stata
 *Define user
@@ -204,7 +204,7 @@ if "`user`" == "Me" {
 ```
 However, this requires manual management in the do file any time a new user is added to a project. To create a general case, the do file can take advantage of how Stata defines a project. When Stata is opened, State defaults to assigning a working directory by first, the location of the file being opened by Stata and second, the homepath in the profile.do file.
 
-We suggest using \`c(pwd)' as a stand-in for file location and assume the user had opened the master do file: If you add this as an `else` at the end of the ``if "`user'"==`` conditionals, then there is a good chance the do file will run even if you haven’t made a specific local for the user.
+We suggest using \`c(pwd)' as a stand-in for file location and assume the user had opened the master do file: If you add this as an `else` at the end of the ``if "`user'"==`` conditionals, then there is a good chance the do file will run even if you haven't made a specific local for the user.
 
 ```stata
 *Set default directory

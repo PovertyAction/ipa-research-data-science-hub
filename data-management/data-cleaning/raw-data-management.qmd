@@ -41,9 +41,9 @@ Raw data generally come in the form of the instrument used to generate the data,
 
 Most IPA research projects include survey data. Survey data has the advantage of being received in a consistent format and a known structure. SurveyCTO data, especially, has tools that aid import into Stata. Deciding the data structure during survey programming provides important benefits for raw data management.
 
-Survey data’s structure also carries unique challenges for data management: formats of survey data and responses need to be standardized for analysis, metadata needs to be added to surveys, and corrections need to be completed. Finally, since survey data often holds many sources of personally identifying information in the raw format, deidentification is often very important and requires specific focus. Changes in survey version content may exacerbate this process and require multiple imports. This section provides information on these tasks. This section does not provide information on how to program surveys to make data management easy.
+Survey data's structure also carries unique challenges for data management: formats of survey data and responses need to be standardized for analysis, metadata needs to be added to surveys, and corrections need to be completed. Finally, since survey data often holds many sources of personally identifying information in the raw format, deidentification is often very important and requires specific focus. Changes in survey version content may exacerbate this process and require multiple imports. This section provides information on these tasks. This section does not provide information on how to program surveys to make data management easy.
 
-IPA has developed tools to support survey implementation and data quality assurance. IPA’s data management system (DMS) provides Excel- and Stata-based resources to handle data quality checks. The DMS is required for all IPA projects. It provides information on data quality and will resolve duplicates before data cleaning begins, among many other features.
+IPA has developed tools to support survey implementation and data quality assurance. IPA's data management system (DMS) provides Excel- and Stata-based resources to handle data quality checks. The DMS is required for all IPA projects. It provides information on data quality and will resolve duplicates before data cleaning begins, among many other features.
 
 ## Administrative data
 Often, administrative data is preprocessed for functional reasons. Working with SQL databases and other data management software provides additional challenges as data fields may change definitions over time and data structure may not be easily amenable to transfer or import into statistical software such as Stata or R.
@@ -53,7 +53,7 @@ There is no one-size fits all process to manage administrative data, but automat
 These problems are exacerbated as data increase in size. Big data requires special data management techniques, especially as data size reaches limitations in statistical software capabilities, processing power, and storage format (Excel, for example, can only store about 1 million observations in .xlsx and 65,000 using .xls). This guide does not cover these challenges in detail, but many resources exist for processing big data in Stata (see NBER and Statalist for tips).
 
 ## Importing into Stata
-Data comes in many forms, from raw text (.txt) files to multi-sheet Excel (.xls and .xlsx) files. Importing data into Stata is necessary if the data is not already in Stata format (.dta file). In general, you should be able to use Stata’s functions and loops to efficiently import data. Stata can import most data formats. If your project’s data was collected using a platform like SurveyCTO, the raw data will come in .csv format and the SurveyCTO server will provide a do file that imports the raw .csv data into the Stata .dta format.
+Data comes in many forms, from raw text (.txt) files to multi-sheet Excel (.xls and .xlsx) files. Importing data into Stata is necessary if the data is not already in Stata format (.dta file). In general, you should be able to use Stata's functions and loops to efficiently import data. Stata can import most data formats. If your project's data was collected using a platform like SurveyCTO, the raw data will come in .csv format and the SurveyCTO server will provide a do file that imports the raw .csv data into the Stata .dta format.
 
 ### Importing different file types
 In Stata 13 and beyond, the import command can import CSV files, excel files, and more depending on the option used (delimited for CSV, excel for excel), and export does the same for exporting. The import excel and import delimited commands provide a number of options that allow for a large amount of control of importing including from where in the workbook data should be imported from and how data should be saved. See help import for details on these options.
@@ -333,7 +333,7 @@ This process can be repeated for any number of variables. It can also be extende
 
 Some surveys questions have the option of “check all that apply”, meaning that they allow for multiple responses. If you uncheck the "export select_multiple responses as a series of 1/0 columns" in SurveyCTO desktop, SurveyCTO will export these variables as a string containing all possible answers in the form of a space-separated list (e.g., a variable may have the string “A C E” to indicate responses of A, C, and E).
 
-For analysis purposes, it’s usually best to split these variables into binary variables, one for each possible choice (A, B, C, D, or E), as well as one for each combination of choices. The IPA-written `stringdum` function can help converting these variables to a more useful form, including separate dummies for each option, variables that count the number of times each option is selected, and several options for naming conventions. The `split` command can also convert these variables, by parsing the variable on spaces. This splits the variable into a new variable after each space (see `help split`). If this is not sufficient, Stata has a number of string functions (`help string functions`). You can also use the `regexm` function to accomplish this, which uses [regular expressions](https://www.stata.com/support/faqs/data-management/regular-expressions/). Below is an example script using both split and regexm to accomplish cleaning a select multiple question manually.
+For analysis purposes, it's usually best to split these variables into binary variables, one for each possible choice (A, B, C, D, or E), as well as one for each combination of choices. The IPA-written `stringdum` function can help converting these variables to a more useful form, including separate dummies for each option, variables that count the number of times each option is selected, and several options for naming conventions. The `split` command can also convert these variables, by parsing the variable on spaces. This splits the variable into a new variable after each space (see `help split`). If this is not sufficient, Stata has a number of string functions (`help string functions`). You can also use the `regexm` function to accomplish this, which uses [regular expressions](https://www.stata.com/support/faqs/data-management/regular-expressions/). Below is an example script using both split and regexm to accomplish cleaning a select multiple question manually.
 
 ``` stata
 * Create a local of all string variables
@@ -444,7 +444,7 @@ If they are true duplicates across all variables and it is clear why these dupli
 
 Duplicates may not just exist for an ID variable. Some respondents may take a survey twice and receive two different IDs. See `help duplicates` for guidance on commands that can be useful for this. Apart from dropping duplicates in terms of all variables using `duplicates drop`, check for duplicates in terms of things you suspect may identify the same person (e.g., name, address, phone number, birthday and combinations of the above) using either `duplicates` or `isid`.
 
-Once you’ve cleaned each dataset individually, it is wise to check that the unique IDs are assigned properly across datasets. For instance, if you have a baseline survey and an endline survey, after merging them based on unique ID, check that the names and birthdate variables from each survey match to the other survey.
+Once you've cleaned each dataset individually, it is wise to check that the unique IDs are assigned properly across datasets. For instance, if you have a baseline survey and an endline survey, after merging them based on unique ID, check that the names and birthdate variables from each survey match to the other survey.
 
 ### ID formats
 
@@ -460,11 +460,11 @@ All PII must remain encrypted in storage and securely transmitted between device
 
 ### When to remove PII
 
-Once you have data, it’s best practise to remove PII as soon as possible. The earlier you can de-identify — i.e., remove all identifying information from the datasets you’re using – the better. Unless it’s necessary, you should not be working with data containing PII as you move forward with analysis.
+Once you have data, it's best practise to remove PII as soon as possible. The earlier you can de-identify — i.e., remove all identifying information from the datasets you're using – the better. Unless it's necessary, you should not be working with data containing PII as you move forward with analysis.
 
-Some aspects of cleaning and analysis will require including PII. For instance, if you are trying to remove duplicate observations and need to determine if two respondents have the same name, you’ll want that in there. As always, you will need to keep the data encrypted with Boxcryptor at that point. Make sure do-files/scripts are encrypted as well if they include PII.
+Some aspects of cleaning and analysis will require including PII. For instance, if you are trying to remove duplicate observations and need to determine if two respondents have the same name, you'll want that in there. As always, you will need to keep the data encrypted with Boxcryptor at that point. Make sure do-files/scripts are encrypted as well if they include PII.
 
-Once you’ve reached the point of no longer needing PII, you should strip it from the main dataset. The best practice for de-identifying data is to:
+Once you've reached the point of no longer needing PII, you should strip it from the main dataset. The best practice for de-identifying data is to:
 
 1. Create a first .do file that imports the data, standardizes duplicate observations, completes corrections, and removes PII.
 1. Create a second .do file that performs the data cleaning on the limited or fully deidentified dataset.
