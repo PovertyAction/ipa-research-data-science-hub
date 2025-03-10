@@ -5,7 +5,7 @@ title: "Dataset Documentation"
 # Authors
 #------------------------------------------------------------------
 # Authors are the main creators of the site's content, credited
-# for their work and responsible for its core development, 
+# for their work and responsible for its core development,
 # including writing and editing.
 #------------------------------------------------------------------
 authors-ipa:
@@ -31,9 +31,9 @@ This article provides standards for documentation, focusing on Stata commands to
 
 :::{.callout-tip appearance="simple"}
 ## Key Takeaways
-* High-quality research relies on code that can be easily understood and used by anyone involved in the project. 
+* High-quality research relies on code that can be easily understood and used by anyone involved in the project.
 * Proper dataset documentation starts with consistent naming and labeling of data.
-* Code needs to be internally documented to explain what problem each script solves, why the approach was chosen, and how each section of the code contributes to resolving the problem. 
+* Code needs to be internally documented to explain what problem each script solves, why the approach was chosen, and how each section of the code contributes to resolving the problem.
 :::
 
 ## Features of well-documented datasets
@@ -45,14 +45,14 @@ Documented datasets in Stata should have the following characteristics:
 - All datasets should only contain variables needed as part of the dataflow.
 - Datasets should have internal notes describing additional information that’s necessary to use the data and/or additional information such as the name of the item in the questionnaire.
 
-This documentation should be written in addition to project manuals, codebooks, and readmes that describe other aspects of the data generating process, including why decisions were made to create variables, how datasets relate and change through the dataflow, and how variables used in the analysis are defined. If the documentation 
+This documentation should be written in addition to project manuals, codebooks, and readmes that describe other aspects of the data generating process, including why decisions were made to create variables, how datasets relate and change through the dataflow, and how variables used in the analysis are defined. If the documentation
 
 ## Variable names
 
 
 Variable names are generally inherited from the prior method of data storage. These names will not necessarily be optimize for use in coding in statistical software due to length, formatting, or clarity. Standardizing these names to usable and interpratable formats is one of the first steps to ensure datasets are easy and intuitive to use.
 
-If you are using SurveyCTO data, variable names and labels should be automatically generated for you upon import (as long as you use the SurveyCTO import template) . If you are using other data or not using this template then you will need to rename your variables. 
+If you are using SurveyCTO data, variable names and labels should be automatically generated for you upon import (as long as you use the SurveyCTO import template) . If you are using other data or not using this template then you will need to rename your variables.
 
 ### Naming Standards
 
@@ -60,7 +60,7 @@ Variable names should correspond to both interpretability by a user, as well as 
 
 ```stata
 *Call all income variables
-ds inc_* 
+ds inc_*
 ```
 
 We recommend balancing the following considerations while naming variables:
@@ -68,7 +68,7 @@ We recommend balancing the following considerations while naming variables:
 - Group types of variables like comment fields with a unique substring such as `_note`.
 - Create names that have a substantive meaning and are also easy to type (e.g. `inc_bus_` & `inc_ag` instead of `section1b_` & `section2a_`)
 - For indicator variables, do not name the variable the category. Instead, name the variable what the value "1" indicates (e.g. if a variable takes 1 when a respondent is female and 0 when a respondent is male, name the variable `female` not `gender`)
-- Create unique and consistent naming patterns across all datasets used in the project 
+- Create unique and consistent naming patterns across all datasets used in the project
 	- Two datasets that have different units of analysis should not be identified by the uninformative variable name `id`
 	- Two datasets that describe income at various levels should use the same prefix to describe the same construct (e.g. plot-level income could be `inc_ag_plot1` and baseline household income could be `inc_ag*_bl`)
 
@@ -85,16 +85,16 @@ Stata’s `rename` command is used to change variable names. While it is possibl
 | `#`| One or more digit (numeric only) | `ren age# age(##)` renames all numeric variables to use a minimum of two digits for number suffixes (e.g. age_1 becomes age_01) |
 | `, renumber` | Reorders names to increase by 1 | `ren survey_# survey_#, renumber` reorders all variables prefixed with `survey_` that end with a number so that they increase by 1 |
 
-Also see `renvars` (`net search renvars` to install) a user written command that can help with complicated renaming tasks. 
+Also see `renvars` (`net search renvars` to install) a user written command that can help with complicated renaming tasks.
 
 ### Renaming from External Files
 
 If you are renaming/labeling a lot of variables it can be cleaner to put them in an excel file and import from there, rather than writing it all in your do file. For an example of how to efficiently rename variables from a .xlsx file, see the following:
 
 ```stata
-**A. Import codebook file 
+**A. Import codebook file
 /*
-This file contains the master name and labels, as well as the 
+This file contains the master name and labels, as well as the
 survey-wise name and labels
 */
 import excel "${raw}/variable_codebook.xlsx", firstrow clear
@@ -109,7 +109,7 @@ loc common_names	// corresponding common variable names
 
 * Loop through all value of the excel file
 forvalues i = 1/`=_N' {
-	
+
 	*Save name and labels in order from the excel sheet
 	loc survey_name = varname in `i'
 	loc common_name = common_varname in `i'
@@ -118,9 +118,9 @@ forvalues i = 1/`=_N' {
 	*Fill locals to add information to project
 	loc proj_names `proj_names' `proj_name'
 	loc common_names `common_names' `common_name'
-	loc common_label "`common_label' `"`common_varl'"'" 
+	loc common_label "`common_label' `"`common_varl'"'"
 }
-// end forvalue i == 1/`N' 
+// end forvalue i == 1/`N'
 
 
 **C. Run some checks
@@ -131,25 +131,25 @@ assert "`:word count `proj_names''" == "`:word count `common_names''"
 macro list
 
 
-**D. IMPORT THE DATASETS IN A LOOP AND RENAME 
+**D. IMPORT THE DATASETS IN A LOOP AND RENAME
 *Clean locals
 loc common_name // init empty
 loc common_varl // init empty
-	
+
 *Load raw data
 use "``project'_directory'/`project'`input_dataset_suffix'.dta", clear
 
-*Loop through variable names to remain 
+*Loop through variable names to remain
 forvalues i = 1(1)`: word count `proj_names'' {
 
 	*Collect names from list to rename variables
 	loc proj_name `:word `i' of `proj_names''
 	loc common_name `:word `i' of `common_names''
 	loc common_varl `:word `i' of `common_label''
-	
+
 	*Rename and label from common names
 	rename `proj_name' `common_name'
-	lab var `common_name' "`common_varl'" 
+	lab var `common_name' "`common_varl'"
 }
 // end forvalues i = 1/`: word '
 ```
@@ -157,11 +157,11 @@ forvalues i = 1(1)`: word count `proj_names'' {
 ## Variable labels
 
 
-Stata variables have both names and labels. Variable names are the name that Stata uses to define a column. Variables labels are added information that can easily be displayed to the analyst. Names should follow patterns that make it easy to program (e.g. all consumption questions could be coded as `cons_1 - cons_20` and could easily be called by `ds cons_? cons_??`) Variable labels are best used as descriptors: they should say exactly what the variable is about. You can pull the exact question text from the survey, or use a paraphrased version if the text itself is quite lengthy. 
+Stata variables have both names and labels. Variable names are the name that Stata uses to define a column. Variables labels are added information that can easily be displayed to the analyst. Names should follow patterns that make it easy to program (e.g. all consumption questions could be coded as `cons_1 - cons_20` and could easily be called by `ds cons_? cons_??`) Variable labels are best used as descriptors: they should say exactly what the variable is about. You can pull the exact question text from the survey, or use a paraphrased version if the text itself is quite lengthy.
 
 ### Systematizing labels
 
-Variable labels provide information about variable names which are often defined for programmatic reasons. 
+Variable labels provide information about variable names which are often defined for programmatic reasons.
 1.	All variables should have labels, and all multiple choice variables have value labels.
 1.	The labeling system should be internally consistent.
 1.	It should be easy to connect the variable in the dataset with the question on the questionnaire. Most analysis is done with the questionnaire in hand.
@@ -174,7 +174,7 @@ Variable name: descriptive name that uses prefixes or suffixes to provide patter
 Variable label: [question_number] descriptive label
 </div>
 ```
-This style is implemented below: 
+This style is implemented below:
 
 ```stata
 *Define variable labels variables
@@ -224,7 +224,7 @@ Survey CTO includes the full text of the question from the survey instrument as 
 
 If variable labels have been changed or converted as part of a data transformation, notes can be converted into labels by looping through variables and using the stored local for notes:
 
-```stata       
+```stata
 *Loop through each variable in the varlist VARIABLES
 foreach var of varlist VARIABLES {
     label var `var' ``var'[note1]'
@@ -233,7 +233,7 @@ foreach var of varlist VARIABLES {
 
 ### The ```char``` command
 
-Additional information can be added using characteristics, which function similarly to notes. The Stata manual describes characteristics as "an arcane feature of Stata [that] are great use to Stata programmers." Many commands use and define specific named characteristics to attach metadata. Characteristics (type `help char` in Stata) can describe variables and the dataset itself.  
+Additional information can be added using characteristics, which function similarly to notes. The Stata manual describes characteristics as "an arcane feature of Stata [that] are great use to Stata programmers." Many commands use and define specific named characteristics to attach metadata. Characteristics (type `help char` in Stata) can describe variables and the dataset itself.
 
 The main difference between characteristics and notes is that the `char` command requires a name for each characteristic. Whereas `note VARIABLE : "Note"` creates the next sequential note (1 if the first note, 2 if the second, etc.), `char` explicitly requires a character name, "charname" in the following code: `char define VARIABLE[charname] "Note"`. This can be useful for saving labels in multiple languages. These characteristics can then be called by name, instead of an arbitrarily assigned number.
 
@@ -258,7 +258,7 @@ ds name, not // get list of label variables
 loc languages `r(varlist)' relevance
 egen has_lab = rownonmiss(`languages'), strok
 // keep only rows with has_lab
-keep if has_lab >= 1 & !mi(has_lab) 
+keep if has_lab >= 1 & !mi(has_lab)
 
 *Save variables and language names
 loc varnames // init empty
@@ -273,7 +273,7 @@ forval i = 1(1)`=_N' {
   }
   // end foreach language of local languages
 
-  *save local of names to add question text to 
+  *save local of names to add question text to
   loc varnames `varnames' `name'
 }
 // end forval i = 1(1)_N
@@ -293,7 +293,7 @@ foreach name of local varnames {
   if _rc continue // skip if "`name'" is a prefix
 
      *add characteristic as a named language
-     loc j = 1 
+     loc j = 1
      foreach language of local languages {
         char define `var'[`language'] "``name'_`j''"
         loc ++j
@@ -371,10 +371,10 @@ Note how the labels have the corresponding value as well as the description in t
 
 One way to ensure that data is encoded in an expected way is to check that values are only encoded from a list of value labels that you defined. The user written command `sencode` (installed using `ssc install sencode`) can help to support this. `sencode` labels the variable according to the values that you've predefined and then adds additional values in order from the highest value if it encounters values that you haven't defined. An example data flow follows:
 
-```stata   
+```stata
 *Ensure sencode is installed
 cap which sencode
-if _rc ssc install sencode 
+if _rc ssc install sencode
 
 *Load data
  	sysuse auto, clear
@@ -382,11 +382,11 @@ keep if _n <= 10 // Keep the first ten observations of the sample
 
 # del ;
 
-/* 
+/*
 This label is named by the variable name, an "_", and then "label"
-so that we can loop over the labels. 
+so that we can loop over the labels.
 */
-label define make_label 
+label define make_label
 	1	"AMC Concord"
 	2	"AMC Pacer"
 	3	"AMC Spirit"
@@ -406,18 +406,18 @@ loc str_var make
 
 *Encode values and confirm expected
 foreach var of local str_var {
-	
+
 	*Encode variables
 	/*
-	type h sencode to see options, the noextend option returns an error 
+	type h sencode to see options, the noextend option returns an error
 	if the existing label doesn't capture all values.
 	*/
-	sencode `var', label(`var'_label) replace noextend 	
-}  
+	sencode `var', label(`var'_label) replace noextend
+}
 // end foreach v of local str_var
 
 *Display the labeled and unlabeled values
-tab make 
+tab make
 tab make, nol
 ```
 
@@ -437,11 +437,11 @@ Any script that saves data should have code that identifies the variables saved,
 	loc vars						///
 	hhid		enum_id				/// ID Variables
 	cluster		survey_date	form_id	/// File source variables
-	treatment	scto_rand			/// Treatment assignment 
+	treatment	scto_rand			/// Treatment assignment
 	bl_hhh_age	bl_hhh_female	bl_hhh_educ	/// Baseline demos
-	bl_hh_size						/// 
+	bl_hh_size						///
 	bl_cons_veg_*	bl_cons_meat_*	bl_cons_purch_*	/// Consumption
-	bl_cons_alc						/// 
+	bl_cons_alc						///
 	bl_loan_size	bl_loan_exp_pay_m*	bl_loan_miss_m*	/// Loan information
 	bl_msf		bl_otaf					// Lender Fees
 
@@ -462,6 +462,6 @@ Any script that saves data should have code that identifies the variables saved,
 	log c
 
 
-**EOF**  
-  
+**EOF**
+
 ```
