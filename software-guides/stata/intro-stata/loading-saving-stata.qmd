@@ -48,11 +48,11 @@ cd "target folder"
 
 When working with Stata, it is important to keep a good file system that allows you to easily find project files and subfolders that you may be looking for. Sometimes you may be working alone and can set all your paths with only your own workspace in mind. However, in most cases you will want to write your Stata code in a way that makes it easily usable on other computers without additional setup.
 
-A **relative path** denotes a file path in relation to the current working directory, while an absolute path denotes a file's path at a fixed location on a disk. In most cases, you want to use relative paths—let's explore how they work. First, examine the folder shown below. Take notice of the path at the top as well as the subfolders in this folder. 
+A **relative path** denotes a file path in relation to the current working directory, while an absolute path denotes a file's path at a fixed location on a disk. In most cases, you want to use relative paths—let's explore how they work. First, examine the folder shown below. Take notice of the path at the top as well as the subfolders in this folder.
 
 ![Absolute vs. Relative Paths in Stata](/assets/images/stata-relative-path.jpg){fig-cap="Using Relative Paths in Stata" width=75%}
 
-Let's assume that your current working directory in Stata is *"D:\Files\Data Cleaning\Main Data"*, which is the folder in the picture above. You want to navigate within Stata to the *"1 dofiles"* subfolder. You could achieve this using either of the following codes: 
+Let's assume that your current working directory in Stata is *"D:\Files\Data Cleaning\Main Data"*, which is the folder in the picture above. You want to navigate within Stata to the *"1 dofiles"* subfolder. You could achieve this using either of the following codes:
 
 ```stata
 * Option 1
@@ -62,9 +62,9 @@ cd "D:\Files\Data Cleaning\Main Data/1 dofiles"
 cd "1 dofiles"
 ```
 
-Code 1 is an example of using an **absolute path**—it directs Stata to an exact location every single time you run this code. This means that regardless of your current working directory in Stata, you can always switch to this target directory using Code 1. However, this code may not work on another computer unless the other user has the *"Main Data"* folder located in the path *"D:\Files\Data Cleaning"*. 
+Code 1 is an example of using an **absolute path**—it directs Stata to an exact location every single time you run this code. This means that regardless of your current working directory in Stata, you can always switch to this target directory using Code 1. However, this code may not work on another computer unless the other user has the *"Main Data"* folder located in the path *"D:\Files\Data Cleaning"*.
 
-Code 2 directs Stata to the same folder using a **relative path**. Based on this code, Stata will assume that you want to move to a folder named *"1 dofiles"* which is located in your current working directory. This code will only work if your current working directory contains the folder *"1 dofiles"*. 
+Code 2 directs Stata to the same folder using a **relative path**. Based on this code, Stata will assume that you want to move to a folder named *"1 dofiles"* which is located in your current working directory. This code will only work if your current working directory contains the folder *"1 dofiles"*.
 
 {{< video https://youtu.be/ephId3mYu9o
     title="Absolute and Relative Paths"
@@ -72,7 +72,7 @@ Code 2 directs Stata to the same folder using a **relative path**. Based on this
 
 ## Loading a dataset
 
-When working in Stata, you will work with datasets from different sources and in different formats. Stata provides a list of commands for importing and exporting various data in various formats including Excel spreadsheets (.xls and .xlsx files), text files, and datasets from other software such as SPSS and SAS. Stata can also create and store data in a Stata-format dataset with the filename extension *.dta*. The *.dta* format is the primary format you will use when storing and analyzing data in Stata. 
+When working in Stata, you will work with datasets from different sources and in different formats. Stata provides a list of commands for importing and exporting various data in various formats including Excel spreadsheets (.xls and .xlsx files), text files, and datasets from other software such as SPSS and SAS. Stata can also create and store data in a Stata-format dataset with the filename extension *.dta*. The *.dta* format is the primary format you will use when storing and analyzing data in Stata.
 
 There are several ways to import a dataset into Stata, including:
 
@@ -81,7 +81,7 @@ There are several ways to import a dataset into Stata, including:
 * Clicking on the "Open" icon (which looks like a folder) in the Menu bar to select a file.
 * Double clicking on the dataset within your computer's file directory to open a new Stata session with the dataset already loaded
 
-In most applications, we should be using the *"use"* command. For example,  let's download a sample dataset into our current working directory using this command: 
+In most applications, we should be using the *"use"* command. For example,  let's download a sample dataset into our current working directory using this command:
 
 ```stata
 copy "https://raw.githubusercontent.com/PovertyAction/IPA-Stata-Trainings/master/Stata%20101/Data/intro.dta" "intro.dta", replace
@@ -96,7 +96,7 @@ use "intro.dta", clear
 ```
 
 :::{.callout-tip title="Tip"}
-* Because the file is located in your current working directory, you do not need to specify the file path. 
+* Because the file is located in your current working directory, you do not need to specify the file path.
 * If you already have a different dataset loaded in Stata's memory, you will need to include the *", clear"* option as part of your command.
 :::
 
@@ -106,7 +106,7 @@ The *"use"* command also works directly with URLs. Let's re-import our "intro" d
 use "https://raw.githubusercontent.com/PovertyAction/IPA-Stata-Trainings/master/Stata%20101/Data/intro.dta", clear
 ```
 
-You will see that Stata has automatically detected and imported the dataset directly from the website without you needing to download it first. 
+You will see that Stata has automatically detected and imported the dataset directly from the website without you needing to download it first.
 
 ## Saving a dataset
 ...

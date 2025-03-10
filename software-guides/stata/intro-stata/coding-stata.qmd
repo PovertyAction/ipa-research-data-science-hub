@@ -5,7 +5,7 @@ title: "Coding in Stata"
 # Authors
 #------------------------------------------------------------------
 # Authors are the main creators of the site's content, credited
-# for their work and responsible for its core development, 
+# for their work and responsible for its core development,
 # including writing and editing.
 #------------------------------------------------------------------
 authors-ipa:
@@ -26,7 +26,7 @@ contributors:
 ---
 
 :::{.custom-summary-block}
-This guide shows how to work with Stata files, numerical formats, dataset creation, memory management, quality control, and useful commands. 
+This guide shows how to work with Stata files, numerical formats, dataset creation, memory management, quality control, and useful commands.
 :::
 
 :::{.callout-tip appearance="simple"}
@@ -37,47 +37,47 @@ This guide shows how to work with Stata files, numerical formats, dataset creati
 
 ## Using Stata Files
 
-Stata data files are saved with the extension ".dta". This means the file is ready to use in Stata and unlike data saved in, for example, an excel file, you do not need to import this into Stata. 
+Stata data files are saved with the extension ".dta". This means the file is ready to use in Stata and unlike data saved in, for example, an excel file, you do not need to import this into Stata.
 
-To start using this data in Stata you simply need to type 
+To start using this data in Stata you simply need to type
 
 ```stata
 use "filepath\filename.dta", clear
 ```
- 
-Additionally, you will be able to use this dataset in other commands when combining two datasets such as merge or append. 
+
+Additionally, you will be able to use this dataset in other commands when combining two datasets such as merge or append.
 
 ```stata
 merge 1:1 uid using "statadata.dta", options
 append using "statadata.dta"`
-``` 
+```
 If your file was not already in the stata format you would not be able to call it directly. You would have to import it before you can use it.
 
-### System Datasets 
-Stata comes with pre-loaded datasets that you can use to play around to learn new things on. 
-You can see all of the available datasets by going to "File > Example datasets..." or typing `help dta_examples`. From here you can click the "use" or "describe" buttons to load the dataset and describe them. 
+### System Datasets
+Stata comes with pre-loaded datasets that you can use to play around to learn new things on.
+You can see all of the available datasets by going to "File > Example datasets..." or typing `help dta_examples`. From here you can click the "use" or "describe" buttons to load the dataset and describe them.
 
-If you already know the name of the dataset you want to use, you simply need to type `sysuse auto.dta` for the auto dataset for example to use the data. 
+If you already know the name of the dataset you want to use, you simply need to type `sysuse auto.dta` for the auto dataset for example to use the data.
 
-### Creating a dataset in Stata from scratch 
-In Stata, you can create a dataset from scratch. This can be helpful if you want to test some code, learn or check how something works. 
-When working in a clear Stata session, you can use `set obs n` where n is an integer, to create that many observations in the dataset. From there, you can gen variables set to whatever you are interested in. 
+### Creating a dataset in Stata from scratch
+In Stata, you can create a dataset from scratch. This can be helpful if you want to test some code, learn or check how something works.
+When working in a clear Stata session, you can use `set obs n` where n is an integer, to create that many observations in the dataset. From there, you can gen variables set to whatever you are interested in.
 
 Example to test how to generate a dummy variable as well as using `_n` to indicate row numbers
 
 ```stata
 *Clear your stata console
-  clear all 
+  clear all
 *Create how many observations you want your dataset to have
-  set obs 10 
-*Create variables to test the code you are interested in 
-  gen test_dummy = (_n < 5) 
+  set obs 10
+*Create variables to test the code you are interested in
+  gen test_dummy = (_n < 5)
 ```
 
 ## Numerical formats
 
 
-It's easy to forget that Stata code is operating a computer with very different rules for counting and numbers than we have in the real world. Ado (the language of .do files) allows for a high-level [abstraction](https://en.wikipedia.org/wiki/Abstraction_layer), where the programmer does not have to explicitly command the computer to do low-level tasks like allocating memory for data, ordering tasks, or defining how the computer should round values that can't be precisely displayed in binary. This is rarely important, but there are a few cases where these processes, like precision of stored data, is highly relevant for statistical tasks and may need to be specified. The most relevant cases are: 
+It's easy to forget that Stata code is operating a computer with very different rules for counting and numbers than we have in the real world. Ado (the language of .do files) allows for a high-level [abstraction](https://en.wikipedia.org/wiki/Abstraction_layer), where the programmer does not have to explicitly command the computer to do low-level tasks like allocating memory for data, ordering tasks, or defining how the computer should round values that can't be precisely displayed in binary. This is rarely important, but there are a few cases where these processes, like precision of stored data, is highly relevant for statistical tasks and may need to be specified. The most relevant cases are:
 - IDs should be stored as string variables or have less than 8 digits if the storage type of the variable is a float
 - Asserts should only compare similar storage types.
   - All values in stata (e.g. `1` or `` `r(N)'``) are treated as doubles
@@ -111,7 +111,7 @@ This is extremely relevant when exact equivalence matters. Stata will always con
   .1
 ````
 
-Stata is not making a mistake here. This is the result of .1 not having an exact value in binary (base 2 v. base 10). Since Stata does all calculations in double precision, the rounded value of .1 is different at float precision than double precision. The code that follows shows a few ways to compare these values exactly. 
+Stata is not making a mistake here. This is the result of .1 not having an exact value in binary (base 2 v. base 10). Since Stata does all calculations in double precision, the rounded value of .1 is different at float precision than double precision. The code that follows shows a few ways to compare these values exactly.
 
 ````stata
 . ds x, d
@@ -119,12 +119,12 @@ Stata is not making a mistake here. This is the result of .1 not having an exact
               storage   display    value
 variable name   type    format     label      variable label
 --------------------------------------------------------------------------------------------------------------
-x               float   %9.0g       
+x               float   %9.0g
 
 . assert x == float(.1) // Force Stata to round double(.1) to float(.1)
 
 // force Stata to display the first and only value of x in a double format
-. assert `: di x[1]' == .1 
+. assert `: di x[1]' == .1
 
 . gen double y = .1 // generate a new variable at double precision
 . assert y == .1
@@ -138,19 +138,19 @@ Although this seems very abstract and of limited relevance, this will cause prob
 - Numeric IDs will no longer be unique when they have more digits than their storage type can hold (16 for doubles). No numeric IDs will be unique if they have more than 17 digits, especially if the last digits are changing for individuals that should be unique. It's best to store IDs as strings or keep ID values at the minimum length needed.
 - `assert`s that compare a scalar (`r(mean)`) to a variable stored as a float may not be accurate. This can be corrected by using functions like `inrange()` or `float()` as part of the `assert`.
 
-### Dataset Size & Memory Usage 
+### Dataset Size & Memory Usage
 
-There are a number of concrete ways to avoid this, as well as a lot written on how this affects computation. Memory conservation is generally not relevant for statistical programming with small N survey data that we normally work with at IPA. But this can be the relevant in large datasets where using memory on extraneous digits will slow basic computations substantively. Administrative data with observations in the hundreds of thousands to millions is an example of this that is relevant for many IPA projects. 
+There are a number of concrete ways to avoid this, as well as a lot written on how this affects computation. Memory conservation is generally not relevant for statistical programming with small N survey data that we normally work with at IPA. But this can be the relevant in large datasets where using memory on extraneous digits will slow basic computations substantively. Administrative data with observations in the hundreds of thousands to millions is an example of this that is relevant for many IPA projects.
 
-It's generally good practice to reduce the size of files using `compress` or by generating values in the smallest format such as  `gen byte dummy = (q1 == "Yes")`, especially when the data are larger or if you are performing commands that are computationally intensive for Stata (various regressions, reshaping, etc.). 
+It's generally good practice to reduce the size of files using `compress` or by generating values in the smallest format such as  `gen byte dummy = (q1 == "Yes")`, especially when the data are larger or if you are performing commands that are computationally intensive for Stata (various regressions, reshaping, etc.).
 
 If you are interested in more details, Stata Corp's blog has a few good articles on [numerical precision](https://blog.stata.com/2011/06/17/precision-yet-again-part-i/) and why [this](https://blog.stata.com/2011/06/23/precision-yet-again-part-ii/) happens in computing, as well as the [specific digits](https://www.stata.com/support/faqs/data-management/float-data-type/) that float precision loses values.
 
 ## Quality Control
 
-Once you’ve finished cleaning a dataset, take some time to inspect the final product by using a command like `codebookout`. This command outputs an excel file that is a codebook of your final data including variable names, labels, types, values and value labels. Check that variables are labeled and take on a range of values that make sense. 
+Once you’ve finished cleaning a dataset, take some time to inspect the final product by using a command like `codebookout`. This command outputs an excel file that is a codebook of your final data including variable names, labels, types, values and value labels. Check that variables are labeled and take on a range of values that make sense.
 
-Another helpful command in quality control is `assert`. You should include many asserts throughout your do files in order to check that your assumptions while cleaning hold. This is especially important if you are going to be collecting more data later. 
+Another helpful command in quality control is `assert`. You should include many asserts throughout your do files in order to check that your assumptions while cleaning hold. This is especially important if you are going to be collecting more data later.
 
 Finally, you can use the checklist in this folder to perform checks on your dataset. (To open, click on the link for the checklist and then click "view raw" to download.)
 
@@ -162,7 +162,7 @@ Once you have a grasp on the overall organization of a dataset — including the
 
 It is important to ensure that code can be run on multiple computers, and that code will not require hours of repair if a folder is renamed. To do this, we use relative references for file paths. The principle behind this is simple: *any time a file (data, log file, another piece of code, etc.) is references in the script, the code only specifies the name of the file and some shorthand for the filepath.* This shorthand will vary depending on the software used and the preferences of the analyst. In Stata, this is generally a global macro. Scripts that modify data should avoid calling any absolute file paths to ensure that any script is as flexible as possible to changes in the file path.
 
-For example, if I am loading data from “C:/My Documents/My Project Folder/data.dta”, I could type `use "${relative_reference}/data.dta"` if I had defined a global called `relative_reference` that contained `C:/My Documents/My Project Folder`. In this example, I would have defined that global to save the file path somewhere earlier in the script. One thing to note is that this global uses the entire file path. A relative reference such as `${directory}/My Project Folder/data.dta` introduces more possibility for error by including an absolute name of a folder. Full file paths used in the project should preferable be saved as globals or called using macro extended functions. 
+For example, if I am loading data from “C:/My Documents/My Project Folder/data.dta”, I could type `use "${relative_reference}/data.dta"` if I had defined a global called `relative_reference` that contained `C:/My Documents/My Project Folder`. In this example, I would have defined that global to save the file path somewhere earlier in the script. One thing to note is that this global uses the entire file path. A relative reference such as `${directory}/My Project Folder/data.dta` introduces more possibility for error by including an absolute name of a folder. Full file paths used in the project should preferable be saved as globals or called using macro extended functions.
 
 There are multiple ways to make relative references including local and global macros, setting working directories, or user written commands in Stata such as `fastcd`. We suggest defining global macros in the master do file or a specific global.do do file so that file paths are set in one location and are able to be called at any point during the dataflow.
 
@@ -191,7 +191,7 @@ Note that this names the directory where all project files are stored as the fir
 
 ### Working Default References
 
-What if someone new uses the project that you don’t know their username? Often, it may not be possible to match a system variables stored by Stata to a unique identify a user. There are multiple solutions to this problem. Some master do files will start with a `local user` command that defines who the user is and sets relative references using a conditional: 
+What if someone new uses the project that you don’t know their username? Often, it may not be possible to match a system variables stored by Stata to a unique identify a user. There are multiple solutions to this problem. Some master do files will start with a `local user` command that defines who the user is and sets relative references using a conditional:
 
 ```stata
 *Define user
@@ -204,13 +204,13 @@ if "`user`" == "Me" {
 ```
 However, this requires manual management in the do file any time a new user is added to a project. To create a general case, the do file can take advantage of how Stata defines a project. When Stata is opened, State defaults to assigning a working directory by first, the location of the file being opened by Stata and second, the homepath in the profile.do file.
 
-We suggest using \`c(pwd)' as a stand-in for file location and assume the user had opened the master do file: If you add this as an `else` at the end of the ``if "`user'"==`` conditionals, then there is a good chance the do file will run even if you haven’t made a specific local for the user. 
+We suggest using \`c(pwd)' as a stand-in for file location and assume the user had opened the master do file: If you add this as an `else` at the end of the ``if "`user'"==`` conditionals, then there is a good chance the do file will run even if you haven’t made a specific local for the user.
 
 ```stata
 *Set default directory
 else {
     global directory = subinstr("`c(pwd)'", "\", "/" ,.)
-    global directory = subinstr("`cdloc'", "/02_do", "", .) 
+    global directory = subinstr("`cdloc'", "/02_do", "", .)
 }
 ```
 This will not work if the instance of Stata is opened from a file in a different directory than the do file that contains the code shown above. Text editors such as Atom and Sublime preserve the same instance of Stata. This code will be more likely to cause an error if the user does not use the do file editor or opens do files from the command line with `doedit`.
@@ -218,15 +218,15 @@ This will not work if the instance of Stata is opened from a file in a different
 ## Useful Stata commands
 
 
-Below we have listed some frequently overlooked commands that we enjoy using. They will make your life a lot easier if you know about them. We provide a quick summary of what the commands do and where they can be used. 
+Below we have listed some frequently overlooked commands that we enjoy using. They will make your life a lot easier if you know about them. We provide a quick summary of what the commands do and where they can be used.
 
 Where we appropriate, there is a page dedicated to specific commands that provides more examples of our common uses tips and tricks, and potential concerns to be aware of when using these particular command.  For full documentation simply type `help [commandname]` in Stata to read all about available options and examples for usage.
 
 ### fillin
 
-This is a simple to use, but yet powerful command. Frequently in cleaning data sets, you will have an unbalanced panel, i.e. you are missing an observation for one person for some time periods. For example, imagine you have a dataset of your sample that is supposed to have one observation for each survey round such as the baseline and two endlines. However, as is common, some people were not found in the endline surveys and thus there is no observation for them at that endline. You can use this command to create all of the pairwise combinations of values of two variables i.e. you would have every survey round observation for every person. 
+This is a simple to use, but yet powerful command. Frequently in cleaning data sets, you will have an unbalanced panel, i.e. you are missing an observation for one person for some time periods. For example, imagine you have a dataset of your sample that is supposed to have one observation for each survey round such as the baseline and two endlines. However, as is common, some people were not found in the endline surveys and thus there is no observation for them at that endline. You can use this command to create all of the pairwise combinations of values of two variables i.e. you would have every survey round observation for every person.
 
-Frequently in cleaning data sets, you will have an unbalanced panel, i.e. you are missing an observation for one person for some time periods. For example, imagine you have a dataset of your sample that is supposed to have one observation for each survey round such as the baseline and two endlines. However, as is common, some people were not found in the endline surveys and thus there is no observation for them at that endline. See the example data below where you can see person 1 is missing an observation at endline 2. 
+Frequently in cleaning data sets, you will have an unbalanced panel, i.e. you are missing an observation for one person for some time periods. For example, imagine you have a dataset of your sample that is supposed to have one observation for each survey round such as the baseline and two endlines. However, as is common, some people were not found in the endline surveys and thus there is no observation for them at that endline. See the example data below where you can see person 1 is missing an observation at endline 2.
 
 | ID          | Survey_Round | Gender     |
 | :---        |    :----:   |          ---: |
@@ -249,11 +249,11 @@ We can use `fillin ID Survey_Round` to get the following
 
 A couple things to note:
 1. This command automatically creates an indicator variable called `\_fillin` that keeps track of observations that were created from the command
-2. Variables not specified in the `fillin` are filled in with a missing value. So after you run `fillin` you will need to go back and replace observations as you see appropriate. For example, for typically constant variables such as gender you could replace this new missing value to match the one above it. 
-  
+2. Variables not specified in the `fillin` are filled in with a missing value. So after you run `fillin` you will need to go back and replace observations as you see appropriate. For example, for typically constant variables such as gender you could replace this new missing value to match the one above it.
+
 ```stata
 sort ID Survey_Round
-replace Gender = Gender[_n-1] if ID == ID[_n-1] & _fillin == 1 
+replace Gender = Gender[_n-1] if ID == ID[_n-1] & _fillin == 1
 ```
 
 ### labeldup
@@ -266,7 +266,7 @@ This user-written command allows you to rename value labels using similar syntax
 
 ### levelsof
 
-This command will provide you with a list of all of the unique values of a variable. This comes in handy all of the time when cleaning. A very helpful option that comes with this command is `local()` in which you can store the list of values as a local. This makes looping through all of the values of a variable possible and easy. 
+This command will provide you with a list of all of the unique values of a variable. This comes in handy all of the time when cleaning. A very helpful option that comes with this command is `local()` in which you can store the list of values as a local. This makes looping through all of the values of a variable possible and easy.
 
 ### lookfor
 
@@ -276,9 +276,9 @@ This command searches across all variable names and variable labels, and allows 
 
 This is not a built-in Stata command and thus you will need to type `ssc install missing` to get this command before you can use it or read the help file.
 
-This group of commands allows for several ways to investigate the missing values in variables. Missing values are typically forgotten about or ignored, but that is a big mistake. They can complicate cleaning and analysis greatly. You should be aware of the missing values and variables in your dataset. This command includes ways to report, list, tag, and drop missing values and variables. 
+This group of commands allows for several ways to investigate the missing values in variables. Missing values are typically forgotten about or ignored, but that is a big mistake. They can complicate cleaning and analysis greatly. You should be aware of the missing values and variables in your dataset. This command includes ways to report, list, tag, and drop missing values and variables.
 
-A very helpful command within this group is `missing dropvars` which allows you to eliminate variables that are missing on all observations. This is much easier than looping through vars and obs to assert they are missing to drop them. 
+A very helpful command within this group is `missing dropvars` which allows you to eliminate variables that are missing on all observations. This is much easier than looping through vars and obs to assert they are missing to drop them.
 
 ### mmerge
 
@@ -290,7 +290,7 @@ This is not a built-in Stata command and can be installed by typing `ssc install
   - It allows for all merged variables from the using file to be prefixed as part of the merge with the `uname()` option
   - It stores shared variable names that are not merged in a local `r(common)`
 
-There are a number of other options and syntax changes. You can see these by typing `help mmerge` once `mmerge` is installed. 
+There are a number of other options and syntax changes. You can see these by typing `help mmerge` once `mmerge` is installed.
 
 ### return list
 
