@@ -5,7 +5,7 @@ title: "Data Aggregation"
 # Authors
 #------------------------------------------------------------------
 # Authors are the main creators of the site's content, credited
-# for their work and responsible for its core development, 
+# for their work and responsible for its core development,
 # including writing and editing.
 #------------------------------------------------------------------
 authors-ipa:
@@ -42,51 +42,51 @@ If you have two files that contain the same variables, but different observation
 2. If you have a variable in one dataset (say you have "#\_of_children" in a females data set but not the males) and you append these, the variable will be in the joint dataset but all of the observations from the dataset without that variable will be missing (i.e. the value of #\_of_children for all males will be missing)
 3. Variables you want to combine should be of the same general type (i.e. numeric or string)
      - If they are not, you will get an error and Stata will prompt you to use the `force` option
-     - This option is not preferable. It will keep the type of your variable in the master data and replace your using observations for that variable as missing. 
+     - This option is not preferable. It will keep the type of your variable in the master data and replace your using observations for that variable as missing.
      - Thus you should sort out whether they should be string or numeric ahead of time
  4. Combining string variables of different lengths (e.g. str5 and str10) will result in a string of the longer length of the two (e.g. str10).
  5. When combining different numeric types (e.g. float, double, int, byte) Stata will keep the more precise numeric type and will convert the variable of lower precision to the one of higher precision.
 
 ## Merging data
 
-Sometimes, you may need to merge two or more datasets together, if they are split by variables and contain the same observations. For example, you may have variables that were split between two datasets by the survey program. Be sure that both datasets have a unique ID and be extra careful to specify whether the merge is one-to-one or one-to-many (although you will receive an error if you do the wrong merge type so you don't have to worry too much about this causes problems). You should also check that your two datasets do not have any variables with the same names. When you perform a merge, if you have the same variable in both datasets, Stata will automatically keep the master data as authority. You can change this assumption by using the `update` and/or `replace` options to use the using values. However, it probably makes more sense to rename one of the variables and keep both. 
+Sometimes, you may need to merge two or more datasets together, if they are split by variables and contain the same observations. For example, you may have variables that were split between two datasets by the survey program. Be sure that both datasets have a unique ID and be extra careful to specify whether the merge is one-to-one or one-to-many (although you will receive an error if you do the wrong merge type so you don't have to worry too much about this causes problems). You should also check that your two datasets do not have any variables with the same names. When you perform a merge, if you have the same variable in both datasets, Stata will automatically keep the master data as authority. You can change this assumption by using the `update` and/or `replace` options to use the using values. However, it probably makes more sense to rename one of the variables and keep both.
 
 ### Many-to-many merge
 
-A many-to-many merge is a really bad practice and should not be done. Many people think that a many-to-many merge will create all of the pairwise combinations of observations that match on each ID. If this is what you desire you should use `joinby`. Rather, a many-to-many merge pairs your two datasets by the way the observations are sorted within the id. So it matches the first observation in dataset 1 for person 1 with the first observation in dataset 2 for person 1 and so on. 
+A many-to-many merge is a really bad practice and should not be done. Many people think that a many-to-many merge will create all of the pairwise combinations of observations that match on each ID. If this is what you desire you should use `joinby`. Rather, a many-to-many merge pairs your two datasets by the way the observations are sorted within the id. So it matches the first observation in dataset 1 for person 1 with the first observation in dataset 2 for person 1 and so on.
 
 ### Post merge
 
-In a merge, each type of "match" is assigned a number (see `help merge` for the numeric codes assigned). After the merge, type `tab _merge` and check to see that the results (number of matches, number from master data only, number from using data only, updated missing values, and conflicting nonmissing values) were what you expected. Adding a few assertions after the merge is good practice to make sure things are running correctly. There are a couple other merge command options that try to build in more safety features for you. You should look at the documentation for both `safemerge` and `mmerge` for alternative merge methods. 
+In a merge, each type of "match" is assigned a number (see `help merge` for the numeric codes assigned). After the merge, type `tab _merge` and check to see that the results (number of matches, number from master data only, number from using data only, updated missing values, and conflicting nonmissing values) were what you expected. Adding a few assertions after the merge is good practice to make sure things are running correctly. There are a couple other merge command options that try to build in more safety features for you. You should look at the documentation for both `safemerge` and `mmerge` for alternative merge methods.
 
-### Helpful options 
+### Helpful options
 
-Options that are helpful to include are `assert`, `keep`, `keepusing`, `gen`, `nogen`. If you are not familiar with any of these see the `help merge` file. 
+Options that are helpful to include are `assert`, `keep`, `keepusing`, `gen`, `nogen`. If you are not familiar with any of these see the `help merge` file.
 
 See the IPA Stata beginner’s training manual for step-by-step guidance on how to `merge` datasets. The IPA high intermediate Stata training also has a helpful module on merging, including a discussion of common pitfalls.
 
 
 ## Fuzzy Merge
 
-Usually when you `merge`, you have a unique ID — or at least enough of one that you can salvage. Sometimes, however, no unique identifier was collected, and you’re left searching for alternative ways to link two datasets. The most obvious way to do this is to try and match on names or other string variables. However, this approach is often inaccurate: small misspellings in these variables can easily result in mismatches. For data where names are machine entered, removing obvious sources of mismatches (spaces, capital letters, etc.) may resolve this problem. Small numbers of mismatchs can be manually matching But in many cases the amount of data may make this impossible. Fuzzy merging, also called fuzzy matching, is a solution in that case. 
+Usually when you `merge`, you have a unique ID — or at least enough of one that you can salvage. Sometimes, however, no unique identifier was collected, and you’re left searching for alternative ways to link two datasets. The most obvious way to do this is to try and match on names or other string variables. However, this approach is often inaccurate: small misspellings in these variables can easily result in mismatches. For data where names are machine entered, removing obvious sources of mismatches (spaces, capital letters, etc.) may resolve this problem. Small numbers of mismatches can be manually matching But in many cases the amount of data may make this impossible. Fuzzy merging, also called fuzzy matching, is a solution in that case.
 
 Fuzzy matching refers to the technique of finding strings that approximately match or are the most likely to be similar in two sets of comparisons, rather than exactly matching. Commands that use this type of algorithms will typically give out probabilities of matches and should only be used when exact matching is not an option. If you are thinking about using one of these commands, check with your manager to identify alternatives as fuzzy mergeing's match rate is usually much less than exact matching. Exact matching is almost always preferred if it's possible.
 
 Usually fuzzy matching consists of three steps:
 1. **String cleaning** -- prepare the match data by standardizing spaces, capitalization, removing special characters. Based on the data this can include common phrases such as titles (e.g. "Mrs.") in name.
 2. **Probabilistic matching** -- the fuzzy matching function estimates a probability that an observation in the master data one matches to an observation in the using data.
-3. **Matching review** -- matches need to be reviewed to decide the point (e.g. 0.2 Jaro-winkler distance) where the match is considered successful, after which records need to be manually matched. 
+3. **Matching review** -- matches need to be reviewed to decide the point (e.g. 0.2 Jaro-winkler distance) where the match is considered successful, after which records need to be manually matched.
 
 ### Commands
 There are a few commands that can help with fuzzy mergeing in Stata. All are user written and can be installed using `ssc install [command]` :
 
 #### `reclink`
-- Instead of a single unique ID, you specify one or more variables that `reclink` assess for similarity. For example, two numeric ages of 25 and 26 are a closer match than 35 and 65. `reclink` also supports string matching, so, for example, you can try using string variables in the linkage even if the variables aren’t perfectly clean. After `reclink` these values 
-- `reclink` is has some well known issues: Previous RAs have run into the following issues. Each bullet below describes a problem along with the attempted solutions and whether they succeeded. 
-	- The variable specified to `idusing()` should never be in the master dataset. If this is the case,` _merge match U*` should be right. 
+- Instead of a single unique ID, you specify one or more variables that `reclink` assess for similarity. For example, two numeric ages of 25 and 26 are a closer match than 35 and 65. `reclink` also supports string matching, so, for example, you can try using string variables in the linkage even if the variables aren’t perfectly clean. After `reclink` these values
+- `reclink` is has some well known issues: Previous RAs have run into the following issues. Each bullet below describes a problem along with the attempted solutions and whether they succeeded.
+	- The variable specified to `idusing()` should never be in the master dataset. If this is the case,` _merge match U*` should be right.
 	- `reclink` will not merge in values of shared variables from the using dataset without warning the user. The two datasets shouldn't share any variable names except for the variables for matching.
 	- If `idusing()` and `idmaster()` have the same variable names, matches might not happen properly. When using reclink, tempfiles can be especially helpful, since you will likely need to be jumping back and forth between files to change variables names, and changing names simply for the period of matching might be one of the easiest ways of ensuring you’re preserving the original versions of variable names in your dataset.
-- There is a second `reclink2` command that improves on the `reclink` command and adds many-to-one matching. This is installed by typing `net install dm0082` to install the entire package. 
+- There is a second `reclink2` command that improves on the `reclink` command and adds many-to-one matching. This is installed by typing `net install dm0082` to install the entire package.
 
 #### `matchit`
 - `matchit` only matches single variables to generate a probability score between those variables. You can match multiple columns sequentially and average or weight the probabilities to match on multiple string columns.
