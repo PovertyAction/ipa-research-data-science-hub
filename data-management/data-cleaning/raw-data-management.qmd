@@ -58,7 +58,7 @@ Data comes in many forms, from raw text (.txt) files to multi-sheet Excel (.xls 
 ### Importing different file types
 In Stata 13 and beyond, the import command can import CSV files, excel files, and more depending on the option used (delimited for CSV, excel for excel), and export does the same for exporting. The import excel and import delimited commands provide a number of options that allow for a large amount of control of importing including from where in the workbook data should be imported from and how data should be saved. See help import for details on these options.
 
-If you are new to using import are importing a file type you have not seen before, it can be helpful to use the drop-down menu by clicking “File>Import” and then selecting the appropriate file type. Once you do this, you will be able to copy the specific command syntax directly from the command prompt or review window in Stata to your do-file.
+If you are new to using import are importing a file type you have not seen before, it can be helpful to use the drop-down menu by clicking "File>Import" and then selecting the appropriate file type. Once you do this, you will be able to copy the specific command syntax directly from the command prompt or review window in Stata to your do-file.
 
 The insheet command remains an alternative for .csv, .tsv, and .txt files. It performs differently than import delimited and can be useful for some forms of data, but import delimited should be used preferentially. One thing to note is that it is often a good idea when using the insheet command, to use the option names and have your dataset have the same variable names at those at the top of the raw dataset.
 
@@ -127,7 +127,7 @@ Wide data describes data that has similar values as variables (columns). The sam
   | ------------- | ------------- | ------------- |
   | HH001 | T | C |
 
-There is no correct choice for how data should be stored. You should decided the format to make the data most usable for the analysis being conducted. As a rule of thumb, in a clean dataset each observation is a row, each variable is a column, and each type of observation is a separate dataset [(Wickham, 2014)](https://www.jstatsoft.org/article/view/v059i10). However, the unit of analysis may change for different analyses. An analysis could be conducted at the person-year-level in one analysis, but at the person-level in another. The context of the data being analyzed are required to determine what format the data should be stored in. As long as an ID variable exists for each level of the data (e.g. a long dataset may have a household ID *and* a household member ID). For more guidance on how Stata treats “wide” and “long” datasets as well as how to change between them (reshape the data) type `help reshape` in Stata.
+There is no correct choice for how data should be stored. You should decided the format to make the data most usable for the analysis being conducted. As a rule of thumb, in a clean dataset each observation is a row, each variable is a column, and each type of observation is a separate dataset [(Wickham, 2014)](https://www.jstatsoft.org/article/view/v059i10). However, the unit of analysis may change for different analyses. An analysis could be conducted at the person-year-level in one analysis, but at the person-level in another. The context of the data being analyzed are required to determine what format the data should be stored in. As long as an ID variable exists for each level of the data (e.g. a long dataset may have a household ID *and* a household member ID). For more guidance on how Stata treats "wide" and "long" datasets as well as how to change between them (reshape the data) type `help reshape` in Stata.
 
 When cleaning data, it's generally a good idea to decide how the data will be stored based on how it will be cleaned. For example, if one goal of cleaning is to produce an income variable at the household-level, but income is collected at the respondent-day-level, it may be a good idea to clean the income module separately and keep that dataset long. Then, the income data can be collapsed to the household-level and merged onto the household-level dataset later in the variable construction process. How, or if, that happens is up to you as the analyst.
 
@@ -331,7 +331,7 @@ This process can be repeated for any number of variables. It can also be extende
 
 
 
-Some surveys questions have the option of “check all that apply”, meaning that they allow for multiple responses. If you uncheck the "export select_multiple responses as a series of 1/0 columns" in SurveyCTO desktop, SurveyCTO will export these variables as a string containing all possible answers in the form of a space-separated list (e.g., a variable may have the string “A C E” to indicate responses of A, C, and E).
+Some surveys questions have the option of "check all that apply", meaning that they allow for multiple responses. If you uncheck the "export select_multiple responses as a series of 1/0 columns" in SurveyCTO desktop, SurveyCTO will export these variables as a string containing all possible answers in the form of a space-separated list (e.g., a variable may have the string "A C E" to indicate responses of A, C, and E).
 
 For analysis purposes, it's usually best to split these variables into binary variables, one for each possible choice (A, B, C, D, or E), as well as one for each combination of choices. The IPA-written `stringdum` function can help converting these variables to a more useful form, including separate dummies for each option, variables that count the number of times each option is selected, and several options for naming conventions. The `split` command can also convert these variables, by parsing the variable on spaces. This splits the variable into a new variable after each space (see `help split`). If this is not sufficient, Stata has a number of string functions (`help string functions`). You can also use the `regexm` function to accomplish this, which uses [regular expressions](https://www.stata.com/support/faqs/data-management/regular-expressions/). Below is an example script using both split and regexm to accomplish cleaning a select multiple question manually.
 
@@ -344,7 +344,7 @@ foreach var in `r(varlist)' {
 
 
 /* Exclude from stringvars vars with names that will be too long if we append
-  four characters (“_num”) to them first check using tab that they are not
+  four characters ("_num") to them first check using tab that they are not
   select_mult. If the length of the variable name is greater than 27 characters,
     1. manually verify that it is not a select_mult variable
     2. add it to a special local
