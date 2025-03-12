@@ -1,0 +1,14 @@
+# IPA Writing Guideline: Fractions and Decimals
+# - Spell out simple fractions with hyphens (e.g., two-thirds)
+# - Use decimal points for complex numbers (e.g., 1.375)
+extends: existence
+message: "Spell out simple fractions with hyphens (e.g., 'one-half' instead of '1/2')"
+level: error
+nonword: true
+tokens:
+  - '[1-9]/[1-9]' # Simple fractions like 1/2, 2/3
+  - '[1-9]/(?:10|12)' # Common fractions like 3/10, 5/12
+exceptions:
+  - '\d+\.\d+' # Decimal numbers
+  - '\d+/\d+/\d+' # Dates
+  - '\d+:\d+/\d+' # Ratios or technical notation

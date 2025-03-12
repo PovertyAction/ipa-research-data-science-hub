@@ -1,7 +1,7 @@
+# Avoid use of certain words and hyphenation
 extends: substitution
 message: "Use '%s' instead of '%s'."
-link: "https://github.com/DataDog/documentation/blob/master/CONTRIBUTING.md#words-and-phrases"
-ignorecase: false
+ignorecase: true
 level: warning
 action:
   name: replace
@@ -27,7 +27,6 @@ swap:
   'data(?:\s|-)sets': datasets
   data-?center: data center
   data-?centers: data centers
-  'Datadog (?:app|application)': Datadog|Datadog site
   Datadog product: Datadog|Datadog service
   data-?source: data source
   data-?sources: data sources
@@ -89,8 +88,6 @@ swap:
   multi-?alert: multi alert
   multicloud: multi-cloud
   multiline: multi-line
-  # Note that: "**Note**:"
-
   (?:obvious|obviously|Obviously): ''
   off-line: offline
   on the fly: real-time|in real time
@@ -111,8 +108,6 @@ swap:
   'run(?:\s|-)time': runtime
   refer to|visit: see|read|follow
   time board: timeboard
-  # 'time(?:\s|-)series': timeseries
-
   time-?frame: time frame
   time-?frames: time frames
   top-?list: top list
@@ -135,3 +130,30 @@ swap:
   (?:sql|Sql): SQL
   (?:stata|STATA): Stata
   (?:unix|Unix): UNIX
+  # IPA words
+
+  # Non-hyphenated words
+  drop-out: dropout
+  base-line: baseline
+  end-line: endline
+  field-work: fieldwork
+  health-care: healthcare
+  spill-ovor: spillover
+  small-holder: smallholder
+  policy-maker: policymaker
+  pre-school: preschool
+  de-worming: deworming
+  roll-out: rollout
+  turn-out: turnout
+  # Hyphenated words
+
+  costsharing: cost-sharing
+  costeffective: cost-effective
+  costeffectiveness: cost-effectiveness
+  decisionmaking: decision-making
+  decisionmakers: decision-makers
+  schoolage: school-age
+  schoolbased: school-based
+  ultrapoor: ultra-poor
+  'Right-Fit Evidence Unit': Right-Fit Evidence Unit
+  Cocreation: Co-creation

@@ -1,0 +1,20 @@
+# IPA Writing Guideline: Spell out Numbers
+# - Spell out numbers one through nine
+# - Always use numerals for: age, speed, date, time, addresses, percentages,
+#   dimensions, temperatures, money, millions, billions, tables, and figures
+extends: existence
+message: Consider spelling out numbers one through nine unless they relate to measurements, money, or appear with larger numbers.
+level: suggestion
+nonword: true
+tokens:
+  - '\s[2-9](?!\d)' # Single digits 2-9
+  - '\s[2-9](?=\s)' # Single digits with space after
+exceptions:
+  - '\d+%' # Percentages
+  - '\d+\s*°[CF]' # Temperatures
+  - '\$\d+' # Money
+  - '\d+\s*(?:km|m|cm|mm|kg|g|mg|mph|lb|ft|in)' # Measurements
+  - '\d+:\d+' # Time
+  - '\d+/\d+/\d+' # Dates
+  - '\d+\s*years?' # Age
+  - '\b\d+(?:\s*million|\s*billion)' # Large numbers

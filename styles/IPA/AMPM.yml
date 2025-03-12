@@ -1,0 +1,11 @@
+# IPA Writing Guideline: Time Format
+# Use lowercase "a.m." and "p.m." with periods
+# Include space between time and a.m./p.m.
+extends: existence
+message: "Use lowercase 'a.m.' or 'p.m.' with periods and a space: '%s'"
+level: error
+nonword: true
+tokens:
+  - '\d{1,2}(?::\d{2})?\s*(?:AM|PM|am|pm|A\.M\.|P\.M\.|[aApP]m)' # Incorrect meridian format
+  - '\d{1,2}(?::\d{2})?\s*[aApP]\.?[mM]\.?(?!\.)' # Missing or incorrect periods
+  - '\d{1,2}(?::\d{2})?[aApP]\.?[mM]\.?' # Missing space before meridian
