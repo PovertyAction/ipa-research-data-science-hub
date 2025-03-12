@@ -79,9 +79,9 @@ recode * (-99=.)
 
 ### Extended missing values in Stata
 
-Stata has special codes for numeric missing values. For numeric variables, missing values are considered to be greater in value than all other numbers and themselves have an order of magnitude. The magnitude of missing values increases across the alphabet, with the standard missing value `.` coming before `.a`: `.` <  `.a` <  `.b` <  `.c` < ... < `.z` The `.a`, `.b`, etc. are called "extended missing values." . Note that extended missing values cannot be stored in string variables. Instead, all string variables with a missing value are shown as `""` (called "blank").
+Stata has special codes for numeric missing values. For numeric variables, missing values are considered to be greater in value than all other numbers and themselves have an order of magnitude. The magnitude of missing values increases across the alphabet, with the standard missing value `.` coming before `.a`: `.` <  `.a` <  `.b` <  `.c` < ... < `.z` The `.a`, `.b`, etc. are called “extended missing values.” . Note that extended missing values cannot be stored in string variables. Instead, all string variables with a missing value are shown as `“”` (called “blank”).
 
-Ensure extended missing values consistently represent missing values in your data. For instance, if -99 and -999 refer to "don't know" in two different waves of the survey, they should be standardized. In that case, you will want to replace all -99 and -999 values with `.d`. It can be helpful to use the recode command to efficiently replace those values. We suggest keeping the following standards for extended missing values:
+Ensure extended missing values consistently represent missing values in your data. For instance, if -99 and -999 refer to “don't know” in two different waves of the survey, they should be standardized. In that case, you will want to replace all -99 and -999 values with `.d`. It can be helpful to use the recode command to efficiently replace those values. We suggest keeping the following standards for extended missing values:
 
 | Type of Missing | Extended Missing |
 | ---- | ---- |
@@ -157,9 +157,9 @@ We recommend checking outliers and replacements manually, and to search for moda
 
 ## Categorical and dummy variables
 
-Categorical variables are ones that have no obvious ordering to the responses. For example, the question "What crop do you grow?" could have the following answers: soy bean, maize, cassava, ground nut, and yams. It can be helpful to have a numeric value attached to each response, however there is no clear ordering here. You can use the command encode to create a value for each in alphabetical order and it keeps the original response as the value label.
+Categorical variables are ones that have no obvious ordering to the responses. For example, the question “What crop do you grow?” could have the following answers: soy bean, maize, cassava, ground nut, and yams. It can be helpful to have a numeric value attached to each response, however there is no clear ordering here. You can use the command encode to create a value for each in alphabetical order and it keeps the original response as the value label.
 
-Dummy variables are one of the most common variable types you will use. These are also referred to as Boolean or indicator variables. These variables typically take on the values 0 and 1. However, it is important to note that your variable could and/or should have missing values if applicable. For example, an indicator about whether someone has a credit score could be defined as 1 for yes, 0 for no score and missing would mean there was no credit information available about that individual. Note that 0 and missing have different meanings and you should be careful around if and what values are missing.  In Stata, you have several options for creating a dummy variable. Two examples of creating this "Has a credit score" dummy variable is below.
+Dummy variables are one of the most common variable types you will use. These are also referred to as Boolean or indicator variables. These variables typically take on the values 0 and 1. However, it is important to note that your variable could and/or should have missing values if applicable. For example, an indicator about whether someone has a credit score could be defined as 1 for yes, 0 for no score and missing would mean there was no credit information available about that individual. Note that 0 and missing have different meanings and you should be careful around if and what values are missing.  In Stata, you have several options for creating a dummy variable. Two examples of creating this “Has a credit score” dummy variable is below.
 
 1. This first way recommended method is to start with an entirely missing variable and then replace with `1's` and `0's` for each condition.
 
@@ -181,14 +181,14 @@ This method does the above in one step. The first half creates a 1/0 dummy by as
 
 ## "Specify" Variables
 
-Survey questions may have a "specify" option, in which the respondent explains their answer or gives an alternate answer not available on the list of choices for that question. These are often triggered by an "other" response. In the raw dataset, alongside the original variable will be a "specify" variable that shows the comments for that question. You (or someone else familiar with the survey) will sometimes need to read through these specify answers and then recode the original variable accordingly. ("Specify" variables are also called other/specify variables, "other" variables, and free-text variables.)
+Survey questions may have a “specify” option, in which the respondent explains their answer or gives an alternate answer not available on the list of choices for that question. These are often triggered by an "other" response. In the raw dataset, alongside the original variable will be a “specify” variable that shows the comments for that question. You (or someone else familiar with the survey) will sometimes need to read through these specify answers and then recode the original variable accordingly. (“Specify” variables are also called other/specify variables, “other” variables, and free-text variables.)
 
-For example, if a question asked for someone's favorite color, giving the options of blue, red, yellow, green, and other. If someone answered "other" and then wrote "sky blue" for their answer, you would want to recode the original variable for favorite color to say "blue" instead of "other". However, if someone wrote "purple" you could leave their response as is (or, if enough people wrote purple, you could add another category to the variable).
+For example, if a question asked for someone's favorite color, giving the options of blue, red, yellow, green, and other. If someone answered “other” and then wrote “sky blue” for their answer, you would want to recode the original variable for favorite color to say “blue” instead of “other”. However, if someone wrote “purple” you could leave their response as is (or, if enough people wrote purple, you could add another category to the variable).
 
 Particularly for large surveys, this can be a hassle. One helpful approach is to do the following:
--	First clean each string variable so that similar answers will show the same value. Use string functions like `lower()`, `trim()`, and `itrim()` to convert answers like "PUR pLE", " Purple" and "purple" to all be "purple".
--	For each specify variable, collapse the dataset into unique answers (for example, if three people wrote "purple" the collapsed dataset would only show "purple" once).
--	Store those unique answers into a spreadsheet with another column that shows what variable the answer corresponds to. Then, leave one column blank, which you will eventually fill in with the value from the original variable that the response corresponds to (if it should be recoded). For instance, next to "purple" you would put nothing, but next to "sky blue" you would put 1 if 1 corresponded to the "blue" answer option.
+-	First clean each string variable so that similar answers will show the same value. Use string functions like `lower()`, `trim()`, and `itrim()` to convert answers like “PUR pLE”, “ Purple” and “purple” to all be “purple”.
+-	For each specify variable, collapse the dataset into unique answers (for example, if three people wrote “purple” the collapsed dataset would only show “purple” once).
+-	Store those unique answers into a spreadsheet with another column that shows what variable the answer corresponds to. Then, leave one column blank, which you will eventually fill in with the value from the original variable that the response corresponds to (if it should be recoded). For instance, next to “purple” you would put nothing, but next to “sky blue” you would put 1 if 1 corresponded to the "blue" answer option.
 -	Write code to merge the manual corrections from the excel file back into the do file, instead of running this as a series of `replace` or `` if `var' == "sky blue" | `var' == "ocean blue" | `var' == ... `` commands in the do file.
 
 Make sure you save do files and documents so that this process can be replicated and understood by someone else in the future.
@@ -422,7 +422,7 @@ foreach var of local date_vars {
 			 replace `v' = cofd(`v')
 			 format `v' %tc_CCYY_NN_DD
 		}
-		else if regexm("`: format `var'', "%t") continue
+		else if regexm(“`: format `var'', “%t”) continue
 	*/
 	if regexm("`: format `var''", "%t") continue
 
@@ -482,7 +482,7 @@ Building these tests into your data flow should be a natural test that you work 
 
 ```stata
 *Check merge success rate
-merge 1:1 id using "plots.dta" // note: merge has a built-in assert option
+merge 1:1 id using “plots.dta” // note: merge has a built-in assert option
 count if _merge != 3 // check how many merges did not have an observation in both
 assert `r(N)' == 1
 ```
@@ -492,7 +492,7 @@ These tests should be built into cleaning code, as they are computationally chea
 
 Survey data has the benefit of coming from a survey that you, as an analyst, have probably programmed. The survey software and import process often controls for many types of errors. However, data management errors can also occur due to the particular forms that survey data contains. We find these errors are common in survey data management:
 - Missing values occur in variables that the programmer assumes always has real values
-	- Missing values are inconsistently defined in the survey and are not fully replaced (e.g. "Not Applicable" is -99, -98, and 77)
+	- Missing values are inconsistently defined in the survey and are not fully replaced (e.g. “Not Applicable” is -99, -98, and 77)
 - Variable or value options change between survey versions and aren't reconciled
 	- Variables with the same name are overwritten as part of a merge. See `h mmerge` for a user written command that stores this information.
 - Observations are not unique and some actions such as sorting become irreproducible
@@ -505,7 +505,7 @@ There are often a broader set of concerns for administrative data as we do not d
 
 Some additional concerns to focus on in administrative data are:
 - Ensure that variables remain consistent over repeated deliveries
-- Data translation and missingness standards of the storage system may create values in statistical software (e.g. SQL treats missing as "NULL")
+- Data translation and missingness standards of the storage system may create values in statistical software (e.g. SQL treats missing as “NULL”)
 
 Variable consistency can be handled using value labeling in Stata. For example, to ensure that data remains the same over the course of data collection, it can be useful to check that categorical variables map to expected values to a previously created value label. The `noextend` option of the encode commands allows you to confirm no values exist in the variable other than those in the supplied label. The following code accomplishes this:
 

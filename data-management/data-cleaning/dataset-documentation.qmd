@@ -218,7 +218,7 @@ Sometimes you will want to attach information or other labeling that is longer t
 
 ### Notes
 
-One variable can have multiple notes. Notes can be added into variables by typing  `note VARIABLE : "Note"` (i.e. for variable `VARIABLE` the note `note` was added as. To display the notes stored in one variable just type "notes VARIABLE". Notes are also stored in Stata as locals and can be called using `` `VARIABLE[note1]' ``. These notes are numbered based on the order in which they are received. Note's ordering can be modified and deleted by the `note` command (see `help notes` in Stata).
+One variable can have multiple notes. Notes can be added into variables by typing  `note VARIABLE : “Note”` (i.e. for variable `VARIABLE` the note `note` was added as. To display the notes stored in one variable just type “notes VARIABLE”. Notes are also stored in Stata as locals and can be called using `` `VARIABLE[note1]' ``. These notes are numbered based on the order in which they are received. Note's ordering can be modified and deleted by the `note` command (see `help notes` in Stata).
 
 Survey CTO includes the full text of the question from the survey instrument as variable notes (as well as the truncated questions as variable labels) as part of the import do file. These notes will always be in the downloaded language. They will not contain filled values for the respondent that are produced as the result of calculate fields.
 
@@ -310,7 +310,7 @@ foreach name of local varnames {
 ## Value labels
 
 
-For categorical variables the raw data will often show the string values for the selected response. For instance, you may see "male" and "female" displayed as possible responses to the variable gender. When doing calculations, however, you'll need these variables to be numeric (in the float or long format) – if they are not already imported this way. It is helpful to preserve the extra information the strings capture by using "value labels." A value label such as gender would assign "female" to 0 and "male" to 1 and display female and male to the analyst. See `help label` for how to do this in Stata. It is very important to label values for two reasons:
+For categorical variables the raw data will often show the string values for the selected response. For instance, you may see “male” and “female” displayed as possible responses to the variable gender. When doing calculations, however, you'll need these variables to be numeric (in the float or long format) – if they are not already imported this way. It is helpful to preserve the extra information the strings capture by using “value labels.” A value label such as gender would assign “female” to 0 and “male” to 1 and display female and male to the analyst. See `help label` for how to do this in Stata. It is very important to label values for two reasons:
 - it provides information to the analyst that will reduce mistakes made in coding or analyzing data
 - many programs will use information on whether a variable has value labels in order to identify it as a categorical variable, as opposed to a continuous numeric variable.
 
