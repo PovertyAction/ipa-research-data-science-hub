@@ -14,6 +14,19 @@ contributors:
 
 > Computer-Assisted Telephone Interview (CATI) surveys offer unique advantages, such as the ability to assign enumerators randomly without the logistical constraints of in-person surveys (e.g., geographic area, travel costs). However, challenges like Random Digit Dialing (RDD) and respondent tracking require careful planning. This guide provides best practices and tools for conducting effective CATI surveys.
 
+## Remote Surveying in a Pandemic: Handbook
+
+### Executive Summary
+Innovations for Poverty Action (IPA) is a research and policy nonprofit that discovers and promotes effective solutions to global poverty problems. As part of IPA's response to COVID-19, many data collections have shifted to remote modes including CATI, interactive voice response (IVR) and SMS surveys.
+
+This transition has required new protocols, tools, and workflows to ensure high-quality data collection. This document contains tips and best practices for shifting face-to-face surveys to remote modes during pandemic conditions.
+
+IPA's Global Research and Data Support (GRDS) team has created technical tools and protocols that fall into four categories:
+1. Data collection
+2. Measurement
+3. Field logistics
+4. Data quality
+
 ## CATI Surveys
 
 | Advantages of CATI Surveys | Challenges of CATI Surveys |
@@ -27,20 +40,15 @@ contributors:
 | **Flexibility in Scheduling:** Surveys can be conducted at convenient times for respondents, improving response rates. | **Call Timing:** Respondents may not answer calls during certain times (e.g., work hours). Balancing call attempts to avoid annoying respondents. |
 | **Enhanced Monitoring:** Supervisors can monitor calls in real time, ensuring quality control. Automated systems track call outcomes (e.g., completed, refused, invalid). | **Complex Survey Design:** Surveys with long or complex questionnaires may lead to respondent fatigue. Difficulty in maintaining respondent engagement over the phone. |
 
-
 ## 1. Random Enumerator Assignment
 
 ### Why Random Assignment Matters
-
 - Ensures fairness in workload distribution.
 - Improves replicability of survey administration.
 
 ### Tools for Random Assignment
 
 #### Using Stata for Replicable Randomization
-To assign enumerators randomly and ensure replicability, use the following Stata script:
-
-
 ```stata
 clear all
 
@@ -66,112 +74,161 @@ forval user=1/`=wordcount("${enumlist}")' {
     replace users = "`=word("${enumlist}", `user')'" if enumsl == `user'
 }
 drop enumsl
-```
 
-This code can also be adapted for reassignment if an enumerator is dropped. For example, if an enumerator leaves the project, their cases can be reassigned by replacing their `users` as empty and rerunning the code.
+### Choosing to Continue Data Collection during COVID-19
 
-### Matching Enumerators to Respondents
-In some cases, you may need to match enumerators to respondents based on characteristics like language or gender. Considerations include:
+Before shifting to remote data collection, consider:
 
-- Languages spoken by enumerators.
-- Number of respondents already assigned to each enumerator.
-- Total cases assigned to avoid overloading enumerators (keep cases below 100 for optimal performance).
+- Whether data is needed immediately
+- If data can be collected safely and ethically
+- Feasibility of obtaining reliable phone numbers
+- Respondent access to phones with airtime, power, and signal
+- Ability to compensate respondents
+- Ethics of re-contacting respondents
 
----
+### Choosing an Appropriate Mode
 
-## 2. Enumerator Re-assignment
+Recommended modes:
 
-### Challenges in Re-assignment
+- **CATI**: Best for data quality but requires interviewers
+- **IVR**: Lower cost but may frustrate respondents
+- **SMS**: Limited by literacy and message length
+- **Web**: Less common in low-income countries
 
-- Language barriers.
-- Respondent availability.
+### Research Goals by Mode
 
-### Solutions
+| Goal                  | CATI | IVR | SMS | Web |
+|-----------------------|------|-----|-----|-----|
+| Tracking respondents  | ~    | +   | ~   | -   |
+| Updating contact info | +    | -   | ~   | ~   |
+| Determining language  | +    | +   | -   | +   |
+| High-frequency data   | ~    | +*  | +*  | +   |
+| Sensitive outcomes    | ~    | ~   | -   | ~   |
+| High response rates   | +    | -   | -   | -   |
+| Large samples         | -    | +   | ~   | +   |
 
-- **SurveyCTO Case Management:** Enables language-based re-assignment.
-- **Stata Workflow for Complex Cases:** Re-assign cases systematically when required.
+### IRB and Data Protection
 
----
+Key considerations:
 
-## 3. Survey and Respondent Tracking
+- Protocol changes for remote surveying
+- Interviewer data security
+- Informed consent modifications
+- Privacy protections
 
-### Tracking Surveys
-Survey tracking involves monitoring the status of surveys in real time. Key considerations include:
+### Interviewer Data Security
 
-- **Daily Survey Goals**: Estimate the number of surveys to be completed daily by enumerator and overall.
-- **Productivity Monitoring**: Use tools like SurveyCTO’s Data Explorer and Monitor tab to track survey completions.
-- **Field Reports**: Document survey processes, challenges, and outcomes in a field report for the project manual.
+- Avoid using personal devices when possible
+- Implement strong password protection
+- Wipe protected data after collection
+- Use masking services for caller ID
 
-#### Tools for Survey Tracking:
+### Questionnaire Design
 
-- **SurveyCTO**: Tracks surveys in real time and allows data export to Google Sheets for custom productivity tables.
-- **IPA’s Data Management System**: Use the `progreport` command to generate summaries of surveys completed by day and geographic/categorical variables.
+Key Adaptations:
 
-### Common Reasons for Non-completion
-Tracking respondents ensures that hard-to-reach individuals are not overlooked. Common reasons for non-completion include:
+- Reduce survey duration (20-30 minutes max)
+- Build in respondent identification
+- Create language reassignment protocols
+- Include attention checks
+- Structure for potential dropped calls
 
-- Death
-- Refusal
-- Permanent or temporary relocation
-- Unavailability
+### Sampling Approaches
 
-#### Tools for Respondent Tracking:
+**Existing Samples:**
 
-- **SurveyCTO Case Management**: Automates respondent assignment and tracks statuses. Enumerators can only see their assigned respondents, and completed cases are removed from their lists.
-- **IPA’s Tracking Survey Template**: Use this template to create a separate dataset for tracking unsuccessful attempts.
+- Use numbers from earlier rounds
+- Update contact information regularly
+- Incentivize respondents to maintain current info
 
----
+**New Samples:**
 
-## 4. Baseline and Endline Considerations
+- **Unscreened RDD**: Randomly generated numbers  
+  - High proportion of ineligible numbers
+- **Screened RDD**: Active numbers from mobile operators  
+  - More efficient but may miss new numbers
 
-### Baseline Surveys
+### Infrastructure
 
-- **Replacements**: Replace respondents who have died or permanently moved, ensuring replacements are random and representative.
-- **Replacement Rules**: Limit the number of replacements per enumerator to avoid bias. For example, provide 12 households for 10 required surveys, allowing 2 replacements.
+**Equipment Options:**
 
-### Endline Surveys
+- Cellular Android device for calls and data
+- Separate devices for calls and data entry
+- Non-cellular device + personal phone (with IRB approval)
 
-- **Attrition**: Track attrition rates daily and make every effort to survey respondents, even if they have moved. High attrition can bias results.
-- **Panel Data**: Collect detailed identification information during the baseline to facilitate endline tracking.
+**Recommended Software:**
 
----
+- SurveyCTO (CATI starter kit, field plug-ins)
+- Exotel/Twilio for call masking
+- Third-party airtime transfer services
 
-## 5. Respondent Information Tracking Tips
+### Protocols
 
-### Key Information to Collect:
+**Physical Set-up:**
 
-- **Phone Numbers**: Collect at least one phone number, ideally multiple, to account for network issues.
-- **Contacts**: Gather contact information for people who know the respondent (e.g., family, business associates).
-- **Directions**: Record detailed directions to the respondent’s home and workplace.
-- **Future Contact**: Include future contact details in the informed consent form.
+- Virtual phone banks during pandemic
+- Provide necessary equipment (headsets, chargers)
+- Ensure reliable internet access
 
-### Training Enumerators:
+**Call Scheduling Protocol Example:**
 
-- Provide clear instructions on the level of detail required for tracking.
-- Use examples to illustrate how to record information (e.g., landmarks, house color).
+| Category         | Example            |
+|------------------|--------------------|
+| Call frequency   | Every other day    |
+| Call hours       | 8am-8pm, Mon-Sat   |
+| Max calls        | 5 attempts         |
+| Pre-notification | SMS one day before |
+| Dialing          | Ring for 1 minute  |
+| Rescheduling     | Explicitly offer   |
 
-### Organizing Information:
+### Interviewer Training
 
-- Centralize tracking information through a single point person.
-- Use tools like Microsoft Access or mail merge for efficient data management.
+**Key Components:**
 
----
+- Remote training format with mixed approach
+- Daily check-ins and breakout sessions
+- Mental health awareness
 
-## 6. Mop-Up Operations
-### Purpose of Mop-Up
+**Comprehensive content:**
 
-- Locating hard-to-reach respondents to reduce survey bias.
+- Research ethics
+- Phone protocols
+- Data security
+- Questionnaire specifics
 
-Despite best efforts, some respondents will remain difficult to find. Budget time and resources for mop-up operations to track these individuals. Use tools like:
+**Training Quizzes:**
 
-- **IPA’s `progreport` Command**: Track uninterviewed respondents and create a dataset for follow-up.
-- **SurveyCTO Case Management**: Automatically update respondent lists for mop-up teams.
+- Administer daily comprehension checks
+- Focus on consent procedures
+- Test protocol knowledge
+- Include practice surveys
 
----
+### Tracking & Case Management
 
-## Conclusion
+**Respondent Information to Collect:**
+
+- Multiple phone numbers
+- Preferred contact times
+- Alternate contacts (family/friends)
+- Detailed location information
+
+**Daily Workflows:**
+
+- Standard calling protocols
+- Case escalation procedures
+- Automated assignment tools (e.g., SurveyCTO case management)
+
+**Special Case Protocols:**
+
+- Soft refusals
+- Dropped calls
+- Wrong respondent
+- Language mismatches
+- Interviewer turnover
+
+### Conclusion
+
 Effective CATI surveys require careful planning, robust tools, and diligent tracking. By leveraging tools like SurveyCTO and Stata, and following best practices for enumerator assignment and respondent tracking, you can ensure high-quality data collection and minimize bias.
 
----
 
 _Last updated: february 2025_
