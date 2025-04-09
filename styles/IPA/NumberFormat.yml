@@ -1,0 +1,12 @@
+# IPA Writing Guideline: Number Format
+# In numbers of four or more digits, use commas between groups of three digits,
+# counting from the right, except for:
+# - Years (e.g., 1995, 2004)
+# - Page numbers (e.g., pp. 972–1003)
+extends: existence
+message: "Numbers with 4 or more digits should use commas as thousand separators: '%s'"
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(?!(?:1[0-9]{3}|2[0-9]{3})\b)(?!(?:p{1,2}\.\s*)\d+)\d{4,}\b(?<!,\d{3})'

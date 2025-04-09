@@ -1,0 +1,12 @@
+# IPA Writing Guideline: Parentheses
+# Avoid parentheses when possible and instead rewrite the text or use em dashes
+# or commas to set off the information.
+extends: existence
+message: "Consider rewriting this sentence, use em dashes or commas instead of parentheses: '%s'"
+level: suggestion
+nonword: true
+tokens:
+  - '\([^())]+\)' # Matches text within parentheses, avoiding nested parentheses
+exceptions:
+  - '\(\d+\)' # Allow numbered references like (1) or (2)
+  - '\([A-Za-z]\)' # Allow lettered references like (a) or (b)

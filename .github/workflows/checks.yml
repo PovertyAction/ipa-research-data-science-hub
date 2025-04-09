@@ -1,0 +1,22 @@
+name: formatting-and-writing-style
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - uses: pre-commit/action@v3.0.1
+  vale:
+    needs: pre-commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: errata-ai/vale-action@v2.1.1
+        with:
+          reporter: github-pr-check # github-pr-check, github-pr-review, github-check
+          fail_on_error: false
+          filter_mode: file # added, diff_context, file, nofilter
