@@ -2,16 +2,12 @@ project:
   type: website
 format:
   html:
-    #include-in-header:
-    #- ../../progress-bar.html
     theme:
       light: [cosmo, ./assets/light-theme.scss]
-      #dark: [cosmo, ./assets/dark-theme.scss]
     css: ./assets/styles.css
     toc: true
     toc-title: "In this resource"
     template-partials:
-      #- ./assets/title-block.html
       - ./assets/toc.html
     grid:
       sidebar-width: 250px
@@ -42,11 +38,13 @@ website:
   repo-actions: [edit, issue]
   page-navigation: true
   navbar:
-    search: true
     title: "Research & Data Science Hub"
     background: white
     logo: assets/images/ipa-logo-abbreviated.png
-    collapse-below: xxl
+    collapse: true
+    collapse-below: md
+    toggle-position: left
+    tools-collapse: true
     pinned: false
     border: false
     tools:
@@ -180,7 +178,7 @@ website:
               - text: "In-Person Surveys 🚧"
                 href: ./under-construction.qmd
               - text: "Phone Surveys"
-                href: ./data-collection/phone-surveys.qmd
+                href: ./under-construction.qmd
               - section: "WhatsApp Surveys"
                 contents:
                   - text: "About WhatsApp Surveys"
@@ -209,17 +207,16 @@ website:
                 href: ./data-management/data-collection/admin-data.qmd
           - section: "Data Cleaning"
             contents:
-              - section: "IPA/GPRL Data Cleaning Guide"
+              - text: "Intro to Data Cleaning"
                 href: ./data-management/data-cleaning/index.qmd
-                contents:
-                  - text: "Raw Data Management"
-                    href: ./data-management/data-cleaning/raw-data-management.qmd
-                  - text: "Variable Management"
-                    href: ./data-management/data-cleaning/variable-management.qmd
-                  - text: "Dataset Documentation"
-                    href: ./data-management/data-cleaning/dataset-documentation.qmd
-                  - text: "Data Aggregation"
-                    href: ./data-management/data-cleaning/data-aggregation.qmd
+              - text: "Raw Data Management"
+                href: ./data-management/data-cleaning/raw-data-management.qmd
+              - text: "Variable Management"
+                href: ./data-management/data-cleaning/variable-management.qmd
+              - text: "Dataset Documentation"
+                href: ./data-management/data-cleaning/dataset-documentation.qmd
+              - text: "Data Aggregation"
+                href: ./data-management/data-cleaning/data-aggregation.qmd
       - section: "Software Guides"
         contents:
           - section: "Stata"
