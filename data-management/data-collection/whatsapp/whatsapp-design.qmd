@@ -22,8 +22,16 @@ contributors:
   - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
 ---
 
-:::{.page-subtitle}
-This resource will help you gain proficiency in utilizing Twilio's features. Delve into Twilio's menus and options to navigate its functionalities effortlessly. Learn about WhatsApp templates and how to create them effectively. Gain insights into utilizing and creating basic widgets within a flow and master leveraging functions for seamless integration. By the end, you'll be well-equipped to publish and effectively manage information collected through WhatsApp Surveys.
+:::{.custom-summary-block}
+Learn about WhatsApp templates and how to create them effectively.
+:::
+
+![WhatsApp Survey Design (® ODISSEI)](/assets/images/whatsapp-survey-design.jpg){width=100%}
+
+:::{.callout-tip appearance="simple"}
+## Key Takeaways
+* Delve into Twilio's menus and options to navigate its functionalities effortlessly, utilizing and creating basic widgets within a flow and leveraging functions for seamless integration. 
+* By the end, you'll be well-equipped to publish and effectively manage information collected through WhatsApp Surveys.
 :::
 
 ## Content Template Builder in Twilio
@@ -187,15 +195,15 @@ The Wait function creates a pause in the flow execution, allowing for a more nat
 
 6. **Paste the Code**: Within the "wait" function, paste the following lines of code.
 
-::: {.callout-code style="text-align: center; font-family: 'Roboto Mono', monospace; border: 1px solid #49ac57; background-color: #e6f4ea;"}
-<br>
+
+```python
 exports.handler = function(context, event, callback) { <br>
  setTimeout(function() { <br>
  return callback(null, null) <br>
   }, 1000) <br>
 }
-:::
-<br>
+```
+
 7. **Save the Function**: Save the function after pasting the code to ensure your changes are preserved.
 8. **Dependencies**: Click on the dependency configuration and select the "Node.js v16" option.
 9. **Deploy the Service**: Once the function is saved, deploy the entire service to make the changes effective.
@@ -211,5 +219,3 @@ This function will be covered in detail in the [Whatsapp survey deploy](whatsapp
 The Encrypt function is designed to encrypt variables, ensuring that sensitive information, such as personally identifiable information (PII), remains secure when data is stored or published. By encrypting the variables, the values are transformed into a secure format, protecting them from unauthorized access or exposure. This functionality is crucial for safeguarding sensitive information and maintaining the privacy and confidentiality of user data within the server. The Encrypt function provides a robust layer of security to prevent the public disclosure of sensitive data.
 
 This function will be covered in detail in the [Whatsapp data security](whatsapp-data-security.qmd) section.
-
-*Updated January 2025*

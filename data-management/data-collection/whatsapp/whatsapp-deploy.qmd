@@ -1,19 +1,37 @@
 ---
 title: "Deploying a WhatsApp Survey"
 
+#------------------------------------------------------------------
 # Authors
-# Authors are the main creators of the site's content, credited for their work and responsible for its core development, including writing and editing.
+#------------------------------------------------------------------
+# Authors are the main creators of the site's content, credited
+# for their work and responsible for its core development,
+# including writing and editing.
+#------------------------------------------------------------------
 authors-ipa:
   - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
 
+#------------------------------------------------------------------
 # Contributors
-# Contributors provide support, such as feedback or supplementary materials for the site. They can also be responsible for updating/maintaining the site.
+#------------------------------------------------------------------
+# Contributors provide support, such as feedback or supplementary
+# materials for the site. They can also be responsible for
+# updating/maintaining the site.
+#------------------------------------------------------------------
 contributors:
   - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
 ---
 
-::: {.page-subtitle}
-This resource will help you learn how to prepare for launching a WhatsApp Survey on your computer. Learn the essential steps to configure your computer for a smooth survey launch fully. Additionally, learn about the usage of the launching Python code.
+:::{.custom-summary-block}
+This resource will help you learn how to prepare for launching a WhatsApp Survey from your computer.
+:::
+
+![WhatsApp Messaging (® Kuu Akura)](/assets/images/whatsapp-messaging.jpg){width=100%}
+
+:::{.callout-tip appearance="simple"}
+## Key Takeaways
+* Learn the essential steps to configure your computer and tools for a seamless WhatsApp survey launch.
+* Understand how to create and manage a cases file and integrate it with Twilio and Google Sheets for effective data collection.
 :::
 
 ## Setting Up Your Computer
@@ -96,13 +114,11 @@ To launch your survey, you will use the following Python code. Follow these next
 1. **Access Command Prompt or PowerShell**: Open the command prompt (cmd) or PowerShell on your computer to start the process.
 2. **Run the Python Script**:
 
-::: {.callout-code style="text-align: center; font-family: 'Roboto Mono', monospace; border: 1px solid #49ac57; background-color: #e6f4ea;"}
-<br>
+```python
 cd requests_to_twilio
 
 python twilio_launcher.py --account_sid your_account_sid --account_token your_account_token --twilio_number your_twilio_number --flow_id flow_id --input_file full_path_to_input_file --batch_size batch_size --sec_between_batches sec_between_batches --columns_with_info_to_send caseid,name,city,gender,age
-:::
-<br>
+```
 
 Ensure you replace the placeholders; here is where you can find the information needed:
 
@@ -116,12 +132,6 @@ Ensure you replace the placeholders; here is where you can find the information 
 - Include Additional Information: If your file contains extra columns with pertinent information, specify them in the `columns_with_info_to_send` argument, separating column names by commas.
 
 
-::: {.callout-tip style="text-align: center; font-family: 'Roboto Mono', monospace; border: 1px solid #49ac57; background-color: #e6f4ea;"}
-<br>
-If you run into trouble running this code, please email: <br> *researchsupport@poverty-action.org* <br>
-<br>
+::: {.callout-tip}
+If you ever run into trouble running this code, please email: <br> *researchsupport@poverty-action.org* <br>
 :::
-
-
-
-*Updated January 2025*

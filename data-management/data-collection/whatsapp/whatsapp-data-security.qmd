@@ -21,8 +21,17 @@ authors-ipa:
 contributors:
   - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
 ---
-:::{.page-subtitle}
-This resource guides you through securing your data collected via Twilio. You'll learn to create and configure an encryption widget in Twilio, understand and use Python encryption code before publishing to Google Sheets, and decrypt data using Python. By the end, you'll be equipped to implement robust encryption measures, ensuring your data's confidentiality and integrity.
+
+:::{.custom-summary-block}
+This resource guides you through securing your data collected via Twilio by implementing robust encryption measures, ensuring your data's confidentiality and integrity.
+:::
+
+![WhatsApp Encryption (® Chris Stein)](/assets/images/whatsapp-encrypt-image.jpg){width=100%}
+
+:::{.callout-tip appearance="simple"}
+## Key Takeaways
+* Encryption ensures the confidentiality and integrity of sensitive data collected via WhatsApp surveys.
+* Proper decryption methods allow secure access to the original data while maintaining its protection during storage and transfer.
 :::
 
 ## Encrypting Data via WhatsApp Surveys
@@ -80,12 +89,9 @@ Once your encrypted data is sent to Google Sheets, you'll receive strings that m
 ### Run Decryption Code:
 1. Execute the following Python code in the command prompt:
 
-::: {.callout-code style="text-align: center; font-family: 'Roboto Mono', monospace; border: 1px solid #49ac57; background-color: #e6f4ea;"}
-<br>
+```python
 python .\csv_decryptor.py --encrypted_csv_path X:\path\to\your\csv\demo.csv --list_of_columns_to_decrypt col1,col2 --secret_key your_secret_key1
-<br>
-:::
-<br>
+```
 
 2. Ensure you replace the placeholders; here is where you can find the information needed:
 
@@ -94,5 +100,3 @@ python .\csv_decryptor.py --encrypted_csv_path X:\path\to\your\csv\demo.csv --li
 - `your_secret_key1`: The secret key specified when creating the encryption function.
 
 This process will generate a decrypted file version in the same path as the encrypted one. Following these clear steps ensures a smooth and secure decryption of your data.
-
-*Updated January 2025*

@@ -22,25 +22,28 @@ contributors:
     - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
 ---
 
-> This article describes what data count as PII, what materials should be anonymized, and methods for anonymization of datasets.
+:::{.custom-summary-block}
+This article describes what data count as PII, what materials should be anonymized, and methods for anonymization of datasets.
+:::
+
+![Data Anonymization (® DeepAI)](/assets/images/mmd-anon.jpeg){width=100%}
+
+:::{.callout-tip appearance="simple"}
+## Key Takeaways
+* Understand what constitutes Personally Identifiable Information (PII) and ensure its removal from all shared materials to protect research participants' privacy.
+* Use automated tools like Stata's `lookfor` command or manual reviews to identify and anonymize PII in datasets, code, and documentation.
+:::
 
 ## What is Data Anonymization?
 
-:::: {.columns style="display: flex; align-items: center; column-gap: 2em;"}
-::: {.column width="20%"}
-![](/assets/images/mmds_organizational structure_black.png)
-:::
-
-::: {.column width="80%"}
 Data anonymization is the act of removing Personally Identifiable Information (PII) from study materials. Before starting any analyses, consider carefully whether you will need PII. Most analyses will not require PII. Typically, the only use for PII is to link data from different sources, as well as analyses reliant on geographic data, which will be addressed below.
-:::
-::::
+
 
 If PII is not necessary for the analysis, then it should be split from the data immediately. In most cases, there is no reason to share PII with PIs. Instead, anonymize the data immediately using the `split_pii` Stata program and share only the anonymized data with PIs, which can be downloaded through SSC.
 
 PII includes information that can be used to specifically identify an individual. Due to the nature of the research we conduct, we are entrusted with the management of PII of the participants of our research studies. This information should not be released to external individuals, including in most cases PIs and users who access publicly accessible materials, such as from IPA's Data Repository. Therefore, it is vital that staff have access to strategies to remove this data to ensure the safety of research subjects.
 
-## 1. What data count as Personally Identifiable Information?
+## What data count as Personally Identifiable Information?
 
 IPA conforms to the HIPAA guidelines for what data count as PII. Included in the list are:
 - Names
@@ -52,7 +55,7 @@ IPA conforms to the HIPAA guidelines for what data count as PII. Included in the
 
 Because IPA conducts studies in countries outside of the US, the list of PII should be adapted to the relevant country context.
 
-## 2. What materials should be anonymized?
+## What materials should be anonymized?
 
 Aside from the names of PIs and, in some cases, current project staff, ensure that PII is removed from:
 - Data
@@ -68,7 +71,7 @@ For users with advanced programming skills, Python can skim documents for releva
 
 IPA is currently testing a PII treatment application. Learn more about it here: **IPA's Personally Identifiable Information Treatment Application.**
 
-## 3. How to Search Datasets for Personally Identifiable Information
+## How to Search Datasets for Personally Identifiable Information
 
 To ensure a Stata dataset does not contain PII, carefully review the variables it contains. It may not be immediately clear that a variable contains PII. Conduct at least two sweeps of one or more datasets for clear instances of PII. Sweeps can be done either using Stata code or manually.
 
@@ -143,6 +146,3 @@ replace varname = "STRING VALUE WITHOUT PII" if varname == "STRING VALUE WITH PI
 ```
 
 In both cases, maintain the integrity of the string value if it contains useful information. Otherwise, create a blank or "other" value based on the variable's structure.
-
-
-*Last updated February 2025.*
