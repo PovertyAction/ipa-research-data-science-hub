@@ -1,23 +1,86 @@
 # IPA Research and Data Science Hub
 
-Welcome to IPA's Research Hub!
+Welcome to IPA's Research and Data Science Hub! This repository hosts and centralizes our organization's research and data-oriented resources.
 
-> [!WARNING]
-> This handbook is an early work in progress. Feedback, suggestions and
-> contributions are appreciated! Please create an Issue or submit a pull request if
-> there is anything you'd like to see changed or added.
+> [!NOTE]
+> This repository is still work in progress. We are actively developing and updating the contents and site functionalities. Please reach out to GRDS at [researchsupport@poverty-action.org](researchsupport@poverty-action.org) if you have any questions/feedback for the hub.
 
-## About the Hub
+## Table of contents
 
-[Taken from the DSET Handbook] This handbook is intended as a living document to assist IPA staff and collaborators
-with common practices for writing code and working with data. The handbook will never be
-comprehensive of every possible software, data object, or shared practice. However, IPA
-staff working with data and technology are encouraged to use this handbook as a
-reference and a shared project to give tips and advice for working collaboratively with
-data analysis and software development.
+* [Repository structure](#repository-structure)
+* [Setup](#setup)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
 
-This repository is also intended as a reference for how to develop code that aligns with
-best practices for software development. While the repository does not cover all
-possible applications, software, or scenarios, the nature of this repository is such
-that it should grow and improve to address the common work patterns that IPA uses for
-writing source code for data science, engineering, and infrastructure management.
+## Repository structure
+
+### Branching strategy
+
+* The `main` branch is the live and most up-to-date version of the Hub, publicly available to all IPA staff and external users.
+* Use `release` branches for new content that will be published/released in the short term. It can also include potential topics and ideas worth discussing (both from GRDS and non-GRDS contributors).
+* Use `update` branches to update/modify content that is already published in the Hub.
+* Use `feature` branches for modifications to the hub's infrastructure and scaffolding (e.g., the site's theme, layout, navigation, hierarchy, content blocks, prototypes, etc.).
+* Use `hotfix` branches for critical/time sensitive issues affecting the live version of the Hub. These must be prioritized, fixed, and merged into the `main` branch ASAP.
+* Use `bugfix` branches for less urgent fixes that must be resolved, but are not as time-sensitive to be considered hotfixes.
+
+## Setup
+
+### Software requirements
+
+### Installation
+
+### Rendering the Hub locally
+
+## Usage
+
+## Contributing
+
+We welcome contributions from all IPA staff members! Please read our Contributing Guidelines (link) for more details on our code of conduct and development process. Follow these steps if you want to contribute using GitHub:
+
+1. Fork the repository
+2. Create a new branch
+
+    ```bash
+    git checkout -b feature/amazing-addition
+    ```
+
+3. Draft your changes
+4. Commit your changes, adding a message describing your contribution to the Hub
+
+    ```bash
+    git commit -m 'Add amazing feature'
+    ```
+
+5. Push to the branch
+
+    ```bash
+    git push origin feature/amazing-addition
+    ```
+
+6. Open a Pull Request
+
+### "Edit this page"
+
+[TODO]
+
+### Report an issue
+
+[TODO]
+
+### Submit a contribution
+
+[TODO]
+
+## Style Guide
+
+[TODO]
+
+## License
+
+The IPA Research and Data Science Hub is licensed under a [CC-BY license](./LICENSE.txt).
+
+## Contact
+
+The IPA Research and Data Science Hub is maintained by the Global Research and Data Science (GRDS) team. For questions, feedback, or suggestions, please reach out to us at [researchsupport@poverty-action.org](researchsupport@poverty-action.org).
