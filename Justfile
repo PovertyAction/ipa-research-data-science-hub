@@ -78,6 +78,18 @@ fmt-check-markdown:
 
 fmt-all: lint-py fmt-python lint-sql fmt-markdown
 
+# Report writing errors and warnings on a specific file
+vale-errors f:
+    vale --filter='.Level in ["error", "warning"]' {{ f }}
+
+# Report writing suggestions on a specific file
+vale-suggestions f:
+    vale --filter='.Level in ["suggestion"]' {{ f }}
+
+# Report all writing errors in the project
+vale-errors-all:
+    vale --filter='.Level in ["error"]' .
+
 # Run pre-commit hooks
 pre-commit-run:
     pre-commit run
