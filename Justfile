@@ -85,13 +85,13 @@ pre-commit-run:
 [windows]
 pre-install:
     winget install Casey.Just astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale
-    winget install --id=RProject.R -e -v 4.4.3
+    winget install --id=RProject.R -e
 
 [linux]
 pre-install:
-    brew install just uv gh vale r@4.4.3
+    brew install just uv gh vale r
 
 [macos]
 pre-install:
-    brew install just uv gh vale r@4.4.3
+    brew install just uv gh vale r
     brew install --cask quarto
