@@ -85,14 +85,13 @@ pre-commit-run:
 [windows]
 pre-install:
     winget install Casey.Just astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale
+    winget install --id=RProject.R -e
 
 [linux]
 pre-install:
-    brew install just uv gh vale
-    curl -sfL https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.54/quarto-1.5.54-linux-amd64.deb  | sudo apt install ./quarto-1.5.54-linux-amd64.deb
-    rm quarto-1.5.54-linux-amd64.deb
+    brew install just uv gh vale r
 
 [macos]
 pre-install:
-    brew install just uv gh vale
+    brew install just uv gh vale r
     brew install --cask quarto
