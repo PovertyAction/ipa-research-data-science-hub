@@ -66,15 +66,15 @@ lint-sql:
 
 # Format all markdown and config files
 fmt-markdown:
-    uv run mdformat .
+    markdownlint --config .markdownlint.yaml "**/*.qmd" --fix
 
 # Format a single markdown file, "f"
 fmt-md f:
-    uv run mdformat {{ f }}
+    markdownlint --config .markdownlint.yaml {{ f }} --fix
 
 # Check format of all markdown files
 fmt-check-markdown:
-    uv run mdformat --check .
+    markdownlint --config .markdownlint.yaml "**/*.qmd"
 
 fmt-all: lint-py fmt-python lint-sql fmt-markdown
 
@@ -89,9 +89,9 @@ pre-install:
 
 [linux]
 pre-install:
-    brew install just uv gh vale r
+    brew install just uv gh vale r markdownlint
 
 [macos]
 pre-install:
-    brew install just uv gh vale r
+    brew install just uv gh vale r markdownlint
     brew install --cask quarto
