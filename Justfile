@@ -78,6 +78,12 @@ fmt-check-markdown:
 
 fmt-all: lint-py fmt-python lint-sql fmt-markdown
 
+# Create a new page from template (Linux and MacOS)
+new-page dest:
+    cp ./page-template.qmd {{ dest }}
+    echo "Created new page at {{ dest }}"
+    echo "Remember to add {{ dest }} to _quarto.yml"
+
 # Run pre-commit hooks
 pre-commit-run:
     pre-commit run
