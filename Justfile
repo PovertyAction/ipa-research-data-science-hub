@@ -96,11 +96,9 @@ pre-install:
 
 [linux]
 pre-install:
-    brew install just uv gh vale r node
-    npm install -g markdownlint-cli
+    brew install just uv gh vale r markdownlint-cli
 
 [macos]
 pre-install:
-    brew install just uv gh vale r node
-    npm install -g markdownlint-cli
+    brew install just uv gh vale r markdownlint-cli
     brew install --cask quarto
