@@ -5,7 +5,6 @@ on:
       - '**/*.qmd'
       - '**/*.md'
       - '.markdownlint.yaml'
-      - '.markdownlint-cli2.yaml'
       - 'styles/config/custom-quarto-rules.js'
       - 'styles/config/additional-quarto-rules.js'
       - 'styles/config/quarto-image-rules.js'
@@ -18,10 +17,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - name: Install markdownlint-cli2
-        run: npm install -g markdownlint-cli2
-      - name: Run markdownlint-cli2
-        run: markdownlint-cli2 "**/*.qmd" "**/*.md"
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+      - name: Run markdownlint
+        run: markdownlint --config .markdownlint.yaml "**/*.qmd" "**/*.md"
       - name: Comment on PR
         if: failure()
         uses: actions/github-script@v7

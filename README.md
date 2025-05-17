@@ -123,45 +123,49 @@ This is a `Just` target for `quarto render` that will build the site and generat
 
 ## Contributing
 
-We welcome contributions from all IPA staff members! Please read our Contributing Guidelines (link) for more details on our code of conduct and development process. Follow these steps if you want to contribute using GitHub:
+We welcome contributions from all IPA staff members! Please read our [Contributing Guidelines](CONTRIBUTING.md) for detailed information on our development process, writing content in Quarto, and code quality tools.
 
-1. Fork the repository
-2. Create a new branch
+### Quick Start
 
-    ```bash
-    git checkout -b feature/amazing-addition
-    ```
+1. Clone the repository
+2. Set up your environment with `just get-started`
+3. Create a new branch following our [branching strategy](#branching-strategy)
+4. Make your changes
+5. Preview locally with `just preview-docs`
+6. Format content with `just fmt-all`
+7. Commit your changes and push to your branch
+8. Open a Pull Request
 
-3. Draft your changes
-4. Commit your changes, adding a message describing your contribution to the Hub
+### Resources for Contributors
 
-    ```bash
-    git commit -m 'Add amazing feature'
-    ```
+* [Contributing Guide](CONTRIBUTING.md) - Detailed instructions for contributors
+* [Markdown Style Guide](docs/MARKDOWN_STYLE.md) - Guide to our markdown formatting standards
+* [Quarto Custom Rules](docs/QUARTO_CUSTOM_RULES.md) - Technical documentation for our linting rules
 
-5. Push to the branch
+### Report an Issue
 
-    ```bash
-    git push origin feature/amazing-addition
-    ```
+If you find a problem with the Hub:
 
-6. Open a Pull Request
+1. Check if the issue has already been reported in the [Issues](https://github.com/PovertyAction/ipa-research-data-science-hub/issues)
+2. If not, create a new issue with a clear description and steps to reproduce
+3. Add relevant labels and assignees
 
-### "Edit this page"
+### Request Content
 
-[TODO]
+If you'd like to see specific content added to the Hub:
 
-### Report an issue
+1. Open an issue with the "content request" label
+2. Describe the content you'd like to see
+3. Explain why it would be valuable to IPA staff
 
-[TODO]
+## Code Quality and Style
 
-### Submit a contribution
+We maintain high standards for code and content quality:
 
-[TODO]
-
-## Style Guide
-
-[TODO]
+* **Markdown Linting**: We use `markdownlint-cli` with custom rules for Quarto
+* **Writing Style**: [Vale](https://vale.sh/) validates our writing against IPA style guides
+* **Code Formatting**: `Python` code is formatted with [ruff](https://docs.astral.sh/ruff/) and `R` code is formatted with [air](https://posit-dev.github.io/air/)
+* **Pre-commit Hooks**: Automated checks run before each commit using `pre-commit`
 
 ## License
 

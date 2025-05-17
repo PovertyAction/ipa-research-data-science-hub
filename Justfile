@@ -66,15 +66,15 @@ lint-sql:
 
 # Format all markdown and config files
 fmt-markdown:
-    markdownlint-cli2 --fix
+    markdownlint --config .markdownlint.yaml "**/*.qmd" --fix
 
 # Format a single markdown file, "f"
 fmt-md f:
-    markdownlint-cli2 --fix {{ f }}
+    markdownlint --config .markdownlint.yaml {{ f }} --fix
 
 # Check format of all markdown files
 fmt-check-markdown:
-    markdownlint-cli2 "**/*.qmd" "**/*.md"
+    markdownlint --config .markdownlint.yaml "**/*.qmd" "**/*.md"
 
 fmt-all: lint-py fmt-python lint-sql fmt-markdown
 
@@ -86,15 +86,15 @@ pre-commit-run:
 pre-install:
     winget install Casey.Just astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale OpenJS.NodeJS
     winget install --id=RProject.R -e
-    npm install -g markdownlint-cli2
+    npm install -g markdownlint-cli
 
 [linux]
 pre-install:
     brew install just uv gh vale r node
-    npm install -g markdownlint-cli2
+    npm install -g markdownlint-cli
 
 [macos]
 pre-install:
     brew install just uv gh vale r node
-    npm install -g markdownlint-cli2
+    npm install -g markdownlint-cli
     brew install --cask quarto
