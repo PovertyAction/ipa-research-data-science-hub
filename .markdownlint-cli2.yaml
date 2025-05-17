@@ -1,0 +1,24 @@
+# markdownlint-cli2 configuration
+
+# Use the current markdownlint config
+config:
+  extends: .markdownlint.yaml
+# Define the globs to match files
+globs:
+  - "**/*.md"
+  - "**/*.qmd"
+# Ignore specific files/paths
+ignores:
+  - ".github/pull_request_template.md"
+  - "node_modules/**"
+  - "_site/**"
+  - "_freeze/**"
+  - ".quarto/**"
+  - ".venv/**"
+# Configure fix mode
+fix: true
+# Apply custom rule files from the directories
+customRules:
+  - styles/config/custom-quarto-rules.js
+  - styles/config/additional-quarto-rules.js
+  - styles/config/quarto-image-rules.js

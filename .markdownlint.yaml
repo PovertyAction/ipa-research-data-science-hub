@@ -2,12 +2,14 @@
 # default to true for all rules
 default: true
 customRules:
-  - "./custom-quarto-rules.js"
-  - "./additional-quarto-rules.js"
+  - "./styles/config/custom-quarto-rules.js"
+  - "./styles/config/additional-quarto-rules.js"
+  - "./styles/config/quarto-image-rules.js"
 # Disable rules that conflict with Quarto syntax
 MD033: false # Allow inline HTML
 MD041: false # Allow content before first heading (for YAML frontmatter)
 MD013: false # Disable line length restrictions
+MD045: false # Disable standard image alt text rule, prefer our custom Quarto version
 # Configure rules for better Quarto compatibility
 MD007: # Unordered list indentation
   indent: 4
@@ -56,3 +58,4 @@ quarto-code-block: true
 quarto-diagram: true
 quarto-cross-reference: true
 quarto-footnote: true
+quarto-image-alt-text: true
