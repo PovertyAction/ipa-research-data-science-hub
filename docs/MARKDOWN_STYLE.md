@@ -69,7 +69,7 @@ More text here.
 
 - Use fenced code blocks with backticks (```)
 - Specify a language for syntax highlighting
-- Allowed languages include: bash, r, python, yaml, json, html, css, javascript, markdown, sql, text, mermaid, dot, graphviz, stata
+- Allowed languages include: bash, r, python, ojs, julia, yaml, json, html, css, javascript, markdown, sql, text, mermaid, dot, graphviz, stata
 
 ```markdown
     ```{python}
