@@ -54,10 +54,10 @@ following from the command line:
 
 This will make sure that you have the latest version of `Just`.
 
-* We use `Just` in order to make it easier for all IPA users to be productive with data
+* We use `Just` to make it easier for all IPA users to be productive with data
   and technology systems. The goal of using a `Justfile` is to help make the end goal of
-  the user easier to achieve without needing to know or remember all of the technical
-  details of how we get to that goal.
+  the user easier to achieve without needing to know or remember all the technical
+  details of how to get to that goal.
 * We use `uv` to help ease use of Python. `uv` provides a global system for creating and
   building computing environments for Python.
 * We also recommend using in Integrated Development Environment (IDE).
@@ -89,7 +89,7 @@ Note: you may need to restart your terminal and IDE after running the command ab
 the installed software.
 
 If working in a Linux environment, you may need to follow installation instructions for Quarto
-[here](https://quarto.org/docs/get-started/).
+[in the Quarto documents](https://quarto.org/docs/get-started/).
 
 For Stata, you will need to obtain the Stata installation files along with an active license.
 
@@ -123,7 +123,7 @@ This is a `Just` target for `quarto render` that will build the site and generat
 
 ## Contributing
 
-We welcome contributions from all IPA staff members! Please read our [Contributing Guidelines](CONTRIBUTING.md) for detailed information on our development process, writing content in Quarto, and code quality tools.
+We welcome contributions from all IPA staff members! Please read [Contributing Guidelines](CONTRIBUTING.md) for detailed information on the Hub development process, writing content in Quarto, and code quality tools.
 
 ### Quick Start
 
@@ -173,4 +173,4 @@ The IPA Research and Data Science Hub is licensed under a [CC-BY license](./LICE
 
 ## Contact
 
-The IPA Research and Data Science Hub is maintained by the Global Research and Data Science (GRDS) team. For questions, feedback, or suggestions, please reach out to us at [researchsupport@poverty-action.org](researchsupport@poverty-action.org).
+The IPA Research and Data Science Hub is maintained by the Global Research and Data Science (GRDS) team. For questions, feedback, or suggestions, contact [researchsupport@poverty-action.org](researchsupport@poverty-action.org).

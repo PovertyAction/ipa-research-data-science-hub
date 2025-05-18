@@ -100,7 +100,7 @@ There are several ways you can contribute to the Hub:
 
 ## Writing Content in Quarto
 
-The IPA Research and Data Science Hub uses [Quarto](https://quarto.org/) for content creation and site generation. Quarto is an open-source scientific and technical publishing system built on Pandoc.
+The IPA Research and Data Science Hub uses [Quarto](https://quarto.org/) for content creation and site generation. Quarto is an open source scientific and technical publishing system built on Pandoc.
 
 ### File Structure
 
@@ -223,7 +223,7 @@ We use markdownlint with custom rules to ensure consistent formatting. See our [
 
 Key points:
 
-* Use ATX-style headings with a space after the `#` (e.g., `## Heading 2`)
+* Use [ATX-style headings](https://google.github.io/styleguide/docguide/style.html#atx-style-headings) with a space after the `#` (e.g., `## Heading 2`)
 * Use asterisks (`*`) for unordered lists, not dashes
 * Include blank lines before and after headings, lists, and code blocks
 * Provide alt text for all images for accessibility
@@ -265,6 +265,9 @@ We use Vale to check writing style and grammar:
 ```bash
 # Run Vale on all content
 vale .
+
+# Run Vale on a specific file
+vale path/to/file.qmd
 ```
 
 ## Pull Request Process
