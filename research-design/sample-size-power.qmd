@@ -10,7 +10,6 @@ title: "Sample and Power Calculations"
 #------------------------------------------------------------------
 authors-ipa:
     - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
-    - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
 
 #------------------------------------------------------------------
 # Contributors
@@ -19,6 +18,8 @@ authors-ipa:
 # materials for the site. They can also be responsible for
 # updating/maintaining the site.
 #------------------------------------------------------------------
+contributors:
+  - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
 ---
 
 :::{.custom-summary-block}
@@ -26,6 +27,17 @@ This resource covers essential concepts of statistical power and sample size cal
 :::
 
 ![An IPA survey in Myanmar in 2020 (© IPA)](/assets/images/power-intro.jpg){width=75%}
+
+
+```{python}
+#| echo: false
+#| output: false
+import stata_setup
+
+# set configuration to the path where Stata is installed and the flavor of Stata
+# in the case below, we're using Stata 18 SE
+stata_setup.config("C:/Program Files/Stata18/", "se")
+```
       
 :::{.callout-tip appearance="simple"}
 ## Key Takeaways
@@ -38,67 +50,65 @@ This resource covers essential concepts of statistical power and sample size cal
 
 ## **Statistical Power: Why It Matters**
 
-**Statistical power** is the probability of correctly rejecting the null hypothesis (H₀) when the alternative hypothesis (H₁) is true.
+**Statistical power** is how likely a study is to find a real effect if one actually exists. In other words, it tells us how good our study is at not missing something important.
 
-- **Formula:** Power = 1 − κ (Type II error rate)  
-- **Rule of thumb:** Aim for **≥80% power** to reduce the risk of missing true effects.
+### Why Statistical Power Matters?
 
-#### Why Statistical Power Matters
+::: {.callout-tip collapse="true"}
+## 1. Research Quality and Reliability
+- Ensures studies can detect meaningful effects  
+- Reduces risk of false conclusions  
+- Strengthens confidence in research findings  
+:::
 
-1. **Research Quality and Reliability**
-   - Ensures studies can detect meaningful effects  
-   - Reduces risk of false conclusions  
-   - Strengthens confidence in research findings  
+::: {.callout-tip collapse="true"}
+## 2. Resource Optimization
+- Prevents wastage of research resources  
+- Avoids underpowered studies that may be inconclusive  
+- Guides efficient allocation of study participants  
+:::
 
-2. **Resource Optimization**
-   - Prevents wastage of research resources  
-   - Avoids underpowered studies that may be inconclusive  
-   - Guides efficient allocation of study participants  
+::: {.callout-tip collapse="true"}
+## 3. Policy Impact
+- Enables evidence-based policy decisions  
+- Reduces risk of dismissing effective interventions  
+- Helps identify truly impactful programs  
+:::
 
-3. **Policy Impact**
-   - Enables evidence-based policy decisions  
-   - Reduces risk of dismissing effective interventions  
-   - Helps identify truly impactful programs  
-
-4. **Ethical Considerations**
-   - Respects participants' time and effort  
-   - Justifies the use of research resources  
-   - Promotes responsible funding and implementation  
-
----
+::: {.callout-tip collapse="true"}
+## 4. Ethical Considerations
+- Respects participants' time and effort  
+- Justifies the use of research resources  
+- Promotes responsible funding and implementation  
+:::
 
 ### Real-World Example: Improving Academic Achievement in India[^1]
 
 <div style="background-color: #f7f7f7; padding: 1em; border-radius: 8px; margin-bottom: 1em;">
 
-**📍 Context:**  
-In India, many children age 7 to 12 were struggling with basic academic skills:  
-- 44% could not read a simple paragraph  
-- 50% could not solve a basic subtraction problem  
+In India, a significant proportion of children age **7 to 12** were struggling with basic academic skills **44%** could not read a simple paragraph and **50%** could not solve a basic subtraction problem—highlighting an urgent need for targeted support. The **Balsakhi tutoring program** addressed this gap by providing **2 hours of daily remedial instruction** in **small groups** of 15 to 20 students. To rigorously evaluate its impact, researchers conducted a **large-scale randomized controlled trial** involving **23,000 students**, randomly assigning them to either a **treatment group** (receiving Balsakhi tutoring) or a **control group** (continuing with the regular curriculum).
 
-**💡 Intervention:**  
-The Balsakhi tutoring program provided:  
-- 2 hours of daily remedial instruction  
-- Small group tutoring (15 to 20 students per tutor)  
+### 📊 The Results
 
-**🧪 Study Design:**  
-- Large-scale randomized controlled trial  
-- **Sample size:** 23,000 students  
-- **Groups:**  
-  - **Treatment:** Received Balsakhi tutoring  
-  - **Control:** Followed the standard curriculum  
-
-**📊 Results:**  
-- **Effect size:** 0.28 standard deviation increase in test scores  
-- **Power:** The large sample size ensured high statistical power, enabling detection of a meaningful effect
-
-</div>
+- **Test scores improved** by **0.28 standard deviations** for students who received tutoring  
+- The **large sample size** gave the study **high statistical power**, which allowed researchers to **confidently detect** this meaningful effect
 
 ![Estimated Treatment Effect of 0.28 SD](/assets/images/power_3.png){width=90%}
 
-This example shows how proper study design and statistical power can produce actionable evidence, guiding impactful education policy in low-resource settings. [^2]
+### 🔍 Why This Matters: Understanding Statistical Power
 
----
+This example shows **why statistical power is critical** in research.  
+
+Even if a program has a real, positive effect, as Balsakhi did, **a study without enough power might miss it**. That's because small or underpowered samples are more likely to produce **inconclusive or misleading results**.
+
+Because this study was **well-powered**, it gave strong evidence that the tutoring program worked.  
+If the sample had been smaller, the study might have wrongly concluded that there was no impact.
+
+> 💡 **Bottom line:**  
+> **Statistical power** helps researchers avoid false negatives and ensures that policy decisions are based on **real, reliable evidence**—not just chance.
+
+This case shows how careful study design and sufficient power can lead to **actionable insights**, helping shape smarter education policies in low-resource settings. [^2]
+</div>
 
 ::: {.callout-note}
 ## Key Concept 1  
@@ -115,11 +125,30 @@ The larger the study sample, the more likely we are to estimate the true treatme
 
 ## **Sample Size: Precision and Reliability**
 
-### Sample Size and Accuracy  
+### Sample Size
 Sample size directly influences our ability to estimate the **true treatment effect** with precision and reliability:
 
 - **Smaller N:** High variability, less precise and reliable estimates  
 - **Larger N:** Lower variability, more precise and reliable estimates
+
+### Why Does Sample Size Matter?
+
+| **Reason**                | Explanation                                                                                   |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| **Statistical Power**     | Larger samples increase the probability of detecting true effects (higher power).             |
+| **Confidence Intervals**  | Bigger samples yield narrower confidence intervals, making estimates more informative.        |
+| **Generalizability**      | Adequate sample size ensures findings are more representative of the target population.       |
+| **Minimizing Errors**     | Small samples are more prone to random error and outliers, which can distort results.         |
+
+### How to Determine Sample Size?
+
+| **Factor**                  | Impact on Sample Size                                                                                   |
+|-----------------------------|--------------------------------------------------------------------------------------------------------|
+| **Expected Effect Size**    | Smaller effects require larger samples to detect.                                                      |
+| **Outcome Variance**        | More variable outcomes need larger samples for the same precision.                                     |
+| **Significance Level (α)**  | Lower α (e.g., 1%) requires a larger sample than higher α (e.g., 10%).                                |
+| **Desired Power (1−κ)**     | Higher power (e.g., 90%) means a larger sample than lower power (e.g., 80%).                          |
+| **Study Design**            | Clustered or stratified designs often require larger samples due to intra-group correlation.           |
 
 ### Trade-offs  
 While larger samples improve precision, they require more resources:
@@ -127,6 +156,12 @@ While larger samples improve precision, they require more resources:
 - **Financial:** Survey costs, transport, devices  
 - **Time:** Recruitment, training, fieldwork  
 - **Labor:** Enumerators, field staff
+
+### Practical Considerations
+- **Minimum Detectable Effect (MDE):** Decide what is the smallest effect worth detecting—this drives sample size.
+- **Attrition:** Anticipate and adjust for expected loss of participants over time.
+- **Non-compliance:** Plan for imperfect adherence to treatment assignment, which can reduce effective sample size.
+- **Ethical Balance:** Avoid exposing more participants than necessary to interventions or control conditions.
 
 ::: {.callout-note}
 ## Key Concept 2
@@ -141,14 +176,23 @@ Sample size/power calculations help balance statistical precision with resource 
 
 ## **Understanding Statistical Concepts**
 
+::: {.callout-tip collapse="true"}
 ### Probability Density Functions (PDFs)
 
 PDFs help us visualize the uncertainty around the estimated treatment effect (β̂) in a study. They show how likely different values of β̂ are, assuming a true treatment effect β.
 
 ![Two overlapping normal distributions representing possible treatment effects](/assets/images/power_4.png){width=75%}
+:::
 
----
+:::{.callout-note}
+## Key Concept 3  
+A narrower distribution of estimates (β̂) increases our chances of detecting true effects. You can achieve this by:  
+- Increasing the sample size (**N**)  
+- Assigning roughly equal numbers to treatment and control (**p ≈ 0.5**)  
+- Reducing outcome variance (**σ²**)
+:::
 
+::: {.callout-tip collapse="true"}
 ### Treatment Effects Distribution
 
 If we repeated the same RCT many times, we wouldn't get the exact same estimate every time. Instead, the estimated treatment effects (β̂) would follow a normal distribution:
@@ -161,20 +205,23 @@ $$
 - **σ²**: Variance of the outcome  
 - **N**: Sample size  
 - **p**: Proportion assigned to treatment (e.g., 0.5)
-
-:::{.callout-note}
-## Key Concept 3  
-A narrower distribution of estimates (β̂) increases our chances of detecting true effects. You can achieve this by:  
-- Increasing the sample size (**N**)  
-- Assigning roughly equal numbers to treatment and control (**p ≈ 0.5**)  
-- Reducing outcome variance (**σ²**)
 :::
 
----
 
+:::{.callout-note}
+## Key Concept 4  
+**Type I Error (α):** Risk of a false positive  
+- Usually set at **5% (α = 0.05)**  
+- This means there's a 5% chance we incorrectly detect an effect when there is none  
+- A lower α reduces false positives—but increases the risk of missing real effects
+- Its complement (1−α) is known as the confidence level (how likely we are to avoid a false positive)
+- While 5% is standard, it can range from 1%-10% in research literature
+:::
+
+::: {.callout-tip collapse="true"}
 ### Hypothesis Testing Framework
 
-To determine whether an effect is statistically significant, we use a hypothesis test:
+To determine whether an effect is statistically significant, we use a hypothesis test. This is important because it helps us control the risk of making a **Type I error** incorrectly concluding that an effect exists when it actually does not (a "false positive"). By setting a significance level (α), we limit the probability of making this error and ensure our findings are not due to random chance.
 
 ::: {.callout-tip collapse="true"}
 ## **1. Null Hypothesis (H₀)**
@@ -214,107 +261,76 @@ Reject H₀ if β̂ exceeds critical values, fail to reject H₀ if β̂ within 
 
 ![Rejection of Ho](/assets/images/power_ht4_2.png){width=75%}
 :::
-
-:::{.callout-note}
-## Key Concept 4  
-**Type I Error (α):** Risk of a false positive  
-- Usually set at **5% (α = 0.05)**  
-- This means there's a 5% chance we incorrectly detect an effect when there is none  
-- A lower α reduces false positives—but increases the risk of missing real effects
-- Its complement (1−α) is known as the confidence level (how likely we are to avoid a false positive)
-- While 5% is standard, it can range from 1%-10% in research literature
 :::
 
 :::{.callout-note}
 ## Key Concept 5  
-**Statistical Power (1 − κ):** Probability of detecting a true effect
+**Type II Error (κ):** Risk of a false negative
 
-- **κ** is the Type II Error rate (false negative)  
-- Standard goal: **Power ≥ 80%**  
-- Higher power = more confidence in detecting real effects, but requires a larger sample size
-
-Important trade-off:
-
-- The less willing we are to make a false positive (smaller α), the more likely we are to make a false negative (Type II error)
-- Type II error rate (κ) is usually set at 20% (much higher than the false positive rate)
-- This means NOT finding an effect when the effect does exist!
-- Power (1−κ) is the probability of avoiding a false negative
+- **κ**: Probability of missing a real effect  
+- **Power (1−κ):** Probability of detecting a true effect (aim for ≥80%)  
+- Lower α (false positive rate) increases κ (false negative rate)  
+- Power and sample size are directly related: higher power needs a larger sample
 :::
 
 ---
 
 ## **Statistical Power in Practice**
 
-### How Power Looks in Different Scenarios
 
-### Power in Action: Visual Guide
+::: {.callout-tip collapse="true"}
+### 1. Power Depends on Study Design
 
-The graph below shows three key elements of statistical power:
+Statistical power is influenced by:
 
-- Null hypothesis distribution (H₀: no effect)
-- Alternative hypothesis distribution (H₁: true effect exists)
-- Critical value threshold for significance
+- **Sample size (N)**
+- **Effect size (β):** how big the true impact is
+- **Outcome variance (σ²):** how much outcomes naturally vary
 
-![Three scenarios showing different power levels based on effect size and sample size](/assets/images/power_7.png){width=90%}
-
-::: {.callout-note}
-## Key Concept 6
-When power is high (≥80%), we can confidently detect true effects. When power is low, we risk missing important program impacts.
-:::
-
-### Effect Size and Power
-
-The ability to detect effects depends on:
-1. **Sample size (N)**
-2. **Effect size (β)**
-3. **Outcome variance (σ²)**
-
+Larger samples and bigger effects increase the chance of detecting something real.
 
 ![Low Power: Hard to distinguish effect](/assets/images/power_5.png){width=90%}
 
 ![High Power: Clear effect distinction](/assets/images/power_6.png){width=90%}
-
-
-### Common Power Scenarios
-
-1. **Underpowered Study (Power < 80%)**
-    - High risk of false negatives
-    - Inconclusive results
-    - Wasted resources
-
-2. **Well-Powered Study (Power ≥ 80%)**
-    - Reliable effect detection
-    - Clear conclusions
-    - Efficient resource use
-
-::: {.callout-warning}
-## Warning
-An underpowered study might fail to detect meaningful program effects, leading to incorrect policy decisions.
 :::
 
+
+::: {.callout-tip collapse="true"}
+### 2. Power Can Be Visualized
+
+Power is often shown as the overlap between two distributions:
+
+- **H₀ (Null):** No effect  
+- **H₁ (Alternative):** A true effect exists  
+- **Critical value:** The cutoff for statistical significance
+
+The **less overlap** between the two distributions, the **higher the power**.
+
+![Three scenarios showing different power levels based on effect size and sample size](/assets/images/power_7.png){width=90%}
+:::
+
+::: {.callout-tip collapse="true"}
+### 3. Underpowered vs. Well-Powered Studies
+
+| Scenario              | Underpowered Study (<80%)                     | Well-Powered Study (≥80%)                   |
+|-----------------------|-----------------------------------------------|---------------------------------------------|
+| **Detection Ability** | Low: true effects may be missed              | High: true effects are likely to be found  |
+| **Conclusions**       | Inconclusive or misleading                    | Clear and reliable                          |
+| **Resource Use**      | Wasteful: may require redoing the study      | Efficient: leads to actionable findings    |
+
+::: {.callout-warning}
+## ⚠️ Why This Matters
+An underpowered study might miss real program effects—leading to **wrong conclusions** and **poor policy decisions**.
+:::
+:::
+
+:::{.callout-note}
+## Key Concept 6
+When power is high (≥80%), we are more likely to detect true effects and avoid false negatives.
+:::
 ---
 
 ## **Practical Tools and Applications in Stata**
-
-### Balancing Power and Resources
-
-Use **power calculations** to balance the need for statistical precision with constraints on:
-
-- Sample size  
-- Budget  
-- Time  
-- Staff capacity
-
-### Visualizing Power
-
-**When Power is Low:**  
-- Overlapping distributions of H₀ and H₁  
-- High chance of Type II Error (false negatives)
-
-**When Power is High:**  
-- Clear separation between H₀ and H₁  
-- Low chance of missing a real effect
-
 
 ### Using the `power` Command in Stata
 
@@ -332,25 +348,47 @@ We will revisit the India education intervention example to illustrate three typ
 
 **Assumptions:**
 
-- Outcome: Standardized test score (S.D. units)
-- Expected effect size: 0.2 S.D.
-- Variance: 1.0 (already standardized)
-- Desired power: 80%
-- Significance level (α): 5%
+- Effect size (MDE): 0.2 S.D.
+- Statistical power: 80%
+- Variance of the outcome variable: 1 S.D.
+- A single treatment group (and a control group)
+- A single post-treatment data collection (endline)
+- Program was randomized at the individual (child) level
+- Perfect compliance
+- No attrition
+- No additional controls
 
 **Stata code:**
-```stata
-power twomeans 0 0.2, sd(1) power(0.8) alpha(0.05)
+```{python}
+%%stata
+power twomeans 0 0.2 , power(0.8) sd(1)
 ```
 
-This tells Stata to calculate the required sample size for each group (treatment and control) to detect a 0.2 S.D. effect.
+This tells Stata to calculate the required sample size for each group (treatment and control) to detect a 0.2 S.D. effect. The required study sample size to achieve a power of 80% is 788 students (394 in the treatment group, 394 in the control group).
 
-You can download a Stata do-file with a clear example of how to perform Case 1 (estimating required sample size) here:
+**Stata code:**
 
-[Download sample-size-power.do](/assets/files/sample-size-power.do)
+Now, suppose we expect a larger treatment effect of 0.4 standard deviations (SD) instead of 0.2 SD, keeping all other assumptions the same. We can calculate the required sample size for this new scenario as follows:
 
-This do-file contains commented Stata code illustrating the steps for Case 1.
+```{python}
+%%stata
+power twomeans 0 0.4 , power(0.8) sd(1)
+```
 
+**Stata code:**
+
+Now, let's change our assumption: **What if we want to increase the statistical power to 90%?**
+
+We can calculate the required sample size for an effect size of 0.4 SD and 90% power as follows:
+
+```{python}
+%%stata
+power twomeans 0 0.2 , power(0.9) sd(1)
+```
+
+The required sample size would increase to 1,054.
+
+Additional exercises are available in the following do file: [Download power.do](/assets/files/sample-size-power.do)
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -359,23 +397,28 @@ This do-file contains commented Stata code illustrating the steps for Case 1.
 
 **Assumptions:**
 
-- Outcome: Standardized test score
 - Sample size: 1,000 students (500 per group)
 - Power: 80%
-- Significance level: 5%
+- Variance of the outcome variable: 1 S.D
 
 **Stata code:**
-```stata
-power twomeans 0 (. ), n(1000) sd(1) power(0.8) alpha(0.05)
+```{python}
+%%stata
+power twomeans 0 , n(1000) power(0.9) sd(1)
 ```
 
 This calculates the minimum effect size that can be detected with the given sample size.
 
-You can download a Stata do-file with a clear example of how to perform Case 2 (estimating minimum detectable effect) here:
+**Stata code:**
 
-[Download mde-power.do](/assets/files/sample-size-power.do)
+As we can see in the graph, with 500, 750, 1000, 1250, and 1500 students, we are able to detect smaller treatment effects as the sample size increases.
 
-This do-file contains commented Stata code illustrating the steps for Case 2.
+```{python}
+%%stata
+power twomeans 0 , n(500(250)1500) power(0.8) sd(1) graph
+```
+
+Additional exercises are available in the following do file: [Download power.do](/assets/files/sample-size-power.do)
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -384,36 +427,29 @@ This do-file contains commented Stata code illustrating the steps for Case 2.
 
 **Assumptions:**
 
-- Outcome: Standardized test score
-- Sample size: 1,000 students
+- Study sample size: 1,000
 - Effect size: 0.2 S.D.
-- Significance level: 5%
+- Variance of the outcome variable: 1 S.D.
 
 **Stata code:**
-```stata
-power twomeans 0 0.2, n(1000) sd(1) alpha(0.05)
+```{python}
+%%stata
+power twomeans 0 0.2 , n(1000) sd(1)
 ```
 
-This estimates the statistical power you'll have in this setup.
+The estimated power under these assumptions is power = 0.8848.
 
-You can download a Stata do-file with a clear example of how to perform Case 3 (estimating power for a given sample size and effect) here:
+**Stata code:**
 
-[Download power-simulation.do](/assets/files/power-cals-simulations.do)
+Smaller samples lead to less power. As we increase the sample size, we're able to reach a larger probability of avoiding a type II error (false negative).
+In the graph above, you can see that as the sample size increases, the estimated power also increases. This means you are more likely to detect a true effect with a larger sample.
 
-This do-file contains commented Stata code that uses simulations to estimate statistical power under the specified assumptions.
-
-:::
-
-
-::: {.callout-tip collapse="true"}
-## 📊 Sensitivity Analysis and Graphs
-To explore how power changes with different assumptions, you can use Stata's graphing options:
-
-```stata
-power twomeans 0 0.2, sd(1) alpha(0.05) graph
+```{python}
+%%stata
+power twomeans 0 0.2 , n(100(100)1000) sd(1) graph
 ```
 
-This will generate a power curve that helps visualize the relationship between sample size and statistical power.
+Additional exercises are available in the following do file: [Download power.do](/assets/files/sample-size-power.do)
 :::
 
 ---
@@ -476,4 +512,3 @@ The proportion assigned to treatment and control groups. Power is maximized when
 [^1]: Banerjee, A., Cole, S., Duflo, E., & Linden, L. (2007). Remedying Education: Evidence from Two Randomized Experiments in India. The Quarterly Journal of Economics, 122(3), 1235-1264.
 [^2]: Banerjee, A., Cole, S., Duflo, E., & Linden, L. (2017). Balsakhi [Dataset]. Harvard Dataverse.
 [^3]: StataCorp. (2023). Stata power and sample size reference manual: Release 18. https://www.stata.com/manuals/power.pdf
-
