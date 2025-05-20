@@ -270,6 +270,28 @@ vale .
 vale path/to/file.qmd
 ```
 
+There are also several shortcuts for running Vale on specific directories or files:
+
+```bash
+# Report errors for an individual file:
+just vale-errors path/to/file.qmd
+
+# Report warnings for an individual file:
+just vale-warnings path/to/file.qmd
+
+# Report suggestions for an individual file:
+just vale-suggestions path/to/file.qmd
+
+# Report errors, warnings, and suggestion for an individual file:
+just vale-file path/to/file.qmd
+
+# Report all errors in Quarto Markdown files within the repository:
+just vale-errors-all
+
+# Report all warnings in Quarto Markdown files within the repository:
+just vale-warnings-all
+```
+
 ## Pull Request Process
 
 1. **Create a descriptive PR title**
