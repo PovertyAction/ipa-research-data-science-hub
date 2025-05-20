@@ -54,10 +54,10 @@ following from the command line:
 
 This will make sure that you have the latest version of `Just`.
 
-* We use `Just` in order to make it easier for all IPA users to be productive with data
+* We use `Just` to make it easier for all IPA users to be productive with data
   and technology systems. The goal of using a `Justfile` is to help make the end goal of
-  the user easier to achieve without needing to know or remember all of the technical
-  details of how we get to that goal.
+  the user easier to achieve without needing to know or remember all the technical
+  details of how to get to that goal.
 * We use `uv` to help ease use of Python. `uv` provides a global system for creating and
   building computing environments for Python.
 * We also recommend using in Integrated Development Environment (IDE).
@@ -89,7 +89,7 @@ Note: you may need to restart your terminal and IDE after running the command ab
 the installed software.
 
 If working in a Linux environment, you may need to follow installation instructions for Quarto
-[here](https://quarto.org/docs/get-started/).
+[in the Quarto documents](https://quarto.org/docs/get-started/).
 
 For Stata, you will need to obtain the Stata installation files along with an active license.
 
@@ -123,45 +123,49 @@ This is a `Just` target for `quarto render` that will build the site and generat
 
 ## Contributing
 
-We welcome contributions from all IPA staff members! Please read our Contributing Guidelines (link) for more details on our code of conduct and development process. Follow these steps if you want to contribute using GitHub:
+We welcome contributions from all IPA staff members! Please read [Contributing Guidelines](CONTRIBUTING.md) for detailed information on the Hub development process, writing content in Quarto, and code quality tools.
 
-1. Fork the repository
-2. Create a new branch
+### Quick Start
 
-    ```bash
-    git checkout -b feature/amazing-addition
-    ```
+1. Clone the repository
+2. Set up your environment with `just get-started`
+3. Create a new branch following our [branching strategy](#branching-strategy)
+4. Make your changes
+5. Preview locally with `just preview-docs`
+6. Format content with `just fmt-all`
+7. Commit your changes and push to your branch
+8. Open a Pull Request
 
-3. Draft your changes
-4. Commit your changes, adding a message describing your contribution to the Hub
+### Resources for Contributors
 
-    ```bash
-    git commit -m 'Add amazing feature'
-    ```
+* [Contributing Guide](CONTRIBUTING.md) - Detailed instructions for contributors
+* [Markdown Style Guide](docs/MARKDOWN_STYLE.md) - Guide to our markdown formatting standards
+* [Quarto Custom Rules](docs/QUARTO_CUSTOM_RULES.md) - Technical documentation for our linting rules
 
-5. Push to the branch
+### Report an Issue
 
-    ```bash
-    git push origin feature/amazing-addition
-    ```
+If you find a problem with the Hub:
 
-6. Open a Pull Request
+1. Check if the issue has already been reported in the [Issues](https://github.com/PovertyAction/ipa-research-data-science-hub/issues)
+2. If not, create a new issue with a clear description and steps to reproduce
+3. Add relevant labels and assignees
 
-### "Edit this page"
+### Request Content
 
-[TODO]
+If you'd like to see specific content added to the Hub:
 
-### Report an issue
+1. Open an issue with the "content request" label
+2. Describe the content you'd like to see
+3. Explain why it would be valuable to IPA staff
 
-[TODO]
+## Code Quality and Style
 
-### Submit a contribution
+We maintain high standards for code and content quality:
 
-[TODO]
-
-## Style Guide
-
-[TODO]
+* **Markdown Linting**: We use `markdownlint-cli` with custom rules for Quarto
+* **Writing Style**: [Vale](https://vale.sh/) validates our writing against IPA style guides
+* **Code Formatting**: `Python` code is formatted with [ruff](https://docs.astral.sh/ruff/) and `R` code is formatted with [air](https://posit-dev.github.io/air/)
+* **Pre-commit Hooks**: Automated checks run before each commit using `pre-commit`
 
 ## License
 
@@ -169,4 +173,4 @@ The IPA Research and Data Science Hub is licensed under a [CC-BY license](./LICE
 
 ## Contact
 
-The IPA Research and Data Science Hub is maintained by the Global Research and Data Science (GRDS) team. For questions, feedback, or suggestions, please reach out to us at [researchsupport@poverty-action.org](researchsupport@poverty-action.org).
+The IPA Research and Data Science Hub is maintained by the Global Research and Data Science (GRDS) team. For questions, feedback, or suggestions, contact [researchsupport@poverty-action.org](researchsupport@poverty-action.org).

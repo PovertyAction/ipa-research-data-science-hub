@@ -17,5 +17,20 @@
     "[python]": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "charliermarsh.ruff"
-    }
+    },
+    "markdownlint.customRules": [
+        "./styles/config/custom-quarto-rules.js",
+        "./styles/config/additional-quarto-rules.js",
+        "./styles/config/quarto-image-rules.js"
+    ],
+    "markdownlint.run": "onSave",
+    "markdownlint.configFile": "./.markdownlint.yaml",
+    "markdownlint.lintWorkspaceGlobs": [
+        "**/*.{qmd,md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+        "!**/.git",
+        "!**/.venv",
+        "!**/_site",
+        "!**/.quarto",
+        "!LICENSE.md"
+    ]
 }
