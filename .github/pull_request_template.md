@@ -26,7 +26,8 @@
 - [ ] I have limited this PR to less than 1000 lines of code change (if not, explain why)
 - [ ] I have run linting and formatting on any code changes (if applicable)
 - [ ] I have updated the documentation (README, etc.) accordingly
-- [ ] I have reviewed and resolved any merge conflict
+- [ ] I have reviewed and resolved any merge conflicts
+- [ ] I have reviewed and resolved any Vale errors
 
 ## Reviewer Emoji Legend
 
