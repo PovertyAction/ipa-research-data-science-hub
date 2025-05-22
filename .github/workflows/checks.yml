@@ -9,6 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
+      - uses: hadolint/hadolint-action@v3.1.0
       - uses: pre-commit/action@v3.0.1
   vale:
     needs: pre-commit
