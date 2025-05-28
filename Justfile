@@ -33,8 +33,13 @@ venv:
     uv tool install pre-commit
     uv run pre-commit install
 
-activate-venv:
-    uv shell
+# Activate interactive python
+ipython:
+    uv run ipython
+
+# Activate interactive R
+ir:
+    uv run radian
 
 # launch jupyter lab
 lab:
