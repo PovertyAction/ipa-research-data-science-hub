@@ -86,7 +86,7 @@
 				reg height_child_cm treatment
 				ttest height_child_cm, by(treatment)
 				
-				* Step 7. Store estimation output (especifically, the p-value)
+				* Step 7. Store estimation output (specifically, the p-value)
 				return scalar sig_effect_5per = (r(p) < 0.05)
 			}
 	end
