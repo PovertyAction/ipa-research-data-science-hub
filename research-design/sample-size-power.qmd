@@ -47,10 +47,9 @@ stata_setup.config("C:/Program Files/Stata18/", "se")
 - **Practical tools** in Stata help balance statistical power with resource constraints.
 :::
 
+## What is Statistical Power?
 
-## **Statistical Power: Why It Matters**
-
-**Statistical power** is how likely a study is to find a real effect if one actually exists. In other words, it tells us how good our study is at not missing something important.
+**Statistical power** is the probability that a study will detect a true effect when one actually exists. Think of it as your study's ability to avoid missing something important - like having a metal detector sensitive enough to find buried treasure.
 
 ### Why Statistical Power Matters?
 
@@ -508,6 +507,46 @@ The proportion assigned to treatment and control groups. Power is maximized when
 ![Attrition: Participants lost over time](/assets/images/power_13.png){width=70%}
 :::
 
+---
+
+## Common Pitfalls and Solutions
+
+::: {.callout-warning collapse="true"}
+### Pitfall 1: Ignoring Design Effects
+
+- **Problem:** Using simple formulas for complex designs  
+- **Solution:** Account for clustering, stratification in calculations
+:::
+
+::: {.callout-warning collapse="true"}
+### Pitfall 2: Optimistic Assumptions
+
+- **Problem:** Assuming perfect compliance, no attrition  
+- **Solution:** Build in realistic buffers (typically 20-30%)
+:::
+
+::: {.callout-warning collapse="true"}
+### Pitfall 3: Post-Hoc Power
+
+- **Problem:** Calculating power after finding null results  
+- **Solution:** Focus on confidence intervals, not post-hoc power
+:::
+
+::: {.callout-warning collapse="true"}
+### Pitfall 4: Fixating on 80%
+
+- **Problem:** Treating 80% power as sacred threshold  
+- **Solution:** Consider context—sometimes 70% or 90% is appropriate
+:::
+
+---
+
+## Additional Resources
+
+- [Stata Power and Sample Size Manual](https://www.stata.com/manuals/power.pdf)
+- [Optimal Design Software](https://www.wtgrantfoundation.org/optimal-design-software): Free tool for complex designs
+- [G*Power](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html): User-friendly power calculator
+- [J-PAL's Power Calculations Guide](https://www.povertyactionlab.org/resource/power-calculations)
 
 [^1]: Banerjee, A., Cole, S., Duflo, E., & Linden, L. (2007). Remedying Education: Evidence from Two Randomized Experiments in India. The Quarterly Journal of Economics, 122(3), 1235-1264.
 [^2]: Banerjee, A., Cole, S., Duflo, E., & Linden, L. (2017). Balsakhi [Dataset]. Harvard Dataverse.
