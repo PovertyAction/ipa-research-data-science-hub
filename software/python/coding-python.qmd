@@ -1,0 +1,317 @@
+---
+title: "Coding in Python"
+description: "Learn Python fundamentals including variables, data types, and built-in functions"
+date: last-modified
+execute:
+  eval: true
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.16.2
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+
+# Authors
+# Authors are the main creators of the site's content, credited for their work and responsible for its core development, including writing and editing.
+authors-ipa:
+  - "[Kwadwo Agyapon-Ntr](https://poverty-action.org/people/kwadwo-agyapon-ntra)"
+
+# Contributors
+# Contributors provide support, such as feedback or supplementary materials for the site. They can also be responsible for updating/maintaining the site.
+# contributors:
+#   - "[Contributor 1](https://poverty-action.org/people/contributor1_name)"
+---
+:::{.callout-note collapse="true"}
+## Recognition and Attribution
+This page modifies content from the [Software Carpentry Python Fundamentals lesson](https://swcarpentry.github.io/python-novice-inflammation/01-intro.html).
+:::
+
+In this tutorial, you will learn the fundamentals of Python programming. We'll cover variables, data types, and how to use built-in functions to perform basic operations.
+
+## Learning Objectives
+
+By the end of this tutorial, you will be able to:
+
+- Assign values to variables
+- Understand basic data types in Python
+- Use built-in Python functions
+- Get help while programming
+
+## Variables
+
+A variable is a name for a value. In Python, variables are created when you assign a value to them using the `=` sign.
+
+```{python}
+weight_kg = 60.3
+```
+
+In this example, we've created a variable called `weight_kg` and assigned it the value `60.3`.
+
+Once a variable has been created, we can use it in calculations:
+
+```{python}
+print(weight_kg)
+```
+
+We can also do arithmetic with variables:
+
+```{python}
+print('weight in pounds:', 2.2 * weight_kg)
+```
+
+### Variable Names
+
+Variable names can contain letters, digits, and underscores. However, they:
+
+- Cannot start with a digit
+- Are case-sensitive
+
+```{python}
+# Valid variable names
+patient_id = 'inflam_001'
+patient_weight = 75.0
+patient1_age = 45
+
+# Display the variables
+print('Patient ID:', patient_id)
+print('Patient weight:', patient_weight, 'kg')
+print('Patient age:', patient1_age, 'years')
+```
+
+### Changing Variables
+
+We can change the value of a variable by assigning it a new value:
+
+```{python}
+weight_kg = 60.3
+print('weight in kilograms:', weight_kg)
+
+weight_kg = 65.0
+print('weight in kilograms is now:', weight_kg)
+```
+
+Notice that when we assign a new value to a variable, it does not change other variables that might have used the old value:
+
+```{python}
+weight_kg = 60.3
+weight_lb = 2.2 * weight_kg
+print('weight in kilograms:', weight_kg, 'and in pounds:', weight_lb)
+
+weight_kg = 65.0
+print('weight in kilograms is now:', weight_kg, 'and weight in pounds is still:', weight_lb)
+```
+
+## Data Types
+
+Every value in Python has a specific type. Three common types are:
+
+1. **Integer numbers** (whole numbers)
+2. **Floating point numbers** (numbers with decimals)
+3. **Strings** (text)
+
+::: {.callout-note}
+There are many other data types, eg. `bool`, `list`, `set`, which you will discover as you progress.
+:::
+
+```{python}
+# Examples of different data types
+patient_age = 25          # integer
+patient_weight = 68.5     # float
+patient_name = 'Alice'    # string
+
+print('Patient name:', patient_name)
+print('Patient age:', patient_age)
+print('Patient weight:', patient_weight)
+```
+
+### Finding the Type of a Variable
+
+We can use the built-in function `type()` to find out what type a value has:
+
+```{python}
+print(type(60.3))
+print(type('hello world'))
+print(type(25))
+```
+
+### Working with Strings
+
+Strings must be enclosed in quotes (either single or double):
+
+```{python}
+patient_id = 'inflam_001'
+patient_name = "John Doe"
+
+print('Patient ID:', patient_id)
+print('Patient name:', patient_name)
+```
+
+We can add strings together (concatenation):
+
+```{python}
+prefix = 'inflam_'
+patient_number = '001'
+patient_id = prefix + patient_number
+print('Full patient ID:', patient_id)
+```
+
+## Built-in Functions
+
+Python provides many built-in functions that perform common operations. We've already seen `print()` and `type()`. (Parentheses distinguish functions from variables.)
+
+### The print() Function
+
+The `print()` function displays values:
+
+```{python}
+print('Hello, world!')
+print('Patient weight:', 68.5, 'kg')
+```
+
+You can print multiple values by separating them with commas:
+
+```{python}
+weight_kg = 68.5
+weight_lb = 2.2 * weight_kg
+print('Weight:', weight_kg, 'kg =', weight_lb, 'lbs')
+```
+
+### Mathematical Operations
+
+Python supports common mathematical operations:
+
+```{python}
+# Basic arithmetic
+a = 10
+b = 3
+
+print('Addition:', a + b)
+print('Subtraction:', a - b)
+print('Multiplication:', a * b)
+print('Division:', a / b)
+print('Integer division:', a // b)
+print('Remainder:', a % b)
+print('Power:', a ** b)
+```
+
+## Getting Help
+
+When you need help with Python, there are several ways to get information:
+
+### Using the help() Function
+
+The `help()` function provides documentation about Python functions:
+
+```{python}
+# | eval: false
+help(print)
+```
+
+This will display detailed information about the `print()` function, including its parameters and usage examples.
+
+### Other Ways to Get Help
+
+- **Online documentation**: The official Python documentation at [python.org](https://docs.python.org/)
+- **Stack Overflow**: A community-driven Q&A site where you can search for answers or ask questions
+- **Colleagues and mentors**: Don't hesitate to ask experienced programmers for help
+- **LLMs**: Modern generative AI tools like ChatGPT, Claude, and GitHub Copilot can be useful to explain code. (Note that AI tools are not perfect and may make mistakes, but they will usually get fundamental questions right.) 
+
+## Practice Exercises
+
+Let's practice what we've learned with some exercises: 
+
+::: {.callout-tip title="Pro Tip"}
+Try to write the code by yourself before revealing the solution
+:::
+
+### Exercise 1: Variable Assignment
+
+Create variables for a patient's information and display them:
+- name: Sarah Johnson
+- age: 34
+- height (cm): 165
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| eval: false
+patient_name = 'Sarah Johnson'
+patient_age = 34
+patient_height = 165.0  # in cm
+
+print('Patient:', patient_name)
+print('Age:', patient_age, 'years')
+print('Height:', patient_height, 'cm')
+```
+
+### Exercise 2: Data Type Investigation
+
+What are the types of the following values?  
+- 3.25
+- 3
+- "3.25"
+
+Use the `type()` function to check:
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| eval: false
+print('Type of 3.25:', type(3.25)) # Expect float
+print('Type of 3:', type(3)) # Expect int
+print('Type of "3.25":', type('3.25')) # Expect str
+```
+
+### Exercise 3: Calculations
+
+A patient's body mass index (BMI) is calculated as weight (kg) divided by height (m) squared. Calculate a patient's BMI for the following values:
+
+- weight_kg = 70.0
+- height_cm = 175.0
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| eval: false
+# Patient data
+weight_kg = 70.0
+height_cm = 175.0
+
+# Convert height to meters
+height_m = height_cm / 100
+
+# Calculate BMI
+bmi = weight_kg / (height_m ** 2)
+
+print('Patient weight:', weight_kg, 'kg')
+print('Patient height:', height_m, 'm')
+print('Patient BMI:', round(bmi, 1))
+```
+The expected outcome is **22.9**
+
+## Key Points
+
+- Use variables to store values and make calculations
+- Use `print(...)` to display values
+- Variables persist between cells
+- Variables must be created before they are used
+- Variables can be used in calculations
+- Use `type(...)` to determine the type of a value
+- Python is case-sensitive
+- Use `help(...)` to get help about functions
+
+## What's Next?
+
+Now that you understand Python fundamentals, you can explore:
+
+- Working with lists and data structures
+- Control flow with loops and conditionals  
+- Functions and modules
+- Working with data using libraries like pandas
+
+Continue practising these basics as they form the foundation for all Python programming!
