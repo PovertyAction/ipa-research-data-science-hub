@@ -125,7 +125,8 @@ pre-install:
 
 [linux]
 pre-install:
-    brew install just uv gh vale r markdownlint-cli
+    brew install just uv gh vale r --force-bottle
+    npm install -g markdownlint-cli
 
 [macos]
 pre-install:
