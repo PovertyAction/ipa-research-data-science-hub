@@ -33,8 +33,13 @@ venv:
     uv tool install pre-commit
     uv run pre-commit install
 
-activate-venv:
-    uv shell
+# Activate interactive python
+ipython:
+    uv run ipython
+
+# Activate interactive R
+ir:
+    uv run radian
 
 # launch jupyter lab
 lab:
@@ -64,19 +69,49 @@ fmt-py f:
 lint-sql:
     uv run sqlmesh format
 
+# Report vale errors for a file
+vale-errors f:
+    vale --filter='.Level in ["error"]' {{ f }}
+
+# Report vale warnings for a file
+vale-warnings f:
+    vale --filter='.Level in ["warning"]' {{ f }}
+
+# Report vale suggestions for a file
+vale-suggestions f:
+    vale --filter='.Level in ["suggestion"]' {{ f }}
+
+# Report vale errors, warnings, and suggestions for a file
+vale-file f:
+    vale {{ f }}
+
+# Report all vale errors in repository
+vale-errors-all:
+    vale --filter='.Level in ["error"]' --glob='*.qmd' .
+
+# Report all vale errors in repository
+vale-warnings-all:
+    vale --filter='.Level in ["warning"]' --glob='*.qmd' .
+
 # Format all markdown and config files
 fmt-markdown:
-    uv run mdformat .
+    markdownlint --config .markdownlint.yaml "**/*.qmd" --fix
 
 # Format a single markdown file, "f"
 fmt-md f:
-    uv run mdformat {{ f }}
+    markdownlint --config .markdownlint.yaml {{ f }} --fix
 
 # Check format of all markdown files
 fmt-check-markdown:
-    uv run mdformat --check .
+    markdownlint --config .markdownlint.yaml "**/*.qmd" "**/*.md"
 
 fmt-all: lint-py fmt-python lint-sql fmt-markdown
+
+# Create a new page from template (Linux and MacOS)
+new-page dest:
+    cp ./page-template.qmd {{ dest }}
+    echo "Created new page at {{ dest }}"
+    echo "Remember to add {{ dest }} to _quarto.yml"
 
 # Run pre-commit hooks
 pre-commit-run:
@@ -84,14 +119,15 @@ pre-commit-run:
 
 [windows]
 pre-install:
-    winget install Casey.Just astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale
+    winget install Casey.Just astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale OpenJS.NodeJS
     winget install --id=RProject.R -e
+    npm install -g markdownlint-cli
 
 [linux]
 pre-install:
-    brew install just uv gh vale r
+    brew install just uv gh vale r markdownlint-cli
 
 [macos]
 pre-install:
-    brew install just uv gh vale r
+    brew install just uv gh vale r markdownlint-cli
     brew install --cask quarto
