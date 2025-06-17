@@ -1,5 +1,13 @@
 project:
   type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "*.md"
+    - "!page-template.qmd"
+    - "!CONTRIBUTING.md"
+    - "!docs/"
+    - "!research-design/sample-size-power.qmd" # TODO: add a sample size power page once Stata install in codespaces is fixed
 format:
   html:
     theme:
@@ -62,8 +70,8 @@ website:
             href: ./under-construction.qmd
           - text: "Survey Design 🚧"
             href: ./under-construction.qmd
-          - text: "Power Calculations 🚧"
-            href: ./under-construction.qmd
+            # - text: "Power Calculations"
+            #   href: ./research-design/sample-size-power.qmd
       - text: "Ethics and IRB"
         menu:
           - text: "About IPA IRB"
@@ -88,20 +96,22 @@ website:
             #   href: ./data-security/index.qmd # TODO
       - text: "Software Guides"
         menu:
+          - text: "Git"
+            href: ./software/git/index.qmd
+          - text: "GitHub"
+            href: ./software/github/index.qmd
+          - text: "VS Code"
+            href: ./software/github/index.qmd
           - text: "Stata"
-            href: ./software/stata/intro-stata.qmd
+            href: ./software/stata/index.qmd
+          - text: "Python"
+            href: ./software/python/index.qmd
           - text: "SurveyCTO 🚧"
             href: ./under-construction.qmd
           - text: "Cryptomator 🚧"
             href: ./under-construction.qmd
-          - text: "Python 🚧"
-            href: ./under-construction.qmd
-          - text: "Version Control 🚧"
-            href: ./under-construction.qmd
-          - text: "Visual Studio Code 🚧"
-            href: ./under-construction.qmd
-          - text: "Quarto 🚧"
-            href: ./under-construction.qmd
+          - text: "Quarto"
+            href: ./software/quarto/index.qmd
   sidebar:
     style: floating
     collapse-level: 1
@@ -117,8 +127,8 @@ website:
             href: ./under-construction.qmd
           - text: "Survey Design 🚧"
             href: ./under-construction.qmd
-          - text: "Power Calculations 🚧"
-            href: ./under-construction.qmd
+            # - text: "Power Calculations"
+            #   href: ./research-design/sample-size-power.qmd
       - section: "Ethics and IPA IRB"
         contents:
           - text: "About IPA IRB"
@@ -213,10 +223,26 @@ website:
       #       href: ./data-cleaning/index.qmd # TODO: add a Data Security landing page
       - section: "Software Guides"
         contents:
+          - section: "Coding Guides"
+            contents:
+              - text: "Virtual Environments"
+                href: ./software/guides/venv.qmd
+          - section: "Version Control"
+            contents:
+              - text: "Git"
+                href: ./software/git/index.qmd
+              - text: "GitHub"
+                href: ./software/github/index.qmd
+          - section: "Code Environments"
+            contents:
+              - text: "VS Code"
+                href: ./software/vscode/index.qmd
+              - text: "Positron 🚧"
+                href: ./under-construction.qmd
           - section: "Stata"
             contents:
               - text: "Getting Started with Stata"
-                href: ./software/stata/intro-stata.qmd
+                href: ./software/stata/index.qmd
               - text: "Coding in Stata"
                 href: ./software/stata/coding-stata.qmd
               - text: "Data Processing in Stata"
@@ -227,15 +253,17 @@ website:
                 href: ./under-construction.qmd
               - text: "Mapping in Stata 🚧"
                 href: ./under-construction.qmd
+          - section: "Python"
+            contents:
+              - text: "Getting Started with Python"
+                href: ./software/python/index.qmd
           - text: "SurveyCTO  🚧"
             href: ./under-construction.qmd
           - text: "Cryptomator  🚧"
             href: ./under-construction.qmd
-          - text: "Python 🚧"
-            href: ./under-construction.qmd
-          - text: "Version Control 🚧"
-            href: ./under-construction.qmd
-          - text: "Visual Studio Code 🚧"
-            href: ./under-construction.qmd
-          - text: "Quarto 🚧"
-            href: ./under-construction.qmd
+          - section: "Quarto"
+            contents:
+              - text: "Getting started with Quarto"
+                href: ./software/quarto/index.qmd
+              - text: "Writing in Quarto"
+                href: ./software/quarto/basics.qmd

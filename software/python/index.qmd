@@ -1,0 +1,167 @@
+---
+title: "Python"
+execute:
+  eval: true
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.16.2
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+
+# Authors
+# Authors are the main creators of the site's content, credited for their work and responsible for its core development, including writing and editing.
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+
+# Contributors
+# Contributors provide support, such as feedback or supplementary materials for the site. They can also be responsible for updating/maintaining the site.
+# contributors:
+#   - "[Contributor 1](https://poverty-action.org/people/contributor1_name)"
+---
+
+:::{.custom-summary-block}
+
+Python is a high-level, general-purpose programming language that is widely used in data
+science, machine learning, and web development. It has a large standard library and a
+vibrant community that provides a wide range of libraries and tools for various
+applications. As such, Python provides a general-purpose ecosystem that can be used for
+a wide range of applications.
+:::
+
+## How to install Python?
+
+There are many ways to install Python. We recommend using Python in a virtual
+environment to avoid conflicts with other Python installations on your system.
+
+We recommend using [uv](https://docs.astral.sh/uv) as a a simple way to create and
+manage Python virtual environments.
+
+You can manage the python packages that are installed in the virtual
+environment using a `pyproject.toml` file. See the pyproject.toml example in this
+repository for an example of how to manage Python packages. To add package dependencies
+to the virtual environment, using `uv`, you can run:
+
+First, install `uv` using `winget` (Windows) or `brew` (MacOS/Linux):
+
+::: {.panel-tabset group="OS"}
+
+# Windows
+
+```bash
+# Install uv
+winget install astral-sh.uv
+```
+
+# MacOS
+
+```bash
+# Install uv
+brew install uv
+```
+
+# Linux
+
+```bash
+# Install uv
+brew install uv
+```
+
+:::
+
+Add libraries to the virtual environment using `uv add ...`:
+
+```{python}
+# | eval: false
+> uv add jupyterlab pandas matplotlib seaborn
+```
+
+## Coding Conventions
+
+We highly recommend working with a [virtual environment](../guides/venv.qmd) to manage
+Python dependencies. The `pyproject.toml` is the preferred way to keep track of python
+dependencies as well as project-specific python conventions.
+
+We recommend using [Ruff](https://docs.astral.sh/ruff/) to enforce
+[linting](<https://en.wikipedia.org/wiki/Lint_(software)>) and formatting rules. In most
+cases you can use the default linting and formatting rules provided by `ruff`. However,
+you can customize the rules by modifying the `[tool.ruff]` section of the
+`pyproject.toml` file in the root of your project. for more about the configuration
+options, see the [Ruff documentation](https://docs.astral.sh/ruff/configuration/).
+
+If you are working in a virtual environment created in this repository`, you automatically have
+access to `Ruff via  `just lint-py` and `just fmt-python` commands to lint and format your code.
+
+For more inspiration, see the
+[GitLab Data Team's Python Guide](https://handbook.gitlab.com/handbook/business-technology/data-team/platform/python-guide/)
+and [Google's Python Style Guide](https://google.github.io/styleguide/pyguide.html).
+
+## Example Usage
+
+Let's load an example World Bank data via [Gapminder](https://www.gapminder.org/) using
+the [causaldata](https://github.com/NickCH-K/causaldata) package.
+
+```{python}
+# | eval: true
+# | echo: true
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.formula.api as sm
+from causaldata import gapminder
+```
+
+Load the Gapminder data as a pandas DataFrame:
+
+```{python}
+# | echo: true
+df = gapminder.load_pandas().data
+```
+
+We can check the dimensions of the DataFrame using `df.info()`:
+
+```{python}
+# | echo: true
+df.info()
+```
+
+Let's take a look at the first few rows of the DataFrame using `df.head()`:
+
+```{python}
+df.head()
+```
+
+Take a look at the relationship between GDP per Capita and Life Expectancy:
+
+```{python}
+sns.scatterplot(x="gdpPercap", y="lifeExp", hue="continent", data=df).set(
+    xscale="log", ylabel="Life Expectancy", xlabel="GDP per Capita"
+)
+```
+
+Separate the data by year, focusing on 1957 and 2007:
+
+```{python}
+sns.relplot(
+    data=df.where(df["year"].isin([1957, 2007])),
+    x="gdpPercap",
+    y="lifeExp",
+    col="year",
+    hue="continent",
+    col_wrap=1,
+    kind="scatter",
+    palette="muted",
+).set(xscale="log", ylabel="Life Expectancy", xlabel="GDP per Capita")
+```
+
+## Learning Resources
+
+- [The Python Tutorial](https://docs.python.org/3.12/tutorial/index.html)
+- [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
+- [Efficient Python for Data Scientists](https://khuyentran1401.github.io/Efficient_Python_tricks_and_tools_for_data_scientists/README.html)
+- [The Hitchhiker's Guide to Python](https://docs.python-guide.org/)
