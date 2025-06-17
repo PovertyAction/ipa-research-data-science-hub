@@ -119,15 +119,15 @@ pre-commit-run:
 
 [windows]
 pre-install:
-    winget install Casey.Just astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale OpenJS.NodeJS Typst.Typst
+    winget install Casey.Just astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale OpenJS.NodeJS
     winget install --id=RProject.R -e
     npm install -g markdownlint-cli
 
 [linux]
 pre-install:
-    brew install just uv gh vale r markdownlint-cli typst
+    brew install just uv gh vale r markdownlint-cli
 
 [macos]
 pre-install:
-    brew install just uv gh vale r markdownlint-cli typst
+    brew install just uv gh vale r markdownlint-cli
     brew install --cask quarto
