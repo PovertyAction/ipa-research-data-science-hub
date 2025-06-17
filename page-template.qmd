@@ -6,11 +6,11 @@ date: last-modified # Use 'last-modified' to automatically set the date to the l
 
 format:
   html: default
-  # typst: default # Uncomment if you want to use Typst format for PDF generation
-# format-links:
-#   - format: typst # Uncomment if you want to provide a link to a PDF version of the page
-#     text: PDF
-#     icon: file-pdf
+  ipa-handout-typst: default # Uncomment if you want to use Typst format for PDF generation
+format-links:
+  - format: ipa-handout-typst # Uncomment if you want to provide a link to a PDF version of the page
+    text: PDF
+    icon: file-pdf
 
 # Authors
 # Authors are the main creators of the site's content, credited for their work and responsible for its core development, including writing and editing.
@@ -24,11 +24,9 @@ authors-ipa:
 contributors:
   - "[Contributor 1](https://poverty-action.org/people/contributor1_name)"
   - "[Contributor 2](https://poverty-action.org/people/contributor2_name)"
----
 
-:::{.custom-summary-block}
-Add a 1-2 sentence summary describing what this page is about. Ideally, add key takeaways.
-:::
+keywords: ["IPA", "Power Calculations", "Randomization", "Measurement"]
+---
 
 
 ## Heading 1
@@ -37,4 +35,57 @@ Add a 1-2 sentence summary describing what this page is about. Ideally, add key 
 
 ## Heading 2
 
-### Sub-heading 2
+## Usage
+
+To use this template in your Quarto document, specify `format: ipa-typst-typst` in your YAML front matter:
+
+```yaml
+---
+title: "Your Document Title"
+author: "Your Name"
+format: ipa-typst-typst
+---
+```
+
+Then render with:
+
+```bash
+quarto render your-document.qmd --to ipa-typst-typst
+```
+
+## Sample Content
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-warning}
+Callouts provide a simple way to attract attention, for example, to this warning.
+:::
+
+::: {.callout-important}
+Danger, callouts will really improve your writing.
+:::
+
+::: {.callout-tip}
+## Tip with Title
+
+This is an example of a callout with a title.
+:::
+
+::: {.callout-caution collapse="true"}
+## Expand To Learn About Collapse
+
+This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
+:::
+
+### Subsection Example
+
+This is a subsection to demonstrate heading hierarchy and formatting consistency throughout the document.
+
+## Conclusion
+
+This template provides a professional, branded appearance for all HTML and PDF documents generated from Quarto markdown files in this repository.
