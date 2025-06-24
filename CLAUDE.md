@@ -30,6 +30,9 @@ The human will ask you to draft, edit, or revise pages of the IPA Research and D
 - If the human asks you to revise a page, approach the task as a meticulous editor that aims to make very accessible, readable documentation.
 - If the human asks you to review many pages, break up the task into small chunks of work rather than trying to do everything all at once. Encourage the human to make manageable changes to avoid overwhelming you and any other reviewers.
 
+Always run `just vale-file <file>` on any content you create or modify to ensure it passes the Vale writing style checks.
+Always run `just fmt-md <file>` to ensure that the markdown formatting is correct on any content you create or modify.
+
 ## Content Guidelines
 
 ### File Naming
@@ -49,6 +52,8 @@ All `.qmd` files need:
 - `contributors`: List of supporting contributors
 - `keywords`: List of research and data science keywords, including the type of documentation within the Diataxis Framework.
 - `license`: "CC BY" unless otherwise specified
+
+Always move the `:::{.custom-summary-block}...:::` to the abstract and provide readability improvements.
 
 ## Architecture and Structure
 
