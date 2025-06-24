@@ -155,12 +155,3 @@ just pre-commit-run       # Run all pre-commit hooks
 ```bash
 just new-page <dest>      # Create new page from template
 ```
-
-### Technology Stack
-
-- **Quarto**: Site generation and content rendering
-- **uv**: Python package and virtual environment management
-- **ruff**: Python code formatting and linting
-- **markdownlint**: Markdown consistency checking
-- **vale**: Writing style and grammar validation
-- **pre-commit**: Automated code quality checks
