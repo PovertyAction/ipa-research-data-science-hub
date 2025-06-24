@@ -156,15 +156,6 @@ just pre-commit-run       # Run all pre-commit hooks
 just new-page <dest>      # Create new page from template
 ```
 
-### Branching Strategy
-
-- `main`: Live production branch
-- `release/*`: New content for publication
-- `update/*`: Updates to existing content
-- `feature/*`: Infrastructure and site scaffolding changes
-- `hotfix/*`: Critical time-sensitive fixes
-- `bugfix/*`: Non-urgent fixes
-
 ### Technology Stack
 
 - **Quarto**: Site generation and content rendering
@@ -173,12 +164,3 @@ just new-page <dest>      # Create new page from template
 - **markdownlint**: Markdown consistency checking
 - **vale**: Writing style and grammar validation
 - **pre-commit**: Automated code quality checks
-
-## Development Workflow
-
-1. Run `just get-started` for initial setup
-2. Create appropriately named branch following strategy above
-3. Use `just preview-docs` for local development
-4. Run `just fmt-all` before committing to ensure quality
-5. Content must pass markdownlint and vale checks
-6. Python code must pass ruff formatting and linting
