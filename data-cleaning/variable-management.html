@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.30">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Variable Management – Research &amp; Data Science Hub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../data-cleaning/dataset-documentation.html" rel="next">
+<link href="../data-cleaning/raw-data-management.html" rel="prev">
+<link href="../assets/images/ipa-favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f696e12c00bc5ba05350463e4a3b9af3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b7ba069f592c56a3342eba1e4f0d49e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 40,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": true,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "Search IPA Resources",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="125f036232e99eb4b325e2d8e31b7100" class="alert alert-light hidden"><i class="bi bi-none quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><span>📣 New IRB fee schedule starting March 1. Click <u>here</u> to learn more!</span></p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+    <nav class="navbar navbar-expand-md " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/images/ipa-logo-abbreviated.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Research &amp; Data Science Hub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research-design" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Research Design</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research-design">    
+        <li>
+    <a class="dropdown-item" href="../research-design/theory-of-change.html">
+ <span class="dropdown-text">Theory of Change</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href=".././research-design/randomization.qmd">
+ <span class="dropdown-text">Randomization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">Measurement 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">Survey Design 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href=".././research-design/sample-size-power.qmd">
+ <span class="dropdown-text">Sample and Power Calculations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ethics-and-irb" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ethics and IRB</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ethics-and-irb">    
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/index.html">
+ <span class="dropdown-text">About IPA IRB</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-lifecycle.html">
+ <span class="dropdown-text">The IRB Lifecycle</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-reliance-agreements.html">
+ <span class="dropdown-text">Reliance Agreements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-docs.html">
+ <span class="dropdown-text">IRB Documentation 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-faqs.html">
+ <span class="dropdown-text">IRB FAQs 🚧</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-data">    
+        <li>
+    <a class="dropdown-item" href="../data-quality/ipa-research-protocols.html">
+ <span class="dropdown-text">Data Quality</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-collection/index.html">
+ <span class="dropdown-text">Data Collection</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-cleaning/index.html">
+ <span class="dropdown-text">Data Cleaning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-software-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Software Guides</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-software-guides">    
+        <li>
+    <a class="dropdown-item" href="../software/git/index.html">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/github/index.html">
+ <span class="dropdown-text">GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/github/index.html">
+ <span class="dropdown-text">VS Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/stata/index.html">
+ <span class="dropdown-text">Stata</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/python/index.html">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">SurveyCTO 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">Cryptomator 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/quarto/index.html">
+ <span class="dropdown-text">Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div class="quarto-navbar-tools">
+    <a href="https://github.com/PovertyAction" title="IPA Github" class="quarto-navigation-tool px-1" aria-label="IPA Github"><i class="bi bi-github"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-cleaning/index.html">Data Cleaning</a></li><li class="breadcrumb-item"><a href="../data-cleaning/variable-management.html">Variable Management</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Research Design</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../research-design/theory-of-change.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory of Change</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href=".././research-design/randomization.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Measurement 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Design 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href=".././research-design/sample-size-power.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample and Power Calculations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Ethics and IPA IRB</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About IPA IRB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-lifecycle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The IRB Lifecycle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-docs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB Documentation 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-reliance-agreements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reliance Agreements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-faqs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB FAQs 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Quality</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/ipa-research-protocols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Quality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">IPA Research Protocols</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/survey-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/dqap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Quality Action Plan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/bench-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bench Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/pilot-survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pilot Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/accompany-surveyors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accompany Surveyors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/hfcs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">High-Frequency Checks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/backchecks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Backchecks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Security Protocol 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/data-anonymization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Anonymization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/aea-registry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AEA Registry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/data-integrity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Integrity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/ipa-dms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IPA’s Data Management System</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Collection</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">In-Person Surveys 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/phone-surveys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phone Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">WhatsApp Surveys</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About WhatsApp Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-surveys-twilio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Twilio Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designing a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-deploy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deploying a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-data-security.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WhatsApp and Data Security</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Qualitative Methods</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/intro-qual-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Qualitative Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/focus-groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Focus Groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/interviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interviews</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/ethnographies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rapid Ethnographic Assessments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/observations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/admin-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Administrative Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Cleaning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Cleaning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/raw-data-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Raw Data Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/variable-management.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Variable Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/dataset-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataset Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Aggregation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Software Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Coding Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/guides/venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Environments</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Version Control</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/git/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/github/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Code Environments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/vscode/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">VS Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Positron 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Stata</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/stata/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/stata/coding-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/stata/data-processing-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Processing in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regular Expressions 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Frames 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapping in Stata 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SurveyCTO 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cryptomator 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quarto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/quarto/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started with Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/quarto/basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing in Quarto</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 style="font-size: 0.86rem; font-weight: 600 ; color: #312e31; line-height: 1.55rem;" class="anchored">In this resource</h2>
+    <ul>
+    <li><a href="#handling-missing-values" id="toc-handling-missing-values" class="nav-link active" data-scroll-target="#handling-missing-values">Handling missing values</a>
+    <ul class="collapse">
+    <li><a href="#missing-values-on-import" id="toc-missing-values-on-import" class="nav-link" data-scroll-target="#missing-values-on-import">Missing values on import</a></li>
+    <li><a href="#extended-missing-values-in-stata" id="toc-extended-missing-values-in-stata" class="nav-link" data-scroll-target="#extended-missing-values-in-stata">Extended missing values in Stata</a></li>
+    </ul></li>
+    <li><a href="#categorical-and-dummy-variables" id="toc-categorical-and-dummy-variables" class="nav-link" data-scroll-target="#categorical-and-dummy-variables">Categorical and dummy variables</a></li>
+    <li><a href="#specify-variables" id="toc-specify-variables" class="nav-link" data-scroll-target="#specify-variables">“Specify” Variables</a></li>
+    <li><a href="#skip-logic" id="toc-skip-logic" class="nav-link" data-scroll-target="#skip-logic">Skip Logic</a></li>
+    <li><a href="#storage-types-in-stata" id="toc-storage-types-in-stata" class="nav-link" data-scroll-target="#storage-types-in-stata">Storage Types in Stata</a></li>
+    <li><a href="#date-variables" id="toc-date-variables" class="nav-link" data-scroll-target="#date-variables">Date variables</a></li>
+    <li><a href="#logic-tests" id="toc-logic-tests" class="nav-link" data-scroll-target="#logic-tests">Logic tests</a>
+    <ul class="collapse">
+    <li><a href="#defensive-programming" id="toc-defensive-programming" class="nav-link" data-scroll-target="#defensive-programming">Defensive Programming</a></li>
+    <li><a href="#logic-tests-for-survey-data" id="toc-logic-tests-for-survey-data" class="nav-link" data-scroll-target="#logic-tests-for-survey-data">Logic Tests for Survey Data</a></li>
+    <li><a href="#logic-tests-in-administrative-data" id="toc-logic-tests-in-administrative-data" class="nav-link" data-scroll-target="#logic-tests-in-administrative-data">Logic Tests in Administrative Data</a></li>
+    </ul></li>
+    </ul>
+    <hr>
+  <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Authors</h2>
+  <ul>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://github.com/wildingka" class="nav-link" data-scroll-target="https\://github.com/wildingka">Kayla Wilding</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://github.com/mfrosenbaum" class="nav-link" data-scroll-target="https\://github.com/mfrosenbaum">Michael Rosenbaum</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://github.com/rsandino" class="nav-link" data-scroll-target="https\://github.com/rsandino">Rosemarie Sandino</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Contributors</h2>
+  <ul>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/cristhian-pulido" class="nav-link" data-scroll-target="https\://poverty-action.org/people/cristhian-pulido">Cristhian Pulido</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/wesley-kirui" class="nav-link" data-scroll-target="https\://poverty-action.org/people/wesley-kirui">Wesley Kirui</a></li>
+      </ul>
+    <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-cleaning/variable-management.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-cleaning/index.html">Data Cleaning</a></li><li class="breadcrumb-item"><a href="../data-cleaning/variable-management.html">Variable Management</a></li></ol></nav><h1 class="title display-7">Variable Management</h1></header>
+
+<header id="title-block-header">
+    
+    
+</header>
+
+
+<div class="custom-summary-block">
+<p>This guide provides data cleaning practices to help you manage data and ensure data integrity and reproducibility.</p>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Coding best practices for data cleaning, such as recoding missing values and converting date formats, minimize manual errors and enhances efficiency.</li>
+<li>Proper handling of missing values, categorical variables, and date variables is crucial for ensuring data quality and consistency in survey data analysis.</li>
+<li>Logic tests and defensive programming techniques help us identify and address data inconsistencies early, ensuring data integrity and reproducibility.</li>
+</ul>
+</div>
+</div>
+<p>Raw survey data is often relatively clean at the variable-level because the data is generated with a variety of constraints on how the data are formatted. For example, multiple response (select multiple) variables only allow certain responses which are known to the analyst from the survey instrument. These responses do not change in content unless the survey does. For other types of variables, most computer-assisted personal interviewing software such as SurveyCTO allow for constraints to be built into the survey instrument. IPA has a number of tools to support data quality during data collection such as the <a href="https://github.com/PovertyAction/high-frequency-checks">data management system</a>, which checks for data quality concerns.</p>
+<p>Much of the cleaning work required for survey data includes standardizing formats of variables so that they are usable for analysis. This includes ensuring missing and non-response values are missing in statistical software, that categorical formats are in a useful format, and variables correspond to the correct storage format, subjective orientation, and follow missingness patterns. These are substantive coding tasks and can benefit from consistent and automated approaches. This section is primarily concerned with doing those tasks safely and quickly with minimal manual input or transcription.</p>
+<section id="handling-missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="handling-missing-values">Handling missing values</h2>
+<p>For a number of reasons, variables will have missing values for certain observations. It is helpful to have the data reflect why these values are missing, particularly for numeric variables. For instance, you may want to know whether someone didn’t answer a question about business revenues because the question was skipped (e.g., they weren’t business owners) or whether it was because they could not remember.</p>
+<section id="missing-values-on-import" class="level3">
+<h3 class="anchored" data-anchor-id="missing-values-on-import">Missing values on import</h3>
+<p>Many statistical software will import variables and observations that only contain missing values when importing from other data formats. Often times, it’s useful to clear those values immediately after importing data. This can be done manually, or through the <code>missing</code> command which can be installed through SSC. One approach is to do this is as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>*Import <span class="kw">data</span> starting <span class="kw">on</span> the <span class="ot">row</span> <span class="kw">of</span> <span class="kw">variable</span> names: B1</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>import excel <span class="kw">using</span> <span class="st">"${raw}/rawdata.xlsx"</span>, cellrange(B1) first <span class="kw">clear</span> <span class="kw">allstring</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>*Remove <span class="bn">rows</span> and <span class="kw">columns</span> with only <span class="fu">missing</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">missing</span> dropobs, <span class="kw">force</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">missing</span> dropvars, <span class="kw">force</span> <span class="co">// usually don't use force, but fine in this case</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>*Ensure non-<span class="fu">missing</span> IDs</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">isid</span> id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Sometimes missing values are filled as non-empty values in other data management software (SQL uses “NULL”, R uses two types: “NA” (has 4 subtypes) &amp; “NaN”, etc.). It’s worth checking data to ensure those values are removed or properly turned to missing after importing</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>*Check <span class="kw">variable</span> names <span class="kw">if</span> anything equals <span class="st">"NULL"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ds</span>, has(<span class="dv">type</span> <span class="fu">string</span>) <span class="co">// only search strings</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">in</span> <span class="ot">`r(varlist)'</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`var'</span> = <span class="st">""</span> <span class="kw">if</span> <span class="ot">`var'</span> == <span class="st">"NULL"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For numeric variables, this can be done in one line using recode. For example, imagine all -99 values should be missing values:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>*Recode -99 to <span class="fu">missing</span> <span class="kw">for</span> <span class="ot">all</span> <span class="kw">values</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">recode</span> * (-99=.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="extended-missing-values-in-stata" class="level3">
+<h3 class="anchored" data-anchor-id="extended-missing-values-in-stata">Extended missing values in Stata</h3>
+<p>Stata has special codes for numeric missing values. For numeric variables, missing values are considered to be greater in value than all other numbers and themselves have an order of magnitude. The magnitude of missing values increases across the alphabet, with the standard missing value <code>.</code> coming before <code>.a</code>: <code>.</code> &lt; <code>.a</code> &lt; <code>.b</code> &lt; <code>.c</code> &lt; … &lt; <code>.z</code> The <code>.a</code>, <code>.b</code>, etc. are called “extended missing values.” . Note that extended missing values cannot be stored in string variables. Instead, all string variables with a missing value are shown as <code>“”</code> (called “blank”).</p>
+<p>Ensure extended missing values consistently represent missing values in your data. For instance, if -99 and -999 refer to “don’t know” in two different waves of the survey, they should be standardized. In that case, you will want to replace all -99 and -999 values with <code>.d</code>. It can be helpful to use the recode command to efficiently replace those values. We suggest keeping the following standards for extended missing values:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Type of Missing</th>
+<th>Extended Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Don’t know</td>
+<td>.d</td>
+</tr>
+<tr class="even">
+<td>Other</td>
+<td>.o</td>
+</tr>
+<tr class="odd">
+<td>Not applicable</td>
+<td>.n</td>
+</tr>
+<tr class="even">
+<td>Refusal</td>
+<td>.r</td>
+</tr>
+<tr class="odd">
+<td>Skip</td>
+<td>.s</td>
+</tr>
+<tr class="even">
+<td>Version differences</td>
+<td>.v</td>
+</tr>
+</tbody>
+</table>
+<p>Some responses may require the enumerator to switch from the standard missing values (for example if a response is restricted to be positive, -99 may not be allowed). Other times, enumerators may enter the wrong missing value by mistake, such as -999 instead of -99. As part of the code to relabel missing values by type, you can include code that searches for these changes. The following code replaces multiple values and looks for positive versions of the missing values in outliers.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>*Assign numerical codes</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>loc idk     -99 99 999  <span class="co">// numerical code for "Don't Know"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>loc rf      -77 77 75   <span class="co">// numerical code for "Refuse"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>loc na      -88         <span class="co">// numerical code for "Not Applicable"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>loc oth     -66         <span class="co">// numerical code for "Other"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>loc skip    -70         <span class="co">// numerical code for  "Skip"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>* Replace <span class="kw">values</span> <span class="kw">for</span> each <span class="dv">type</span> <span class="kw">of</span> refusal across numerical variables</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">ds</span>, <span class="kw">not</span>(<span class="dv">type</span> <span class="fu">string</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> numvars <span class="ot">`r(varlist)'</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> numvars {</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    ** Replace <span class="fu">missing</span> <span class="kw">values</span> <span class="kw">as</span> negative <span class="kw">for</span> unlabeled <span class="kw">numeric</span> <span class="kw">variable</span> above 0</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="fu">mi</span>(<span class="st">"`: value label `var''"</span>) { <span class="co">// no labels from SurveyCTO import code</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        *Skip <span class="kw">if</span> <span class="ot">value</span> takes less than 0 <span class="kw">values</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="kw">if</span> <span class="ot">`var'</span> &lt; 0 <span class="kw">continue</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        *now check <span class="kw">if</span> <span class="ot">value</span> has <span class="fu">missing</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">qui</span> <span class="kw">sum</span> <span class="ot">`var'</span> <span class="kw">if</span> <span class="fu">inlist</span>(<span class="ot">`var'</span>, 99, 88, 77, 66)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">if</span> <span class="ot">`r(N)'</span> == 0 <span class="kw">continue</span> <span class="co">// move to next variable if no values have positive version</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        * only change <span class="kw">if</span> <span class="kw">this</span> is the outlier <span class="ot">value</span> conditional <span class="kw">on</span> previous being completed</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">foreach</span> val <span class="kw">of</span> 99 88 77 66 {</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>            <span class="kw">di</span> <span class="st">"`var' has `r(N)' cases of `val'"</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>            <span class="kw">qui</span> <span class="kw">sum</span> <span class="ot">`var'</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>            <span class="kw">qui</span> <span class="kw">replace</span> <span class="ot">`var'</span> = -<span class="ot">`val'</span> <span class="kw">if</span> <span class="ot">`var'</span> == <span class="ot">`val'</span> &amp; (<span class="ot">`r(max)'</span> == <span class="ot">`val'</span> | <span class="ot">`r(min)'</span> == <span class="ot">`val'</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="co">// end foreach val of 99 88 77 66</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">// end if mi("`: value label `var''")</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    ** Relabel based <span class="kw">on</span> <span class="fu">missing</span> <span class="kw">patterns</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">foreach</span> x <span class="kw">of</span> <span class="kw">local</span> idk {</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="kw">replace</span> <span class="ot">`var'</span> = .<span class="kw">d</span> <span class="kw">if</span> <span class="ot">`var'</span> == <span class="ot">`x'</span>      <span class="co">// Don't know</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">// end foreach x of local idk</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">foreach</span> x <span class="kw">of</span> <span class="kw">local</span> na {</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        <span class="kw">replace</span> <span class="ot">`var'</span> = .n <span class="kw">if</span> <span class="ot">`var'</span> == <span class="ot">`x'</span>      <span class="co">// N/A</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="co">// end foreach x of local na</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">foreach</span> x <span class="kw">of</span> <span class="kw">local</span> oth {</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        <span class="kw">replace</span> <span class="ot">`var'</span> = .o <span class="kw">if</span> <span class="ot">`var'</span> == <span class="ot">`x'</span>      <span class="co">// Other</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    <span class="co">// end foreach x of local oth</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">foreach</span> x <span class="kw">of</span> <span class="kw">local</span> rf {</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        <span class="kw">replace</span> <span class="ot">`var'</span> = .<span class="fu">r</span> <span class="kw">if</span> <span class="ot">`var'</span> == <span class="ot">`x'</span>      <span class="co">// Refuse</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    <span class="co">// end foreach x of local rf</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">foreach</span> x <span class="kw">of</span> <span class="kw">local</span> skip {</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        <span class="kw">replace</span> <span class="ot">`var'</span> = .<span class="fu">s</span> <span class="kw">if</span> <span class="ot">`var'</span> == <span class="ot">`x'</span>      <span class="co">// Skip</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    <span class="co">// end foreach x of local</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach var of local numvars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We recommend checking outliers and replacements manually, and to search for modal responses in numeric variables that won’t have missing values as outliers. Accurate responses can overlap with missing response codes. Automated replacement code, such as the code above, should only be completed after confirming that all inverted values are correct. Even better, use of defensive coding such as assert or the <code>pause</code> command will resolve this. The best solution is often to make sure that the data generating process guards against this type of messiness. Programming in confirmation questions in the survey (“Did the respondent really answer 99 or is this a missing value?”) can help accomplish this with more accuracy.</p>
+</section>
+</section>
+<section id="categorical-and-dummy-variables" class="level2">
+<h2 class="anchored" data-anchor-id="categorical-and-dummy-variables">Categorical and dummy variables</h2>
+<p>Categorical variables are ones that have no obvious ordering to the responses. For example, the question “What crop do you grow?” could have the following answers: soy bean, maize, cassava, ground nut, and yams. It can be helpful to have a numeric value attached to each response, however there is no clear ordering here. You can use the command encode to create a value for each in alphabetical order and it keeps the original response as the value label.</p>
+<p>Dummy variables are one of the most common variable types you will use. These are also referred to as Boolean or indicator variables. These variables typically take on the values 0 and 1. However, it is important to note that your variable could and/or should have missing values if applicable. For example, an indicator about whether someone has a credit score could be defined as 1 for yes, 0 for no score and missing would mean there was no credit information available about that individual. Note that 0 and missing have different meanings and you should be careful around if and what values are missing. In Stata, you have several options for creating a dummy variable. Two examples of creating this “Has a credit score” dummy variable is below.</p>
+<ol type="1">
+<li>This first way recommended method is to start with an entirely missing variable and then replace with <code>1's</code> and <code>0's</code> for each condition.</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> has_score = .</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> has_score = 1 <span class="kw">if</span> credit_score != .</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> has_score = 0 <span class="kw">if</span> (credit_score == . &amp; info_available == 1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It is important to note that <code>0</code> is defined for those missing a credit score but that credit information is available for, the observations that remain missing are those that are missing a credit score because there was no credit information available. You do not want to lose this information due to poor coding in which you say all these people have no score.</p>
+<ol start="2" type="1">
+<li>The second way is more concise but can be trickier.</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> has_score = (credit_score != .) <span class="kw">if</span> (info_available == 1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This method does the above in one step. The first half creates a 1/0 dummy by assigning 1 to any observation that meets the condition in the first parentheses and 0 if it does not. Then it uses the if and second parenthesis to assign missing values. If the second condition <code>(info_available == 1)</code> is false, then that observation will be missing. Either method is acceptable, just be careful to take the 0’s and missing values into account.</p>
+</section>
+<section id="specify-variables" class="level2">
+<h2 class="anchored" data-anchor-id="specify-variables">“Specify” Variables</h2>
+<p>Survey questions may have a “specify” option, in which the respondent explains their answer or gives an alternate answer not available on the list of choices for that question. These are often triggered by an “other” response. In the raw dataset, alongside the original variable will be a “specify” variable that shows the comments for that question. You (or someone else familiar with the survey) will sometimes need to read through these specify answers and then recode the original variable accordingly. (“Specify” variables are also called other/specify variables, “other” variables, and free-text variables.)</p>
+<p>For example, if a question asked for someone’s favorite color, giving the options of blue, red, yellow, green, and other. If someone answered “other” and then wrote “sky blue” for their answer, you would want to recode the original variable for favorite color to say “blue” instead of “other”. However, if someone wrote “purple” you could leave their response as is (or, if enough people wrote purple, you could add another category to the variable).</p>
+<p>Particularly for large surveys, this can be a hassle. One helpful approach is to do the following: - First clean each string variable so that similar answers will show the same value. Use string functions like <code>lower()</code>, <code>trim()</code>, and <code>itrim()</code> to convert answers like “PUR pLE”, “ Purple” and “purple” to all be “purple”. - For each specify variable, collapse the dataset into unique answers (for example, if three people wrote “purple” the collapsed dataset would only show “purple” once). - Store those unique answers into a spreadsheet with another column that shows what variable the answer corresponds to. Then, leave one column blank, which you will eventually fill in with the value from the original variable that the response corresponds to (if it should be recoded). For instance, next to “purple” you would put nothing, but next to “sky blue” you would put 1 if 1 corresponded to the “blue” answer option. - Write code to merge the manual corrections from the excel file back into the do file, instead of running this as a series of <code>replace</code> or <code>if `var' == "sky blue" | `var' == "ocean blue" | `var' == ...</code> commands in the do file.</p>
+<p>Make sure you save do files and documents so that this process can be replicated and understood by someone else in the future.</p>
+<p>This data flow would like the following. First, the specify responses are cleaned and saved so that the excel sheet can be modified.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* MR 10/25/2019:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">  The variable q_oth is the "specify" variable corresponding to</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">  the variable q If q == 99, then q_oth has a string value input</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">  by the enumerator.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">  First, I standardize strung responses of the q_other variable and</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">  then output an excel document with each unique response.</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>*String cleaning</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> q_oth_cl = q_oth <span class="co">// create a clean copy to preserve the raw data</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> q_oth_cl = <span class="fu">lower</span>(q_oth_cl)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> q_oth_cl = <span class="fu">strtrim</span>(q_oth_cl) <span class="co">// only trim external spaces so "sky blue" does not become "skyblue"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>*Save excel file</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="kw">tempvar</span> map <span class="co">// create column header</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="ot">`map'</span> = <span class="st">""</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>lab <span class="kw">var</span> <span class="ot">`map'</span>  <span class="st">"Mapping"</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>lab <span class="kw">var</span> q_oth_cl <span class="st">"Other values"</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>*Save to temporary file folder <span class="kw">in</span> the <span class="kw">in</span> the project folder</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="kw">preserve</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">keep</span> q_oth_cl <span class="ot">`map'</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">duplicates</span> <span class="kw">drop</span> q_oth_cl, <span class="kw">force</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">export</span> excel q_oth_cl <span class="ot">`map'</span> <span class="kw">using</span> <span class="st">"${temp}q_oth.xlsx"</span>, firstrow(varl) <span class="kw">replace</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="kw">restore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This results in a table that looks like this:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Other</th>
+<th>Mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sky blue</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>ocean blue</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>navy</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>depends on the day</td>
+<td>-66</td>
+</tr>
+<tr class="odd">
+<td>purple</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The RA would fill out the mapping column based on the allowed values in the survey. This means that the “Mapping” column would take 1 for the “sky blue” value if the data uses 1 for the survey. If the data uses string values at this point in the cleaning process the “Mapping” column could be filled with “blue.” Ensure that this process is reproducible and rule based. Inconsistent mapping of variables does not create clean data. After this table is completed, it can be merged back into the file to save the values.</p>
+<p>The code to complete that looks like this:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* MR 10/25/19:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">  For question "q", specified other values were cleaned according to the</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">  following rules:</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">    -Any color response with more than 1% of the sample was</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">     added as a category</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">    -Specified colors that are a subset of the option (sample)</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">    -Non-colors were replaced as missing</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">      -Extended missing values were used if these should have been</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">      an extended missing value captured by the survey.</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">  These values were saved in a file in the Project Folder at:</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">    ../08_Analysis&amp;Results/01_Cleaning/05_Temp/q_oth_mapped.xlsx</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">  They will then be merged in and replaced to the individual variables.</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>*Load <span class="kw">in</span> <span class="kw">data</span> and <span class="kw">save</span> a <span class="kw">tempfile</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="kw">preserve</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  import excel <span class="kw">using</span> <span class="st">"${temp}q_oth_mapped.xlsx"</span>, first <span class="kw">clear</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">keep</span> <span class="kw">if</span> !<span class="fu">mi</span>(Mapping) <span class="co">// only merge on mapped values</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">ren</span> Othervalues q_oth_cl <span class="co">// change the file back to q_oth for the merge</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">tempfile</span> q_oth_mapping</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">save</span> <span class="ot">`q_oth_mapping'</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="kw">restore</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>*Merge <span class="kw">on</span> file</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>mmerge q_oth_cl <span class="kw">using</span> <span class="ot">`q_oth_mapping'</span>, t(n:1) <span class="fu">missing</span>(nomatch)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">  Alternatively, merge to the subset of responses with non_missing values and</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co">  append these files afterwards using "merge m:1 q_oth using `q_oth_mapping'"</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="dt">_merge</span> == -1 | <span class="dt">_merge</span> == 1 | <span class="dt">_merge</span> == 3 <span class="co">// missing, no coding, or coded</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>*Replace <span class="kw">values</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="kw">levelsof</span> <span class="fu">q</span> <span class="co">// first collect every level of q and replace</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>loc <span class="kw">levels</span> <span class="ot">`r(levels)'</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="dv">level</span> <span class="kw">of</span> <span class="kw">local</span> <span class="kw">levels</span> {</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="kw">replace</span> <span class="fu">q</span> = <span class="ot">`level'</span> <span class="kw">if</span> mapping == <span class="ot">`level'</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>*Replace extended <span class="kw">values</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="co">// do this manually</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>*<span class="kw">replace</span> <span class="fu">missing</span> <span class="kw">values</span> to IPA standard <span class="fu">missing</span> <span class="kw">values</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> <span class="fu">q</span> = .<span class="kw">d</span> <span class="kw">if</span> mapping == -66 <span class="co">// don't know</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> <span class="fu">q</span> = .<span class="fu">r</span> <span class="kw">if</span> mapping == -77 <span class="co">// refusal</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> <span class="fu">q</span> = .n <span class="kw">if</span> mapping == -88 <span class="co">// not applicable</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>*finally check that everything was captured</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="fu">q</span> != 99 <span class="kw">if</span> <span class="dt">_merge</span> == 3 <span class="co">// this assumes 99 == other in the survey AND that the all values were coded</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dt">_merge</span> q_oth_cl mapping <span class="co">// remove extraneous variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="skip-logic" class="level2">
+<h2 class="anchored" data-anchor-id="skip-logic">Skip Logic</h2>
+<p>Surveys will likely have skip logic. For instance, if a respondent says they have zero goats to a question, the survey may instruct the surveyor to (or the program may automatically) go to questions about sheep instead of questions about the quality of goat cheese the respondent makes from their goats. When a survey is bench tested and piloted, you should have tested that these skips worked by developing a series of checks based on a close reading of the survey instrument itself. However, skips may not be passed to the final dataset by some programs, such as SurveyCTO. This can make it hard to check if there were any errors in the survey coding.</p>
+<p>Defining additional missing values for skips and for questions that were not asked, such as those in long repeat groups can be helpful for two reasons: 1. Skip values that take an extended missing values can be identified using <code>==.s</code> without capturing other types of general missing values <code>.s</code>. 1. Excluding skip values from the general missing value <code>.</code> can help to identify errors in cleaning later on, as Stata will not impute <code>.s</code> normally. Then, failures in skip logic can be identified as part of the cleaning process. If some of the skips did not work or allowed for some entry error among respondents, document the issues by outputting a list of the problematic observations into a spreadsheet and mention it to the PIs.</p>
+<p>The following code assigns skip values and then confirms that the skips were successful during the survey implementation. It can be very helpful to use the <code>assert</code> command to check this. In addition, ensure that the observations who answered those questions are marked in the data by a dummy variable named in a consistent manner.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">    In this example, there is a module that asks about business profits</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    only if the respondent has a business. The question that starts</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    a set of questions, b_prof_s*, on business profits is b_prof_yn.</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    All questions should be skipped if  b_prof_yn == 0, but the</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    variables b_prof_s* exist if any respondent has a business.</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    First we assign the skip missing value to all observations if they</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">    do not have a value. Then we run an assert to confirm skips worked</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">    as intended. If they did not, the user is warned and</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">    a dataset is saved.</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">/* First identify if the respondent has a business and</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">fill skip values */</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">unab</span> bus_items : b_prof_s* <span class="co">// save all business profits questions</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> bus_items {</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* create skip patternm note that `var' == ., not mi(`var')</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">    to ensure extended missing values are not overwritten */</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`var'</span> = .<span class="fu">s</span> <span class="kw">if</span> <span class="ot">`var'</span> == . &amp; b_prof_yn == 0</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>** Now check to <span class="kw">confirm</span> that</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> bus_items {</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">// don't use capture unless you control for every outcome</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    cap <span class="kw">assert</span> <span class="ot">`var'</span> == .<span class="fu">s</span> <span class="kw">if</span> b_prof_yn == 0</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    *Tag variables <span class="kw">if</span> <span class="kw">this</span> fails</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="dt">_rc</span> == 9 <span class="kw">gen</span> <span class="ot">`var'</span>_nos = <span class="ot">`var'</span> != .<span class="fu">s</span> &amp; b_prof_yn == 0</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    *Controlling <span class="kw">for</span> other options</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">else</span> <span class="kw">if</span> !<span class="dt">_rc</span> <span class="kw">di</span> <span class="st">"No errors in `var'"</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">// exit with an error if a different error than the assert failing</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">else</span> <span class="kw">exit</span> <span class="dt">_rc</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>** Export a <span class="ot">list</span> <span class="kw">of</span> each <span class="kw">variable</span> and <span class="kw">if</span> it were skipped</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="co">/* Formatting could be done differently here, the below</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="co">   outputs an excel sheet that preserves all other answers</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="co">   and is in the wide format.</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="kw">preserve</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    *Save ID and relevant variables</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">keep</span> id key startdate b_prof*</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>    *Keep relevant observations</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>    <span class="kw">qui</span> <span class="kw">ds</span> b_prof_*_nos</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">egen</span> tokeep = <span class="fu">rowmax</span>(<span class="ot">`r(varlist)'</span>)</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">keep</span> <span class="kw">if</span> tokeep == 1</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> tokeep</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    *Order <span class="kw">by</span> <span class="kw">variable</span> and <span class="fu">missing</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> bus_items {</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>        <span class="kw">order</span> <span class="ot">`var'</span> <span class="ot">`var'</span>_nos</span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>    *Save files</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>    <span class="kw">export</span> excel <span class="kw">using</span> <span class="st">"${temp}business_skip_errors.xlsx"</span>, first(<span class="kw">var</span>) <span class="kw">replace</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="kw">restore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="storage-types-in-stata" class="level2">
+<h2 class="anchored" data-anchor-id="storage-types-in-stata">Storage Types in Stata</h2>
+<p>Statistical software requires a storage type to determine how and what data to store about each variable or value. This storage type determines if the software treats a variable as text or a number, and how much information is stored in each variable. This information could be how many digits of precision are required or if the variable is just 0 or 1s. Some data types such as dates have specific metadata attached – January 1, 1960 was a Friday – that relate to storage type.</p>
+<p>Variables are stored in two broad categories: string (text) or numeric. For tasks in analysis such as regression, Stata requires categorical variables to be stored as numeric variables, not string variables. This is also beneficial for storage size of variables. As a rule of thumb in Stata, ordinal and categorical variable should be stored as numeric variables with labeled values. Only text or IDs should ever be stored as a string variables. Labeling categorical variables is preferred and should be treated as a part of data management.</p>
+<p>Storage formats such string or numeric are the variable’s type, different from its format. Variable formats affect how Stata displays values of variables to the user and are loosely related to the storage type – a string cannot be displayed with significant digits for example.</p>
+<p>Numeric variables are stored as byte, int, long, float or double. Float and double are the two that can hold non-integer numbers (decimals) and are the most common. More details on how numerical formats may affect datasets is available in <a href="https://povertyaction.github.io/guides/cleaning/06%20Coding%20in%20Stata/02%20Numerical%20Formats/">this</a> guide article. Numerical and string formats can be changed using the <code>recast</code> command, or by specifying a storage format using the <code>generate</code> command.</p>
+<p>String variables storage types are identified by their character length (<code>str4</code> has 4 characters, <code>str7</code> has 7 characters, etc.,). Variables are stored as string if they have any nonnumeric character in them (this includes commas and periods if they are imported as such). See help data_types for more information about variable types. Useful commands to go between string and numeric variables are <code>destring</code> and <code>tostring</code>. The command <code>destring</code> turns a variable from a string into a numeric (must contain all nonnumeric characters). The command <code>tostring</code> changes a numeric variable into a string variable. To convert strings to labeled numeric formats and vice versa see the <code>encode</code> and <code>decode</code> (or <code>sencode</code> and <code>sdecode</code> user-written commands).</p>
+<p>A variable’s format controls how the data is displayed. This is can be used to format numeric variables to display with commas or a specific number of decimal points. For details on the corresponding formats for each variable type and how to format variables, type <code>help format</code>. In short, it’s important to match the displayed format to the content, especially for outputs, so that content can be interpretable by humans.</p>
+</section>
+<section id="date-variables" class="level2">
+<h2 class="anchored" data-anchor-id="date-variables">Date variables</h2>
+<p>Dates are especially complex to work with in Stata. Stata stores dates as a numeric variable that captures either the number of days, months, quarters, or years since January 1, 1960. It is important to know that dates can also have a time component (datetimes), and are then stored as the number of milliseconds since January 1, 1960. These formats are numeric, but once they are stored as a date in Stata several special Stata functions can be applied to them to help with calculations that relate to dates and time. For more information see <code>h datetime translation</code>.</p>
+<p>Survey CTO defaults to storing date variables as strings when importing them to Stata. It’s advantageous to convert these variables to a proper date format, as it allows for various logical and mathematical calculations. For example, you could count the number of days between a survey start date and submission date, or the number of minutes between the survey was started and completed. The SurveyCTO datetime metadata (<code>starttime endtime submissiondate</code>) are already stored as date variables.<code>starttime</code> and <code>endtime</code> are formatted as datetimes (<code>%tc</code>) and <code>submissiondate</code> is formatted as a date (<code>%td</code>)).</p>
+<p>To convert imported dates to be stored as a date type in Stata, the functions <code>date()</code> and <code>mdy()</code> will convert non-date variables to date-formatted variables. The functions <code>clock()</code> and <code>mdyhms()</code> will convert non-date variables to datetime-formatted variables. The <code>date()</code> and <code>clock()</code> functions are useful if your dates are stored as a string variable whereas the <code>mdy()</code> and <code>mdyhms()</code> functions are useful if your dates are stored as numeric variables. These commands will create a variable that is the number of days, or the number of milliseconds, since January 1, 1960.</p>
+<p>For a set of SurveyCTO datetimes using the same format, the following code will convert all of the variables to Stata date formats and check for data quality:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>*Define <span class="ot">list</span> <span class="kw">of</span> <span class="fu">date</span> <span class="kw">variable</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ds</span> *_date <span class="co">// this should match your naming convention</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>loc date_vars <span class="ot">`r(varlist)'</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>*<span class="kw">save</span> <span class="kw">tempvar</span> so indifferent to <span class="kw">var</span> <span class="fu">length</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tempvar</span> temp</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>* create <span class="kw">double</span> to <span class="kw">store</span> datetime to avoid rounding</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">double</span> <span class="ot">`temp'</span> = .</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>*Foreach <span class="fu">date</span> <span class="kw">variable</span>, convert to datetime and <span class="kw">run</span> checks</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> date_vars {</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    *Display progress</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">di</span> <span class="st">"Working on `var'"</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    *Skip <span class="kw">if</span> the <span class="fu">date</span> is already formatted <span class="kw">as</span> any <span class="fu">date</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">        Note: This could also standardize formats using</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">        the following code:</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">        if regexm("`: format `v''", "%tc") {</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">             replace `v' = cofd(`v')</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">             format `v' %tc_CCYY_NN_DD</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co">        }</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">        else if regexm(“`: format `var'', “%t”) continue</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co">    */</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="fu">regexm</span>(<span class="st">"`: format `var''"</span>, <span class="st">"%t"</span>) <span class="kw">continue</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    *Convert from <span class="fu">string</span> to <span class="fu">date</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co">        Note: This specifies a format that all variables share.</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co">        See h datetime in Stata for an overview on how to define</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co">        datetime formats for the clock() and date() functions.</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co">    */</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    loc varl : <span class="kw">var</span> <span class="kw">label</span> <span class="ot">`var'</span> <span class="co">// save var label</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`temp'</span> = . <span class="co">// clear tempvar</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`temp'</span> = clock(<span class="ot">`var'</span>, <span class="st">"MDYhms"</span>)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    *<span class="kw">drop</span> the <span class="kw">variable</span> <span class="kw">as</span> cannot <span class="kw">replace</span> <span class="kw">values</span> and convert <span class="dv">type</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="ot">`var'</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gen</span> <span class="kw">double</span> <span class="ot">`var'</span> = <span class="ot">`temp'</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">format</span> <span class="ot">`var'</span> %tcCCYY_NN_DD__HH:MM:SS <span class="co">// choose a preferred format</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    *Check within <span class="kw">range</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>    loc survey_start = clock(<span class="st">"Jan. 01 1960, 12:00:00 AM"</span>, <span class="st">"MDYhms"</span>)</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    loc survey_end = clock(<span class="st">"Feb. 29 2020, 11:59:59 PM"</span>, <span class="st">"MDYhms"</span>)</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">assert</span> <span class="fu">inrange</span>(<span class="ot">`var'</span>, <span class="ot">`survey_start'</span>, <span class="ot">`survey_end'</span>)</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    *Check non-<span class="fu">missing</span> <span class="kw">for</span> calculate fields</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*</span></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="co">        This may not be the case for all projects if some</span></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="co">        calculate fields are conditional on being read</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="co">    */</span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">assert</span> !<span class="fu">mi</span>(<span class="ot">`var'</span>)</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach var of local date_vars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Some of these checks will duplicate checks conducted as part of IPA’s <a href="https://github.com/PovertyAction/high-frequency-checks">data management system</a>. It doesn’t hurt to run these confirmations, but we recommend using the data management system to be aware of any problems as soon as possible.</p>
+<p>If you would like to convert your daily variable into a monthly or yearly variable you can use the following functions: <code>mofd()</code> and <code>yofd()</code>. You can find descriptions of all the functions that convert between which count types for dates (daily, monthly, quarterly, or yearly) by typing <code>help date()</code> and clicking on “Date and time functions” to go to the Stata manual.</p>
+<p>Once you have date in the right type, you can work with the formatting of the variable. The formatting is how you make the date look like a date rather than the underlying numeric value. You can read how to format your dates in any way imaginable by typing <code>help datetime display formats</code>. Note that changing the format of a date variable does not change its underlying value.</p>
+</section>
+<section id="logic-tests" class="level2">
+<h2 class="anchored" data-anchor-id="logic-tests">Logic tests</h2>
+<p>Clean data should be free of mistakes such as out of range values. Yet, the thousands of lines of survey, database management, cleaning and analysis code that make up projects often contain a number of mistakes. These mistakes are a natural part of any large project. Instead of focusing on having mistake-free code in all cases, it’s often more effective to write code that tests for if the data matches expectations. This approach does not substitute for code review and being careful, but</p>
+<p>Commands like <code>assert</code> in Stata and <code>stopifnot()</code> in R allow the programmer to break the code if some logic test is not met. Logic tests check if the values observed in the data make sense given other values. For instance, can someone who says they were born in 2000 really have been a member of their current community for thirty years? These tests are used to ensure that the clean data is truly clean, not just that the programmer thinks the data are clean.</p>
+<p>The list of logic tests to test is dependent on each individual dataset. Check for things that would be problematic for data analysis, such as missing values in variables you expect to always have a value. These checks should include other problems in the data that would clearly indicate that something is wrong with the data such as responses to a Likert scale survey question that wasn’t in the list of programmed responses. If any of those tests fail, flag the values in the data and bring them up with the PIs.</p>
+<section id="defensive-programming" class="level3">
+<h3 class="anchored" data-anchor-id="defensive-programming">Defensive Programming</h3>
+<p>In computer science, programming that ensures a program can function under unanticipated situations conditions is called defensive programming. It can be useful to bring <a href="https://thepoliticalmethodologist.com/2016/06/06/embrace-your-fallibility-thoughts-on-code-integrity/">this mentality</a> into social science research. In many cases, defensive programming is natural with the type of data we work with. Many variables have characteristics that we expect from the data and can be easily checked. For example, for a survey of employed adults in the US, with a working age of 18, no respondents should have age below 18.</p>
+<p>We can check that this is the case in Stata:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> age &gt;= 18 &amp; !<span class="fu">mi</span>(age) <span class="co">// . is considered infinitely large by Stata, so &gt; 18 captures missing values as well.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Building these tests into your data flow should be a natural test that you work into data cleaning. This can be expanded to other functions like merges. If every household but one received both an agricultural and household survey, each household survey should merge to the plot dataset except one observation. The merge can be checked to confirm that that is the case:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>*Check <span class="kw">merge</span> success rate</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 id <span class="kw">using</span> “plots.dta” <span class="co">// note: merge has a built-in assert option</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> <span class="kw">if</span> <span class="dt">_merge</span> != 3 <span class="co">// check how many merges did not have an observation in both</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="ot">`r(N)'</span> == 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These tests should be built into cleaning code, as they are computationally cheap unless data is large. They should be executed every time the code runs, and should test major modifications that affect important variables.</p>
+</section>
+<section id="logic-tests-for-survey-data" class="level3">
+<h3 class="anchored" data-anchor-id="logic-tests-for-survey-data">Logic Tests for Survey Data</h3>
+<p>Survey data has the benefit of coming from a survey that you, as an analyst, have probably programmed. The survey software and import process often controls for many types of errors. However, data management errors can also occur due to the particular forms that survey data contains. We find these errors are common in survey data management: - Missing values occur in variables that the programmer assumes always has real values - Missing values are inconsistently defined in the survey and are not fully replaced (e.g.&nbsp;“Not Applicable” is -99, -98, and 77) - Variable or value options change between survey versions and aren’t reconciled - Variables with the same name are overwritten as part of a merge. See <code>h mmerge</code> for a user written command that stores this information. - Observations are not unique and some actions such as sorting become irreproducible</p>
+<p>We strongly recommend testing for these errors as part of the cleaning process.</p>
+</section>
+<section id="logic-tests-in-administrative-data" class="level3">
+<h3 class="anchored" data-anchor-id="logic-tests-in-administrative-data">Logic Tests in Administrative Data</h3>
+<p>There are often a broader set of concerns for administrative data as we do not directly have control over the data generation and management process. This means that data definitions and formats may change or be inconsistent over longitudinal data.</p>
+<p>Some additional concerns to focus on in administrative data are: - Ensure that variables remain consistent over repeated deliveries - Data translation and missingness standards of the storage system may create values in statistical software (e.g.&nbsp;SQL treats missing as “NULL”)</p>
+<p>Variable consistency can be handled using value labeling in Stata. For example, to ensure that data remains the same over the course of data collection, it can be useful to check that categorical variables map to expected values to a previously created value label. The <code>noextend</code> option of the encode commands allows you to confirm no values exist in the variable other than those in the supplied label. The following code accomplishes this:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>*Create a <span class="kw">local</span> <span class="ot">list</span> <span class="kw">of</span> variables to <span class="kw">encode</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>loc str_var <span class="kw">var</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>*Encode <span class="kw">values</span> and <span class="kw">confirm</span> expected</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> str_var {</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    *Encode variables</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    sencode <span class="ot">`var'</span>, <span class="kw">label</span>(<span class="ot">`var'</span>_label) <span class="kw">replace</span> <span class="kw">noextend</span> <span class="co">// type h sencode to see options</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach v of local str_var</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/data\.poverty-action\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../data-cleaning/raw-data-management.html" class="pagination-link" aria-label="Raw Data Management">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Raw Data Management</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../data-cleaning/dataset-documentation.html" class="pagination-link" aria-label="Dataset Documentation">
+        <span class="nav-page-text">Dataset Documentation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-cleaning/variable-management.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

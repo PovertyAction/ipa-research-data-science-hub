@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.30">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Coding in Stata – Research &amp; Data Science Hub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../software/stata/data-processing-stata.html" rel="next">
+<link href="../../software/stata/index.html" rel="prev">
+<link href="../../assets/images/ipa-favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f696e12c00bc5ba05350463e4a3b9af3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b7ba069f592c56a3342eba1e4f0d49e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 40,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": true,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "Search IPA Resources",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="125f036232e99eb4b325e2d8e31b7100" class="alert alert-light hidden"><i class="bi bi-none quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><span>📣 New IRB fee schedule starting March 1. Click <u>here</u> to learn more!</span></p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+    <nav class="navbar navbar-expand-md " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/ipa-logo-abbreviated.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Research &amp; Data Science Hub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research-design" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Research Design</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research-design">    
+        <li>
+    <a class="dropdown-item" href="../../research-design/theory-of-change.html">
+ <span class="dropdown-text">Theory of Change</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../.././research-design/randomization.qmd">
+ <span class="dropdown-text">Randomization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../under-construction.html">
+ <span class="dropdown-text">Measurement 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../under-construction.html">
+ <span class="dropdown-text">Survey Design 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../.././research-design/sample-size-power.qmd">
+ <span class="dropdown-text">Sample and Power Calculations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ethics-and-irb" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ethics and IRB</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ethics-and-irb">    
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/index.html">
+ <span class="dropdown-text">About IPA IRB</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/irb-lifecycle.html">
+ <span class="dropdown-text">The IRB Lifecycle</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/irb-reliance-agreements.html">
+ <span class="dropdown-text">Reliance Agreements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/irb-docs.html">
+ <span class="dropdown-text">IRB Documentation 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/irb-faqs.html">
+ <span class="dropdown-text">IRB FAQs 🚧</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-data">    
+        <li>
+    <a class="dropdown-item" href="../../data-quality/ipa-research-protocols.html">
+ <span class="dropdown-text">Data Quality</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data-collection/index.html">
+ <span class="dropdown-text">Data Collection</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data-cleaning/index.html">
+ <span class="dropdown-text">Data Cleaning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-software-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Software Guides</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-software-guides">    
+        <li>
+    <a class="dropdown-item" href="../../software/git/index.html">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/github/index.html">
+ <span class="dropdown-text">GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/github/index.html">
+ <span class="dropdown-text">VS Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/stata/index.html">
+ <span class="dropdown-text">Stata</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/python/index.html">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../under-construction.html">
+ <span class="dropdown-text">SurveyCTO 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../under-construction.html">
+ <span class="dropdown-text">Cryptomator 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/quarto/index.html">
+ <span class="dropdown-text">Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div class="quarto-navbar-tools">
+    <a href="https://github.com/PovertyAction" title="IPA Github" class="quarto-navigation-tool px-1" aria-label="IPA Github"><i class="bi bi-github"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Software Guides</li><li class="breadcrumb-item"><a href="../../software/stata/index.html">Stata</a></li><li class="breadcrumb-item"><a href="../../software/stata/coding-stata.html">Coding in Stata</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Research Design</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../research-design/theory-of-change.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory of Change</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../.././research-design/randomization.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Measurement 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Design 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../.././research-design/sample-size-power.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample and Power Calculations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Ethics and IPA IRB</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About IPA IRB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/irb-lifecycle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The IRB Lifecycle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/irb-docs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB Documentation 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/irb-reliance-agreements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reliance Agreements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/irb-faqs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB FAQs 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Quality</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/ipa-research-protocols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Quality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">IPA Research Protocols</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/survey-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/dqap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Quality Action Plan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/bench-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bench Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/pilot-survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pilot Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/accompany-surveyors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accompany Surveyors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/hfcs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">High-Frequency Checks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/backchecks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Backchecks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Security Protocol 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/data-anonymization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Anonymization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/aea-registry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AEA Registry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/data-integrity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Integrity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/ipa-dms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IPA’s Data Management System</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Collection</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">In-Person Surveys 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/phone-surveys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phone Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">WhatsApp Surveys</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About WhatsApp Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-surveys-twilio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Twilio Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designing a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-deploy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deploying a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-data-security.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WhatsApp and Data Security</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Qualitative Methods</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/intro-qual-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Qualitative Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/focus-groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Focus Groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/interviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interviews</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/ethnographies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rapid Ethnographic Assessments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/observations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/admin-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Administrative Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Cleaning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Cleaning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/raw-data-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Raw Data Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/variable-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variable Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/dataset-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataset Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Aggregation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Software Guides</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Coding Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/guides/venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Environments</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Version Control</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/git/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/github/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Code Environments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/vscode/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">VS Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Positron 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
+ <span class="menu-text">Stata</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/stata/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/stata/coding-stata.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Coding in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/stata/data-processing-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Processing in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regular Expressions 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Frames 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapping in Stata 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SurveyCTO 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cryptomator 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quarto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/quarto/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started with Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/quarto/basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing in Quarto</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 style="font-size: 0.86rem; font-weight: 600 ; color: #312e31; line-height: 1.55rem;" class="anchored">In this resource</h2>
+    <ul>
+    <li><a href="#using-stata-files" id="toc-using-stata-files" class="nav-link active" data-scroll-target="#using-stata-files">Using Stata Files</a>
+    <ul class="collapse">
+    <li><a href="#system-datasets" id="toc-system-datasets" class="nav-link" data-scroll-target="#system-datasets">System Datasets</a></li>
+    <li><a href="#creating-a-dataset-in-stata-from-scratch" id="toc-creating-a-dataset-in-stata-from-scratch" class="nav-link" data-scroll-target="#creating-a-dataset-in-stata-from-scratch">Creating a dataset in Stata from scratch</a></li>
+    </ul></li>
+    <li><a href="#numerical-formats" id="toc-numerical-formats" class="nav-link" data-scroll-target="#numerical-formats">Numerical formats</a>
+    <ul class="collapse">
+    <li><a href="#statas-process" id="toc-statas-process" class="nav-link" data-scroll-target="#statas-process">Stata’s process</a></li>
+    <li><a href="#dataset-size-memory-usage" id="toc-dataset-size-memory-usage" class="nav-link" data-scroll-target="#dataset-size-memory-usage">Dataset Size &amp; Memory Usage</a></li>
+    </ul></li>
+    <li><a href="#quality-control" id="toc-quality-control" class="nav-link" data-scroll-target="#quality-control">Quality Control</a>
+    <ul class="collapse">
+    <li><a href="#checking-for-consistency-across-datasets" id="toc-checking-for-consistency-across-datasets" class="nav-link" data-scroll-target="#checking-for-consistency-across-datasets">Checking for Consistency Across Datasets</a></li>
+    </ul></li>
+    <li><a href="#relative-references" id="toc-relative-references" class="nav-link" data-scroll-target="#relative-references">Relative references</a>
+    <ul class="collapse">
+    <li><a href="#setting-relative-references-in-stata" id="toc-setting-relative-references-in-stata" class="nav-link" data-scroll-target="#setting-relative-references-in-stata">Setting Relative References in Stata</a></li>
+    <li><a href="#working-default-references" id="toc-working-default-references" class="nav-link" data-scroll-target="#working-default-references">Working Default References</a></li>
+    </ul></li>
+    <li><a href="#useful-stata-commands" id="toc-useful-stata-commands" class="nav-link" data-scroll-target="#useful-stata-commands">Useful Stata commands</a>
+    <ul class="collapse">
+    <li><a href="#fillin" id="toc-fillin" class="nav-link" data-scroll-target="#fillin">fillin</a></li>
+    <li><a href="#labeldup" id="toc-labeldup" class="nav-link" data-scroll-target="#labeldup">labeldup</a></li>
+    <li><a href="#labelrename" id="toc-labelrename" class="nav-link" data-scroll-target="#labelrename">labelrename</a></li>
+    <li><a href="#levelsof" id="toc-levelsof" class="nav-link" data-scroll-target="#levelsof">levelsof</a></li>
+    <li><a href="#lookfor" id="toc-lookfor" class="nav-link" data-scroll-target="#lookfor">lookfor</a></li>
+    <li><a href="#missing" id="toc-missing" class="nav-link" data-scroll-target="#missing">missing</a></li>
+    <li><a href="#mmerge" id="toc-mmerge" class="nav-link" data-scroll-target="#mmerge">mmerge</a></li>
+    <li><a href="#return-list" id="toc-return-list" class="nav-link" data-scroll-target="#return-list">return list</a></li>
+    <li><a href="#sencode" id="toc-sencode" class="nav-link" data-scroll-target="#sencode">sencode</a></li>
+    </ul></li>
+    </ul>
+    <hr>
+  <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Authors</h2>
+  <ul>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://github.com/mfrosenbaum" class="nav-link" data-scroll-target="https\://github.com/mfrosenbaum">Michael Rosenbaum</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://github.com/wildingka" class="nav-link" data-scroll-target="https\://github.com/wildingka">Kayla Wilding</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://github.com/rsandino" class="nav-link" data-scroll-target="https\://github.com/rsandino">Rosemarie Sandino</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Contributors</h2>
+  <ul>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/cristhian-pulido" class="nav-link" data-scroll-target="https\://poverty-action.org/people/cristhian-pulido">Cristhian Pulido</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/wesley-kirui" class="nav-link" data-scroll-target="https\://poverty-action.org/people/wesley-kirui">Wesley Kirui</a></li>
+      </ul>
+    <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/software/stata/coding-stata.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Software Guides</li><li class="breadcrumb-item"><a href="../../software/stata/index.html">Stata</a></li><li class="breadcrumb-item"><a href="../../software/stata/coding-stata.html">Coding in Stata</a></li></ol></nav><h1 class="title display-7">Coding in Stata</h1></header>
+
+<header id="title-block-header">
+    
+    
+</header>
+
+
+<div class="custom-summary-block">
+<p>This guide shows how to work with Stata files, numerical formats, dataset creation, memory management, quality control, and useful commands.</p>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Stata allows you to perform efficient data cleaning and reproducible coding.</li>
+<li>Avoid common pitfalls like precision errors, memory inefficiencies, and merge issues.</li>
+</ul>
+</div>
+</div>
+<section id="using-stata-files" class="level2">
+<h2 class="anchored" data-anchor-id="using-stata-files">Using Stata Files</h2>
+<p>Stata data files are saved with the extension “.dta”. This means the file is ready to use in Stata and unlike data saved in, for example, an excel file, you do not need to import this into Stata.</p>
+<p>To start using this data in Stata you simply need to type</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"filepath</span><span class="ch">\f</span><span class="st">ilename.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Additionally, you will be able to use this dataset in other commands when combining two datasets such as merge or append.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 uid <span class="kw">using</span> <span class="st">"statadata.dta"</span>, options</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">append</span> <span class="kw">using</span> <span class="st">"statadata.dta"</span>`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If your file was not already in the stata format you would not be able to call it directly. You would have to import it before you can use it.</p>
+<section id="system-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="system-datasets">System Datasets</h3>
+<p>Stata comes with pre-loaded datasets that you can use to play around to learn new things on. You can see all of the available datasets by going to “File &gt; Example datasets…” or typing <code>help dta_examples</code>. From here you can click the “use” or “describe” buttons to load the dataset and describe them.</p>
+<p>If you already know the name of the dataset you want to use, you simply need to type <code>sysuse auto.dta</code> for the auto dataset for example to use the data.</p>
+</section>
+<section id="creating-a-dataset-in-stata-from-scratch" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-dataset-in-stata-from-scratch">Creating a dataset in Stata from scratch</h3>
+<p>In Stata, you can create a dataset from scratch. This can be helpful if you want to test some code, learn or check how something works. When working in a clear Stata session, you can use <code>set obs n</code> where n is an integer, to create that many observations in the dataset. From there, you can gen variables set to whatever you are interested in.</p>
+<p>Example to test how to generate a dummy variable as well as using <code>_n</code> to indicate row numbers</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>*Clear your stata <span class="kw">console</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">clear</span> <span class="ot">all</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>*Create how many observations you want your dataset to have</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">set</span> <span class="kw">obs</span> 10</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>*Create variables to <span class="kw">test</span> the code you are interested <span class="kw">in</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">gen</span> test_dummy = (<span class="dt">_n</span> &lt; 5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="numerical-formats" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-formats">Numerical formats</h2>
+<p>It’s easy to forget that Stata code is operating a computer with very different rules for counting and numbers than we have in the real world. Ado (the language of .do files) allows for a high-level <a href="https://en.wikipedia.org/wiki/Abstraction_layer">abstraction</a>, where the programmer does not have to explicitly command the computer to do low-level tasks like allocating memory for data, ordering tasks, or defining how the computer should round values that can’t be precisely displayed in binary. This is rarely important, but there are a few cases where these processes, like precision of stored data, is highly relevant for statistical tasks and may need to be specified. The most relevant cases are: - IDs should be stored as string variables or have less than 8 digits if the storage type of the variable is a float - Asserts should only compare similar storage types. - All values in stata (e.g.&nbsp;<code>1</code> or <code>`r(N)'</code>) are treated as doubles - Merges that do not match IDs across datasets and display bugs (e.g.&nbsp;1.0000000784732907 in Excel) can be due to the storage type of the variables or values</p>
+<section id="statas-process" class="level3">
+<h3 class="anchored" data-anchor-id="statas-process">Stata’s process</h3>
+<p>Variables in Stata have storage formats and display formats. Storage formats describe how Stata is storing the variable in the computer memory – what the data are – and display formats describes the default way that the information is presented to a user. Type <code>help format</code> in Stata to get more information on how variables or values are displayed.</p>
+<p>Stata has five storage formats for numerical variables that take up different amount of memory. These formats store information to a certain degree of accuracy before rounding. The first three types (<code>byte</code>, <code>int</code>, and <code>long</code>) in the table below can only be used for integers. <code>float</code> and <code>double</code> are the standard type. There is a trade-off for increased precision. More precise storage formats take up more memory. This will make the file larger and slow down Stata’s processes when the data are being used.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 27%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Maximum digits of accuracy</th>
+<th>Bytes of memory for a single value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>byte</code></td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><code>int</code></td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td><code>long</code></td>
+<td>9</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td><code>float</code></td>
+<td>7</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td><code>double</code></td>
+<td>16</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>This is extremely relevant when exact equivalence matters. Stata will always conduct functions in double precision (at about 16 digits of precision). Imagine that you are comparing a variable <code>x</code> and a number <code>.1</code>. Stata defaults to generating variables as floats to conserve memory. To process a calculation, Stata will transform the float <code>x</code> into a double and compare that value to the <code>.1</code> rounded to a double. This causes results that we may not expect for numbers, like <code>.1</code>, that aren’t stored exactly in binary:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">set</span> <span class="kw">obs</span> 1</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">gen</span> x = .1</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>. <span class="kw">assert</span> x == .1</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  assertion is false</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">r</span>(9);</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>. <span class="kw">di</span> <span class="st">"`=float(.1)'"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  .1000000014901161</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>. <span class="kw">di</span> <span class="st">"`=.1'"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  .1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Stata is not making a mistake here. This is the result of .1 not having an exact value in binary (base 2 v. base 10). Since Stata does all calculations in double precision, the rounded value of .1 is different at float precision than double precision. The code that follows shows a few ways to compare these values exactly.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">ds</span> x, <span class="kw">d</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>              storage   <span class="kw">display</span>    <span class="ot">value</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">variable</span> <span class="bn">name</span>   <span class="dv">type</span>    <span class="kw">format</span>     <span class="kw">label</span>      <span class="kw">variable</span> <span class="kw">label</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>--------------------------------------------------------------------------------------------------------------</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>x               <span class="kw">float</span>   %9.0g</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>. <span class="kw">assert</span> x == <span class="kw">float</span>(.1) <span class="co">// Force Stata to round double(.1) to float(.1)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">// force Stata to display the first and only value of x in a double format</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>. <span class="kw">assert</span> <span class="ot">`: di x[1]'</span> == .1</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>. <span class="kw">gen</span> <span class="kw">double</span> <span class="fu">y</span> = .1 <span class="co">// generate a new variable at double precision</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>. <span class="kw">assert</span> <span class="fu">y</span> == .1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This would not be a problem for a value that can be stored exactly such as <code>1</code>.</p>
+<p>Although this seems very abstract and of limited relevance, this will cause problems in the following cases that are often encountered by IPA projects: - IDs have different storage types (one is a float and one is a double for example) in a merge. Stata will not prevent you from making that merge, but will not be able to match the IDs that the programmer intended to be the same. - Numeric IDs will no longer be unique when they have more digits than their storage type can hold (16 for doubles). No numeric IDs will be unique if they have more than 17 digits, especially if the last digits are changing for individuals that should be unique. It’s best to store IDs as strings or keep ID values at the minimum length needed. - <code>assert</code>s that compare a scalar (<code>r(mean)</code>) to a variable stored as a float may not be accurate. This can be corrected by using functions like <code>inrange()</code> or <code>float()</code> as part of the <code>assert</code>.</p>
+</section>
+<section id="dataset-size-memory-usage" class="level3">
+<h3 class="anchored" data-anchor-id="dataset-size-memory-usage">Dataset Size &amp; Memory Usage</h3>
+<p>There are a number of concrete ways to avoid this, as well as a lot written on how this affects computation. Memory conservation is generally not relevant for statistical programming with small N survey data that we normally work with at IPA. But this can be the relevant in large datasets where using memory on extraneous digits will slow basic computations substantively. Administrative data with observations in the hundreds of thousands to millions is an example of this that is relevant for many IPA projects.</p>
+<p>It’s generally good practice to reduce the size of files using <code>compress</code> or by generating values in the smallest format such as <code>gen byte dummy = (q1 == "Yes")</code>, especially when the data are larger or if you are performing commands that are computationally intensive for Stata (various regressions, reshaping, etc.).</p>
+<p>If you are interested in more details, Stata Corp’s blog has a few good articles on <a href="https://blog.stata.com/2011/06/17/precision-yet-again-part-i/">numerical precision</a> and why <a href="https://blog.stata.com/2011/06/23/precision-yet-again-part-ii/">this</a> happens in computing, as well as the <a href="https://www.stata.com/support/faqs/data-management/float-data-type/">specific digits</a> that float precision loses values.</p>
+</section>
+</section>
+<section id="quality-control" class="level2">
+<h2 class="anchored" data-anchor-id="quality-control">Quality Control</h2>
+<p>Once you’ve finished cleaning a dataset, take some time to inspect the final product by using a command like <code>codebookout</code>. This command outputs an excel file that is a codebook of your final data including variable names, labels, types, values and value labels. Check that variables are labeled and take on a range of values that make sense.</p>
+<p>Another helpful command in quality control is <code>assert</code>. You should include many asserts throughout your do files in order to check that your assumptions while cleaning hold. This is especially important if you are going to be collecting more data later.</p>
+<p>Finally, you can use the checklist in this folder to perform checks on your dataset. (To open, click on the link for the checklist and then click “view raw” to download.)</p>
+<section id="checking-for-consistency-across-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="checking-for-consistency-across-datasets">Checking for Consistency Across Datasets</h3>
+<p>Once you have a grasp on the overall organization of a dataset — including the variable names, labels, and formats, as well as the number of observations — it’s time to dive into the relationships among variables and the distribution of values within each variable. Here, you want to check that things make sense. Can someone who said they don’t have a business really be bringing in $1 million in profits each week? Unlikely. Well-programmed surveys should minimize the need for these tests, although they are still good to implement as a check on the quality of the programming.</p>
+</section>
+</section>
+<section id="relative-references" class="level2">
+<h2 class="anchored" data-anchor-id="relative-references">Relative references</h2>
+<p>It is important to ensure that code can be run on multiple computers, and that code will not require hours of repair if a folder is renamed. To do this, we use relative references for file paths. The principle behind this is simple: <em>any time a file (data, log file, another piece of code, etc.) is references in the script, the code only specifies the name of the file and some shorthand for the filepath.</em> This shorthand will vary depending on the software used and the preferences of the analyst. In Stata, this is generally a global macro. Scripts that modify data should avoid calling any absolute file paths to ensure that any script is as flexible as possible to changes in the file path.</p>
+<p>For example, if I am loading data from “C:/My Documents/My Project Folder/data.dta”, I could type <code>use "${relative_reference}/data.dta"</code> if I had defined a global called <code>relative_reference</code> that contained <code>C:/My Documents/My Project Folder</code>. In this example, I would have defined that global to save the file path somewhere earlier in the script. One thing to note is that this global uses the entire file path. A relative reference such as <code>${directory}/My Project Folder/data.dta</code> introduces more possibility for error by including an absolute name of a folder. Full file paths used in the project should preferable be saved as globals or called using macro extended functions.</p>
+<p>There are multiple ways to make relative references including local and global macros, setting working directories, or user written commands in Stata such as <code>fastcd</code>. We suggest defining global macros in the master do file or a specific global.do do file so that file paths are set in one location and are able to be called at any point during the dataflow.</p>
+<section id="setting-relative-references-in-stata" class="level3">
+<h3 class="anchored" data-anchor-id="setting-relative-references-in-stata">Setting Relative References in Stata</h3>
+<p>To define relative references, do files can define a global for a particular path and then use the macro name throughout to refer to the set path.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>*Set directory path</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> path <span class="st">"C:/My Documents/My Project Folder"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>*Set folder directories</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> <span class="kw">data</span> <span class="st">"${path}/01_data"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> dos  <span class="st">"${path}/02_do"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, whenever we call a particular file, we include the correct file path:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>*Run cleaning <span class="kw">do</span> file</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"${dos}/clean.do"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>*Use <span class="kw">clean</span> <span class="kw">data</span>:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"${data}/clean.dta"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that this names the directory where all project files are stored as the first global. After that it names relative references for each folder that contains files used by the do file using the global that contains the location of the project folder. This two-step process makes it easier to modify the do file for multiple users. Generally, the only folder that will be unique between users is the file path before the project folder (e.g.&nbsp;<code>C:\Users\[username]</code> is a common prefix that will change based on the username on Windows machines).</p>
+</section>
+<section id="working-default-references" class="level3">
+<h3 class="anchored" data-anchor-id="working-default-references">Working Default References</h3>
+<p>What if someone new uses the project that you don’t know their username? Often, it may not be possible to match a system variables stored by Stata to a unique identify a user. There are multiple solutions to this problem. Some master do files will start with a <code>local user</code> command that defines who the user is and sets relative references using a conditional:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>*Define user</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>loc user Me</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>*Set project folder directory</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> <span class="st">"`user`"</span> == <span class="st">"Me"</span> {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> directory <span class="st">"C:/My Documents/My Project Folder/""</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>However, this requires manual management in the do file any time a new user is added to a project. To create a general case, the do file can take advantage of how Stata defines a project. When Stata is opened, State defaults to assigning a working directory by first, the location of the file being opened by Stata and second, the homepath in the profile.do file.</p>
+<p>We suggest using `c(pwd)’ as a stand-in for file location and assume the user had opened the master do file: If you add this as an <code>else</code> at the end of the <code>if "`user'"==</code> conditionals, then there is a good chance the do file will run even if you haven’t made a specific local for the user.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>*Set <span class="kw">default</span> directory</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">else</span> {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> directory = <span class="fu">subinstr</span>(<span class="st">"`c(pwd)'"</span>, <span class="st">"</span><span class="ch">\"</span><span class="st">, "</span>/<span class="st">" ,.)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">    global directory = subinstr("</span><span class="ot">`cdloc'</span><span class="st">", "</span>/02_do<span class="st">", "", .)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will not work if the instance of Stata is opened from a file in a different directory than the do file that contains the code shown above. Text editors such as Atom and Sublime preserve the same instance of Stata. This code will be more likely to cause an error if the user does not use the do file editor or opens do files from the command line with <code>doedit</code>.</p>
+</section>
+</section>
+<section id="useful-stata-commands" class="level2">
+<h2 class="anchored" data-anchor-id="useful-stata-commands">Useful Stata commands</h2>
+<p>Below we have listed some frequently overlooked commands that we enjoy using. They will make your life a lot easier if you know about them. We provide a quick summary of what the commands do and where they can be used.</p>
+<p>Where we appropriate, there is a page dedicated to specific commands that provides more examples of our common uses tips and tricks, and potential concerns to be aware of when using these particular command. For full documentation simply type <code>help [commandname]</code> in Stata to read all about available options and examples for usage.</p>
+<section id="fillin" class="level3">
+<h3 class="anchored" data-anchor-id="fillin">fillin</h3>
+<p>This is a simple to use, but yet powerful command. Frequently in cleaning data sets, you will have an unbalanced panel, i.e.&nbsp;you are missing an observation for one person for some time periods. For example, imagine you have a dataset of your sample that is supposed to have one observation for each survey round such as the baseline and two endlines. However, as is common, some people were not found in the endline surveys and thus there is no observation for them at that endline. You can use this command to create all of the pairwise combinations of values of two variables i.e.&nbsp;you would have every survey round observation for every person.</p>
+<p>Frequently in cleaning data sets, you will have an unbalanced panel, i.e.&nbsp;you are missing an observation for one person for some time periods. For example, imagine you have a dataset of your sample that is supposed to have one observation for each survey round such as the baseline and two endlines. However, as is common, some people were not found in the endline surveys and thus there is no observation for them at that endline. See the example data below where you can see person 1 is missing an observation at endline 2.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">ID</th>
+<th style="text-align: center;">Survey_Round</th>
+<th style="text-align: right;">Gender</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">baseline</td>
+<td style="text-align: right;">Female</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">endline1</td>
+<td style="text-align: right;">Female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">baseline</td>
+<td style="text-align: right;">Male</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">endline1</td>
+<td style="text-align: right;">Male</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">endline2</td>
+<td style="text-align: right;">Male</td>
+</tr>
+</tbody>
+</table>
+<p>We can use <code>fillin ID Survey_Round</code> to get the following</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">ID</th>
+<th style="text-align: center;">Survey_Round</th>
+<th style="text-align: right;">Gender</th>
+<th style="text-align: right;">_fillin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">baseline</td>
+<td style="text-align: right;">Female</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">endline1</td>
+<td style="text-align: right;">Female</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">endline2</td>
+<td style="text-align: right;">.</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">baseline</td>
+<td style="text-align: right;">Male</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">endline1</td>
+<td style="text-align: right;">Male</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">endline2</td>
+<td style="text-align: right;">Male</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>A couple things to note: 1. This command automatically creates an indicator variable called <code>\_fillin</code> that keeps track of observations that were created from the command 2. Variables not specified in the <code>fillin</code> are filled in with a missing value. So after you run <code>fillin</code> you will need to go back and replace observations as you see appropriate. For example, for typically constant variables such as gender you could replace this new missing value to match the one above it.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> ID Survey_Round</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> Gender = Gender[<span class="dt">_n</span>-1] <span class="kw">if</span> ID == ID[<span class="dt">_n</span>-1] &amp; _fillin == 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="labeldup" class="level3">
+<h3 class="anchored" data-anchor-id="labeldup">labeldup</h3>
+<p><code>labeldup</code> is a user-written command that compares value labels which have duplicate contents. For example, if in your dataset the variable <code>q1</code> has a value label named <code>q1_label</code> with <code>0 "No" 1 "Yes"</code> and the variable <code>q2</code> has the same value label (the SurveyCTO standard). By using <code>labeldup, select</code>, the <code>q1</code> and <code>q2</code> will be combined to a single value label that describes both variables. This is an easy way to cut down on duplicate information in value labels.</p>
+</section>
+<section id="labelrename" class="level3">
+<h3 class="anchored" data-anchor-id="labelrename">labelrename</h3>
+<p>This user-written command allows you to rename value labels using similar syntax to the <code>rename</code> command. Stata does not allow you to rename value labels using the <code>label values</code> command. This command adds that functionality with the similar syntax as the <code>rename</code> command. One difference is that no wildcards are allowed.</p>
+</section>
+<section id="levelsof" class="level3">
+<h3 class="anchored" data-anchor-id="levelsof">levelsof</h3>
+<p>This command will provide you with a list of all of the unique values of a variable. This comes in handy all of the time when cleaning. A very helpful option that comes with this command is <code>local()</code> in which you can store the list of values as a local. This makes looping through all of the values of a variable possible and easy.</p>
+</section>
+<section id="lookfor" class="level3">
+<h3 class="anchored" data-anchor-id="lookfor">lookfor</h3>
+<p>This command searches across all variable names and variable labels, and allows for searching for more than one string or a phrase through the use of <code>"[string]"</code>. Since <code>lookfor</code> searches across both variable names and variable labels at the same time, it will return a different set of results than <code>ds</code> can.</p>
+</section>
+<section id="missing" class="level3">
+<h3 class="anchored" data-anchor-id="missing">missing</h3>
+<p>This is not a built-in Stata command and thus you will need to type <code>ssc install missing</code> to get this command before you can use it or read the help file.</p>
+<p>This group of commands allows for several ways to investigate the missing values in variables. Missing values are typically forgotten about or ignored, but that is a big mistake. They can complicate cleaning and analysis greatly. You should be aware of the missing values and variables in your dataset. This command includes ways to report, list, tag, and drop missing values and variables.</p>
+<p>A very helpful command within this group is <code>missing dropvars</code> which allows you to eliminate variables that are missing on all observations. This is much easier than looping through vars and obs to assert they are missing to drop them.</p>
+</section>
+<section id="mmerge" class="level3">
+<h3 class="anchored" data-anchor-id="mmerge">mmerge</h3>
+<p>This is not a built-in Stata command and can be installed by typing <code>ssc install mmerge</code>.</p>
+<p><code>mmerge</code> provides additional options for <code>merge</code> that make merging datasets more user friendly by removing a signfiicant amount of preprocessing work for complex datasets: - It allows for missing values in the match variable and let’s the user determine how they are treated with the <code>missing()</code> option. - It allows for differing merge variable names with the <code>umatch()</code> option - It allows for all merged variables from the using file to be prefixed as part of the merge with the <code>uname()</code> option - It stores shared variable names that are not merged in a local <code>r(common)</code></p>
+<p>There are a number of other options and syntax changes. You can see these by typing <code>help mmerge</code> once <code>mmerge</code> is installed.</p>
+</section>
+<section id="return-list" class="level3">
+<h3 class="anchored" data-anchor-id="return-list">return list</h3>
+<p>This command allows you to see all of the stored results in working memory and their value. For example, if you ran <code>summarize [variarble]</code>, the <code>return list</code> command would show all of the scalars stored by <code>summarize</code>. In this case that would be <code>r(N)</code>, <code>r(sum_w)</code>, and <code>r(sum)</code>. Similar commands also allow you to see estimation and system commands using <code>ereturn list</code> and <code>creturn list</code>. The help file (<code>help return list</code>) shows more options.</p>
+</section>
+<section id="sencode" class="level3">
+<h3 class="anchored" data-anchor-id="sencode">sencode</h3>
+<p>This is not a built-in Stata command and can be installed by typing <code>ssc install sencode</code>.</p>
+<p><code>sencode</code> makes a number of improvements on the Stata command <code>encode</code> by including a options that allow you to replace the string variable with the numeric variable and set the order of encded values in a user-specified ways, among other user-friendly additions.</p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/data\.poverty-action\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../software/stata/index.html" class="pagination-link" aria-label="Getting Started with Stata">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting Started with Stata</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../software/stata/data-processing-stata.html" class="pagination-link" aria-label="Data Processing in Stata">
+        <span class="nav-page-text">Data Processing in Stata</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/software/stata/coding-stata.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

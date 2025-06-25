@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.30">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Dataset Documentation – Research &amp; Data Science Hub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../data-cleaning/data-aggregation.html" rel="next">
+<link href="../data-cleaning/variable-management.html" rel="prev">
+<link href="../assets/images/ipa-favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f696e12c00bc5ba05350463e4a3b9af3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b7ba069f592c56a3342eba1e4f0d49e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 40,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": true,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "Search IPA Resources",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="125f036232e99eb4b325e2d8e31b7100" class="alert alert-light hidden"><i class="bi bi-none quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><span>📣 New IRB fee schedule starting March 1. Click <u>here</u> to learn more!</span></p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+    <nav class="navbar navbar-expand-md " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/images/ipa-logo-abbreviated.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Research &amp; Data Science Hub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research-design" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Research Design</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research-design">    
+        <li>
+    <a class="dropdown-item" href="../research-design/theory-of-change.html">
+ <span class="dropdown-text">Theory of Change</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href=".././research-design/randomization.qmd">
+ <span class="dropdown-text">Randomization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">Measurement 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">Survey Design 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href=".././research-design/sample-size-power.qmd">
+ <span class="dropdown-text">Sample and Power Calculations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ethics-and-irb" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ethics and IRB</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ethics-and-irb">    
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/index.html">
+ <span class="dropdown-text">About IPA IRB</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-lifecycle.html">
+ <span class="dropdown-text">The IRB Lifecycle</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-reliance-agreements.html">
+ <span class="dropdown-text">Reliance Agreements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-docs.html">
+ <span class="dropdown-text">IRB Documentation 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-faqs.html">
+ <span class="dropdown-text">IRB FAQs 🚧</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-data">    
+        <li>
+    <a class="dropdown-item" href="../data-quality/ipa-research-protocols.html">
+ <span class="dropdown-text">Data Quality</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-collection/index.html">
+ <span class="dropdown-text">Data Collection</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-cleaning/index.html">
+ <span class="dropdown-text">Data Cleaning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-software-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Software Guides</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-software-guides">    
+        <li>
+    <a class="dropdown-item" href="../software/git/index.html">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/github/index.html">
+ <span class="dropdown-text">GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/github/index.html">
+ <span class="dropdown-text">VS Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/stata/index.html">
+ <span class="dropdown-text">Stata</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/python/index.html">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">SurveyCTO 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">Cryptomator 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/quarto/index.html">
+ <span class="dropdown-text">Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div class="quarto-navbar-tools">
+    <a href="https://github.com/PovertyAction" title="IPA Github" class="quarto-navigation-tool px-1" aria-label="IPA Github"><i class="bi bi-github"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-cleaning/index.html">Data Cleaning</a></li><li class="breadcrumb-item"><a href="../data-cleaning/dataset-documentation.html">Dataset Documentation</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Research Design</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../research-design/theory-of-change.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory of Change</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href=".././research-design/randomization.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Measurement 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Design 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href=".././research-design/sample-size-power.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample and Power Calculations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Ethics and IPA IRB</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About IPA IRB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-lifecycle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The IRB Lifecycle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-docs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB Documentation 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-reliance-agreements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reliance Agreements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-faqs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB FAQs 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Quality</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/ipa-research-protocols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Quality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">IPA Research Protocols</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/survey-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/dqap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Quality Action Plan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/bench-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bench Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/pilot-survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pilot Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/accompany-surveyors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accompany Surveyors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/hfcs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">High-Frequency Checks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/backchecks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Backchecks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Security Protocol 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/data-anonymization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Anonymization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/aea-registry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AEA Registry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/data-integrity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Integrity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/ipa-dms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IPA’s Data Management System</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Collection</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">In-Person Surveys 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/phone-surveys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phone Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">WhatsApp Surveys</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About WhatsApp Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-surveys-twilio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Twilio Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designing a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-deploy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deploying a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-data-security.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WhatsApp and Data Security</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Qualitative Methods</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/intro-qual-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Qualitative Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/focus-groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Focus Groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/interviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interviews</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/ethnographies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rapid Ethnographic Assessments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/observations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/admin-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Administrative Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Cleaning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Cleaning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/raw-data-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Raw Data Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/variable-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variable Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/dataset-documentation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Dataset Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Aggregation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Software Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Coding Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/guides/venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Environments</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Version Control</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/git/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/github/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Code Environments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/vscode/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">VS Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Positron 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Stata</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/stata/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/stata/coding-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/stata/data-processing-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Processing in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regular Expressions 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Frames 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapping in Stata 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SurveyCTO 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cryptomator 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quarto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/quarto/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started with Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/quarto/basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing in Quarto</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 style="font-size: 0.86rem; font-weight: 600 ; color: #312e31; line-height: 1.55rem;" class="anchored">In this resource</h2>
+    <ul>
+    <li><a href="#features-of-well-documented-datasets" id="toc-features-of-well-documented-datasets" class="nav-link active" data-scroll-target="#features-of-well-documented-datasets">Features of well-documented datasets</a></li>
+    <li><a href="#variable-names" id="toc-variable-names" class="nav-link" data-scroll-target="#variable-names">Variable names</a>
+    <ul class="collapse">
+    <li><a href="#naming-standards" id="toc-naming-standards" class="nav-link" data-scroll-target="#naming-standards">Naming Standards</a></li>
+    <li><a href="#renaming-in-stata" id="toc-renaming-in-stata" class="nav-link" data-scroll-target="#renaming-in-stata">Renaming in Stata</a></li>
+    <li><a href="#renaming-from-external-files" id="toc-renaming-from-external-files" class="nav-link" data-scroll-target="#renaming-from-external-files">Renaming from External Files</a></li>
+    </ul></li>
+    <li><a href="#variable-labels" id="toc-variable-labels" class="nav-link" data-scroll-target="#variable-labels">Variable labels</a>
+    <ul class="collapse">
+    <li><a href="#systematizing-labels" id="toc-systematizing-labels" class="nav-link" data-scroll-target="#systematizing-labels">Systematizing labels</a></li>
+    <li><a href="#labels-from-surveycto" id="toc-labels-from-surveycto" class="nav-link" data-scroll-target="#labels-from-surveycto">Labels from SurveyCTO</a></li>
+    <li><a href="#stata-storage-of-variable-labels" id="toc-stata-storage-of-variable-labels" class="nav-link" data-scroll-target="#stata-storage-of-variable-labels">Stata Storage of Variable Labels</a></li>
+    </ul></li>
+    <li><a href="#variable-metadata" id="toc-variable-metadata" class="nav-link" data-scroll-target="#variable-metadata">Variable metadata</a>
+    <ul class="collapse">
+    <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+    <li><a href="#the-char-command" id="toc-the-char-command" class="nav-link" data-scroll-target="#the-char-command">The <code>char</code> command</a></li>
+    </ul></li>
+    <li><a href="#value-labels" id="toc-value-labels" class="nav-link" data-scroll-target="#value-labels">Value labels</a>
+    <ul class="collapse">
+    <li><a href="#encoding-string-values-in-stata" id="toc-encoding-string-values-in-stata" class="nav-link" data-scroll-target="#encoding-string-values-in-stata">Encoding String Values in Stata</a></li>
+    <li><a href="#formatting-labeling-in-stata" id="toc-formatting-labeling-in-stata" class="nav-link" data-scroll-target="#formatting-labeling-in-stata">Formatting Labeling in Stata</a></li>
+    <li><a href="#defensive-workflow-for-encoding-values" id="toc-defensive-workflow-for-encoding-values" class="nav-link" data-scroll-target="#defensive-workflow-for-encoding-values">Defensive Workflow for Encoding Values</a></li>
+    </ul></li>
+    <li><a href="#dataset-management" id="toc-dataset-management" class="nav-link" data-scroll-target="#dataset-management">Dataset Management</a></li>
+    </ul>
+    <hr>
+  <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Authors</h2>
+  <ul>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://github.com/wildingka" class="nav-link" data-scroll-target="https\://github.com/wildingka">Kayla Wilding</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://github.com/mfrosenbaum" class="nav-link" data-scroll-target="https\://github.com/mfrosenbaum">Michael Rosenbaum</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://github.com/rsandino" class="nav-link" data-scroll-target="https\://github.com/rsandino">Rosemarie Sandino</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Contributors</h2>
+  <ul>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/cristhian-pulido" class="nav-link" data-scroll-target="https\://poverty-action.org/people/cristhian-pulido">Cristhian Pulido</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/wesley-kirui" class="nav-link" data-scroll-target="https\://poverty-action.org/people/wesley-kirui">Wesley Kirui</a></li>
+      </ul>
+    <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-cleaning/dataset-documentation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-cleaning/index.html">Data Cleaning</a></li><li class="breadcrumb-item"><a href="../data-cleaning/dataset-documentation.html">Dataset Documentation</a></li></ol></nav><h1 class="title display-7">Dataset Documentation</h1></header>
+
+<header id="title-block-header">
+    
+    
+</header>
+
+
+<div class="custom-summary-block">
+<p>This article provides standards for documentation, focusing on Stata commands to name/label variables and attach notes to the dataset in memory.</p>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>High-quality research relies on code that can be easily understood and used by anyone involved in the project.</li>
+<li>Proper dataset documentation starts with consistent naming and labeling of data.</li>
+<li>Code needs to be internally documented to explain what problem each script solves, why the approach was chosen, and how each section of the code contributes to resolving the problem.</li>
+</ul>
+</div>
+</div>
+<section id="features-of-well-documented-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="features-of-well-documented-datasets">Features of well-documented datasets</h2>
+<p>Documented datasets in Stata should have the following characteristics: - Variable names should be patterned for both interpretability and ease in programming tasks. - All variables should be labeled with descriptive labels. - All values of categorical variables should be labeled and checked for consistency when labels are assigned. - All datasets should only contain variables needed as part of the dataflow. - Datasets should have internal notes describing additional information that’s necessary to use the data and/or additional information such as the name of the item in the questionnaire.</p>
+<p>This documentation should be written in addition to project manuals, codebooks, and readmes that describe other aspects of the data generating process, including why decisions were made to create variables, how datasets relate and change through the dataflow, and how variables used in the analysis are defined. If the documentation</p>
+</section>
+<section id="variable-names" class="level2">
+<h2 class="anchored" data-anchor-id="variable-names">Variable names</h2>
+<p>Variable names are generally inherited from the prior method of data storage. These names will not necessarily be optimize for use in coding in statistical software due to length, formatting, or clarity. Standardizing these names to usable and interpratable formats is one of the first steps to ensure datasets are easy and intuitive to use.</p>
+<p>If you are using SurveyCTO data, variable names and labels should be automatically generated for you upon import (as long as you use the SurveyCTO import template) . If you are using other data or not using this template then you will need to rename your variables.</p>
+<section id="naming-standards" class="level3">
+<h3 class="anchored" data-anchor-id="naming-standards">Naming Standards</h3>
+<p>Variable names should correspond to both interpretability by a user, as well as the utilities Statistical software allows. For example, in Stata a number of commands allow using wildcard commands such as <code>*</code> and <code>?</code> to stand-in for patterns in the data. This allows for data modification to be done systematically. If all of the income variables start with the <code>inc_</code> prefix, then it’s easy to modify every variable at once:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>*Call <span class="ot">all</span> income variables</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ds</span> inc_*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We recommend balancing the following considerations while naming variables: - Group variable names that describe outcome categories (e.g.&nbsp;all variables that count yield could be prefixed with <code>y_</code>). - Group types of variables like comment fields with a unique substring such as <code>_note</code>. - Create names that have a substantive meaning and are also easy to type (e.g.&nbsp;<code>inc_bus_</code> &amp; <code>inc_ag</code> instead of <code>section1b_</code> &amp; <code>section2a_</code>) - For indicator variables, do not name the variable the category. Instead, name the variable what the value “1” indicates (e.g.&nbsp;if a variable takes 1 when a respondent is female and 0 when a respondent is male, name the variable <code>female</code> not <code>gender</code>) - Create unique and consistent naming patterns across all datasets used in the project - Two datasets that have different units of analysis should not be identified by the uninformative variable name <code>id</code> - Two datasets that describe income at various levels should use the same prefix to describe the same construct (e.g.&nbsp;plot-level income could be <code>inc_ag_plot1</code> and baseline household income could be <code>inc_ag*_bl</code>)</p>
+<p>In wide data, it’s also important to consider how statistical software performs. Often times patterning variable names is necessary for tasks like reshaping to work smoothly. In wide-data stored in Stata, <code>reshape</code> uses a stub in the variable name to identify the value the long dataset would take for each group. Ensuring that variables are named consistently (e.g.&nbsp;baseline variables are suffixed by <code>_1</code>, midline by <code>_2</code>, and endline by <code>_3</code>) can make it easier to reshape datasets.</p>
+</section>
+<section id="renaming-in-stata" class="level3">
+<h3 class="anchored" data-anchor-id="renaming-in-stata">Renaming in Stata</h3>
+<p>Stata’s <code>rename</code> command is used to change variable names. While it is possible to rename multiple variables with these commands, it can often be easier to rename many variables from an external file such as an .xls. However, <code>rename</code> allows for some operators to rename multiple variables that share patterns. These commands can be very powerful and can sometimes capture variables that you do not intend to rename. See <code>h rename group</code> for a full description of renaming commands. Some options that are relevant for survey data follow:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Extended command</th>
+<th>Function</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Any number of characters</td>
+<td><code>ren year_* *</code> removes the prefix <code>year_</code> from all variable names that start with <code>year_</code></td>
+</tr>
+<tr class="even">
+<td><code>?</code></td>
+<td>Exactly one character</td>
+<td><code>ren monday_? day_?_1</code> would change <code>monday_a</code> to <code>day_a_1</code></td>
+</tr>
+<tr class="odd">
+<td><code>#</code></td>
+<td>One or more digit (numeric only)</td>
+<td><code>ren age# age(##)</code> renames all numeric variables to use a minimum of two digits for number suffixes (e.g.&nbsp;age_1 becomes age_01)</td>
+</tr>
+<tr class="even">
+<td><code>, renumber</code></td>
+<td>Reorders names to increase by 1</td>
+<td><code>ren survey_# survey_#, renumber</code> reorders all variables prefixed with <code>survey_</code> that end with a number so that they increase by 1</td>
+</tr>
+</tbody>
+</table>
+<p>Also see <code>renvars</code> (<code>net search renvars</code> to install) a user written command that can help with complicated renaming tasks.</p>
+</section>
+<section id="renaming-from-external-files" class="level3">
+<h3 class="anchored" data-anchor-id="renaming-from-external-files">Renaming from External Files</h3>
+<p>If you are renaming/labeling a lot of variables it can be cleaner to put them in an excel file and import from there, rather than writing it all in your do file. For an example of how to efficiently rename variables from a .xlsx file, see the following:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>**A. Import <span class="kw">codebook</span> file</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">This file contains the master name and labels, as well as the</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">survey-wise name and labels</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>import excel <span class="st">"${raw}/variable_codebook.xlsx"</span>, firstrow <span class="kw">clear</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>** B. Make locals with common names and corresponding survey names</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> common_varname <span class="co">// sort in unique order</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>*Init project specific locals empty</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>loc survey_names    <span class="co">// project-specific variable names</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>loc common_names    <span class="co">// corresponding common variable names</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>* Loop through <span class="ot">all</span> <span class="ot">value</span> <span class="kw">of</span> the excel file</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> i = 1/<span class="ot">`=_N'</span> {</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    *Save <span class="bn">name</span> and labels <span class="kw">in</span> <span class="kw">order</span> from the excel sheet</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    loc survey_name = varname <span class="kw">in</span> <span class="ot">`i'</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    loc common_name = common_varname <span class="kw">in</span> <span class="ot">`i'</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    loc common_varl = common_varlab <span class="kw">in</span> <span class="ot">`i'</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    *Fill locals to add information to project</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    loc proj_names <span class="ot">`proj_names'</span> <span class="ot">`proj_name'</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    loc common_names <span class="ot">`common_names'</span> <span class="ot">`common_name'</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    loc common_label <span class="st">"`common_label' `"</span><span class="ot">`common_varl'</span><span class="st">"'"</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">// end forvalue i == 1/`N'</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>**C. Run some checks</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>*Check renaming lists are same <span class="fu">length</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="st">"`:word count `proj_names''"</span> == <span class="st">"`:word count `common_names''"</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>*Save <span class="ot">list</span> <span class="kw">of</span> locals <span class="kw">for</span> logc</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="kw">macro</span> <span class="ot">list</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>**D. IMPORT THE DATASETS IN A LOOP AND RENAME</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>*Clean locals</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>loc common_name <span class="co">// init empty</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>loc common_varl <span class="co">// init empty</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>*Load raw <span class="kw">data</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"``project'_directory'/`project'`input_dataset_suffix'.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>*Loop through <span class="kw">variable</span> names to remain</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> i = 1(1)<span class="ot">`: word count `proj_names'</span>' {</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    *Collect names from <span class="ot">list</span> to <span class="kw">rename</span> variables</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    loc proj_name <span class="ot">`:word `i'</span> <span class="kw">of</span> <span class="ot">`proj_names'</span>'</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    loc common_name <span class="ot">`:word `i'</span> <span class="kw">of</span> <span class="ot">`common_names'</span>'</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    loc common_varl <span class="ot">`:word `i'</span> <span class="kw">of</span> <span class="ot">`common_label'</span>'</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    *Rename and <span class="kw">label</span> from common names</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">rename</span> <span class="ot">`proj_name'</span> <span class="ot">`common_name'</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    lab <span class="kw">var</span> <span class="ot">`common_name'</span> <span class="st">"`common_varl'"</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">// end forvalues i = 1/`: word '</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="variable-labels" class="level2">
+<h2 class="anchored" data-anchor-id="variable-labels">Variable labels</h2>
+<p>Stata variables have both names and labels. Variable names are the name that Stata uses to define a column. Variables labels are added information that can easily be displayed to the analyst. Names should follow patterns that make it easy to program (e.g.&nbsp;all consumption questions could be coded as <code>cons_1 - cons_20</code> and could easily be called by <code>ds cons_? cons_??</code>) Variable labels are best used as descriptors: they should say exactly what the variable is about. You can pull the exact question text from the survey, or use a paraphrased version if the text itself is quite lengthy.</p>
+<section id="systematizing-labels" class="level3">
+<h3 class="anchored" data-anchor-id="systematizing-labels">Systematizing labels</h3>
+<p>Variable labels provide information about variable names which are often defined for programmatic reasons. 1. All variables should have labels, and all multiple choice variables have value labels. 1. The labeling system should be internally consistent. 1. It should be easy to connect the variable in the dataset with the question on the questionnaire. Most analysis is done with the questionnaire in hand.</p>
+<p>One format to define variable labels for survey data is to including both the question number in the questionnaire as well as a description of the contents in the variable. The basic format for that system is:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>div <span class="va">class</span><span class="op">=</span><span class="st">"code-example"</span> <span class="va">markdown</span><span class="op">=</span><span class="st">"1"</span><span class="op">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Variable</span> name: descriptive name that uses prefixes or suffixes to provide patterns</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Variable</span> label: <span class="pp">[</span><span class="ss">question_number</span><span class="pp">]</span> descriptive label</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>/div<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This style is implemented below:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>*Define <span class="kw">variable</span> labels variables</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> child_15      <span class="st">"[QA.101] Has children under 15"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> child_15B     <span class="st">"[QA.102a] Number boys under 15"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> child_15B_S       <span class="st">"[QA.102b] Number boys in school"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> child_15G     <span class="st">"[QA.103a] Number girls under 15"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> child_15G_S       <span class="st">"[QA.103b] Number girls in school"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that this code aligns the variable names and the variable labels in the text. This makes it easy to read the labeling as a programmer.</p>
+</section>
+<section id="labels-from-surveycto" class="level3">
+<h3 class="anchored" data-anchor-id="labels-from-surveycto">Labels from SurveyCTO</h3>
+<p>SurveyCTO automatically labels the variables using the questions from the survey instrument. However, labels are allowed a maximum of only 80 characters in Stata, which means that in many cases the labels imported from SurveyCTO will be truncated. For tips on how to attach information that is longer than 80 characters see the <a href="https://povertyaction.github.io/guides/cleaning/documentation/variablenotes/">variable notes</a> guide.</p>
+</section>
+<section id="stata-storage-of-variable-labels" class="level3">
+<h3 class="anchored" data-anchor-id="stata-storage-of-variable-labels">Stata Storage of Variable Labels</h3>
+<p>Stata can use value label data using the extended macro functions (see <code>h extended_fcn</code>). The following code call a variable label and assign it to a local.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>*Call <span class="kw">variable</span> <span class="kw">label</span> <span class="kw">of</span> <span class="kw">variable</span> <span class="st">"var"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> vlab : <span class="kw">variable</span> <span class="kw">label</span> <span class="kw">var</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This information can be searched conditionally. If, for example, you wanted to only apply a function to variables in the “QA” section of the survey defined in “Systematizing Labels” section in this article, you could check to see if the label starts with “[QA.”:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">varlist</span> <span class="dt">_all</span> {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="fu">regexm</span>(<span class="st">"`: variable label var'"</span>, <span class="st">"^\[QA"</span>) {</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        [<span class="kw">do</span> something]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// end if regexm("`: variable label var'", "^\[QA\.") {</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach var in `r(varlist)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="variable-metadata" class="level2">
+<h2 class="anchored" data-anchor-id="variable-metadata">Variable metadata</h2>
+<p>Sometimes you will want to attach information or other labeling that is longer than Stata allows (labels are capped at 80 characters). If this is the case, you can store the full desired label into the variable notes or characteristics. Both notes and characteristics can describe variables or the dta file.</p>
+<section id="notes" class="level3">
+<h3 class="anchored" data-anchor-id="notes">Notes</h3>
+<p>One variable can have multiple notes. Notes can be added into variables by typing <code>note VARIABLE : “Note”</code> (i.e.&nbsp;for variable <code>VARIABLE</code> the note <code>note</code> was added as. To display the notes stored in one variable just type “notes VARIABLE”. Notes are also stored in Stata as locals and can be called using <code>`VARIABLE[note1]'</code>. These notes are numbered based on the order in which they are received. Note’s ordering can be modified and deleted by the <code>note</code> command (see <code>help notes</code> in Stata).</p>
+<p>Survey CTO includes the full text of the question from the survey instrument as variable notes (as well as the truncated questions as variable labels) as part of the import do file. These notes will always be in the downloaded language. They will not contain filled values for the respondent that are produced as the result of calculate fields.</p>
+<p>If variable labels have been changed or converted as part of a data transformation, notes can be converted into labels by looping through variables and using the stored local for notes:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>*Loop through each <span class="kw">variable</span> <span class="kw">in</span> the <span class="kw">varlist</span> VARIABLES</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">varlist</span> VARIABLES {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">var</span> <span class="ot">`var'</span> <span class="ot">``var'</span>[note1]'</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-char-command" class="level3">
+<h3 class="anchored" data-anchor-id="the-char-command">The <code>char</code> command</h3>
+<p>Additional information can be added using characteristics, which function similarly to notes. The Stata manual describes characteristics as “an arcane feature of Stata [that] are great use to Stata programmers.” Many commands use and define specific named characteristics to attach metadata. Characteristics (type <code>help char</code> in Stata) can describe variables and the dataset itself.</p>
+<p>The main difference between characteristics and notes is that the <code>char</code> command requires a name for each characteristic. Whereas <code>note VARIABLE : "Note"</code> creates the next sequential note (1 if the first note, 2 if the second, etc.), <code>char</code> explicitly requires a character name, “charname” in the following code: <code>char define VARIABLE[charname] "Note"</code>. This can be useful for saving labels in multiple languages. These characteristics can then be called by name, instead of an arbitrarily assigned number.</p>
+<p>For example, a data flow could take labels in each language from a SurveyCTO form and assign them as characteristics to each variable produced by the survey in the following:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>*Import SurveyCTO</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>import excel <span class="kw">using</span> <span class="st">"Baseline Household Survey.xlsx"</span>, first <span class="kw">clear</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>*Keep variables with labels</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="dv">type</span> <span class="bn">name</span> <span class="kw">label</span> labelbangla relevance</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">ren</span> <span class="kw">label</span> labelenglish</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">ren</span> <span class="kw">label</span>* * <span class="co">// rename to remove "label_" prefix from all variables</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>*Remove variables <span class="kw">not</span> exported to Stata</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="fu">inlist</span>(<span class="dv">type</span>, <span class="st">"begin group"</span>,  <span class="co">///</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"end group"</span>, <span class="st">"image"</span>, <span class="st">"begin repeat"</span>, <span class="st">"end repeat"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dv">type</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>*Only <span class="kw">keep</span> variables with non_missing</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="kw">ds</span> <span class="bn">name</span>, <span class="kw">not</span> <span class="co">// get list of label variables</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>loc languages <span class="ot">`r(varlist)'</span> relevance</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> has_lab = <span class="fu">rownonmiss</span>(<span class="ot">`languages'</span>), <span class="fu">strok</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">// keep only rows with has_lab</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> has_lab &gt;= 1 &amp; !<span class="fu">mi</span>(has_lab)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>*Save variables and language names</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>loc varnames <span class="co">// init empty</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>forval i = 1(1)<span class="ot">`=_N'</span> {</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  loc <span class="bn">name</span> = <span class="bn">name</span>[<span class="ot">`i'</span>] <span class="co">// save name of variable</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  *Save labels <span class="kw">as</span> locals</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  loc j = 1 <span class="co">// init counter at start</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">foreach</span> language <span class="kw">of</span> <span class="kw">local</span> languages {</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>     loc <span class="ot">`name'</span>_<span class="ot">`j'</span> = <span class="ot">`language'</span>[<span class="ot">`i'</span>]</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>     loc ++j</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="co">// end foreach language of local languages</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  *<span class="kw">save</span> <span class="kw">local</span> <span class="kw">of</span> names to add question <span class="bn">text</span> to</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  loc varnames <span class="ot">`varnames'</span> <span class="ot">`name'</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co">// end forval i = 1(1)_N</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>*Load <span class="kw">data</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> survey.dta, <span class="kw">clear</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>*Loop through names to add characteristics</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="bn">name</span> <span class="kw">of</span> <span class="kw">local</span> varnames {</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>  <span class="kw">ds</span> <span class="ot">`name'</span>* <span class="co">// collect names that are inclusive of repeat groups</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>  loc varl <span class="ot">`r(varlist)'</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> varl {</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>  *Confirm only the <span class="kw">variable</span> <span class="kw">or</span> the <span class="kw">repeat</span> <span class="fu">group</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>  cap <span class="kw">assert</span> <span class="st">"`var'"</span> == <span class="st">"`name'"</span> | <span class="fu">regexm</span>(<span class="st">"`var'"</span>,<span class="st">"^`name'[0-9][0-9]?$"</span>)</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> <span class="dt">_rc</span> <span class="kw">continue</span> <span class="co">// skip if "`name'" is a prefix</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>     *add characteristic <span class="kw">as</span> a named language</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>     loc j = 1</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>     <span class="kw">foreach</span> language <span class="kw">of</span> <span class="kw">local</span> languages {</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>        <span class="fu">char</span> <span class="kw">define</span> <span class="ot">`var'</span>[<span class="ot">`language'</span>] <span class="st">"``name'_`j''"</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>        loc ++j</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>     }</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>     <span class="co">// end foreach language of local languages</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>  <span class="co">// end foreach var of local varl</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach name of local names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="value-labels" class="level2">
+<h2 class="anchored" data-anchor-id="value-labels">Value labels</h2>
+<p>For categorical variables the raw data will often show the string values for the selected response. For instance, you may see “male” and “female” displayed as possible responses to the variable gender. When doing calculations, however, you’ll need these variables to be numeric (in the float or long format) – if they are not already imported this way. It is helpful to preserve the extra information the strings capture by using “value labels.” A value label such as gender would assign “female” to 0 and “male” to 1 and display female and male to the analyst. See <code>help label</code> for how to do this in Stata. It is very important to label values for two reasons: - it provides information to the analyst that will reduce mistakes made in coding or analyzing data - many programs will use information on whether a variable has value labels in order to identify it as a categorical variable, as opposed to a continuous numeric variable.</p>
+<section id="encoding-string-values-in-stata" class="level3">
+<h3 class="anchored" data-anchor-id="encoding-string-values-in-stata">Encoding String Values in Stata</h3>
+<p>The quickest way to change string variables to numeric variables with value labels is the <code>encode</code> command. <code>encode</code> will automatically convert the string variable into a numeric variable and assign the numbers 1 – x (where x is the number of unique answer choices) to the alphabetized list of the answer choices (ordered 0-9, followed by a-z). Because this is done automatically based on alphabetical order, if you are trying to make value labels match some existing assignment, you may need to recode or label them manually.</p>
+<p>Stata stores value labels independently from the variables, so it’s important to manage value labels separately from variables as they can contain PII. Deleting all variables that have a value label and saving the dataset will ensure that the value label is removed from the .dta file. To see which labels are currently defined in Stata and their content you can use the <code>label list</code> command (helpful summary information is stored in the return values of <code>label list</code> and <code>label dir</code> as well). These labels can be modified or deleted to combine using the options of label define function:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>*Drop old labels</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">drop</span> ex1 ex2 ex3</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>*Define <span class="kw">label</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> yesno 1 <span class="st">"No"</span> 3 <span class="st">"Yes"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> yesno</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>*Modify <span class="kw">label</span> to correct the <span class="kw">error</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> yesno 1 <span class="st">"No"</span> 2 <span class="st">"Yes"</span>, modify</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>*Add extended <span class="kw">values</span> to the <span class="kw">label</span> defined above</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> yesno .n <span class="st">"No response"</span> 3 <span class="st">"Maybe"</span>, add</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>*Apply the <span class="kw">label</span> to <span class="ot">all</span> <span class="kw">of</span> the variables it should apply to</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>loc dummy_vars ex1 ex2 ex3</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">values</span> <span class="ot">`dummy_vars'</span> yesno</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="formatting-labeling-in-stata" class="level3">
+<h3 class="anchored" data-anchor-id="formatting-labeling-in-stata">Formatting Labeling in Stata</h3>
+<p>It can be useful to change the delimiter to a semicolon so that a single command can take up several rows in your text editor, making it easier to read labeling. This is especially useful when multiple values are labeled. See <code>help delimit</code> to learn about delimiters in Stata. An example would be:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>* Set delimiter <span class="kw">for</span> labeling</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>#delimit ;</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> def female</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    0 <span class="st">"[0] Male"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    1 <span class="st">"[1] Female"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> def region</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    1 <span class="st">"[1] Northern"</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    2 <span class="st">"[2] Southern"</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    3 <span class="st">"[3] Western"</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    4 <span class="st">"[4] Eastern"</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    5 <span class="st">"[5] Central"</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>#delimit <span class="kw">cr</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">values</span> female female</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">values</span> region region</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note how the labels have the corresponding value as well as the description in the value label. This is not strictly necessary, but can be useful if you want to values to display alongside labels in outputs.</p>
+</section>
+<section id="defensive-workflow-for-encoding-values" class="level3">
+<h3 class="anchored" data-anchor-id="defensive-workflow-for-encoding-values">Defensive Workflow for Encoding Values</h3>
+<p>One way to ensure that data is encoded in an expected way is to check that values are only encoded from a list of value labels that you defined. The user written command <code>sencode</code> (installed using <code>ssc install sencode</code>) can help to support this. <code>sencode</code> labels the variable according to the values that you’ve predefined and then adds additional values in order from the highest value if it encounters values that you haven’t defined. An example data flow follows:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>*Ensure sencode is installed</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cap which sencode</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> <span class="dt">_rc</span> <span class="kw">ssc</span> install sencode</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>*Load <span class="kw">data</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">sysuse</span> auto, <span class="kw">clear</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="dt">_n</span> &lt;= 10 <span class="co">// Keep the first ten observations of the sample</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a># del ;</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">This label is named by the variable name, an "_", and then "label"</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">so that we can loop over the labels.</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> make_label</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    1   <span class="st">"AMC Concord"</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    2   <span class="st">"AMC Pacer"</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    3   <span class="st">"AMC Spirit"</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    4   <span class="st">"Buick Century"</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    5   <span class="st">"Buick Electra"</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    6   <span class="st">"Buick LeSabre"</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    7   <span class="st">"Buick Opel"</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    8   <span class="st">"Buick Regal"</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    9   <span class="st">"Buick Riviera"</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    10  <span class="st">"Buick Skylark"</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a># del <span class="kw">cr</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>*Create a <span class="kw">local</span> <span class="ot">list</span> <span class="kw">of</span> variables to <span class="kw">encode</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>loc str_var make</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>*Encode <span class="kw">values</span> and <span class="kw">confirm</span> expected</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> str_var {</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    *Encode variables</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="co">    type h sencode to see options, the noextend option returns an error</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="co">    if the existing label doesn't capture all values.</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="co">    */</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>    sencode <span class="ot">`var'</span>, <span class="kw">label</span>(<span class="ot">`var'</span>_label) <span class="kw">replace</span> <span class="kw">noextend</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach v of local str_var</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>*Display the labeled and unlabeled <span class="kw">values</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> make</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> make, nol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="dataset-management" class="level2">
+<h2 class="anchored" data-anchor-id="dataset-management">Dataset Management</h2>
+<p>Variables should only keep necessary variables. Those variables should be ordered in a understandable way, and should be named and labeled. They should also be in the correct storage format for analysis. The clearest way to do this may vary, especially with variable order. The order that questions appear in the survey is a good candidate. Unique identifiers should always be first.</p>
+<p>Any script that saves data should have code that identifies the variables saved, orders them, and describes them for readers. This will ensure that a reader can look at the code and understand what it produces without running a do file. An example codeblock for the end of a do file follows. Note that values are described using comments and the file ends with some commented marker.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>**B. Sort and <span class="kw">clean</span> vars</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">isid</span> hhid <span class="co">// confirm Household ID is unique</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">sort</span> hhid <span class="co">// sort in a unique order</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    *Create a <span class="kw">local</span> <span class="kw">of</span> variables</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    loc vars                        <span class="co">///</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    hhid        enum_id             <span class="co">/// ID Variables</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">cluster</span>     survey_date form_id <span class="co">/// File source variables</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    treatment   scto_rand           <span class="co">/// Treatment assignment</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    bl_hhh_age  bl_hhh_female   bl_hhh_educ <span class="co">/// Baseline demos</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    bl_hh_size                      <span class="co">///</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    bl_cons_veg_*   bl_cons_meat_*  bl_cons_purch_* <span class="co">/// Consumption</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    bl_cons_alc                     <span class="co">///</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    bl_loan_size    bl_loan_exp_pay_m*  bl_loan_miss_m* <span class="co">/// Loan information</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    bl_msf      bl_otaf                 <span class="co">// Lender Fees</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    *Keep necessary <span class="kw">values</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">qui</span> <span class="kw">ds</span> <span class="ot">`vars'</span>, <span class="kw">not</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">assert</span> <span class="ot">`: word count `r(varlist)'</span>' == 0 <span class="co">// check no variables dropped</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">keep</span> <span class="ot">`vars'</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    *Order ID first</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">order</span> <span class="ot">`vars'</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>**C. Save and <span class="kw">close</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    *Save <span class="kw">data</span> to the <span class="kw">data</span> folder</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">save</span> <span class="st">"${data}01a_baseline.dta"</span>, <span class="kw">replace</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    *Close the <span class="fu">log</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span> c</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>**EOF**</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/data\.poverty-action\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../data-cleaning/variable-management.html" class="pagination-link" aria-label="Variable Management">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Variable Management</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../data-cleaning/data-aggregation.html" class="pagination-link" aria-label="Data Aggregation">
+        <span class="nav-page-text">Data Aggregation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-cleaning/dataset-documentation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

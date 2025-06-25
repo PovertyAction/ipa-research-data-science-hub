@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.30">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Designing a WhatsApp Survey – Research &amp; Data Science Hub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../data-collection/whatsapp/whatsapp-deploy.html" rel="next">
+<link href="../../data-collection/whatsapp/whatsapp-surveys-twilio.html" rel="prev">
+<link href="../../assets/images/ipa-favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f696e12c00bc5ba05350463e4a3b9af3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b7ba069f592c56a3342eba1e4f0d49e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 40,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": true,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "Search IPA Resources",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="125f036232e99eb4b325e2d8e31b7100" class="alert alert-light hidden"><i class="bi bi-none quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><span>📣 New IRB fee schedule starting March 1. Click <u>here</u> to learn more!</span></p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+    <nav class="navbar navbar-expand-md " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/ipa-logo-abbreviated.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Research &amp; Data Science Hub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research-design" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Research Design</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research-design">    
+        <li>
+    <a class="dropdown-item" href="../../research-design/theory-of-change.html">
+ <span class="dropdown-text">Theory of Change</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../.././research-design/randomization.qmd">
+ <span class="dropdown-text">Randomization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../under-construction.html">
+ <span class="dropdown-text">Measurement 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../under-construction.html">
+ <span class="dropdown-text">Survey Design 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../.././research-design/sample-size-power.qmd">
+ <span class="dropdown-text">Sample and Power Calculations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ethics-and-irb" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ethics and IRB</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ethics-and-irb">    
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/index.html">
+ <span class="dropdown-text">About IPA IRB</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/irb-lifecycle.html">
+ <span class="dropdown-text">The IRB Lifecycle</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/irb-reliance-agreements.html">
+ <span class="dropdown-text">Reliance Agreements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/irb-docs.html">
+ <span class="dropdown-text">IRB Documentation 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ethics-irb/irb-faqs.html">
+ <span class="dropdown-text">IRB FAQs 🚧</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-data">    
+        <li>
+    <a class="dropdown-item" href="../../data-quality/ipa-research-protocols.html">
+ <span class="dropdown-text">Data Quality</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data-collection/index.html">
+ <span class="dropdown-text">Data Collection</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data-cleaning/index.html">
+ <span class="dropdown-text">Data Cleaning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-software-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Software Guides</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-software-guides">    
+        <li>
+    <a class="dropdown-item" href="../../software/git/index.html">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/github/index.html">
+ <span class="dropdown-text">GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/github/index.html">
+ <span class="dropdown-text">VS Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/stata/index.html">
+ <span class="dropdown-text">Stata</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/python/index.html">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../under-construction.html">
+ <span class="dropdown-text">SurveyCTO 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../under-construction.html">
+ <span class="dropdown-text">Cryptomator 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../software/quarto/index.html">
+ <span class="dropdown-text">Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div class="quarto-navbar-tools">
+    <a href="https://github.com/PovertyAction" title="IPA Github" class="quarto-navigation-tool px-1" aria-label="IPA Github"><i class="bi bi-github"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-collection/index.html">Data Collection</a></li><li class="breadcrumb-item"><a href="../../data-collection/whatsapp/whatsapp-start.html">WhatsApp Surveys</a></li><li class="breadcrumb-item"><a href="../../data-collection/whatsapp/whatsapp-design.html">Designing a WhatsApp Survey</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Research Design</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../research-design/theory-of-change.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory of Change</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../.././research-design/randomization.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Measurement 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Design 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../.././research-design/sample-size-power.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample and Power Calculations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Ethics and IPA IRB</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About IPA IRB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/irb-lifecycle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The IRB Lifecycle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/irb-docs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB Documentation 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/irb-reliance-agreements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reliance Agreements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ethics-irb/irb-faqs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB FAQs 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Quality</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/ipa-research-protocols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Quality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">IPA Research Protocols</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/survey-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/dqap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Quality Action Plan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/bench-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bench Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/pilot-survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pilot Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/accompany-surveyors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accompany Surveyors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/hfcs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">High-Frequency Checks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/backchecks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Backchecks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Security Protocol 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/data-anonymization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Anonymization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/aea-registry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AEA Registry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/data-integrity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Integrity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-quality/ipa-dms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IPA’s Data Management System</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Collection</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">In-Person Surveys 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/phone-surveys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phone Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">WhatsApp Surveys</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About WhatsApp Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-surveys-twilio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Twilio Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-design.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Designing a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-deploy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deploying a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/whatsapp/whatsapp-data-security.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WhatsApp and Data Security</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Qualitative Methods</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/intro-qual-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Qualitative Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/focus-groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Focus Groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/interviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interviews</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/ethnographies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rapid Ethnographic Assessments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/qualitative-methods/observations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-collection/admin-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Administrative Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Cleaning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Cleaning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/raw-data-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Raw Data Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/variable-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variable Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/dataset-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataset Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-cleaning/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Aggregation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Software Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Coding Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/guides/venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Environments</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Version Control</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/git/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/github/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Code Environments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/vscode/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">VS Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Positron 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Stata</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/stata/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/stata/coding-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/stata/data-processing-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Processing in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regular Expressions 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Frames 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapping in Stata 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SurveyCTO 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cryptomator 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quarto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/quarto/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started with Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../software/quarto/basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing in Quarto</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 style="font-size: 0.86rem; font-weight: 600 ; color: #312e31; line-height: 1.55rem;" class="anchored">In this resource</h2>
+    <ul>
+    <li><a href="#content-template-builder-in-twilio" id="toc-content-template-builder-in-twilio" class="nav-link active" data-scroll-target="#content-template-builder-in-twilio">Content Template Builder in Twilio</a>
+    <ul class="collapse">
+    <li><a href="#creating-a-content-template" id="toc-creating-a-content-template" class="nav-link" data-scroll-target="#creating-a-content-template">Creating a Content Template</a></li>
+    <li><a href="#message-content-types-in-twilio" id="toc-message-content-types-in-twilio" class="nav-link" data-scroll-target="#message-content-types-in-twilio">Message Content Types in Twilio</a></li>
+    <li><a href="#adding-interactive-buttons" id="toc-adding-interactive-buttons" class="nav-link" data-scroll-target="#adding-interactive-buttons">Adding Interactive Buttons</a></li>
+    <li><a href="#using-approved-templates" id="toc-using-approved-templates" class="nav-link" data-scroll-target="#using-approved-templates">Using Approved Templates</a></li>
+    </ul></li>
+    <li><a href="#widgets" id="toc-widgets" class="nav-link" data-scroll-target="#widgets">Widgets</a>
+    <ul class="collapse">
+    <li><a href="#trigger-widget" id="toc-trigger-widget" class="nav-link" data-scroll-target="#trigger-widget">Trigger Widget</a></li>
+    <li><a href="#messaging-widgets" id="toc-messaging-widgets" class="nav-link" data-scroll-target="#messaging-widgets">Messaging Widgets</a></li>
+    <li><a href="#flow-control-widgets" id="toc-flow-control-widgets" class="nav-link" data-scroll-target="#flow-control-widgets">Flow Control Widgets</a></li>
+    <li><a href="#function-widgets" id="toc-function-widgets" class="nav-link" data-scroll-target="#function-widgets">Function Widgets</a></li>
+    </ul></li>
+    <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+    <ul class="collapse">
+    <li><a href="#wait-function" id="toc-wait-function" class="nav-link" data-scroll-target="#wait-function">Wait Function</a></li>
+    <li><a href="#gsheet-publish-function" id="toc-gsheet-publish-function" class="nav-link" data-scroll-target="#gsheet-publish-function">GSheet Publish Function</a></li>
+    <li><a href="#encrypt-function" id="toc-encrypt-function" class="nav-link" data-scroll-target="#encrypt-function">Encrypt Function</a></li>
+    </ul></li>
+    </ul>
+    <hr>
+  <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Authors</h2>
+  <ul>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Contributors</h2>
+  <ul>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/cristhian-pulido" class="nav-link" data-scroll-target="https\://poverty-action.org/people/cristhian-pulido">Cristhian Pulido</a></li>
+      </ul>
+    <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-collection/whatsapp/whatsapp-design.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-collection/index.html">Data Collection</a></li><li class="breadcrumb-item"><a href="../../data-collection/whatsapp/whatsapp-start.html">WhatsApp Surveys</a></li><li class="breadcrumb-item"><a href="../../data-collection/whatsapp/whatsapp-design.html">Designing a WhatsApp Survey</a></li></ol></nav><h1 class="title display-7">Designing a WhatsApp Survey</h1></header>
+
+<header id="title-block-header">
+    
+    
+</header>
+
+
+<div class="custom-summary-block">
+<p>Learn about WhatsApp templates and how to create them effectively.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/whatsapp-survey-design.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>WhatsApp Survey Design (® ODISSEI)</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Delve into Twilio’s menus and options to navigate its functionalities effortlessly, utilizing and creating basic widgets within a flow and leveraging functions for seamless integration.</li>
+<li>By the end, you’ll be well-equipped to publish and effectively manage information collected through WhatsApp Surveys.</li>
+</ul>
+</div>
+</div>
+<section id="content-template-builder-in-twilio" class="level2">
+<h2 class="anchored" data-anchor-id="content-template-builder-in-twilio">Content Template Builder in Twilio</h2>
+<p>The <strong>Twilio Content Template Builder</strong> allows you to create and manage message templates across multiple Twilio-supported messaging channels, including WhatsApp. This tool provides a unified framework for designing structured messages, ensuring a consistent user experience across platforms while simplifying implementation. You can find this tool in the Twilio Console under the <strong>Messaging</strong> dropdown, then <strong>Senders</strong>, and finally <strong>Content Template Builder</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-17.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Create a new content template</figcaption>
+</figure>
+</div>
+<section id="creating-a-content-template" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-content-template">Creating a Content Template</h3>
+<p>To create a new template, go to the Twilio Console and open the <strong>Content Template Builder</strong> Click <strong>“Create New”</strong></p>
+<p>Templates consist of <strong>fixed content and dynamic variables</strong>, allowing you to personalize messages with user-specific details such as names, order confirmations, or appointment times. When creating a template, you need to provide: - A <strong>template name</strong> - The <strong>template language</strong> - The <strong>Content type</strong></p>
+</section>
+<section id="message-content-types-in-twilio" class="level3">
+<h3 class="anchored" data-anchor-id="message-content-types-in-twilio">Message Content Types in Twilio</h3>
+<ol type="1">
+<li><strong>text (Text):</strong> A standard text message containing only plain text.</li>
+<li><strong>media (Media):</strong> A message that includes images, videos, or audio files.</li>
+<li><strong>quick-reply (Quick Reply):</strong> A message with predefined response buttons for users to select from.</li>
+<li><strong>call-to-action (Call to Action):</strong> A message with buttons that direct users to a link or initiate a phone call.</li>
+<li><strong>list-picker (List Picker):</strong> A structured message that presents users with a selectable list of options.</li>
+<li><strong>card (Card):</strong> A message format that includes an image, title, description, and optional buttons for interaction.</li>
+<li><strong>card (WhatsApp Card):</strong> A WhatsApp-specific card message with rich media and interactive elements.</li>
+<li><strong>authentication (Authentication):</strong> A message type designed for sending authentication codes.</li>
+<li><strong>catalog (Catalog):</strong> A message format for showcasing multiple items in a structured catalog layout.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-18.gif" class="img-fluid figure-img" style="width:110.0%"></p>
+<figcaption>New content template</figcaption>
+</figure>
+</div>
+<p>WhatsApp requires all templates to go through a review process before they can be used. Manage your templates using the Content Template Builder. Submit templates for WhatsApp approval, monitor approval statuses, delete, or duplicate your templates.</p>
+</section>
+<section id="adding-interactive-buttons" class="level3">
+<h3 class="anchored" data-anchor-id="adding-interactive-buttons">Adding Interactive Buttons</h3>
+<p>The <strong>Content Template Builder</strong> makes it easy to add interactive buttons to your templates. Buttons can be configured to: - <strong>Send quick replies</strong> with predefined responses - <strong>Dial a phone number</strong> - <strong>Redirect users to a specific link</strong></p>
+<p>We will show an example of a quick-reply template that can have buttons for an intro message.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-19.gif" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Create buttons for a content template</figcaption>
+</figure>
+</div>
+</section>
+<section id="using-approved-templates" class="level3">
+<h3 class="anchored" data-anchor-id="using-approved-templates">Using Approved Templates</h3>
+<p>Once approved, content templates can be used to send messages via the Twilio API. The API dynamically replaces template variables with actual values before sending the message. Here’s an example of an approved WhatsApp message with interactive buttons:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Example of a text with buttons</figcaption>
+</figure>
+</div>
+<!--  Note: This page will be deprecated, but we want to keep the information here for now.
+## WhatsApp Templates in Twilio
+WhatsApp templates in Twilio are pre-approved message formats that you can use to send notifications, surveys, or alerts to users via WhatsApp. Templates ensure compliance with WhatsApp's policies and guidelines by providing a structured format for message content. You can create and manage templates through the Twilio Console or the Twilio API.
+
+![Create a new WhatsApp template](/assets/images/twilio-design-1.gif){fig-cap="Create a new WhatsApp template" width=100%}
+
+For your first survey, you will need to create a new message template. In the Console, click on the "Messaging" dropdown in the top-left corner and select "Senders." Then select "WhatsApp templates," and pick the "new message template."
+
+WhatsApp templates in Twilio are composed of message variables and fixed content, allowing you to personalize messages with dynamic information like usernames or any preloaded field. When creating a template, it is necessary to specify a template name and language. The recommended option is selecting the "Marketing" option during the template creation process. To ensure compliance and prevent misuse, WhatsApp reviews and approves templates before they can be utilized. During the template creation process, it may be necessary to furnish a template description and example usage, aiding WhatsApp reviewers in comprehending the template's purpose and context.
+
+![Create a new WhatsApp template](/assets/images/twilio-design-2.gif){fig-cap="Create a new WhatsApp template" width=100%}
+
+As response options, you can create buttons. These can have specific answers, phone numbers, or links.
+
+![Create buttons for WhatsApp template](/assets/images/twilio-design-3.gif){fig-cap="Create buttons for WhatsApp template" width=100%}
+
+Approved templates can be used to send WhatsApp messages to users by replacing the variables with actual values using the Twilio API. Here is how an approved template message would look:
+
+![Example of a text with buttons](/assets/images/twilio-design-4.png){fig-cap="Example of a text with buttons" width=50%}
+
+ -->
+</section>
+</section>
+<section id="widgets" class="level2">
+<h2 class="anchored" data-anchor-id="widgets">Widgets</h2>
+<p>To create a new Twilio flow, follow these steps. First, navigate to the “Studio” section in the main navigation menu. Click on the “Create a Flow” button or the “+” icon to start creating a new flow. Provide a name and an optional description for your flow. You will then be taken to the Flow Builder, where you can visually design your flow.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-5.gif" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Create a new Twilio flow</figcaption>
+</figure>
+</div>
+<p>Once the flow is created, you can drag and drop widgets from the sidebar onto the canvas to build your flow, connecting them with connectors to define the conversation or logic flow. Customize each widget’s settings according to your requirements. In Twilio messaging, widgets are interactive elements or components that can be used to enhance the user experience and gather information from users. They provide a way to incorporate dynamic and engaging elements within the messaging flow. Widgets are typically used to collect user input, display options, or present interactive content.</p>
+<p>The widget library is on the right side of the Flow Builder. Here you can see the four main categories:</p>
+<ul>
+<li><strong>Flow control</strong>: These widgets allow you to implement conditional logic and control the flow of a conversation or process, enabling dynamic decision-making based on specific conditions or user inputs.</li>
+<li><strong>Voice</strong>: These widgets facilitate the implementation of voice-based interactions, enabling functionalities such as making and receiving phone calls, playing audio prompts, gathering user input via speech recognition, and routing calls to different destinations based on conditions or logic.</li>
+<li><strong>Messaging</strong>: These widgets enable the implementation of interactive messaging experiences, allowing functionalities like sending and receiving SMS, WhatsApp, and MMS messages, collecting user input, displaying options, and handling conversations in a dynamic and engaging manner.</li>
+<li><strong>Tools and execute code</strong>: These widgets provide developers with tools to perform actions like making API requests, executing JavaScript code, accessing external resources, and integrating custom logic into their Twilio applications, allowing for enhanced customization and flexibility in the application’s behavior.</li>
+<li><strong>Connect other products</strong>: These widgets facilitate seamless integration with external services and products, enabling developers to incorporate functionalities from other platforms, such as CRM systems, databases, or third-party APIs, into their Twilio applications, expanding the capabilities and possibilities of their communication workflows.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-6.gif" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Twilio Flow Builder Interface</figcaption>
+</figure>
+</div>
+<section id="trigger-widget" class="level3">
+<h3 class="anchored" data-anchor-id="trigger-widget">Trigger Widget</h3>
+<p>In Twilio Studio, the “Trigger” widget is a crucial component with specific functionality. The Trigger widget initiates the execution of a Twilio Studio flow. Here’s how it works:</p>
+<ul>
+<li><strong>Entry Point</strong>: The Trigger widget serves as the entry point of your Studio flow. When an event or condition occurs that should start the flow, the Trigger widget is activated.</li>
+<li><strong>Event-Based Start</strong>: The Trigger widget is often configured to start the flow based on a specific event, such as an incoming call, message, or any other trigger you define.</li>
+<li><strong>Connectivity to External Systems</strong>: The Trigger widget can also be connected to external systems or services using Twilio Functions or other Twilio products. For example, you might use a Trigger to initiate a flow when receiving a webhook.</li>
+<li><strong>Custom Triggers</strong>: Additionally, you can use custom triggers to initiate a flow. This involves setting up conditions within your application or system that, when met, send a request to Twilio to trigger the associated Studio flow.</li>
+<li><strong>Handling Incoming Communication</strong>: Common use cases involve using the Trigger widget to handle incoming communication, such as an incoming call or message, and then guiding the flow through subsequent widgets to provide responses or perform specific actions.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-7.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Trigger Widget Example</figcaption>
+</figure>
+</div>
+</section>
+<section id="messaging-widgets" class="level3">
+<h3 class="anchored" data-anchor-id="messaging-widgets">Messaging Widgets</h3>
+<p>There are two widgets in this section: the “Send Message” and “Send and Wait for Reply” widgets. These are used for displaying content in the survey.</p>
+<ul>
+<li><strong>Send Message widget</strong>: This feature allows you to send outbound messages to recipients using various channels, including SMS, WhatsApp, or other messaging services. By specifying the content, it enables efficient and personalized communication with users. The Send Message widget in Twilio establishes a unidirectional connection, where the system sends a message to a recipient without waiting for or expecting a response. It is primarily used for one-way notifications, alerts, or information dissemination.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Send Message Widget Example</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Send and Wait for Reply widget</strong>: This feature allows you to send a message to a recipient and pause the flow, waiting for their response. You can specify the message content, and the flow will wait for the recipient to reply before proceeding. This facilitates interactive and dynamic conversations involving back-and-forth communication with users. The Send and Wait for Reply widget establishes a bidirectional connection, enabling interactive conversations and allowing for dynamic communication between the system and the user.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-9.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Send &amp; Wait Widget Example</figcaption>
+</figure>
+</div>
+<p>In summary, the key distinction lies in the type of connection established by these widgets. The Send Message widget operates with a unidirectional connection for one-way messaging, while the Send and Wait for Reply widget establishes a bidirectional connection to enable interactive conversations by awaiting and processing user responses.</p>
+</section>
+<section id="flow-control-widgets" class="level3">
+<h3 class="anchored" data-anchor-id="flow-control-widgets">Flow Control Widgets</h3>
+<p>There are three widgets in this section: the “Split Based On,” “Set Variable,” and “Run Subflow” widgets. These widgets allow you to implement conditional logic and control the flow of a conversation or process, enabling dynamic decision-making based on specific conditions or user inputs.</p>
+<ul>
+<li><strong>Split Based On</strong>: This widget enables you to dynamically split the flow of your application based on specific conditions or logic. It allows you to define multiple paths or branches within your flow, each with its own set of conditions and actions. When a message or event reaches the Split Based On widget, you can configure it to evaluate certain criteria, such as user input, variables, or data from previous steps in the flow. Based on the evaluation, the widget routes the flow to the appropriate branch that matches the condition. This widget is useful for implementing decision-making logic within your application. It enables you to create different paths or outcomes based on specific conditions, providing a way to customize the user experience, handle different scenarios, and route conversations accordingly. In this example, we are evaluating if the participant replied with a Yes or a No.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-10.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Split Based On Widget Example</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Set Variable</strong>: This widget enables the creation and assignment of variables within an application’s flow. By defining variable names and assigning values to them, developers can store and manipulate data throughout the conversation or process. These values can be constants, dynamic inputs from users or system data, or the result of calculations. The variables can then be referenced and utilized in subsequent steps of the flow, allowing for personalized and dynamic interactions. The Set Variable widget empowers developers to manage and track information, perform calculations, and make conditional decisions based on the stored values, enhancing the flexibility and customization of Twilio applications. In this case, we are creating a dummy variable that will take a value of 1 when the user replies with a Yes.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-11.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Set Variable Widget Example</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Run Subflow</strong>: This widget enables the execution of separate and reusable subflows within the main flow of an application. By invoking a specific subflow and providing necessary input parameters, developers can modularize complex logic or functionality. This promotes code reusability, simplifies maintenance, and enhances flow organization. Upon executing the subflow, the control returns to the main flow, allowing for seamless integration and continuation of the application’s logic. The Run Subflow widget empowers developers to create more efficient and manageable Twilio applications by encapsulating and invoking reusable subflows as needed. In this case, we are telling Twilio to send a user to a different flow (or survey) based on their answer.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Run Subflow Widget Example</figcaption>
+</figure>
+</div>
+<p>In summary, the Split Based On widget enables branching based on conditions, the Set Variable widget transitions linearly with variable assignments, and the Run Subflow widget transitions back to the main flow after executing the separate subflow. You can see how they look in the following image.</p>
+</section>
+<section id="function-widgets" class="level3">
+<h3 class="anchored" data-anchor-id="function-widgets">Function Widgets</h3>
+<ul>
+<li><strong>Run Function widget</strong>: This feature provides a powerful capability to execute custom code or serverless functions within your Twilio application. By utilizing this widget, you can perform specific actions, implement custom logic, and seamlessly integrate external functionality into your Twilio Studio flow. Whether you need to make API calls, perform calculations, access external resources, or implement complex business logic, the “Run Function” widget enhances the capabilities of your Twilio application, allowing you to extend its functionality and customize its behavior according to your unique requirements. In this example, we use a function that waits a few seconds between questions or messages. This is very useful when you want to make the survey feel more natural and have a more human-like interaction with the user.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Run Function Widget Example</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<p>There are three widgets in this section: the “Run Function,” “Make HTTP Request,” and “Add TwiML Redirect” widgets. In this section, we will focus only on the “Run Function” widget.</p>
+<p>To leverage functions in Twilio, you can write them in JavaScript or any supported language of your choice. These functions can be triggered within a Twilio Studio flow using either the “HTTP Request” or “Run Function” widgets. By incorporating the “Run Function” widget, you can execute custom code or serverless functions, enabling you to perform specific actions and implement customized logic tailored to your Twilio application. This integration of functions seamlessly merges external functionality, enhancing the capabilities of your Twilio Studio flow and empowering you to create dynamic and powerful communication experiences.</p>
+<section id="wait-function" class="level3">
+<h3 class="anchored" data-anchor-id="wait-function">Wait Function</h3>
+<p>The Wait function creates a pause in the flow execution, allowing for a more natural experience for the respondent. By introducing pauses between questions or messages, the Wait function gives respondents sufficient time to read and comprehend lengthy text in the survey. This helps to ensure a smooth and user-friendly survey interaction, allowing respondents to fully engage with the content and provide thoughtful responses. Let’s create this function in Twilio.</p>
+<ol type="1">
+<li><strong>Navigate to Functions and Assets</strong>: Go to the Twilio Console and locate the “Functions and Assets” section.</li>
+<li><strong>Access the Services Tab</strong>: Within “Functions and Assets,” click on the “Services” tab to manage your services.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-14.gif" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Access the Services Tab</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li><strong>Create a New Service</strong>: Click on the option to create a new service. Name this new service “functions.”</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-15.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Create a New Service</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li><strong>Create a New Function</strong>: Inside the “functions” service, select the option to create a new function.</li>
+<li><strong>Name the Function</strong>: When prompted to name the function, enter “wait.”</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/twilio-design-16.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Name the Function</figcaption>
+</figure>
+</div>
+<ol start="6" type="1">
+<li><strong>Paste the Code</strong>: Within the “wait” function, paste the following lines of code.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>exports.handler <span class="op">=</span> function(context, event, callback) { <span class="op">&lt;</span>br<span class="op">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> setTimeout(function() { <span class="op">&lt;</span>br<span class="op">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> <span class="cf">return</span> callback(null, null) <span class="op">&lt;</span>br<span class="op">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  }, <span class="dv">1000</span>) <span class="op">&lt;</span>br<span class="op">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="7" type="1">
+<li><strong>Save the Function</strong>: Save the function after pasting the code to ensure your changes are preserved.</li>
+<li><strong>Dependencies</strong>: Click on the dependency configuration and select the “Node.js v16” option.</li>
+<li><strong>Deploy the Service</strong>: Once the function is saved, deploy the entire service to make the changes effective.</li>
+</ol>
+<p>By following these steps, you’ll successfully create a Wait function inside the Twilio platform.</p>
+</section>
+<section id="gsheet-publish-function" class="level3">
+<h3 class="anchored" data-anchor-id="gsheet-publish-function">GSheet Publish Function</h3>
+<p>The GSheet Publish function in Twilio facilitates the transmission of participant responses to a Google Sheet, enabling you to effectively track and manage the collected data. By utilizing this function, the responses provided by participants are seamlessly sent to a designated Google Sheet, ensuring easy access to the data for analysis and tracking purposes. This functionality greatly streamlines the process of gathering and organizing responses, allowing you to efficiently monitor and manage the collected information within a familiar spreadsheet format.</p>
+<p>This function will be covered in detail in the <a href="../../data-collection/whatsapp/whatsapp-deploy.html">Whatsapp survey deploy</a> section.</p>
+</section>
+<section id="encrypt-function" class="level3">
+<h3 class="anchored" data-anchor-id="encrypt-function">Encrypt Function</h3>
+<p>The Encrypt function is designed to encrypt variables, ensuring that sensitive information, such as personally identifiable information (PII), remains secure when data is stored or published. By encrypting the variables, the values are transformed into a secure format, protecting them from unauthorized access or exposure. This functionality is crucial for safeguarding sensitive information and maintaining the privacy and confidentiality of user data within the server. The Encrypt function provides a robust layer of security to prevent the public disclosure of sensitive data.</p>
+<p>This function will be covered in detail in the <a href="../../data-collection/whatsapp/whatsapp-data-security.html">Whatsapp data security</a> section.</p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/data\.poverty-action\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../data-collection/whatsapp/whatsapp-surveys-twilio.html" class="pagination-link" aria-label="Twilio Setup">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Twilio Setup</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../data-collection/whatsapp/whatsapp-deploy.html" class="pagination-link" aria-label="Deploying a WhatsApp Survey">
+        <span class="nav-page-text">Deploying a WhatsApp Survey</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-collection/whatsapp/whatsapp-design.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
