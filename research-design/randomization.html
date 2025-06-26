@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Randomization – Research &amp; Data Science Hub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../under-construction.html" rel="next">
+<link href="../research-design/theory-of-change.html" rel="prev">
+<link href="../assets/images/ipa-favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4d49c55b2a02038d936e54d6a2565e99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-563f79986547ac237f97c7f290acf217.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 40,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": true,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "Search IPA Resources",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="125f036232e99eb4b325e2d8e31b7100" class="alert alert-light hidden"><i class="bi bi-none quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><span>📣 New IRB fee schedule starting March 1. Click <u>here</u> to learn more!</span></p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+    <nav class="navbar navbar-expand-md " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/images/ipa-logo-abbreviated.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Research &amp; Data Science Hub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research-design" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Research Design</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research-design">    
+        <li>
+    <a class="dropdown-item" href="../research-design/theory-of-change.html">
+ <span class="dropdown-text">Theory of Change</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../research-design/randomization.html">
+ <span class="dropdown-text">Randomization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">Measurement 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">Survey Design 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../research-design/sample-size-power.html">
+ <span class="dropdown-text">Sample and Power Calculations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ethics-and-irb" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ethics and IRB</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ethics-and-irb">    
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/index.html">
+ <span class="dropdown-text">About IPA IRB</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-lifecycle.html">
+ <span class="dropdown-text">The IRB Lifecycle</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-reliance-agreements.html">
+ <span class="dropdown-text">Reliance Agreements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-docs.html">
+ <span class="dropdown-text">IRB Documentation 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ethics-irb/irb-faqs.html">
+ <span class="dropdown-text">IRB FAQs 🚧</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-data">    
+        <li>
+    <a class="dropdown-item" href="../data-quality/ipa-research-protocols.html">
+ <span class="dropdown-text">Data Quality</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-collection/index.html">
+ <span class="dropdown-text">Data Collection</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data-cleaning/index.html">
+ <span class="dropdown-text">Data Cleaning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-software-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Software Guides</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-software-guides">    
+        <li>
+    <a class="dropdown-item" href="../software/git/index.html">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/github/index.html">
+ <span class="dropdown-text">GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/github/index.html">
+ <span class="dropdown-text">VS Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/stata/index.html">
+ <span class="dropdown-text">Stata</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/python/index.html">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">SurveyCTO 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../under-construction.html">
+ <span class="dropdown-text">Cryptomator 🚧</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/quarto/index.html">
+ <span class="dropdown-text">Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div class="quarto-navbar-tools">
+    <a href="https://github.com/PovertyAction" title="IPA Github" class="quarto-navigation-tool px-1" aria-label="IPA Github"><i class="bi bi-github"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/theory-of-change.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/randomization.html">Randomization</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Research Design</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../research-design/theory-of-change.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory of Change</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../research-design/randomization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Randomization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Measurement 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Design 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../research-design/sample-size-power.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample and Power Calculations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Ethics and IPA IRB</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About IPA IRB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-lifecycle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The IRB Lifecycle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-docs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB Documentation 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-reliance-agreements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reliance Agreements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethics-irb/irb-faqs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IRB FAQs 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Quality</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/ipa-research-protocols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Quality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">IPA Research Protocols</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/survey-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/dqap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Quality Action Plan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/bench-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bench Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/pilot-survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pilot Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/accompany-surveyors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accompany Surveyors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/hfcs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">High-Frequency Checks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/backchecks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Backchecks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Security Protocol 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/data-anonymization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Anonymization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/aea-registry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AEA Registry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/data-integrity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Integrity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-quality/ipa-dms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IPA’s Data Management System</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Collection</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">In-Person Surveys 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/phone-surveys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phone Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">WhatsApp Surveys</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About WhatsApp Surveys</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-surveys-twilio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Twilio Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designing a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-deploy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deploying a WhatsApp Survey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/whatsapp/whatsapp-data-security.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WhatsApp and Data Security</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Qualitative Methods</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Qualitative Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/focus-groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Focus Groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/interviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interviews</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/ethnographies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rapid Ethnographic Assessments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/qualitative-methods/observations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/admin-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Administrative Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Cleaning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Data Cleaning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/raw-data-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Raw Data Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/variable-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variable Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/dataset-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataset Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-cleaning/data-aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Aggregation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Software Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Coding Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/guides/venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Environments</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Version Control</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/git/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/github/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Code Environments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/vscode/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">VS Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Positron 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Stata</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/stata/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/stata/coding-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/stata/data-processing-stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Processing in Stata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regular Expressions 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Frames 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapping in Stata 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/python/coding-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding in Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Processing Data in Python 🚧</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SurveyCTO 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cryptomator 🚧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quarto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/quarto/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started with Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../software/quarto/basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing in Quarto</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 style="font-size: 0.86rem; font-weight: 600 ; color: #312e31; line-height: 1.55rem;" class="anchored">In this resource</h2>
+    <ul>
+    <li><a href="#what-is-randomization" id="toc-what-is-randomization" class="nav-link active" data-scroll-target="#what-is-randomization">What is Randomization?</a>
+    <ul class="collapse">
+    <li><a href="#random-sampling-vs.-random-assignment" id="toc-random-sampling-vs.-random-assignment" class="nav-link" data-scroll-target="#random-sampling-vs.-random-assignment">Random Sampling vs.&nbsp;Random Assignment</a></li>
+    </ul></li>
+    <li><a href="#basic-randomization-procedures" id="toc-basic-randomization-procedures" class="nav-link" data-scroll-target="#basic-randomization-procedures">Basic Randomization Procedures</a>
+    <ul class="collapse">
+    <li><a href="#complete-randomization-fixed-proportion" id="toc-complete-randomization-fixed-proportion" class="nav-link" data-scroll-target="#complete-randomization-fixed-proportion">Complete Randomization: Fixed Proportion</a></li>
+    <li><a href="#simple-randomization-fixed-probability" id="toc-simple-randomization-fixed-probability" class="nav-link" data-scroll-target="#simple-randomization-fixed-probability">Simple Randomization: Fixed Probability</a></li>
+    </ul></li>
+    <li><a href="#choosing-the-unit-of-randomization" id="toc-choosing-the-unit-of-randomization" class="nav-link" data-scroll-target="#choosing-the-unit-of-randomization">Choosing the Unit of Randomization</a>
+    <ul class="collapse">
+    <li><a href="#individual-level-randomization" id="toc-individual-level-randomization" class="nav-link" data-scroll-target="#individual-level-randomization">Individual-Level Randomization</a></li>
+    <li><a href="#cluster-level-randomization" id="toc-cluster-level-randomization" class="nav-link" data-scroll-target="#cluster-level-randomization">Cluster-Level Randomization</a></li>
+    <li><a href="#key-considerations-for-choosing-randomization-level" id="toc-key-considerations-for-choosing-randomization-level" class="nav-link" data-scroll-target="#key-considerations-for-choosing-randomization-level">Key Considerations for Choosing Randomization Level</a></li>
+    </ul></li>
+    <li><a href="#decision-framework" id="toc-decision-framework" class="nav-link" data-scroll-target="#decision-framework">Decision Framework</a></li>
+    <li><a href="#managing-common-challenges" id="toc-managing-common-challenges" class="nav-link" data-scroll-target="#managing-common-challenges">Managing Common Challenges</a>
+    <ul class="collapse">
+    <li><a href="#noncompliance" id="toc-noncompliance" class="nav-link" data-scroll-target="#noncompliance">Noncompliance</a></li>
+    <li><a href="#spillovers" id="toc-spillovers" class="nav-link" data-scroll-target="#spillovers">Spillovers</a></li>
+    </ul></li>
+    <li><a href="#alternative-randomization-methods" id="toc-alternative-randomization-methods" class="nav-link" data-scroll-target="#alternative-randomization-methods">Alternative Randomization Methods</a></li>
+    <li><a href="#practical-implementation-in-stata" id="toc-practical-implementation-in-stata" class="nav-link" data-scroll-target="#practical-implementation-in-stata">Practical Implementation in Stata</a>
+    <ul class="collapse">
+    <li><a href="#how-computers-think-about-randomization" id="toc-how-computers-think-about-randomization" class="nav-link" data-scroll-target="#how-computers-think-about-randomization">How Computers “Think” About Randomization</a></li>
+    <li><a href="#practice-exercise-school-supply-program" id="toc-practice-exercise-school-supply-program" class="nav-link" data-scroll-target="#practice-exercise-school-supply-program">Practice Exercise: School Supply Program</a></li>
+    <li><a href="#common-randomization-pitfalls" id="toc-common-randomization-pitfalls" class="nav-link" data-scroll-target="#common-randomization-pitfalls">Common Randomization Pitfalls</a></li>
+    </ul></li>
+    </ul>
+    <hr>
+  <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Authors</h2>
+  <ul>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Rosemarie Sandino</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Contributors</h2>
+  <ul>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Radhika Jain</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Devika Lakhote</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Laura Feeney</a></li>
+      </ul>
+    <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/randomization.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/theory-of-change.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/randomization.html">Randomization</a></li></ol></nav><h1 class="title display-7">Randomization</h1></header>
+
+<header id="title-block-header">
+    
+    
+</header>
+
+
+<div class="custom-summary-block">
+<p>This resource provides a comprehensive introduction to randomization in impact evaluations, covering theoretical foundations and practical implementation strategies for researchers.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/Burkina-Faso_Health_2022.jpg" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>IPA survey in Burkina Faso in 2022 (© IPA)</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Randomization</strong> creates comparable treatment and control groups by ensuring each unit has an equal chance of assignment</li>
+<li><strong>Unit of randomization</strong> (individual vs.&nbsp;cluster) affects statistical power, spillovers, and implementation feasibility</li>
+<li><strong>Different randomization methods</strong> address specific evaluation contexts and program constraints</li>
+</ul>
+</div>
+</div>
+<section id="what-is-randomization" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-randomization">What is Randomization?</h2>
+<p>Randomization is the cornerstone of rigorous impact evaluation. It’s the process of randomly assigning units (individuals, households, schools, etc.) to treatment and control groups, ensuring that assignment is based purely on chance rather than any systematic factors.</p>
+<section id="random-sampling-vs.-random-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="random-sampling-vs.-random-assignment">Random Sampling vs.&nbsp;Random Assignment</h3>
+<p>It’s crucial to distinguish between two related but distinct concepts:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Random Sampling
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The process of selecting a subset of units from a larger population where each unit has a known probability of being selected. This ensures the sample is representative of the population.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/random-sampling.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Random sampling from population</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Random Assignment
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The process of allocating sampled units to treatment and control groups using a random mechanism. This ensures groups are comparable on both observable and unobservable characteristics.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/random-assignment.jpeg" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Random assignment to groups</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Common Misconception
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Geographic or systematic assignment (e.g., “northern half gets treatment, southern half gets control”) is NOT random assignment, even if the sample was randomly selected.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="basic-randomization-procedures" class="level2">
+<h2 class="anchored" data-anchor-id="basic-randomization-procedures">Basic Randomization Procedures</h2>
+<section id="complete-randomization-fixed-proportion" class="level3">
+<h3 class="anchored" data-anchor-id="complete-randomization-fixed-proportion">Complete Randomization: Fixed Proportion</h3>
+<p>This method assigns a predetermined number of units to treatment and control groups. For example, if you have 1000 participants and want exactly 400 in treatment:</p>
+<ol type="1">
+<li>You would randomly order all 1000 participants</li>
+<li>Assign the first 400 to treatment</li>
+<li>Assign the remaining 600 to control</li>
+</ol>
+<p>This ensures precise control over group sizes, which can be important when:</p>
+<ul>
+<li>You have limited treatment resources (e.g., only 400 program slots)</li>
+<li>You need balanced groups for statistical power</li>
+<li>Implementation requires exact numbers (e.g., classroom capacity)</li>
+</ul>
+<p>Unlike randomization with fixed probability, this method guarantees your desired treatment/control ratio.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Steps for Complete Randomization
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Compile a list</strong> of all subjects in your sample</li>
+<li><strong>Determine the number</strong> you want in treatment (and control)</li>
+<li><strong>Use a random number generator</strong> to order observations randomly</li>
+<li><strong>Assign</strong> the first N units to treatment, remainder to control</li>
+</ol>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Ensures exact group sizes</li>
+<li>Simple to implement and explain</li>
+<li>Equitable when resources are limited</li>
+</ul>
+<p><strong>Challenge:</strong> Requires a complete list of participants upfront</p>
+</div>
+</div>
+</div>
+</section>
+<section id="simple-randomization-fixed-probability" class="level3">
+<h3 class="anchored" data-anchor-id="simple-randomization-fixed-probability">Simple Randomization: Fixed Probability</h3>
+<p>Each unit has a fixed probability (e.g., 50%) of being assigned to treatment, regardless of other units’ assignments. This is like flipping a coin for each participant:</p>
+<ul>
+<li>Heads (50%): Assigned to treatment</li>
+<li>Tails (50%): Assigned to control</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>A student program might assign each applicant to treatment with 40% probability</li>
+<li>A health intervention might use 30% probability for intensive treatment</li>
+<li>A pilot study might start with 20% in treatment to test implementation</li>
+</ul>
+<p>Unlike fixed proportion, the final group sizes may vary due to chance, but the law of large numbers means they’ll approach the target ratio with larger samples.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+When to Use Simple Randomization
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walk-in situations</strong> where you can’t create a list in advance</li>
+<li><strong>Rolling enrollment</strong> contexts</li>
+<li>When exact group sizes aren’t critical</li>
+</ul>
+<p><strong>Important Note:</strong> This method may result in unequal group sizes due to chance</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="choosing-the-unit-of-randomization" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-the-unit-of-randomization">Choosing the Unit of Randomization</h2>
+<p>The level at which you randomize is one of the most critical decisions in evaluation design.</p>
+<section id="individual-level-randomization" class="level3">
+<h3 class="anchored" data-anchor-id="individual-level-randomization">Individual-Level Randomization</h3>
+<p>Randomly assigning treatment at the individual level means each participant has an independent probability of being selected for treatment or control. This offers maximal statistical power since each individual is an independent observation.</p>
+<p>For example, in a microfinance study, individual entrepreneurs might be randomly selected to receive business loans, while others serve as controls.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+When to Randomize at Individual Level
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Appropriate when:</strong></p>
+<ul>
+<li>Treatment can be delivered to individuals independently</li>
+<li>Minimal risk of spillovers between individuals</li>
+<li>Maximum statistical power is needed</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Patient-level medical interventions</li>
+<li>Individual tutoring programs</li>
+<li>Personal financial incentives</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="cluster-level-randomization" class="level3">
+<h3 class="anchored" data-anchor-id="cluster-level-randomization">Cluster-Level Randomization</h3>
+<p>Cluster randomization involves assigning entire groups (like schools, villages, or health clinics) to treatment or control conditions. Instead of randomizing individual participants, all units within a cluster receive the same treatment status.</p>
+<p>For example, in a teacher training program, entire schools might be randomized rather than individual teachers. This means:</p>
+<ul>
+<li>If School A is assigned to treatment, all teachers in School A receive training</li>
+<li>If School B is assigned to control, no teachers in School B receive training</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+When to Randomize at Cluster Level
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Necessary when:</strong></p>
+<ul>
+<li>Treatment naturally affects groups (e.g., teacher training affects whole classrooms)</li>
+<li>High risk of spillovers within clusters</li>
+<li>Implementation constraints require treating entire groups</li>
+</ul>
+<p><strong>Common clusters:</strong></p>
+<ul>
+<li>Schools (for education interventions)</li>
+<li>Villages (for community programs)</li>
+<li>Health clinics (for health system interventions)</li>
+</ul>
+<p><strong>Statistical implications:</strong></p>
+<ul>
+<li>Reduced statistical power due to fewer independent units</li>
+<li>Need to account for intra-cluster correlation</li>
+<li>Typically requires larger sample sizes</li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Minimizes spillovers within natural groups</li>
+<li>Often more practical to implement</li>
+<li>Can capture group-level effects</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="key-considerations-for-choosing-randomization-level" class="level3">
+<h3 class="anchored" data-anchor-id="key-considerations-for-choosing-randomization-level">Key Considerations for Choosing Randomization Level</h3>
+</section>
+</section>
+<section id="decision-framework" class="level2">
+<h2 class="anchored" data-anchor-id="decision-framework">Decision Framework</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 18%">
+<col style="width: 19%">
+<col style="width: 17%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Unit of Measurement</th>
+<th style="text-align: left;">Program Targeting</th>
+<th style="text-align: left;">Spillover Potential</th>
+<th style="text-align: left;">Statistical Power</th>
+<th style="text-align: left;">Implementation Feasibility</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">At what level will outcomes be measured?</td>
+<td style="text-align: left;">How is the intervention naturally administered?</td>
+<td style="text-align: left;">How likely are treatment effects to spread?</td>
+<td style="text-align: left;">Which level maximizes ability to detect effects?</td>
+<td style="text-align: left;">What’s realistic given ethical, financial, and logistical constraints?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Individual:</strong> Test scores, health metrics, income</td>
+<td style="text-align: left;"><strong>Individual:</strong> Personal tutoring, cash transfers</td>
+<td style="text-align: left;"><strong>Low:</strong> Personal interventions with minimal interaction</td>
+<td style="text-align: left;"><strong>Highest:</strong> Individual randomization</td>
+<td style="text-align: left;"><strong>High:</strong> Simple interventions, good tracking systems</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Cluster:</strong> School performance, village outcomes</td>
+<td style="text-align: left;"><strong>Group:</strong> Teacher training, community programs</td>
+<td style="text-align: left;"><strong>High:</strong> Social programs, shared resources</td>
+<td style="text-align: left;"><strong>Lower:</strong> Cluster randomization needs larger samples</td>
+<td style="text-align: left;"><strong>Medium:</strong> Requires coordination with group leaders</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="managing-common-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="managing-common-challenges">Managing Common Challenges</h2>
+<section id="noncompliance" class="level3">
+<h3 class="anchored" data-anchor-id="noncompliance">Noncompliance</h3>
+<p>Noncompliance occurs when units don’t follow their assigned treatment status. This can happen in two ways:</p>
+<ol type="1">
+<li><strong>One-Sided Noncompliance:</strong> Only treatment group members can deviate</li>
+</ol>
+<ul>
+<li>Treatment group members don’t participate (“no-shows”)</li>
+<li>Control group can’t access treatment</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Two-Sided Noncompliance:</strong> Both groups can deviate</li>
+</ol>
+<ul>
+<li>Treatment group members don’t participate</li>
+<li>Control group members get treatment (“crossover”)</li>
+</ul>
+<p><strong>Common causes:</strong></p>
+<ul>
+<li>Service providers struggle to distinguish groups</li>
+<li>Logistical challenges in differential treatment</li>
+<li>Participant self-selection or refusal</li>
+<li>Control group finding alternative ways to access treatment</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Randomize at provider level when possible</li>
+<li>Clear marking/identification systems</li>
+<li>Strong monitoring protocols</li>
+<li>Document all cases of noncompliance</li>
+<li>Use intention-to-treat (ITT) analysis</li>
+<li>Consider instrumental variables for treatment-on-treated effects</li>
+</ul>
+<p><strong>Analysis Approaches:</strong></p>
+<ol type="1">
+<li>Intention-to-Treat (ITT): Analyze by original assignment</li>
+<li>Treatment-on-Treated (TOT): Account for actual treatment received</li>
+<li>Local Average Treatment Effect (LATE): For partial compliance</li>
+</ol>
+</section>
+<section id="spillovers" class="level3">
+<h3 class="anchored" data-anchor-id="spillovers">Spillovers</h3>
+<p>Spillovers occur when the treatment affects units beyond those directly treated, potentially contaminating the control group and biasing treatment estimates.</p>
+<p><strong>Types of spillovers:</strong></p>
+<ul>
+<li><strong>Environmental:</strong> Treatment changes shared conditions (e.g., reduced disease transmission)</li>
+<li><strong>Behavioral:</strong> Control group imitates treatment behaviors</li>
+<li><strong>Informational:</strong> Knowledge spreads between groups</li>
+</ul>
+<p><strong>Strategies:</strong></p>
+<ul>
+<li>Increase geographic/social distance between groups</li>
+<li>Randomize at higher level to contain spillovers</li>
+<li>Design evaluation to measure spillovers explicitly</li>
+</ul>
+<p><strong>Impact on Analysis:</strong></p>
+<ul>
+<li>Can lead to underestimated treatment effects if control group benefits</li>
+<li>May require additional buffer zones between treatment and control</li>
+<li>Sometimes spillovers themselves are of research interest (e.g., vaccine studies)</li>
+</ul>
+</section>
+</section>
+<section id="alternative-randomization-methods" class="level2">
+<h2 class="anchored" data-anchor-id="alternative-randomization-methods">Alternative Randomization Methods</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cross-Cutting Treatments
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Purpose:</strong> Test multiple treatment variations simultaneously and efficiently</p>
+<p><strong>Design Types:</strong></p>
+<ul>
+<li>2x2 factorial design (most common)</li>
+<li>Multiple treatment arms (3+ variations)</li>
+<li>Nested designs</li>
+</ul>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Tests interaction effects between treatments</li>
+<li>More cost-effective than separate trials</li>
+<li>Identifies optimal treatment combinations</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<ol type="1">
+<li>List all treatment combinations</li>
+<li>Assign units randomly to each arm</li>
+<li>Track and monitor each variation separately</li>
+<li>Analyze both main effects and interactions</li>
+</ol>
+<p><strong>Example: Teacher Training + Materials</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Group</th>
+<th style="text-align: left;">Training</th>
+<th style="text-align: left;">Materials</th>
+<th style="text-align: left;">Sample Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Control</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">25%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">T1</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">25%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">T2</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">25%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">T3</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">25%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Phase-In Design
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Purpose:</strong> Ensure all units eventually receive treatment while maintaining a valid control group</p>
+<p><strong>Design Types:</strong></p>
+<ul>
+<li>Sequential rollout (most common)</li>
+<li>Random order phase-in</li>
+<li>Stratified phase-in</li>
+<li>Time-lagged treatments</li>
+</ul>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Ethically sound (all units get treatment)</li>
+<li>Maintains experimental control</li>
+<li>Allows program refinement</li>
+<li>Multiple measurement points</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<ol type="1">
+<li>Determine number and timing of phases</li>
+<li>Randomize order of treatment receipt</li>
+<li>Monitor phase transitions carefully</li>
+<li>Analyze data from each phase</li>
+</ol>
+<p><strong>Example: Community Program Rollout</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Phase</th>
+<th style="text-align: left;">Treatment Group</th>
+<th style="text-align: left;">Control Group</th>
+<th style="text-align: left;">Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">25%</td>
+<td style="text-align: left;">75%</td>
+<td style="text-align: left;">Months 1-3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">50%</td>
+<td style="text-align: left;">50%</td>
+<td style="text-align: left;">Months 4-6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">75%</td>
+<td style="text-align: left;">25%</td>
+<td style="text-align: left;">Months 7-9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">100%</td>
+<td style="text-align: left;">0%</td>
+<td style="text-align: left;">Months 10-12</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Encouragement Design
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Purpose:</strong> Evaluate impact when treatment cannot be denied but participation can be influenced</p>
+<p><strong>Design Types:</strong></p>
+<ul>
+<li>Information campaigns</li>
+<li>Personalized reminders</li>
+<li>Application assistance</li>
+<li>Cost subsidies</li>
+<li>Behavioral nudges</li>
+</ul>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Ethical when services are entitlements</li>
+<li>Maintains experimental validity</li>
+<li>Measures both take-up and impact</li>
+<li>Identifies barriers to participation</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<ol type="1">
+<li>Design effective encouragement strategy</li>
+<li>Randomize who receives encouragement</li>
+<li>Track both encouragement and participation</li>
+<li>Use instrumental variables analysis</li>
+</ol>
+<p><strong>Example: Health Insurance Program</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Group</th>
+<th style="text-align: left;">Encouragement</th>
+<th style="text-align: left;">Access</th>
+<th style="text-align: left;">Expected Take-up</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Treatment</td>
+<td style="text-align: left;">Active outreach</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">60%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Control</td>
+<td style="text-align: left;">No outreach</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">30%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Difference</td>
+<td style="text-align: left;">Information + reminders</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">30%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Stratified Randomization
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Purpose:</strong> Ensure balance on key characteristics across treatment groups, especially important with small samples or critical covariates</p>
+<p><strong>Design Types:</strong></p>
+<ul>
+<li>Geographic stratification</li>
+<li>Demographic characteristics</li>
+<li>Baseline performance levels</li>
+<li>Multiple variable combinations</li>
+<li>Covariate-adaptive methods</li>
+</ul>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Improves statistical precision</li>
+<li>Guarantees balance on key variables</li>
+<li>Reduces chance of unlucky draws</li>
+<li>Facilitates subgroup analysis</li>
+<li>Increases credibility of results</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<ol type="1">
+<li>Select key stratification variables</li>
+<li>Create strata combinations</li>
+<li>Randomize within each stratum</li>
+<li>Verify balance across strata</li>
+</ol>
+<p><strong>Example: Education Program</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stratum</th>
+<th style="text-align: left;">Baseline Score</th>
+<th style="text-align: left;">Gender</th>
+<th style="text-align: left;">Treatment Share</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Low-Male</td>
+<td style="text-align: left;">Below median</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">50%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Low-Female</td>
+<td style="text-align: left;">Below median</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">50%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">High-Male</td>
+<td style="text-align: left;">Above median</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">50%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">High-Female</td>
+<td style="text-align: left;">Above median</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">50%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="practical-implementation-in-stata" class="level2">
+<h2 class="anchored" data-anchor-id="practical-implementation-in-stata">Practical Implementation in Stata</h2>
+<section id="how-computers-think-about-randomization" class="level3">
+<h3 class="anchored" data-anchor-id="how-computers-think-about-randomization">How Computers “Think” About Randomization</h3>
+<p>Stata uses a <strong>pseudo-random number generator</strong> that follows complex mathematical formulas to generate numbers that are indistinguishable from truly random numbers for practical purposes.</p>
+<p><strong>Key concept:</strong> The generator starts with a “seed” - a starting number that determines the entire sequence of random numbers that follows. The same seed will always produce the same sequence, making randomization reproducible.</p>
+<p><strong>Example:</strong> Think of it like a recipe - if you start with the same ingredients (seed) and follow the same steps (algorithm), you’ll always get the same result.</p>
+<p><strong>Best practices for seeds:</strong></p>
+<ul>
+<li>Use a different seed for each project</li>
+<li>Choose seeds randomly (e.g., from random.org or dice rolls)</li>
+<li>Set only one seed per do-file</li>
+<li>Always set the Stata version at the beginning (algorithms change between versions)</li>
+</ul>
+</section>
+<section id="practice-exercise-school-supply-program" class="level3">
+<h3 class="anchored" data-anchor-id="practice-exercise-school-supply-program">Practice Exercise: School Supply Program</h3>
+<p><strong>Context:</strong> You’re evaluating a program that provides school supplies to students. You have: - 500 students across 10 schools - Budget to treat 250 students - Need to ensure balance across grades</p>
+<p><strong>Your Task:</strong> Follow these steps to create a randomization plan:</p>
+<ol type="1">
+<li><strong>Data Setup</strong></li>
+</ol>
+<ul>
+<li>Create a dataset with 500 students, assigned to 10 schools and grades 1 to 5</li>
+</ul>
+<div id="fa82f8e8" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>clear</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> obs <span class="dv">500</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>gen student_id <span class="op">=</span> _n</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>gen school_id <span class="op">=</span> ceil(_n<span class="op">/</span><span class="dv">50</span>)         <span class="op">//</span> <span class="dv">10</span> schools, <span class="dv">50</span> students each</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>gen grade <span class="op">=</span> mod(_n<span class="op">-</span><span class="dv">1</span>,<span class="dv">5</span>) <span class="op">+</span> <span class="dv">1</span>         <span class="op">//</span> Grades <span class="dv">1</span>–<span class="dv">5</span>, evenly distributed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+. clear
+
+. set obs 500
+Number of observations (_N) was 0, now 500.
+
+. gen student_id = _n
+
+. gen school_id = ceil(_n/50)         // 10 schools, 50 students each
+
+. gen grade = mod(_n-1,5) + 1         // Grades 1–5, evenly distributed
+
+. </code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Set Seed</strong></li>
+</ol>
+<ul>
+<li>Set a random seed for replicability.</li>
+</ul>
+<div id="67a2b52a" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> seed <span class="dv">12345</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li><strong>Stratify by Grade</strong></li>
+</ol>
+<ul>
+<li>From the grade variable created, ensure each grade is represented.</li>
+</ul>
+<div id="89268092" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tab grade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      grade |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        100       20.00       20.00
+          2 |        100       20.00       40.00
+          3 |        100       20.00       60.00
+          4 |        100       20.00       80.00
+          5 |        100       20.00      100.00
+------------+-----------------------------------
+      Total |        500      100.00</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li><strong>Randomize Within Strata</strong></li>
+</ol>
+<ul>
+<li>For each grade, randomly assign half of the students to treatment (so total treated = 250). Generate a treatment variable (1 = treated, 0 = control).</li>
+</ul>
+<div id="2ef4b8d1" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">*</span> Install randtreat <span class="cf">if</span> <span class="kw">not</span> already installed</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cap ssc install randtreat</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">*</span> Use randtreat <span class="cf">for</span> stratified randomization by grade</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>randtreat, strata(grade) unequal(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) generate(treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+.   
+. * Install randtreat if not already installed
+. cap ssc install randtreat
+
+. 
+. * Use randtreat for stratified randomization by grade
+. randtreat, strata(grade) unequal(1/2 1/2) generate(treatment)
+assignment produces 0 misfits
+
+. </code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li><strong>Check Balance</strong></li>
+</ol>
+<ul>
+<li>Tabulate treatment by grade and school to verify balance.</li>
+</ul>
+<div id="4f73e58f" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tab treatment grade</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>tab treatment school_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+. tab treatment grade
+
+           |                         grade
+ treatment |         1          2          3          4          5 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |        50         50         50         50         50 |       250 
+         1 |        50         50         50         50         50 |       250 
+-----------+-------------------------------------------------------+----------
+     Total |       100        100        100        100        100 |       500 
+
+. tab treatment school_id
+
+           |                       school_id
+ treatment |         1          2          3          4          5 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |        26         27         25         24         18 |       250 
+         1 |        24         23         25         26         32 |       250 
+-----------+-------------------------------------------------------+----------
+     Total |        50         50         50         50         50 |       500 
+
+
+           |                       school_id
+ treatment |         6          7          8          9         10 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |        25         28         25         26         26 |       250 
+         1 |        25         22         25         24         24 |       250 
+-----------+-------------------------------------------------------+----------
+     Total |        50         50         50         50         50 |       500 
+
+. </code></pre>
+</div>
+</div>
+</section>
+<section id="common-randomization-pitfalls" class="level3">
+<h3 class="anchored" data-anchor-id="common-randomization-pitfalls">Common Randomization Pitfalls</h3>
+<ul>
+<li><strong>Not setting a random seed:</strong> Always use <code>set seed</code> in Stata to ensure your results are replicable.</li>
+<li><strong>Failing to check balance:</strong> After randomization, verify that treatment and control groups are balanced on key variables.</li>
+<li><strong>Confusing unit identifiers:</strong> Double-check IDs (e.g., village, school, or participant names) to avoid misassignment.</li>
+<li><strong>Contamination:</strong> Monitor carefully to prevent control group members from receiving the treatment.</li>
+<li><strong>Poor documentation:</strong> Keep detailed records of your randomization procedure for transparency and reproducibility.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sorting Considerations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<section id="ensuring-reproducible-sorting" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="ensuring-reproducible-sorting">Ensuring Reproducible Sorting</h3>
+<p>The <code>sort</code> command can produce non-reproducible results if the sorting variables don’t uniquely identify observations. Always include a unique ID as the last sorting variable:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>* Check <span class="kw">if</span> ID is <span class="kw">unique</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">isid</span> unique_id</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>* Sort <span class="kw">by</span> <span class="kw">unique</span> ID before generating random numbers</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> unique_id</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> rand = runiform()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>* When sorting <span class="kw">by</span> <span class="kw">strata</span> and random number, <span class="kw">include</span> <span class="kw">unique</span> ID <span class="fu">last</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> region rand unique_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This prevents Stata from randomly breaking ties, ensuring your randomization is perfectly reproducible.</p>
+</section>
+</div>
+</div>
+<p>For more detailed guidance on randomization and power calculations in Stata, see the <a href="https://www.stata.com/manuals/power.pdf">Stata power and sample size reference manual (Release 18)</a> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p><strong>Additional Resources:</strong></p>
+<ul>
+<li><a href="https://ipastorage.box.com/s/sslf9h67yaejnhn3zz02ez3k508irzu8">IPA Randomization Guide with Example Do-files</a></li>
+<li><a href="https://blog.stata.com/2016/03/10/how-to-generate-random-numbers-in-stata/">William Gould on Random Number Seeds</a></li>
+<li><a href="https://blog.stata.com/tag/random-numbers/">StataCorp Blog Posts on Pseudo-Random Number Generators</a></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+IPA Example: Balsakhi Tutoring Program
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The Balsakhi program in India is a classic example of rigorous randomization in education research (Banerjee et al., 2007; Duflo, Glennerster, &amp; Kremer, 2007):</p>
+<p><strong>Context:</strong></p>
+<p>Implemented by Pratham, the Balsakhi program provided remedial tutoring to academically weaker primary school students in Mumbai and Vadodara. The goal was to help students who were falling behind catch up with their peers.</p>
+<p><strong>Randomization:</strong></p>
+<ul>
+<li><strong>Unit:</strong> 122 schools were randomized to either receive the Balsakhi intervention or serve as controls.</li>
+<li><strong>Stratification:</strong> Randomization was stratified by language of instruction (Marathi, Gujarati, Hindi, English) and by gender composition (boys’, girls’, and co-ed schools) to ensure balance across key characteristics.</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<ul>
+<li>Within treatment schools, Balsakhis (local young women trained as tutors) worked with the lowest-performing students, identified using baseline test scores.</li>
+<li>Strict protocols were followed to prevent contamination between treatment and control schools, including separate training and monitoring teams.</li>
+<li>Detailed documentation and monitoring ensured fidelity to the randomization plan.</li>
+</ul>
+<p><strong>Results:</strong></p>
+<ul>
+<li>The program led to a significant improvement of 0.14 standard deviations in test scores for all students, and even larger gains for the weakest students.</li>
+<li>The study demonstrated the power of cluster-level randomization and the importance of stratification for balance.</li>
+</ul>
+<p><strong>References:</strong></p>
+<ul>
+<li>Banerjee, A., Cole, S., Duflo, E., &amp; Linden, L. (2007). “Remedying Education: Evidence from Two Randomized Experiments in India.” <em>Quarterly Journal of Economics</em>, 122(3), 1235–1264. <a href="https://doi.org/10.1162/qjec.122.3.1235">Link</a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li>Duflo, E., Glennerster, R., &amp; Kremer, M. (2007). “Using Randomization in Development Economics Research: A Toolkit.” <em>Handbook of Development Economics</em>, 4, 3895–3962. <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>StataCorp. (2023). <em>Stata power and sample size reference manual: Release 18</em>. https://www.stata.com/manuals/power.pdf<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Banerjee, A., Cole, S., Duflo, E., &amp; Linden, L. (2007). Remedying education: Evidence from two randomized experiments in India. <em>The Quarterly Journal of Economics, 122</em>(3), 1235–1264. https://doi.org/10.1162/qjec.122.3.1235<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Duflo, E., Glennerster, R., &amp; Kremer, M. (2007). Using randomization in development economics research: A toolkit. In T. P. Schultz &amp; J. A. Strauss (Eds.), <em>Handbook of Development Economics</em> (Vol. 4, pp.&nbsp;3895–3962). Elsevier.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/data\.poverty-action\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../research-design/theory-of-change.html" class="pagination-link" aria-label="Theory of Change">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Theory of Change</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../under-construction.html" class="pagination-link" aria-label="Measurement 🚧">
+        <span class="nav-page-text">Measurement 🚧</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/randomization.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
