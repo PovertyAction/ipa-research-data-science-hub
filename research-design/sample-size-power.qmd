@@ -33,12 +33,24 @@ This resource covers essential concepts of statistical power and sample size cal
 #| echo: false
 #| output: false
 import stata_setup
+import platform
 
 # set configuration to the path where Stata is installed and the flavor of Stata
 # in the case below, we're using Stata 18 SE
-stata_setup.config("C:/Program Files/Stata18/", "se")
+stata_version = "18"
+stata_flavor = "se"  # SE for Special Edition, MP for Multiprocessor,
+
+if platform.system() == 'Linux':
+  stata_path=f"/usr/local/stata{stata_version}"
+elif platform.system() == "Windows":
+  stata_path=f"C:/Program Files/Stata{stata_version}/"
+else:
+  raise ValueError("Unsupported operating system")
+
+print(f"Setting up Stata with path: {stata_path} and flavor: {stata_flavor}")
+stata_setup.config(stata_path, stata_flavor)
 ```
-      
+
 :::{.callout-tip appearance="simple"}
 ## Key Takeaways
 - **Statistical power** determines our ability to detect true effects in research studies.
@@ -55,30 +67,30 @@ stata_setup.config("C:/Program Files/Stata18/", "se")
 
 ::: {.callout-tip collapse="true"}
 ## 1. Research Quality and Reliability
-- Ensures studies can detect meaningful effects  
-- Reduces risk of false conclusions  
-- Strengthens confidence in research findings  
+- Ensures studies can detect meaningful effects
+- Reduces risk of false conclusions
+- Strengthens confidence in research findings
 :::
 
 ::: {.callout-tip collapse="true"}
 ## 2. Resource Optimization
-- Prevents wastage of research resources  
-- Avoids underpowered studies that may be inconclusive  
-- Guides efficient allocation of study participants  
+- Prevents wastage of research resources
+- Avoids underpowered studies that may be inconclusive
+- Guides efficient allocation of study participants
 :::
 
 ::: {.callout-tip collapse="true"}
 ## 3. Policy Impact
-- Enables evidence-based policy decisions  
-- Reduces risk of dismissing effective interventions  
-- Helps identify truly impactful programs  
+- Enables evidence-based policy decisions
+- Reduces risk of dismissing effective interventions
+- Helps identify truly impactful programs
 :::
 
 ::: {.callout-tip collapse="true"}
 ## 4. Ethical Considerations
-- Respects participants' time and effort  
-- Justifies the use of research resources  
-- Promotes responsible funding and implementation  
+- Respects participants' time and effort
+- Justifies the use of research resources
+- Promotes responsible funding and implementation
 :::
 
 ### Real-World Example: Improving Academic Achievement in India[^1]
@@ -89,28 +101,28 @@ In India, a significant proportion of children age **7 to 12** were struggling w
 
 ### 📊 The Results
 
-- **Test scores improved** by **0.28 standard deviations** for students who received tutoring  
+- **Test scores improved** by **0.28 standard deviations** for students who received tutoring
 - The **large sample size** gave the study **high statistical power**, which allowed researchers to **confidently detect** this meaningful effect
 
 ![Estimated Treatment Effect of 0.28 SD](/assets/images/power_3.png){width=90%}
 
 ### 🔍 Why This Matters: Understanding Statistical Power
 
-This example shows **why statistical power is critical** in research.  
+This example shows **why statistical power is critical** in research.
 
 Even if a program has a real, positive effect, as Balsakhi did, **a study without enough power might miss it**. That's because small or underpowered samples are more likely to produce **inconclusive or misleading results**.
 
-Because this study was **well-powered**, it gave strong evidence that the tutoring program worked.  
+Because this study was **well-powered**, it gave strong evidence that the tutoring program worked.
 If the sample had been smaller, the study might have wrongly concluded that there was no impact.
 
-> 💡 **Bottom line:**  
+> 💡 **Bottom line:**
 > **Statistical power** helps researchers avoid false negatives and ensures that policy decisions are based on **real, reliable evidence**—not just chance.
 
 This case shows how careful study design and sufficient power can lead to **actionable insights**, helping shape smarter education policies in low-resource settings. [^2]
 </div>
 
 ::: {.callout-note}
-## Key Concept 1  
+## Key Concept 1
 The larger the study sample, the more likely we are to estimate the true treatment effect of the program.
 
 ::: {layout-ncol=2}
@@ -127,7 +139,7 @@ The larger the study sample, the more likely we are to estimate the true treatme
 ### Sample Size
 Sample size directly influences our ability to estimate the **true treatment effect** with precision and reliability:
 
-- **Smaller N:** High variability, less precise and reliable estimates  
+- **Smaller N:** High variability, less precise and reliable estimates
 - **Larger N:** Lower variability, more precise and reliable estimates
 
 ### Why Does Sample Size Matter?
@@ -149,11 +161,11 @@ Sample size directly influences our ability to estimate the **true treatment eff
 | **Desired Power (1−κ)**     | Higher power (e.g., 90%) means a larger sample than lower power (e.g., 80%).                          |
 | **Study Design**            | Clustered or stratified designs often require larger samples due to intra-group correlation.           |
 
-### Trade-offs  
+### Trade-offs
 While larger samples improve precision, they require more resources:
 
-- **Financial:** Survey costs, transport, devices  
-- **Time:** Recruitment, training, fieldwork  
+- **Financial:** Survey costs, transport, devices
+- **Time:** Recruitment, training, fieldwork
 - **Labor:** Enumerators, field staff
 
 ### Practical Considerations
@@ -184,10 +196,10 @@ PDFs help us visualize the uncertainty around the estimated treatment effect (β
 :::
 
 :::{.callout-note}
-## Key Concept 3  
-A narrower distribution of estimates (β̂) increases our chances of detecting true effects. You can achieve this by:  
-- Increasing the sample size (**N**)  
-- Assigning roughly equal numbers to treatment and control (**p ≈ 0.5**)  
+## Key Concept 3
+A narrower distribution of estimates (β̂) increases our chances of detecting true effects. You can achieve this by:
+- Increasing the sample size (**N**)
+- Assigning roughly equal numbers to treatment and control (**p ≈ 0.5**)
 - Reducing outcome variance (**σ²**)
 :::
 
@@ -200,18 +212,18 @@ $$
 \hat{\beta} \sim \text{Normal}(\beta, \sigma^2 / [Np(1-p)])
 $$
 
-- **β**: True treatment effect  
-- **σ²**: Variance of the outcome  
-- **N**: Sample size  
+- **β**: True treatment effect
+- **σ²**: Variance of the outcome
+- **N**: Sample size
 - **p**: Proportion assigned to treatment (e.g., 0.5)
 :::
 
 
 :::{.callout-note}
-## Key Concept 4  
-**Type I Error (α):** Risk of a false positive  
-- Usually set at **5% (α = 0.05)**  
-- This means there's a 5% chance we incorrectly detect an effect when there is none  
+## Key Concept 4
+**Type I Error (α):** Risk of a false positive
+- Usually set at **5% (α = 0.05)**
+- This means there's a 5% chance we incorrectly detect an effect when there is none
 - A lower α reduces false positives—but increases the risk of missing real effects
 - Its complement (1−α) is known as the confidence level (how likely we are to avoid a false positive)
 - While 5% is standard, it can range from 1%-10% in research literature
@@ -263,12 +275,12 @@ Reject H₀ if β̂ exceeds critical values, fail to reject H₀ if β̂ within 
 :::
 
 :::{.callout-note}
-## Key Concept 5  
+## Key Concept 5
 **Type II Error (κ):** Risk of a false negative
 
-- **κ**: Probability of missing a real effect  
-- **Power (1−κ):** Probability of detecting a true effect (aim for ≥80%)  
-- Lower α (false positive rate) increases κ (false negative rate)  
+- **κ**: Probability of missing a real effect
+- **Power (1−κ):** Probability of detecting a true effect (aim for ≥80%)
+- Lower α (false positive rate) increases κ (false negative rate)
 - Power and sample size are directly related: higher power needs a larger sample
 :::
 
@@ -299,8 +311,8 @@ Larger samples and bigger effects increase the chance of detecting something rea
 
 Power is often shown as the overlap between two distributions:
 
-- **H₀ (Null):** No effect  
-- **H₁ (Alternative):** A true effect exists  
+- **H₀ (Null):** No effect
+- **H₁ (Alternative):** A true effect exists
 - **Critical value:** The cutoff for statistical significance
 
 The **less overlap** between the two distributions, the **higher the power**.
@@ -335,7 +347,7 @@ When power is high (≥80%), we are more likely to detect true effects and avoid
 
 We will use Stata's `power` command to perform sample size and power calculations, and to create sensitivity tables and graphs.[^3]
 
-📌 **Type this in Stata for help:**  
+📌 **Type this in Stata for help:**
 ```stata
 help power
 ```
@@ -514,28 +526,28 @@ The proportion assigned to treatment and control groups. Power is maximized when
 ::: {.callout-warning collapse="true"}
 ### Pitfall 1: Ignoring Design Effects
 
-- **Problem:** Using simple formulas for complex designs  
+- **Problem:** Using simple formulas for complex designs
 - **Solution:** Account for clustering, stratification in calculations
 :::
 
 ::: {.callout-warning collapse="true"}
 ### Pitfall 2: Optimistic Assumptions
 
-- **Problem:** Assuming perfect compliance, no attrition  
+- **Problem:** Assuming perfect compliance, no attrition
 - **Solution:** Build in realistic buffers (typically 20-30%)
 :::
 
 ::: {.callout-warning collapse="true"}
 ### Pitfall 3: Post-Hoc Power
 
-- **Problem:** Calculating power after finding null results  
+- **Problem:** Calculating power after finding null results
 - **Solution:** Focus on confidence intervals, not post-hoc power
 :::
 
 ::: {.callout-warning collapse="true"}
 ### Pitfall 4: Fixating on 80%
 
-- **Problem:** Treating 80% power as sacred threshold  
+- **Problem:** Treating 80% power as sacred threshold
 - **Solution:** Consider context—sometimes 70% or 90% is appropriate
 :::
 

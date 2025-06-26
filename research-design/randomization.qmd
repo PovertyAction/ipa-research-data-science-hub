@@ -23,7 +23,7 @@ contributors:
   - "[Radhika Jain]()"
   - "[Devika Lakhote]()"
   - "[Laura Feeney]()"
-  
+
 ---
 
 :::{.custom-summary-block}
@@ -37,12 +37,23 @@ This resource provides a comprehensive introduction to randomization in impact e
 #| echo: false
 #| output: false
 import stata_setup
+import platform
 
 # set configuration to the path where Stata is installed and the flavor of Stata
 # in the case below, we're using Stata 18 SE
-stata_setup.config("C:/Program Files/Stata18/", "se")
-```
+stata_version = "18"
+stata_flavor = "se"  # SE for Special Edition, MP for Multiprocessor,
 
+if platform.system() == 'Linux':
+  stata_path=f"/usr/local/stata{stata_version}"
+elif platform.system() == "Windows":
+  stata_path=f"C:/Program Files/Stata{stata_version}/"
+else:
+  raise ValueError("Unsupported operating system")
+
+print(f"Setting up Stata with path: {stata_path} and flavor: {stata_flavor}")
+stata_setup.config(stata_path, stata_flavor)
+```
 
 :::{.callout-tip appearance="simple"}
 ## Key Takeaways
@@ -104,7 +115,7 @@ Unlike randomization with fixed probability, this method guarantees your desired
 3. **Use a random number generator** to order observations randomly
 4. **Assign** the first N units to treatment, remainder to control
 
-**Advantages:** 
+**Advantages:**
 
 - Ensures exact group sizes
 - Simple to implement and explain
@@ -421,7 +432,7 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 ## Practical Implementation in Stata
 
 ### How Computers "Think" About Randomization
-Stata uses a **pseudo-random number generator** that follows complex mathematical formulas to generate numbers that are indistinguishable from truly random numbers for practical purposes. 
+Stata uses a **pseudo-random number generator** that follows complex mathematical formulas to generate numbers that are indistinguishable from truly random numbers for practical purposes.
 
 **Key concept:** The generator starts with a "seed" - a starting number that determines the entire sequence of random numbers that follows. The same seed will always produce the same sequence, making randomization reproducible.
 
@@ -478,7 +489,7 @@ tab grade
   - For each grade, randomly assign half of the students to treatment (so total treated = 250). Generate a treatment variable (1 = treated, 0 = control).
 ```{python}
 %%stata
-  
+
 * Install randtreat if not already installed
 cap ssc install randtreat
 
@@ -541,29 +552,29 @@ The Balsakhi program in India is a classic example of rigorous randomization in 
 
 Implemented by Pratham, the Balsakhi program provided remedial tutoring to academically weaker primary school students in Mumbai and Vadodara. The goal was to help students who were falling behind catch up with their peers.
 
-**Randomization:**  
+**Randomization:**
 
 - **Unit:** 122 schools were randomized to either receive the Balsakhi intervention or serve as controls.
 - **Stratification:** Randomization was stratified by language of instruction (Marathi, Gujarati, Hindi, English) and by gender composition (boys', girls', and co-ed schools) to ensure balance across key characteristics.
 
-**Implementation:**  
+**Implementation:**
 
 - Within treatment schools, Balsakhis (local young women trained as tutors) worked with the lowest-performing students, identified using baseline test scores.
 - Strict protocols were followed to prevent contamination between treatment and control schools, including separate training and monitoring teams.
 - Detailed documentation and monitoring ensured fidelity to the randomization plan.
 
-**Results:**  
+**Results:**
 
 - The program led to a significant improvement of 0.14 standard deviations in test scores for all students, and even larger gains for the weakest students.
 - The study demonstrated the power of cluster-level randomization and the importance of stratification for balance.
 
-**References:**  
+**References:**
 
 - Banerjee, A., Cole, S., Duflo, E., & Linden, L. (2007). "Remedying Education: Evidence from Two Randomized Experiments in India." *Quarterly Journal of Economics*, 122(3), 1235–1264. [Link](https://doi.org/10.1162/qjec.122.3.1235) [^2]
 - Duflo, E., Glennerster, R., & Kremer, M. (2007). "Using Randomization in Development Economics Research: A Toolkit." *Handbook of Development Economics*, 4, 3895–3962. [^3]
 
 :::
 
-[^1]: StataCorp. (2023). *Stata power and sample size reference manual: Release 18*. https://www.stata.com/manuals/power.pdf  
-[^2]: Banerjee, A., Cole, S., Duflo, E., & Linden, L. (2007). Remedying education: Evidence from two randomized experiments in India. *The Quarterly Journal of Economics, 122*(3), 1235–1264. https://doi.org/10.1162/qjec.122.3.1235  
+[^1]: StataCorp. (2023). *Stata power and sample size reference manual: Release 18*. https://www.stata.com/manuals/power.pdf
+[^2]: Banerjee, A., Cole, S., Duflo, E., & Linden, L. (2007). Remedying education: Evidence from two randomized experiments in India. *The Quarterly Journal of Economics, 122*(3), 1235–1264. https://doi.org/10.1162/qjec.122.3.1235
 [^3]: Duflo, E., Glennerster, R., & Kremer, M. (2007). Using randomization in development economics research: A toolkit. In T. P. Schultz & J. A. Strauss (Eds.), *Handbook of Development Economics* (Vol. 4, pp. 3895–3962). Elsevier.
