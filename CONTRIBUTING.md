@@ -4,14 +4,29 @@ Thank you for your interest in contributing to the IPA Research and Data Science
 
 ## Table of Contents
 
-* [Code of Conduct](#code-of-conduct)
-* [How Can I Contribute?](#how-can-i-contribute)
-* [Development Workflow](#development-workflow)
-* [Writing Content in Quarto](#writing-content-in-quarto)
-* [Markdown Style Guide](#markdown-style-guide)
-* [Code Quality Tools](#code-quality-tools)
-* [Pull Request Process](#pull-request-process)
-* [Getting Help](#getting-help)
+- [Contributing to the IPA Research and Data Science Hub](#contributing-to-the-ipa-research-and-data-science-hub)
+    - [Table of Contents](#table-of-contents)
+    - [Code of Conduct](#code-of-conduct)
+    - [How Can I Contribute?](#how-can-i-contribute)
+    - [Development Workflow](#development-workflow)
+        - [Branching Strategy](#branching-strategy)
+        - [Setting Up Your Development Environment](#setting-up-your-development-environment)
+        - [Making Changes](#making-changes)
+    - [Writing Content in Quarto](#writing-content-in-quarto)
+        - [File Structure](#file-structure)
+        - [Quarto Basics](#quarto-basics)
+        - [Special Features](#special-features)
+            - [Callout Blocks](#callout-blocks)
+            - [Cross-References](#cross-references)
+            - [Code Blocks with Execution](#code-blocks-with-execution)
+            - [Tabsets](#tabsets)
+    - [Markdown Style Guide](#markdown-style-guide)
+    - [Code Quality Tools](#code-quality-tools)
+        - [Pre-commit Hooks](#pre-commit-hooks)
+        - [Markdownlint](#markdownlint)
+        - [Vale](#vale)
+    - [Pull Request Process](#pull-request-process)
+    - [Getting Help](#getting-help)
 
 ## Code of Conduct
 
@@ -31,11 +46,11 @@ There are several ways you can contribute to the Hub:
 
 ### Branching Strategy
 
-* Use `release/*` branches for new content
-* Use `update/*` branches to modify existing content
-* Use `feature/*` branches for technical infrastructure modifications
-* Use `hotfix/*` branches for critical issues
-* Use `bugfix/*` branches for non-urgent fixes
+- Use `release/*` branches for new content
+- Use `update/*` branches to modify existing content
+- Use `feature/*` branches for technical infrastructure modifications
+- Use `hotfix/*` branches for critical issues
+- Use `bugfix/*` branches for non-urgent fixes
 
 ### Setting Up Your Development Environment
 
@@ -54,6 +69,17 @@ There are several ways you can contribute to the Hub:
 
    This will install all required software and create a Python virtual environment.
    Note that you may need to install `Just` if you don't have it already.
+
+3. **Set your local _environment.local**
+
+   Use the `_environment.required` file as a template to create your own `_environment.local` file.
+   This file should contain any local environment variables you need, such as:
+
+   ```bash
+   # Path to the Python interpreter for Quarto
+   QUARTO_PYTHON=.venv/bin/python # For macOS/Linux users
+   QUARTO_PYTHON=.venv\Scripts\python.exe  # For Windows users
+   ```
 
 ### Making Changes
 
@@ -104,15 +130,15 @@ The IPA Research and Data Science Hub uses [Quarto](https://quarto.org/) for con
 
 ### File Structure
 
-* Content is organized by topic area in directories
-* Each directory should have an `index.qmd` file
-* Use consistent naming conventions for files: lowercase, hyphenated names (e.g., `data-collection.qmd`)
+- Content is organized by topic area in directories
+- Each directory should have an `index.qmd` file
+- Use consistent naming conventions for files: lowercase, hyphenated names (e.g., `data-collection.qmd`)
 
 ### Quarto Basics
 
-* Content is written in Markdown with Quarto extensions
-* Quarto files use the `.qmd` extension
-* Each file should begin with YAML frontmatter defining metadata
+- Content is written in Markdown with Quarto extensions
+- Quarto files use the `.qmd` extension
+- Each file should begin with YAML frontmatter defining metadata
 
 Example YAML frontmatter:
 
@@ -223,11 +249,11 @@ We use markdownlint with custom rules to ensure consistent formatting. See our [
 
 Key points:
 
-* Use [ATX-style headings](https://google.github.io/styleguide/docguide/style.html#atx-style-headings) with a space after the `#` (e.g., `## Heading 2`)
-* Use asterisks (`*`) for unordered lists, not dashes
-* Include blank lines before and after headings, lists, and code blocks
-* Provide alt text for all images for accessibility
-* Use fenced code blocks with language specification
+- Use [ATX-style headings](https://google.github.io/styleguide/docguide/style.html#atx-style-headings) with a space after the `#` (e.g., `## Heading 2`)
+- Use asterisks (`*`) for unordered lists, not dashes
+- Include blank lines before and after headings, lists, and code blocks
+- Provide alt text for all images for accessibility
+- Use fenced code blocks with language specification
 
 ## Code Quality Tools
 
@@ -306,7 +332,7 @@ just vale-warnings-all
 
 If you need assistance or have questions about contributing:
 
-* Open an issue on GitHub
-* Contact the GRDS team at [researchsupport@poverty-action.org](mailto:researchsupport@poverty-action.org)
+- Open an issue on GitHub
+- Contact the GRDS team at [researchsupport@poverty-action.org](mailto:researchsupport@poverty-action.org)
 
 Thank you for contributing to the IPA Research and Data Science Hub!

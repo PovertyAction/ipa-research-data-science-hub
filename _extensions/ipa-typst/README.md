@@ -41,7 +41,7 @@ You can also use the extension directly in the format specification:
 ```yaml
 ---
 title: "Your Document Title"
-format: 
+format:
   ipa-typst-typst: default
 ---
 ```
@@ -51,8 +51,6 @@ format:
 - `_extension.yml`: Extension configuration
 - `typst-template.typ`: Main template function with IPA branding and fonts
 - `typst-show.typ`: Interface between Quarto and Typst template
-- `larsseit-regular.otf`: IPA body text font
-- `ActaDisplay-Medium.otf`: IPA heading font
 
 ## Dependencies
 
