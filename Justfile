@@ -126,6 +126,7 @@ pre-install:
 [linux]
 pre-install:
     brew install just uv gh vale r --force-bottle
+    sudo apt update && sudo apt upgrade && sudo apt install -y nodejs npm
     npm install -g markdownlint-cli
 
 [macos]
