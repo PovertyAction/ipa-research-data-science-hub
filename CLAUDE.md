@@ -30,6 +30,9 @@ The human will ask you to draft, edit, or revise pages of the IPA Research and D
 - If the human asks you to revise a page, approach the task as a meticulous editor that aims to make very accessible, readable documentation.
 - If the human asks you to review many pages, break up the task into small chunks of work rather than trying to do everything all at once. Encourage the human to make manageable changes to avoid overwhelming you and any other reviewers.
 
+Always run `just vale-file <file>` on any content you create or modify to ensure it passes the Vale writing style checks.
+Always run `just fmt-md <file>` to ensure that the markdown formatting is correct on any content you create or modify.
+
 ## Content Guidelines
 
 ### File Naming
@@ -49,6 +52,8 @@ All `.qmd` files need:
 - `contributors`: List of supporting contributors
 - `keywords`: List of research and data science keywords, including the type of documentation within the Diataxis Framework.
 - `license`: "CC BY" unless otherwise specified
+
+Always move the `:::{.custom-summary-block}...:::` to the abstract and provide readability improvements.
 
 ## Architecture and Structure
 
@@ -150,30 +155,3 @@ just pre-commit-run       # Run all pre-commit hooks
 ```bash
 just new-page <dest>      # Create new page from template
 ```
-
-### Branching Strategy
-
-- `main`: Live production branch
-- `release/*`: New content for publication
-- `update/*`: Updates to existing content
-- `feature/*`: Infrastructure and site scaffolding changes
-- `hotfix/*`: Critical time-sensitive fixes
-- `bugfix/*`: Non-urgent fixes
-
-### Technology Stack
-
-- **Quarto**: Site generation and content rendering
-- **uv**: Python package and virtual environment management
-- **ruff**: Python code formatting and linting
-- **markdownlint**: Markdown consistency checking
-- **vale**: Writing style and grammar validation
-- **pre-commit**: Automated code quality checks
-
-## Development Workflow
-
-1. Run `just get-started` for initial setup
-2. Create appropriately named branch following strategy above
-3. Use `just preview-docs` for local development
-4. Run `just fmt-all` before committing to ensure quality
-5. Content must pass markdownlint and vale checks
-6. Python code must pass ruff formatting and linting
