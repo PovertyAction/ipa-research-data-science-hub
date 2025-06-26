@@ -88,6 +88,17 @@ This `Just` target will install the required software and build a Python virtual
 Note: you may need to restart your terminal and IDE after running the command above to activate
 the installed software.
 
+For R, you may need to add `R` and `RScript` to your PATH environment variable if they are not already included.
+This is necessary for the `renv` command to work.
+
+If `R` command is not found, Add `R` installation path to system environment variable Path.
+Typical Windows path: `C:\Program Files\R\R-x.x.x\bin` (replace `x.x.x` with your R version)
+Verify that you see the R path in your Path:
+
+```bash
+$env:Path
+```
+
 If working in a Linux environment, you may need to follow installation instructions for Quarto
 [in the Quarto documents](https://quarto.org/docs/get-started/).
 
