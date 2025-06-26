@@ -113,6 +113,10 @@ new-page dest:
     echo "Created new page at {{ dest }}"
     echo "Remember to add {{ dest }} to _quarto.yml"
 
+# Create a git commit message using AI (requires claude command line tool)
+gcauto:
+    git commit -m "$(claude -p "Look at the staged git changes and create a summarizing git commit title. Only respond with the title and no affirmation.")"
+
 # Run pre-commit hooks
 pre-commit-run:
     pre-commit run
@@ -125,7 +129,9 @@ pre-install:
 
 [linux]
 pre-install:
-    brew install just uv gh vale r markdownlint-cli
+    brew install just uv gh vale r --force-bottle
+    sudo apt update && sudo apt upgrade && sudo apt install -y nodejs npm
+    npm install -g markdownlint-cli
 
 [macos]
 pre-install:
