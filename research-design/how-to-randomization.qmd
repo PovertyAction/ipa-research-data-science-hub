@@ -1,0 +1,194 @@
+---
+title: "How to Implement Stratified Randomization in Stata"
+abstract: "Step-by-step instructions for implementing stratified randomization in Stata, including reproducible seed setting, balance checking, and troubleshooting common issues."
+date: last-modified
+
+#------------------------------------------------------------------
+# Authors
+#------------------------------------------------------------------
+# Authors are the main creators of the site's content, credited
+# for their work and responsible for its core development,
+# including writing and editing.
+#------------------------------------------------------------------
+authors-ipa:
+- "[Rosemarie Sandino]()"
+- "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
+
+#------------------------------------------------------------------
+# Contributors
+#------------------------------------------------------------------
+# Contributors provide support, such as feedback or supplementary
+# materials for the site. They can also be responsible for
+# updating/maintaining the site.
+#------------------------------------------------------------------
+contributors:
+  - "[Radhika Jain]()"
+  - "[Devika Lakhote]()"
+  - "[Laura Feeney]()"
+
+keywords:
+  - randomization
+  - impact evaluation
+  - experimental design
+  - treatment assignment
+  - cluster randomization
+  - stratified randomization
+  - how-to guide
+
+license: "CC BY"
+
+---
+
+## Problem: Assign Participants to Treatment Groups
+
+You need to randomly assign participants to treatment and control groups while maintaining balance across key characteristics like grade level, school, or other strata.
+
+**Prerequisites:**
+
+- Stata installed with `randtreat` package
+- Dataset with participant identifiers and stratification variables
+- Basic familiarity with Stata commands
+
+**What you'll accomplish:**
+
+- Set up reproducible randomization with proper seed management
+- Implement stratified randomization to achieve balance
+- Verify treatment assignment worked correctly
+
+```{python}
+#| echo: false
+#| output: false
+import stata_setup
+import platform
+
+# set configuration to the path where Stata is installed and the flavor of Stata
+# in the case below, we're using Stata 18 SE
+stata_version = "18"
+stata_flavor = "se"  # SE for Special Edition, MP for Multiprocessor,
+
+if platform.system() == 'Linux':
+  stata_path=f"/usr/local/stata{stata_version}"
+elif platform.system() == "Windows":
+  stata_path=f"C:/Program Files/Stata{stata_version}/"
+else:
+  raise ValueError("Unsupported operating system")
+
+print(f"Setting up Stata with path: {stata_path} and flavor: {stata_flavor}")
+stata_setup.config(stata_path, stata_flavor)
+```
+
+## Step 1: Set Up Your Environment
+
+**Set Stata version and seed for reproducibility:**
+
+- Use a different seed for each project
+- Choose seeds through random methods—such as from random.org or dice rolls
+- Set only one seed per do-file
+- Always set the Stata version at the beginning since algorithms change between versions
+
+## Step 2: Prepare Your Data
+
+**Example scenario:** School supply program evaluation
+
+- 500 students across 10 schools
+- Budget to treat 250 students
+- Need to ensure balance across grades
+
+**Create your dataset with participant identifiers and strata:**
+
+```{python}
+%%stata
+clear
+set obs 500
+gen student_id = _n
+gen school_id = ceil(_n/50)         // 10 schools, 50 students each
+gen grade = mod(_n-1,5) + 1         // Grades one to five, evenly distributed
+```
+
+## Step 3: Set Random Seed
+
+**Set a random seed for replicability:**
+
+```{python}
+%%stata
+set seed 12345
+```
+
+## Step 4: Verify Your Strata
+
+**Check that your stratification variable covers all participants:**
+
+```{python}
+%%stata
+tab grade
+```
+
+## Step 5: Implement Stratified Randomization
+
+**Assign half of students to treatment within each grade—total treated equals 250. Generate a treatment variable where 1 equals treated and 0 equals control:**
+
+```{python}
+%%stata
+
+* Install randtreat if not already installed
+cap ssc install randtreat
+
+* Use randtreat for stratified randomization by grade
+randtreat, strata(grade) unequal(1/2 1/2) generate(treatment)
+```
+
+## Step 6: Verify Balance
+
+**Tabulate treatment by grade and school to verify balance:**
+
+```{python}
+%%stata
+tab treatment grade
+tab treatment school_id
+```
+
+## Troubleshooting Common Issues
+
+**Not setting a random seed:** Always use `set seed` in Stata to ensure your results are replicable.
+
+**Failing to check balance:** After randomization, verify that treatment and control groups have balance on key variables.
+
+**Confusing unit identifiers:** Double-check IDs—such as village, school, or participant names—to avoid misassignment.
+
+**Contamination:** Monitor to prevent control group members from receiving the treatment.
+
+**Poor documentation:** Keep detailed records of your randomization procedure for transparency and reproducibility.
+
+::: {.callout-warning collapse="true"}
+
+## Sorting Considerations
+
+### Ensuring Reproducible Sorting
+
+The `sort` command can produce non-reproducible results if the sorting variables don't uniquely identify observations. Always include a unique ID as the last sorting variable:
+
+```{python}
+%%stata
+* Check if ID is unique
+isid unique_id
+
+* Sort by unique ID before generating random numbers
+sort unique_id
+gen rand = runiform()
+
+* When sorting by strata and random number, include unique ID last
+sort region rand unique_id
+```
+
+This prevents Stata from breaking ties inconsistently, ensuring your randomization is reproducible.
+:::
+
+For more detailed guidance on randomization and power calculations in Stata, see the [Stata power and sample size reference manual Release 18](https://www.stata.com/manuals/power.pdf) [^1].
+
+**Additional Resources:**
+
+- [IPA Randomization Guide with Example Do-files](https://ipastorage.box.com/s/sslf9h67yaejnhn3zz02ez3k508irzu8)
+- [William Gould on Random Number Seeds](https://blog.stata.com/2016/03/10/how-to-generate-random-numbers-in-stata/)
+- [StataCorp Blog Posts on Pseudo-Random Number Generators](https://blog.stata.com/tag/random-numbers/)
+
+[^1]: StataCorp. 2023. *Stata power and sample size reference manual: Release 18*. https://www.stata.com/manuals/power.pdf

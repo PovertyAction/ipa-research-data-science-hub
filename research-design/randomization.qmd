@@ -1,5 +1,7 @@
 ---
 title: "Randomization"
+abstract: "Introduction to randomization in impact evaluations, covering theoretical foundations and practical implementation strategies for researchers."
+date: last-modified
 
 #------------------------------------------------------------------
 # Authors
@@ -24,39 +26,25 @@ contributors:
   - "[Devika Lakhote]()"
   - "[Laura Feeney]()"
 
+keywords:
+  - randomization
+  - impact evaluation
+  - experimental design
+  - treatment assignment
+  - cluster randomization
+  - stratified randomization
+  - explanation
+
+license: "CC BY"
+
 ---
 
-:::{.custom-summary-block}
-This resource provides a comprehensive introduction to randomization in impact evaluations, covering theoretical foundations and practical implementation strategies for researchers.
-:::
-
-![IPA survey in Burkina Faso in 2022 (© IPA)](/assets/images/Burkina-Faso_Health_2022.jpg){width=75%}
-
-
-```{python}
-#| echo: false
-#| output: false
-import stata_setup
-import platform
-
-# set configuration to the path where Stata is installed and the flavor of Stata
-# in the case below, we're using Stata 18 SE
-stata_version = "18"
-stata_flavor = "se"  # SE for Special Edition, MP for Multiprocessor,
-
-if platform.system() == 'Linux':
-  stata_path=f"/usr/local/stata{stata_version}"
-elif platform.system() == "Windows":
-  stata_path=f"C:/Program Files/Stata{stata_version}/"
-else:
-  raise ValueError("Unsupported operating system")
-
-print(f"Setting up Stata with path: {stata_path} and flavor: {stata_flavor}")
-stata_setup.config(stata_path, stata_flavor)
-```
+![IPA survey in Burkina Faso in 2022, credit: IPA](/assets/images/Burkina-Faso_Health_2022.jpg){width=75%}
 
 :::{.callout-tip appearance="simple"}
+
 ## Key Takeaways
+
 - **Randomization** creates comparable treatment and control groups by ensuring each unit has an equal chance of assignment
 - **Unit of randomization** (individual vs. cluster) affects statistical power, spillovers, and implementation feasibility
 - **Different randomization methods** address specific evaluation contexts and program constraints
@@ -64,14 +52,16 @@ stata_setup.config(stata_path, stata_flavor)
 
 ## What is Randomization?
 
-Randomization is the cornerstone of rigorous impact evaluation. It's the process of randomly assigning units (individuals, households, schools, etc.) to treatment and control groups, ensuring that assignment is based purely on chance rather than any systematic factors.
+Randomization is the cornerstone of rigorous impact evaluation. This process assigns units -- individuals, households, schools, and other entities -- to treatment and control groups, ensuring that assignment relies purely on chance rather than systematic factors.
 
 ### Random Sampling vs. Random Assignment
 
-It's crucial to distinguish between two related but distinct concepts:
+It is crucial to distinguish between two related but distinct concepts:
 
 ::: {.callout-tip collapse="true"}
+
 ## Random Sampling
+
 The process of selecting a subset of units from a larger population where each unit has a known probability of being selected. This ensures the sample is representative of the population.
 
 ![Random sampling from population](/assets/images/random-sampling.png){width=70%}
@@ -79,15 +69,19 @@ The process of selecting a subset of units from a larger population where each u
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## Random Assignment
+
 The process of allocating sampled units to treatment and control groups using a random mechanism. This ensures groups are comparable on both observable and unobservable characteristics.
 
 ![Random assignment to groups](/assets/images/random-assignment.jpeg){width=70%}
 :::
 
 ::: {.callout-warning}
+
 ## Common Misconception
-Geographic or systematic assignment (e.g., "northern half gets treatment, southern half gets control") is NOT random assignment, even if the sample was randomly selected.
+
+Geographic or systematic assignment -- such as "northern half gets treatment, southern half gets control" -- is not random assignment, even if the sample was selected through random sampling.
 :::
 
 ## Basic Randomization Procedures
@@ -100,16 +94,18 @@ This method assigns a predetermined number of units to treatment and control gro
 2. Assign the first 400 to treatment
 3. Assign the remaining 600 to control
 
-This ensures precise control over group sizes, which can be important when:
+This ensures precise control over group sizes, which proves important when:
 
-- You have limited treatment resources (e.g., only 400 program slots)
-- You need balanced groups for statistical power
-- Implementation requires exact numbers (e.g., classroom capacity)
+- Limited treatment resources exist, such as only 400 program slots
+- Balanced groups are needed for statistical power
+- Implementation requires exact numbers, such as classroom capacity
 
 Unlike randomization with fixed probability, this method guarantees your desired treatment/control ratio.
 
 ::: {.callout-tip collapse="true"}
+
 ## Steps for Complete Randomization
+
 1. **Compile a list** of all subjects in your sample
 2. **Determine the number** you want in treatment (and control)
 3. **Use a random number generator** to order observations randomly
@@ -126,10 +122,10 @@ Unlike randomization with fixed probability, this method guarantees your desired
 
 ### Simple Randomization: Fixed Probability
 
-Each unit has a fixed probability (e.g., 50%) of being assigned to treatment, regardless of other units' assignments. This is like flipping a coin for each participant:
+Each unit has a fixed probability, for example 50%, of assignment to treatment, regardless of other units' assignments. This resembles flipping a coin for each participant:
 
-- Heads (50%): Assigned to treatment
-- Tails (50%): Assigned to control
+- Heads: 50% probability, assigned to treatment
+- Tails: 50% probability, assigned to control
 
 For example:
 
@@ -140,7 +136,9 @@ For example:
 Unlike fixed proportion, the final group sizes may vary due to chance, but the law of large numbers means they'll approach the target ratio with larger samples.
 
 ::: {.callout-tip collapse="true"}
+
 ## When to Use Simple Randomization
+
 - **Walk-in situations** where you can't create a list in advance
 - **Rolling enrollment** contexts
 - When exact group sizes aren't critical
@@ -154,17 +152,19 @@ The level at which you randomize is one of the most critical decisions in evalua
 
 ### Individual-Level Randomization
 
-Randomly assigning treatment at the individual level means each participant has an independent probability of being selected for treatment or control. This offers maximal statistical power since each individual is an independent observation.
+Individual-level treatment assignment means each participant has an independent probability of selection for treatment or control. This offers maximal statistical power since each individual is an independent observation.
 
 For example, in a microfinance study, individual entrepreneurs might be randomly selected to receive business loans, while others serve as controls.
 
 ::: {.callout-tip collapse="true"}
+
 ## When to Randomize at Individual Level
+
 **Appropriate when:**
 
-- Treatment can be delivered to individuals independently
+- Treatment delivery to individuals independently
 - Minimal risk of spillovers between individuals
-- Maximum statistical power is needed
+- Maximum statistical power requirements
 
 **Examples:**
 
@@ -175,7 +175,7 @@ For example, in a microfinance study, individual entrepreneurs might be randomly
 
 ### Cluster-Level Randomization
 
-Cluster randomization involves assigning entire groups (like schools, villages, or health clinics) to treatment or control conditions. Instead of randomizing individual participants, all units within a cluster receive the same treatment status.
+Cluster randomization assigns entire groups, such as schools, villages, or health clinics, to treatment or control conditions. Instead of randomizing individual participants, all units within a cluster receive the same treatment status.
 
 For example, in a teacher training program, entire schools might be randomized rather than individual teachers. This means:
 
@@ -183,18 +183,20 @@ For example, in a teacher training program, entire schools might be randomized r
 - If School B is assigned to control, no teachers in School B receive training
 
 ::: {.callout-tip collapse="true"}
+
 ## When to Randomize at Cluster Level
+
 **Necessary when:**
 
-- Treatment naturally affects groups (e.g., teacher training affects whole classrooms)
+- Treatment affects entire groups, such as teacher training affecting whole classrooms
 - High risk of spillovers within clusters
 - Implementation constraints require treating entire groups
 
 **Common clusters:**
 
-- Schools (for education interventions)
-- Villages (for community programs)
-- Health clinics (for health system interventions)
+- Schools for education interventions
+- Villages for community programs
+- Health clinics for health system interventions
 
 **Statistical implications:**
 
@@ -212,12 +214,28 @@ For example, in a teacher training program, entire schools might be randomized r
 ### Key Considerations for Choosing Randomization Level
 
 ## Decision Framework
-| Unit of Measurement | Program Targeting | Spillover Potential | Statistical Power | Implementation Feasibility |
-|:-------------------|:------------------|:-------------------|:-----------------|:------------------------|
-| At what level will outcomes be measured? | How is the intervention naturally administered? | How likely are treatment effects to spread? | Which level maximizes ability to detect effects? | What's realistic given ethical, financial, and logistical constraints? |
-| **Individual:** Test scores, health metrics, income | **Individual:** Personal tutoring, cash transfers | **Low:** Personal interventions with minimal interaction | **Highest:** Individual randomization | **High:** Simple interventions, good tracking systems |
-| **Cluster:** School performance, village outcomes | **Group:** Teacher training, community programs | **High:** Social programs, shared resources | **Lower:** Cluster randomization needs larger samples | **Medium:** Requires coordination with group leaders |
 
+When choosing your randomization level, consider these key factors:
+
+### Individual-Level Randomization
+
+**Best when:**
+
+- Outcomes measured at individual level—test scores, health metrics, income
+- Intervention targets individuals—personal tutoring, cash transfers
+- Low spillover risk from personal interventions with minimal interaction
+- Maximum statistical power needed
+- Simple interventions with good tracking systems
+
+### Cluster-Level Randomization
+
+**Best when:**
+
+- Outcomes measured at group level—school performance, village outcomes
+- Intervention targets groups—teacher training, community programs
+- High spillover potential from social programs and shared resources
+- Coordination with group leaders required
+- Willing to accept lower statistical power for practical benefits
 
 ## Managing Common Challenges
 
@@ -226,12 +244,14 @@ For example, in a teacher training program, entire schools might be randomized r
 Noncompliance occurs when units don't follow their assigned treatment status. This can happen in two ways:
 
 1. **One-Sided Noncompliance:** Only treatment group members can deviate
-  - Treatment group members don't participate ("no-shows")
-  - Control group can't access treatment
+
+- Treatment group members do not participate, know as "no-shows", "dropouts", or "refusers"
+- Control group cannot access treatment
 
 2. **Two-Sided Noncompliance:** Both groups can deviate
-  - Treatment group members don't participate
-  - Control group members get treatment ("crossover")
+
+- Treatment group members do not participate
+- Control group members receive treatment, known as "crossover"
 
 **Common causes:**
 
@@ -261,7 +281,7 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 
 **Types of spillovers:**
 
-- **Environmental:** Treatment changes shared conditions (e.g., reduced disease transmission)
+- **Environmental:** Treatment changes shared conditions,such as reduced disease transmission
 - **Behavioral:** Control group imitates treatment behaviors
 - **Informational:** Knowledge spreads between groups
 
@@ -275,12 +295,12 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 
 - Can lead to underestimated treatment effects if control group benefits
 - May require additional buffer zones between treatment and control
-- Sometimes spillovers themselves are of research interest (e.g., vaccine studies)
-
+- Sometimes spillovers themselves are of research interest, such as vaccine studies
 
 ## Alternative Randomization Methods
 
 ::: {.callout-tip collapse="true"}
+
 ### Cross-Cutting Treatments
 
 **Purpose:** Test multiple treatment variations simultaneously and efficiently
@@ -304,7 +324,7 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 3. Track and monitor each variation separately
 4. Analyze both main effects and interactions
 
-**Example: Teacher Training + Materials**
+#### Teacher Training and Materials Example
 
 | Group | Training | Materials | Sample Size |
 |:------|:---------|:----------|:------------|
@@ -316,6 +336,7 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ### Phase-In Design
 
 **Purpose:** Ensure all units eventually receive treatment while maintaining a valid control group
@@ -341,7 +362,7 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 3. Monitor phase transitions carefully
 4. Analyze data from each phase
 
-**Example: Community Program Rollout**
+#### Community Program Rollout Example
 
 | Phase | Treatment Group | Control Group | Timeline |
 |:------|:---------------|:--------------|:---------|
@@ -352,8 +373,8 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 
 :::
 
-
 ::: {.callout-tip collapse="true"}
+
 ### Encouragement Design
 
 **Purpose:** Evaluate impact when treatment cannot be denied but participation can be influenced
@@ -380,7 +401,7 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 3. Track both encouragement and participation
 4. Use instrumental variables analysis
 
-**Example: Health Insurance Program**
+#### Health Insurance Program Example
 
 | Group | Encouragement | Access | Expected Take-up |
 |:------|:--------------|:-------|:----------------|
@@ -391,6 +412,7 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ### Stratified Randomization
 
 **Purpose:** Ensure balance on key characteristics across treatment groups, especially important with small samples or critical covariates
@@ -418,7 +440,7 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 3. Randomize within each stratum
 4. Verify balance across strata
 
-**Example: Education Program**
+#### Education Program Example
 
 | Stratum | Baseline Score | Gender | Treatment Share |
 |:--------|:--------------|:--------|:----------------|
@@ -429,124 +451,12 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 
 :::
 
-## Practical Implementation in Stata
-
-### How Computers "Think" About Randomization
-Stata uses a **pseudo-random number generator** that follows complex mathematical formulas to generate numbers that are indistinguishable from truly random numbers for practical purposes.
-
-**Key concept:** The generator starts with a "seed" - a starting number that determines the entire sequence of random numbers that follows. The same seed will always produce the same sequence, making randomization reproducible.
-
-**Example:** Think of it like a recipe - if you start with the same ingredients (seed) and follow the same steps (algorithm), you'll always get the same result.
-
-**Best practices for seeds:**
-
-- Use a different seed for each project
-- Choose seeds randomly (e.g., from random.org or dice rolls)
-- Set only one seed per do-file
-- Always set the Stata version at the beginning (algorithms change between versions)
-
-### Practice Exercise: School Supply Program
-
-**Context:**
-You're evaluating a program that provides school supplies to students. You have:
-- 500 students across 10 schools
-- Budget to treat 250 students
-- Need to ensure balance across grades
-
-**Your Task:**
-Follow these steps to create a randomization plan:
-
-1. **Data Setup**
-
-  - Create a dataset with 500 students, assigned to 10 schools and grades 1 to 5
-
-```{python}
-%%stata
-clear
-set obs 500
-gen student_id = _n
-gen school_id = ceil(_n/50)         // 10 schools, 50 students each
-gen grade = mod(_n-1,5) + 1         // Grades 1–5, evenly distributed
-```
-
-2. **Set Seed**
-
-  - Set a random seed for replicability.
-```{python}
-%%stata
-set seed 12345
-```
-
-3. **Stratify by Grade**
-
-  - From the grade variable created, ensure each grade is represented.
-```{python}
-%%stata
-tab grade
-```
-
-4. **Randomize Within Strata**
-  - For each grade, randomly assign half of the students to treatment (so total treated = 250). Generate a treatment variable (1 = treated, 0 = control).
-```{python}
-%%stata
-
-* Install randtreat if not already installed
-cap ssc install randtreat
-
-* Use randtreat for stratified randomization by grade
-randtreat, strata(grade) unequal(1/2 1/2) generate(treatment)
-```
-
-5. **Check Balance**
-  - Tabulate treatment by grade and school to verify balance.
-```{python}
-%%stata
-tab treatment grade
-tab treatment school_id
-```
-
-
-### Common Randomization Pitfalls
-
-- **Not setting a random seed:** Always use `set seed` in Stata to ensure your results are replicable.
-- **Failing to check balance:** After randomization, verify that treatment and control groups are balanced on key variables.
-- **Confusing unit identifiers:** Double-check IDs (e.g., village, school, or participant names) to avoid misassignment.
-- **Contamination:** Monitor carefully to prevent control group members from receiving the treatment.
-- **Poor documentation:** Keep detailed records of your randomization procedure for transparency and reproducibility.
-
-::: {.callout-warning collapse="true"}
-## Sorting Considerations
-### Ensuring Reproducible Sorting
-The `sort` command can produce non-reproducible results if the sorting variables don't uniquely identify observations. Always include a unique ID as the last sorting variable:
-
-```stata
-* Check if ID is unique
-isid unique_id
-
-* Sort by unique ID before generating random numbers
-sort unique_id
-gen rand = runiform()
-
-* When sorting by strata and random number, include unique ID last
-sort region rand unique_id
-```
-This prevents Stata from randomly breaking ties, ensuring your randomization is perfectly reproducible.
-:::
-
-
-For more detailed guidance on randomization and power calculations in Stata, see the [Stata power and sample size reference manual (Release 18)](https://www.stata.com/manuals/power.pdf) [^1].
-
-**Additional Resources:**
-
-- [IPA Randomization Guide with Example Do-files](https://ipastorage.box.com/s/sslf9h67yaejnhn3zz02ez3k508irzu8)
-- [William Gould on Random Number Seeds](https://blog.stata.com/2016/03/10/how-to-generate-random-numbers-in-stata/)
-- [StataCorp Blog Posts on Pseudo-Random Number Generators](https://blog.stata.com/tag/random-numbers/)
-
 
 ::: {.callout-tip collapse="true"}
-### IPA Example: Balsakhi Tutoring Program
 
-The Balsakhi program in India is a classic example of rigorous randomization in education research (Banerjee et al., 2007; Duflo, Glennerster, & Kremer, 2007):
+### Example: Balsakhi Tutoring Program
+
+The Balsakhi program in India is a classic example of rigorous randomization in education research (Banerjee et al., 2007; Duflo, Glennerster, and Kremer, 2007):
 
 **Context:**
 
@@ -570,11 +480,10 @@ Implemented by Pratham, the Balsakhi program provided remedial tutoring to acade
 
 **References:**
 
-- Banerjee, A., Cole, S., Duflo, E., & Linden, L. (2007). "Remedying Education: Evidence from Two Randomized Experiments in India." *Quarterly Journal of Economics*, 122(3), 1235–1264. [Link](https://doi.org/10.1162/qjec.122.3.1235) [^2]
-- Duflo, E., Glennerster, R., & Kremer, M. (2007). "Using Randomization in Development Economics Research: A Toolkit." *Handbook of Development Economics*, 4, 3895–3962. [^3]
+- Banerjee, A., Cole, S., Duflo, E., and Linden, L. (2007). "Remedying Education: Evidence from Two Randomized Experiments in India." *Quarterly Journal of Economics*, 122(3), 1235-1264. [DOI: 10.1162/qjec.122.3.1235](https://doi.org/10.1162/qjec.122.3.1235) [^1]
+- Duflo, E., Glennerster, R., and Kremer, M. (2007). "Using Randomization in Development Economics Research: A Toolkit." *Handbook of Development Economics*, 4, 3895-3962. [^2]
 
 :::
 
-[^1]: StataCorp. (2023). *Stata power and sample size reference manual: Release 18*. https://www.stata.com/manuals/power.pdf
-[^2]: Banerjee, A., Cole, S., Duflo, E., & Linden, L. (2007). Remedying education: Evidence from two randomized experiments in India. *The Quarterly Journal of Economics, 122*(3), 1235–1264. https://doi.org/10.1162/qjec.122.3.1235
-[^3]: Duflo, E., Glennerster, R., & Kremer, M. (2007). Using randomization in development economics research: A toolkit. In T. P. Schultz & J. A. Strauss (Eds.), *Handbook of Development Economics* (Vol. 4, pp. 3895–3962). Elsevier.
+[^1]: Banerjee, A., Cole, S., Duflo, E., and Linden, L. (2007). Remedying education: Evidence from two randomized experiments in India. *The Quarterly Journal of Economics, 122*(3), 1235-1264. https://doi.org/10.1162/qjec.122.3.1235
+[^2]: Duflo, E., Glennerster, R., and Kremer, M. (2007). Using randomization in development economics research: A toolkit. In T. P. Schultz and J. A. Strauss (Eds.), *Handbook of Development Economics* (Vol. 4, pp. 3895-3962). Elsevier.
