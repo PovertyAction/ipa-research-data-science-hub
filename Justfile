@@ -33,6 +33,10 @@ venv:
     uv tool install pre-commit
     uv run pre-commit install
 
+# sync R environment, requires that R, RScript are in PATH
+renv:
+    RScript -e 'renv::restore()'
+
 # Activate interactive python
 ipython:
     uv run ipython
