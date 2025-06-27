@@ -1,52 +1,45 @@
 ---
 title: "Variable Management"
-
-#------------------------------------------------------------------
-# Authors
-#------------------------------------------------------------------
-# Authors are the main creators of the site's content, credited
-# for their work and responsible for its core development,
-# including writing and editing.
-#------------------------------------------------------------------
+abstract: "Data cleaning practices to help you manage data and ensure data integrity and reproducibility. Covers handling missing values, categorical and dummy variables, specify variables, skip logic, storage types, date variables, and logic tests for survey data."
+date: last-modified
 authors-ipa:
   - "[Kayla Wilding](https://github.com/wildingka)"
   - "[Michael Rosenbaum](https://github.com/mfrosenbaum)"
   - "[Rosemarie Sandino](https://github.com/rsandino)"
-
-#------------------------------------------------------------------
-# Contributors
-#------------------------------------------------------------------
-# Contributors provide support, such as feedback or supplementary
-# materials for the site. They can also be responsible for
-# updating/maintaining the site.
-#------------------------------------------------------------------
 contributors:
   - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
   - "[Wesley Kirui](https://poverty-action.org/people/wesley-kirui)"
+keywords:
+  - "data cleaning"
+  - "variable management"
+  - "missing values"
+  - "categorical variables"
+  - "dummy variables"
+  - "explanation"
+license: "CC BY"
 ---
 
-:::{.custom-summary-block}
-This guide provides data cleaning practices to help you manage data and ensure data integrity and reproducibility.
-:::
 
 :::{.callout-tip appearance="simple"}
+
 ## Key Takeaways
+
 * Coding best practices for data cleaning, such as recoding missing values and converting date formats, minimize manual errors and enhances efficiency.
 * Proper handling of missing values, categorical variables, and date variables is crucial for ensuring data quality and consistency in survey data analysis.
-* Logic tests and defensive programming techniques help us identify and address data inconsistencies early, ensuring data integrity and reproducibility.
+* Logic tests and defensive programming techniques help identify and address data inconsistencies early, ensuring data integrity and reproducibility.
 :::
 
-Raw survey data is often relatively clean at the variable-level because the data is generated with a variety of constraints on how the data are formatted. For example, multiple response (select multiple) variables only allow certain responses which are known to the analyst from the survey instrument. These responses do not change in content unless the survey does. For other types of variables, most computer-assisted personal interviewing software such as SurveyCTO allow for constraints to be built into the survey instrument. IPA has a number of tools to support data quality during data collection such as the [data management system](https://github.com/PovertyAction/high-frequency-checks), which checks for data quality concerns.
+Raw survey data is often relatively clean at the variable-level because survey software generates the data with various constraints on how the data are formatted. For example, multiple response variables only allow certain responses which the analyst knows from the survey instrument. These responses do not change in content unless the survey does. For other types of variables, most computer-assisted personal interviewing software such as SurveyCTO allow for constraints to be built into the survey instrument. IPA has several open-sourced tools to support data quality during data collection such as the [data management system](https://github.com/PovertyAction/high-frequency-checks), which checks for data quality concerns and [ipaclean](https://github.com/PovertyAction/ipaclean), which provides a set of tools for data cleaning and validation.
 
-Much of the cleaning work required for survey data includes standardizing formats of variables so that they are usable for analysis. This includes ensuring missing and non-response values are missing in statistical software, that categorical formats are in a useful format, and variables correspond to the correct storage format, subjective orientation, and follow missingness patterns. These are substantive coding tasks and can benefit from consistent and automated approaches. This section is primarily concerned with doing those tasks safely and quickly with minimal manual input or transcription.
+Much of the cleaning work required for survey data includes standardizing variable formats to make them usable for analysis. This includes ensuring missing and non-response values appear as missing in statistical software, that categorical formats are useful, and variables correspond to the correct storage format, subjective orientation, and follow missingness patterns. These are substantive coding tasks and can benefit from consistent and automated approaches. This section is primarily concerned with doing those tasks safely and quickly with minimal manual input or transcription.
 
 ## Handling missing values
 
-For a number of reasons, variables will have missing values for certain observations. It is helpful to have the data reflect why these values are missing, particularly for numeric variables. For instance, you may want to know whether someone didn't answer a question about business revenues because the question was skipped (e.g., they weren't business owners) or whether it was because they could not remember.
+For several reasons, variables will have missing values for certain observations. The data should reflect why these values are missing, particularly for numeric variables. For instance, you may want to know whether someone did not answer a question about business revenues because the question was skipped—they were not business owners—or because they could not remember.
 
 ### Missing values on import
 
-Many statistical software will import variables and observations that only contain missing values when importing from other data formats. Often times, it's useful to clear those values immediately after importing data. This can be done manually, or through the `missing` command which can be installed through SSC. One approach is to do this is as follows:
+Many statistical software will import variables and observations that only contain missing values when importing from other data formats. Often, clearing those values immediately after importing data is useful. This can be done manually, or through the `missing` command which can be installed through SSC. One approach is to do this is as follows:
 
 ```stata
 *Import data starting on the row of variable names: B1
@@ -60,7 +53,7 @@ missing dropvars, force // usually don't use force, but fine in this case
 isid id
 ```
 
-Sometimes missing values are filled as non-empty values in other data management software (SQL uses "NULL", R uses two types: "NA" (has 4 subtypes) & "NaN", etc.). It's worth checking data to ensure those values are removed or properly turned to missing after importing
+Sometimes missing values appear as non-empty values in other data management software (SQL uses `NULL`, R uses two types: `NA` with four subtypes and `NaN`, etc.). Check data to ensure those values are removed or properly converted to missing after importing.
 
 ```stata
 *Check variable names if anything equals "NULL"
@@ -79,9 +72,9 @@ recode * (-99=.)
 
 ### Extended missing values in Stata
 
-Stata has special codes for numeric missing values. For numeric variables, missing values are considered to be greater in value than all other numbers and themselves have an order of magnitude. The magnitude of missing values increases across the alphabet, with the standard missing value `.` coming before `.a`: `.` <  `.a` <  `.b` <  `.c` < ... < `.z` The `.a`, `.b`, etc. are called “extended missing values.” . Note that extended missing values cannot be stored in string variables. Instead, all string variables with a missing value are shown as `“”` (called “blank”).
+Stata has special codes for numeric missing values. For numeric variables, missing values are considered to be greater in value than all other numbers and themselves have an order of magnitude. The magnitude of missing values increases across the alphabet, with the standard missing value `.` coming before `.a`: `.` <  `.a` <  `.b` <  `.c` < ... < `.z` The `.a`, `.b`, etc. are called "extended missing values." . Note that extended missing values cannot be stored in string variables. Instead, all string variables with a missing value are shown as `""` (called "blank").
 
-Ensure extended missing values consistently represent missing values in your data. For instance, if -99 and -999 refer to “don't know” in two different waves of the survey, they should be standardized. In that case, you will want to replace all -99 and -999 values with `.d`. It can be helpful to use the recode command to efficiently replace those values. We suggest keeping the following standards for extended missing values:
+Ensure extended missing values consistently represent missing values in your data. For instance, if -99 and -999 refer to "don't know" in two different waves of the survey, they should be standardized. In that case, you will want to replace all -99 and -999 values with `.d`. It can be helpful to use the recode command to efficiently replace those values. The following standards for extended missing values are recommended:
 
 | Type of Missing | Extended Missing |
 | ---- | ---- |
@@ -153,13 +146,13 @@ foreach var of local numvars {
 // end foreach var of local numvars
 ```
 
-We recommend checking outliers and replacements manually, and to search for modal responses in numeric variables that won't have missing values as outliers. Accurate responses can overlap with missing response codes. Automated replacement code, such as the code above, should only be completed after confirming that all inverted values are correct. Even better, use of defensive coding such as assert or the `pause` command will resolve this. The best solution is often to make sure that the data generating process guards against this type of messiness. Programming in confirmation questions in the survey ("Did the respondent really answer 99 or is this a missing value?") can help accomplish this with more accuracy.
+Check outliers and replacements manually, and search for modal responses in numeric variables that will not have missing values as outliers. Accurate responses can overlap with missing response codes. Automated replacement code, such as the code above, should only be completed after confirming that all inverted values are correct. Even better, use of defensive coding such as assert or the `pause` command will resolve this. The best solution is often to make sure that the data generating process guards against this type of messiness. Programming in confirmation questions in the survey ("Did the respondent really answer 99 or is this a missing value?") can help accomplish this with more accuracy.
 
 ## Categorical and dummy variables
 
-Categorical variables are ones that have no obvious ordering to the responses. For example, the question “What crop do you grow?” could have the following answers: soy bean, maize, cassava, ground nut, and yams. It can be helpful to have a numeric value attached to each response, however there is no clear ordering here. You can use the command encode to create a value for each in alphabetical order and it keeps the original response as the value label.
+Categorical variables are ones that have no obvious ordering to the responses. For example, the question "What crop do you grow?" could have the following answers: soy bean, maize, cassava, ground nut, and yams. It can be helpful to have a numeric value attached to each response, however there is no clear ordering here. You can use the command encode to create a value for each in alphabetical order and it keeps the original response as the value label.
 
-Dummy variables are one of the most common variable types you will use. These are also referred to as Boolean or indicator variables. These variables typically take on the values 0 and 1. However, it is important to note that your variable could and/or should have missing values if applicable. For example, an indicator about whether someone has a credit score could be defined as 1 for yes, 0 for no score and missing would mean there was no credit information available about that individual. Note that 0 and missing have different meanings and you should be careful around if and what values are missing.  In Stata, you have several options for creating a dummy variable. Two examples of creating this “Has a credit score” dummy variable is below.
+Dummy variables are one of the most common variable types you will use. These are also referred to as Boolean or indicator variables. These variables typically take on the values 0 and 1. However, it is important to note that your variable could and/or should have missing values if applicable. For example, an indicator about whether someone has a credit score could be defined as 1 for yes, 0 for no score and missing would mean there was no credit information available about that individual. Note that 0 and missing have different meanings and you should be careful around if and what values are missing. In Stata, you have several options for creating a dummy variable. Two examples of creating this "Has a credit score" dummy variable is below.
 
 1. This first way recommended method is to start with an entirely missing variable and then replace with `1's` and `0's` for each condition.
 
@@ -168,6 +161,7 @@ gen has_score = .
 replace has_score = 1 if credit_score != .
 replace has_score = 0 if (credit_score == . & info_available == 1)
 ```
+
 It is important to note that `0` is defined for those missing a credit score but that credit information is available for, the observations that remain missing are those that are missing a credit score because there was no credit information available.
 You do not want to lose this information due to poor coding in which you say all these people have no score.
 
@@ -176,20 +170,21 @@ You do not want to lose this information due to poor coding in which you say all
 ```stata
 gen has_score = (credit_score != .) if (info_available == 1)
 ```
-This method does the above in one step. The first half creates a 1/0 dummy by assigning 1 to any observation that meets the condition in the first parentheses and 0 if it does not. Then it uses the if and second parenthesis to assign missing values. If the second condition `(info_available == 1)` is false, then that observation will be missing. Either method is acceptable, just be careful to take the 0's and missing values into account.
 
+This method does the above in one step. The first half creates a 1/0 dummy by assigning 1 to any observation that meets the condition in the first parentheses and 0 if it does not. Then it uses the if and second parenthesis to assign missing values. If the second condition `(info_available == 1)` is false, then that observation will be missing. Either method is acceptable, just be careful to take the 0's and missing values into account.
 
 ## "Specify" Variables
 
-Survey questions may have a “specify” option, in which the respondent explains their answer or gives an alternate answer not available on the list of choices for that question. These are often triggered by an "other" response. In the raw dataset, alongside the original variable will be a “specify” variable that shows the comments for that question. You (or someone else familiar with the survey) will sometimes need to read through these specify answers and then recode the original variable accordingly. (“Specify” variables are also called other/specify variables, “other” variables, and free-text variables.)
+Survey questions may have a "specify" option, in which the respondent explains their answer or gives an alternate answer not available on the list of choices for that question. These are often triggered by an "other" response. In the raw dataset, alongside the original variable will be a "specify" variable that shows the comments for that question. You (or someone else familiar with the survey) will sometimes need to read through these specify answers and then recode the original variable accordingly. ("Specify" variables are also called other/specify variables, "other" variables, and free-text variables.)
 
-For example, if a question asked for someone's favorite color, giving the options of blue, red, yellow, green, and other. If someone answered “other” and then wrote “sky blue” for their answer, you would want to recode the original variable for favorite color to say “blue” instead of “other”. However, if someone wrote “purple” you could leave their response as is (or, if enough people wrote purple, you could add another category to the variable).
+For example, if a question asked for someone's favorite color, giving the options of blue, red, yellow, green, and other. If someone answered "other" and then wrote "sky blue" for their answer, you would want to recode the original variable for favorite color to say "blue" instead of "other." However, if someone wrote "purple" you could leave their response as is (or, if enough people wrote purple, you could add another category to the variable).
 
 Particularly for large surveys, this can be a hassle. One helpful approach is to do the following:
--	First clean each string variable so that similar answers will show the same value. Use string functions like `lower()`, `trim()`, and `itrim()` to convert answers like “PUR pLE”, “ Purple” and “purple” to all be “purple”.
--	For each specify variable, collapse the dataset into unique answers (for example, if three people wrote “purple” the collapsed dataset would only show “purple” once).
--	Store those unique answers into a spreadsheet with another column that shows what variable the answer corresponds to. Then, leave one column blank, which you will eventually fill in with the value from the original variable that the response corresponds to (if it should be recoded). For instance, next to “purple” you would put nothing, but next to “sky blue” you would put 1 if 1 corresponded to the "blue" answer option.
--	Write code to merge the manual corrections from the excel file back into the do file, instead of running this as a series of `replace` or `` if `var' == "sky blue" | `var' == "ocean blue" | `var' == ... `` commands in the do file.
+
+* First clean each string variable so that similar answers will show the same value. Use string functions like `lower()`, `trim()`, and `itrim()` to convert answers like "PUR pLE", " Purple" and "purple" to all be "purple".
+* For each specify variable, collapse the dataset into unique answers (for example, if three people wrote "purple" the collapsed dataset would only show "purple" once).
+* Store those unique answers into a spreadsheet with another column that shows what variable the answer corresponds to. Then, leave one column blank, which you will eventually fill in with the value from the original variable that the response corresponds to (if it should be recoded). For instance, next to "purple" you would put nothing, but next to "sky blue" you would put 1 if 1 corresponded to the "blue" answer option.
+* Write code to merge the manual corrections from the excel file back into the do file, instead of running this as a series of `replace` or `` if `var' == "sky blue" | `var' == "ocean blue" | `var' == ... `` commands in the do file.
 
 Make sure you save do files and documents so that this process can be replicated and understood by someone else in the future.
 
@@ -227,13 +222,13 @@ restore
 
 This results in a table that looks like this:
 
-  | Other  | Mapping |
-  | ------------- | ------------- |
-  | sky blue  | 1  |
-  | ocean blue  | 1  |
-  | navy  | 1  |
-  | depends on the day  | -66 |
-  | purple  |  |
+| Other | Mapping |
+|-------|---------|
+| sky blue | 1 |
+| ocean blue | 1 |
+| navy | 1 |
+| depends on the day | -66 |
+| purple | |
 
 The RA would fill out the mapping column based on the allowed values in the survey. This means that the "Mapping" column would take 1 for the "sky blue" value if the data uses 1 for the survey. If the data uses string values at this point in the cleaning process the "Mapping" column could be filled with "blue." Ensure that this process is reproducible and rule based. Inconsistent mapping of variables does not create clean data. After this table is completed, it can be merged back into the file to save the values.
 
@@ -293,17 +288,17 @@ assert q != 99 if _merge == 3 // this assumes 99 == other in the survey AND that
 drop _merge q_oth_cl mapping // remove extraneous variable
 ```
 
-
 ## Skip Logic
 
 Surveys will likely have skip logic. For instance, if a respondent says they have zero goats to a question, the survey may instruct the surveyor to (or the program may automatically) go to questions about sheep instead of questions about the quality of goat cheese the respondent makes from their goats. When a survey is bench tested and piloted, you should have tested that these skips worked by developing a series of checks based on a close reading of the survey instrument itself. However, skips may not be passed to the final dataset by some programs, such as SurveyCTO. This can make it hard to check if there were any errors in the survey coding.
 
 Defining additional missing values for skips and for questions that were not asked, such as those in long repeat groups can be helpful for two reasons:
+
 1. Skip values that take an extended missing values can be identified using `==.s` without capturing other types of general missing values `.s`.
 1. Excluding skip values from the general missing value `.` can help to identify errors in cleaning later on, as Stata will not impute `.s` normally.
 Then, failures in skip logic can be identified as part of the cleaning process. If some of the skips did not work or allowed for some entry error among respondents, document the issues by outputting a list of the problematic observations into a spreadsheet and mention it to the PIs.
 
-The following code assigns skip values and then confirms that the skips were successful during the survey implementation. It can be very helpful to use the `assert` command to check this.  In addition, ensure that the observations who answered those questions are marked in the data by a dummy variable named in a consistent manner.
+The following code assigns skip values and then confirms that the skips were successful during the survey implementation. It can be very helpful to use the `assert` command to check this. In addition, ensure that the observations who answered those questions are marked in the data by a dummy variable named in a consistent manner.
 
 ```stata
 /*
@@ -376,11 +371,11 @@ restore
 
 ## Storage Types in Stata
 
-Statistical software requires a storage type to determine how and what data to store about each variable or value. This storage type determines if the software treats a variable as text or a number, and how much information is stored in each variable. This information could be how many digits of precision are required or if the variable is just 0 or 1s. Some data types such as dates have specific metadata attached – January 1, 1960 was a Friday – that relate to storage type.
+Statistical software requires a storage type to determine how and what data to store about each variable or value. This storage type determines if the software treats a variable as text or a number, and how much information is stored in each variable. This information could be how many digits of precision are required or if the variable is just 0 or 1s. Some data types such as dates have specific metadata attached -- January 1, 1960 was a Friday -- that relate to storage type.
 
 Variables are stored in two broad categories: string (text) or numeric. For tasks in analysis such as regression, Stata requires categorical variables to be stored as numeric variables, not string variables. This is also beneficial for storage size of variables. As a rule of thumb in Stata, ordinal and categorical variable should be stored as numeric variables with labeled values. Only text or IDs should ever be stored as a string variables. Labeling categorical variables is preferred and should be treated as a part of data management.
 
-Storage formats such string or numeric are the variable's type, different from its format. Variable formats affect how Stata displays values of variables to the user and are loosely related to the storage type – a string cannot be displayed with significant digits for example.
+Storage formats such string or numeric are the variable's type, different from its format. Variable formats affect how Stata displays values of variables to the user and are loosely related to the storage type -- a string cannot be displayed with significant digits for example.
 
 Numeric variables are stored as byte, int, long, float or double. Float and double are the two that can hold non-integer numbers (decimals) and are the most common. More details on how numerical formats may affect datasets is available in [this](https://povertyaction.github.io/guides/cleaning/06%20Coding%20in%20Stata/02%20Numerical%20Formats/) guide article. Numerical and string formats can be changed using the `recast` command, or by specifying a storage format using the `generate` command.
 
@@ -389,6 +384,7 @@ String variables storage types are identified by their character length (`str4` 
 A variable's format controls how the data is displayed. This is can be used to format numeric variables to display with commas or a specific number of decimal points. For details on the corresponding formats for each variable type and how to format variables, type `help format`. In short, it's important to match the displayed format to the content, especially for outputs, so that content can be interpretable by humans.
 
 ## Date variables
+
 Dates are especially complex to work with in Stata. Stata stores dates as a numeric variable that captures either the number of days, months, quarters, or years since January 1, 1960. It is important to know that dates can also have a time component (datetimes), and are then stored as the number of milliseconds since January 1, 1960. These formats are numeric, but once they are stored as a date in Stata several special Stata functions can be applied to them to help with calculations that relate to dates and time. For more information see `h datetime translation`.
 
 Survey CTO defaults to storing date variables as strings when importing them to Stata. It's advantageous to convert these variables to a proper date format, as it allows for various logical and mathematical calculations. For example, you could count the number of days between a survey start date and submission date, or the number of minutes between the survey was started and completed. The SurveyCTO datetime metadata (`starttime endtime submissiondate`) are already stored as date variables.`starttime` and `endtime` are formatted as datetimes (`%tc`) and `submissiondate` is formatted as a date (`%td`)).
@@ -422,7 +418,7 @@ foreach var of local date_vars {
 			 replace `v' = cofd(`v')
 			 format `v' %tc_CCYY_NN_DD
 		}
-		else if regexm(“`: format `var'', “%t”) continue
+		else if regexm("`: format `var'', "%t") continue
 	*/
 	if regexm("`: format `var''", "%t") continue
 
@@ -455,6 +451,7 @@ foreach var of local date_vars {
 }
 // end foreach var of local date_vars
 ```
+
 Some of these checks will duplicate checks conducted as part of IPA's [data management system](https://github.com/PovertyAction/high-frequency-checks). It doesn't hurt to run these confirmations, but we recommend using the data management system to be aware of any problems as soon as possible.
 
 If you would like to convert your daily variable into a monthly or yearly variable you can use the following functions: `mofd()` and `yofd()`. You can find descriptions of all the functions that convert between which count types for dates (daily, monthly, quarterly, or yearly) by typing `help date()` and clicking on "Date and time functions" to go to the Stata manual.
@@ -478,34 +475,38 @@ We can check that this is the case in Stata:
 ```stata
 assert age >= 18 & !mi(age) // . is considered infinitely large by Stata, so > 18 captures missing values as well.
 ```
+
 Building these tests into your data flow should be a natural test that you work into data cleaning. This can be expanded to other functions like merges. If every household but one received both an agricultural and household survey, each household survey should merge to the plot dataset except one observation. The merge can be checked to confirm that that is the case:
 
 ```stata
 *Check merge success rate
-merge 1:1 id using “plots.dta” // note: merge has a built-in assert option
+merge 1:1 id using "plots.dta" // note: merge has a built-in assert option
 count if _merge != 3 // check how many merges did not have an observation in both
 assert `r(N)' == 1
 ```
+
 These tests should be built into cleaning code, as they are computationally cheap unless data is large. They should be executed every time the code runs, and should test major modifications that affect important variables.
 
 ### Logic Tests for Survey Data
 
-Survey data has the benefit of coming from a survey that you, as an analyst, have probably programmed. The survey software and import process often controls for many types of errors. However, data management errors can also occur due to the particular forms that survey data contains. We find these errors are common in survey data management:
-- Missing values occur in variables that the programmer assumes always has real values
-	- Missing values are inconsistently defined in the survey and are not fully replaced (e.g. “Not Applicable” is -99, -98, and 77)
-- Variable or value options change between survey versions and aren't reconciled
-	- Variables with the same name are overwritten as part of a merge. See `h mmerge` for a user written command that stores this information.
-- Observations are not unique and some actions such as sorting become irreproducible
+Survey data has the benefit of coming from a survey that you, as an analyst, have probably programmed. The survey software and import process often controls for many types of errors. However, data management errors can also occur due to the particular forms that survey data contains. These errors are common in survey data management:
 
-We strongly recommend testing for these errors as part of the cleaning process.
+* Missing values occur in variables that the programmer assumes always has real values
+    * Missing values are inconsistently defined in the survey and are not fully replaced (e.g. "Not Applicable" is -99, -98, and 77)
+* Variable or value options change between survey versions and aren't reconciled
+    * Variables with the same name are overwritten as part of a merge. See `h mmerge` for a user written command that stores this information.
+* Observations are not unique and some actions such as sorting become irreproducible
+
+Testing for these errors as part of the cleaning process is strongly recommended.
 
 ### Logic Tests in Administrative Data
 
-There are often a broader set of concerns for administrative data as we do not directly have control over the data generation and management process. This means that data definitions and formats may change or be inconsistent over longitudinal data.
+There are often broader concerns for administrative data since analysts do not directly control the data generation and management process. This means that data definitions and formats may change or be inconsistent over longitudinal data.
 
 Some additional concerns to focus on in administrative data are:
-- Ensure that variables remain consistent over repeated deliveries
-- Data translation and missingness standards of the storage system may create values in statistical software (e.g. SQL treats missing as “NULL”)
+
+* Ensure that variables remain consistent over repeated deliveries
+* Data translation and missingness standards of the storage system may create values in statistical software (e.g. SQL treats missing as "NULL")
 
 Variable consistency can be handled using value labeling in Stata. For example, to ensure that data remains the same over the course of data collection, it can be useful to check that categorical variables map to expected values to a previously created value label. The `noextend` option of the encode commands allows you to confirm no values exist in the variable other than those in the supplied label. The following code accomplishes this:
 
