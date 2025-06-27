@@ -167,7 +167,7 @@ This section specifies file paths and filenames for input datasets required by v
 
 The default values for `rawsurvey`, `preppedsurvey`, `checkedsurvey`, `rawbc`, `preppedbc` and `checkedbc` are correct for this exercise.
 
-You will be configuring the `ipatracksurveys` command using a master dataset which has information for each target respondent. Navigate to the `4_data/2_survey` folder and examine the household_preloads.xlsx file. This file will be used as the master dataset when comparing the surveys submitted to the individuals to be interviewed. After viewing this file, go back to the `1_globals.do` file and indicate the value `“${cwd}/4_data/2_survey/household_preloads.xlsx”` for the global `mastersurvey`. Note that the master data can also be a `dta` or `csv` file.
+You will be configuring the `ipatracksurveys` command using a master dataset which has information for each target respondent. Navigate to the `4_data/2_survey` folder and examine the household_preloads.xlsx file. This file will be used as the master dataset when comparing the surveys submitted to the individuals to be interviewed. After viewing this file, go back to the `1_globals.do` file and indicate the value `"${cwd}/4_data/2_survey/household_preloads.xlsx"` for the global `mastersurvey`. Note that the master data can also be a `dta` or `csv` file.
 
 :::{.callout-note}
 `trackingsurvey` is an alternative to `mastersurvey`. However, `trackingsurvey` expects a dataset than contains targets for specified groups. eg. community, district, treatment_status. It is more suitable for census-type surveys when we don't have a pre-selected list of respondents. Explore the dataset `respondent_targets.xlsx` in `4_data/2_survey` to see an example of a `trackingsurvey` dataset.
@@ -175,7 +175,7 @@ You will be configuring the `ipatracksurveys` command using a master dataset whi
 
 Ignore the `masterbc` & `trackingbc` globals for now. When will configure those when reviewing the back check sections.
 
-Now configure the `commentsdata` and `textauditdata` global by yourself. Note that these files currently do not exist and will be created when you run your DMS. It is recommended to set the file path for these files to `“${cwd}/4_data/2_survey”`. Also, ensure to use file names that will be easier to identify later on.
+Now configure the `commentsdata` and `textauditdata` global by yourself. Note that these files currently do not exist and will be created when you run your DMS. It is recommended to set the file path for these files to `"${cwd}/4_data/2_survey"`. Also, ensure to use file names that will be easier to identify later on.
 
 Compare your do-file to the code below and make any adjustments if necessary.
 
@@ -258,7 +258,7 @@ The survey has no outcome variable so we will leave the outcome global blank.
 
 This section specifies values that represent specified response values in the survey. You will be making some adjustments to this section to reflect the dataset. The values for `cons_vals` are correct and should not be modified. However, you remember from the previous section that the survey does not include an outcome variable, therefore set the value for the `outc_vals` global to empty ie. `""`.
 
-After reviewing the data, we realize that the survey programming allowed the values -999, 999 and .999 as don’t know values for numeric variables and -888, 888 and .888 as “refuse to answer values for numeric variables.
+After reviewing the data, we realize that the survey programming allowed the values -999, 999 and .999 as don;t know values for numeric variables and -888, 888 and .888 as "refuse to answer" values for numeric variables.
 
 To account for this, modify the values of the dk_num and ref_num globals as follows:
 
@@ -283,11 +283,11 @@ The second half of 1_globals.do specify settings that are peculiar to individual
 
 #### `ipacheckdups`: Export variable duplicates
 
-Set the value of the global `dp_vars` as `“resp_contact”` to flag duplicates in phone numbers.
+Set the value of the global `dp_vars` as `"resp_contact"` to flag duplicates in phone numbers.
 
 #### `ipachecksurveydb`: Export Survey Dashboard
 
-Set the value of the global `sv_by` as `“a_district”` to disaggregate the survey dashboard by the values of the `a_district` variable.
+Set the value of the global `sv_by` as `"a_district"` to disaggregate the survey dashboard by the values of the `a_district` variable.
 
 #### `ipatracksurvey`: Export tracking sheet
 
@@ -317,21 +317,21 @@ Explore the dataset `4_data/2_survey/household_survey.dta` and identify the vari
 
 #### other specify
 
-The “other specify” sheet specifies the parent and child variables for other specify responses. Explore the household dataset and identify the parent and child variables. The parent variables are the control variables which trigger the other specify question. Note that all the child variables in this dataset include _osp in their variable names.
+The "other specify" sheet specifies the parent and child variables for other specify responses. Explore the household dataset and identify the parent and child variables. The parent variables are the control variables which trigger the other specify question. Note that all the child variables in this dataset include _osp in their variable names.
 
-Upon completion, navigate to `0_archive` and open the file `hfc_inputs_exercise.xlsm` and compare your work with the sheet `“other specify”`.
+Upon completion, navigate to `0_archive` and open the file `hfc_inputs_exercise.xlsm` and compare your work with the sheet `"other specify"`.
 
 #### outliers
 
-The “outliers” sheet specifies the numeric variables to check for outliers. These are usually numeric variables that are not constrained or have a wide constraint range. Review the help file for `ipacheckoutliers` to understand what is required for `by`, `method`, `multiplier`, `combine` and the `keep` columns.
+The "outliers" sheet specifies the numeric variables to check for outliers. These are usually numeric variables that are not constrained or have a wide constraint range. Review the help file for `ipacheckoutliers` to understand what is required for `by`, `method`, `multiplier`, `combine` and the `keep` columns.
 
-Upon completion, navigate to `0_archive` and open the file `hfc_inputs_exercise.xlsm` and compare your work with the sheet `“outliers”`.
+Upon completion, navigate to `0_archive` and open the file `hfc_inputs_exercise.xlsm` and compare your work with the sheet `"outliers"`.
 
 #### constraints
 
 The `constraints` sheet specifies the numeric variables to check for constraint violations. These are usually numeric variables which you want to check for soft constraints. Review the help file for `ipacheckconstraints` to understand what is required for `hard_min`, `soft_min`, `soft_max`, `hard_max` and the `keep` columns.
 
-Upon completion, navigate to `0_archive` and open the file `hfc_inputs_exercise.xlsm` and compare your work with the sheet `“constraints”`.
+Upon completion, navigate to `0_archive` and open the file `hfc_inputs_exercise.xlsm` and compare your work with the sheet `"constraints"`.
 
 #### logic
 
@@ -360,9 +360,9 @@ Navigate back to `2_dofiles` folder and open up the `3_prepsurvey.do` file. This
 
 Review this do-file carefully and make edits where necessary.
 
-The data includes temporary variables that were added for SurveyCTO programming purposes only and therefore do not contain any useful information. Luckily these variables are prefixed by `tmp_`. Drop these variables by adding `tmp_*` to the list of variables to drop in the “drop unwanted variables” section.
+The data includes temporary variables that were added for SurveyCTO programming purposes only and therefore do not contain any useful information. Luckily these variables are prefixed by `tmp_`. Drop these variables by adding `tmp_*` to the list of variables to drop in the "drop unwanted variables" section.
 
-The data also contains "calculate fields" that were imported as strings instead of numeric variables. Include `*_yn*` to the “destring numeric” variables sections to destring all variables that have the `_yn' in their variable names. Explore the data and include more variables to destring.
+The data also contains "calculate fields" that were imported as strings instead of numeric variables. Include `*_yn*` to the "destring numeric" variables sections to destring all variables that have the `_yn' in their variable names. Explore the data and include more variables to destring.
 
 Save the `3_prepsurvey.do` file.
 
@@ -399,7 +399,7 @@ To resolve this error, we need to set-up the correction sheet. Navigate to `3_ch
 ![duplicates_corrections](../assets/images/dms_duplicates_corrections.jpg)
 
 :::{.callout-note}
-The SurveyCTO auto-generated key variable or another type of key variable should be used as ID when resolving duplicates. Although you can use the key and hence the same sheet to resolve other duplicates, it is recommended to create a separate sheet using the Survey ID since that will facilitate communication when resolving these issues.
+The SurveyCTO generated key variable or another type of key variable should be used as ID when resolving duplicates. Although you can use the key and hence the same sheet to resolve other duplicates, it is recommended to create a separate sheet using the Survey ID since that will facilitate communication when resolving these issues.
 :::
 
 #### correction sheet for other issues
@@ -418,7 +418,7 @@ Navigate to the `04_checks/02_outputs` folder and open the various output files 
 - How many outliers are flagged? Do any values appear to be nonsensical? What should be done?
 - Do you see any specify options that could be recoded?
 - Which 3 enumerators have the lowest survey productivity scores.
-- Which 5 enumerators have the highest "don’t know" response rate
+- Which 5 enumerators have the highest "don't know" response rate
 - Are there any useful comments? What should be done?
 - What time period during the day are the enumerators most active on the field.
 
