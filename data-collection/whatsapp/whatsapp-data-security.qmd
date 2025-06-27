@@ -26,8 +26,6 @@ contributors:
 This resource guides you through securing your data collected via Twilio by implementing robust encryption measures, ensuring your data's confidentiality and integrity.
 :::
 
-![WhatsApp Encryption (® Chris Stein)](/assets/images/whatsapp-encrypt-image.jpg){width=100%}
-
 :::{.callout-tip appearance="simple"}
 ## Key Takeaways
 * Encryption ensures the confidentiality and integrity of sensitive data collected via WhatsApp surveys.
@@ -42,7 +40,7 @@ Ensuring the security of sensitive data is crucial, especially when dealing with
 1. Navigate to "Functions/Services/Create Service" within your Twilio console.
 2. Create a new service called "encrypt".
 
-![Encrypt Service](/assets/images/twilio-encrypt-1.png){fig-cap="Encrypt Service" width=100%}
+![Encrypt Service](/assets/images/twilio/twilio-encrypt-1.png){fig-cap="Encrypt Service" width=100%}
 
 3. Click on "Add Function" and paste the following code:
 
@@ -52,30 +50,30 @@ Ensuring the security of sensitive data is crucial, especially when dealing with
 :::
 <br>
 
-![Encrypt configuration snapshot](/assets/images/twilio-encrypt-2.png){fig-cap="Encrypt configuration snapshot" width=100%}
+![Encrypt configuration snapshot](/assets/images/twilio/twilio-encrypt-2.png){fig-cap="Encrypt configuration snapshot" width=100%}
 
 4. Modify the secret_key and store it securely on your computer. Modify line 50 as it is shown in the next image.
 
-![Change encryption key](/assets/images/twilio-encrypt-3.png){fig-cap="Change encryption key" width=100%}
+![Change encryption key](/assets/images/twilio/twilio-encrypt-3.png){fig-cap="Change encryption key" width=100%}
 
 5. Adjust the amount and names of the variables you intend to encrypt in lines 53 and 54 as shown in the previous image.
 
 ### Create an Encryption Widget in Twilio Studio Flow:
 1. Just before the function widget that publishes to Google Sheets, create a function widget for encryption.
 
-![Encryption Widget Configuration](/assets/images/twilio-encrypt-4.png){fig-cap="Encryption Widget Configuration" width=100%}
+![Encryption Widget Configuration](/assets/images/twilio/twilio-encrypt-4.png){fig-cap="Encryption Widget Configuration" width=100%}
 
 2. Select the service you created and set the environment as "UI" as shown in the previous image.
 3. Choose the name of the function you created and input the variables to be encrypted as function parameters.
 
-![Encryption Widget Configuration Example](/assets/images/twilio-encrypt-5.png){fig-cap="Example of the parameter configuration" width=70%}
+![Encryption Widget Configuration Example](/assets/images/twilio/twilio-encrypt-5.png){fig-cap="Example of the parameter configuration" width=70%}
 
 4. Utilize the keys you want as variable names in the function code, using `{{widgets.widget_name.inbound.Body}}` as the values, as shown in the previous image.
 
 ### Update Google Sheets Publishing Function:
 1. In the function responsible for publishing to Google Sheets, replace `{{widgets.variable_name.inbound.Body}}` with `{{widgets.name_of_your_encryption_widget.parsed.name_of_the_variable}}`
 
-![Example of the configuration of the publish function](/assets/images/twilio-encrypt-6.png){fig-cap="Example of the configuration of the publish function" width=100%}
+![Example of the configuration of the publish function](/assets/images/twilio/twilio-encrypt-6.png){fig-cap="Example of the configuration of the publish function" width=100%}
 
 By implementing these steps, you will protect all the PII within your survey or workflow, ensuring that sensitive information remains confidential throughout the data collection.
 

@@ -56,7 +56,7 @@ format:
 
 - Quarto 1.4.0 or higher
 - Typst support in Quarto
-- IPA logo file at `assets/images/ipa-logo-full.jpg`
+- IPA logo file at `assets/logos/ipa-logo-full.jpg`
 
 ## Font Notes
 

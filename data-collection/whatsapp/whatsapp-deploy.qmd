@@ -26,8 +26,6 @@ contributors:
 This resource will help you learn how to prepare for launching a WhatsApp Survey from your computer.
 :::
 
-![WhatsApp Messaging (® Kuu Akura)](/assets/images/whatsapp-messaging.jpg){width=100%}
-
 :::{.callout-tip appearance="simple"}
 ## Key Takeaways
 * Learn the essential steps to configure your computer and tools for a seamless WhatsApp survey launch.
@@ -61,7 +59,7 @@ Follow these steps to construct your cases file:
 
 Your cases file should look like this:
 
-![Cases file example](/assets/images/twilio-deploy-1.png){fig-cap="Cases file example" width=100%}
+![Cases file example](/assets/images/twilio/twilio-deploy-1.png){fig-cap="Cases file example" width=100%}
 
 
 ## Managing Data with Google Sheets
@@ -74,13 +72,13 @@ A final step before launching a WhatsApp survey is to configure the Google Sheet
    - Navigate to "Functions (Classic)" and select "Configure."
    - In the "Dependencies" section, ensure the specified fields are completed, as illustrated in the provided image.
 
-![Dependencies configuration snapshot](/assets/images/twilio-deploy-2.png){fig-cap="Dependencies configuration snapshot" width=100%}
+![Dependencies configuration snapshot](/assets/images/twilio/twilio-deploy-2.png){fig-cap="Dependencies configuration snapshot" width=100%}
 
 3. **Create two environment variables**:
    - `client_email`: *twilio-data-connector-to-gsuit@twilio-gsuite-connection.iam.gserviceaccount.com*
    - `sheetId`: Retrieve this from the link of your Google Sheet. It is the alphanumeric group in the link after "/d/" and before the next "/."
 
-![Environment variables configuration snapshot](/assets/images/twilio-deploy-4.png){fig-cap="Environment variables configuration snapshot" width=100%}
+![Environment variables configuration snapshot](/assets/images/twilio/twilio-deploy-4.png){fig-cap="Environment variables configuration snapshot" width=100%}
 
 4. **Create a New Function**:
    - Proceed to the "List" submenu and generate a new function from a blank interface named "function_gsheets."
@@ -103,7 +101,7 @@ A final step before launching a WhatsApp survey is to configure the Google Sheet
 
 8. **Header Alignment in Google Sheet**: Align the variable names defined in Step 7 with the headers of your Google Sheet columns to let Twilio know how to populate the data in the document.
 
-![Google Sheet example](/assets/images/twilio-deploy-3.png){fig-cap="Google Sheet example" width=100%}
+![Google Sheet example](/assets/images/twilio/twilio-deploy-3.png){fig-cap="Google Sheet example" width=100%}
 
 With these steps completed, your survey is ready to be [deployed](#launching-code).
 

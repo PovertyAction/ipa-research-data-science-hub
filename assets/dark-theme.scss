@@ -1,16 +1,12 @@
 /*-- scss:defaults --*/
-$link-color: #43a450;
-$text-muted: #6a737b;
-$background-color: #121212;
-$text-color: #e0e0e0;
-$primary-color: #bb86fc;
-$secondary-color: #03dac6;
+$link-color: #84d0d4;
+$text-muted: #c9c9c8;
 
 /*-- scss:rules --*/
 
 .layout-example {
-  background: $gray-800;
-  color: $text-color;
+  background: $gray-500;
+  color: $white;
   text-align: center;
   margin-bottom: 1em;
   font-family: $font-family-monospace;
@@ -32,27 +28,336 @@ $secondary-color: #03dac6;
 
 body {
   font-family: Arial, Arimo, Helvetica, sans-serif;
-  font-size: .963rem;
-  color: $text-color;
-  background-color: $background-color;
-  line-height: 1.55;
-  /* Adjust this value to increase/decrease the gap */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #f1f2f2;
+  background-color: #414042;
 }
+
+code,
+pre {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
 
 .hello-ipa-banner h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: $primary-color;
 }
 
 #ipa-announcement {
   padding: 1em;
   font-size: 1em;
   font-weight: bold;
-  color: $text-color;
-  background-color: $secondary-color;
+  color: #f1f2f2;
+  background-color: #155240;
 }
 
 #ipa-announcement a {
-  color: $primary-color;
+  color: #f1f2f2;
+}
+
+/* Dark theme overrides for UI elements */
+
+/* Title and heading styling */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #49ac57 !important;
+}
+
+.title {
+  color: #49ac57 !important;
+}
+
+.subtitle {
+  color: #f1f2f2 !important;
+}
+
+/* Page title */
+.quarto-title .title {
+  color: #49ac57 !important;
+}
+
+/* Section headers */
+.quarto-section-header {
+  color: #49ac57 !important;
+}
+
+// /* Logo switching for dark theme */
+// .navbar-brand img[src*="ipa-logo-abbreviated.png"] {
+//   content: url("./logos/ipa-logo-abbreviated-inverted.png") !important;
+// }
+
+/* Sidebar styling */
+.sidebar-navigation {
+  background-color: #414042 !important;
+  border-color: #c9c9c8 !important;
+}
+
+.sidebar-navigation .sidebar-item a {
+  color: #f1f2f2 !important;
+}
+
+.sidebar-navigation .sidebar-item a:hover {
+  background-color: #2b754a !important;
+  color: #f1f2f2 !important;
+}
+
+.sidebar-navigation .sidebar-item-container .active {
+  background-color: #155240 !important;
+  color: #f1f2f2 !important;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #414042 !important;
+  border-color: #c9c9c8 !important;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #f1f2f2 !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #84d0d4 !important;
+}
+
+.navbar-toggler {
+  border-color: #c9c9c8 !important;
+}
+
+/* Table of contents styling */
+.toc-active {
+  background-color: #414042 !important;
+  border-color: #c9c9c8 !important;
+}
+
+#toc .nav-link {
+  color: #f1f2f2 !important;
+}
+
+#toc .nav-link:hover {
+  color: #84d0d4 !important;
+}
+
+#toc .nav-link.active {
+  color: #49ac57 !important;
+  border-left-color: #49ac57 !important;
+}
+
+/* Callout styling */
+.callout {
+  border-left-color: #c9c9c8 !important;
+}
+
+.callout.callout-note {
+  background-color: rgba(45, 64, 133, 0.1) !important;
+  border-left-color: #2b4085 !important;
+}
+
+.callout.callout-warning {
+  background-color: rgba(242, 101, 41, 0.1) !important;
+  border-left-color: #f26529 !important;
+}
+
+.callout.callout-important {
+  background-color: rgba(21, 82, 64, 0.1) !important;
+  border-left-color: #155240 !important;
+}
+
+.callout.callout-tip {
+  background-color: rgba(73, 172, 87, 0.1) !important;
+  border-left-color: #49ac57 !important;
+}
+
+.callout.callout-caution {
+  background-color: rgba(242, 101, 41, 0.1) !important;
+  border-left-color: #f26529 !important;
+}
+
+.callout-header {
+  color: #f1f2f2 !important;
+}
+
+/* Search styling */
+.aa-DetachedSearchButton {
+  background-color: #414042 !important;
+  border-color: #c9c9c8 !important;
+  color: #f1f2f2 !important;
+}
+
+/* Dropdown menus */
+.dropdown-menu {
+  background-color: #414042 !important;
+  border-color: #c9c9c8 !important;
+}
+
+.dropdown-item {
+  color: #f1f2f2 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #2b754a !important;
+  color: #f1f2f2 !important;
+}
+
+/* Footer styling */
+.nav-footer {
+  background-color: #414042 !important;
+  border-color: #c9c9c8 !important;
+}
+
+.nav-footer a {
+  color: #f1f2f2 !important;
+}
+
+/* Code blocks and syntax highlighting adjustments */
+pre {
+  background-color: #2b2b2b !important;
+  border-color: #c9c9c8 !important;
+}
+
+code {
+  background-color: rgba(65, 64, 66, 0.3) !important;
+  color: #f1f2f2 !important;
+}
+
+/* Tables */
+.table {
+  color: #f1f2f2 !important;
+}
+
+.table th {
+  border-color: #c9c9c8 !important;
+  background-color: rgba(65, 64, 66, 0.5) !important;
+}
+
+.table td {
+  border-color: #c9c9c8 !important;
+}
+
+/* Additional elements that may need dark theme styling */
+
+/* Content blocks and panels */
+.panel,
+.card {
+  background-color: #414042 !important;
+  border-color: #c9c9c8 !important;
+  color: #f1f2f2 !important;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  background-color: transparent !important;
+}
+
+.breadcrumb-item a {
+  color: #84d0d4 !important;
+}
+
+.breadcrumb-item.active {
+  color: #f1f2f2 !important;
+}
+
+/* Pagination */
+.page-link {
+  background-color: #414042 !important;
+  border-color: #c9c9c8 !important;
+  color: #f1f2f2 !important;
+}
+
+.page-link:hover {
+  background-color: #2b754a !important;
+  color: #f1f2f2 !important;
+}
+
+/* Forms */
+.form-control {
+  background-color: #414042 !important;
+  border-color: #c9c9c8 !important;
+  color: #f1f2f2 !important;
+}
+
+.form-control:focus {
+  background-color: #414042 !important;
+  border-color: #49ac57 !important;
+  color: #f1f2f2 !important;
+}
+
+/* Buttons */
+.btn-outline-secondary {
+  color: #f1f2f2 !important;
+  border-color: #c9c9c8 !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #2b754a !important;
+  border-color: #49ac57 !important;
+  color: #f1f2f2 !important;
+}
+
+/* Alerts */
+.alert {
+  background-color: rgba(65, 64, 66, 0.8) !important;
+  border-color: #c9c9c8 !important;
+  color: #f1f2f2 !important;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left-color: #49ac57 !important;
+  color: #f1f2f2 !important;
+}
+
+/* Definition lists */
+dt {
+  color: #49ac57 !important;
+}
+
+dd {
+  color: #f1f2f2 !important;
+}
+
+/* Links in content */
+a {
+  color: #84d0d4 !important;
+}
+
+a:hover {
+  color: #49ac57 !important;
+}
+
+/* Figure captions */
+.figure-caption {
+  color: #c9c9c8 !important;
+}
+
+/* Code highlighting improvements */
+.sourceCode {
+  background-color: #2b2b2b !important;
+}
+
+/* Ensure any remaining white backgrounds are dark */
+.bg-white {
+  background-color: #414042 !important;
+}
+
+.bg-light {
+  background-color: #414042 !important;
+}
+
+/* Border improvements */
+.border {
+  border-color: #c9c9c8 !important;
+}
+
+.border-light {
+  border-color: #c9c9c8 !important;
 }

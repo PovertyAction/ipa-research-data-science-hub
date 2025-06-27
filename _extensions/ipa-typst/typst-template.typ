@@ -42,7 +42,7 @@
         columns: (1fr, auto),
         align: (left, right),
         [
-          #image("assets/images/ipa-logo-full.jpg", height: 1.2cm)
+          #image("assets/logos/ipa-logo-full.jpg", height: 1.2cm)
         ],
         [
           #text(size: 10pt, fill: gray)[
