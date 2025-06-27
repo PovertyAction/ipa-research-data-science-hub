@@ -511,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-collection/whatsapp/whatsapp-start.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/whatsapp/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About WhatsApp Surveys</span></a>
   </div>
 </li>
@@ -873,7 +873,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Add libraries to the virtual environment using <code>uv add ...</code>:</p>
-<div id="05b741b3" class="cell" data-execution_count="1">
+<div id="aa83c20e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> uv add jupyterlab pandas matplotlib seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -904,7 +904,7 @@ Important Note
 </div>
 </div>
 <p>Let’s load an example World Bank data via <a href="https://www.gapminder.org/">Gapminder</a> using the <a href="https://github.com/NickCH-K/causaldata">causaldata</a> package.</p>
-<div id="757f1f58" class="cell" data-execution_count="2">
+<div id="d77a19eb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -912,11 +912,11 @@ Important Note
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> causaldata <span class="im">import</span> gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Load the Gapminder data as a pandas DataFrame:</p>
-<div id="58d92cc7" class="cell" data-execution_count="3">
+<div id="b5dad748" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gapminder.load_pandas().data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can check the dimensions of the DataFrame using <code>df.info()</code>:</p>
-<div id="80d353a7" class="cell" data-execution_count="4">
+<div id="b1ff2fa3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -935,7 +935,7 @@ memory usage: 80.0+ KB</code></pre>
 </div>
 </div>
 <p>Let’s take a look at the first few rows of the DataFrame using <code>df.head()</code>:</p>
-<div id="4a30bb6b" class="cell" data-execution_count="5">
+<div id="7addbb54" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -1006,7 +1006,7 @@ memory usage: 80.0+ KB</code></pre>
 </div>
 </div>
 <p>Take a look at the relationship between GDP per Capita and Life Expectancy:</p>
-<div id="fbaad223" class="cell" data-execution_count="6">
+<div id="0ec4f58c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"gdpPercap"</span>, y<span class="op">=</span><span class="st">"lifeExp"</span>, hue<span class="op">=</span><span class="st">"continent"</span>, data<span class="op">=</span>df).<span class="bu">set</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    xscale<span class="op">=</span><span class="st">"log"</span>, ylabel<span class="op">=</span><span class="st">"Life Expectancy"</span>, xlabel<span class="op">=</span><span class="st">"GDP per Capita"</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1019,7 +1019,7 @@ memory usage: 80.0+ KB</code></pre>
 </div>
 </div>
 <p>Separate the data by year, focusing on 1957 and 2007:</p>
-<div id="930aa1ca" class="cell" data-execution_count="7">
+<div id="63012de4" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df.where(df[<span class="st">"year"</span>].isin([<span class="dv">1957</span>, <span class="dv">2007</span>])),</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"gdpPercap"</span>,</span>
