@@ -10,6 +10,7 @@ contributors:
 keywords:
   - "data management"
   - "data quality"
+  - "data cleaning"
   - "reference"
 license: "CC BY"
 ---
@@ -44,7 +45,11 @@ IPA's Data Management System, or DMS, is a Stata package that automates and assi
 To use the DMS, you will need Stata 17 or above. If you are installing the DMS for the first time, use this command in Stata:
 
 ```stata
-net install ipacheck, all replace from("https://raw.githubusercontent.com/PovertyAction/high-frequency-checks/master"") replace
+* install ipacheck
+net install ipacheck, from("https://raw.githubusercontent.com/PovertyAction/high-frequency-checks/master") replace
+ipacheck update
+
+* after initial installation, ipacheck can be updated at any time via
 ipacheck update
 ```
 
