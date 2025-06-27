@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2025-06-27">
-<meta name="keywords" content="IRB, human subjects research, research ethics, explanation">
+<meta name="keywords" content="randomization, impact evaluation, experimental design, treatment assignment, cluster randomization, stratified randomization, how-to guide">
 
-<title>IRB Review Requirements – Research &amp; Data Science Hub</title>
+<title>Guide to Randomization – Research &amp; Data Science Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,8 +67,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ethics-irb/irb-lifecycle.html" rel="next">
-<link href="../ethics-irb/index.html" rel="prev">
 <link href="../assets/images/ipa-favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -157,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ethics-irb/index.html">Ethics and IPA IRB</a></li><li class="breadcrumb-item"><a href="../ethics-irb/irb-review.html">IRB review</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Guide to Randomization</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -220,13 +253,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Ethics and IPA IRB</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ethics-irb/index.html" class="sidebar-item-text sidebar-link">
@@ -235,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ethics-irb/irb-review.html" class="sidebar-item-text sidebar-link active">
+  <a href="../ethics-irb/irb-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IRB review</span></a>
   </div>
 </li>
@@ -711,39 +744,39 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; color: #312e31; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#is-your-project-human-subjects-research" id="toc-is-your-project-human-subjects-research" class="nav-link active" data-scroll-target="#is-your-project-human-subjects-research">Is your project human subjects research?</a>
-    <ul class="collapse">
-    <li><a href="#does-your-project-involve-human-subjects" id="toc-does-your-project-involve-human-subjects" class="nav-link" data-scroll-target="#does-your-project-involve-human-subjects">Does your project involve human subjects?</a></li>
-    <li><a href="#is-your-project-research" id="toc-is-your-project-research" class="nav-link" data-scroll-target="#is-your-project-research">Is your project research?</a></li>
-    </ul></li>
-    <li><a href="#do-pilot-activities-need-irb-review" id="toc-do-pilot-activities-need-irb-review" class="nav-link" data-scroll-target="#do-pilot-activities-need-irb-review">Do pilot activities need IRB review?</a></li>
-    <li><a href="#your-project-is-human-subjects-researchnow-what" id="toc-your-project-is-human-subjects-researchnow-what" class="nav-link" data-scroll-target="#your-project-is-human-subjects-researchnow-what">Your project is human subjects research—now what?</a>
-    <ul class="collapse">
-    <li><a href="#categories-of-exempt-research" id="toc-categories-of-exempt-research" class="nav-link" data-scroll-target="#categories-of-exempt-research">Categories of exempt research</a></li>
-    <li><a href="#what-does-exemption-mean" id="toc-what-does-exemption-mean" class="nav-link" data-scroll-target="#what-does-exemption-mean">What does exemption mean?</a></li>
-    </ul></li>
+    <li><a href="#problem-assign-participants-to-treatment-groups" id="toc-problem-assign-participants-to-treatment-groups" class="nav-link active" data-scroll-target="#problem-assign-participants-to-treatment-groups">Problem: Assign Participants to Treatment Groups</a></li>
+    <li><a href="#step-1-set-up-your-environment" id="toc-step-1-set-up-your-environment" class="nav-link" data-scroll-target="#step-1-set-up-your-environment">Step 1: Set Up Your Environment</a></li>
+    <li><a href="#step-2-prepare-your-data" id="toc-step-2-prepare-your-data" class="nav-link" data-scroll-target="#step-2-prepare-your-data">Step 2: Prepare Your Data</a></li>
+    <li><a href="#step-3-set-random-seed" id="toc-step-3-set-random-seed" class="nav-link" data-scroll-target="#step-3-set-random-seed">Step 3: Set Random Seed</a></li>
+    <li><a href="#step-4-verify-your-strata" id="toc-step-4-verify-your-strata" class="nav-link" data-scroll-target="#step-4-verify-your-strata">Step 4: Verify Your Strata</a></li>
+    <li><a href="#step-5-implement-stratified-randomization" id="toc-step-5-implement-stratified-randomization" class="nav-link" data-scroll-target="#step-5-implement-stratified-randomization">Step 5: Implement Stratified Randomization</a></li>
+    <li><a href="#step-6-verify-balance" id="toc-step-6-verify-balance" class="nav-link" data-scroll-target="#step-6-verify-balance">Step 6: Verify Balance</a></li>
+    <li><a href="#troubleshooting-common-issues" id="toc-troubleshooting-common-issues" class="nav-link" data-scroll-target="#troubleshooting-common-issues">Troubleshooting Common Issues</a></li>
     </ul>
     <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Authors</h2>
   <ul>
-        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/alexandra-krstic" class="nav-link" data-scroll-target="https\://poverty-action.org/people/alexandra-krstic">Alexandra Krstić</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Rosemarie Sandino</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Contributors</h2>
   <ul>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/daniela-carrillo" class="nav-link" data-scroll-target="https\://poverty-action.org/people/daniela-carrillo">Daniela Carrillo</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Radhika Jain</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Devika Lakhote</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Laura Feeney</a></li>
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
     <li class="last-modified" style="font-size: 0.86rem;">June 27, 2025</li>
   </ul>
-  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/ethics-irb/irb-review.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/how-to-randomization.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ethics-irb/index.html">Ethics and IPA IRB</a></li><li class="breadcrumb-item"><a href="../ethics-irb/irb-review.html">IRB review</a></li></ol></nav><h1 class="title display-7">IRB Review Requirements</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Guide to Randomization</h1></header>
 
 <header id="title-block-header">
     
-        <p class="abstract">Guidance on when IRB review requirements apply, including exemptions from review requirements, pilot study considerations, and ongoing obligations for exempt research.</p>
+        <p class="abstract">Step-by-step instructions for implementing stratified randomization in Stata, including reproducible seed setting, balance checking, and troubleshooting common issues.</p>
     
 </header>
 
@@ -754,147 +787,226 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Key Takeaways
+Learning Objectives
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>Randomization is a fundamental technique in impact evaluation that ensures treatment and control groups are comparable, allowing for unbiased estimates of program effects. This guide will help you:</p>
 <ul>
-<li>Your project may not require IRB review if it falls outside the definition of “human subjects research”</li>
-<li>Your pilot study may or may not require IRB review, depending on what you will use the data for and the risk level of the activities</li>
-<li>If your project is human subjects research, it requires initial IRB review. However, it may still qualify for exemption from some future IRB oversight requirements if it falls into one or more ‘exempt categories’</li>
+<li>Understand the principles of randomization and its importance in impact evaluation</li>
+<li>Implement stratified randomization in Stata to maintain balance across key characteristics</li>
+<li>Set up reproducible randomization with proper seed management</li>
+<li>Verify treatment assignment and check for balance across groups</li>
 </ul>
 </div>
 </div>
-<p>It can be challenging to determine whether—or the timing of when—you must submit a project for IRB review. This page outlines the different circumstances in which a project may not require IRB review.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<section id="problem-assign-participants-to-treatment-groups" class="level2">
+<h2 class="anchored" data-anchor-id="problem-assign-participants-to-treatment-groups">Problem: Assign Participants to Treatment Groups</h2>
+<p>You need to randomly assign participants to treatment and control groups while maintaining balance across key characteristics like grade level, school, or other strata.</p>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Stata installed with <code>randtreat</code> package</li>
+<li>Dataset with participant identifiers and stratification variables</li>
+<li>Basic familiarity with Stata commands</li>
+</ul>
+<p><strong>What you’ll accomplish:</strong></p>
+<ul>
+<li>Set up reproducible randomization with proper seed management</li>
+<li>Implement stratified randomization to achieve balance</li>
+<li>Verify treatment assignment worked correctly</li>
+</ul>
+</section>
+<section id="step-1-set-up-your-environment" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-set-up-your-environment">Step 1: Set Up Your Environment</h2>
+<p><strong>Set Stata version and seed for reproducibility:</strong></p>
+<ul>
+<li>Use a different seed for each project</li>
+<li>Choose seeds through random methods—such as from random.org or dice rolls</li>
+<li>Set only one seed per do-file</li>
+<li>Always set the Stata version at the beginning since algorithms change between versions</li>
+</ul>
+</section>
+<section id="step-2-prepare-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-prepare-your-data">Step 2: Prepare Your Data</h2>
+<p><strong>Example scenario:</strong> School supply program evaluation</p>
+<ul>
+<li>500 students across 10 schools</li>
+<li>Budget to treat 250 students</li>
+<li>Need to ensure balance across grades</li>
+</ul>
+<p><strong>Create your dataset with participant identifiers and strata:</strong></p>
+<div id="5451be26" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>clear</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> obs <span class="dv">500</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>gen student_id <span class="op">=</span> _n</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>gen school_id <span class="op">=</span> ceil(_n<span class="op">/</span><span class="dv">50</span>)         <span class="op">//</span> <span class="dv">10</span> schools, <span class="dv">50</span> students each</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>gen grade <span class="op">=</span> mod(_n<span class="op">-</span><span class="dv">1</span>,<span class="dv">5</span>) <span class="op">+</span> <span class="dv">1</span>         <span class="op">//</span> Grades one to five, evenly distributed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+. clear
+
+. set obs 500
+Number of observations (_N) was 0, now 500.
+
+. gen student_id = _n
+
+. gen school_id = ceil(_n/50)         // 10 schools, 50 students each
+
+. gen grade = mod(_n-1,5) + 1         // Grades one to five, evenly distributed
+
+. </code></pre>
+</div>
+</div>
+</section>
+<section id="step-3-set-random-seed" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-set-random-seed">Step 3: Set Random Seed</h2>
+<p><strong>Set a random seed for replicability:</strong></p>
+<div id="4b1f076d" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> seed <span class="dv">12345</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-4-verify-your-strata" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-verify-your-strata">Step 4: Verify Your Strata</h2>
+<p><strong>Check that your stratification variable covers all participants:</strong></p>
+<div id="2085ff18" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tab grade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      grade |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        100       20.00       20.00
+          2 |        100       20.00       40.00
+          3 |        100       20.00       60.00
+          4 |        100       20.00       80.00
+          5 |        100       20.00      100.00
+------------+-----------------------------------
+      Total |        500      100.00</code></pre>
+</div>
+</div>
+</section>
+<section id="step-5-implement-stratified-randomization" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-implement-stratified-randomization">Step 5: Implement Stratified Randomization</h2>
+<p><strong>Assign half of students to treatment within each grade—total treated equals 250. Generate a treatment variable where 1 equals treated and 0 equals control:</strong></p>
+<div id="12daf74a" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">*</span> Install randtreat <span class="cf">if</span> <span class="kw">not</span> already installed</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cap ssc install randtreat</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">*</span> Use randtreat <span class="cf">for</span> stratified randomization by grade</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>randtreat, strata(grade) unequal(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) generate(treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+. 
+. * Install randtreat if not already installed
+. cap ssc install randtreat
+
+. 
+. * Use randtreat for stratified randomization by grade
+. randtreat, strata(grade) unequal(1/2 1/2) generate(treatment)
+assignment produces 0 misfits
+
+. </code></pre>
+</div>
+</div>
+</section>
+<section id="step-6-verify-balance" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-verify-balance">Step 6: Verify Balance</h2>
+<p><strong>Tabulate treatment by grade and school to verify balance:</strong></p>
+<div id="4e698600" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tab treatment grade</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>tab treatment school_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+. tab treatment grade
+
+           |                         grade
+ treatment |         1          2          3          4          5 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |        50         50         50         50         50 |       250 
+         1 |        50         50         50         50         50 |       250 
+-----------+-------------------------------------------------------+----------
+     Total |       100        100        100        100        100 |       500 
+
+. tab treatment school_id
+
+           |                       school_id
+ treatment |         1          2          3          4          5 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |        26         27         25         24         18 |       250 
+         1 |        24         23         25         26         32 |       250 
+-----------+-------------------------------------------------------+----------
+     Total |        50         50         50         50         50 |       500 
+
+
+           |                       school_id
+ treatment |         6          7          8          9         10 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |        25         28         25         26         26 |       250 
+         1 |        25         22         25         24         24 |       250 
+-----------+-------------------------------------------------------+----------
+     Total |        50         50         50         50         50 |       500 
+
+. </code></pre>
+</div>
+</div>
+</section>
+<section id="troubleshooting-common-issues" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting-common-issues">Troubleshooting Common Issues</h2>
+<p><strong>Not setting a random seed:</strong> Always use <code>set seed</code> in Stata to ensure your results are replicable.</p>
+<p><strong>Failing to check balance:</strong> After randomization, verify that treatment and control groups have balance on key variables.</p>
+<p><strong>Confusing unit identifiers:</strong> Double-check IDs—such as village, school, or participant names—to avoid misassignment.</p>
+<p><strong>Contamination:</strong> Monitor to prevent control group members from receiving the treatment.</p>
+<p><strong>Poor documentation:</strong> Keep detailed records of your randomization procedure for transparency and reproducibility.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Not sure?
+Sorting Considerations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<section id="ensuring-reproducible-sorting" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="ensuring-reproducible-sorting">Ensuring Reproducible Sorting</h3>
+<p>The <code>sort</code> command can produce non-reproducible results if the sorting variables don’t uniquely identify observations. Always include a unique ID as the last sorting variable:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>* Check <span class="kw">if</span> ID is <span class="kw">unique</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">isid</span> unique_id</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>* Sort <span class="kw">by</span> <span class="kw">unique</span> ID before generating random numbers</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> unique_id</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> rand = runiform()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>* When sorting <span class="kw">by</span> <span class="kw">strata</span> and random number, <span class="kw">include</span> <span class="kw">unique</span> ID <span class="fu">last</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> region rand unique_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This prevents Stata from breaking ties inconsistently, ensuring your randomization is reproducible.</p>
+</section>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Contact IPA IRB at humansubjects@poverty-action.org if you have any uncertainty about whether your project needs IRB review.</p>
-</div>
-</div>
-<section id="is-your-project-human-subjects-research" class="level2">
-<h2 class="anchored" data-anchor-id="is-your-project-human-subjects-research">Is your project human subjects research?</h2>
-<p>IRB review requirements apply only to projects considered “human subjects research.”</p>
-<p>In somewhat rare cases, IPA works on projects which fall outside of this category, either because:</p>
+<p>For more detailed guidance on randomization and power calculations in Stata, see the <a href="https://www.stata.com/manuals/power.pdf">Stata power and sample size reference manual Release 18</a> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p><strong>Additional Resources:</strong></p>
 <ul>
-<li>The project does not involve “human subjects” according to federal regulations, or</li>
-<li>The project is not considered “research” according to federal regulations.</li>
+<li><a href="https://ipastorage.box.com/s/sslf9h67yaejnhn3zz02ez3k508irzu8">IPA Randomization Guide with Example Do-files</a></li>
+<li><a href="https://blog.stata.com/2016/03/10/how-to-generate-random-numbers-in-stata/">William Gould on Random Number Seeds</a></li>
+<li><a href="https://blog.stata.com/tag/random-numbers/">StataCorp Blog Posts on Pseudo-Random Number Generators</a></li>
 </ul>
-<section id="does-your-project-involve-human-subjects" class="level3">
-<h3 class="anchored" data-anchor-id="does-your-project-involve-human-subjects">Does your project involve human subjects?</h3>
-<p>Federal regulations define a “<a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-46#p-46.102(e)(1)">human subject</a>” as:</p>
-<p>A living individual about whom an investigator conducting research:</p>
-<ol type="1">
-<li>Obtains information or biospecimens through intervention or interaction with the individual, and uses, studies, or analyzes the information or biospecimens; or</li>
-<li>Obtains, uses, studies, analyzes, or generates identifiable private information or identifiable biospecimens.</li>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>StataCorp. 2023. <em>Stata power and sample size reference manual: Release 18</em>. https://www.stata.com/manuals/power.pdf<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>The “about whom” clause of this definition is important. This means that if you are collecting data from someone, but this data is not in any way “about” them, they may not count as a human subject.</p>
-<p>For example: if your project involves interviewing factory workers, and you will only ask them questions about operations at the factory – what time it opens, steps in the manufacturing process, etc. – these interviewees may not count as human subjects. This applies as long as you do not collect PII or any other information “about” them.</p>
-<p>This sometimes comes up in the context of projects which involve interviews with staff or other key players in a program which IPA is evaluating. These interviews may not count as human subjects research if the questions focus only on learning about the program and how it functions—not anything specific to that interviewee or their experience.</p>
-<p>However, if your survey includes questions asking the interviewee for their opinion about something—e.g., what do you think about this part of the program?—this may count as human subjects research.</p>
-</section>
-<section id="is-your-project-research" class="level3">
-<h3 class="anchored" data-anchor-id="is-your-project-research">Is your project research?</h3>
-<p>Federal regulations define “<a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-46#p-46.102(l)">research</a>” as:</p>
-<p>A systematic investigation, including research development, testing, and evaluation, designed to develop or contribute to generalizable knowledge.</p>
-<p>The end of this definition – “designed to develop or contribute to generalizable knowledge” – is the part most often relevant for determining whether IPA projects are considered research.</p>
-<p>“Generalizable knowledge” typically means that the project will generate information that expands the knowledge base of a scientific discipline or other scholarly field of study and yield one or both of the following:</p>
-<ul>
-<li>Results that are applicable to a larger population beyond the site of data collection or the specific subjects studied.</li>
-<li>Results that you will use to develop, test, or support theories, principles, and statements of relationships, or to tell policy makers beyond the study.*</li>
-</ul>
-<p>Some projects that IPA works on fall outside of this category because their purpose is “program evaluation only.” This means that the project’s purpose is only to evaluate a specific program, and the only stakeholders interested in results of the study are program administrators or other entities interested specifically in the development or efficacy of that program. The results of the project will not support conclusions about these types of programs in general.</p>
-<p>Projects which fit the above description may not qualify as “research” and thus may not require IRB review.</p>
-<p>*Explanation borrowed from <a href="https://www.washington.edu/research/hsd/do-i-need-irb-review/is-your-project-considered-research/">University of Washington Human Subjects Division</a></p>
-</section>
-</section>
-<section id="do-pilot-activities-need-irb-review" class="level2">
-<h2 class="anchored" data-anchor-id="do-pilot-activities-need-irb-review">Do pilot activities need IRB review?</h2>
-<p>Sometimes…Read on!</p>
-<p>The purpose of a pilot is typically to evaluate the feasibility of a study and help researchers refine data collection procedures, instruments, or research design. They are usually small in scale and exploratory in nature.</p>
-<p>Pilot activities are typically aimed at preparing for future, core research activities—those which will generate results that answer the main research questions.</p>
-<p>Pilot activities are thus not research if you intend them only for this purpose and they will not contribute to generalizable knowledge. This means that you will not use results of the pilot as research data.</p>
-<p>Pilot studies therefore typically do not require IRB review, with one key exception.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exception
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If the pilot itself may create notable risks for subjects, IPA IRB may wish to review these activities. If your pilot will involve particularly vulnerable subjects, particularly sensitive questions/data collection, or research methods which may create greater than minimal risks, consult with IPA IRB at humansubjects@poverty-action.org before beginning fieldwork.</p>
-</div>
-</div>
-<p>If you will use data collected through a pilot study for generalization or publication purposes—solely or in combination with other data—IRB review requirements apply before data collection begins. You may not later repurpose pilot data collected without IRB approval as study data, and the IRB cannot provide retroactive review.*</p>
-<p>*Explanation borrowed from <a href="https://ww2.georgiasouthern.edu/research/researchintegrity/irb-faq/do-i-need-irb-approval-for-my-pilot-study/">Georgia Southern University Research Integrity</a></p>
-</section>
-<section id="your-project-is-human-subjects-researchnow-what" class="level2">
-<h2 class="anchored" data-anchor-id="your-project-is-human-subjects-researchnow-what">Your project is human subjects research—now what?</h2>
-<p>If your project is human subjects research – that is, it involves human subjects, and it is research rather than a pilot – you must submit an initial application for IRB review.</p>
-<p>However, it is still possible that your project may qualify for exemption from some future IRB oversight requirements.</p>
-<section id="categories-of-exempt-research" class="level3">
-<h3 class="anchored" data-anchor-id="categories-of-exempt-research">Categories of exempt research</h3>
-<p>Federal regulations outline several <a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-46/subpart-A/section-46.104">categories</a> of research which qualify as “exempt.” These <a href="https://www.hhs.gov/ohrp/regulations-and-policy/decision-charts-2018/index.html">decision charts</a> provide more information.</p>
-<p>Whether your research project fits within one or more of these categories can be difficult to interpret, so the IRB must make this determination—you cannot decide that your project is exempt.</p>
-<p>Projects eligible for exemption are those which are low risk. Eliminating unnecessary risks is the best way to increase the likelihood that the IRB will find your project exempt. For example: if you are conducting a study involving only one round of data collection, and it is not necessary to collect PII, opting not to collect any PII will make your study more fit for exemption.</p>
-<p>If your study involves deception, prisoner subjects, or child subjects, there are additional limits on whether the IRB can determine your study exempt.</p>
-</section>
-<section id="what-does-exemption-mean" class="level3">
-<h3 class="anchored" data-anchor-id="what-does-exemption-mean">What does exemption mean?</h3>
-<p>Let’s say you’ve submitted an initial application for your project, and the IRB has determined it ‘exempt.’ What does this mean for your IRB obligations going forward?</p>
-<p>A determination of exemption means that the study does not need ongoing IRB oversight. This applies as long as the research remains minimal risk and stays within the bounds of the exemption categories that the IRB determined apply to this study.</p>
-<p>In plain language, this means that:</p>
-<ul>
-<li>You do not need to submit renewals, as long as the project stays exempt.</li>
-<li>You do not need to submit amendments, as long as the changes you are making do not change or undermine the study’s eligibility for exemption.</li>
-</ul>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Projects may begin as exempt but change substantively over time such that they no longer qualify for exemption. It is crucial that you submit to the IRB any changes which may impact the exemption status of the study.</p>
-</div>
-</div>
-<p>These may include:</p>
-<ul>
-<li><strong>Adding procedures which do not fit within the original exemption categories</strong></li>
-<li>For example: if your original plan only involved working with secondary data or educational testing, and you are now planning to survey other participants.</li>
-<li><strong>Changes or new procedures that could affect risks to participants</strong></li>
-<li>Removal of the consent process, or use of deception or incomplete disclosure.</li>
-<li>Significant changes to the recruitment procedures.</li>
-<li>Collection of new or additional identifiable information.</li>
-<li>Adding sensitive questions to a survey or interview process**, such as questions regarding illegal activities; traumatic events such as childhood, sexual, or domestic abuse; suicide; or other probing questions that could reasonably place the subjects at risk of criminal or civil liability or damage the subjects’ financial standing, employability, educational advancement, or reputation.</li>
-<li>Changes to the data storage plan which may affect confidentiality.</li>
-<li><strong>Adding new types of participants, especially vulnerable populations</strong>: children, individuals with cognitive impairments, prisoners</li>
-</ul>
-<p>If you have any uncertainty about whether a particular change necessitates an amendment submission for your exempt project, contact the IPA IRB at humansubjects@poverty-action.org.</p>
-<p><strong>Other types of IRB submissions are still required:</strong></p>
-<ul>
-<li>You must still submit unexpected events if the research receives any participant complaints or experiences any unanticipated problems that involve risks to participants or others.</li>
-<li>You must close the study once human subjects activities have concluded.</li>
-</ul>
-
-
-</section>
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1294,21 +1406,9 @@ Important
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../ethics-irb/index.html" class="pagination-link" aria-label="About IPA IRB">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">About IPA IRB</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../ethics-irb/irb-lifecycle.html" class="pagination-link" aria-label="The IRB Lifecycle">
-        <span class="nav-page-text">The IRB Lifecycle</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/ethics-irb/irb-review.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/how-to-randomization.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

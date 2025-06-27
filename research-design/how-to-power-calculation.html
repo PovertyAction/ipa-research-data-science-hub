@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-06-27">
+<meta name="keywords" content="statistical power, sample size calculation, randomized controlled trials, minimum detectable effect, research design, how-to guide">
 
-<title>Research Design – Research &amp; Data Science Hub</title>
+<title>Guide to Power Calculations – Research &amp; Data Science Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -96,75 +133,17 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research-design" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Research Design</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-how-to-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">How-to Guides</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research-design">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-how-to-guides">    
         <li>
-    <a class="dropdown-item" href="../research-design/theory-of-change.html">
- <span class="dropdown-text">Theory of Change</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../research-design/randomization.html">
+    <a class="dropdown-item" href="../research-design/how-to-randomization.html">
  <span class="dropdown-text">Randomization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../under-construction.html">
- <span class="dropdown-text">Measurement 🚧</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../under-construction.html">
- <span class="dropdown-text">Survey Design 🚧</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../research-design/sample-size-power.html">
- <span class="dropdown-text">Sample and Power Calculations</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ethics-and-irb" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Ethics and IRB</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ethics-and-irb">    
-        <li>
-    <a class="dropdown-item" href="../ethics-irb/index.html">
- <span class="dropdown-text">About IPA IRB</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../ethics-irb/irb-lifecycle.html">
- <span class="dropdown-text">The IRB Lifecycle</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../ethics-irb/irb-reliance-agreements.html">
- <span class="dropdown-text">Reliance Agreements</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../ethics-irb/irb-docs.html">
- <span class="dropdown-text">IRB Documentation 🚧</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../ethics-irb/irb-faqs.html">
- <span class="dropdown-text">IRB FAQs 🚧</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Data</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-data">    
-        <li>
-    <a class="dropdown-item" href="../data-quality/ipa-research-protocols.html">
- <span class="dropdown-text">Data Quality</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data-collection/index.html">
- <span class="dropdown-text">Data Collection</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data-cleaning/index.html">
- <span class="dropdown-text">Data Cleaning</span></a>
+    <a class="dropdown-item" href="../research-design/how-to-power-calculation.html">
+ <span class="dropdown-text">Power Calculations</span></a>
   </li>  
     </ul>
   </li>
@@ -194,14 +173,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Python</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../under-construction.html">
- <span class="dropdown-text">SurveyCTO 🚧</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../under-construction.html">
- <span class="dropdown-text">Cryptomator 🚧</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../software/quarto/index.html">
  <span class="dropdown-text">Quarto</span></a>
   </li>  
@@ -209,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
 </ul>
               <div class="quarto-navbar-tools">
-    <a href="https://github.com/PovertyAction" title="IPA Github" class="quarto-navigation-tool px-1" aria-label="IPA Github"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/PovertyAction" title="IPA GitHub" class="quarto-navigation-tool px-1" aria-label="IPA GitHub"><i class="bi bi-github"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -219,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Research Design</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Guide to Power Calculations</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -739,18 +710,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SurveyCTO 🚧</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cryptomator 🚧</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
@@ -785,27 +744,324 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; color: #312e31; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#what-is-stata" id="toc-what-is-stata" class="nav-link active" data-scroll-target="#what-is-stata">What is Stata?</a></li>
+    <li><a href="#practical-tools-and-applications-in-stata" id="toc-practical-tools-and-applications-in-stata" class="nav-link active" data-scroll-target="#practical-tools-and-applications-in-stata">Practical Tools and Applications in Stata</a>
+    <ul class="collapse">
+    <li><a href="#using-the-power-command-in-stata" id="toc-using-the-power-command-in-stata" class="nav-link" data-scroll-target="#using-the-power-command-in-stata">Using the <code>power</code> Command in Stata</a></li>
+    </ul></li>
+    <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
     </ul>
-      <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <hr>
+  <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Authors</h2>
+  <ul>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/cristhian-pulido" class="nav-link" data-scroll-target="https\://poverty-action.org/people/cristhian-pulido">Cristhian Pulido</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Contributors</h2>
+  <ul>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; color: #312e31; line-height: 1.55rem;" class="anchored">Last Modified</h2>
+  <ul>
+    <li class="last-modified" style="font-size: 0.86rem;">June 27, 2025</li>
+  </ul>
+  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/how-to-power-calculation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Research Design</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Guide to Power Calculations</h1></header>
 
 <header id="title-block-header">
     
+        <p class="abstract">Learn how to perform power calculations for randomized controlled trials using Stata’s power command. This guide covers three essential scenarios: calculating required sample size, determining minimum detectable effect, and estimating statistical power for given parameters.</p>
     
 </header>
 
 
-<section id="what-is-stata" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-stata">What is Stata?</h2>
-<p>Stata is a statistical software package that is commonly used in the social sciences and economics. It is widely used at IPA for data analysis and management. It offers a comprehensive library of methods for data cleaning, descriptive statistics, and econometric analysis. Stata is very well suited for research data workflows and research design tasks, including power calculations, sample design adjustments, panel data analysis, time series analysis, etc. See <a href="https://www.stata.com/features/">Stata Features</a> for a full list of what Stata makes available.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Power calculations are essential for designing effective randomized controlled trials (RCTs) and observational studies. They help researchers determine the sample size needed to detect a statistically significant effect, ensuring that studies are adequately powered to avoid type II errors (false negatives). This guide will help you:</p>
+<ul>
+<li>Understand the concept of statistical power and its importance in research design</li>
+<li>Learn how to perform power calculations using Stata’s <code>power</code> command</li>
+<li>Apply power calculations to real-world scenarios, such as estimating required sample size, minimum detectable effect, and statistical power for given parameters</li>
+</ul>
+</div>
+</div>
+<section id="practical-tools-and-applications-in-stata" class="level2">
+<h2 class="anchored" data-anchor-id="practical-tools-and-applications-in-stata">Practical Tools and Applications in Stata</h2>
+<section id="using-the-power-command-in-stata" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-power-command-in-stata">Using the <code>power</code> Command in Stata</h3>
+<p>This guide uses Stata’s <code>power</code> command to perform sample size and power calculations, and to create sensitivity tables and graphs.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>📌 <strong>Type this in Stata for help:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The India education intervention example illustrates three types of power analysis:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🧮 Case 1: Estimate Required Sample Size
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Goal:</strong> Determine how many participants you need to detect an expected effect.</p>
+<p><strong>Assumptions:</strong></p>
+<ul>
+<li>Effect size or minimum detectable effect: 0.2 S.D.</li>
+<li>Statistical power: 80%</li>
+<li>Variance of the outcome variable: 1 S.D.</li>
+<li>A single treatment group and a control group</li>
+<li>A single post-treatment data collection at endline</li>
+<li>Program randomization at the individual child level</li>
+<li>Perfect compliance</li>
+<li>No attrition</li>
+<li>No additional controls</li>
+</ul>
+<p><strong>Stata code:</strong></p>
+<div id="d041d1b4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.2</span> , power(<span class="fl">0.8</span>) sd(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Performing iteration ...
+
+Estimated sample sizes for a two-sample means test
+t test assuming sd1 = sd2 = sd
+H0: m2 = m1  versus  Ha: m2 != m1
+
+Study parameters:
+
+        alpha =    0.0500
+        power =    0.8000
+        delta =    0.2000
+           m1 =    0.0000
+           m2 =    0.2000
+           sd =    1.0000
+
+Estimated sample sizes:
+
+            N =       788
+  N per group =       394</code></pre>
+</div>
+</div>
+<p>This tells Stata to calculate the required sample size for each group—treatment and control—to detect a 0.2 S.D. effect. The required study sample size to achieve a power of 80% is 788 students: 394 in the treatment group and 394 in the control group.</p>
+<p><strong>Stata code:</strong></p>
+<p>Now, suppose researchers expect a larger treatment effect of 0.4 standard deviations instead of 0.2 S.D., keeping all other assumptions the same. To calculate the required sample size for this new scenario:</p>
+<div id="780267ab" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.4</span> , power(<span class="fl">0.8</span>) sd(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Performing iteration ...
+
+Estimated sample sizes for a two-sample means test
+t test assuming sd1 = sd2 = sd
+H0: m2 = m1  versus  Ha: m2 != m1
+
+Study parameters:
+
+        alpha =    0.0500
+        power =    0.8000
+        delta =    0.4000
+           m1 =    0.0000
+           m2 =    0.4000
+           sd =    1.0000
+
+Estimated sample sizes:
+
+            N =       200
+  N per group =       100</code></pre>
+</div>
+</div>
+<p><strong>Stata code:</strong></p>
+<p>Now, changing the assumption: <strong>What if researchers want to increase the statistical power to 90%?</strong></p>
+<p>To calculate the required sample size for an effect size of 0.4 S.D. and 90% power:</p>
+<div id="a9014b2e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.2</span> , power(<span class="fl">0.9</span>) sd(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Performing iteration ...
+
+Estimated sample sizes for a two-sample means test
+t test assuming sd1 = sd2 = sd
+H0: m2 = m1  versus  Ha: m2 != m1
+
+Study parameters:
+
+        alpha =    0.0500
+        power =    0.9000
+        delta =    0.2000
+           m1 =    0.0000
+           m2 =    0.2000
+           sd =    1.0000
+
+Estimated sample sizes:
+
+            N =     1,054
+  N per group =       527</code></pre>
+</div>
+</div>
+<p>The required sample size would increase to 1,054.</p>
+<p>Additional exercises are available in the following do file: <a href="../assets/files/sample-size-power.do">Download power.do</a></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🧮 Case 2: Estimate Minimum Detectable Effect
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Goal:</strong> Find the smallest effect size you can detect given your sample size.</p>
+<p><strong>Assumptions:</strong></p>
+<ul>
+<li>Sample size: 1,000 students with 500 per group</li>
+<li>Power: 80%</li>
+<li>Variance of the outcome variable: 1 S.D</li>
+</ul>
+<p><strong>Stata code:</strong></p>
+<div id="dda992e4" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> , n(<span class="dv">1000</span>) power(<span class="fl">0.8</span>) sd(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Performing iteration ...
+
+Estimated experimental-group mean for a two-sample means test
+t test assuming sd1 = sd2 = sd
+H0: m2 = m1  versus  Ha: m2 != m1; m2 &gt; m1
+
+Study parameters:
+
+        alpha =    0.0500
+        power =    0.8000
+            N =     1,000
+  N per group =       500
+           m1 =    0.0000
+           sd =    1.0000
+
+Estimated effect size and experimental-group mean:
+
+        delta =    0.1774
+           m2 =    0.1774</code></pre>
+</div>
+</div>
+<p>This calculates the minimum effect size you can detect with the given sample size.</p>
+<p><strong>Stata code:</strong></p>
+<p>As shown in the graph, with 500, 750, 1,000, 1,250, and 1,500 students, researchers can detect smaller treatment effects as the sample size increases.</p>
+<div id="c3b43297" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> , n(<span class="dv">500</span>(<span class="dv">250</span>)<span class="dv">1500</span>) power(<span class="fl">0.8</span>) sd(<span class="dv">1</span>) graph</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="how-to-power-calculation_files/figure-html/cell-7-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Additional exercises are available in the following do file: <a href="../assets/files/sample-size-power.do">Download power.do</a></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🧮 Case 3: Estimate Power for a Given Sample Size and Effect
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Goal:</strong> Determine the statistical power based on your sample size and expected effect.</p>
+<p><strong>Assumptions:</strong></p>
+<ul>
+<li>Study sample size: 1,000</li>
+<li>Effect size: 0.2 S.D.</li>
+<li>Variance of the outcome variable: 1 S.D.</li>
+</ul>
+<p><strong>Stata code:</strong></p>
+<div id="31976da9" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.2</span> , n(<span class="dv">1000</span>) sd(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Estimated power for a two-sample means test
+t test assuming sd1 = sd2 = sd
+H0: m2 = m1  versus  Ha: m2 != m1
+
+Study parameters:
+
+        alpha =    0.0500
+            N =     1,000
+  N per group =       500
+        delta =    0.2000
+           m1 =    0.0000
+           m2 =    0.2000
+           sd =    1.0000
+
+Estimated power:
+
+        power =    0.8848</code></pre>
+</div>
+</div>
+<p>The estimated power under these assumptions is 0.8,848.</p>
+<p><strong>Stata code:</strong></p>
+<p>Smaller samples lead to less power. As sample size increases, studies reach a larger probability of avoiding a type II error or false negative. In the graph, as the sample size increases, the estimated power also increases. This means studies are more likely to detect a true effect with a larger sample.</p>
+<div id="98b7187e" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.2</span> , n(<span class="dv">100</span>(<span class="dv">100</span>)<span class="dv">1000</span>) sd(<span class="dv">1</span>) graph</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="how-to-power-calculation_files/figure-html/cell-9-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Additional exercises are available in the following do file: <a href="../assets/files/sample-size-power.do">Download power.do</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="additional-resources" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://www.wtgrantfoundation.org/optimal-design-software">Optimal Design Software</a>: Free tool for complex designs</li>
+<li><a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html">G*Power</a>: User-friendly power calculator</li>
+<li><a href="https://www.povertyactionlab.org/resource/power-calculations">J-PAL’s Power Calculations Guide</a></li>
+</ul>
 
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>For more details on the <code>power</code> command, see the <a href="https://www.stata.com/manuals13/power.pdf">Stata documentation</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1210,4 +1466,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/how-to-power-calculation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
