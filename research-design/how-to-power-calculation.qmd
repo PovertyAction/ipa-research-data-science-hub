@@ -1,0 +1,208 @@
+---
+title: "Guide to Power Calculations"
+abstract: "Learn how to perform power calculations for randomized controlled trials using Stata's power command. This guide covers three essential scenarios: calculating required sample size, determining minimum detectable effect, and estimating statistical power for given parameters."
+date: last-modified
+
+#------------------------------------------------------------------
+# Authors
+#------------------------------------------------------------------
+# Authors are the main creators of the site's content, credited
+# for their work and responsible for its core development,
+# including writing and editing.
+#------------------------------------------------------------------
+authors-ipa:
+    - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
+
+#------------------------------------------------------------------
+# Contributors
+#------------------------------------------------------------------
+# Contributors provide support, such as feedback or supplementary
+# materials for the site. They can also be responsible for
+# updating/maintaining the site.
+#------------------------------------------------------------------
+contributors:
+  - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
+
+keywords:
+  - "statistical power"
+  - "sample size calculation"
+  - "randomized controlled trials"
+  - "minimum detectable effect"
+  - "research design"
+  - "how-to guide"
+
+license: "CC BY"
+---
+
+```{python}
+#| echo: false
+#| output: false
+import stata_setup
+import platform
+
+# set configuration to the path where Stata is installed and the flavor of Stata
+# in the case below, we're using Stata 18 SE
+stata_version = "18"
+stata_flavor = "se"  # SE for Special Edition, MP for Multiprocessor,
+
+if platform.system() == 'Linux':
+  stata_path=f"/usr/local/stata{stata_version}"
+elif platform.system() == "Windows":
+  stata_path=f"C:/Program Files/Stata{stata_version}/"
+else:
+  raise ValueError("Unsupported operating system")
+
+print(f"Setting up Stata with path: {stata_path} and flavor: {stata_flavor}")
+stata_setup.config(stata_path, stata_flavor)
+```
+
+## When to Use Power Calculations
+
+Power calculations help researchers determine the feasibility and design parameters of their studies before data collection begins. Use power calculations to:
+
+- Plan adequate sample sizes for your research budget
+- Set realistic expectations for effect detection
+- Justify sample size decisions to funders and reviewers
+- Compare different study design options
+
+This guide demonstrates three common power calculation scenarios using a hypothetical education intervention in India.
+
+## Practical Tools and Applications in Stata
+
+### Using the `power` Command in Stata
+
+This guide uses Stata's `power` command to perform sample size and power calculations, and to create sensitivity tables and graphs.[^3]
+
+📌 **Type this in Stata for help:**
+
+```stata
+help power
+```
+
+The India education intervention example illustrates three types of power analysis:
+
+::: {.callout-tip collapse="true"}
+
+## 🧮 Case 1: Estimate Required Sample Size
+
+**Goal:** Determine how many participants you need to detect an expected effect.
+
+**Assumptions:**
+
+- Effect size or minimum detectable effect: 0.2 S.D.
+- Statistical power: 80%
+- Variance of the outcome variable: 1 S.D.
+- A single treatment group and a control group
+- A single post-treatment data collection at endline
+- Program randomization at the individual child level
+- Perfect compliance
+- No attrition
+- No additional controls
+
+**Stata code:**
+
+```{python}
+%%stata
+power twomeans 0 0.2 , power(0.8) sd(1)
+```
+
+This tells Stata to calculate the required sample size for each group—treatment and control—to detect a 0.2 S.D. effect. The required study sample size to achieve a power of 80% is 788 students: 394 in the treatment group and 394 in the control group.
+
+**Stata code:**
+
+Now, suppose researchers expect a larger treatment effect of 0.4 standard deviations instead of 0.2 S.D., keeping all other assumptions the same. To calculate the required sample size for this new scenario:
+
+```{python}
+%%stata
+power twomeans 0 0.4 , power(0.8) sd(1)
+```
+
+**Stata code:**
+
+Now, changing the assumption: **What if researchers want to increase the statistical power to 90%?**
+
+To calculate the required sample size for an effect size of 0.4 S.D. and 90% power:
+
+```{python}
+%%stata
+power twomeans 0 0.2 , power(0.9) sd(1)
+```
+
+The required sample size would increase to 1,054.
+
+Additional exercises are available in the following do file: [Download power.do](/assets/files/sample-size-power.do)
+:::
+
+::: {.callout-tip collapse="true"}
+
+## 🧮 Case 2: Estimate Minimum Detectable Effect
+
+**Goal:**  Find the smallest effect size you can detect given your sample size.
+
+**Assumptions:**
+
+- Sample size: 1,000 students with 500 per group
+- Power: 80%
+- Variance of the outcome variable: 1 S.D
+
+**Stata code:**
+
+```{python}
+%%stata
+power twomeans 0 , n(1000) power(0.8) sd(1)
+```
+
+This calculates the minimum effect size you can detect with the given sample size.
+
+**Stata code:**
+
+As shown in the graph, with 500, 750, 1,000, 1,250, and 1,500 students, researchers can detect smaller treatment effects as the sample size increases.
+
+```{python}
+%%stata
+power twomeans 0 , n(500(250)1500) power(0.8) sd(1) graph
+```
+
+Additional exercises are available in the following do file: [Download power.do](/assets/files/sample-size-power.do)
+:::
+
+::: {.callout-tip collapse="true"}
+
+## 🧮 Case 3: Estimate Power for a Given Sample Size and Effect
+
+**Goal:** Determine the statistical power based on your sample size and expected effect.
+
+**Assumptions:**
+
+- Study sample size: 1,000
+- Effect size: 0.2 S.D.
+- Variance of the outcome variable: 1 S.D.
+
+**Stata code:**
+
+```{python}
+%%stata
+power twomeans 0 0.2 , n(1000) sd(1)
+```
+
+The estimated power under these assumptions is 0.8,848.
+
+**Stata code:**
+
+Smaller samples lead to less power. As sample size increases, studies reach a larger probability of avoiding a type II error or false negative.
+In the graph, as the sample size increases, the estimated power also increases. This means studies are more likely to detect a true effect with a larger sample.
+
+```{python}
+%%stata
+power twomeans 0 0.2 , n(100(100)1000) sd(1) graph
+```
+
+Additional exercises are available in the following do file: [Download power.do](/assets/files/sample-size-power.do)
+:::
+
+## Additional Resources
+
+- [Stata Power and Sample Size Manual](https://www.stata.com/manuals/power.pdf)
+- [Optimal Design Software](https://www.wtgrantfoundation.org/optimal-design-software): Free tool for complex designs
+- [G*Power](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html): User-friendly power calculator
+- [J-PAL's Power Calculations Guide](https://www.povertyactionlab.org/resource/power-calculations)
