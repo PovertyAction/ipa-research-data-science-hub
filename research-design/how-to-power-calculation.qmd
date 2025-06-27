@@ -56,22 +56,23 @@ print(f"Setting up Stata with path: {stata_path} and flavor: {stata_flavor}")
 stata_setup.config(stata_path, stata_flavor)
 ```
 
-## When to Use Power Calculations
+:::{.callout-tip appearance="simple"}
 
-Power calculations help researchers determine the feasibility and design parameters of their studies before data collection begins. Use power calculations to:
+## Learning Objectives
 
-- Plan adequate sample sizes for your research budget
-- Set realistic expectations for effect detection
-- Justify sample size decisions to funders and reviewers
-- Compare different study design options
+Power calculations are essential for designing effective randomized controlled trials (RCTs) and observational studies. They help researchers determine the sample size needed to detect a statistically significant effect, ensuring that studies are adequately powered to avoid type II errors (false negatives). This guide will help you:
 
-This guide demonstrates three common power calculation scenarios using a hypothetical education intervention in India.
+- Understand the concept of statistical power and its importance in research design
+- Learn how to perform power calculations using Stata's `power` command
+- Apply power calculations to real-world scenarios, such as estimating required sample size, minimum detectable effect, and statistical power for given parameters
+
+:::
 
 ## Practical Tools and Applications in Stata
 
 ### Using the `power` Command in Stata
 
-This guide uses Stata's `power` command to perform sample size and power calculations, and to create sensitivity tables and graphs.[^3]
+This guide uses Stata's `power` command to perform sample size and power calculations, and to create sensitivity tables and graphs.[^1]
 
 📌 **Type this in Stata for help:**
 
@@ -202,7 +203,8 @@ Additional exercises are available in the following do file: [Download power.do]
 
 ## Additional Resources
 
-- [Stata Power and Sample Size Manual](https://www.stata.com/manuals/power.pdf)
 - [Optimal Design Software](https://www.wtgrantfoundation.org/optimal-design-software): Free tool for complex designs
 - [G*Power](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html): User-friendly power calculator
 - [J-PAL's Power Calculations Guide](https://www.povertyactionlab.org/resource/power-calculations)
+
+[^1]: For more details on the `power` command, see the [Stata documentation](https://www.stata.com/manuals13/power.pdf).
