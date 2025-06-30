@@ -1,5 +1,7 @@
 ---
 title: "Data Anonymization"
+abstract: "This guide explains what data are considered personally identifiable information, what materials require anonymization, and methods for removing PII from datasets to protect research participants' privacy."
+date: last-modified
 
 #------------------------------------------------------------------
 # Authors
@@ -20,58 +22,68 @@ authors-ipa:
 contributors:
     - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
     - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
+
+keywords:
+    - "data quality"
+    - "personally identifiable information"
+    - "PII"
+    - "privacy protection"
+    - "data anonymization"
+    - "research ethics"
+    - "explanation"
+
+license: "CC BY"
 ---
 
-:::{.custom-summary-block}
-This article describes what data count as PII, what materials should be anonymized, and methods for anonymization of datasets.
-:::
 
 :::{.callout-tip appearance="simple"}
+
 ## Key Takeaways
-* Understand what constitutes Personally Identifiable Information (PII) and ensure its removal from all shared materials to protect research participants' privacy.
+
+* Understand what constitutes Personally Identifiable Information—PII—and ensure its removal from all shared materials to protect research participants' privacy.
 * Use automated tools like Stata's `lookfor` command or manual reviews to identify and anonymize PII in datasets, code, and documentation.
 :::
 
 ## What is Data Anonymization?
 
-Data anonymization is the act of removing Personally Identifiable Information (PII) from study materials. Before starting any analyses, consider carefully whether you will need PII. Most analyses will not require PII. Typically, the only use for PII is to link data from different sources, as well as analyses reliant on geographic data, which will be addressed below.
+Data anonymization involves removing Personally Identifiable Information (PII) from study materials. Before starting any analyses, consider whether you need to collect and retain PII. Most analyses do not require PII. Typically, researchers use PII only to link data from different sources, multiple rounds of a longitudinal study,or for analyses that rely on geographic location data.
 
+If PII is not necessary for the analysis, then split it from the data immediately. Usually, you do not need to share PII with principal investigators. Instead, anonymize the data immediately using the `split_pii` Stata program and share only the anonymized data with principal investigators. You can download this program through the Statistical Software Components—SSC—archive.
 
-If PII is not necessary for the analysis, then it should be split from the data immediately. In most cases, there is no reason to share PII with PIs. Instead, anonymize the data immediately using the `split_pii` Stata program and share only the anonymized data with PIs, which can be downloaded through SSC.
-
-PII includes information that can be used to specifically identify an individual. Due to the nature of the research we conduct, we are entrusted with the management of PII of the participants of our research studies. This information should not be released to external individuals, including in most cases PIs and users who access publicly accessible materials, such as from IPA's Data Repository. Therefore, it is vital that staff have access to strategies to remove this data to ensure the safety of research subjects.
+PII includes information that researchers can use to specifically identify an individual. Due to the nature of research IPA conducts, staff manage PII of research study participants. Research teams must not release this information to external individuals, usually including principal investigators and users who access publicly accessible materials, such as from IPA's Data Repository. Therefore, staff need access to strategies to remove this data to ensure the safety of research subjects.
 
 ## What data count as Personally Identifiable Information?
 
 IPA conforms to the HIPAA guidelines for what data count as PII. Included in the list are:
-- Names
-- Geographic areas with a population of 20,000 or fewer
-- Birth date
-- Contact information such as phone numbers
-- License numbers
-- Indirect identifiers that, in combination with several sets of information, can uniquely identify an individual
 
-Because IPA conducts studies in countries outside of the US, the list of PII should be adapted to the relevant country context.
+* Names
+* Geographic areas with a population of 20,000 or fewer
+* Birth date
+* Contact information such as phone numbers
+* License numbers
+* Indirect identifiers that, in combination with several sets of information, can uniquely identify an individual
 
-## What materials should be anonymized?
+Because IPA conducts studies in countries outside of the US, research teams should adapt the list of PII to the relevant country context.
 
-Aside from the names of PIs and, in some cases, current project staff, ensure that PII is removed from:
-- Data
-- Code
-- Survey instruments
-- Any other documentation that will be shared with non-IRB-approved staff and external users
+## What materials require anonymization?
 
-Data and code should be prioritized because most PII will be found in those two sets of files. However, review all other documents that will be shared as well.
+Aside from the names of principal investigators and, sometimes, current project staff, ensure that you remove PII from:
 
-Automated searches for PII in Stata datasets are discussed below, but for code, surveys, and other documentation, manual review is typically required.
+* Data
+* Code
+* Survey instruments
+* Any other documentation that you will share with non-IRB-approved staff and external users
 
-For users with advanced programming skills, Python can skim documents for relevant information. However, a manual check is still recommended in case certain keywords are missed.
+Prioritize data and code because you will find most PII in those two sets of files. However, also review all other documents that you will share.
 
-IPA is currently testing a PII treatment application. Learn more about it here: **IPA's Personally Identifiable Information Treatment Application.**
+This guide discusses automated searches for PII in Stata datasets below, but code, surveys, and other documentation typically require manual review.
+
+Analysts with advanced programming skills can use Python or R code to extract relevant information from documents. However, manual checks remain recommended in case the automated search misses certain keywords.
+
 
 ## How to Search Datasets for Personally Identifiable Information
 
-To ensure a Stata dataset does not contain PII, carefully review the variables it contains. It may not be immediately clear that a variable contains PII. Conduct at least two sweeps of one or more datasets for clear instances of PII. Sweeps can be done either using Stata code or manually.
+To ensure a Stata dataset does not contain PII, review the variables it contains. A variable may not immediately appear to contain PII. Conduct at least two sweeps of one or more datasets for clear instances of PII. You can perform sweeps using either Stata code or manual review.
 
 ### Using Stata
 
@@ -81,9 +93,9 @@ A quick way to screen for PII in Stata is the `lookfor` command. It searches all
 lookfor name
 ```
 
-This command lists all variables whose name or variable label contains the string "name." For example, a variable named `fname` (for "first name") would be listed because "name" is a substring of `fname`. `lookfor` also stores the list of variables in the saved result `r(varlist)`.
+This command lists all variables whose name or variable label contains the string "name." For example, the command would list a variable named `fname` — for "first name" — because "name" is a substring of `fname`. `lookfor` also stores the list of variables in the saved result `r(varlist)`.
 
-To quickly search more than one dataset, use the `lookfor_all` command, available on SSC. To install, type:
+To search more than one dataset, use the `lookfor_all` command, available on the Statistical Software Components—] (SSC) archive. To install, type:
 
 ```stata
 ssc install lookfor_all
@@ -91,35 +103,35 @@ ssc install lookfor_all
 
 ### Keywords to Search For
 
-Below is a list of keywords to consider searching for (not exhaustive):
+Below is a list of keywords to consider searching for—note this list is not exhaustive:
 
-- `name`
-- `birth` (to find variables related to the respondent's birthdate)
-- `phone`
-- `district`
-- `county`
-- `subcounty`
-- `parish`
-- `lc` (to find variables related to the respondent's “local council,” a geographical unit in some countries)
-- `village`
-- `community`
-- `address` or `gps`
-- `lat` (to find variables related to latitude)
-- `lon` (to find variables related to longitude)
-- `coord` (to find variables related to GPS coordinates)
-- `location`
-- `house`
-- `compound`
-- `school`
-- `social`
-- `network`
-- `census`
-- `gender` (in limited cases)
-- `sex` (in limited cases)
-- `fax` or `email`
-- `ip` (for IP addresses)
-- `url` (for Web addresses)
-- `specify` or `comment`
+* `name`
+* `birth` — to find variables related to the respondent's birthdate
+* `phone`
+* `district`
+* `county`
+* `subcounty`
+* `parish`
+* `lc` — to find variables related to the respondent's "local council," a geographical unit in some countries
+* `village`
+* `community`
+* `address` or `gps`
+* `lat` — to find variables related to latitude
+* `lon` — to find variables related to longitude
+* `coord` — to find variables related to GPS coordinates
+* `location`
+* `house`
+* `compound`
+* `school`
+* `social`
+* `network`
+* `census`
+* `gender` — in limited cases
+* `sex` — in limited cases
+* `fax` or `email`
+* `ip` — for IP addresses
+* `url` — for Web addresses
+* `specify` or `comment`
 
 ### Searching Through String Variables
 
@@ -131,13 +143,13 @@ To display the full length of string values:
 levels of varname
 ```
 
-If PII is contained in strings with standardized values, recode them using:
+If strings contain PII with standardized values, recode them using:
 
 ```stata
 replace varname = subinstr(varname, "PII VALUE", "ANONYMIZED VALUE", .)
 ```
 
-If PII is contained in strings but the values are irregular, manually recode them:
+If strings contain PII but the values are irregular, manually recode them:
 
 ```stata
 replace varname = "STRING VALUE WITHOUT PII" if varname == "STRING VALUE WITH PII"
