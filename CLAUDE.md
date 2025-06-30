@@ -61,7 +61,7 @@ Always move the `:::{.custom-summary-block}...:::` to the abstract and provide r
 
 - **Quarto-based**: Uses `.qmd` files for content with YAML frontmatter
 - **Hierarchical navigation**: Defined in `_quarto.yml` with sidebar and navbar structure
-- **Content areas**: research-design/, data-collection/, data-quality/, ethics-irb/, software/
+- **Content areas**: research-design/, data-collection/, data-quality/, research-ethics/, software/
 - **Template system**: `page-template.qmd` provides structure for new pages
 
 ### Key Configuration Files
