@@ -1,0 +1,158 @@
+---
+title: "High Frequency Checks"
+abstract: "Learn about IPA's High Frequency Checks—systematic data quality checks performed during data collection to identify and address issues early. This how-to guide covers the types of checks, implementation using the ipacheck Stata package, and best practices for ensuring reliable survey data."
+date: last-modified
+authors-ipa:
+    - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
+contributors:
+    - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
+    - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
+keywords: ["data quality", "survey data", "stata", "how-to guide", "data collection"]
+license: "CC BY"
+---
+
+
+:::{.callout-tip appearance="simple"}
+
+## Key Takeaways
+
+- High Frequency Checks ensure data quality by identifying and addressing issues during data collection.
+- The `ipacheck` Stata package provides a comprehensive set of tools to streamline HFC implementation.
+:::
+
+## What are High Frequency Checks?
+
+High Frequency Checks are systematic checks performed on survey data at regular intervals, such as daily or weekly, during data collection. These checks help identify and correct issues or mistakes in the survey process, ensuring the data collected is of high quality. By catching errors early, teams can make necessary adjustments to the survey or data collection methods, leading to more reliable and accurate data.
+
+## Why it is important to implement High Frequency Checks
+
+High-frequency checks evaluate different aspects of the data collection process and run at regular intervals as teams collect new data. At IPA/J-PAL, HFCs are typically implemented in Stata after the data flow is complete. These checks provide insights into:
+
+- The quality of the data
+- Enumerator performance
+- Errors in the electronic survey program
+- Systematic flaws in the data flow
+
+Given their importance, high-frequency checks are one of the major benefits of Computer-Assisted Interviewing (CAI). Unlike CAI logic checks, which are pre-programmed into the survey tool, HFCs run post-data collection to identify trends across surveys.
+
+### Types of High Frequency Checks
+
+#### **Daily Logic Checks**
+
+- Verify the survey form version
+- Detect duplicate observations and unique variable duplicates—for example, GPS, phone number
+- Ensure critical variables are not missing
+- Identify variables with all missing values
+- Review "Other specify" values
+- Detect outliers in numeric variables
+- Review field comments
+- Track survey progress
+
+#### **Enumerator Performance Checks**
+
+- Percentage of "Don't know" and "Refuse to answer"
+- "Yes" percentage for filter questions
+- Enumerator productivity
+- Average interview duration
+- Active hours
+- Statistics for numeric variables
+
+#### **Survey Dashboard Checks**
+
+- Survey consent rate
+- Percentage of missing survey values
+- Percentage of "Don't know" and "Refuse to Answer"
+- Number and percentage of "Other specify" values
+- Variables with all missing values
+- Survey productivity
+
+## Introduction to IPA's HFCs Package
+
+The Stata program `ipacheck` is a set of user-written commands developed and maintained by IPA. It consists of three types of files: an input file, a do-file, and output files. Teams can modify these files to fit their project's needs. Each check produces either a standalone workbook or a dedicated sheet in the HFC output workbook, displaying respondent IDs, enumerator details, and relevant flagged variables.
+
+### **How are High Frequency Checks different from the Data Management System?**
+
+The Data Management System provides a structured approach to managing research data, assisting with:
+
+- Creating project folder structures
+- Managing data flow
+- Running high-frequency checks
+- De-duplicating and replacing data
+- Tracking survey progress
+- Running back checks
+- Generating logs for project closure
+
+High-frequency checks are just one component of the broader capabilities of the DMS, running alongside other project management tools.
+
+## Installation
+
+`ipacheck` is IPA's Stata package for running high-frequency checks. The package includes various programs categorized as main or ancillary.
+
+### **Main Programs**
+
+- `ipacheckcorrections` - Make corrections to data.
+- `ipacheckspecifyrecode` - Recode "Other specify" values.
+- `ipacheckversions` - Export survey form version statistics and flag outdated submissions.
+- `ipacheckids` - Identify duplicate survey IDs.
+- `ipacheckdups` - Detect duplicates in non-ID variables.
+- `ipacheckmissing` - Generate missingness and distinctness statistics.
+- `ipacheckoutliers` - Identify outliers in numeric variables.
+- `ipacheckspecify` - Extract "Other specify" values.
+- `ipacheckcomments` - Export field comments from SurveyCTO.
+- `ipachecktextaudit` - Analyze survey duration using SurveyCTO text audit files.
+- `ipachecktimeuse` - Export engagement statistics from SurveyCTO audit files.
+- `ipachecksurveydb` - Generate general dataset statistics.
+- `ipacheckenumdb` - Evaluate enumerator performance.
+- `ipatracksurvey` - Generate a dashboard for tracking survey progress.
+- `ipabcstats` - Compare survey data with back check data.
+
+### **Ancillary Programs**
+
+- `ipacodebook` - Export a codebook to Excel with labeled variable notes.
+
+`ipacheck` comes with a structured project folder setup, including a master do-file, global variables file, preparation do-file, and Excel-based input sheets. The package generates outputs as well-formatted Excel spreadsheets for field team distribution. Since version four, `ipacheck` incorporates programs from the `ipahelper` package.
+
+### **Installation Steps**
+
+```stata
+* Install ipacheck from GitHub
+net install ipacheck, all replace from("https://raw.githubusercontent.com/PovertyAction/high-frequency-checks/master")
+
+* Update ipacheck anytime
+ipacheck update
+
+* Create a new project with folder structure and input files
+ipacheck new, surveys("SURVEY_NAME_1") folder("path/to/project")
+
+* Create a project with multiple surveys using subfolders
+ipacheck new, surveys("SURVEY_NAME_1" "SURVEY_NAME_2") folder("path/to/project") subfolders
+
+* Obtain fresh copies of the master do-file and Excel inputs
+ipacheck new, filesonly
+
+* Access IPA's training exercise (includes sample data and instructions)
+ipacheck new, exercise
+
+* Verify the installed version
+ipacheck version
+```
+
+::: {.callout-tip}
+
+## HFCs in practice
+
+**Check out the IPA High Frequency Check Exercise!** These exercises help familiarize users with the setup and use of IPA's Data Management System, which includes High-Frequency Checks, Survey Tracking, and Back Check comparison. [Learn more](https://github.com/PovertyAction/high-frequency-checks/wiki/Exercise)
+:::
+
+## Conclusion
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+In conclusion, High Frequency Checks (HFCs) are an essential component of IPA's data quality assurance framework. By implementing systematic and regular checks on survey data, HFCs help ensure the accuracy, reliability, and overall quality of the data collected. The `ipacheck` Stata package provides a comprehensive set of tools to facilitate these checks, making it easier for research teams to identify and address issues promptly. By integrating HFCs into your data collection process, you can significantly enhance the integrity of your research findings and contribute to the overall success of your projects.
+
+
+=======
+>>>>>>> c6c7bfe (edits to data quality pages)
+=======
+>>>>>>> ab5cde4 (edits to data quality pages)
+High Frequency Checks are essential for maintaining data quality during collection. The `ipacheck` Stata package provides comprehensive tools to implement these checks systematically, helping research teams identify issues early and ensure reliable results.
