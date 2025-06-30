@@ -10,37 +10,8 @@ project:
     - "!CLAUDE.md"
     - "!docs/"
     - "!extensions/"
-brand: _brand.yml
-execute:
-  freeze: auto
-format:
-  html:
-    theme:
-      light: [cosmo, brand, ./assets/light-theme.scss]
-      # dark: [cosmo, brand, ./assets/dark-theme.scss]
-    css: ./assets/styles.css
-    toc: true
-    toc-title: "In this resource"
-    template-partials:
-      - ./assets/toc.html
-      - ./assets/title-block.html
-    grid:
-      sidebar-width: 250px
-      body-width: 1200px
-      margin-width: 200px
-      gutter-width: 5em
-      # ipa-handout-typst:
-#   theme: brand
-#   papersize: a4
-#   toc: false
-#   columns: 1
-#   number-sections: false
-format-links:
-  - format: typst
-    text: PDF
-    icon: file-pdf
-language:
-  search-text-placeholder: Search IPA Resources
+
+
 website:
   title: "Research & Data Science Hub"
   favicon: "assets/logos/ipa-favicon.ico"
@@ -250,3 +221,47 @@ website:
                 href: ./software/quarto/index.qmd
               - text: "Writing in Quarto"
                 href: ./software/quarto/basics.qmd
+
+
+# bibliography: references.bib
+
+brand: _brand.yml
+
+highlight-style: ayu
+
+format:
+  html:
+    respect-user-color-scheme: true
+    toc: true
+    theme:
+      light: [litera, brand, assets/light-theme.scss]
+      # dark: [litera, brand, assets/dark-theme.scss]
+    code-copy: true
+    code-overflow: wrap
+    css: ./assets/styles.css
+    toc-title: "In this resource"
+    template-partials:
+      - ./assets/toc.html
+      - ./assets/title-block.html
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 300px
+      gutter-width: 5em
+#   ipa-handout-typst:
+#     theme: brand
+#     papersize: a4
+#     toc: false
+#     columns: 1
+#     number-sections: false
+
+format-links:
+  - format: typst
+    text: PDF
+    icon: file-pdf
+
+language:
+  search-text-placeholder: Search IPA Resources
+
+execute:
+  freeze: true
