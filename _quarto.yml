@@ -16,8 +16,8 @@ website:
   bread-crumbs: true
   announcement:
     icon: none
-    dismissable: true
-    content: "<span>📣 Announcing the launch of the IPA Research and Data Science Hub!</span>"
+    dismissable: false
+    content: "<span>📣 The IPA Research and Data Science Hub is under development [contact us with any feedback](mailto:researchsupport@poverty-action.org) or consider [contributing to the Hub](https://data.poverty-action.org/CONTRIBUTING.html)!</span>"
     type: light
     position: above-navbar
   back-to-top-navigation: true
@@ -32,19 +32,19 @@ website:
   repo-actions: [edit, issue]
   page-navigation: true
   navbar:
-    title: "Research & Data Science Hub"
+    title: false
     background: white
-    logo: assets/logos/ipa-logo-abbreviated.png
+    logo-alt: "IPA logo."
     collapse: true
-    collapse-below: md
+    collapse-below: lg
     toggle-position: left
     tools-collapse: true
     pinned: false
     border: false
-    tools:
-      - icon: github
-        href: https://github.com/PovertyAction
-        text: IPA GitHub
+    # tools:
+    #   - icon: github
+    #     href: https://github.com/PovertyAction
+    #     text: IPA GitHub
     right:
       - text: "Topics"
         menu:
@@ -80,6 +80,8 @@ website:
             href: ./software/python/index.qmd
           - text: "Quarto"
             href: ./software/quarto/index.qmd
+      - text: "Contributing"
+        href: ./CONTRIBUTING.qmd
   sidebar:
     style: floating
     collapse-level: 1
@@ -238,22 +240,24 @@ website:
               - text: "Writing in Quarto"
                 href: ./software/quarto/basics.qmd
 # bibliography: references.bib
-brand: _brand.yml
+brand:
+  light: assets/design-styles/light-brand.yml
+  dark: assets/design-styles/dark-brand.yml
 highlight-style: ayu
 format:
   html:
     respect-user-color-scheme: true
     toc: true
     theme:
-      light: [litera, brand, assets/light-theme.scss]
-      # dark: [litera, brand, assets/dark-theme.scss]
+      light: [litera, brand, assets/design-styles/light-theme.scss]
+      dark: [litera, brand, assets/design-styles/dark-theme.scss]
     code-copy: true
     code-overflow: wrap
-    css: ./assets/styles.css
+    css: ./assets/design-styles/styles.css
     toc-title: "In this resource"
     template-partials:
-      - ./assets/toc.html
-      - ./assets/title-block.html
+      - ./assets/design-styles/toc.html
+      - ./assets/design-styles/title-block.html
     grid:
       sidebar-width: 250px
       body-width: 900px
