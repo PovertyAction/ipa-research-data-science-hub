@@ -1,6 +1,6 @@
 # Contributing to the IPA Research and Data Science Hub
 
-2025-07-03
+2025-07-09
 
 Thank you for your interest in contributing to the IPA Research and Data
 Science Hub! This document provides guidelines and instructions for
