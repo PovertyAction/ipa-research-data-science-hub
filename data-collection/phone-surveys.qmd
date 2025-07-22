@@ -1,331 +1,157 @@
 ---
 title: "Phone Surveys: Best Practices and Tools"
-abstract: "This guide provides best practices and tools for implementing phone surveys, a cornerstone of data collection for Innovations for Poverty Action. Voice and text-based phone surveys offer a cost-effective and adaptive method to gather high-quality data, especially in contexts where in-person surveys are impractical."
+abstract: "Comprehensive reference for implementing phone surveys at IPA, including survey modes (CATI, IVR, SMS), research use cases, technical requirements, and curated resources. Includes IPA's survey templates, tools, and academic research syntheses."
 date: last-modified
 authors-ipa:
   - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
 contributors:
   - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
-keywords:
-  - phone surveys
-  - CATI
-  - IVR
-  - SMS surveys
-  - remote data collection
-  - survey methodology
-  - how-to guide
-license: "CC BY"
 ---
 
 ![Phone Survey in Colombia (® IPA)](/assets/images/Colombia_Survey_2020.jpg){width=100%}
 
-:::{.callout-tip appearance="simple"}
+:::{.custom-summary-block}
+Reference guide to phone survey methods used at IPA—including CATI, IVR, and SMS surveys—covering implementation criteria, operational benefits and constraints, and links to tools, templates, and academic briefs. Keywords include: phone surveys, remote data collection, survey methodology, and data collection reference.
+:::
 
+
+:::{.callout-tip appearance="simple"}
 ## Key Takeaways
 
-- Phone surveys offer significant advantages in cost-effectiveness, speed, and
-  accessibility, making them valuable for data collection in challenging environments.
-- Success requires careful consideration of technical feasibility, resource
-  availability, and research design compatibility before implementation.
-- Different survey modes (CATI, IVR, SMS) have distinct strengths and limitations -
-  choosing the right mode depends on research goals, target population, and practical
-  constraints.
+- Survey modes (CATI, IVR, SMS) have distinct implementation considerations and trade-offs.
+- Selection should be based on technical feasibility, research design, and respondent accessibility.
+- IPA provides downloadable templates and synthesized research evidence to support deployment.
 :::
 
-## 1. Methods and Best Practices
+## Introduction
 
-### Introduction
+Phone surveys are a core method of data collection at IPA, especially when in-person surveys are not feasible due to logistical, health, or cost constraints. They allow real-time data collection for monitoring and evaluation, are scalable across regions, and can adapt to diverse research designs. During the COVID-19 pandemic, IPA used phone surveys extensively to continue collecting high-quality data.
 
-Phone surveys are a cornerstone of IPA's research methodology, offering cost-effective, scalable, and reliable data collection when in-person surveys face constraints. Phone surveys enable tailored data collection for real-time monitoring and impact evaluations, while maintaining ethical standards and operational continuity. Proven critical during COVID-19, they remain essential for hard-to-reach populations and time-sensitive research.
+## Survey Modes
 
-This page provides **IPA teams and partners** with:
+| Mode | Description | Requires Enumerator | Best For | Limitations |
+|------|-------------|---------------------|----------|-------------|
+| **CATI** | Live interviews conducted by enumerators using software | ✔️ | High data quality, complex questionnaires | Higher cost, training needed |
+| **IVR** | Automated audio prompts with responses via keypad/voice | ❌ | Large samples, short surveys | Low engagement, drop-off risk |
+| **SMS** | Text-based questionnaires sent via mobile | ❌ | Simple surveys, frequent updates | Literacy and character limits |
+| **Web** | Online surveys accessed via links | ❌ | Literate, connected populations | Limited reach in LMICs |
 
-- **General insights** on the role and advantages of phone surveys in development
-  research.
-- **Academic research** synthesizing evidence on best practices (e.g., optimizing
-  response rates, minimizing attrition).
-- **Practical resources** -- handbooks, SurveyCTO templates, and implementation guides -- to design and deploy effective phone surveys.
+## Use Cases by Mode
 
-Whether adapting an existing in-person survey to phone-based methods or launching a new
-remote data collection effort, the materials below offer evidence-backed guidance at
-every stage.
+| Goal | CATI | IVR | SMS | Web |
+|------|------|-----|-----|-----|
+| Tracking respondents | ~ | + | ~ | - |
+| Updating contact info | + | - | ~ | ~ |
+| Determining language | + | + | - | + |
+| High-frequency data | ~ | +* | +* | + |
+| Sensitive outcomes | ~ | ~ | - | ~ |
+| High response rates | + | - | - | - |
+| Large samples | - | + | ~ | + |
 
-### What Are Phone Surveys?
+_Source: [Remote Surveying in a Pandemic Handbook](https://poverty-action.org/sites/default/files/publications/IPA-Evidence-Review-Remote-Data-Collection-Modes-Updated-December-2020.pdf)_
 
-Phone surveys are a method of collecting quantitative or qualitative data by contacting
-respondents over the phone. Common approaches include:
+## Implementation Considerations
 
-- **Computer-Assisted Telephone Interviewing (CATI):** Live interviews conducted by
-  trained enumerators.
-- **Interactive Voice Response (IVR):** Automated surveys where respondents answer on a
-  keypad or by voice.
-- **SMS/Text-based Surveys:** Questionnaires delivered by text messaging.
+### Technical Feasibility
 
-### Why Use Phone Surveys?
+- Access to valid and active phone numbers
+- Consistent phone ownership or access among respondents
+- Network coverage and device compatibility
 
-- **Accessibility:** Reach respondents in hard-to-access regions or during disruptions
-  (e.g., pandemics).
-- **Cost-Effectiveness:** Lower logistical costs compared to in-person surveys.
-- **Speed:** Rapid deployment for time-sensitive data (e.g., crisis monitoring).
-- **Safety:** Avoid physical contact during health emergencies.
+### Resource Requirements
 
-## 2. Weighing the Advantages and Challenges
+- Enumerator training (for CATI)
+- Budget for airtime, incentives, or SMS credits
+- Tools for remote tracking and call monitoring
 
-### Advantages of Phone Surveys
+### Research Design Compatibility
+
+- Questionnaire complexity and length
+- Ability to randomize or stratify sample
+- Suitability of mode for the target population
+
+## Operational Features
+
+| Feature | Description |
+|---------|-------------|
+| **Random Enumerator Assignment** | Allocation independent of location, promotes fairness |
+| **Flexible Scheduling** | Calls can be made when respondents are more available |
+| **Real-Time Monitoring** | Supervisors can audit live calls for quality control |
+| **Validation Checks** | Built-in form logic reduces errors |
+| **Tracking Systems** | Enables logging of call attempts, statuses, reschedules |
+
+## Advantages and Challenges
+
+### Advantages
 
 ::: {.callout-tip collapse="true"}
-
-## **Random Enumerator Assignment**
-
-Enumerators can be assigned at random without geographic or travel constraints. Ensures
-fairness and reduces bias in data collection.
+- Lower operational costs
+- Remote deployment at scale
+- Real-time data entry and supervision
+- No travel or field logistics required
+- Useful for emergency response and sensitive data
 :::
 
-::: {.callout-tip collapse="true"}
-
-## **Reduced Logistical Constraints**
-
-No need for travel, reducing costs and time. Enumerators can work remotely, increasing
-flexibility.
-:::
-
-::: {.callout-tip collapse="true"}
-
-## **Cost-Effectiveness**
-
-Lower operational costs compared to in-person surveys (e.g., no transportation or
-accommodation expenses). Scalable for large sample sizes.
-:::
-
-::: {.callout-tip collapse="true"}
-
-## **Faster Data Collection**
-
-Surveys can be conducted quickly, especially with automated dialing systems. Real-time
-data entry reduces post-survey processing time.
-:::
-
-::: {.callout-tip collapse="true"}
-
-## **Improved Data Quality**
-
-Computer-assisted systems minimize human errors in data entry. Built-in validation
-checks ensure accurate responses.
-:::
-
-::: {.callout-tip collapse="true"}
-
-## **Wide Geographic Coverage**
-
-Ability to reach respondents across large or remote areas without physical presence.
-:::
-
-::: {.callout-tip collapse="true"}
-
-## **Flexibility in Scheduling**
-
-Surveys can be conducted at convenient times for respondents, improving response rates.
-:::
-
-::: {.callout-tip collapse="true"}
-
-## **Enhanced Monitoring**
-
-Supervisors can monitor calls in real time, ensuring quality control. Automated systems
-track call outcomes (e.g., completed, refused, invalid).
-:::
-
-### Challenges of Phone Surveys
+### Challenges
 
 ::: {.callout-warning collapse="true"}
-
-## **Respondent Tracking**
-
-Difficulty maintaining contact with respondents over time. Higher attrition rates
-compared to in-person surveys.
+- Higher risk of attrition and refusals
+- Limited ability to build rapport
+- Risk of excluding low-access populations
+- Language barriers may be harder to navigate
+- Privacy concerns if others overhear calls
 :::
 
-::: {.callout-warning collapse="true"}
-
-## **Language Barriers**
-
-Limited availability of multilingual enumerators. Need for translation services
-increases costs.
-:::
-
-::: {.callout-warning collapse="true"}
-
-## **Call Refusals**
-
-Higher refusal rates compared to in-person surveys. Respondent fatigue with repeated
-calls.
-:::
-
-::: {.callout-warning collapse="true"}
-
-## **Technical Issues**
-
-Dependence on reliable phone networks and internet connectivity. Risk of dropped calls
-or poor audio quality.
-:::
-
-::: {.callout-warning collapse="true"}
-
-## **Data Privacy Concerns**
-
-Challenges in verifying respondent identity. Limited control over privacy during calls.
-:::
-
-::: {.callout-warning collapse="true"}
-
-## **Limited Non-Verbal Communication**
-
-Cannot observe body language or environmental context. More difficult to build rapport
-with respondents.
-:::
-
-::: {.callout-warning collapse="true"}
-
-## **Call Timing Constraints**
-
-Restricted windows for successful contact. Need to balance persistence with respondent
-convenience.
-:::
-
-::: {.callout-warning collapse="true"}
-
-## **Survey Design Limitations**
-
-Shorter attention spans for phone interviews. Complex questions may be harder to convey
-verbally.
-:::
-
-## 3. When to Implement Phone Surveys?
-
-After weighing the advantages and challenges, consider these key factors before
-implementing phone surveys:
-
-### Essential Criteria
-
-| Criterion                         | Key Questions                                                                                                                                             |
-| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Data Urgency**                  | - Is immediate data collection necessary? <br> - Can the research questions wait for in-person collection?                                                |
-| **Safety and Ethics**             | - Can data be collected safely and ethically? <br> - Are there risks to respondents or enumerators?                                                       |
-| **Technical Feasibility**         | - Do you have reliable phone numbers? <br> - Do respondents have consistent phone access? <br> - Is there adequate network coverage?                      |
-| **Resource Availability**         | - Can you compensate respondents? <br> - Do you have budget for airtime and equipment? <br> - Are trained enumerators available?                          |
-| **Research Design Compatibility** | - Can your research questions be answered by phone? <br> - Is the target population reachable by phone? <br> - Are survey length and complexity suitable? |
-
-### Choosing an Appropriate Mode
-
-Recommended modes:
-
-- **CATI**: Best for data quality but requires interviewers
-- **IVR**: Lower cost but may frustrate respondents
-- **SMS**: Limited by literacy and message length
-- **Web**: Less common in low-income countries
-
-### Research Goals by Mode
-
-*Source: [Remote Surveying in a Pandemic: Handbook](https://poverty-action.org/sites/default/files/publications/IPA-Evidence-Review-Remote-Data-Collection-Modes-Updated-December-2020.pdf)*
-
-| Goal                  | CATI | IVR | SMS | Web |
-| --------------------- | ---- | --- | --- | --- |
-| Tracking respondents  | ~    | +   | ~   | -   |
-| Updating contact info | +    | -   | ~   | ~   |
-| Determining language  | +    | +   | -   | +   |
-| High-frequency data   | ~    | +*  | +*  | +   |
-| Sensitive outcomes    | ~    | ~   | -   | ~   |
-| High response rates   | +    | -   | -   | -   |
-| Large samples         | -    | +   | ~   | +   |
-
-## 4. Resources
-
-### Guides and Templates
-
-### Remote Surveying in a Pandemic: Handbook
-
-*Comprehensive guide to designing phone surveys during disruptions.*
-
-<object data="/assets/files/IPA-Evidence-Review-Remote-Data-Collection-Modes-Updated-December-2020.pdf" type="application/pdf" width="100%" height="600px">
-  <p>Unable to display PDF file. <a href="/assets/files/IPA-Evidence-Review-Remote-Data-Collection-Modes-Updated-December-2020.pdf">Download</a> instead.</p>
-</object>
-
-### SurveyCTO Templates for Phone Surveys
-
-*Pre-built templates for phone surveys in SurveyCTO, including:*
-
-- CATI call tracking forms
-- Phone number validation
-- Appointment scheduling
-- Call attempt logging
-- Multi-language support
-
-[View Templates on GitHub](https://github.com/PovertyAction/SurveyCTO-Templates)
-
-### IPA RECOVR Phone Survey
-
-*Insights on IPA's phone survey initiative during COVID-19, including:*
-
-- Survey implementation guide
-- Sample tracking protocols
-- Response rate optimization
-- Quality control measures
-- Cross-country coordination
-
-[View RECOVR Resources](https://www.surveycto.com/data-collection-quality/ipa-recovr-phone-survey/)
-
-### CATI SurveyCTO Plug-ins Webinar
-
-*Discover how J-PAL and IPA use SurveyCTO plug-ins for phone surveys, including:*
-
-- Automated call scheduling
-- Multi-language support
-- Call tracking integration
-- Quality monitoring tools
-- Cross-platform compatibility
-
-[View Webinar Recording](https://www.surveycto.com/events-trends/webinar-cati-plug-ins/)
-
-### Academic Research
-
-### Remote Surveying in a Pandemic: Research Synthesis
-
-*Meta-analysis of phone survey adaptations.*
-
-[Download source data (Excel)](../../../assets/files/Remote_Surveying_in_a_Pandemic_Research_Synthesis_Source_Data.xlsx){.btn .btn-primary}
-
-### Pre-Survey SMS Contact
-
-*Evidence on messaging to boost response rates.*: [Download PDF](../../../assets/files/IPA-Evidence-Brief-Pre-Survey-Notifications-Updated-May-2021.pdf)
-
-### Monetary Incentives
-
-*Impact of incentives on participation.*: [Download PDF](../../../assets/files/IPA-Evidence-Brief-Survey-Incentives-Updated-May-2021.pdf)
-
-### Mode Effects on Data Quality
-
-*Comparing phone vs. in-person data accuracy.*: [Download PDF](../../../assets/files/IPA-Evidence-Brief-Mode-Effects-in-Remote-Surveys-Updated-May-2021.pdf)
-
-### Attrition in Mobile Phone Panels
-
-*Strategies to mitigate panel dropout.*: [Download PDF](../../../assets/files/IPA-Evidence-Brief-Panel-Attrition-May-2021.pdf)
-
-
-### Optimal Timing for Random Digit Dialing
-
-*Maximizing contact success rates.*: [Download PDF](../../../assets/files/Optimal-Timing-for-Random-Digit-Dialing.pdf)
-
-### Repeated Attempts in Random Digit Dialing Surveys
-
-*Best practices for rescheduling calls.*: [Download PDF](../../../assets/files/Assessing-Repeated-and-Rescheduled-Attempts-in-Random-Digit-Dial-Surveys.pdf)
-
-### Best Practices Summary
-
-- **Pre-notification**: Send SMS/WhatsApp alerts to improve response ([WhatsApp Start Guide](/data-collection/whatsapp/index.qmd))
-- **Incentives**: Small monetary rewards increase participation
-- **Call Scheduling**: Prioritize evenings/weekends
-- **Quality Checks**: Monitor for mode-related biases ([Mode Effects](/data-quality/data-management-system.qmd))
-
-## 5. Conclusion
-
-Effective phone surveys require careful planning, appropriate technology, and systematic quality control. Success depends on matching survey mode to research objectives, implementing robust tracking systems, and applying evidence-based practices for maximizing response rates and data quality.
+## IPA Use Cases
+
+| Project | Mode | Countries | Description & Reference |
+|--------|------|-----------|--------------------------|
+| **RECOVR Survey** | CATI | 9+ countries incl. Colombia, Philippines, Rwanda | COVID-19 phone panel tracking livelihoods, health, service access. [Project Overview](https://poverty-action.org/recovr-survey) |
+| **RDD Lessons from RECOVR** | CATI | Multi-country | Operational and sampling strategies using Random Digit Dialing. [Methods Brief & Slides](https://poverty-action.org/event/phone-surveys-using-random-digit-dialing-lessons-learned-ipa%E2%80%99s-multi-country-recovr-surveys) |
+| **Pre-Survey SMS Messaging** | CATI | Multiple countries | Experimental results on how SMS messages affect response rates. [Download PDF](https://poverty-action.org/publication/methods-note-messaging-improve-response-rates-effectiveness-pre-survey-sms-messages) |
+| **Household Rosters via Phone** | CATI | Colombia | Case study on managing rosters in phone survey samples. [Download PDF](https://poverty-action.org/sites/default/files/publications/Case-Study-Colombia-Household-Rosters-for-Phone-Surveys.pdf) |
+| **Representativeness in RDD Samples** | CATI | 9 countries | Working paper on sample bias and representativeness in RDD phone surveys. [Download PDF](https://poverty-action.org/sites/default/files/2024-10/Representativeness-in-remote-methods-2024-Collins-et-al.pdf) |
+
+## Resources
+
+### IPA Guides
+
+| Resource | Description |
+|----------|-------------|
+| [Remote Surveying Handbook (PDF)](/assets/files/IPA-Evidence-Review-Remote-Data-Collection-Modes-Updated-December-2020.pdf) | Comprehensive documentation on remote data modes |
+| [SurveyCTO Templates (GitHub)](https://github.com/PovertyAction/SurveyCTO-Templates) | CATI/IVR forms with scheduling, call logs, and validation |
+| [IPA RECOVR Survey](https://www.surveycto.com/data-collection-quality/ipa-recovr-phone-survey/) | IPA’s COVID-19 survey case study |
+| [CATI Plug-ins Webinar](https://www.surveycto.com/events-trends/webinar-cati-plug-ins/) | Demonstration of SurveyCTO call tools and integrations |
+| [WhatsApp Start Guide](/data-collection/whatsapp/index.qmd) | Pre-contact message implementation tips |
+
+## IPA Use Cases
+
+| Project | Mode | Countries | Description & Reference |
+|--------|------|-----------|--------------------------|
+| **RECOVR Survey** | CATI | 9+ countries (e.g., Colombia, Philippines, Rwanda) | COVID-19 phone panel tracking livelihoods, health, service access. [Project Overview](https://poverty-action.org/recovr-survey) |
+| **RDD Lessons from RECOVR** | CATI | Multi-country | Operational and sampling strategies using Random Digit Dialing. [Methods Brief & Slides](https://poverty-action.org/event/phone-surveys-using-random-digit-dialing-lessons-learned-ipa%E2%80%99s-multi-country-recovr-surveys) |
+| **Pre-Survey SMS Messaging** | CATI | Multiple countries | Experimental results on how SMS messages affect response rates. [Download PDF](https://poverty-action.org/publication/methods-note-messaging-improve-response-rates-effectiveness-pre-survey-sms-messages) |
+| **Household Rosters via Phone** | CATI | Colombia | Case study on managing rosters in phone survey samples. [Download PDF](https://poverty-action.org/sites/default/files/publications/Case-Study-Colombia-Household-Rosters-for-Phone-Surveys.pdf) |
+| **Representativeness in RDD Samples** | CATI | 9 countries | Working paper on sample bias and representativeness in RDD phone surveys. [Download PDF](https://poverty-action.org/sites/default/files/2024-10/Representativeness-in-remote-methods-2024-Collins-et-al.pdf) |
+
+### Research Briefs
+
+| Topic | Link |
+|-------|------|
+| Pre-Survey SMS Contact | [Download PDF](../../../assets/files/IPA-Evidence-Brief-Pre-Survey-Notifications-Updated-May-2021.pdf) |
+| Monetary Incentives | [Download PDF](../../../assets/files/IPA-Evidence-Brief-Survey-Incentives-Updated-May-2021.pdf) |
+| Mode Effects on Data Quality | [Download PDF](../../../assets/files/IPA-Evidence-Brief-Mode-Effects-in-Remote-Surveys-Updated-May-2021.pdf) |
+| Attrition in Mobile Panels | [Download PDF](../../../assets/files/IPA-Evidence-Brief-Panel-Attrition-May-2021.pdf) |
+| RDD Timing Optimization | [Download PDF](../../../assets/files/Optimal-Timing-for-Random-Digit-Dialing.pdf) |
+| Repeated Call Attempts | [Download PDF](../../../assets/files/Assessing-Repeated-and-Rescheduled-Attempts-in-Random-Digit-Dial-Surveys.pdf) |
+| Meta-analysis Source Data | [Excel Download](/assets/files/Remote_Surveying_in_a_Pandemic_Research_Synthesis_Source_Data.xlsx) |
+
+## Summary: Best Practices Checklist
+
+- ✅ Send pre-survey SMS or WhatsApp notifications
+- ✅ Use CATI for complex or sensitive questionnaires
+- ✅ Schedule calls during off-peak hours to improve pickup
+- ✅ Use templates and plug-ins to reduce error and increase speed
+- ✅ Track call attempts and outcomes to manage attrition
+- ✅ Offer modest incentives where feasible
+- ✅ Monitor for mode effects and adjust design if needed
