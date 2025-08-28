@@ -1,6 +1,6 @@
 ---
 title: "Data Security Protocol"
-abstract: "Reference guide outlining IPA’s standards for data security, including handling of personally identifiable information (PII), device security, password protection, encryption, and data backup practices."
+abstract: "Reference guide outlining IPA’s standards for data security, including handling of personally identifiable information (PII), device security, password protection, encryption, AI usage, and data backup practices. Includes a template for project-specific data security plans."
 date: last-modified
 authors-ipa:
   - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
@@ -14,186 +14,173 @@ keywords:
   - device management
   - IRB compliance
   - field protocols
+  - AI usage
 license: "CC BY"
 ---
 
-![Data Security Monitoring (IPA)](/assets/images/mmds_monitoring _ evaluation_black.png){width=120px}
-
 :::{.custom-summary-block}
-This reference page provides IPA staff and partners with a comprehensive overview of data security protocols for safeguarding both hardcopy and softcopy data across all research stages. Topics include PII handling, password and device management, encryption, IRB compliance, and data backup standards.
+This page provides IPA staff and partners with a practical overview of standards for protecting sensitive research data. It covers PII handling, password and device management, encryption (SurveyCTO and Cryptomator), AI usage, IRB compliance, and secure backup practices. A template for creating project-level Data Security Plans is included.
 :::
 
 :::{.callout-tip appearance="simple"}
 ## Key Takeaways
-
-- PII must be encrypted, separated from research data, and excluded from public outputs.
-- All devices must be password-protected and encrypted, with strict field management protocols.
-- Data must be regularly backed up using secure, encrypted systems.
+- Encrypt and separate all PII; exclude it from public outputs.  
+- Protect and encrypt all devices, with clear field management protocols.  
+- Back up data regularly using secure, encrypted systems.  
+- Never share PII, confidential documents, or system credentials with AI tools.  
 :::
 
-## What Is the Data Security Protocol?
+---
 
-IPA’s data security protocol is a formal set of guidelines to ensure that all data—especially PII and sensitive information—is protected from unauthorized access, accidental loss, and data breaches across collection, transfer, analysis, and storage phases.
+## Why Data Security Matters
 
-### Why Data Security Matters
+- **Respect for respondents:** Our data reflects real issues affecting real people.  
+- **Informed consent:** Respondents trust us to protect their confidentiality. Breaches carry consequences.  
+- **Compliance:** Required by IRBs, donors, and laws (e.g., Common Rule, HIPAA, GDPR).  
+- **Increasing risks:** Hacks, phishing, device theft, and accidental sharing can compromise data.  
+- **Human error:** Weak passwords, reused logins, or overlooked identifiers can re-identify individuals:contentReference[oaicite:1]{index=1}.  
 
-- **Compliance:** Required by Institutional Review Boards (IRBs), data protection laws, and donor agreements.
-- **Data Integrity:** Protects the accuracy, traceability, and usability of research data.
-- **Respondent Privacy:** Essential to protect confidential and sensitive information.
-- **Reputation:** Prevents reputational risk due to data leaks or poor practices.
+---
 
 ## Personally Identifiable Information (PII)
 
 ### Definition
+PII refers to any data that can identify an individual on its own or when combined with other data.
 
-PII includes any data point—or combination—that can be used to identify an individual or household.
+**Examples**  
+- **Basic identifiers:** name, date of birth, phone number, email, address  
+- **Sensitive data:** financial info, medical records, biometrics, national IDs  
+- **Linkable data:** GPS, device identifiers, IP addresses, usernames  
 
-### Examples of PII
+### Common Mistakes
+- Believing anonymized data cannot be re-identified  
+- Overlooking indirect identifiers (metadata, purchase history)  
+- Sharing PII without proper encryption or deletion:contentReference[oaicite:2]{index=2}  
 
-- Names
-- GPS coordinates or addresses
-- Birth date + gender + village name
-- Phone numbers or email addresses
-- National IDs, biometrics, or account numbers
+### Protection Standards
+| Requirement   | Standard |
+|---------------|----------|
+| **Encryption** | Always encrypt PII in collection, transfer, and storage |
+| **Separation** | Store PII separately from research data as early as possible |
+| **Retention**  | Retain PII only as long as necessary, with safeguards |
+| **Publication**| Exclude PII from public datasets and registries |
 
-### Protection Requirements
+---
 
-| Requirement       | Description |
-|------------------|-------------|
-| **Encryption**    | Mandatory at all stages (collection, transmission, storage) |
-| **Separation**    | Separate PII from research data as early as possible |
-| **Retention**     | Apply safeguards for PII retained after study closeout |
-| **Publication**   | Exclude PII from public microdata sets and registries |
+## Encryption Protocols
 
-### Sharing Conditions
+IPA uses two main tools for encryption:
 
-PII may only be shared if:
+### SurveyCTO Form Encryption
+- Encrypts data **at point of capture**, ensuring protection both in transit and at rest.  
+- Only those with the private key can decrypt the data.  
+- If you lose the private key, you lose the data:contentReference[oaicite:3]{index=3}.  
+- [SurveyCTO encryption guidance](https://docs.surveycto.com/02-designing-forms/02-additional-topics/06.encrypting.html)  
 
-1. The recipient is explicitly referenced in the informed consent.
-2. The recipient is named in the approved IRB protocol.
-3. The data is shared via encrypted, secure channels.
+### Cryptomator
+- IPA’s chosen open-source software for encrypting files locally and on cloud services (Box, Dropbox).  
+- Uses 256-bit AES encryption.  
+- Best practices:  
+  - Store your **account key** securely.  
+  - Always **lock the vault** after changes.  
+  - Authorize new devices in **Cryptomator Hub**.  
+  - Retry unlocking in the desktop version if errors occur:contentReference[oaicite:4]{index=4}.  
 
-### Sensitive Data Classification
+### Device / Cloud / Laptop Standards
+- **Devices:** Full-disk encryption; enable remote wipe (e.g., Android, Google accounts).  
+- **Cloud:** Encrypt synced data using Cryptomator.  
+- **Laptops:** Use full-disk encryption, separate admin/user profiles, disable unused USBs, and install antivirus:contentReference[oaicite:5]{index=5}.  
 
-| Level | Description |
-|-------|-------------|
-| **1** | Not confidential |
-| **2** | Contains PII but poses minimal risk |
-| **3** | Contains PII with potential for harm if exposed |
-| **4** | Highly confidential or high-risk if breached |
+---
 
-::: {.callout-warning collapse="true"}
-## Examples of PII (Based on 45 CFR 164.514 - HIPAA Standard)
+## Passwords and Authentication
 
-- Names  
-- Geographic subdivisions smaller than a state  
-- Dates directly related to an individual (e.g., birth date, graduation date)  
-- Phone, fax, and email  
-- Social security or medical record numbers  
-- Health plan, license, and account numbers  
-- Web URLs, IP addresses, biometrics  
-- Full-face photos or any unique identifying codes
-:::
+- Use **strong passwords**: ≥10 characters, mixed types, avoid common substitutions.  
+- Consider a password manager (e.g., LastPass).  
+- Use **two-factor authentication** for email and password management tools.  
+- Lock screens on all devices with PII:contentReference[oaicite:6]{index=6}.  
 
-## IRB and Access Requirements
+---
 
-- Only individuals listed on the IRB protocol may access PII.
-- All approved individuals must complete human subjects protection training (e.g., CITI).
+## Device Security in the Field
 
-## Password Security
+| Requirement         | Standard |
+|---------------------|----------|
+| Check-in/out        | Maintain device logbook |
+| Enumerator custody  | Nightly checks |
+| GPS/AV features     | Disable unless approved |
+| Liability           | Signed forms before fieldwork |
+| Transport           | Use protective casing |
+| Charging & safety   | Follow safe charging protocols |
 
-### Strong Password Criteria
-
-- Minimum of 10 characters
-- Use a mix of uppercase/lowercase letters, numbers, symbols
-- Avoid common words, usernames, or predictable patterns
-
-### Best Practices
-
-- Never share passwords over email
-- Use secure password managers
-- Change passwords regularly
-- Use different passwords across systems
-
-**Example:**  
-_The New Hampshire training was awesome because of the data security presentation in 2024_ → `TnhtwabotDSPi2024!`
-
-## Data Protection Summary
-
-| Standard         | Expectation |
-|------------------|-------------|
-| **Storage**      | Logical, secure, and password-protected locations |
-| **Encryption**   | Mandatory for all files containing PII |
-| **Backup**       | Scheduled backups in local and cloud systems |
-| **Access**       | Only authorized, trained staff |
-
-## Device Security
-
-### General Guidelines
-
-- Use devices recommended by IPA’s Data Coordinator
-- Apply encryption to all sensitive data
-- Enable strong passwords and antivirus protection
-- Label devices with QR codes and assign custody logs
-
-### Field Device Management
-
-| Requirement               | Notes |
-|---------------------------|-------|
-| Check-in/out system       | Maintain device logbook |
-| GPS and audio/video       | Disable unless required |
-| Enumerator responsibility | Assign nightly checks |
-| Liability forms           | Signed before fieldwork |
-| Safe transport            | Use protective casings |
-| Charging & fire safety    | Enforce routine checks |
-
-### Laptop Configuration
-
-| Category        | Setting |
-|----------------|---------|
-| User accounts  | Separate Admin and Enumerator profiles |
-| Connectivity   | Disable unnecessary internet access |
-| USB ports      | Disable unless required |
-| Antivirus      | Required (e.g., Avast, Avira) |
-| Encryption     | Use Cryptomator or equivalent |
-| Software       | IPA-approved tools only |
+---
 
 ## Backup & Storage
 
-| Method        | Tool / Notes |
-|---------------|--------------|
-| **Local**     | External hard drives with scheduled backups (e.g., CrashPlan) |
-| **Cloud**     | Encrypted Box folder + optional Cryptomator encryption |
-| **Supervisor**| Central backup systems and secure file shares |
+| Method      | Tools / Notes |
+|-------------|---------------|
+| **Local**   | Encrypted external drives; scheduled backups (e.g., CrashPlan) |
+| **Cloud**   | Encrypted Box folders; optional Cryptomator layer |
+| **Supervisor** | Centralized backup systems and secure file shares |
 
-## FAQ: PII and Data Flow
+---
 
-### When Must Data Be Encrypted?
+## Responsible Use of AI Tools
 
-- If it contains any PII or sensitive variables
-- Before transmitting or uploading files
+While AI can be a powerful tool, IPA requires **responsible use**:
 
-### When and How to Remove PII?
+- **Never upload PII** or staff data into online AI services.  
+- **Never input confidential information or intellectual property** (e.g., grant proposals, non-public working papers) unless explicitly approved by the owner.  
+- **Never share system credentials** with AI engines.  
+- **Always review privacy agreements** of any AI tool before using it:contentReference[oaicite:7]{index=7}.  
 
-PII should be removed from research datasets according to these guidelines:
+*Keep in mind: AI is a tool. Always edit and double-check outputs before use.*  
 
-1. **Timing**
-    - Remove PII as early as possible in data processing
-    - Always before any public data sharing
-    - After ensuring all necessary linking is complete
+---
 
-2. **Process**
-    - Document all PII variables in a data dictionary
-    - Create separate PII and non-PII datasets
-    - Keep encrypted backups of original files
-    - Log all PII removal actions with dates
+## Data Security Plan Template
 
+Every project should prepare a Data Security Plan (DSP). Below is a suggested format:
+
+### 1. Project Overview
+- Project title and description  
+- Principal Investigator(s)  
+- Field office / partner office  
+
+### 2. Data Types and Collection
+- What data will be collected (survey, admin, qualitative)?  
+- Will PII be collected? If yes, specify type.  
+
+### 3. Data Flow
+- How data moves from collection → storage → analysis  
+- Encryption methods at each stage (SurveyCTO, Cryptomator)  
+
+### 4. Access Control
+- Who has access to PII and datasets  
+- IRB-approved staff list  
+- Training requirements (e.g., CITI certification)  
+
+### 5. Storage and Backup
+- Devices and accounts used  
+- Cloud storage and backup frequency  
+- Local backup protocols  
+
+### 6. AI Usage
+- Will AI tools be used for transcription, coding, or analysis?  
+- Confirm compliance with IPA’s AI guidelines  
+
+### 7. Closeout
+- Timeline and process for PII deletion  
+- Long-term archiving of non-PII data  
+
+---
 
 ## Summary Checklist
 
-✅ Encrypt all PII and sensitive data
-✅ Use strong, unique passwords and protect them
-✅ Secure field devices with user access control
-✅ Remove PII early and log deletions
-✅ Back up data routinely in multiple locations
-✅ Use only IRB-approved data access roles
+✅ Encrypt and separate all PII  
+✅ Use strong, unique passwords with 2FA  
+✅ Secure field devices with logs and custody protocols  
+✅ Remove PII early and log deletions  
+✅ Back up data in multiple secure locations  
+✅ Never share PII or confidential content with AI tools  
+✅ Restrict access to IRB-approved staff only  
