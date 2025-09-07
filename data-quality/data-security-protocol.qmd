@@ -13,7 +13,7 @@ license: "CC BY"
 authors-ipa:
     - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
 contributors:
-    - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
+    - "[Kelly Montaño](https://poverty-action.org/people/kelly-montano)"
     - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
 ---
 
@@ -23,6 +23,7 @@ contributors:
 
 * Protecting sensitive data and PII is essential to maintain respondent confidentiality and comply with ethical standards.
 * Implementing robust encryption, password security, and backup practices ensures data integrity and prevents unauthorized access.
+* Device security and proper data flow management are critical components of comprehensive data protection protocols.
 :::
 
 ## What is the Data Security Protocol?
@@ -38,59 +39,13 @@ The data security protocol is a set of guidelines and practices designed to prot
 
 ## Personally Identifiable Information (PII)
 
-PII refers to any datapoint or combination of datapoints that can identify an individual or household with reasonable certainty. Examples of PII can include:
+PII refers to any datapoint or combination of datapoints that can identify an individual or household with reasonable certainty. 
 
-* Name
-* GPS coordinates
-* Address
-* Combinations of demographic data, village name, birth date, gender, occupation in small communities
+::: {.callout-tip}
 
-::: {.callout-warning collapse="false"}
+### Direct Identifiers
 
-## Data Protection Requirements
-
-PII must be protected using the following protocols:
-
-* **Encryption:** Apply encryption at every stage of the data lifecycle: collection, transmission, storage.
-* **Separation:** Separate PII from research data as soon as possible.
-* **Ongoing Protection:** Protect PII retained after study closure.
-* **Exclusion:** Exclude PII from microdata publications like the AEA registry.
-:::
-
-* **Encryption:** Apply encryption at every stage of the data lifecycle: collection, transmission, storage.
-* **Separation:** Separate PII from research data as soon as possible.
-* **Ongoing Protection:** Protect PII retained after study closure.
-* **Exclusion:** Exclude PII from microdata publications like the AEA registry.
-:::
-
-* **Encryption:** Apply encryption at every stage of the data lifecycle: collection, transmission, storage.
-* **Separation:** Separate PII from research data as soon as possible.
-* **Ongoing Protection:** Protect PII retained after study closure.
-* **Exclusion:** Exclude PII from microdata publications like the AEA registry.
-:::
-
-In terms of sharing PII, this kind of information may only be shared under the following conditions:
-
-1. The recipient is named or referenced in the informed consent.
-2. The recipient is included in the approved research protocol.
-3. Secure methods are used for sharing.
-
-### Sensitive Data
-
-Sensitive data is information where a loss of confidentiality, integrity, or availability could result in serious, severe, or catastrophic consequences.
-
-### Sensitivity Levels
-
-* **Level 1:** Non-confidential.
-* **Level 2:** Contains PII, but no material harm.
-* **Level 3:** Contains PII and could cause material harm.
-* **Level 4:** High-risk confidential data.
-
-::: {.callout-warning collapse="true"}
-
-## Examples of PII (Based on 45 CFR 164.514 - HIPAA Standard)
-
-Based on 45 CFR 164.514 HIPAA Standard, some examples of PII may include:
+Based on 45 CFR 164.514 HIPAA Standard, examples of direct PII include:
 
 * Names
 * Geographic subdivisions smaller than a state/province
@@ -102,10 +57,53 @@ Based on 45 CFR 164.514 HIPAA Standard, some examples of PII may include:
 * Full-face photos or any other unique identifying number, characteristic, or code
 :::
 
-## Access to PII
+::: {.callout-tip}
+
+### Combination Identifiers:
+
+* Demographic data + village name + birth year in small communities
+* Occupation + location + family size in rural areas
+* Educational level + age + specific location
+* Any combination that reduces anonymity below reasonable thresholds
+:::
+
+### Data Protection Requirements
+
+PII must be protected using the following protocols:
+
+* **Encryption:** Apply encryption at every stage of the data lifecycle: collection, transmission, storage.
+* **Separation:** Separate PII from research data as soon as possible.
+* **Ongoing Protection:** Protect PII retained after study closure.
+* **Exclusion:** Exclude PII from microdata publications like the AEA registry.
+* **Retention:** Follow IRB-specified timelines for destruction.
+
+### Sharing PII
+
+In terms of sharing PII, this kind of information may only be shared under the following conditions:
+
+1. The recipient is named or referenced in the informed consent.
+2. The recipient is included in the approved research protocol.
+3. Secure methods are used for sharing.
+
+### Access to PII
 
 * Only individuals **approved in the IRB submission** can access PII.
 * Approved individuals must complete **human subjects protection training** like CITI Program certification.
+
+
+## Sensitive Data Classification
+
+Sensitive data is information where a loss of confidentiality, integrity, or availability could result in serious, severe, or catastrophic consequences.
+
+::: {.callout-warning}
+
+### Sensitivity Levels
+
+* **Level 1:** Non-confidential.
+* **Level 2:** Contains PII, but no material harm.
+* **Level 3:** Contains PII and could cause material harm.
+* **Level 4:** High-risk confidential data.
+:::
 
 ## Password Security
 
@@ -136,7 +134,7 @@ Ensure your data is always:
 * **Encrypted** if it contains PII or sensitive data.
 * **Backed up** in multiple locations.
 
-## Data Flow FAQ
+## Data Security Throughout the Project Lifecycle
 
 ### When to Keep Data Secure
 
@@ -147,25 +145,27 @@ Secure data whenever sensitive information is linked to PII. Raw data containing
 * **Remove PII as soon as possible.**
 * Collaborate with your team to determine who will remove PII and when.
 * **Stata Tip:** Use the `lookfor` command to identify PII.
+* **Document the removal process in project records.**
+
 
 ## Device Security
 
 ### General Device Security
 
-* Consult the Data Coordinator for recommended devices.
-* Encrypt all sensitive data.
-* Password-protect devices.
+* Use secure and approved devices for data collection.
 * Physically secure and label devices.
+* Password-protect devices.
+* Encrypt all sensitive data.
 
 ### Field Device Management
 
-* Implement **check-in/out systems** for devices.
-* Train staff **not to broadcast locations or activities.**
 * Ensure **signed device liability forms.**
-* Maintain **charging schedules and fire safety precautions.**
-* Assign responsibility for **nightly device checks.**
 * Label devices **with QR code stickers.**
 * Store **netbooks in protective casings.**
+* Implement **check-in/out systems** for devices.
+* Maintain **charging schedules and fire safety precautions.**
+* Assign responsibility for **nightly device checks.**
+* Train staff **not to broadcast locations or activities.**
 
 ### Laptop and Personal Device Security
 
@@ -202,8 +202,4 @@ Secure data whenever sensitive information is linked to PII. Raw data containing
 * **Cloud backups:** IPA's encrypted cloud storage through Box with additional encryption using Cryptomator.
 
 ## Conclusion
-By adhering to these data security protocols, we ensure compliance, safeguard respondent privacy, and maintain the integrity of research data.
-
-
-
-By adhering to these data security protocols, organizations ensure compliance, safeguard respondent privacy, and maintain the integrity of research data.
+By adhering to these data security protocols, researchers ensure compliance, safeguard respondent privacy, and maintain the integrity of research data.
