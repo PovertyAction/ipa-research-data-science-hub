@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-09-09">
+<meta name="keywords" content="measurement, survey design, validity, reliability, explanation, development research">
 
-<title>Research Design – Research and Data Science Hub</title>
+<title>Measurement and Survey Design – Research and Data Science Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../research-design/sample-size-power.html" rel="next">
+<link href="../research-design/randomization.html" rel="prev">
 <link href="../assets/logos/ipa-favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -390,7 +394,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Research Design</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/measurement.html">Measurement</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -409,13 +413,13 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Research Design</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../research-design/index.html" class="sidebar-item-text sidebar-link">
@@ -436,14 +440,8 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Measurement 🚧</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Survey Design 🚧</span></a>
+  <a href="../research-design/measurement.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Measurement</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -935,28 +933,1176 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#what-is-stata" id="toc-what-is-stata" class="nav-link active" data-scroll-target="#what-is-stata">What is Stata?</a></li>
+    <li><a href="#why-measurement-matters" id="toc-why-measurement-matters" class="nav-link active" data-scroll-target="#why-measurement-matters">Why Measurement Matters</a>
+    <ul class="collapse">
+    <li><a href="#the-stakes-of-quality-measurement" id="toc-the-stakes-of-quality-measurement" class="nav-link" data-scroll-target="#the-stakes-of-quality-measurement">The Stakes of Quality Measurement</a></li>
+    <li><a href="#why-do-you-need-data" id="toc-why-do-you-need-data" class="nav-link" data-scroll-target="#why-do-you-need-data">Why Do You Need Data?</a></li>
+    </ul></li>
+    <li><a href="#understanding-core-measurement-concepts" id="toc-understanding-core-measurement-concepts" class="nav-link" data-scroll-target="#understanding-core-measurement-concepts">Understanding Core Measurement Concepts</a>
+    <ul class="collapse">
+    <li><a href="#theory-of-change-as-your-foundation" id="toc-theory-of-change-as-your-foundation" class="nav-link" data-scroll-target="#theory-of-change-as-your-foundation">Theory of Change as Your Foundation</a></li>
+    </ul></li>
+    <li><a href="#understanding-measurement-quality" id="toc-understanding-measurement-quality" class="nav-link" data-scroll-target="#understanding-measurement-quality">Understanding Measurement Quality</a>
+    <ul class="collapse">
+    <li><a href="#threats-to-accuracy" id="toc-threats-to-accuracy" class="nav-link" data-scroll-target="#threats-to-accuracy">Threats to Accuracy</a></li>
+    <li><a href="#threats-to-precision" id="toc-threats-to-precision" class="nav-link" data-scroll-target="#threats-to-precision">Threats to Precision</a></li>
+    <li><a href="#validity-measuring-what-we-intend-to-measure" id="toc-validity-measuring-what-we-intend-to-measure" class="nav-link" data-scroll-target="#validity-measuring-what-we-intend-to-measure">Validity: Measuring What We Intend to Measure</a></li>
+    <li><a href="#reliability-consistency-in-measurement" id="toc-reliability-consistency-in-measurement" class="nav-link" data-scroll-target="#reliability-consistency-in-measurement">Reliability: Consistency in Measurement</a></li>
+    </ul></li>
+    <li><a href="#types-of-measurement" id="toc-types-of-measurement" class="nav-link" data-scroll-target="#types-of-measurement">Types of Measurement</a></li>
+    <li><a href="#the-psychology-behind-responses" id="toc-the-psychology-behind-responses" class="nav-link" data-scroll-target="#the-psychology-behind-responses">The Psychology Behind Responses</a>
+    <ul class="collapse">
+    <li><a href="#the-four-stages-of-response" id="toc-the-four-stages-of-response" class="nav-link" data-scroll-target="#the-four-stages-of-response">The Four Stages of Response</a></li>
+    <li><a href="#measurement-error" id="toc-measurement-error" class="nav-link" data-scroll-target="#measurement-error">Measurement Error</a></li>
+    <li><a href="#response-option-design" id="toc-response-option-design" class="nav-link" data-scroll-target="#response-option-design">Response Option Design</a></li>
+    <li><a href="#respondent-related-biases" id="toc-respondent-related-biases" class="nav-link" data-scroll-target="#respondent-related-biases">Respondent-Related Biases</a></li>
+    </ul></li>
+    <li><a href="#designing-quality-instruments" id="toc-designing-quality-instruments" class="nav-link" data-scroll-target="#designing-quality-instruments">Designing Quality Instruments</a>
+    <ul class="collapse">
+    <li><a href="#the-smurf-criteria" id="toc-the-smurf-criteria" class="nav-link" data-scroll-target="#the-smurf-criteria">The SMURF Criteria</a></li>
+    <li><a href="#question-quality-checklist" id="toc-question-quality-checklist" class="nav-link" data-scroll-target="#question-quality-checklist">Question Quality Checklist</a></li>
+    <li><a href="#survey-implementation-guidelines" id="toc-survey-implementation-guidelines" class="nav-link" data-scroll-target="#survey-implementation-guidelines">Survey Implementation Guidelines</a></li>
+    </ul></li>
+    <li><a href="#from-theory-to-practice-design-exercise" id="toc-from-theory-to-practice-design-exercise" class="nav-link" data-scroll-target="#from-theory-to-practice-design-exercise">From Theory to Practice: Design Exercise</a>
+    <ul class="collapse">
+    <li><a href="#scenario-evaluating-a-microfinance-program" id="toc-scenario-evaluating-a-microfinance-program" class="nav-link" data-scroll-target="#scenario-evaluating-a-microfinance-program">Scenario: Evaluating a Microfinance Program</a></li>
+    <li><a href="#design-challenge" id="toc-design-challenge" class="nav-link" data-scroll-target="#design-challenge">Design Challenge</a></li>
+    <li><a href="#sample-solution" id="toc-sample-solution" class="nav-link" data-scroll-target="#sample-solution">Sample Solution</a></li>
+    </ul></li>
+    <li><a href="#innovation-and-context-in-modern-measurement" id="toc-innovation-and-context-in-modern-measurement" class="nav-link" data-scroll-target="#innovation-and-context-in-modern-measurement">Innovation and Context in Modern Measurement</a>
+    <ul class="collapse">
+    <li><a href="#the-technological-revolution" id="toc-the-technological-revolution" class="nav-link" data-scroll-target="#the-technological-revolution">The Technological Revolution</a></li>
+    <li><a href="#balancing-multiple-stakeholder-needs" id="toc-balancing-multiple-stakeholder-needs" class="nav-link" data-scroll-target="#balancing-multiple-stakeholder-needs">Balancing Multiple Stakeholder Needs</a></li>
+    <li><a href="#understanding-measurement-as-social-practice" id="toc-understanding-measurement-as-social-practice" class="nav-link" data-scroll-target="#understanding-measurement-as-social-practice">Understanding Measurement as Social Practice</a></li>
+    <li><a href="#piloting-and-testing" id="toc-piloting-and-testing" class="nav-link" data-scroll-target="#piloting-and-testing">Piloting and Testing</a></li>
+    </ul></li>
+    <li><a href="#common-mistakes-to-avoid" id="toc-common-mistakes-to-avoid" class="nav-link" data-scroll-target="#common-mistakes-to-avoid">Common Mistakes to Avoid</a></li>
+    <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
     </ul>
-      <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/measurement.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <hr>
+  <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Authors</h2>
+  <ul>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/niall-keleher" class="nav-link" data-scroll-target="https\://poverty-action.org/people/niall-keleher">Niall Keleher</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
+  <ul>
+        <li class="contributors" style="font-size: 0.86rem;">Cristhian Pulido</li>
+        <li class="contributors" style="font-size: 0.86rem;">Andreas Tiemann</li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
+  <ul>
+    <li class="last-modified" style="font-size: 0.86rem;">September 9, 2025</li>
+  </ul>
+  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/measurement.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Research Design</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/measurement.html">Measurement</a></li></ol></nav><h1 class="title display-7">Measurement and Survey Design</h1></header>
 
 
 <header id="title-block-header">
     
+        <p class="abstract">This guide explores the fundamental principles of measurement and survey design in development research, explaining why accurate measurement matters and how different design choices affect data quality and research outcomes.</p>
     
 </header>
 
 
-<section id="what-is-stata" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-stata">What is Stata?</h2>
-<p>Stata is a statistical software package that is commonly used in the social sciences and economics. It is widely used at IPA for data analysis and management. It offers a comprehensive library of methods for data cleaning, descriptive statistics, and econometric analysis. Stata is very well suited for research data workflows and research design tasks, including power calculations, sample design adjustments, panel data analysis, time series analysis, etc. See <a href="https://www.stata.com/features/">Stata Features</a> for a full list of what Stata makes available.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Measurement quality</strong> directly impacts the validity and reliability of research findings and policy recommendations.</li>
+<li><strong>Theory of Change</strong> serves as the foundational roadmap that guides measurement strategy and indicator selection.</li>
+<li><strong>Understanding measurement error</strong> and its sources helps researchers make informed design choices that improve data quality.</li>
+</ul>
+</div>
+</div>
+<section id="why-measurement-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-measurement-matters">Why Measurement Matters</h2>
+<p>Measurement sits at the heart of empirical research. Every policy recommendation, every claim about program effectiveness, and every insight about poverty reduction depends fundamentally on how well we measure the phenomena we study. Yet as Howard Wainer noted, “Gathering data, like making love, is one of those activities that almost everyone thinks can be done without instructions. The results are usually disastrous.”</p>
+<section id="the-stakes-of-quality-measurement" class="level3">
+<h3 class="anchored" data-anchor-id="the-stakes-of-quality-measurement">The Stakes of Quality Measurement</h3>
+<p>The stakes of measurement quality are particularly high in development research. When we measure school attendance, health outcomes, or economic well-being, we’re not just collecting data—we’re creating the evidence base that will inform decisions affecting millions of lives. A poorly designed survey question about household income could lead to misallocated resources. An invalid measure of learning outcomes could result in ineffective education policies.</p>
+<p>Consider the seemingly simple question of measuring school attendance in Jensen’s (2010) study on returns to education. Should we rely on:</p>
+<ul>
+<li>Enrollment records</li>
+<li>Daily attendance sheets</li>
+<li>Self-reported data</li>
+</ul>
+<p>Each choice carries different implications for validity, cost, and feasibility. Administrative records might be more objective but could miss informal schooling. Self-reported data might capture the respondent’s perspective but could be subject to social desirability bias. These aren’t just technical trade-offs—they’re choices that shape what we can learn and how confidently we can make recommendations.</p>
+</section>
+<section id="why-do-you-need-data" class="level3">
+<h3 class="anchored" data-anchor-id="why-do-you-need-data">Why Do You Need Data?</h3>
+<p>Measurement serves several crucial functions in development research:</p>
+<ul>
+<li><strong>Getting to know your sample</strong>: Understanding population characteristics and testing whether randomization was successful</li>
+<li><strong>Reducing variance</strong>: Controlling for baseline variables to improve statistical precision</li>
+<li><strong>Testing alternative hypotheses</strong>: Enabling analysis of heterogeneous effects and spillovers</li>
+<li><strong>Solving the black box problem</strong>: Measuring at each step of your Theory of Change to understand mechanisms</li>
+</ul>
+</section>
+</section>
+<section id="understanding-core-measurement-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-core-measurement-concepts">Understanding Core Measurement Concepts</h2>
+<p>Before exploring design principles, let’s examine the fundamental building blocks of measurement using Jensen’s (2010)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> study on returns to education. These four key concepts form the foundation for all measurement decisions:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Construct
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The abstract concept you want to measure (e.g., “school attendance”)</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Indicator
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The specific way you operationalize the construct (e.g., “percentage of school days attended”)</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Instrument
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The data collection tool (e.g., teacher attendance sheets)</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Variable/Data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The actual values you collect (e.g., “85% attendance rate”)</p>
+</div>
+</div>
+</div>
+<section id="theory-of-change-as-your-foundation" class="level3">
+<h3 class="anchored" data-anchor-id="theory-of-change-as-your-foundation">Theory of Change as Your Foundation</h3>
+<p>Before you measure anything, you should clearly define each concept that is part of your Theory of Change and specify where it fits in the causal chain. This conceptualization process involves:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Clear Definition
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Clearly state which dimensions are included in each concept and what is not part of your concept. For example, if measuring “women’s empowerment,” specify whether you include decision-making power, freedom of movement, control over resources, or all three.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Avoid Functional Definitions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Concepts should not be defined by their relationships to other concepts - those relationships should be testable. Don’t define empowerment as “something that leads to better health outcomes.”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Literature Integration
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Know how your understanding of each concept fits into ongoing discussions and current literature. Build on established theoretical frameworks rather than inventing from scratch.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Concept ≠ Measurement
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Remember that your intelligence is not your IQ score. The concept exists independently of how you measure it.</p>
+</div>
+</div>
+</div>
+<p>A Theory of Change (ToC) guides measurement decisions by mapping the causal pathway from intervention to outcomes. It helps researchers:</p>
+<ol type="1">
+<li>Identify key measurement points</li>
+<li>Understand causal mechanisms</li>
+<li>Surface critical assumptions</li>
+<li>Prioritize indicators</li>
+</ol>
+<p>Consider a conditional cash transfer program:</p>
+<ul>
+<li><strong>Immediate outcomes</strong>: School enrollment</li>
+<li><strong>Mechanisms</strong>: Household decisions</li>
+<li><strong>Context</strong>: School quality</li>
+<li><strong>Ultimate impact</strong>: Learning outcomes</li>
+</ul>
+<p>For more details, see the <a href="../research-design/theory-of-change.html">Theory of Change</a> page.</p>
+</section>
+</section>
+<section id="understanding-measurement-quality" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-measurement-quality">Understanding Measurement Quality</h2>
+<p>The quality of any measurement system depends on two fundamental properties that work together but represent distinct concepts: validity and reliability. Understanding the relationship between these concepts is crucial for designing effective measurement strategies.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Quality measurement requires attention to both accuracy and precision:</p>
+<section id="threats-to-accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="threats-to-accuracy">Threats to Accuracy</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Theoretical Threats
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Construct validity</strong>: How well does your indicator map to the actual concept? (e.g., Does an IQ test truly measure intelligence?)</li>
+<li><strong>Measurement-concept alignment</strong>: Are you actually measuring what you think you’re measuring?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Practical Threats (Response Biases)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Recall bias</strong>: Respondents’ difficulty remembering past events accurately</li>
+<li><strong>Social desirability bias</strong>: Tendency to give socially acceptable answers</li>
+<li><strong>Anchoring bias</strong>: Being influenced by previously presented information</li>
+<li><strong>Acquiescence bias</strong>: Tendency to agree with statements regardless of content</li>
+<li><strong>Framing effects</strong>: How question wording influences responses</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="threats-to-precision" class="level3">
+<h3 class="anchored" data-anchor-id="threats-to-precision">Threats to Precision</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Survey Design Issues
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Length and fatigue</strong>: Long surveys reduce response quality</li>
+<li><strong>Ambiguous wording</strong>: Unclear definitions of terms like “household” or “income”</li>
+<li><strong>Inappropriate recall periods</strong>: Asking about annual spending based on yesterday’s purchases</li>
+<li><strong>Response format problems</strong>: Poorly designed answer options</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Random Error Sources
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Question wording</strong>: Inconsistent or confusing language</li>
+<li><strong>Surveyor quality</strong>: Inadequate training or inconsistent administration</li>
+<li><strong>Data entry mistakes</strong>: Errors in transferring responses to datasets</li>
+<li><strong>Survey fatigue</strong>: Reduced attention as surveys progress</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="validity-measuring-what-we-intend-to-measure" class="level3">
+<h3 class="anchored" data-anchor-id="validity-measuring-what-we-intend-to-measure">Validity: Measuring What We Intend to Measure</h3>
+<p>Validity refers to how accurately a measurement captures the concept we want to study. A valid measure truly represents the construct or phenomenon of interest, rather than something else.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Types of Validity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Construct Validity</strong>: Does the measure reflect the theoretical concept?
+<ul>
+<li>Example: Using test scores to measure learning</li>
+</ul></li>
+<li><strong>Content Validity</strong>: Does it cover all relevant aspects?
+<ul>
+<li>Example: A math test covering all required topics</li>
+</ul></li>
+<li><strong>Criterion Validity</strong>: Does it correlate with established measures?
+<ul>
+<li>Example: New poverty measure matching World Bank standards</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<p>Let’s examine this through a practical example:</p>
+<p>Measuring Financial Well-being:</p>
+<ul>
+<li><strong>Poor Validity</strong>: Using only monthly income</li>
+<li><strong>Better Validity</strong>: Combining income, savings, and debt measures</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Common Validity Threats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Using proxy measures that don’t fully capture the concept</li>
+<li>Cultural differences in how concepts are understood</li>
+<li>Missing important dimensions of complex constructs</li>
+<li>Response bias from sensitive questions</li>
+</ul>
+</div>
+</div>
+<p>The key is ensuring measurements accurately reflect what researchers intend to study, not just what’s easy to measure.</p>
+</section>
+<section id="reliability-consistency-in-measurement" class="level3">
+<h3 class="anchored" data-anchor-id="reliability-consistency-in-measurement">Reliability: Consistency in Measurement</h3>
+<p>Reliability refers to how consistently a measure produces similar results under unchanged conditions. While validity ensures we measure the right thing, reliability ensures we measure it consistently.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Types of Reliability
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Test-Retest Reliability</strong>: Same measure, different times
+<ul>
+<li>Example: Asking about income in successive weeks</li>
+</ul></li>
+<li><strong>Inter-rater Reliability</strong>: Different enumerators, same subject
+<ul>
+<li>Example: Multiple teachers grading the same test</li>
+</ul></li>
+<li><strong>Internal Consistency</strong>: Different items measuring same construct
+<ul>
+<li>Example: Multiple questions about food security</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<p>Let’s examine this through practical examples:</p>
+<p>Measuring Household Income:</p>
+<ul>
+<li><strong>Poor Reliability</strong>: “What’s your total income?”</li>
+<li><strong>Better Reliability</strong>: Breaking down income sources by category and timeframe</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Common Reliability Threats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Recall error from long reference periods</li>
+<li>Inconsistent question interpretation</li>
+<li>Environmental factors affecting responses</li>
+<li>Enumerator differences in question delivery</li>
+</ul>
+</div>
+</div>
+<p>Remember: A measure can be reliable without being valid (consistently wrong), but cannot be valid without being reliable.</p>
+</section>
+</section>
+<section id="types-of-measurement" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-measurement">Types of Measurement</h2>
+<p>Development researchers can choose from various measurement approaches:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Measurement Options
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Surveys</strong>: Household/individual questionnaires, including anthropometric measures</li>
+<li><strong>Administrative data</strong>: Government records, school enrollment, health facility data</li>
+<li><strong>Logs and diaries</strong>: Self-reported tracking over time</li>
+<li><strong>Qualitative methods</strong>: Focus groups, Rapid/Participatory Rural Appraisal (R/PRA)</li>
+<li><strong>Behavioral measures</strong>: Games and choice problems</li>
+<li><strong>Observation</strong>: Classroom snapshot surveys, direct observation protocols</li>
+<li><strong>Objective assessments</strong>: Health and education tests</li>
+<li><strong>Digital data</strong>: Cell phone applications and social network data</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="the-psychology-behind-responses" class="level2">
+<h2 class="anchored" data-anchor-id="the-psychology-behind-responses">The Psychology Behind Responses</h2>
+<p>Understanding how respondents process survey questions is crucial for designing effective instruments. Rather than simply retrieving pre-formed answers, respondents engage in a complex cognitive process that can introduce measurement error.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<section id="the-four-stages-of-response" class="level3">
+<h3 class="anchored" data-anchor-id="the-four-stages-of-response">The Four Stages of Response</h3>
+<ol type="1">
+<li><strong>Comprehension</strong>
+<ul>
+<li>Understanding the question’s intent</li>
+<li>Interpreting key terms and concepts</li>
+</ul></li>
+<li><strong>Retrieval</strong>
+<ul>
+<li>Accessing relevant memories</li>
+<li>Recalling specific information</li>
+</ul></li>
+<li><strong>Judgment</strong>
+<ul>
+<li>Evaluating retrieved information</li>
+<li>Organizing thoughts into an answer</li>
+</ul></li>
+<li><strong>Response</strong>
+<ul>
+<li>Selecting an appropriate answer</li>
+<li>Formatting the response according to options</li>
+</ul></li>
+</ol>
+<p>Each stage presents opportunities for measurement error:</p>
+<ul>
+<li><strong>Comprehension</strong>: Ambiguous wording can lead to different interpretations</li>
+<li><strong>Retrieval</strong>: Respondents may:
+<ul>
+<li>Struggle to recall specific information</li>
+<li>Retrieve information selectively</li>
+</ul></li>
+<li><strong>Judgment</strong>: Respondents may apply different criteria for evaluation</li>
+<li><strong>Response</strong>: Respondents may edit answers based on:
+<ul>
+<li>Social desirability</li>
+<li>Perceived consequences</li>
+</ul></li>
+</ul>
+<p>Understanding this cognitive process helps explain why seemingly straightforward questions can produce unreliable data. For example, when we ask “How much did your household spend on food last month,” we’re asking respondents to:</p>
+<ol type="1">
+<li>Define what counts as “household”</li>
+<li>Recall numerous transactions</li>
+<li>Categorize various expenses</li>
+<li>Aggregate multiple amounts</li>
+</ol>
+<p>The quality of response depends on how successfully respondents navigate each stage of this complex cognitive process.</p>
+</section>
+<section id="measurement-error" class="level3">
+<h3 class="anchored" data-anchor-id="measurement-error">Measurement Error</h3>
+<p>Measurement error—the difference between a respondent’s answer and the true value—can arise from multiple sources. Rather than viewing these as isolated problems, it’s helpful to understand them as systematic patterns that can be anticipated and addressed through careful design.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1. Ambiguity
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Problematic: “Do you exercise regularly?”</p>
+<p>What counts as “exercise”? What does “regularly” mean?</p>
+<p>Improved: “During the past week, how many days did you do at least 30 minutes of physical activity?” Practice: Rewrite this ambiguous question: “How often do you eat healthy food?”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2. Negative Framing
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Problem: “Do you disagree that the program was unhelpful?” requires respondents to work through multiple negations.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+3. Double-Barreled Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Problematic: “How satisfied are you with the quality and price of education?” conflates two potentially different judgments. Fixed: Ask separately:</p>
+<p>“How satisfied are you with the quality of education?” “How satisfied are you with the price of education?”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+4. Presuming Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Problematic: “How much have you saved for your children’s education?” assumes the respondent has children, plans to have children, and believes in saving for education. Better Approach:</p>
+<p>“Do you have children or plan to have children?” If yes: “Do you save money for education expenses?” If yes: “Approximately how much have you saved?”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+5. Jargon and Technical Terms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Can confuse respondents who aren’t familiar with specialized language, leading to misinterpretation or non-response.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="response-option-design" class="level3">
+<h3 class="anchored" data-anchor-id="response-option-design">Response Option Design</h3>
+<p>The way answer choices are structured can systematically bias responses. Poor design of response options can lead to measurement error through issues like missing categories, overlapping ranges, or unbalanced scales. Well-designed response options should be mutually exclusive, collectively exhaustive, and presented in a clear, unbiased format that allows respondents to accurately report their true answers.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1. Completeness
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Response options must cover all possible answers. Missing categories force respondents to choose inappropriate options.</p>
+<p>Example Problem: “How many years have you worked full-time at IPA?” This excludes part-time workers.</p>
+<p>Better Design:</p>
+<ul>
+<li>Include “part-time” option</li>
+<li>Add “Not applicable” for contractors</li>
+<li>Include “Don’t know” option</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2. Overlapping Categories
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Response options should be mutually exclusive with no overlap between categories.</p>
+<p>Example Problem: Age categories:</p>
+<ul>
+<li>0-1 years</li>
+<li>1-2 years</li>
+<li>2+ years</li>
+</ul>
+<p>Where does someone exactly 1-year-old fit?</p>
+<p>Better Design:</p>
+<ul>
+<li>0 years</li>
+<li>1 year</li>
+<li>2+ years</li>
+</ul>
+<p>Or:</p>
+<ul>
+<li>0-11 months</li>
+<li>12-23 months</li>
+<li>24+ months</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+3. Anchoring Effects
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The structure and range of response options can suggest what’s “normal” and bias answers.</p>
+<p>Example Problem: Income categories:</p>
+<ul>
+<li>$50,000-$75,000</li>
+<li>$75,000-$100,000</li>
+<li>$100,000-$200,000</li>
+</ul>
+<p>This suggests these are typical income ranges and may bias responses.</p>
+<p>Better Design:</p>
+<ul>
+<li>Use local income distribution data to set appropriate ranges</li>
+<li>Consider open-ended responses for continuous variables</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+4. Question Order Effects
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The sequence of questions and overall survey context can influence how people respond.</p>
+<p>Example Problem: Asking about satisfaction with specific services before overall satisfaction biases the overall rating.</p>
+<p>Better Design:</p>
+<ul>
+<li>Ask general questions before specific ones</li>
+<li>Group related questions together</li>
+<li>Consider randomizing question order when appropriate</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="respondent-related-biases" class="level3">
+<h3 class="anchored" data-anchor-id="respondent-related-biases">Respondent-Related Biases</h3>
+<p>Individual respondents bring their own cognitive biases, memory limitations, and personal motivations that can systematically affect how they answer questions. These biases include recall bias (difficulty remembering past events accurately), social desirability bias (tendency to give socially acceptable answers), anchoring bias (being influenced by previously presented information), and reporting bias (strategic misrepresentation based on perceived incentives).</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1. Recall Bias
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Problematic: “What did you eat for dinner last Monday?” Solutions:</p>
+<ul>
+<li>Shorten recall period: “What did you eat for dinner yesterday?”</li>
+<li>Use diaries for tracking over time</li>
+<li>Use administrative records when available</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2. Social Desirability Bias
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sensitive Question: “Have you consumed illegal drugs in the past year?” Mitigation Strategies:</p>
+<ul>
+<li>Emphasize confidentiality</li>
+<li>Use anonymous data collection</li>
+<li>Consider indirect questioning techniques</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+3. Anchoring Bias
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Problematic: “Most people have 3 meals per day. How many meals do you usually have?” Better: “How many meals do you usually have per day?”</p>
+<p>Practice Exercise: Identify the bias in this question and suggest an improvement: “Given that regular exercise improves health, how many times per week do you exercise?”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+4. Reporting Bias
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Occurs when respondents have incentives to misrepresent their situation. In contexts where survey responses might affect eligibility for benefits, respondents may strategically under-report income or over-report needs.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="designing-quality-instruments" class="level2">
+<h2 class="anchored" data-anchor-id="designing-quality-instruments">Designing Quality Instruments</h2>
+<section id="the-smurf-criteria" class="level3">
+<h3 class="anchored" data-anchor-id="the-smurf-criteria">The SMURF Criteria</h3>
+<p>Every survey question should meet these standards:</p>
+<ul>
+<li><strong>Specific</strong>: Asks one question at a time</li>
+<li><strong>Measurable</strong>: Quantifies accurate and unbiased information</li>
+<li><strong>Understandable</strong>: Easy to comprehend and clearly defined</li>
+<li><strong>Relevant</strong>: Measures a key or intermediate outcome</li>
+<li><strong>Framed</strong>: Has clear boundaries (e.g., time frame, context)</li>
+</ul>
+</section>
+<section id="question-quality-checklist" class="level3">
+<h3 class="anchored" data-anchor-id="question-quality-checklist">Question Quality Checklist</h3>
+<p>Before finalizing any question, go through this checklist to identify potential issues:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Purpose and Planning
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Does the question have an explicit rationale and a plan for how responses will be used?</li>
+<li>Does it pass tests of validity, reliability, and responsiveness?</li>
+<li>Can you connect this question to a specific analysis or research hypothesis?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Respondent Perspective
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Can respondents easily answer from memory?</li>
+<li>Is the question simple, specific, and well-defined enough that all respondents will interpret it similarly?</li>
+<li>Are you asking about something respondents actually know or care about?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bias Prevention
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Does the question contain words or phrases that could bias responses?</li>
+<li>Does it appear to “give away” what you’d like the response to be?</li>
+<li>Are you leading respondents toward particular answers?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Structure and Format
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Does the question focus on a single topic, or should it be broken into multiple questions?</li>
+<li>Are all response options mutually exclusive?</li>
+<li>Should you allow multiple answers or include an “other” option?</li>
+<li>Are assumptions implied by the question actually warranted?</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="survey-implementation-guidelines" class="level3">
+<h3 class="anchored" data-anchor-id="survey-implementation-guidelines">Survey Implementation Guidelines</h3>
+<section id="technical-considerations" class="level4">
+<h4 class="anchored" data-anchor-id="technical-considerations">Technical Considerations</h4>
+<ul>
+<li><strong>Skip logic</strong>: Double-check all conditional questions and use consistent visual cues</li>
+<li><strong>Hard/soft checks</strong>: Limit validation checks primarily to computer-assisted interviews</li>
+<li><strong>Visual design</strong>: Use consistent formatting and clear instructions for surveyors</li>
+<li><strong>Supporting materials</strong>: Develop answer cards and visual aids as needed</li>
+</ul>
+</section>
+<section id="human-elements" class="level4">
+<h4 class="anchored" data-anchor-id="human-elements">Human Elements</h4>
+<ul>
+<li><strong>Rapport building</strong>: Standardize the first minute of every interview to establish trust</li>
+<li><strong>Documentation</strong>: Leave space for comments and field notes</li>
+<li><strong>Closure</strong>: Always thank respondents and provide contact information</li>
+<li><strong>Flexibility</strong>: Allow time for respondents’ questions and concerns</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="from-theory-to-practice-design-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="from-theory-to-practice-design-exercise">From Theory to Practice: Design Exercise</h2>
+<p>Let’s apply measurement principles to a real scenario demonstrating how theory translates into practice.</p>
+<section id="scenario-evaluating-a-microfinance-program" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-evaluating-a-microfinance-program">Scenario: Evaluating a Microfinance Program</h3>
+<p>You’re evaluating a microfinance program that provides small loans to women entrepreneurs.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Theory of Change
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Microfinance → Business investment → Increased income → Women’s empowerment</p>
+</div>
+</div>
+</section>
+<section id="design-challenge" class="level3">
+<h3 class="anchored" data-anchor-id="design-challenge">Design Challenge</h3>
+<p>Create survey questions to measure:</p>
+<ol type="1">
+<li>Business investment (intermediate outcome)</li>
+<li>Women’s empowerment (final outcome)</li>
+</ol>
+<p>For each question, consider:</p>
+<ul>
+<li>Is it valid for your construct?</li>
+<li>Is it reliable?</li>
+<li>What measurement errors might occur?</li>
+<li>How can you minimize these errors?</li>
+</ul>
+</section>
+<section id="sample-solution" class="level3">
+<h3 class="anchored" data-anchor-id="sample-solution">Sample Solution</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Business Investment Measurement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Poor Design:</strong> “Did the loan help your business?”</p>
+<p><strong>Better Design:</strong> “In the past 3 months, how much money did you invest in your business from the following sources:</p>
+<ul>
+<li>Personal savings: $____</li>
+<li>Microfinance loan: $____</li>
+<li>Other loans: $____</li>
+<li>Family/friends: $____”</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Women’s Empowerment Measurement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Poor Design:</strong> “Do you feel empowered?”</p>
+<p><strong>Better Design:</strong> “Who in your household makes decisions about:</p>
+<ul>
+<li>Daily food purchases: [Me alone/Spouse alone/Together/Other]</li>
+<li>Children’s education: [Me alone/Spouse alone/Together/Other]</li>
+<li>Large purchases: [Me alone/Spouse alone/Together/Other]”</li>
+</ul>
+</div>
+</div>
+<p>This approach demonstrates how good measurement design moves from abstract constructs to concrete, measurable indicators while minimizing common sources of error.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+IPA Example: Measuring Women’s Empowerment<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>IPA’s Research Methods Initiative has been at the forefront of developing innovative measurement approaches.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> The Global Poverty Research Lab at Northwestern University, in partnership with IPA, has systematically studied how to improve measurement methods across multiple domains.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+IPA’s Multi-Dimensional Measurement Approach
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Decision-making power</strong>
+<ul>
+<li>Household purchases</li>
+<li>Children’s education</li>
+<li>Healthcare decisions</li>
+</ul></li>
+<li><strong>Freedom of movement</strong>
+<ul>
+<li>Market access</li>
+<li>Health facility access</li>
+<li>Family visits</li>
+</ul></li>
+<li><strong>Economic resources</strong>
+<ul>
+<li>Earnings control</li>
+<li>Credit access</li>
+<li>Asset ownership</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="innovation-and-context-in-modern-measurement" class="level2">
+<h2 class="anchored" data-anchor-id="innovation-and-context-in-modern-measurement">Innovation and Context in Modern Measurement</h2>
+<p>Different research contexts and evolving technologies have transformed how we approach measurement in development research. Understanding this evolution helps researchers make informed choices about measurement strategies.</p>
+<section id="the-technological-revolution" class="level3">
+<h3 class="anchored" data-anchor-id="the-technological-revolution">The Technological Revolution</h3>
+<p>Recent innovations have fundamentally enhanced our measurement capabilities:</p>
+<ul>
+<li><strong>Digital Data Collection</strong>: Mobile surveys, satellite data, and remote sensing provide new measurement opportunities</li>
+<li><strong>Standardized Modules</strong>: Validated question banks and measurement toolkits improve comparability across studies</li>
+<li><strong>Administrative Integration</strong>: Combining survey data with existing records reduces respondent burden while improving accuracy</li>
+</ul>
+<p>For example, Ambler et al.’s (2021) study on remittances and education demonstrates how modern measurement approaches can improve data quality. Their work revealed that combining administrative records with carefully framed survey questions provided more accurate insights into how financial transfers affect educational outcomes.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+</section>
+<section id="balancing-multiple-stakeholder-needs" class="level3">
+<h3 class="anchored" data-anchor-id="balancing-multiple-stakeholder-needs">Balancing Multiple Stakeholder Needs</h3>
+<p>Successful measurement strategies must balance competing demands:</p>
+<ul>
+<li><strong>Researchers</strong> need reliable, valid data that supports rigorous analysis</li>
+<li><strong>Policymakers</strong> require clear, actionable insights that inform decisions</li>
+<li><strong>Administrative systems</strong> must maintain practical compatibility and feasibility</li>
+<li><strong>Study participants</strong> deserve respect for their time and privacy</li>
+</ul>
+<p>This evolution reflects a broader understanding that measurement is not just a technical challenge but a social and political one that requires careful consideration of context, culture, and consequences.</p>
+<p>This comprehensive approach provides more valid measurement than single-item indicators, influencing how organizations measure women’s empowerment globally.</p>
+</section>
+<section id="understanding-measurement-as-social-practice" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-measurement-as-social-practice">Understanding Measurement as Social Practice</h3>
+<p>Measurement in development research extends beyond technical considerations to encompass social, cultural, and ethical dimensions. Effective measurement recognizes that:</p>
+<ul>
+<li><strong>Cultural context shapes interpretation</strong>: What constitutes “household income” or “food security” varies across cultures</li>
+<li><strong>Power dynamics influence responses</strong>: Respondents may alter answers based on perceived consequences</li>
+<li><strong>Measurement itself can be an intervention</strong>: The act of asking questions can change behavior or awareness</li>
+</ul>
+</section>
+<section id="piloting-and-testing" class="level3">
+<h3 class="anchored" data-anchor-id="piloting-and-testing">Piloting and Testing</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Essential Testing Steps
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Review before piloting</strong>: Check instruments without collecting data</li>
+<li><strong>Mandatory piloting</strong>: No instrument should be used without testing</li>
+<li><strong>Iterative process</strong>: Pilot, revise, pilot again</li>
+<li><strong>External testing</strong>: Pilot outside your target population first</li>
+<li><strong>Staff testing</strong>: Ensure your team can implement the instrument effectively</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="common-mistakes-to-avoid" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes-to-avoid">Common Mistakes to Avoid</h2>
+<p>Based on extensive research experience, researchers frequently make these errors:</p>
+<ul>
+<li><strong>Including unnecessary concepts</strong>: Only measure what directly relates to your Theory of Change and analysis plan</li>
+<li><strong>Overly long surveys</strong>: Most surveys are simply too long - ruthlessly prioritize</li>
+<li><strong>Functional concept definitions</strong>: Defining concepts by their expected relationships rather than their intrinsic properties</li>
+<li><strong>Ignoring cultural context</strong>: Failing to adapt questions to local understanding and norms</li>
+<li><strong>Skipping pilot testing</strong>: Moving directly to full implementation without adequate testing</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Bradburn, N. M., Sudman, S., &amp; Wansink, B. (2004). <em>Asking questions: The definitive guide to questionnaire design</em>. Jossey-Bass.</li>
+<li>Deaton, A., &amp; Zaidi, S. (2002). <em>Guidelines for constructing consumption aggregates for welfare analysis</em>. World Bank Publications.</li>
+<li>Fowler, F. J. (1995). <em>Improving survey questions: Design and evaluation</em>. Sage.</li>
+<li>Glewwe, P., &amp; Grosh, M. E. (2000). <em>Designing household survey questionnaires for developing countries</em>. World Bank.</li>
+<li>Tourangeau, R., Rips, L. J., &amp; Rasinski, K. A. (2000). <em>The psychology of survey response</em>. Cambridge University Press.</li>
+</ul>
 
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Jensen, R. (2010). The (perceived) returns to education and the demand for schooling. The Quarterly Journal of Economics, 125(2), 515-548.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Ambler, K., Aycinena, D., and Yang, D. (2021). Channeling remittances to education: A field experiment among migrants from El Salvador. American Economic Journal: Applied Economics, 13(2), 207-235.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Glennerster, R., &amp; Takavarasha, K. (2013). Running randomized evaluations: A practical guide. Princeton University Press.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Global Poverty Research Lab at Northwestern University. (n.d.). Methodological Studies in Development Research. https://www.poverty-action.org/researchers/working-with-ipa/research-methods-initiative<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Tourangeau, R. (1984). Cognitive sciences and survey methods. In T. Jabine, M. Straf, J. Tanur, &amp; R. Tourangeau (Eds.), Cognitive aspects of survey methodology: Building a bridge between disciplines (pp.&nbsp;73-100). The National Academies Press.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>IPA Research Methods Initiative. (2023). Research Methods Initiative Overview. https://www.poverty-action.org/researchers/working-with-ipa/research-methods-initiative<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Global Poverty Research Lab at Northwestern University. (n.d.). Methodological Studies in Development Research. https://www.poverty-action.org/researchers/working-with-ipa/research-methods-initiative<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1369,6 +2515,18 @@ cookieconsent.run({
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../research-design/randomization.html" class="pagination-link" aria-label="Randomization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Randomization</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../research-design/sample-size-power.html" class="pagination-link" aria-label="Sample and Power Calculations">
+        <span class="nav-page-text">Sample and Power Calculations</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
