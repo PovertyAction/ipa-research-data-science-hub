@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-10">
+<meta name="dcterms.date" content="2025-09-26">
 <meta name="keywords" content="data cleaning, variable management, missing values, categorical variables, dummy variables, explanation">
 
 <title>Variable Management – Research and Data Science Hub</title>
@@ -74,18 +74,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-399203f6078c9f40aa1bd3ecdeb04a2a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8500d94e49f1d3f418296a7c1c9b0ee7.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-399203f6078c9f40aa1bd3ecdeb04a2a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-62bd0246437ae56647c7d14e216fe155.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-814039ad842dfff7883839873f78e99b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-62bd0246437ae56647c7d14e216fe155.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5ce0abbbba2c0580fc48e223f52aed5f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-31d6b8ed1efa3438b3d580a9f8dedb77.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-5ce0abbbba2c0580fc48e223f52aed5f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0c86dd5e9051fd5554948cb255602972.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7826d255882714c16f511d4b2d8ec577.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0c86dd5e9051fd5554948cb255602972.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -327,7 +328,8 @@ cookieconsent.run({
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../assets/logos/IPA-primary-color-RGB.png" alt="" class="navbar-logo">
+    <img src="../assets/logos/IPA-primary-color-RGB.png" alt="" class="navbar-logo light-content">
+    <img src="../assets/logos/ipa-favicon.ico" alt="" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -449,7 +451,8 @@ cookieconsent.run({
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/logos/IPA-primary-color-RGB.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/logos/IPA-primary-color-RGB.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/logos/IPA-primary-color-RGB-inverted.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
@@ -670,8 +673,8 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../under-construction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">In-Person Surveys 🚧</span></a>
+  <a href="../data-collection/in-person-surveys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">In-Person Surveys</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1024,7 +1027,7 @@ cookieconsent.run({
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">September 10, 2025</li>
+    <li class="last-modified" style="font-size: 0.86rem;">September 26, 2025</li>
   </ul>
   <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-cleaning/variable-management.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -1045,7 +1048,7 @@ cookieconsent.run({
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Key Takeaways
+<span class="screen-reader-only">Tip</span>Key Takeaways
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1064,7 +1067,7 @@ Key Takeaways
 <section id="missing-values-on-import" class="level3">
 <h3 class="anchored" data-anchor-id="missing-values-on-import">Missing values on import</h3>
 <p>Many statistical software will import variables and observations that only contain missing values when importing from other data formats. Often, clearing those values immediately after importing data is useful. This can be done manually, or through the <code>missing</code> command which can be installed through SSC. One approach is to do this is as follows:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>*Import <span class="kw">data</span> starting <span class="kw">on</span> the <span class="ot">row</span> <span class="kw">of</span> <span class="kw">variable</span> names: B1</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>*Import <span class="kw">data</span> starting <span class="kw">on</span> the <span class="ot">row</span> <span class="kw">of</span> <span class="kw">variable</span> names: B1</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>import excel <span class="kw">using</span> <span class="st">"${raw}/rawdata.xlsx"</span>, cellrange(B1) first <span class="kw">clear</span> <span class="kw">allstring</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>*Remove <span class="bn">rows</span> and <span class="kw">columns</span> with only <span class="fu">missing</span></span>
@@ -1072,16 +1075,16 @@ Key Takeaways
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">missing</span> dropvars, <span class="kw">force</span> <span class="co">// usually don't use force, but fine in this case</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>*Ensure non-<span class="fu">missing</span> IDs</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">isid</span> id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">isid</span> id</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Sometimes missing values appear as non-empty values in other data management software (SQL uses <code>NULL</code>, R uses two types: <code>NA</code> with four subtypes and <code>NaN</code>, etc.). Check data to ensure those values are removed or properly converted to missing after importing.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>*Check <span class="kw">variable</span> names <span class="kw">if</span> anything equals <span class="st">"NULL"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>*Check <span class="kw">variable</span> names <span class="kw">if</span> anything equals <span class="st">"NULL"</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ds</span>, has(<span class="dv">type</span> <span class="fu">string</span>) <span class="co">// only search strings</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">in</span> <span class="ot">`r(varlist)'</span> {</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`var'</span> = <span class="st">""</span> <span class="kw">if</span> <span class="ot">`var'</span> == <span class="st">"NULL"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For numeric variables, this can be done in one line using recode. For example, imagine all -99 values should be missing values:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>*Recode -99 to <span class="fu">missing</span> <span class="kw">for</span> <span class="ot">all</span> <span class="kw">values</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">recode</span> * (-99=.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>*Recode -99 to <span class="fu">missing</span> <span class="kw">for</span> <span class="ot">all</span> <span class="kw">values</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">recode</span> * (-99=.)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="extended-missing-values-in-stata" class="level3">
 <h3 class="anchored" data-anchor-id="extended-missing-values-in-stata">Extended missing values in Stata</h3>
@@ -1122,7 +1125,7 @@ Key Takeaways
 </tbody>
 </table>
 <p>Some responses may require the enumerator to switch from the standard missing values (for example if a response is restricted to be positive, -99 may not be allowed). Other times, enumerators may enter the wrong missing value by mistake, such as -999 instead of -99. As part of the code to relabel missing values by type, you can include code that searches for these changes. The following code replaces multiple values and looks for positive versions of the missing values in outliers.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>*Assign numerical codes</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>*Assign numerical codes</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>loc idk     -99 99 999  <span class="co">// numerical code for "Don't Know"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>loc rf      -77 77 75   <span class="co">// numerical code for "Refuse"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>loc na      -88         <span class="co">// numerical code for "Not Applicable"</span></span>
@@ -1177,7 +1180,7 @@ Key Takeaways
 <span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    <span class="co">// end foreach x of local</span></span>
 <span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach var of local numvars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach var of local numvars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Check outliers and replacements manually, and search for modal responses in numeric variables that will not have missing values as outliers. Accurate responses can overlap with missing response codes. Automated replacement code, such as the code above, should only be completed after confirming that all inverted values are correct. Even better, use of defensive coding such as assert or the <code>pause</code> command will resolve this. The best solution is often to make sure that the data generating process guards against this type of messiness. Programming in confirmation questions in the survey (“Did the respondent really answer 99 or is this a missing value?”) can help accomplish this with more accuracy.</p>
 </section>
 </section>
@@ -1188,14 +1191,14 @@ Key Takeaways
 <ol type="1">
 <li>This first way recommended method is to start with an entirely missing variable and then replace with <code>1's</code> and <code>0's</code> for each condition.</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> has_score = .</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> has_score = .</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> has_score = 1 <span class="kw">if</span> credit_score != .</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> has_score = 0 <span class="kw">if</span> (credit_score == . &amp; info_available == 1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> has_score = 0 <span class="kw">if</span> (credit_score == . &amp; info_available == 1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>It is important to note that <code>0</code> is defined for those missing a credit score but that credit information is available for, the observations that remain missing are those that are missing a credit score because there was no credit information available. You do not want to lose this information due to poor coding in which you say all these people have no score.</p>
 <ol start="2" type="1">
 <li>The second way is more concise but can be trickier.</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> has_score = (credit_score != .) <span class="kw">if</span> (info_available == 1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> has_score = (credit_score != .) <span class="kw">if</span> (info_available == 1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This method does the above in one step. The first half creates a 1/0 dummy by assigning 1 to any observation that meets the condition in the first parentheses and 0 if it does not. Then it uses the if and second parenthesis to assign missing values. If the second condition <code>(info_available == 1)</code> is false, then that observation will be missing. Either method is acceptable, just be careful to take the 0’s and missing values into account.</p>
 </section>
 <section id="specify-variables" class="level2">
@@ -1211,7 +1214,7 @@ Key Takeaways
 </ul>
 <p>Make sure you save do files and documents so that this process can be replicated and understood by someone else in the future.</p>
 <p>This data flow would like the following. First, the specify responses are cleaned and saved so that the excel sheet can be modified.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* MR 10/25/2019:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* MR 10/25/2019:</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">  The variable q_oth is the "specify" variable corresponding to</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">  the variable q If q == 99, then q_oth has a string value input</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">  by the enumerator.</span></span>
@@ -1237,7 +1240,7 @@ Key Takeaways
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">duplicates</span> <span class="kw">drop</span> q_oth_cl, <span class="kw">force</span></span>
 <span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">export</span> excel q_oth_cl <span class="ot">`map'</span> <span class="kw">using</span> <span class="st">"${temp}q_oth.xlsx"</span>, firstrow(varl) <span class="kw">replace</span></span>
 <span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="kw">restore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="kw">restore</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This results in a table that looks like this:</p>
 <table class="caption-top table">
 <thead>
@@ -1271,7 +1274,7 @@ Key Takeaways
 </table>
 <p>The RA would fill out the mapping column based on the allowed values in the survey. This means that the “Mapping” column would take 1 for the “sky blue” value if the data uses 1 for the survey. If the data uses string values at this point in the cleaning process the “Mapping” column could be filled with “blue.” Ensure that this process is reproducible and rule based. Inconsistent mapping of variables does not create clean data. After this table is completed, it can be merged back into the file to save the values.</p>
 <p>The code to complete that looks like this:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* MR 10/25/19:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* MR 10/25/19:</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">  For question "q", specified other values were cleaned according to the</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">  following rules:</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">    -Any color response with more than 1% of the sample was</span></span>
@@ -1321,7 +1324,7 @@ Key Takeaways
 <span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>*finally check that everything was captured</span>
 <span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="fu">q</span> != 99 <span class="kw">if</span> <span class="dt">_merge</span> == 3 <span class="co">// this assumes 99 == other in the survey AND that the all values were coded</span></span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dt">_merge</span> q_oth_cl mapping <span class="co">// remove extraneous variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dt">_merge</span> q_oth_cl mapping <span class="co">// remove extraneous variable</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="skip-logic" class="level2">
 <h2 class="anchored" data-anchor-id="skip-logic">Skip Logic</h2>
@@ -1332,7 +1335,7 @@ Key Takeaways
 <li>Excluding skip values from the general missing value <code>.</code> can help to identify errors in cleaning later on, as Stata will not impute <code>.s</code> normally. Then, failures in skip logic can be identified as part of the cleaning process. If some of the skips did not work or allowed for some entry error among respondents, document the issues by outputting a list of the problematic observations into a spreadsheet and mention it to the PIs.</li>
 </ol>
 <p>The following code assigns skip values and then confirms that the skips were successful during the survey implementation. It can be very helpful to use the <code>assert</code> command to check this. In addition, ensure that the observations who answered those questions are marked in the data by a dummy variable named in a consistent manner.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">    In this example, there is a module that asks about business profits</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    only if the respondent has a business. The question that starts</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    a set of questions, b_prof_s*, on business profits is b_prof_yn.</span></span>
@@ -1396,7 +1399,7 @@ Key Takeaways
 <span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>    *Save files</span>
 <span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>    <span class="kw">export</span> excel <span class="kw">using</span> <span class="st">"${temp}business_skip_errors.xlsx"</span>, first(<span class="kw">var</span>) <span class="kw">replace</span></span>
 <span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="kw">restore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="kw">restore</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="storage-types-in-stata" class="level2">
 <h2 class="anchored" data-anchor-id="storage-types-in-stata">Storage Types in Stata</h2>
@@ -1413,7 +1416,7 @@ Key Takeaways
 <p>Survey CTO defaults to storing date variables as strings when importing them to Stata. It’s advantageous to convert these variables to a proper date format, as it allows for various logical and mathematical calculations. For example, you could count the number of days between a survey start date and submission date, or the number of minutes between the survey was started and completed. The SurveyCTO datetime metadata (<code>starttime endtime submissiondate</code>) are already stored as date variables.<code>starttime</code> and <code>endtime</code> are formatted as datetimes (<code>%tc</code>) and <code>submissiondate</code> is formatted as a date (<code>%td</code>)).</p>
 <p>To convert imported dates to be stored as a date type in Stata, the functions <code>date()</code> and <code>mdy()</code> will convert non-date variables to date-formatted variables. The functions <code>clock()</code> and <code>mdyhms()</code> will convert non-date variables to datetime-formatted variables. The <code>date()</code> and <code>clock()</code> functions are useful if your dates are stored as a string variable whereas the <code>mdy()</code> and <code>mdyhms()</code> functions are useful if your dates are stored as numeric variables. These commands will create a variable that is the number of days, or the number of milliseconds, since January 1, 1960.</p>
 <p>For a set of SurveyCTO datetimes using the same format, the following code will convert all of the variables to Stata date formats and check for data quality:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>*Define <span class="ot">list</span> <span class="kw">of</span> <span class="fu">date</span> <span class="kw">variable</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>*Define <span class="ot">list</span> <span class="kw">of</span> <span class="fu">date</span> <span class="kw">variable</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ds</span> *_date <span class="co">// this should match your naming convention</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>loc date_vars <span class="ot">`r(varlist)'</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1468,7 +1471,7 @@ Key Takeaways
 <span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">assert</span> !<span class="fu">mi</span>(<span class="ot">`var'</span>)</span>
 <span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach var of local date_vars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach var of local date_vars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Some of these checks will duplicate checks conducted as part of IPA’s <a href="https://github.com/PovertyAction/high-frequency-checks">data management system</a>. It doesn’t hurt to run these confirmations, but we recommend using the data management system to be aware of any problems as soon as possible.</p>
 <p>If you would like to convert your daily variable into a monthly or yearly variable you can use the following functions: <code>mofd()</code> and <code>yofd()</code>. You can find descriptions of all the functions that convert between which count types for dates (daily, monthly, quarterly, or yearly) by typing <code>help date()</code> and clicking on “Date and time functions” to go to the Stata manual.</p>
 <p>Once you have date in the right type, you can work with the formatting of the variable. The formatting is how you make the date look like a date rather than the underlying numeric value. You can read how to format your dates in any way imaginable by typing <code>help datetime display formats</code>. Note that changing the format of a date variable does not change its underlying value.</p>
@@ -1482,12 +1485,12 @@ Key Takeaways
 <h3 class="anchored" data-anchor-id="defensive-programming">Defensive Programming</h3>
 <p>In computer science, programming that ensures a program can function under unanticipated situations conditions is called defensive programming. It can be useful to bring <a href="https://thepoliticalmethodologist.com/2016/06/06/embrace-your-fallibility-thoughts-on-code-integrity/">this mentality</a> into social science research. In many cases, defensive programming is natural with the type of data we work with. Many variables have characteristics that we expect from the data and can be easily checked. For example, for a survey of employed adults in the US, with a working age of 18, no respondents should have age below 18.</p>
 <p>We can check that this is the case in Stata:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> age &gt;= 18 &amp; !<span class="fu">mi</span>(age) <span class="co">// . is considered infinitely large by Stata, so &gt; 18 captures missing values as well.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> age &gt;= 18 &amp; !<span class="fu">mi</span>(age) <span class="co">// . is considered infinitely large by Stata, so &gt; 18 captures missing values as well.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Building these tests into your data flow should be a natural test that you work into data cleaning. This can be expanded to other functions like merges. If every household but one received both an agricultural and household survey, each household survey should merge to the plot dataset except one observation. The merge can be checked to confirm that that is the case:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>*Check <span class="kw">merge</span> success rate</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>*Check <span class="kw">merge</span> success rate</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 id <span class="kw">using</span> <span class="st">"plots.dta"</span> <span class="co">// note: merge has a built-in assert option</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> <span class="kw">if</span> <span class="dt">_merge</span> != 3 <span class="co">// check how many merges did not have an observation in both</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="ot">`r(N)'</span> == 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="ot">`r(N)'</span> == 1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>These tests should be built into cleaning code, as they are computationally cheap unless data is large. They should be executed every time the code runs, and should test major modifications that affect important variables.</p>
 </section>
 <section id="logic-tests-for-survey-data" class="level3">
@@ -1515,7 +1518,7 @@ Key Takeaways
 <li>Data translation and missingness standards of the storage system may create values in statistical software (e.g.&nbsp;SQL treats missing as “NULL”)</li>
 </ul>
 <p>Variable consistency can be handled using value labeling in Stata. For example, to ensure that data remains the same over the course of data collection, it can be useful to check that categorical variables map to expected values to a previously created value label. The <code>noextend</code> option of the encode commands allows you to confirm no values exist in the variable other than those in the supplied label. The following code accomplishes this:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>*Create a <span class="kw">local</span> <span class="ot">list</span> <span class="kw">of</span> variables to <span class="kw">encode</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>*Create a <span class="kw">local</span> <span class="ot">list</span> <span class="kw">of</span> variables to <span class="kw">encode</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>loc str_var <span class="kw">var</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>*Encode <span class="kw">values</span> and <span class="kw">confirm</span> expected</span>
@@ -1524,7 +1527,7 @@ Key Takeaways
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    *Encode variables</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    sencode <span class="ot">`var'</span>, <span class="kw">label</span>(<span class="ot">`var'</span>_label) <span class="kw">replace</span> <span class="kw">noextend</span> <span class="co">// type h sencode to see options</span></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach v of local str_var</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">// end foreach v of local str_var</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
@@ -1595,13 +1598,14 @@ Key Takeaways
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
