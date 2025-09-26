@@ -23,6 +23,8 @@ authors-ipa:
 # updating/maintaining the site.
 #------------------------------------------------------------------
 contributors:
+    - "Karisha Anne Cruz"
+    - "Yuna Liang"
     - "Cristhian Pulido"
     - "Andreas Tiemann"
 ---
@@ -191,6 +193,28 @@ Quality measurement requires attention to both accuracy and precision:
 - **Survey fatigue**: Reduced attention as surveys progress
 :::
 
+### The Recall Period Trade-off
+
+One critical precision decision involves choosing appropriate time frames for questions. Researchers must balance recall accuracy against response variance:
+
+**Longer periods** (e.g., 12 months):
+
+- Pros: Capture seasonal variation, reduce impact of atypical days
+- Cons: Greater recall bias, telescoping effects, estimation challenges
+
+**Shorter periods** (e.g., 7 days):
+
+- Pros: Better recall accuracy, more precise estimates
+- Cons: May not represent typical behavior, higher variance across respondents
+
+**Example**: Measuring remittance sending behavior:
+
+- "How much money have you sent in remittances in the past **12 months**?" - captures annual patterns but suffers from recall bias
+- "How much money have you sent in remittances in the past **3 months**?" - balances recall accuracy with pattern capture
+- "How much money have you sent in remittances in the past **7 days**?" - most accurate recall but may miss typical behavior
+
+**Best practice**: Choose recall periods based on the frequency of the behavior and the importance of accuracy versus representativeness for your research question.
+
 ### Validity: Measuring What We Intend to Measure
 
 Validity refers to how accurately a measurement captures the concept we want to study. A valid measure truly represents the construct or phenomenon of interest, rather than something else.
@@ -289,32 +313,47 @@ Understanding how respondents process survey questions is crucial for designing 
 
 ### The Four Stages of Response
 
+Understanding how respondents process questions reveals why seemingly straightforward questions can produce unreliable data. Each survey response involves a complex cognitive sequence:
+
 1. **Comprehension**
     - Understanding the question's intent
     - Interpreting key terms and concepts
+    - Determining what information is being requested
 
 2. **Retrieval**
     - Accessing relevant memories
-    - Recalling specific information
+    - Searching for specific information or experiences
+    - Recalling details from the defined time period
 
-3. **Judgment**
-    - Evaluating retrieved information
-    - Organizing thoughts into an answer
+3. **Judgment and Estimation**
+    - Evaluating the completeness and accuracy of retrieved information
+    - Making estimations when exact recall is impossible
+    - Organizing thoughts into a coherent answer
 
 4. **Response**
-    - Selecting an appropriate answer
-    - Formatting the response according to options
+    - Selecting an appropriate answer from available options
+    - Formatting the response according to question structure
+    - Potentially editing answers based on social considerations
 
-Each stage presents opportunities for measurement error:
+Consider the complexity behind this apparently simple question: "How many times did you consume rice this month?" The respondent must:
 
-- **Comprehension**: Ambiguous wording can lead to different interpretations
-- **Retrieval**: Respondents may:
-    - Struggle to recall specific information
-    - Retrieve information selectively
-- **Judgment**: Respondents may apply different criteria for evaluation
-- **Response**: Respondents may edit answers based on:
-    - Social desirability
-    - Perceived consequences
+- **Comprehension**: Define what counts as "consuming rice" (meals vs snacks vs ingredients?)
+- **Retrieval**: Recall numerous eating occasions over 30 days
+- **Judgment**: Estimate frequency when exact counting is impossible
+- **Response**: Select the most appropriate category from provided options
+
+Each stage presents distinct opportunities for measurement error:
+
+- **Comprehension errors**: Ambiguous wording leads to different interpretations across respondents
+- **Retrieval limitations**: Respondents may:
+    - Struggle to recall specific information over long periods
+    - Retrieve information selectively (more memorable events)
+    - Experience systematic recall patterns (recency effects)
+- **Judgment biases**: Respondents may apply different estimation strategies or criteria
+- **Response editing**: Respondents may modify answers based on:
+    - Social desirability concerns
+    - Perceived consequences of their responses
+    - Available response options (anchoring effects)
 
 Understanding this cognitive process helps explain why seemingly straightforward questions can produce unreliable data. For example, when we ask "How much did your household spend on food last month," we're asking respondents to:
 
@@ -382,6 +421,13 @@ Can confuse respondents who aren't familiar with specialized language, leading t
 ### Response Option Design
 
 The way answer choices are structured can systematically bias responses. Poor design of response options can lead to measurement error through issues like missing categories, overlapping ranges, or unbalanced scales. Well-designed response options should be mutually exclusive, collectively exhaustive, and presented in a clear, unbiased format that allows respondents to accurately report their true answers.
+
+**Core Principles for Response Options**:
+
+1. **Mutually exclusive**: No overlap between categories
+2. **Collectively exhaustive**: Cover all possible answers
+3. **Balanced**: Equal number of positive and negative options for scales
+4. **Appropriate precision**: Match the level of detail respondents can reasonably provide
 
 :::{.callout-warning collapse="true"}
 
@@ -493,16 +539,58 @@ Mitigation Strategies:
 
 ## 3. Anchoring Bias
 
-Problematic: "Most people have 3 meals per day. How many meals do you usually have?"
-Better: "How many meals do you usually have per day?"
+**What it is**: When question wording or structure suggests what constitutes a "normal" response, influencing how respondents answer.
 
-Practice Exercise: Identify the bias in this question and suggest an improvement:
+**Example problem**: "In the US, Hurricane Harvey left some passengers stranded at airports for up to three days. How long was your last flight delayed?"
+
+- No time (there was no delay)
+- Less than 10 minutes
+- Between 10 minutes and 30 minutes
+- More than 30 minutes but less than an hour
+- An hour or more
+
+The reference to three-day delays creates an anchor that makes respondents more likely to report longer delays.
+
+**Better approach**: "How long was your last flight delayed?" without the contextual anchor.
+
+**Practice Exercise**: Identify the bias in this question and suggest an improvement:
 "Given that regular exercise improves health, how many times per week do you exercise?"
 :::
 
 :::{.callout-warning collapse="true"}
 
-## 4. Reporting Bias
+## 4. Framing Effects
+
+**What it is**: How the presentation or wording of identical information influences responses, even when the factual content is the same.
+
+**Example problem**: "Two drugs can be used to treat 600 terminally ill patients. Treatment A will save 200 people. Treatment B will allow 400 people to die. Which treatment would you prefer?"
+
+Despite being mathematically identical (200 saved = 400 die out of 600), respondents systematically prefer Treatment A because it's framed as a gain rather than a loss.
+
+**Better approach**: Use neutral, balanced language that doesn't emphasize gains or losses.
+:::
+
+:::{.callout-warning collapse="true"}
+
+## 5. Question Order Effects
+
+**What it is**: The sequence of questions influences how respondents answer later questions by making certain topics more mentally accessible.
+
+**Example problem**:
+
+1. "How many years of education do you have?"
+2. "Did you go to public or private school?"
+3. "Did your school provide everyone a quality education?"
+4. "For the upcoming election, what are the top policy priorities you are looking for from the candidates?"
+
+After thinking extensively about education, respondents are more likely to prioritize education-related policies.
+
+**Better approach**: Ask general questions before specific ones, and consider randomizing question order when appropriate.
+:::
+
+:::{.callout-warning collapse="true"}
+
+## 6. Reporting Bias
 
 Occurs when respondents have incentives to misrepresent their situation. In contexts where survey responses might affect eligibility for benefits, respondents may strategically under-report income or over-report needs.
 :::
@@ -511,13 +599,25 @@ Occurs when respondents have incentives to misrepresent their situation. In cont
 
 ### The SMURF Criteria
 
-Every survey question should meet these standards:
+Every survey question should meet these essential standards:
 
-- **Specific**: Asks one question at a time
-- **Measurable**: Quantifies accurate and unbiased information
-- **Understandable**: Easy to comprehend and clearly defined
-- **Relevant**: Measures a key or intermediate outcome
-- **Framed**: Has clear boundaries (e.g., time frame, context)
+- **Specific**: Asks one question at a time, avoiding double-barreled questions
+- **Measurable**: Quantifies accurate and unbiased information with appropriate precision
+- **Understandable**: Easy to comprehend with clearly defined terms and concepts
+- **Relevant**: Measures a key or intermediate outcome connected to your Theory of Change
+- **Framed**: Has clear boundaries including time frame, context, and scope
+
+**Example of SMURF in practice**:
+
+Poor: "How satisfied are you with the quality and price of education?"
+
+- Violates **Specific** (double-barreled: quality AND price)
+- Not **Framed** (which education? what time period?)
+
+Better: "How satisfied are you with the quality of education your child received this school year?"
+
+- **Specific**: focuses only on quality
+- **Framed**: specifies child's education and time period
 
 ### Question Quality Checklist
 
@@ -693,6 +793,7 @@ Successful measurement strategies must balance competing demands:
 This evolution reflects a broader understanding that measurement is not just a technical challenge but a social and political one that requires careful consideration of context, culture, and consequences.
 
 This comprehensive approach provides more valid measurement than single-item indicators, influencing how organizations measure women's empowerment globally.
+:::
 
 ### Understanding Measurement as Social Practice
 
