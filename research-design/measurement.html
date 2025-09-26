@@ -974,6 +974,7 @@ cookieconsent.run({
     <ul class="collapse">
     <li><a href="#threats-to-accuracy" id="toc-threats-to-accuracy" class="nav-link" data-scroll-target="#threats-to-accuracy">Threats to Accuracy</a></li>
     <li><a href="#threats-to-precision" id="toc-threats-to-precision" class="nav-link" data-scroll-target="#threats-to-precision">Threats to Precision</a></li>
+    <li><a href="#the-recall-period-trade-off" id="toc-the-recall-period-trade-off" class="nav-link" data-scroll-target="#the-recall-period-trade-off">The Recall Period Trade-off</a></li>
     <li><a href="#validity-measuring-what-we-intend-to-measure" id="toc-validity-measuring-what-we-intend-to-measure" class="nav-link" data-scroll-target="#validity-measuring-what-we-intend-to-measure">Validity: Measuring What We Intend to Measure</a></li>
     <li><a href="#reliability-consistency-in-measurement" id="toc-reliability-consistency-in-measurement" class="nav-link" data-scroll-target="#reliability-consistency-in-measurement">Reliability: Consistency in Measurement</a></li>
     </ul></li>
@@ -1015,6 +1016,8 @@ cookieconsent.run({
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
   <ul>
+        <li class="contributors" style="font-size: 0.86rem;">Karisha Anne Cruz</li>
+        <li class="contributors" style="font-size: 0.86rem;">Yuna Liang</li>
         <li class="contributors" style="font-size: 0.86rem;">Cristhian Pulido</li>
         <li class="contributors" style="font-size: 0.86rem;">Andreas Tiemann</li>
       </ul>
@@ -1321,6 +1324,27 @@ cookieconsent.run({
 </div>
 </div>
 </section>
+<section id="the-recall-period-trade-off" class="level3">
+<h3 class="anchored" data-anchor-id="the-recall-period-trade-off">The Recall Period Trade-off</h3>
+<p>One critical precision decision involves choosing appropriate time frames for questions. Researchers must balance recall accuracy against response variance:</p>
+<p><strong>Longer periods</strong> (e.g., 12 months):</p>
+<ul>
+<li>Pros: Capture seasonal variation, reduce impact of atypical days</li>
+<li>Cons: Greater recall bias, telescoping effects, estimation challenges</li>
+</ul>
+<p><strong>Shorter periods</strong> (e.g., 7 days):</p>
+<ul>
+<li>Pros: Better recall accuracy, more precise estimates</li>
+<li>Cons: May not represent typical behavior, higher variance across respondents</li>
+</ul>
+<p><strong>Example</strong>: Measuring remittance sending behavior:</p>
+<ul>
+<li>“How much money have you sent in remittances in the past <strong>12 months</strong>?” - captures annual patterns but suffers from recall bias</li>
+<li>“How much money have you sent in remittances in the past <strong>3 months</strong>?” - balances recall accuracy with pattern capture</li>
+<li>“How much money have you sent in remittances in the past <strong>7 days</strong>?” - most accurate recall but may miss typical behavior</li>
+</ul>
+<p><strong>Best practice</strong>: Choose recall periods based on the frequency of the behavior and the importance of accuracy versus representativeness for your research question.</p>
+</section>
 <section id="validity-measuring-what-we-intend-to-measure" class="level3">
 <h3 class="anchored" data-anchor-id="validity-measuring-what-we-intend-to-measure">Validity: Measuring What We Intend to Measure</h3>
 <p>Validity refers to how accurately a measurement captures the concept we want to study. A valid measure truly represents the construct or phenomenon of interest, rather than something else.</p>
@@ -1463,41 +1487,55 @@ cookieconsent.run({
 <p>Understanding how respondents process survey questions is crucial for designing effective instruments. Rather than simply retrieving pre-formed answers, respondents engage in a complex cognitive process that can introduce measurement error.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <section id="the-four-stages-of-response" class="level3">
 <h3 class="anchored" data-anchor-id="the-four-stages-of-response">The Four Stages of Response</h3>
+<p>Understanding how respondents process questions reveals why seemingly straightforward questions can produce unreliable data. Each survey response involves a complex cognitive sequence:</p>
 <ol type="1">
 <li><strong>Comprehension</strong>
 <ul>
 <li>Understanding the question’s intent</li>
 <li>Interpreting key terms and concepts</li>
+<li>Determining what information is being requested</li>
 </ul></li>
 <li><strong>Retrieval</strong>
 <ul>
 <li>Accessing relevant memories</li>
-<li>Recalling specific information</li>
+<li>Searching for specific information or experiences</li>
+<li>Recalling details from the defined time period</li>
 </ul></li>
-<li><strong>Judgment</strong>
+<li><strong>Judgment and Estimation</strong>
 <ul>
-<li>Evaluating retrieved information</li>
-<li>Organizing thoughts into an answer</li>
+<li>Evaluating the completeness and accuracy of retrieved information</li>
+<li>Making estimations when exact recall is impossible</li>
+<li>Organizing thoughts into a coherent answer</li>
 </ul></li>
 <li><strong>Response</strong>
 <ul>
-<li>Selecting an appropriate answer</li>
-<li>Formatting the response according to options</li>
+<li>Selecting an appropriate answer from available options</li>
+<li>Formatting the response according to question structure</li>
+<li>Potentially editing answers based on social considerations</li>
 </ul></li>
 </ol>
-<p>Each stage presents opportunities for measurement error:</p>
+<p>Consider the complexity behind this apparently simple question: “How many times did you consume rice this month?” The respondent must:</p>
 <ul>
-<li><strong>Comprehension</strong>: Ambiguous wording can lead to different interpretations</li>
-<li><strong>Retrieval</strong>: Respondents may:
+<li><strong>Comprehension</strong>: Define what counts as “consuming rice” (meals vs snacks vs ingredients?)</li>
+<li><strong>Retrieval</strong>: Recall numerous eating occasions over 30 days</li>
+<li><strong>Judgment</strong>: Estimate frequency when exact counting is impossible</li>
+<li><strong>Response</strong>: Select the most appropriate category from provided options</li>
+</ul>
+<p>Each stage presents distinct opportunities for measurement error:</p>
 <ul>
-<li>Struggle to recall specific information</li>
-<li>Retrieve information selectively</li>
+<li><strong>Comprehension errors</strong>: Ambiguous wording leads to different interpretations across respondents</li>
+<li><strong>Retrieval limitations</strong>: Respondents may:
+<ul>
+<li>Struggle to recall specific information over long periods</li>
+<li>Retrieve information selectively (more memorable events)</li>
+<li>Experience systematic recall patterns (recency effects)</li>
 </ul></li>
-<li><strong>Judgment</strong>: Respondents may apply different criteria for evaluation</li>
-<li><strong>Response</strong>: Respondents may edit answers based on:
+<li><strong>Judgment biases</strong>: Respondents may apply different estimation strategies or criteria</li>
+<li><strong>Response editing</strong>: Respondents may modify answers based on:
 <ul>
-<li>Social desirability</li>
-<li>Perceived consequences</li>
+<li>Social desirability concerns</li>
+<li>Perceived consequences of their responses</li>
+<li>Available response options (anchoring effects)</li>
 </ul></li>
 </ul>
 <p>Understanding this cognitive process helps explain why seemingly straightforward questions can produce unreliable data. For example, when we ask “How much did your household spend on food last month,” we’re asking respondents to:</p>
@@ -1600,6 +1638,13 @@ cookieconsent.run({
 <section id="response-option-design" class="level3">
 <h3 class="anchored" data-anchor-id="response-option-design">Response Option Design</h3>
 <p>The way answer choices are structured can systematically bias responses. Poor design of response options can lead to measurement error through issues like missing categories, overlapping ranges, or unbalanced scales. Well-designed response options should be mutually exclusive, collectively exhaustive, and presented in a clear, unbiased format that allows respondents to accurately report their true answers.</p>
+<p><strong>Core Principles for Response Options</strong>:</p>
+<ol type="1">
+<li><strong>Mutually exclusive</strong>: No overlap between categories</li>
+<li><strong>Collectively exhaustive</strong>: Cover all possible answers</li>
+<li><strong>Balanced</strong>: Equal number of positive and negative options for scales</li>
+<li><strong>Appropriate precision</strong>: Match the level of detail respondents can reasonably provide</li>
+</ol>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1767,8 +1812,18 @@ cookieconsent.run({
 </div>
 <div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Problematic: “Most people have 3 meals per day. How many meals do you usually have?” Better: “How many meals do you usually have per day?”</p>
-<p>Practice Exercise: Identify the bias in this question and suggest an improvement: “Given that regular exercise improves health, how many times per week do you exercise?”</p>
+<p><strong>What it is</strong>: When question wording or structure suggests what constitutes a “normal” response, influencing how respondents answer.</p>
+<p><strong>Example problem</strong>: “In the US, Hurricane Harvey left some passengers stranded at airports for up to three days. How long was your last flight delayed?”</p>
+<ul>
+<li>No time (there was no delay)</li>
+<li>Less than 10 minutes</li>
+<li>Between 10 minutes and 30 minutes</li>
+<li>More than 30 minutes but less than an hour</li>
+<li>An hour or more</li>
+</ul>
+<p>The reference to three-day delays creates an anchor that makes respondents more likely to report longer delays.</p>
+<p><strong>Better approach</strong>: “How long was your last flight delayed?” without the contextual anchor.</p>
+<p><strong>Practice Exercise</strong>: Identify the bias in this question and suggest an improvement: “Given that regular exercise improves health, how many times per week do you exercise?”</p>
 </div>
 </div>
 </div>
@@ -1778,11 +1833,55 @@ cookieconsent.run({
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>4. Reporting Bias
+<span class="screen-reader-only">Warning</span>4. Framing Effects
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>What it is</strong>: How the presentation or wording of identical information influences responses, even when the factual content is the same.</p>
+<p><strong>Example problem</strong>: “Two drugs can be used to treat 600 terminally ill patients. Treatment A will save 200 people. Treatment B will allow 400 people to die. Which treatment would you prefer?”</p>
+<p>Despite being mathematically identical (200 saved = 400 die out of 600), respondents systematically prefer Treatment A because it’s framed as a gain rather than a loss.</p>
+<p><strong>Better approach</strong>: Use neutral, balanced language that doesn’t emphasize gains or losses.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>5. Question Order Effects
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>What it is</strong>: The sequence of questions influences how respondents answer later questions by making certain topics more mentally accessible.</p>
+<p><strong>Example problem</strong>:</p>
+<ol type="1">
+<li>“How many years of education do you have?”</li>
+<li>“Did you go to public or private school?”</li>
+<li>“Did your school provide everyone a quality education?”</li>
+<li>“For the upcoming election, what are the top policy priorities you are looking for from the candidates?”</li>
+</ol>
+<p>After thinking extensively about education, respondents are more likely to prioritize education-related policies.</p>
+<p><strong>Better approach</strong>: Ask general questions before specific ones, and consider randomizing question order when appropriate.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>6. Reporting Bias
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Occurs when respondents have incentives to misrepresent their situation. In contexts where survey responses might affect eligibility for benefits, respondents may strategically under-report income or over-report needs.</p>
 </div>
@@ -1794,20 +1893,31 @@ cookieconsent.run({
 <h2 class="anchored" data-anchor-id="designing-quality-instruments">Designing Quality Instruments</h2>
 <section id="the-smurf-criteria" class="level3">
 <h3 class="anchored" data-anchor-id="the-smurf-criteria">The SMURF Criteria</h3>
-<p>Every survey question should meet these standards:</p>
+<p>Every survey question should meet these essential standards:</p>
 <ul>
-<li><strong>Specific</strong>: Asks one question at a time</li>
-<li><strong>Measurable</strong>: Quantifies accurate and unbiased information</li>
-<li><strong>Understandable</strong>: Easy to comprehend and clearly defined</li>
-<li><strong>Relevant</strong>: Measures a key or intermediate outcome</li>
-<li><strong>Framed</strong>: Has clear boundaries (e.g., time frame, context)</li>
+<li><strong>Specific</strong>: Asks one question at a time, avoiding double-barreled questions</li>
+<li><strong>Measurable</strong>: Quantifies accurate and unbiased information with appropriate precision</li>
+<li><strong>Understandable</strong>: Easy to comprehend with clearly defined terms and concepts</li>
+<li><strong>Relevant</strong>: Measures a key or intermediate outcome connected to your Theory of Change</li>
+<li><strong>Framed</strong>: Has clear boundaries including time frame, context, and scope</li>
+</ul>
+<p><strong>Example of SMURF in practice</strong>:</p>
+<p>Poor: “How satisfied are you with the quality and price of education?”</p>
+<ul>
+<li>Violates <strong>Specific</strong> (double-barreled: quality AND price)</li>
+<li>Not <strong>Framed</strong> (which education? what time period?)</li>
+</ul>
+<p>Better: “How satisfied are you with the quality of education your child received this school year?”</p>
+<ul>
+<li><strong>Specific</strong>: focuses only on quality</li>
+<li><strong>Framed</strong>: specifies child’s education and time period</li>
 </ul>
 </section>
 <section id="question-quality-checklist" class="level3">
 <h3 class="anchored" data-anchor-id="question-quality-checklist">Question Quality Checklist</h3>
 <p>Before finalizing any question, go through this checklist to identify potential issues:</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1816,7 +1926,7 @@ cookieconsent.run({
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Does the question have an explicit rationale and a plan for how responses will be used?</li>
@@ -1827,7 +1937,7 @@ cookieconsent.run({
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1836,7 +1946,7 @@ cookieconsent.run({
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Can respondents easily answer from memory?</li>
@@ -1847,7 +1957,7 @@ cookieconsent.run({
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1856,7 +1966,7 @@ cookieconsent.run({
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Does the question contain words or phrases that could bias responses?</li>
@@ -1867,7 +1977,7 @@ cookieconsent.run({
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1876,7 +1986,7 @@ cookieconsent.run({
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Does the question focus on a single topic, or should it be broken into multiple questions?</li>
@@ -1988,7 +2098,7 @@ cookieconsent.run({
 </div>
 <p>This approach demonstrates how good measurement design moves from abstract constructs to concrete, measurable indicators while minimizing common sources of error.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1997,7 +2107,7 @@ cookieconsent.run({
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>IPA’s Research Methods Initiative has been at the forefront of developing innovative measurement approaches.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> The Global Poverty Research Lab at Northwestern University, in partnership with IPA, has systematically studied how to improve measurement methods across multiple domains.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -2060,7 +2170,7 @@ cookieconsent.run({
 <li><strong>Study participants</strong> deserve respect for their time and privacy</li>
 </ul>
 <p>This evolution reflects a broader understanding that measurement is not just a technical challenge but a social and political one that requires careful consideration of context, culture, and consequences.</p>
-<p>This comprehensive approach provides more valid measurement than single-item indicators, influencing how organizations measure women’s empowerment globally.</p>
+<p>This comprehensive approach provides more valid measurement than single-item indicators, influencing how organizations measure women’s empowerment globally. :::</p>
 </section>
 <section id="understanding-measurement-as-social-practice" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-measurement-as-social-practice">Understanding Measurement as Social Practice</h3>
