@@ -198,7 +198,6 @@ Example YAML frontmatter:
 ---
 title: "My New Page"
 description: "Description of the page content"
-date: last-modified
 
 
 #------------------------------------------------------------------

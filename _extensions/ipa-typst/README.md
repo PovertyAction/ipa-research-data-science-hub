@@ -21,7 +21,6 @@ To use this template, specify the IPA Typst format in your document's YAML front
 ---
 title: "Your Document Title"
 author: "Author Name"
-date: last-modified
 format: ipa-typst-typst
 abstract: "Optional abstract for your document"
 keywords: ["keyword1", "keyword2"]
