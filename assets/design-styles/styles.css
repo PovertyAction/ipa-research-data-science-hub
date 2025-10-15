@@ -406,3 +406,32 @@ span.color-box {
   border: 1px solid #000;
   /* Border color */
 }
+
+/*===========================
+  Code block styles
+=============================*/
+
+/* Disable font ligatures in code blocks */
+pre code,
+code {
+  font-variant-ligatures: none;
+}
+
+/* Dark theme code block improvements for readability */
+body.quarto-dark pre.sourceCode {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-left: 3px solid #333333;
+  padding: 1em;
+}
+
+body.quarto-dark code.sourceCode {
+  background-color: transparent;
+}
+
+/* Ensure inline code is readable in dark theme */
+body.quarto-dark :not(pre)>code {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #be9ffa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
