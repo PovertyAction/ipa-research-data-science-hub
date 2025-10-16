@@ -23,6 +23,8 @@ authors-ipa:
 contributors:
   - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
   - "[Wesley Kirui](https://poverty-action.org/people/wesley-kirui)"
+
+license: "CC-BY-SA"
 ---
 
 :::{.custom-summary-block}
@@ -87,7 +89,7 @@ It's easy to forget that Stata code is operating a computer with very different 
 
 Variables in Stata have storage formats and display formats. Storage formats describe how Stata is storing the variable in the computer memory -- what the data are -- and display formats describes the default way that the information is presented to a user. Type `help format` in Stata to get more information on how variables or values are displayed.
 
-Stata has five storage formats for numerical variables that take up different amount of memory. These formats store information to a certain degree of accuracy before rounding.  The first three types (`byte`, `int`, and `long`) in the table below can only be used for integers. `float` and `double` are the standard type. There is a trade-off for increased precision. More precise storage formats take up more memory. This will make the file larger and slow down Stata's processes when the data are being used.
+Stata has five storage formats for numerical variables that take up different amount of memory. These formats store information to a certain degree of accuracy before rounding. The first three types (`byte`, `int`, and `long`) in the table below can only be used for integers. `float` and `double` are the standard type. There is a trade-off for increased precision. More precise storage formats take up more memory. This will make the file larger and slow down Stata's processes when the data are being used.
 
 | Type | Maximum digits of accuracy | Bytes of memory for a single value|
 | ---- | ----- |--------- |
@@ -156,7 +158,7 @@ Finally, you can use the checklist in this folder to perform checks on your data
 
 ### Checking for Consistency Across Datasets
 
-Once you have a grasp on the overall organization of a dataset — including the variable names, labels, and formats, as well as the number of observations — it's time to dive into the relationships among variables and the distribution of values within each variable. Here, you want to check that things make sense. Can someone who said they don't have a business really be bringing in $1 million in profits each week? Unlikely. Well-programmed surveys should minimize the need for these tests, although they are still good to implement as a check on the quality of the programming.
+Once you have a grasp on the overall organization of a dataset -- including the variable names, labels, and formats, as well as the number of observations -- it's time to dive into the relationships among variables and the distribution of values within each variable. Here, you want to check that things make sense. Can someone who said they don't have a business really be bringing in $1 million in profits each week? Unlikely. Well-programmed surveys should minimize the need for these tests, although they are still good to implement as a check on the quality of the programming.
 
 ## Relative references
 
@@ -220,7 +222,7 @@ This will not work if the instance of Stata is opened from a file in a different
 
 Below we have listed some frequently overlooked commands that we enjoy using. They will make your life a lot easier if you know about them. We provide a quick summary of what the commands do and where they can be used.
 
-Where we appropriate, there is a page dedicated to specific commands that provides more examples of our common uses tips and tricks, and potential concerns to be aware of when using these particular command.  For full documentation simply type `help [commandname]` in Stata to read all about available options and examples for usage.
+Where we appropriate, there is a page dedicated to specific commands that provides more examples of our common uses tips and tricks, and potential concerns to be aware of when using these particular command. For full documentation simply type `help [commandname]` in Stata to read all about available options and examples for usage.
 
 ### fillin
 
@@ -249,7 +251,7 @@ We can use `fillin ID Survey_Round` to get the following
 
 A couple things to note:
 1. This command automatically creates an indicator variable called `\_fillin` that keeps track of observations that were created from the command
-2. Variables not specified in the `fillin` are filled in with a missing value. So after you run `fillin` you will need to go back and replace observations as you see appropriate. For example, for typically constant variables such as gender you could replace this new missing value to match the one above it.
+2. Variables not specified in the `fillin` are filled in with a missing value. After you run `fillin` you will need to go back and replace observations as you see appropriate. For example, for typically constant variables such as gender you could replace this new missing value to match the one above it.
 
 ```stata
 sort ID Survey_Round

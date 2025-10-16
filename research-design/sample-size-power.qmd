@@ -30,7 +30,7 @@ keywords:
   - "research design"
   - "explanation"
 
-license: "CC BY"
+license: "CC BY-SA"
 ---
 
 
@@ -145,13 +145,13 @@ Sample size directly influences the ability to estimate the **true treatment eff
 
 ### How to Determine Sample Size?
 
-| **Factor**                  | Impact on Sample Size                                                                                   |
-|-----------------------------|--------------------------------------------------------------------------------------------------------|
-| **Expected Effect Size**    | Smaller effects require larger samples to detect.                                                      |
-| **Outcome Variance**        | More variable outcomes need larger samples for the same precision.                                     |
-| **Significance Level (α)**  | Lower α (e.g., 1%) requires a larger sample than higher α (e.g., 10%).                                |
-| **Desired Power (1−κ)**     | Higher power (e.g., 90%) means a larger sample than lower power (e.g., 80%).                          |
-| **Study Design**            | Clustered or stratified designs often require larger samples due to intra-group correlation.           |
+| **Factor**                         | Impact on Sample Size                                                                                  |
+|------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **Expected Effect Size**           | Smaller effects require larger samples to detect.                                                      |
+| **Outcome Variance**               | More variable outcomes need larger samples for the same precision.                                     |
+| **Significance Level ($\alpha$)**  | Lower $\alpha$ (e.g., 1%) requires a larger sample than higher $\alpha$ (e.g., 10%).                   |
+| **Desired Power ($1-\kappa$)**     | Higher power (e.g., 90%) means a larger sample than lower power (e.g., 80%).                           |
+| **Study Design**                   | Clustered or stratified designs often require larger samples due to intra-group correlation.           |
 
 ### Trade-offs
 While larger samples improve precision, they require more resources:
@@ -182,67 +182,66 @@ Sample size/power calculations help balance statistical precision with resource 
 ::: {.callout-tip collapse="true"}
 ### Probability Density Functions (PDFs)
 
-PDFs help visualize the uncertainty around the estimated treatment effect (β̂) in a study. They show how likely different values of β̂ are, assuming a true treatment effect β.
+PDFs help visualize the uncertainty around the estimated treatment effect ($\hat{\beta}$) in a study. They show how likely different values of $\hat{\beta}$ are, assuming a true treatment effect $\beta$.
 
 ![Two overlapping normal distributions representing possible treatment effects](/assets/images/power_4.png){width=75%}
 :::
 
 :::{.callout-note}
 ## Key Concept 3
-A narrower distribution of estimates (β̂) increases the chances of detecting true effects. You can achieve this by:
-- Increasing the sample size (**N**)
-- Assigning roughly equal numbers to treatment and control (**p ≈ 0.5**)
-- Reducing outcome variance (**σ²**)
+A narrower distribution of estimates ($\hat{\beta}$) increases the chances of detecting true effects. You can achieve this by:
+- Increasing the sample size (**$N$**)
+- Assigning roughly equal numbers to treatment and control (**$p \approx 0.5$**)
+- Reducing outcome variance (**$\sigma^2$**)
 :::
 
 ::: {.callout-tip collapse="true"}
 ### Treatment Effects Distribution
 
-If researchers repeated the same RCT many times, they wouldn't get the exact same estimate every time. Instead, the estimated treatment effects (β̂) would follow a normal distribution:
+If researchers repeated the same RCT many times, they wouldn't get the exact same estimate every time. Instead, the estimated treatment effects ($\beta$) would follow a normal distribution:
 
 $$
 \hat{\beta} \sim \text{Normal}(\beta, \sigma^2 / [Np(1-p)])
 $$
 
-- **β**: True treatment effect
-- **σ²**: Variance of the outcome
-- **N**: Sample size
-- **p**: Proportion assigned to treatment (e.g., 0.5)
+- **$\beta$**: True treatment effect
+- **$\sigma^2$**: Variance of the outcome
+- **$N$**: Sample size
+- **$p$**: Proportion assigned to treatment (e.g., 0.5)
 :::
-
 
 :::{.callout-note}
 ## Key Concept 4
-**Type I Error (α):** Risk of a false positive
-- Usually set at **5% (α = 0.05)**
+**Type I Error ($\alpha$):** Risk of a false positive
+- Usually set at **5% ($\alpha = 0.05$)**
 - This means there's a 5% chance of incorrectly detecting an effect when there is none
-- A lower α reduces false positives—but increases the risk of missing real effects
-- Its complement (1−α) is known as the confidence level -- how likely studies are to avoid a false positive
+- A lower $\alpha$ reduces false positives—but increases the risk of missing real effects
+- Its complement (1−$\alpha$) is known as the confidence level -- how likely studies are to avoid a false positive
 - While 5% is standard, it can range from 1%-10% in research literature
 :::
 
 ::: {.callout-tip collapse="true"}
 ### Hypothesis Testing Framework
 
-To determine whether an effect is statistically significant, researchers use a hypothesis test. This is important because it helps control the risk of making a **Type I error** -- incorrectly concluding that an effect exists when it actually does not, a "false positive." By setting a significance level (α), researchers limit the probability of making this error and ensure findings are not due to random chance.
+To determine whether an effect is statistically significant, researchers use a hypothesis test. This is important because it helps control the risk of making a **Type I error** -- incorrectly concluding that an effect exists when it actually does not, a "false positive." By setting a significance level ($\alpha$), researchers limit the probability of making this error and ensure findings are not due to random chance.
 
 ::: {.callout-tip collapse="true"}
-## **1. Null Hypothesis, H₀**
-Assumes no effect exists, β = 0. This is the starting point for statistical testing and represents the default position that the intervention has no impact.
+## **1. Null Hypothesis, $H_0$**
+Assumes no effect exists, $\beta = 0$. This is the starting point for statistical testing and represents the default position that the intervention has no impact.
 
 ![Statistical hypothesis testing showing null and alternative distributions](/assets/images/power_ht1.png){width=75%}
 :::
 
 ::: {.callout-tip collapse="true"}
-## **2. Alternative Hypothesis, H₁**
-Proposes existence of an effect, β ≠ 0. Can be one-sided, β > 0 or β < 0, or two-sided, β ≠ 0.
+## **2. Alternative Hypothesis, $H_1$**
+Proposes existence of an effect, $\beta \neq 0$. Can be one-sided, $\beta > 0$ or $\beta < 0$, or two-sided, $\beta \neq 0$.
 
-![Estimate the treatment effect (𝛽 ̂)](/assets/images/power_ht2.png){width=75%}
+![Estimate the treatment effect ($\hat{\beta}$)](/assets/images/power_ht2.png){width=75%}
 :::
 
 ::: {.callout-tip collapse="true"}
 ## **3. Critical Values Computation**
-Based on chosen significance level α, typically uses α = 0.05. Forms rejection regions in the distribution and uses t-distribution or z-distribution.
+Based on chosen significance level $\alpha$, typically uses $\alpha = 0.05$. Forms rejection regions in the distribution and uses t-distribution or z-distribution.
 
 ![Critical Values](/assets/images/power_ht3.png){width=75%}
 
@@ -253,12 +252,12 @@ Based on chosen significance level α, typically uses α = 0.05. Forms rejection
 
 ::: {.callout-tip collapse="true"}
 ## **4. Effect Estimation and Comparison**
-Calculate estimated effect size β̂ and compare to critical values. Consider confidence intervals and assess statistical significance.
+Calculate estimated effect size $\hat{\beta}$ and compare to critical values. Consider confidence intervals and assess statistical significance.
 :::
 
 ::: {.callout-tip collapse="true"}
 ## **5. Statistical Decision**
-Reject H₀ if β̂ exceeds critical values. Fail to reject H₀ if β̂  falls within critical bounds. Consider practical significance and report p-values and confidence intervals.
+Reject $H_0$ if $\hat{\beta}$ exceeds critical values. Fail to reject $H_0$ if $\hat{\beta}$ falls within critical bounds. Consider practical significance and report p-values and confidence intervals.
 
 ![No rejection of Ho](/assets/images/power_ht4_1.png){width=75%}
 
@@ -268,11 +267,11 @@ Reject H₀ if β̂ exceeds critical values. Fail to reject H₀ if β̂  falls 
 
 :::{.callout-note}
 ## Key Concept 5
-**Type II Error (κ):** Risk of a false negative
+**Type II Error ($\kappa$):** Risk of a false negative
 
-- **κ**: Probability of missing a real effect
-- **Power (1−κ):** Probability of detecting a true effect (aim for ≥80%)
-- Lower α (false positive rate) increases κ (false negative rate)
+- **$\kappa$**: Probability of missing a real effect
+- **Power ($1-\kappa$):** Probability of detecting a true effect (aim for ≥80%)
+- Lower $\alpha$ (false positive rate) increases $\kappa$ (false negative rate)
 - Power and sample size are directly related: higher power needs a larger sample
 :::
 
@@ -287,8 +286,8 @@ Reject H₀ if β̂ exceeds critical values. Fail to reject H₀ if β̂  falls 
 Statistical power is influenced by:
 
 - **Sample size (N)**
-- **Effect size (β):** how big the true impact is
-- **Outcome variance (σ²):** how much outcomes naturally vary
+- **Effect size ($\beta$):** how big the true impact is
+- **Outcome variance ($\sigma²$):** how much outcomes naturally vary
 
 Larger samples and bigger effects increase the chance of detecting something real.
 
@@ -303,8 +302,8 @@ Larger samples and bigger effects increase the chance of detecting something rea
 
 Power is often shown as the overlap between two distributions:
 
-- **H₀ (Null):** No effect
-- **H₁ (Alternative):** A true effect exists
+- **$H_0$ (Null):** No effect
+- **$H_1$ (Alternative):** A true effect exists
 - **Critical value:** The cutoff for statistical significance
 
 The **less overlap** between the two distributions, the **higher the power**.
