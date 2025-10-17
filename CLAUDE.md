@@ -50,7 +50,7 @@ All `.qmd` files need:
 - `authors-ipa`: List of main content creators
 - `contributors`: List of supporting contributors
 - `keywords`: List of research and data science keywords, including the type of documentation within the Diataxis Framework.
-- `license`: "CC BY" unless otherwise specified
+- `license`: "CC BY-SA" unless otherwise specified
 
 Always move the `:::{.custom-summary-block}...:::` to the abstract and provide readability improvements.
 
