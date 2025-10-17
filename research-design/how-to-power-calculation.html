@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-10-15">
 <meta name="keywords" content="statistical power, sample size calculation, randomized controlled trials, minimum detectable effect, research design, how-to guide">
 
 <title>Guide to Power Calculations – Research and Data Science Hub</title>
@@ -77,14 +76,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-6c39e09fdfc3dc53c1f951cfe104e44f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-657fc1361c91eea4fb4e96764eaad9ee.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-6c39e09fdfc3dc53c1f951cfe104e44f.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a31fff509eb87fc25a6a1d317504ec4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d5eb9bace1225f8015ea3bfe0b9359d9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a31fff509eb87fc25a6a1d317504ec4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0c86dd5e9051fd5554948cb255602972.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-7826d255882714c16f511d4b2d8ec577.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-0c86dd5e9051fd5554948cb255602972.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-020d74a43affefa176dc4738de78afb7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b17a6ef56194adff50c39a94332f7875.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-020d74a43affefa176dc4738de78afb7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -1011,7 +1010,11 @@ cookieconsent.run({
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">October 15, 2025</li>
+    <li class="last-modified" style="font-size: 0.86rem;">October 17, 2025</li>
+  </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
+  <ul>
+    <li class="license" style="font-size: 0.86rem;"><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="nav-link" data-scroll-target="https\://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></li>
   </ul>
   <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/how-to-power-calculation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -1078,7 +1081,7 @@ cookieconsent.run({
 <li>No additional controls</li>
 </ul>
 <p><strong>Stata code:</strong></p>
-<div id="d041d1b4" class="cell" data-execution_count="2">
+<div id="a29b160d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.2</span> , power(<span class="fl">0.8</span>) sd(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1107,7 +1110,7 @@ Estimated sample sizes:
 <p>This tells Stata to calculate the required sample size for each group—treatment and control—to detect a 0.2 S.D. effect. The required study sample size to achieve a power of 80% is 788 students: 394 in the treatment group and 394 in the control group.</p>
 <p><strong>Stata code:</strong></p>
 <p>Now, suppose researchers expect a larger treatment effect of 0.4 standard deviations instead of 0.2 S.D., keeping all other assumptions the same. To calculate the required sample size for this new scenario:</p>
-<div id="780267ab" class="cell" data-execution_count="3">
+<div id="808ae476" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.4</span> , power(<span class="fl">0.8</span>) sd(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1136,7 +1139,7 @@ Estimated sample sizes:
 <p><strong>Stata code:</strong></p>
 <p>Now, changing the assumption: <strong>What if researchers want to increase the statistical power to 90%?</strong></p>
 <p>To calculate the required sample size for an effect size of 0.4 S.D. and 90% power:</p>
-<div id="a9014b2e" class="cell" data-execution_count="4">
+<div id="e961c56b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.2</span> , power(<span class="fl">0.9</span>) sd(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1187,7 +1190,7 @@ Estimated sample sizes:
 <li>Variance of the outcome variable: 1 S.D</li>
 </ul>
 <p><strong>Stata code:</strong></p>
-<div id="dda992e4" class="cell" data-execution_count="5">
+<div id="f187e39e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> , n(<span class="dv">1000</span>) power(<span class="fl">0.8</span>) sd(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1216,7 +1219,7 @@ Estimated effect size and experimental-group mean:
 <p>This calculates the minimum effect size you can detect with the given sample size.</p>
 <p><strong>Stata code:</strong></p>
 <p>As shown in the graph, with 500, 750, 1,000, 1,250, and 1,500 students, researchers can detect smaller treatment effects as the sample size increases.</p>
-<div id="c3b43297" class="cell" data-execution_count="6">
+<div id="b9f67410" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> , n(<span class="dv">500</span>(<span class="dv">250</span>)<span class="dv">1500</span>) power(<span class="fl">0.8</span>) sd(<span class="dv">1</span>) graph</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1251,7 +1254,7 @@ Estimated effect size and experimental-group mean:
 <li>Variance of the outcome variable: 1 S.D.</li>
 </ul>
 <p><strong>Stata code:</strong></p>
-<div id="31976da9" class="cell" data-execution_count="7">
+<div id="19392add" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.2</span> , n(<span class="dv">1000</span>) sd(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1278,7 +1281,7 @@ Estimated power:
 <p>The estimated power under these assumptions is 0.8,848.</p>
 <p><strong>Stata code:</strong></p>
 <p>Smaller samples lead to less power. As sample size increases, studies reach a larger probability of avoiding a type II error or false negative. In the graph, as the sample size increases, the estimated power also increases. This means studies are more likely to detect a true effect with a larger sample.</p>
-<div id="98b7187e" class="cell" data-execution_count="8">
+<div id="94c958dd" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>power twomeans <span class="dv">0</span> <span class="fl">0.2</span> , n(<span class="dv">100</span>(<span class="dv">100</span>)<span class="dv">1000</span>) sd(<span class="dv">1</span>) graph</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1305,14 +1308,14 @@ Estimated power:
 
 
 </section>
-
-
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
 <ol>
 <li id="fn1"><p>For more details on the <code>power</code> command, see the <a href="https://www.stata.com/manuals13/power.pdf">Stata documentation</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

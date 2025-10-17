@@ -1,6 +1,5 @@
 # Contributing to the IPA Research and Data Science Hub
 
-2025-10-15
 
 Thank you for your interest in contributing to the IPA Research and Data
 Science Hub! This document provides guidelines and instructions for
@@ -198,7 +197,6 @@ Example YAML frontmatter:
 ---
 title: "My New Page"
 description: "Description of the page content"
-date: last-modified
 
 
 #------------------------------------------------------------------
@@ -226,7 +224,9 @@ contributors:
    - "Contributor 3"
 
 keywords: ["keyword1", "keyword2", "keyword3"]
-license: "CC BY"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 ```
 
