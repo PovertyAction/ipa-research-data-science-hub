@@ -20,10 +20,21 @@
     $endfor$
   </ul>
   $endif$
-  $if(date)$
+  $if(date-modified)$
+  <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;">Last Modified</h2>
+  <ul>
+    <li class="last-modified" style="font-size: 0.86rem;">$date-modified$</li>
+  </ul>
+  $elseif(date)$
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;">Last Modified</h2>
   <ul>
     <li class="last-modified" style="font-size: 0.86rem;">$date$</li>
+  </ul>
+  $endif$
+  $if(license)$
+  <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;">License</h2>
+  <ul>
+    <li class="license" style="font-size: 0.86rem;"><a href=$license.url$>$license.text$</a></li>
   </ul>
   $endif$
 </nav>

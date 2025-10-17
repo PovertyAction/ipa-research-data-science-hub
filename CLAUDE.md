@@ -47,11 +47,10 @@ All `.qmd` files need:
 
 - `title`: Page title
 - `abstract`: Page description
-- `date: last-modified`: Auto-update modification date
 - `authors-ipa`: List of main content creators
 - `contributors`: List of supporting contributors
 - `keywords`: List of research and data science keywords, including the type of documentation within the Diataxis Framework.
-- `license`: "CC BY" unless otherwise specified
+- `license`: "CC BY-SA" unless otherwise specified
 
 Always move the `:::{.custom-summary-block}...:::` to the abstract and provide readability improvements.
 

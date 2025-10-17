@@ -1,7 +1,7 @@
 ---
 title: "IPA's Data Management System"
 abstract: "IPA's Data Management System, or DMS, is a package of Stata and Excel tools that automate and assist your project's data flow."
-date: last-modified
+
 authors-ipa:
   - "[Ishmail Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
   - "[Lindsey Shaughnessy]()"
@@ -12,7 +12,9 @@ keywords:
   - "data quality"
   - "data cleaning"
   - "reference"
-license: "CC BY"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
 
@@ -56,7 +58,7 @@ ipacheck update
 To start your project's folder structure, use:
 
 ```stata
-ipacheck new, surveys("NAME OF SURVEY") folder(“path/to/file/destination")
+ipacheck new, surveys("NAME OF SURVEY") folder("path/to/file/destination")
 ```
 
 Note that if you do not include the folder option, the system will create the folder structure in your current working directory.
@@ -86,7 +88,7 @@ Note that if you do not include the folder option, the system will create the fo
 If you already use an existing file structure, you can download the files only using:
 
 ```stata
-ipacheck new, files folder(“path/to/file/destination")
+ipacheck new, files folder("path/to/file/destination")
 ```
 
 The folders and input structure of the DMS have changed in version 4.0. You will need to make some changes to the folder structure of do-files.

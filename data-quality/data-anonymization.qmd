@@ -1,7 +1,6 @@
 ---
 title: "Data Anonymization"
 abstract: "This guide explains what data are considered personally identifiable information, what materials require anonymization, and methods for removing PII from datasets to protect research participants' privacy."
-date: last-modified
 
 #------------------------------------------------------------------
 # Authors
@@ -32,7 +31,9 @@ keywords:
     - "research ethics"
     - "explanation"
 
-license: "CC BY"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
 
@@ -93,9 +94,9 @@ A quick way to screen for PII in Stata is the `lookfor` command. It searches all
 lookfor name
 ```
 
-This command lists all variables whose name or variable label contains the string "name." For example, the command would list a variable named `fname` — for "first name" — because "name" is a substring of `fname`. `lookfor` also stores the list of variables in the saved result `r(varlist)`.
+This command lists all variables whose name or variable label contains the string "name." For example, the command would list a variable named `fname` -- for "first name" -- because "name" is a substring of `fname`. `lookfor` also stores the list of variables in the saved result `r(varlist)`.
 
-To search more than one dataset, use the `lookfor_all` command, available on the Statistical Software Components—] (SSC) archive. To install, type:
+To search more than one dataset, use the `lookfor_all` command, available on the Statistical Software Components (SSC) archive. To install, type:
 
 ```stata
 ssc install lookfor_all
@@ -103,22 +104,22 @@ ssc install lookfor_all
 
 ### Keywords to Search For
 
-Below is a list of keywords to consider searching for—note this list is not exhaustive:
+Below is a list of keywords to consider searching for (note this list is not exhaustive):
 
 * `name`
-* `birth` — to find variables related to the respondent's birthdate
+* `birth`, to find variables related to the respondent's birthdate
 * `phone`
 * `district`
 * `county`
 * `subcounty`
 * `parish`
-* `lc` — to find variables related to the respondent's "local council," a geographical unit in some countries
+* `lc`, to find variables related to the respondent's "local council," a geographical unit in some countries
 * `village`
 * `community`
 * `address` or `gps`
-* `lat` — to find variables related to latitude
-* `lon` — to find variables related to longitude
-* `coord` — to find variables related to GPS coordinates
+* `lat`, to find variables related to latitude
+* `lon`, to find variables related to longitude
+* `coord`, to find variables related to GPS coordinates
 * `location`
 * `house`
 * `compound`
@@ -126,11 +127,11 @@ Below is a list of keywords to consider searching for—note this list is not ex
 * `social`
 * `network`
 * `census`
-* `gender` — in limited cases
-* `sex` — in limited cases
+* `gender`, in limited cases
+* `sex`, in limited cases
 * `fax` or `email`
-* `ip` — for IP addresses
-* `url` — for Web addresses
+* `ip`, for IP addresses
+* `url`, for Web addresses
 * `specify` or `comment`
 
 ### Searching Through String Variables

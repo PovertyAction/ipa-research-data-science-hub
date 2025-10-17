@@ -124,6 +124,6 @@ markdownlint --config .markdownlint.yaml "**/*.qmd" "**/*.md"
 To add new custom rules:
 
 1. Create a new JavaScript file following the markdownlint rule module pattern
-2. Export rule object(s) with `names`, `description`, and `function` properties
+2. Export rule objects with `names`, `description`, and `function` properties
 3. Add the file to the `customRules` list in `.markdownlint.yaml`
 4. Enable the rule by adding its name to the configuration in the file
