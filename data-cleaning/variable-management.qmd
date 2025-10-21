@@ -91,11 +91,11 @@ Some responses may require the enumerator to switch from the standard missing va
 
 ```stata
 *Assign numerical codes
-loc idk		-99 99 999	// numerical code for "Don't Know"
-loc rf		-77 77 75	// numerical code for "Refuse"
-loc na		-88			// numerical code for "Not Applicable"
-loc oth		-66			// numerical code for "Other"
-loc skip	-70			// numerical code for  "Skip"
+local idk		-99 99 999	// numerical code for "Don't Know"
+local rf		-77 77 75	// numerical code for "Refuse"
+local na		-88			// numerical code for "Not Applicable"
+local oth		-66			// numerical code for "Other"
+local skip	-70			// numerical code for  "Skip"
 
 * Replace values for each type of refusal across numerical variables
 qui ds, not(type string)
@@ -272,7 +272,7 @@ assert _merge == -1 | _merge == 1 | _merge == 3 // missing, no coding, or coded
 
 *Replace values
 levelsof q // first collect every level of q and replace
-loc levels `r(levels)'
+local levels `r(levels)'
 foreach level of local levels {
   replace q = `level' if mapping == `level'
 }
@@ -398,7 +398,7 @@ For a set of SurveyCTO datetimes using the same format, the following code will 
 ```stata
 *Define list of date variable
 ds *_date // this should match your naming convention
-loc date_vars `r(varlist)'
+local date_vars `r(varlist)'
 
 *save tempvar so indifferent to var length
 tempvar temp
@@ -430,7 +430,7 @@ foreach var of local date_vars {
 		See h datetime in Stata for an overview on how to define
 		datetime formats for the clock() and date() functions.
 	*/
-	loc varl : var label `var' // save var label
+	local varl : var label `var' // save var label
 	replace `temp' = . // clear tempvar
 	replace `temp' = clock(`var', "MDYhms")
 	*drop the variable as cannot replace values and convert type
@@ -439,8 +439,8 @@ foreach var of local date_vars {
 	format `var' %tcCCYY_NN_DD__HH:MM:SS // choose a preferred format
 
 	*Check within range
-	loc survey_start = clock("Jan. 01 1960, 12:00:00 AM", "MDYhms")
-	loc survey_end = clock("Feb. 29 2020, 11:59:59 PM", "MDYhms")
+	local survey_start = clock("Jan. 01 1960, 12:00:00 AM", "MDYhms")
+	local survey_end = clock("Feb. 29 2020, 11:59:59 PM", "MDYhms")
 	assert inrange(`var', `survey_start', `survey_end')
 
 	*Check non-missing for calculate fields
@@ -514,7 +514,7 @@ Variable consistency can be handled using value labeling in Stata. For example, 
 
 ```stata
 *Create a local list of variables to encode
-loc str_var var
+local str_var var
 
 *Encode values and confirm expected
 foreach var of local str_var {
