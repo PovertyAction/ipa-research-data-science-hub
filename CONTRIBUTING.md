@@ -21,7 +21,7 @@ Science Hub:
 2. **Update existing content**: Improve or expand existing
     documentation
 3. **Fix typos or errors**: Help maintain high-quality content
-4. **Suggest improvements**: Open issues for content or features you’d
+4. **Suggest improvements**: Open issues for content or features you'd
     like to see
 5. **Enhance functionality**: Contribute to the technical
     infrastructure of the Hub
@@ -52,7 +52,7 @@ small, helps improve the Hub for everyone.
 
 The IPA Global Research and Data Science team reviews any content you
 add or modify before publication on the Hub. This ensures that all
-content meets quality standards and aligns with the Hub’s goals.
+content meets quality standards and aligns with the Hub's goals.
 
 - The team uses IPA writing guidelines to ensure that all content is
     clear, concise, and accessible.
@@ -67,7 +67,7 @@ automatically published on the Hub.
 ## Git Development Workflow
 
 If you want to contribute code or content, this project uses Git for
-version control and collaboration. Here’s a quick overview of the
+version control and collaboration. Here's a quick overview of the
 workflow:
 
 ### Branching Strategy
@@ -94,7 +94,7 @@ just get-started
 ```
 
 This will install all required software and create a Python virtual
-environment. Note that you may need to install `Just` if you don’t have
+environment. Note that you may need to install `Just` if you don't have
 it already.
 
 ``` bash
@@ -198,7 +198,6 @@ Example YAML frontmatter:
 ---
 title: "My New Page"
 description: "Description of the page content"
-date: last-modified
 
 
 #------------------------------------------------------------------

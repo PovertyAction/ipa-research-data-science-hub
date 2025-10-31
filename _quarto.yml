@@ -8,6 +8,7 @@ project:
     - "!CONTRIBUTING.md"
     - "!LICENSE.md"
     - "!CLAUDE.md"
+    - "!AGENTS.md"
     - "!docs/"
     - "!extensions/"
 website:
@@ -254,11 +255,16 @@ website:
 brand:
   light: assets/design-styles/light-brand.yml
   dark: assets/design-styles/dark-brand.yml
-highlight-style: arrow
+highlight-style:
+  light: github
+  dark: github-dark
+filters:
+  - git-dates
 format:
   html:
     respect-user-color-scheme: true
     toc: true
+    appendix-style: none # removes "Reuse" appendix section
     theme:
       light: [litera, brand, assets/design-styles/light-theme.scss]
       dark: [litera, brand, assets/design-styles/dark-theme.scss]
@@ -286,5 +292,7 @@ format-links:
     icon: file-pdf
 language:
   search-text-placeholder: Search Resources
+metadata-files:
+  - _metadata.yml
 execute:
   freeze: true

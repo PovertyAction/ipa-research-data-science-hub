@@ -19,7 +19,8 @@ jobs:
       - uses: actions/checkout@v5
       - uses: errata-ai/vale-action@v2.1.1
         with:
-          reporter: github-pr-check # github-pr-check, github-pr-review, github-check
+          reporter: github-pr-check # Alternatives: github-pr-check, github-pr-review, github-check
           fail_on_error: false
-          filter_mode: file # added, diff_context, file, nofilter
-          vale_flags: "--no-exit --minAlertLevel=error --glob=*.qmd"
+          filter_mode: diff_context # Alternatives: added, diff_context, file, nofilter
+          vale_flags: "--minAlertLevel=error"
+          files: '["data-cleaning/", "data-collection/", "data-quality/", "data-security/", "research-design/", "research-ethics/", "software/", "index.qmd"]'
