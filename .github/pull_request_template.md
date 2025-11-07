@@ -12,7 +12,7 @@
 
 <!-- Explain the approach and implementation details -->
 
-## How to test or reproduce ? 🧪
+## How to test or reproduce? 🧪
 
 <!-- Provide steps to test or reproduce the changes -->
 
