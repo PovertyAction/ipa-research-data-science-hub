@@ -159,7 +159,7 @@ Dummy variables are one of the most common variable types you will use. These ar
 1. This first way recommended method is to start with an entirely missing variable and then replace with `1's` and `0's` for each condition.
 
 ```stata
-gen has_score = .
+generate has_score = .
 replace has_score = 1 if credit_score != .
 replace has_score = 0 if (credit_score == . & info_available == 1)
 ```
@@ -170,7 +170,7 @@ You do not want to lose this information due to poor coding in which you say all
 2. The second way is more concise but can be trickier.
 
 ```stata
-gen has_score = (credit_score != .) if (info_available == 1)
+generate has_score = (credit_score != .) if (info_available == 1)
 ```
 
 This method does the above in one step. The first half creates a 1/0 dummy by assigning 1 to any observation that meets the condition in the first parentheses and 0 if it does not. Then it uses the if and second parenthesis to assign missing values. If the second condition `(info_available == 1)` is false, then that observation will be missing. Either method is acceptable, just be careful to take the 0's and missing values into account.
@@ -202,13 +202,13 @@ This data flow would like the following. First, the specify responses are cleane
   then output an excel document with each unique response.
 */
 *String cleaning
-gen q_oth_cl = q_oth // create a clean copy to preserve the raw data
+generate q_oth_cl = q_oth // create a clean copy to preserve the raw data
 replace q_oth_cl = lower(q_oth_cl)
 replace q_oth_cl = strtrim(q_oth_cl) // only trim external spaces so "sky blue" does not become "skyblue"
 
 *Save excel file
 tempvar map // create column header
-gen `map' = ""
+generate `map' = ""
 lab var `map'  "Mapping"
 lab var q_oth_cl "Other values"
 
@@ -330,10 +330,10 @@ foreach var of local bus_items {
 foreach var of local bus_items {
 
 	// don't use capture unless you control for every outcome
-	cap assert `var' == .s if b_prof_yn == 0
+	capture assert `var' == .s if b_prof_yn == 0
 
 	*Tag variables if this fails
-	if _rc == 9 gen `var'_nos = `var' != .s & b_prof_yn == 0
+	if _rc == 9 generate `var'_nos = `var' != .s & b_prof_yn == 0
 
 	*Controlling for other options
 	else if !_rc di "No errors in `var'"
@@ -403,7 +403,7 @@ local date_vars `r(varlist)'
 *save tempvar so indifferent to var length
 tempvar temp
 * create double to store datetime to avoid rounding
-gen double `temp' = .
+generate double `temp' = .
 
 *Foreach date variable, convert to datetime and run checks
 foreach var of local date_vars {
@@ -435,7 +435,7 @@ foreach var of local date_vars {
 	replace `temp' = clock(`var', "MDYhms")
 	*drop the variable as cannot replace values and convert type
 	drop `var'
-	gen double `var' = `temp'
+	generate double `var' = `temp'
 	format `var' %tcCCYY_NN_DD__HH:MM:SS // choose a preferred format
 
 	*Check within range

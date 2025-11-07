@@ -38,9 +38,10 @@ license:
 
 ![An IPA survey in Myanmar in 2020 (© IPA)](/assets/images/power-intro.jpg){width=75%}
 
-
 :::{.callout-tip appearance="simple"}
+
 ## Key Takeaways
+
 - **Statistical power** determines the ability to detect true effects in research studies.
 - **Sample size** directly affects the precision and reliability of estimates.
 - **Statistical concepts** like significance levels, confidence intervals, and effect sizes are crucial for interpreting results.
@@ -59,28 +60,36 @@ For a practical introductory guide to power calculations, see [Guide to Power Ca
 ### Why Statistical Power Matters?
 
 ::: {.callout-tip collapse="true"}
+
 ## 1. Research Quality and Reliability
+
 - Ensures studies can detect meaningful effects
 - Reduces risk of false conclusions
 - Strengthens confidence in research findings
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## 2. Resource Optimization
+
 - Prevents wastage of research resources
 - Avoids underpowered studies that may be inconclusive
 - Guides efficient allocation of study participants
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## 3. Policy Impact
+
 - Enables evidence-based policy decisions
 - Reduces risk of dismissing effective interventions
 - Helps identify truly impactful programs
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## 4. Ethical Considerations
+
 - Respects participants' time and effort
 - Justifies the use of research resources
 - Promotes responsible funding and implementation
@@ -116,7 +125,9 @@ This case shows how careful study design and sufficient power can lead to **acti
 </div>
 
 ::: {.callout-note}
+
 ## Key Concept 1
+
 The larger the study sample, the more likely researchers are to estimate the true treatment effect of the program.
 
 ::: {layout-ncol=2}
@@ -131,6 +142,7 @@ The larger the study sample, the more likely researchers are to estimate the tru
 ## **Sample Size: Precision and Reliability**
 
 ### Sample Size
+
 Sample size directly influences the ability to estimate the **true treatment effect** with precision and reliability:
 
 - **Smaller N:** High variability, less precise and reliable estimates
@@ -156,6 +168,7 @@ Sample size directly influences the ability to estimate the **true treatment eff
 | **Study Design**                   | Clustered or stratified designs often require larger samples due to intra-group correlation.           |
 
 ### Trade-offs
+
 While larger samples improve precision, they require more resources:
 
 - **Financial:** Survey costs, transport, devices
@@ -163,13 +176,16 @@ While larger samples improve precision, they require more resources:
 - **Labor:** Enumerators, field staff
 
 ### Practical Considerations
+
 - **Minimum Detectable Effect (MDE):** Decide what is the smallest effect worth detecting—this drives sample size.
 - **Attrition:** Anticipate and adjust for expected loss of participants over time.
 - **Non-compliance:** Plan for imperfect adherence to treatment assignment, which can reduce effective sample size.
 - **Ethical Balance:** Avoid exposing more participants than necessary to interventions or control conditions.
 
 ::: {.callout-note}
+
 ## Key Concept 2
+
 Sample size/power calculations help balance statistical precision with resource constraints:
 
 - **Too small:** Risk missing true treatment effects
@@ -182,6 +198,7 @@ Sample size/power calculations help balance statistical precision with resource 
 ## **Understanding Statistical Concepts**
 
 ::: {.callout-tip collapse="true"}
+
 ### Probability Density Functions (PDFs)
 
 PDFs help visualize the uncertainty around the estimated treatment effect ($\hat{\beta}$) in a study. They show how likely different values of $\hat{\beta}$ are, assuming a true treatment effect $\beta$.
@@ -190,14 +207,18 @@ PDFs help visualize the uncertainty around the estimated treatment effect ($\hat
 :::
 
 :::{.callout-note}
+
 ## Key Concept 3
+
 A narrower distribution of estimates ($\hat{\beta}$) increases the chances of detecting true effects. You can achieve this by:
+
 - Increasing the sample size (**$N$**)
 - Assigning roughly equal numbers to treatment and control (**$p \approx 0.5$**)
 - Reducing outcome variance (**$\sigma^2$**)
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ### Treatment Effects Distribution
 
 If researchers repeated the same RCT many times, they wouldn't get the exact same estimate every time. Instead, the estimated treatment effects ($\beta$) would follow a normal distribution:
@@ -213,8 +234,11 @@ $$
 :::
 
 :::{.callout-note}
+
 ## Key Concept 4
+
 **Type I Error ($\alpha$):** Risk of a false positive
+
 - Usually set at **5% ($\alpha = 0.05$)**
 - This means there's a 5% chance of incorrectly detecting an effect when there is none
 - A lower $\alpha$ reduces false positives—but increases the risk of missing real effects
@@ -223,26 +247,33 @@ $$
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ### Hypothesis Testing Framework
 
 To determine whether an effect is statistically significant, researchers use a hypothesis test. This is important because it helps control the risk of making a **Type I error** -- incorrectly concluding that an effect exists when it actually does not, a "false positive." By setting a significance level ($\alpha$), researchers limit the probability of making this error and ensure findings are not due to random chance.
 
 ::: {.callout-tip collapse="true"}
+
 ## **1. Null Hypothesis, $H_0$**
+
 Assumes no effect exists, $\beta = 0$. This is the starting point for statistical testing and represents the default position that the intervention has no impact.
 
 ![Statistical hypothesis testing showing null and alternative distributions](/assets/images/power_ht1.png){width=75%}
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## **2. Alternative Hypothesis, $H_1$**
+
 Proposes existence of an effect, $\beta \neq 0$. Can be one-sided, $\beta > 0$ or $\beta < 0$, or two-sided, $\beta \neq 0$.
 
 ![Estimate the treatment effect ($\hat{\beta}$)](/assets/images/power_ht2.png){width=75%}
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## **3. Critical Values Computation**
+
 Based on chosen significance level $\alpha$, typically uses $\alpha = 0.05$. Forms rejection regions in the distribution and uses t-distribution or z-distribution.
 
 ![Critical Values](/assets/images/power_ht3.png){width=75%}
@@ -253,12 +284,16 @@ Based on chosen significance level $\alpha$, typically uses $\alpha = 0.05$. For
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## **4. Effect Estimation and Comparison**
+
 Calculate estimated effect size $\hat{\beta}$ and compare to critical values. Consider confidence intervals and assess statistical significance.
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## **5. Statistical Decision**
+
 Reject $H_0$ if $\hat{\beta}$ exceeds critical values. Fail to reject $H_0$ if $\hat{\beta}$ falls within critical bounds. Consider practical significance and report p-values and confidence intervals.
 
 ![No rejection of Ho](/assets/images/power_ht4_1.png){width=75%}
@@ -268,7 +303,9 @@ Reject $H_0$ if $\hat{\beta}$ exceeds critical values. Fail to reject $H_0$ if $
 :::
 
 :::{.callout-note}
+
 ## Key Concept 5
+
 **Type II Error ($\kappa$):** Risk of a false negative
 
 - **$\kappa$**: Probability of missing a real effect
@@ -281,8 +318,8 @@ Reject $H_0$ if $\hat{\beta}$ exceeds critical values. Fail to reject $H_0$ if $
 
 ## Statistical Power in Practice
 
-
 ::: {.callout-tip collapse="true"}
+
 ### 1. Power Depends on Study Design
 
 Statistical power is influenced by:
@@ -298,8 +335,8 @@ Larger samples and bigger effects increase the chance of detecting something rea
 ![High Power: Clear effect distinction](/assets/images/power_6.png){width=90%}
 :::
 
-
 ::: {.callout-tip collapse="true"}
+
 ### 2. Power Can Be Visualized
 
 Power is often shown as the overlap between two distributions:
@@ -314,6 +351,7 @@ The **less overlap** between the two distributions, the **higher the power**.
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ### 3. Underpowered vs. Well-Powered Studies
 
 | Scenario              | Underpowered Study (<80%)                     | Well-Powered Study (≥80%)                   |
@@ -323,51 +361,63 @@ The **less overlap** between the two distributions, the **higher the power**.
 | **Resource Use**      | Wasteful: may require redoing the study      | Efficient: leads to actionable findings    |
 
 ::: {.callout-warning}
+
 ## ⚠️ Why This Matters
+
 An underpowered study might miss real program effects—leading to **wrong conclusions** and **poor policy decisions**.
 :::
 :::
 
 :::{.callout-note}
+
 ## Key Concept 6
+
 When power is high (≥80%), studies are more likely to detect true effects and avoid false negatives.
 :::
 ---
-
 
 ## Determinants of Power Estimation
 
 Several key factors determine the statistical power of a study. Understanding and adjusting these determinants is crucial for effective research design:
 
 ::: {.callout-tip collapse="true"}
+
 ## 1. Minimum Detectable Effect (MDE)
+
 The smallest treatment effect you aim to detect. Smaller MDEs require larger sample sizes to achieve the same power.
 
 ![Illustration of MDE: Smaller effects require larger samples to detect](/assets/images/power_8.png){width=70%}
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## 2. Sample Size (N)
+
 The total number of study participants. Larger samples increase statistical power and precision.
 
 ![Sample size comparison: Small vs. large sample distributions](/assets/images/power_9.png){width=70%}
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## 3. Outcome Variance
+
 The variability in the outcome measure. Lower variance makes it easier to detect effects.
 
 ![Outcome variance: Narrow vs. wide outcome distributions](/assets/images/power_10.png){width=70%}
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## 4. Sample Allocation
+
 The proportion assigned to treatment and control groups. Power is maximized when groups are of equal size.
 
 ![Sample allocation: Balanced vs. unbalanced groups](/assets/images/power_11.png){width=70%}
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## 5. Non-compliance
 
 - When participants do not adhere to their assigned group.
@@ -380,7 +430,9 @@ The proportion assigned to treatment and control groups. Power is maximized when
 :::
 
 ::: {.callout-tip collapse="true"}
+
 ## 6. Attrition
+
 - Loss of participants during the study. Attrition reduces sample size and can bias results if not random.
 - Attrition reduces power via a smaller study sample size.
 - If attrition is correlated with the treatment (e.g., more likely in the control group), the estimated effect is no longer unbiased!
@@ -394,6 +446,7 @@ The proportion assigned to treatment and control groups. Power is maximized when
 ## Common Pitfalls and Solutions
 
 ::: {.callout-warning collapse="true"}
+
 ### Pitfall 1: Ignoring Design Effects
 
 - **Problem:** Using simple formulas for complex designs
@@ -401,6 +454,7 @@ The proportion assigned to treatment and control groups. Power is maximized when
 :::
 
 ::: {.callout-warning collapse="true"}
+
 ### Pitfall 2: Optimistic Assumptions
 
 - **Problem:** Assuming perfect compliance, no attrition
@@ -408,6 +462,7 @@ The proportion assigned to treatment and control groups. Power is maximized when
 :::
 
 ::: {.callout-warning collapse="true"}
+
 ### Pitfall 3: Post-Hoc Power
 
 - **Problem:** Calculating power after finding null results
@@ -415,6 +470,7 @@ The proportion assigned to treatment and control groups. Power is maximized when
 :::
 
 ::: {.callout-warning collapse="true"}
+
 ### Pitfall 4: Fixating on 80%
 
 - **Problem:** Treating 80% power as sacred threshold

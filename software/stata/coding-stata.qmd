@@ -34,7 +34,9 @@ This guide shows how to work with Stata files, numerical formats, dataset creati
 :::
 
 :::{.callout-tip appearance="simple"}
+
 ## Key Takeaways
+
 * Stata allows you to perform efficient data cleaning and reproducible coding.
 * Avoid common pitfalls like precision errors, memory inefficiencies, and merge issues.
 :::
@@ -55,17 +57,20 @@ Additionally, you will be able to use this dataset in other commands when combin
 merge 1:1 uid using "statadata.dta", options
 append using "statadata.dta"`
 ```
+
 If your file was not already in the stata format you would not be able to call it directly. You would have to import it before you can use it.
 
 ### System Datasets
+
 Stata comes with pre-loaded datasets that you can use to play around to learn new things on.
 You can see all of the available datasets by going to "File > Example datasets..." or typing `help dta_examples`. From here you can click the "use" or "describe" buttons to load the dataset and describe them.
 
 If you already know the name of the dataset you want to use, you simply need to type `sysuse auto.dta` for the auto dataset for example to use the data.
 
 ### Creating a dataset in Stata from scratch
+
 In Stata, you can create a dataset from scratch. This can be helpful if you want to test some code, learn or check how something works.
-When working in a clear Stata session, you can use `set obs n` where n is an integer, to create that many observations in the dataset. From there, you can gen variables set to whatever you are interested in.
+When working in a clear Stata session, you can use `set obs n` where n is an integer, to create that many observations in the dataset. From there, you can `generate` variables set to whatever you are interested in.
 
 Example to test how to generate a dummy variable as well as using `_n` to indicate row numbers
 
@@ -75,17 +80,17 @@ Example to test how to generate a dummy variable as well as using `_n` to indica
 *Create how many observations you want your dataset to have
   set obs 10
 *Create variables to test the code you are interested in
-  gen test_dummy = (_n < 5)
+  generate test_dummy = (_n < 5)
 ```
 
 ## Numerical formats
 
-
 It's easy to forget that Stata code is operating a computer with very different rules for counting and numbers than we have in the real world. Ado (the language of .do files) allows for a high-level [abstraction](https://en.wikipedia.org/wiki/Abstraction_layer), where the programmer does not have to explicitly command the computer to do low-level tasks like allocating memory for data, ordering tasks, or defining how the computer should round values that can't be precisely displayed in binary. This is rarely important, but there are a few cases where these processes, like precision of stored data, is highly relevant for statistical tasks and may need to be specified. The most relevant cases are:
-- IDs should be stored as string variables or have less than 8 digits if the storage type of the variable is a float
-- Asserts should only compare similar storage types.
-  - All values in stata (e.g. `1` or `` `r(N)'``) are treated as doubles
-- Merges that do not match IDs across datasets and display bugs (e.g. 1.0000000784732907 in Excel) can be due to the storage type of the variables or values
+
+* IDs should be stored as string variables or have less than 8 digits if the storage type of the variable is a float
+* Asserts should only compare similar storage types.
+    * All values in stata (e.g. `1` or `` `r(N)'``) are treated as doubles
+* Merges that do not match IDs across datasets and display bugs (e.g. 1.0000000784732907 in Excel) can be due to the storage type of the variables or values
 
 ### Stata's process
 
@@ -105,7 +110,7 @@ This is extremely relevant when exact equivalence matters. Stata will always con
 
 ````stata
 . set obs 1
-. gen x = .1
+. generate x = .1
 . assert x == .1
   assertion is false
   r(9);
@@ -130,7 +135,7 @@ x               float   %9.0g
 // force Stata to display the first and only value of x in a double format
 . assert `: di x[1]' == .1
 
-. gen double y = .1 // generate a new variable at double precision
+. generate double y = .1 // generate a new variable at double precision
 . assert y == .1
 
 ````
@@ -138,15 +143,16 @@ x               float   %9.0g
 This would not be a problem for a value that can be stored exactly such as `1`.
 
 Although this seems very abstract and of limited relevance, this will cause problems in the following cases that are often encountered by IPA projects:
-- IDs have different storage types (one is a float and one is a double for example) in a merge. Stata will not prevent you from making that merge, but will not be able to match the IDs that the programmer intended to be the same.
-- Numeric IDs will no longer be unique when they have more digits than their storage type can hold (16 for doubles). No numeric IDs will be unique if they have more than 17 digits, especially if the last digits are changing for individuals that should be unique. It's best to store IDs as strings or keep ID values at the minimum length needed.
-- `assert`s that compare a scalar (`r(mean)`) to a variable stored as a float may not be accurate. This can be corrected by using functions like `inrange()` or `float()` as part of the `assert`.
+
+* IDs have different storage types (one is a float and one is a double for example) in a merge. Stata will not prevent you from making that merge, but will not be able to match the IDs that the programmer intended to be the same.
+* Numeric IDs will no longer be unique when they have more digits than their storage type can hold (16 for doubles). No numeric IDs will be unique if they have more than 17 digits, especially if the last digits are changing for individuals that should be unique. It's best to store IDs as strings or keep ID values at the minimum length needed.
+* `assert`s that compare a scalar (`r(mean)`) to a variable stored as a float may not be accurate. This can be corrected by using functions like `inrange()` or `float()` as part of the `assert`.
 
 ### Dataset Size & Memory Usage
 
 There are a number of concrete ways to avoid this, as well as a lot written on how this affects computation. Memory conservation is generally not relevant for statistical programming with small N survey data that we normally work with at IPA. But this can be the relevant in large datasets where using memory on extraneous digits will slow basic computations substantively. Administrative data with observations in the hundreds of thousands to millions is an example of this that is relevant for many IPA projects.
 
-It's generally good practice to reduce the size of files using `compress` or by generating values in the smallest format such as  `gen byte dummy = (q1 == "Yes")`, especially when the data are larger or if you are performing commands that are computationally intensive for Stata (various regressions, reshaping, etc.).
+It's generally good practice to reduce the size of files using `compress` or by generating values in the smallest format such as  `generate byte dummy = (q1 == "Yes")`, especially when the data are larger or if you are performing commands that are computationally intensive for Stata (various regressions, reshaping, etc.).
 
 If you are interested in more details, Stata Corp's blog has a few good articles on [numerical precision](https://blog.stata.com/2011/06/17/precision-yet-again-part-i/) and why [this](https://blog.stata.com/2011/06/23/precision-yet-again-part-ii/) happens in computing, as well as the [specific digits](https://www.stata.com/support/faqs/data-management/float-data-type/) that float precision loses values.
 
@@ -182,6 +188,7 @@ global path "C:/My Documents/My Project Folder"
 global data "${path}/01_data"
 global dos  "${path}/02_do"
 ```
+
 Then, whenever we call a particular file, we include the correct file path:
 
 ```stata
@@ -191,6 +198,7 @@ do "${dos}/clean.do"
 *Use clean data:
 use "${data}/clean.dta"
 ```
+
 Note that this names the directory where all project files are stored as the first global. After that it names relative references for each folder that contains files used by the do file using the global that contains the location of the project folder. This two-step process makes it easier to modify the do file for multiple users. Generally, the only folder that will be unique between users is the file path before the project folder (e.g. `C:\Users\[username]` is a common prefix that will change based on the username on Windows machines).
 
 ### Working Default References
@@ -206,6 +214,7 @@ if "`user`" == "Me" {
     global directory "C:/My Documents/My Project Folder/""
 }
 ```
+
 However, this requires manual management in the do file any time a new user is added to a project. To create a general case, the do file can take advantage of how Stata defines a project. When Stata is opened, State defaults to assigning a working directory by first, the location of the file being opened by Stata and second, the homepath in the profile.do file.
 
 We suggest using \`c(pwd)' as a stand-in for file location and assume the user had opened the master do file: If you add this as an `else` at the end of the ``if "`user'"==`` conditionals, then there is a good chance the do file will run even if you haven't made a specific local for the user.
@@ -217,10 +226,10 @@ else {
     global directory = subinstr("`cdloc'", "/02_do", "", .)
 }
 ```
+
 This will not work if the instance of Stata is opened from a file in a different directory than the do file that contains the code shown above. Text editors such as Atom and Sublime preserve the same instance of Stata. This code will be more likely to cause an error if the user does not use the do file editor or opens do files from the command line with `doedit`.
 
 ## Useful Stata commands
-
 
 Below we have listed some frequently overlooked commands that we enjoy using. They will make your life a lot easier if you know about them. We provide a quick summary of what the commands do and where they can be used.
 
@@ -235,23 +244,24 @@ Frequently in cleaning data sets, you will have an unbalanced panel, i.e. you ar
 | ID          | Survey_Round | Gender     |
 | :---        |    :----:   |          ---: |
 | 1      | baseline      | Female  |
-| 1   	| endline1        | Female      |
+| 1    | endline1        | Female      |
 | 2      | baseline       | Male   |
-| 2   	| endline1        | Male     |
-| 2   	| endline2       | Male      |
+| 2    | endline1        | Male     |
+| 2    | endline2       | Male      |
 
 We can use `fillin ID Survey_Round` to get the following
 
-| ID          | Survey_Round | Gender      | \_fillin 	|
-| :---        |    :----:    |        ---: | 	    ---:|
-| 1           | baseline     | Female  	   | 0		|
-| 1   	      | endline1     | Female      |0 		|
-| 1   	      | endline2     | .  	   |1 		|
-| 2           | baseline     | Male   	   |0		|
-| 2   	      | endline1     | Male        |0		|
-| 2           | endline2     | Male        |0		|
+| ID          | Survey_Round | Gender      | \_fillin  |
+| :---        |    :----:    |        ---: |      ---:|
+| 1           | baseline     | Female      | 0  |
+| 1          | endline1     | Female      |0   |
+| 1          | endline2     | .      |1   |
+| 2           | baseline     | Male       |0  |
+| 2          | endline1     | Male        |0  |
+| 2           | endline2     | Male        |0  |
 
 A couple things to note:
+
 1. This command automatically creates an indicator variable called `\_fillin` that keeps track of observations that were created from the command
 2. Variables not specified in the `fillin` are filled in with a missing value. After you run `fillin` you will need to go back and replace observations as you see appropriate. For example, for typically constant variables such as gender you could replace this new missing value to match the one above it.
 
@@ -289,10 +299,11 @@ A very helpful command within this group is `missing dropvars` which allows you 
 This is not a built-in Stata command and can be installed by typing `ssc install mmerge`.
 
 `mmerge` provides additional options for `merge` that make merging datasets more user friendly by removing a signfiicant amount of preprocessing work for complex datasets:
-  - It allows for missing values in the match variable and let's the user determine how they are treated with the `missing()` option.
-  - It allows for differing merge variable names with the `umatch()` option
-  - It allows for all merged variables from the using file to be prefixed as part of the merge with the `uname()` option
-  - It stores shared variable names that are not merged in a local `r(common)`
+
+* It allows for missing values in the match variable and let's the user determine how they are treated with the `missing()` option.
+* It allows for differing merge variable names with the `umatch()` option
+* It allows for all merged variables from the using file to be prefixed as part of the merge with the `uname()` option
+* It stores shared variable names that are not merged in a local `r(common)`
 
 There are a number of other options and syntax changes. You can see these by typing `help mmerge` once `mmerge` is installed.
 

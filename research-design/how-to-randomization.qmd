@@ -114,9 +114,9 @@ stata_setup.config(stata_path, stata_flavor)
 %%stata
 clear
 set obs 500
-gen student_id = _n
-gen school_id = ceil(_n/50)         // 10 schools, 50 students each
-gen grade = mod(_n-1,5) + 1         // Grades one to five, evenly distributed
+generate student_id = _n
+generate school_id = ceil(_n/50)         // 10 schools, 50 students each
+generate grade = mod(_n-1,5) + 1         // Grades one to five, evenly distributed
 ```
 
 ## Step 3: Set Random Seed
@@ -145,7 +145,7 @@ tab grade
 %%stata
 
 * Install randtreat if not already installed
-cap ssc install randtreat
+capture ssc install randtreat
 
 * Use randtreat for stratified randomization by grade
 randtreat, strata(grade) unequal(1/2 1/2) generate(treatment)
@@ -187,7 +187,7 @@ isid unique_id
 
 * Sort by unique ID before generating random numbers
 sort unique_id
-gen rand = runiform()
+generate rand = runiform()
 
 * When sorting by strata and random number, include unique ID last
 sort region rand unique_id
