@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="randomization, impact evaluation, experimental design, treatment assignment, cluster randomization, stratified randomization, explanation">
+<meta name="keywords" content="randomized controlled trials, impact evaluation, ethics, external validity, costs, theory, research design">
 
-<title>Randomization – Research and Data Science Hub</title>
+<title>Addressing Common Criticisms of Randomized Controlled Trials – Research and Data Science Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../research-design/measurement.html" rel="next">
-<link href="../research-design/survey-translation.html" rel="prev">
+<link href="../research-ethics/index.html" rel="next">
+<link href="../research-design/sample-size-power.html" rel="prev">
 <link href="../assets/logos/ipa-favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -403,7 +403,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/randomization.html">Randomization</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/addressing-rct-criticisms.html">Addressing Common Criticisms of RCTs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -450,7 +450,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/randomization.html" class="sidebar-item-text sidebar-link active">
+  <a href="../research-design/randomization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Randomization</span></a>
   </div>
 </li>
@@ -468,7 +468,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/addressing-rct-criticisms.html" class="sidebar-item-text sidebar-link">
+  <a href="../research-design/addressing-rct-criticisms.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Addressing Common Criticisms of RCTs</span></a>
   </div>
 </li>
@@ -972,45 +972,28 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#what-is-randomization" id="toc-what-is-randomization" class="nav-link active" data-scroll-target="#what-is-randomization">What is Randomization?</a>
+    <li><a href="#why-rcts-face-criticism" id="toc-why-rcts-face-criticism" class="nav-link active" data-scroll-target="#why-rcts-face-criticism">Why RCTs Face Criticism</a>
     <ul class="collapse">
-    <li><a href="#random-sampling-vs.-random-assignment" id="toc-random-sampling-vs.-random-assignment" class="nav-link" data-scroll-target="#random-sampling-vs.-random-assignment">Random Sampling vs.&nbsp;Random Assignment</a></li>
+    <li><a href="#the-ethical-dilemma-fairness-vs.-knowledge" id="toc-the-ethical-dilemma-fairness-vs.-knowledge" class="nav-link" data-scroll-target="#the-ethical-dilemma-fairness-vs.-knowledge">The Ethical Dilemma: Fairness vs.&nbsp;Knowledge</a></li>
+    <li><a href="#the-generalizability-question-context-and-universality" id="toc-the-generalizability-question-context-and-universality" class="nav-link" data-scroll-target="#the-generalizability-question-context-and-universality">The Generalizability Question: Context and Universality</a></li>
+    <li><a href="#the-economics-of-evidence-costs-and-benefits" id="toc-the-economics-of-evidence-costs-and-benefits" class="nav-link" data-scroll-target="#the-economics-of-evidence-costs-and-benefits">The Economics of Evidence: Costs and Benefits</a></li>
+    <li><a href="#the-theoretical-richness-debate" id="toc-the-theoretical-richness-debate" class="nav-link" data-scroll-target="#the-theoretical-richness-debate">The Theoretical Richness Debate</a></li>
     </ul></li>
-    <li><a href="#basic-randomization-procedures" id="toc-basic-randomization-procedures" class="nav-link" data-scroll-target="#basic-randomization-procedures">Basic Randomization Procedures</a>
-    <ul class="collapse">
-    <li><a href="#complete-randomization-fixed-proportion" id="toc-complete-randomization-fixed-proportion" class="nav-link" data-scroll-target="#complete-randomization-fixed-proportion">Complete Randomization: Fixed Proportion</a></li>
-    <li><a href="#simple-randomization-fixed-probability" id="toc-simple-randomization-fixed-probability" class="nav-link" data-scroll-target="#simple-randomization-fixed-probability">Simple Randomization: Fixed Probability</a></li>
-    </ul></li>
-    <li><a href="#choosing-the-unit-of-randomization" id="toc-choosing-the-unit-of-randomization" class="nav-link" data-scroll-target="#choosing-the-unit-of-randomization">Choosing the Unit of Randomization</a>
-    <ul class="collapse">
-    <li><a href="#individual-level-randomization" id="toc-individual-level-randomization" class="nav-link" data-scroll-target="#individual-level-randomization">Individual-Level Randomization</a></li>
-    <li><a href="#cluster-level-randomization" id="toc-cluster-level-randomization" class="nav-link" data-scroll-target="#cluster-level-randomization">Cluster-Level Randomization</a></li>
-    <li><a href="#key-considerations-for-choosing-randomization-level" id="toc-key-considerations-for-choosing-randomization-level" class="nav-link" data-scroll-target="#key-considerations-for-choosing-randomization-level">Key Considerations for Choosing Randomization Level</a></li>
-    </ul></li>
-    <li><a href="#decision-framework" id="toc-decision-framework" class="nav-link" data-scroll-target="#decision-framework">Decision Framework</a>
-    <ul class="collapse">
-    <li><a href="#individual-level-randomization-1" id="toc-individual-level-randomization-1" class="nav-link" data-scroll-target="#individual-level-randomization-1">Individual-Level Randomization</a></li>
-    <li><a href="#cluster-level-randomization-1" id="toc-cluster-level-randomization-1" class="nav-link" data-scroll-target="#cluster-level-randomization-1">Cluster-Level Randomization</a></li>
-    </ul></li>
-    <li><a href="#managing-common-challenges" id="toc-managing-common-challenges" class="nav-link" data-scroll-target="#managing-common-challenges">Managing Common Challenges</a>
-    <ul class="collapse">
-    <li><a href="#noncompliance" id="toc-noncompliance" class="nav-link" data-scroll-target="#noncompliance">Noncompliance</a></li>
-    <li><a href="#spillovers" id="toc-spillovers" class="nav-link" data-scroll-target="#spillovers">Spillovers</a></li>
-    </ul></li>
-    <li><a href="#alternative-randomization-methods" id="toc-alternative-randomization-methods" class="nav-link" data-scroll-target="#alternative-randomization-methods">Alternative Randomization Methods</a></li>
-    <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+    <li><a href="#practical-guidance-for-researchers-and-practitioners" id="toc-practical-guidance-for-researchers-and-practitioners" class="nav-link" data-scroll-target="#practical-guidance-for-researchers-and-practitioners">Practical Guidance for Researchers and Practitioners</a></li>
+    <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
     </ul>
     <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Authors</h2>
   <ul>
-        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Rosemarie Sandino</a></li>
-        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;">Julia Brown</li>
+        <li class="authors-ipa" style="font-size: 0.86rem;">Lucia Goin</li>
+        <li class="authors-ipa" style="font-size: 0.86rem;">Nora Gregory</li>
+        <li class="authors-ipa" style="font-size: 0.86rem;">Katherine Hoffmann</li>
+        <li class="authors-ipa" style="font-size: 0.86rem;">Kim Smith</li>
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
   <ul>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Radhika Jain</a></li>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Devika Lakhote</a></li>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target="">Laura Feeney</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/kelly-montano" class="nav-link" data-scroll-target="https\://poverty-action.org/people/kelly-montano">Kelly Montaño</a></li>
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
@@ -1020,25 +1003,19 @@ cookieconsent.run({
   <ul>
     <li class="license" style="font-size: 0.86rem;"><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="nav-link" data-scroll-target="https\://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></li>
   </ul>
-  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/randomization.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/addressing-rct-criticisms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/randomization.html">Randomization</a></li></ol></nav><h1 class="title display-7">Randomization</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/addressing-rct-criticisms.html">Addressing Common Criticisms of RCTs</a></li></ol></nav><h1 class="title display-7">Addressing Common Criticisms of Randomized Controlled Trials</h1></header>
 
 
 <header id="title-block-header">
     
-        <p class="abstract">Introduction to randomization in impact evaluations, covering theoretical foundations and practical implementation strategies for researchers.</p>
+        <p class="abstract">This page explores the most frequently raised concerns about randomized controlled trials, or RCTs, in development research, providing context for why these criticisms emerge and how thoughtful study design and communication can address them.</p>
     
 </header>
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/Burkina-Faso_Health_2022.jpg" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>IPA survey in Burkina Faso in 2022, credit: IPA</figcaption>
-</figure>
-</div>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1050,704 +1027,126 @@ cookieconsent.run({
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>Randomization</strong> creates comparable treatment and control groups by ensuring each unit has an equal chance of assignment</li>
-<li><strong>Unit of randomization</strong> (individual vs.&nbsp;cluster) affects statistical power, spillovers, and implementation feasibility</li>
-<li><strong>Different randomization methods</strong> address specific evaluation contexts and program constraints</li>
+<li>Ethical concerns about RCTs often assume proven effectiveness that may not exist.</li>
+<li>External validity limitations affect all research methods, not just RCTs, and can be mitigated through replication and theory-based generalization.</li>
+<li>RCT costs should be weighed against the far higher costs of scaling unproven or ineffective programs.</li>
 </ul>
 </div>
 </div>
-<section id="what-is-randomization" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-randomization">What is Randomization?</h2>
-<p>Randomization is the cornerstone of rigorous impact evaluation. This process assigns units – individuals, households, schools, and other entities – to treatment and control groups, ensuring that assignment relies purely on chance rather than systematic factors.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For a practical introductory guide to randomization, see <a href="../research-design/how-to-randomization.html">Guide to Randomization</a>.</p>
-</div>
-</div>
-<section id="random-sampling-vs.-random-assignment" class="level3">
-<h3 class="anchored" data-anchor-id="random-sampling-vs.-random-assignment">Random Sampling vs.&nbsp;Random Assignment</h3>
-<p>It is crucial to distinguish between two related but distinct concepts:</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Random Sampling
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The process of selecting a subset of units from a larger population where each unit has a known probability of being selected. This ensures the sample is representative of the population.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/random-sampling.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Random sampling from population</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Random Assignment
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The process of allocating sampled units to treatment and control groups using a random mechanism. This ensures groups are comparable on both observable and unobservable characteristics.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/random-assignment.jpeg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Random assignment to groups</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Common Misconception
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Geographic or systematic assignment – such as “northern half gets treatment, southern half gets control” – is not random assignment, even if the sample was selected through random sampling.</p>
-</div>
-</div>
+<section id="why-rcts-face-criticism" class="level2">
+<h2 class="anchored" data-anchor-id="why-rcts-face-criticism">Why RCTs Face Criticism</h2>
+<p>As RCTs have become more prominent in development research and policy evaluation, they have naturally attracted scrutiny. These criticisms are important, not because they invalidate RCTs, but because they reveal tensions between scientific rigor, ethical responsibility, and real-world constraints.</p>
+<p>They reflect deeper questions about justice, evidence, and the role of experimentation in improving human welfare.</p>
+<section id="the-ethical-dilemma-fairness-vs.-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="the-ethical-dilemma-fairness-vs.-knowledge">The Ethical Dilemma: Fairness vs.&nbsp;Knowledge</h3>
+<section id="why-ethical-concerns-arise" class="level4">
+<h4 class="anchored" data-anchor-id="why-ethical-concerns-arise">Why Ethical Concerns Arise</h4>
+<p>The most visceral criticism of RCTs centers on ethics: how can it be morally acceptable to randomly deny potentially beneficial services to people in need?</p>
+<p>This criticism assumes we <strong>already know</strong> the intervention works. In reality, most interventions tested through RCTs lack conclusive evidence of effectiveness.</p>
+<p>When uncertainty exists:</p>
+<ul>
+<li>Unproven interventions may have <strong>no impact</strong>, meaning resources could be better allocated elsewhere.</li>
+<li>Some interventions may even be <strong>harmful</strong>, meaning denial could protect participants.</li>
+<li>Scarcity ensures that some people will always be left out, regardless of study design.</li>
+</ul>
+<p>Randomization, viewed through this lens, becomes a transparent and fair allocation method under uncertainty, not an arbitrary denial of benefits.</p>
+</section>
+<section id="the-resource-allocation-reality" class="level4">
+<h4 class="anchored" data-anchor-id="the-resource-allocation-reality">The Resource Allocation Reality</h4>
+<p>In development settings, resources are almost always constrained. Rationing occurs whether or not a study exists. Randomization offers clear advantages:</p>
+<ul>
+<li><strong>Transparency:</strong> The process is open and auditable.</li>
+<li><strong>Equality of opportunity:</strong> Everyone has the same chance of selection.</li>
+<li><strong>Reduction of bias:</strong> Personal connections or subjective judgments do not determine access.</li>
+</ul>
+<p>Seen this way, RCTs represent a <strong>fair and systematic</strong> way to distribute limited resources while generating knowledge to inform future allocation decisions.</p>
 </section>
 </section>
-<section id="basic-randomization-procedures" class="level2">
-<h2 class="anchored" data-anchor-id="basic-randomization-procedures">Basic Randomization Procedures</h2>
-<section id="complete-randomization-fixed-proportion" class="level3">
-<h3 class="anchored" data-anchor-id="complete-randomization-fixed-proportion">Complete Randomization: Fixed Proportion</h3>
-<p>This method assigns a predetermined number of units to treatment and control groups. For example, if you have 1000 participants and want exactly 400 in treatment:</p>
-<ol type="1">
-<li>You would randomly order all 1000 participants</li>
-<li>Assign the first 400 to treatment</li>
-<li>Assign the remaining 600 to control</li>
-</ol>
-<p>This ensures precise control over group sizes, which proves important when:</p>
-<ul>
-<li>Limited treatment resources exist, such as only 400 program slots</li>
-<li>Balanced groups are needed for statistical power</li>
-<li>Implementation requires exact numbers, such as classroom capacity</li>
-</ul>
-<p>Unlike randomization with fixed probability, this method guarantees your desired treatment/control ratio.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Steps for Complete Randomization
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><strong>Compile a list</strong> of all subjects in your sample</li>
-<li><strong>Determine the number</strong> you want in treatment (and control)</li>
-<li><strong>Use a random number generator</strong> to order observations randomly</li>
-<li><strong>Assign</strong> the first N units to treatment, remainder to control</li>
-</ol>
-<p><strong>Advantages:</strong></p>
-<ul>
-<li>Ensures exact group sizes</li>
-<li>Simple to implement and explain</li>
-<li>Equitable when resources are limited</li>
-</ul>
-<p><strong>Challenge:</strong> Requires a complete list of participants upfront</p>
-</div>
-</div>
-</div>
+<section id="the-generalizability-question-context-and-universality" class="level3">
+<h3 class="anchored" data-anchor-id="the-generalizability-question-context-and-universality">The Generalizability Question: Context and Universality</h3>
+<section id="why-external-validity-matters" class="level4">
+<h4 class="anchored" data-anchor-id="why-external-validity-matters">Why External Validity Matters</h4>
+<p>Critics often argue that RCT results are too context-specific to apply elsewhere. A microcredit program that succeeds in rural Bangladesh might fail in urban Mexico because of differences in institutions, norms, or economic structures.</p>
+<p>This concern is legitimate, but not unique to RCTs. <strong>Every research method</strong> faces challenges of generalization. No single study can provide universal answers.</p>
 </section>
-<section id="simple-randomization-fixed-probability" class="level3">
-<h3 class="anchored" data-anchor-id="simple-randomization-fixed-probability">Simple Randomization: Fixed Probability</h3>
-<p>Each unit has a fixed probability, for example 50%, of assignment to treatment, regardless of other units’ assignments. This resembles flipping a coin for each participant:</p>
+<section id="building-knowledge-through-replication" class="level4">
+<h4 class="anchored" data-anchor-id="building-knowledge-through-replication">Building Knowledge Through Replication</h4>
+<p>Addressing external validity does not require abandoning experimental methods but strengthening cumulative learning through replication and theory. This includes:</p>
 <ul>
-<li>Heads: 50% probability, assigned to treatment</li>
-<li>Tails: 50% probability, assigned to control</li>
+<li><strong>Multiple contexts:</strong> Testing interventions across diverse populations and settings.</li>
+<li><strong>Theoretical grounding:</strong> Using conceptual frameworks to understand when and why effects occur.</li>
+<li><strong>Mechanism identification:</strong> Studying causal pathways, not just average impacts.</li>
+<li><strong>Boundary conditions:</strong> Documenting when interventions stop working or need adaptation.</li>
 </ul>
-<p>For example:</p>
-<ul>
-<li>A student program might assign each applicant to treatment with 40% probability</li>
-<li>A health intervention might use 30% probability for intensive treatment</li>
-<li>A pilot study might start with 20% in treatment to test implementation</li>
-</ul>
-<p>Unlike fixed proportion, the final group sizes may vary due to chance, but the law of large numbers means they’ll approach the target ratio with larger samples.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>When to Use Simple Randomization
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Walk-in situations</strong> where you can’t create a list in advance</li>
-<li><strong>Rolling enrollment</strong> contexts</li>
-<li>When exact group sizes aren’t critical</li>
-</ul>
-<p><strong>Important Note:</strong> This method may result in unequal group sizes due to chance</p>
-</div>
-</div>
-</div>
+<p>The goal is not one perfect study but a <strong>body of evidence</strong> revealing patterns and mechanisms across contexts.</p>
 </section>
 </section>
-<section id="choosing-the-unit-of-randomization" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-the-unit-of-randomization">Choosing the Unit of Randomization</h2>
-<p>The level at which you randomize is one of the most critical decisions in evaluation design.</p>
-<section id="individual-level-randomization" class="level3">
-<h3 class="anchored" data-anchor-id="individual-level-randomization">Individual-Level Randomization</h3>
-<p>Individual-level treatment assignment means each participant has an independent probability of selection for treatment or control. This offers maximal statistical power since each individual is an independent observation.</p>
-<p>For example, in a microfinance study, individual entrepreneurs might be randomly selected to receive business loans, while others serve as controls.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>When to Randomize at Individual Level
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Appropriate when:</strong></p>
+<section id="the-economics-of-evidence-costs-and-benefits" class="level3">
+<h3 class="anchored" data-anchor-id="the-economics-of-evidence-costs-and-benefits">The Economics of Evidence: Costs and Benefits</h3>
+<section id="understanding-rct-costs" class="level4">
+<h4 class="anchored" data-anchor-id="understanding-rct-costs">Understanding RCT Costs</h4>
+<p>RCTs can be expensive, but the largest costs usually stem from:</p>
 <ul>
-<li>Treatment delivery to individuals independently</li>
-<li>Minimal risk of spillovers between individuals</li>
-<li>Maximum statistical power requirements</li>
+<li><strong>Data collection</strong> (surveys, measurement systems),</li>
+<li><strong>Implementation tracking</strong>,<br>
+</li>
+<li><strong>Sample size requirements</strong>, and<br>
+</li>
+<li><strong>Follow-up over time.</strong></li>
 </ul>
-<p><strong>Examples:</strong></p>
-<ul>
-<li>Patient-level medical interventions</li>
-<li>Individual tutoring programs</li>
-<li>Personal financial incentives</li>
-</ul>
-</div>
-</div>
-</div>
+<p>The marginal cost of randomization itself is often small relative to the overall research budget.</p>
 </section>
-<section id="cluster-level-randomization" class="level3">
-<h3 class="anchored" data-anchor-id="cluster-level-randomization">Cluster-Level Randomization</h3>
-<p>Cluster randomization assigns entire groups, such as schools, villages, or health clinics, to treatment or control conditions. Instead of randomizing individual participants, all units within a cluster receive the same treatment status.</p>
-<p>For example, in a teacher training program, entire schools might be randomized rather than individual teachers. This means:</p>
+<section id="the-cost-of-ignorance" class="level4">
+<h4 class="anchored" data-anchor-id="the-cost-of-ignorance">The Cost of Ignorance</h4>
+<p>The real cost is not conducting RCTs, but <strong>acting without evidence</strong>:</p>
 <ul>
-<li>If School A is assigned to treatment, all teachers in School A receive training</li>
-<li>If School B is assigned to control, no teachers in School B receive training</li>
+<li>Billions of dollars are spent annually on untested interventions.</li>
+<li>Ineffective programs displace better alternatives.</li>
+<li>Scaling pilots without evidence often leads to failure at larger scale.</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>When to Randomize at Cluster Level
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Necessary when:</strong></p>
-<ul>
-<li>Treatment affects entire groups, such as teacher training affecting whole classrooms</li>
-<li>High risk of spillovers within clusters</li>
-<li>Implementation constraints require treating entire groups</li>
-</ul>
-<p><strong>Common clusters:</strong></p>
-<ul>
-<li>Schools for education interventions</li>
-<li>Villages for community programs</li>
-<li>Health clinics for health system interventions</li>
-</ul>
-<p><strong>Statistical implications:</strong></p>
-<ul>
-<li>Reduced statistical power due to fewer independent units</li>
-<li>Need to account for intra-cluster correlation</li>
-<li>Typically requires larger sample sizes</li>
-</ul>
-<p><strong>Benefits:</strong></p>
-<ul>
-<li>Minimizes spillovers within natural groups</li>
-<li>Often more practical to implement</li>
-<li>Can capture group-level effects</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="key-considerations-for-choosing-randomization-level" class="level3">
-<h3 class="anchored" data-anchor-id="key-considerations-for-choosing-randomization-level">Key Considerations for Choosing Randomization Level</h3>
+<p>Even costly RCTs can yield massive returns if they prevent waste or identify high-impact programs.</p>
 </section>
 </section>
-<section id="decision-framework" class="level2">
-<h2 class="anchored" data-anchor-id="decision-framework">Decision Framework</h2>
-<p>When choosing your randomization level, consider these key factors:</p>
-<section id="individual-level-randomization-1" class="level3">
-<h3 class="anchored" data-anchor-id="individual-level-randomization-1">Individual-Level Randomization</h3>
-<p><strong>Best when:</strong></p>
+<section id="the-theoretical-richness-debate" class="level3">
+<h3 class="anchored" data-anchor-id="the-theoretical-richness-debate">The Theoretical Richness Debate</h3>
+<section id="beyond-atheoretical-testing" class="level4">
+<h4 class="anchored" data-anchor-id="beyond-atheoretical-testing">Beyond “Atheoretical” Testing</h4>
+<p>Some claim RCTs are atheoretical—focused on “what works” but not “why.”</p>
+<p>Modern RCTs increasingly address this through:</p>
 <ul>
-<li>Outcomes measured at individual level—test scores, health metrics, income</li>
-<li>Intervention targets individuals—personal tutoring, cash transfers</li>
-<li>Low spillover risk from personal interventions with minimal interaction</li>
-<li>Maximum statistical power needed</li>
-<li>Simple interventions with good tracking systems</li>
+<li><strong>Mechanism studies:</strong> testing how interventions work,</li>
+<li><strong>Heterogeneity analysis:</strong> examining subgroup effects to test theory,<br>
+</li>
+<li><strong>Mediation analysis:</strong> identifying pathways of impact,<br>
+</li>
+<li><strong>Theory-driven design:</strong> linking conceptual frameworks to measurement.</li>
 </ul>
-</section>
-<section id="cluster-level-randomization-1" class="level3">
-<h3 class="anchored" data-anchor-id="cluster-level-randomization-1">Cluster-Level Randomization</h3>
-<p><strong>Best when:</strong></p>
-<ul>
-<li>Outcomes measured at group level—school performance, village outcomes</li>
-<li>Intervention targets groups—teacher training, community programs</li>
-<li>High spillover potential from social programs and shared resources</li>
-<li>Coordination with group leaders required</li>
-<li>Willing to accept lower statistical power for practical benefits</li>
-</ul>
+<p>When integrated with theory, RCTs generate both practical and theoretical insights.</p>
 </section>
 </section>
-<section id="managing-common-challenges" class="level2">
-<h2 class="anchored" data-anchor-id="managing-common-challenges">Managing Common Challenges</h2>
-<section id="noncompliance" class="level3">
-<h3 class="anchored" data-anchor-id="noncompliance">Noncompliance</h3>
-<p>Noncompliance occurs when units don’t follow their assigned treatment status. This can happen in two ways:</p>
-<ol type="1">
-<li><strong>One-Sided Noncompliance:</strong> Only treatment group members can deviate</li>
-</ol>
-<ul>
-<li>Treatment group members do not participate, know as “no-shows”, “dropouts”, or “refusers”</li>
-<li>Control group cannot access treatment</li>
-</ul>
-<ol start="2" type="1">
-<li><strong>Two-Sided Noncompliance:</strong> Both groups can deviate</li>
-</ol>
-<ul>
-<li>Treatment group members do not participate</li>
-<li>Control group members receive treatment, known as “crossover”</li>
-</ul>
-<p><strong>Common causes:</strong></p>
-<ul>
-<li>Service providers struggle to distinguish groups</li>
-<li>Logistical challenges in differential treatment</li>
-<li>Participant self-selection or refusal</li>
-<li>Control group finding alternative ways to access treatment</li>
-</ul>
-<p><strong>Solutions:</strong></p>
-<ul>
-<li>Randomize at provider level when possible</li>
-<li>Clear marking/identification systems</li>
-<li>Strong monitoring protocols</li>
-<li>Document all cases of noncompliance</li>
-<li>Use intention-to-treat (ITT) analysis</li>
-<li>Consider instrumental variables for treatment-on-treated effects</li>
-</ul>
-<p><strong>Analysis Approaches:</strong></p>
-<ol type="1">
-<li>Intention-to-Treat (ITT): Analyze by original assignment</li>
-<li>Treatment-on-Treated (TOT): Account for actual treatment received</li>
-<li>Local Average Treatment Effect (LATE): For partial compliance</li>
-</ol>
 </section>
-<section id="spillovers" class="level3">
-<h3 class="anchored" data-anchor-id="spillovers">Spillovers</h3>
-<p>Spillovers occur when the treatment affects units beyond those directly treated, potentially contaminating the control group and biasing treatment estimates.</p>
-<p><strong>Types of spillovers:</strong></p>
+<section id="practical-guidance-for-researchers-and-practitioners" class="level2">
+<h2 class="anchored" data-anchor-id="practical-guidance-for-researchers-and-practitioners">Practical Guidance for Researchers and Practitioners</h2>
+<p>Drawing on field experience from large-scale RCTs in development and social policy, several practical lessons emerge for addressing common criticisms:</p>
 <ul>
-<li><strong>Environmental:</strong> Treatment changes shared conditions,such as reduced disease transmission</li>
-<li><strong>Behavioral:</strong> Control group imitates treatment behaviors</li>
-<li><strong>Informational:</strong> Knowledge spreads between groups</li>
-</ul>
-<p><strong>Strategies:</strong></p>
-<ul>
-<li>Increase geographic/social distance between groups</li>
-<li>Randomize at higher level to contain spillovers</li>
-<li>Design evaluation to measure spillovers explicitly</li>
-</ul>
-<p><strong>Impact on Analysis:</strong></p>
-<ul>
-<li>Can lead to underestimated treatment effects if control group benefits</li>
-<li>May require additional buffer zones between treatment and control</li>
-<li>Sometimes spillovers themselves are of research interest, such as vaccine studies</li>
+<li><strong>Engage stakeholders early:</strong> Communicate clearly with implementers and participants about the purpose of randomization and how it ensures fairness.<br>
+</li>
+<li><strong>Document contextual factors:</strong> Describe in detail the setting, population, and implementation conditions to aid interpretation and replication.<br>
+</li>
+<li><strong>Integrate theory and mechanism testing:</strong> Use conceptual frameworks to explain <em>why</em> and <em>how</em> interventions might work, not just whether they do.<br>
+</li>
+<li><strong>Balance rigor with efficiency:</strong> Explore opportunities to use administrative data, phased rollouts, or adaptive designs to manage costs while maintaining validity.<br>
+</li>
+<li><strong>Foster transparency and accountability:</strong> Share protocols, pre-analysis plans, and results openly to build trust and reduce misunderstandings about the role of experimentation.</li>
 </ul>
 </section>
-</section>
-<section id="alternative-randomization-methods" class="level2">
-<h2 class="anchored" data-anchor-id="alternative-randomization-methods">Alternative Randomization Methods</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Cross-Cutting Treatments
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Purpose:</strong> Test multiple treatment variations simultaneously and efficiently</p>
-<p><strong>Design Types:</strong></p>
-<ul>
-<li>2x2 factorial design (most common)</li>
-<li>Multiple treatment arms (3+ variations)</li>
-<li>Nested designs</li>
-</ul>
-<p><strong>Advantages:</strong></p>
-<ul>
-<li>Tests interaction effects between treatments</li>
-<li>More cost-effective than separate trials</li>
-<li>Identifies optimal treatment combinations</li>
-</ul>
-<p><strong>Implementation:</strong></p>
-<ol type="1">
-<li>List all treatment combinations</li>
-<li>Assign units randomly to each arm</li>
-<li>Track and monitor each variation separately</li>
-<li>Analyze both main effects and interactions</li>
-</ol>
-<section id="teacher-training-and-materials-example" class="level4">
-<h4 class="anchored" data-anchor-id="teacher-training-and-materials-example">Teacher Training and Materials Example</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Group</th>
-<th style="text-align: left;">Training</th>
-<th style="text-align: left;">Materials</th>
-<th style="text-align: left;">Sample Size</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Control</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">25%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">T1</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">25%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">T2</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">25%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">T3</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">25%</td>
-</tr>
-</tbody>
-</table>
-</section>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Phase-In Design
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Purpose:</strong> Ensure all units eventually receive treatment while maintaining a valid control group</p>
-<p><strong>Design Types:</strong></p>
-<ul>
-<li>Sequential rollout (most common)</li>
-<li>Random order phase-in</li>
-<li>Stratified phase-in</li>
-<li>Time-lagged treatments</li>
-</ul>
-<p><strong>Advantages:</strong></p>
-<ul>
-<li>Ethically sound (all units get treatment)</li>
-<li>Maintains experimental control</li>
-<li>Allows program refinement</li>
-<li>Multiple measurement points</li>
-</ul>
-<p><strong>Implementation:</strong></p>
-<ol type="1">
-<li>Determine number and timing of phases</li>
-<li>Randomize order of treatment receipt</li>
-<li>Monitor phase transitions carefully</li>
-<li>Analyze data from each phase</li>
-</ol>
-<section id="community-program-rollout-example" class="level4">
-<h4 class="anchored" data-anchor-id="community-program-rollout-example">Community Program Rollout Example</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Phase</th>
-<th style="text-align: left;">Treatment Group</th>
-<th style="text-align: left;">Control Group</th>
-<th style="text-align: left;">Timeline</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">25%</td>
-<td style="text-align: left;">75%</td>
-<td style="text-align: left;">Months 1-3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">50%</td>
-<td style="text-align: left;">50%</td>
-<td style="text-align: left;">Months 4-6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">75%</td>
-<td style="text-align: left;">25%</td>
-<td style="text-align: left;">Months 7-9</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">100%</td>
-<td style="text-align: left;">0%</td>
-<td style="text-align: left;">Months 10-12</td>
-</tr>
-</tbody>
-</table>
-</section>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Encouragement Design
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Purpose:</strong> Evaluate impact when treatment cannot be denied but participation can be influenced</p>
-<p><strong>Design Types:</strong></p>
-<ul>
-<li>Information campaigns</li>
-<li>Personalized reminders</li>
-<li>Application assistance</li>
-<li>Cost subsidies</li>
-<li>Behavioral nudges</li>
-</ul>
-<p><strong>Advantages:</strong></p>
-<ul>
-<li>Ethical when services are entitlements</li>
-<li>Maintains experimental validity</li>
-<li>Measures both take-up and impact</li>
-<li>Identifies barriers to participation</li>
-</ul>
-<p><strong>Implementation:</strong></p>
-<ol type="1">
-<li>Design effective encouragement strategy</li>
-<li>Randomize who receives encouragement</li>
-<li>Track both encouragement and participation</li>
-<li>Use instrumental variables analysis</li>
-</ol>
-<section id="health-insurance-program-example" class="level4">
-<h4 class="anchored" data-anchor-id="health-insurance-program-example">Health Insurance Program Example</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Group</th>
-<th style="text-align: left;">Encouragement</th>
-<th style="text-align: left;">Access</th>
-<th style="text-align: left;">Expected Take-up</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Treatment</td>
-<td style="text-align: left;">Active outreach</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">60%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Control</td>
-<td style="text-align: left;">No outreach</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">30%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Difference</td>
-<td style="text-align: left;">Information + reminders</td>
-<td style="text-align: left;">None</td>
-<td style="text-align: left;">30%</td>
-</tr>
-</tbody>
-</table>
-</section>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Stratified Randomization
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Purpose:</strong> Ensure balance on key characteristics across treatment groups, especially important with small samples or critical covariates</p>
-<p><strong>Design Types:</strong></p>
-<ul>
-<li>Geographic stratification</li>
-<li>Demographic characteristics</li>
-<li>Baseline performance levels</li>
-<li>Multiple variable combinations</li>
-<li>Covariate-adaptive methods</li>
-</ul>
-<p><strong>Advantages:</strong></p>
-<ul>
-<li>Improves statistical precision</li>
-<li>Guarantees balance on key variables</li>
-<li>Reduces chance of unlucky draws</li>
-<li>Facilitates subgroup analysis</li>
-<li>Increases credibility of results</li>
-</ul>
-<p><strong>Implementation:</strong></p>
-<ol type="1">
-<li>Select key stratification variables</li>
-<li>Create strata combinations</li>
-<li>Randomize within each stratum</li>
-<li>Verify balance across strata</li>
-</ol>
-<section id="education-program-example" class="level4">
-<h4 class="anchored" data-anchor-id="education-program-example">Education Program Example</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Stratum</th>
-<th style="text-align: left;">Baseline Score</th>
-<th style="text-align: left;">Gender</th>
-<th style="text-align: left;">Treatment Share</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Low-Male</td>
-<td style="text-align: left;">Below median</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">50%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Low-Female</td>
-<td style="text-align: left;">Below median</td>
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">50%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">High-Male</td>
-<td style="text-align: left;">Above median</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">50%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">High-Female</td>
-<td style="text-align: left;">Above median</td>
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">50%</td>
-</tr>
-</tbody>
-</table>
-</section>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Example: Balsakhi Tutoring Program
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The Balsakhi program in India is a classic example of rigorous randomization in education research (Banerjee et al., 2007; Duflo, Glennerster, and Kremer, 2007):</p>
-<p><strong>Context:</strong></p>
-<p>Implemented by Pratham, the Balsakhi program provided remedial tutoring to academically weaker primary school students in Mumbai and Vadodara. The goal was to help students who were falling behind catch up with their peers.</p>
-<p><strong>Randomization:</strong></p>
-<ul>
-<li><strong>Unit:</strong> 122 schools were randomized to either receive the Balsakhi intervention or serve as controls.</li>
-<li><strong>Stratification:</strong> Randomization was stratified by language of instruction (Marathi, Gujarati, Hindi, English) and by gender composition (boys’, girls’, and co-ed schools) to ensure balance across key characteristics.</li>
-</ul>
-<p><strong>Implementation:</strong></p>
-<ul>
-<li>Within treatment schools, Balsakhis (local young women trained as tutors) worked with the lowest-performing students, identified using baseline test scores.</li>
-<li>Strict protocols were followed to prevent contamination between treatment and control schools, including separate training and monitoring teams.</li>
-<li>Detailed documentation and monitoring ensured fidelity to the randomization plan.</li>
-</ul>
-<p><strong>Results:</strong></p>
-<ul>
-<li>The program led to a significant improvement of 0.14 standard deviations in test scores for all students, and even larger gains for the weakest students.</li>
-<li>The study demonstrated the power of cluster-level randomization and the importance of stratification for balance.</li>
-</ul>
-<p><strong>References:</strong></p>
-<ul>
-<li>Banerjee, A., Cole, S., Duflo, E., and Linden, L. (2007). “Remedying Education: Evidence from Two Randomized Experiments in India.” <em>Quarterly Journal of Economics</em>, 122(3), 1235-1264. <a href="https://doi.org/10.1162/qjec.122.3.1235">DOI: 10.1162/qjec.122.3.1235</a> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li>Duflo, E., Glennerster, R., and Kremer, M. (2007). “Using Randomization in Development Economics Research: A Toolkit.” <em>Handbook of Development Economics</em>, 4, 3895-3962. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<p>Abdul Latif Jameel Poverty Action Lab (J-PAL). “Randomization.” Accessed October 31, 2025. https://www.povertyactionlab.org/resource/randomization.</p>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Banerjee, A., &amp; Duflo, E. (2011). <em>Poor economics: A radical rethinking of the way to fight global poverty.</em> PublicAffairs.</p>
+<p>Deaton, A., &amp; Cartwright, N. (2018). Understanding and misunderstanding randomized controlled trials. <em>Social Science &amp; Medicine, 210</em>, 2–21.</p>
+<p>Rodrik, D. (2009). The new development economics: We shall experiment, but how shall we learn? In J. Cohen &amp; W. Easterly (Eds.), <em>What works in development? Thinking big and thinking small</em> (pp.&nbsp;24–47). Brookings Institution Press.</p>
 
 
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Banerjee, A., Cole, S., Duflo, E., and Linden, L. (2007). Remedying education: Evidence from two randomized experiments in India. <em>The Quarterly Journal of Economics, 122</em>(3), 1235-1264. https://doi.org/10.1162/qjec.122.3.1235<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Duflo, E., Glennerster, R., and Kremer, M. (2007). Using randomization in development economics research: A toolkit. In T. P. Schultz and J. A. Strauss (Eds.), <em>Handbook of Development Economics</em> (Vol. 4, pp.&nbsp;3895-3962). Elsevier.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -2166,13 +1565,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../research-design/survey-translation.html" class="pagination-link" aria-label="Survey Translation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Survey Translation</span>
+      <a href="../research-design/sample-size-power.html" class="pagination-link" aria-label="Sample and Power Calculations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Sample and Power Calculations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../research-design/measurement.html" class="pagination-link" aria-label="Measurement">
-        <span class="nav-page-text">Measurement</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../research-ethics/index.html" class="pagination-link" aria-label="About IPA IRB">
+        <span class="nav-page-text">About IPA IRB</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -2184,7 +1583,7 @@ Note
     </div>   
     <div class="nav-footer-center">
 
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/randomization.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/addressing-rct-criticisms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
