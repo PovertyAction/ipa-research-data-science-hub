@@ -1026,7 +1026,7 @@ cookieconsent.run({
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">November 4, 2025</li>
+    <li class="last-modified" style="font-size: 0.86rem;">November 7, 2025</li>
   </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
   <ul>
@@ -1129,11 +1129,11 @@ cookieconsent.run({
 </table>
 <p>Some responses may require the enumerator to switch from the standard missing values (for example if a response is restricted to be positive, -99 may not be allowed). Other times, enumerators may enter the wrong missing value by mistake, such as -999 instead of -99. As part of the code to relabel missing values by type, you can include code that searches for these changes. The following code replaces multiple values and looks for positive versions of the missing values in outliers.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>*Assign numerical codes</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>loc idk     -99 99 999  <span class="co">// numerical code for "Don't Know"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>loc rf      -77 77 75   <span class="co">// numerical code for "Refuse"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>loc na      -88         <span class="co">// numerical code for "Not Applicable"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>loc oth     -66         <span class="co">// numerical code for "Other"</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>loc skip    -70         <span class="co">// numerical code for  "Skip"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> idk       -99 99 999  <span class="co">// numerical code for "Don't Know"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> rf        -77 77 75   <span class="co">// numerical code for "Refuse"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> na        -88         <span class="co">// numerical code for "Not Applicable"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> oth       -66         <span class="co">// numerical code for "Other"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> skip  -70         <span class="co">// numerical code for  "Skip"</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>* Replace <span class="kw">values</span> <span class="kw">for</span> each <span class="dv">type</span> <span class="kw">of</span> refusal across numerical variables</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">ds</span>, <span class="kw">not</span>(<span class="dv">type</span> <span class="fu">string</span>)</span>
@@ -1312,7 +1312,7 @@ cookieconsent.run({
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>*Replace <span class="kw">values</span></span>
 <span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="kw">levelsof</span> <span class="fu">q</span> <span class="co">// first collect every level of q and replace</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>loc <span class="kw">levels</span> <span class="ot">`r(levels)'</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="kw">levels</span> <span class="ot">`r(levels)'</span></span>
 <span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="dv">level</span> <span class="kw">of</span> <span class="kw">local</span> <span class="kw">levels</span> {</span>
 <span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="kw">replace</span> <span class="fu">q</span> = <span class="ot">`level'</span> <span class="kw">if</span> mapping == <span class="ot">`level'</span></span>
 <span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>}</span>
@@ -1421,7 +1421,7 @@ cookieconsent.run({
 <p>For a set of SurveyCTO datetimes using the same format, the following code will convert all of the variables to Stata date formats and check for data quality:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>*Define <span class="ot">list</span> <span class="kw">of</span> <span class="fu">date</span> <span class="kw">variable</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ds</span> *_date <span class="co">// this should match your naming convention</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>loc date_vars <span class="ot">`r(varlist)'</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> date_vars <span class="ot">`r(varlist)'</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>*<span class="kw">save</span> <span class="kw">tempvar</span> so indifferent to <span class="kw">var</span> <span class="fu">length</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tempvar</span> temp</span>
@@ -1453,7 +1453,7 @@ cookieconsent.run({
 <span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co">        See h datetime in Stata for an overview on how to define</span></span>
 <span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co">        datetime formats for the clock() and date() functions.</span></span>
 <span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co">    */</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    loc varl : <span class="kw">var</span> <span class="kw">label</span> <span class="ot">`var'</span> <span class="co">// save var label</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> varl : <span class="kw">var</span> <span class="kw">label</span> <span class="ot">`var'</span> <span class="co">// save var label</span></span>
 <span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`temp'</span> = . <span class="co">// clear tempvar</span></span>
 <span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`temp'</span> = clock(<span class="ot">`var'</span>, <span class="st">"MDYhms"</span>)</span>
 <span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    *<span class="kw">drop</span> the <span class="kw">variable</span> <span class="kw">as</span> cannot <span class="kw">replace</span> <span class="kw">values</span> and convert <span class="dv">type</span></span>
@@ -1462,8 +1462,8 @@ cookieconsent.run({
 <span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">format</span> <span class="ot">`var'</span> %tcCCYY_NN_DD__HH:MM:SS <span class="co">// choose a preferred format</span></span>
 <span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    *Check within <span class="kw">range</span></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>    loc survey_start = clock(<span class="st">"Jan. 01 1960, 12:00:00 AM"</span>, <span class="st">"MDYhms"</span>)</span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    loc survey_end = clock(<span class="st">"Feb. 29 2020, 11:59:59 PM"</span>, <span class="st">"MDYhms"</span>)</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> survey_start = clock(<span class="st">"Jan. 01 1960, 12:00:00 AM"</span>, <span class="st">"MDYhms"</span>)</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> survey_end = clock(<span class="st">"Feb. 29 2020, 11:59:59 PM"</span>, <span class="st">"MDYhms"</span>)</span>
 <span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">assert</span> <span class="fu">inrange</span>(<span class="ot">`var'</span>, <span class="ot">`survey_start'</span>, <span class="ot">`survey_end'</span>)</span>
 <span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    *Check non-<span class="fu">missing</span> <span class="kw">for</span> calculate fields</span>
@@ -1522,7 +1522,7 @@ cookieconsent.run({
 </ul>
 <p>Variable consistency can be handled using value labeling in Stata. For example, to ensure that data remains the same over the course of data collection, it can be useful to check that categorical variables map to expected values to a previously created value label. The <code>noextend</code> option of the encode commands allows you to confirm no values exist in the variable other than those in the supplied label. The following code accomplishes this:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>*Create a <span class="kw">local</span> <span class="ot">list</span> <span class="kw">of</span> variables to <span class="kw">encode</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>loc str_var <span class="kw">var</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> str_var <span class="kw">var</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>*Encode <span class="kw">values</span> and <span class="kw">confirm</span> expected</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> str_var {</span>
