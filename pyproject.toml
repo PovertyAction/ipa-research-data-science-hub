@@ -12,6 +12,7 @@ dependencies = [
     "great-tables>=0.15.0",
     "ipykernel>=6.29.5",
     "jupyter>=1.1.1",
+    "nbstata>=0.8.3",
     "pandas>=2.2.3",
     "polars>=1.17.1",
     "radian>=0.6.15",
@@ -19,12 +20,8 @@ dependencies = [
     "stata-setup>=0.1.3",
 ]
 
-
-[tool.uv]
-dev-dependencies = [
-    "pre-commit>=4.2.0",
-    "ruff>=0.7.4,<0.9",
-]
+[dependency-groups]
+dev = ["pre-commit>=4.2.0", "ruff>=0.7.4,<0.9"]
 
 [tool.jupysql.SqlMagic]
 feedback = 0
@@ -38,6 +35,8 @@ line-length = 88
 fix = true
 # Assume Python 3.11
 target-version = "py311"
+exclude = [".claude/skills/", ".claude/subagents/"]
+
 
 [tool.ruff.lint]
 # docs: https://docs.astral.sh/ruff/rules/
@@ -79,6 +78,6 @@ docstring-code-line-length = 88
 #builtin = ["clear","rare","informal","usage","code","names"]
 builtin = "clear,rare,informal,usage,code,names"
 #ignore-words-list = ["uint"]
-ignore-words-list = "adn,master,uint,wrod"
+ignore-words-list = "adn,master,uint,wrod,sme"
 #skip=[ "./.*","codespell_lib/data/*","codespell_lib/tests/*"]
 skip = "./.*,codespell_lib/data/*,codespell_lib/tests/*"

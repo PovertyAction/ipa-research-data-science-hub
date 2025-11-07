@@ -129,15 +129,14 @@ pre-commit-run:
 pre-install:
     winget install Casey.Just astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale OpenJS.NodeJS
     winget install --id=RProject.R -e
-    npm install -g markdownlint-cli
+    npm install -g markdownlint-cli2
 
 [linux]
 pre-install:
     brew install just uv gh vale r --force-bottle
-    sudo apt update && sudo apt upgrade && sudo apt install -y nodejs npm
-    npm install -g markdownlint-cli
+    sudo apt update && sudo apt upgrade && sudo apt install -y nodejs npm install -g markdownlint-cli2
 
 [macos]
 pre-install:
-    brew install just uv gh vale r markdownlint-cli
+    brew install just uv gh vale r markdownlint-cli2
     brew install --cask quarto
