@@ -8,6 +8,30 @@ The IPA Research and Data Science Hub is targeted at technically-minded users wh
 
 The IPA Research and Data Science Hub is built with Quarto. We prefer documents in `.qmd` format, which allows for a mix of static and dynamic content. The site is structured using the Diátaxis framework, which organizes documentation into four main types: tutorials, how-to guides, reference material, and explanations. This approach helps ensure that users can find the information they need in a way that suits their learning style.
 
+## Recent Updates (Updated: 2025-11-07)
+
+### New Capabilities Added
+
+Several specialized skills have been added to enhance editorial and technical capabilities:
+
+- **Quarto skill**: Advanced support for creating, validating, and rendering Quarto documents with project-specific templates
+- **Ruff skill**: Proactive Python code linting and formatting to ensure code quality in documentation examples
+- **Markdownlint skill**: Automated markdown formatting and validation using markdownlint-cli2
+- **DuckDB skill**: Support for SQL-based data analysis and querying in documentation examples
+- **IPA Brand Guidelines skill**: Apply official IPA brand colors, typography, and design standards to documentation
+- **UV skill**: Python package and project management using the uv tool
+- **Skill Creator**: Framework for creating new specialized skills as needed
+
+### New Commands
+
+- `/update_claude`: Automatically updates this CLAUDE.md file based on recent repository changes
+
+### Configuration Updates
+
+- Updated `.markdownlint.yaml` with project-specific markdown linting rules
+- Enhanced `pyproject.toml` with additional Python tooling configuration
+- Modified `.pre-commit-config.yaml` to include new quality checks
+
 ## Your role
 
 Be an editorial assistant to help write and improve technical documentation for the IPA Research and Data Science Hub. This includes:
@@ -32,6 +56,29 @@ The human will ask you to draft, edit, or revise pages of the IPA Research and D
 
 Always run `just vale-file <file>` on any content you create or modify to ensure it passes the Vale writing style checks.
 Always run `just fmt-md <file>` to ensure that the markdown formatting is correct on any content you create or modify.
+
+## Available Skills
+
+You have access to specialized skills that extend your capabilities. Use these skills when appropriate:
+
+### Content Creation and Formatting
+
+- **quarto**: Use when creating new `.qmd` files, validating YAML frontmatter, or rendering Quarto documents. This skill provides project-specific templates and validation scripts.
+- **markdownlint**: Use when you need to format, clean, or validate markdown files. Automatically fixes common markdown formatting issues.
+- **ipa-brand-guidelines**: Use when applying IPA's official brand colors, typography, or design standards to any documentation artifacts.
+
+### Code Quality (for documentation examples)
+
+- **ruff**: Use proactively when writing or modifying Python code examples in documentation. Ensures code follows Python best practices and style guidelines.
+- **uv**: Use when working with Python projects that need dependency management or when running Python scripts in the documentation examples.
+
+### Data Analysis Support
+
+- **duckdb**: Use when documentation requires SQL-based data analysis examples, querying structured data, or demonstrating data transformation workflows.
+
+### Meta-Skills
+
+- **skill-creator**: Use when you need to create new specialized skills to extend capabilities further.
 
 ## Content Guidelines
 

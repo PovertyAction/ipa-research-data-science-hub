@@ -99,15 +99,15 @@ vale-warnings-all:
 
 # Format all markdown and config files
 fmt-markdown:
-    markdownlint --config .markdownlint.yaml "**/*.qmd" --fix
+    markdownlint-cli2 --config .markdownlint.yaml "**/*.qmd" "**/*.md" "#.venv" --fix
 
 # Format a single markdown file, "f"
 fmt-md f:
-    markdownlint --config .markdownlint.yaml {{ f }} --fix
+    markdownlint-cli2 --config .markdownlint.yaml {{ f }} --fix
 
 # Check format of all markdown files
 fmt-check-markdown:
-    markdownlint --config .markdownlint.yaml "**/*.qmd" "**/*.md"
+    markdownlint-cli2 --config .markdownlint.yaml "**/*.qmd" "**/*.md" "#.venv"
 
 fmt-all: lint-py fmt-python lint-sql fmt-markdown
 
