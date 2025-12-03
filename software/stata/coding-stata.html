@@ -1111,19 +1111,27 @@ cookieconsent.run({
 </section>
 <section id="creating-a-dataset-in-stata-from-scratch" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-dataset-in-stata-from-scratch">Creating a dataset in Stata from scratch</h3>
-<p>In Stata, you can create a dataset from scratch. This can be helpful if you want to test some code, learn or check how something works. When working in a clear Stata session, you can use <code>set obs n</code> where n is an integer, to create that many observations in the dataset. From there, you can gen variables set to whatever you are interested in.</p>
+<p>In Stata, you can create a dataset from scratch. This can be helpful if you want to test some code, learn or check how something works. When working in a clear Stata session, you can use <code>set obs n</code> where n is an integer, to create that many observations in the dataset. From there, you can <code>generate</code> variables set to whatever you are interested in.</p>
 <p>Example to test how to generate a dummy variable as well as using <code>_n</code> to indicate row numbers</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>*Clear your stata <span class="kw">console</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">clear</span> <span class="ot">all</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>*Create how many observations you want your dataset to have</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">set</span> <span class="kw">obs</span> 10</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>*Create variables to <span class="kw">test</span> the code you are interested <span class="kw">in</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">gen</span> test_dummy = (<span class="dt">_n</span> &lt; 5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">generate</span> test_dummy = (<span class="dt">_n</span> &lt; 5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="numerical-formats" class="level2">
 <h2 class="anchored" data-anchor-id="numerical-formats">Numerical formats</h2>
-<p>It’s easy to forget that Stata code is operating a computer with very different rules for counting and numbers than we have in the real world. Ado (the language of .do files) allows for a high-level <a href="https://en.wikipedia.org/wiki/Abstraction_layer">abstraction</a>, where the programmer does not have to explicitly command the computer to do low-level tasks like allocating memory for data, ordering tasks, or defining how the computer should round values that can’t be precisely displayed in binary. This is rarely important, but there are a few cases where these processes, like precision of stored data, is highly relevant for statistical tasks and may need to be specified. The most relevant cases are: - IDs should be stored as string variables or have less than 8 digits if the storage type of the variable is a float - Asserts should only compare similar storage types. - All values in stata (e.g.&nbsp;<code>1</code> or <code>`r(N)'</code>) are treated as doubles - Merges that do not match IDs across datasets and display bugs (e.g.&nbsp;1.0000000784732907 in Excel) can be due to the storage type of the variables or values</p>
+<p>It’s easy to forget that Stata code is operating a computer with very different rules for counting and numbers than we have in the real world. Ado (the language of .do files) allows for a high-level <a href="https://en.wikipedia.org/wiki/Abstraction_layer">abstraction</a>, where the programmer does not have to explicitly command the computer to do low-level tasks like allocating memory for data, ordering tasks, or defining how the computer should round values that can’t be precisely displayed in binary. This is rarely important, but there are a few cases where these processes, like precision of stored data, is highly relevant for statistical tasks and may need to be specified. The most relevant cases are:</p>
+<ul>
+<li>IDs should be stored as string variables or have less than 8 digits if the storage type of the variable is a float</li>
+<li>Asserts should only compare similar storage types.
+<ul>
+<li>All values in stata (e.g.&nbsp;<code>1</code> or <code>`r(N)'</code>) are treated as doubles</li>
+</ul></li>
+<li>Merges that do not match IDs across datasets and display bugs (e.g.&nbsp;1.0000000784732907 in Excel) can be due to the storage type of the variables or values</li>
+</ul>
 <section id="statas-process" class="level3">
 <h3 class="anchored" data-anchor-id="statas-process">Stata’s process</h3>
 <p>Variables in Stata have storage formats and display formats. Storage formats describe how Stata is storing the variable in the computer memory – what the data are – and display formats describes the default way that the information is presented to a user. Type <code>help format</code> in Stata to get more information on how variables or values are displayed.</p>
@@ -1171,7 +1179,7 @@ cookieconsent.run({
 </table>
 <p>This is extremely relevant when exact equivalence matters. Stata will always conduct functions in double precision (at about 16 digits of precision). Imagine that you are comparing a variable <code>x</code> and a number <code>.1</code>. Stata defaults to generating variables as floats to conserve memory. To process a calculation, Stata will transform the float <code>x</code> into a double and compare that value to the <code>.1</code> rounded to a double. This causes results that we may not expect for numbers, like <code>.1</code>, that aren’t stored exactly in binary:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">set</span> <span class="kw">obs</span> 1</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">gen</span> x = .1</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> x = .1</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>. <span class="kw">assert</span> x == .1</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  assertion is false</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">r</span>(9);</span>
@@ -1192,15 +1200,20 @@ cookieconsent.run({
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">// force Stata to display the first and only value of x in a double format</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>. <span class="kw">assert</span> <span class="ot">`: di x[1]'</span> == .1</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>. <span class="kw">gen</span> <span class="kw">double</span> <span class="fu">y</span> = .1 <span class="co">// generate a new variable at double precision</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> <span class="kw">double</span> <span class="fu">y</span> = .1 <span class="co">// generate a new variable at double precision</span></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>. <span class="kw">assert</span> <span class="fu">y</span> == .1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This would not be a problem for a value that can be stored exactly such as <code>1</code>.</p>
-<p>Although this seems very abstract and of limited relevance, this will cause problems in the following cases that are often encountered by IPA projects: - IDs have different storage types (one is a float and one is a double for example) in a merge. Stata will not prevent you from making that merge, but will not be able to match the IDs that the programmer intended to be the same. - Numeric IDs will no longer be unique when they have more digits than their storage type can hold (16 for doubles). No numeric IDs will be unique if they have more than 17 digits, especially if the last digits are changing for individuals that should be unique. It’s best to store IDs as strings or keep ID values at the minimum length needed. - <code>assert</code>s that compare a scalar (<code>r(mean)</code>) to a variable stored as a float may not be accurate. This can be corrected by using functions like <code>inrange()</code> or <code>float()</code> as part of the <code>assert</code>.</p>
+<p>Although this seems very abstract and of limited relevance, this will cause problems in the following cases that are often encountered by IPA projects:</p>
+<ul>
+<li>IDs have different storage types (one is a float and one is a double for example) in a merge. Stata will not prevent you from making that merge, but will not be able to match the IDs that the programmer intended to be the same.</li>
+<li>Numeric IDs will no longer be unique when they have more digits than their storage type can hold (16 for doubles). No numeric IDs will be unique if they have more than 17 digits, especially if the last digits are changing for individuals that should be unique. It’s best to store IDs as strings or keep ID values at the minimum length needed.</li>
+<li><code>assert</code>s that compare a scalar (<code>r(mean)</code>) to a variable stored as a float may not be accurate. This can be corrected by using functions like <code>inrange()</code> or <code>float()</code> as part of the <code>assert</code>.</li>
+</ul>
 </section>
 <section id="dataset-size-memory-usage" class="level3">
 <h3 class="anchored" data-anchor-id="dataset-size-memory-usage">Dataset Size &amp; Memory Usage</h3>
 <p>There are a number of concrete ways to avoid this, as well as a lot written on how this affects computation. Memory conservation is generally not relevant for statistical programming with small N survey data that we normally work with at IPA. But this can be the relevant in large datasets where using memory on extraneous digits will slow basic computations substantively. Administrative data with observations in the hundreds of thousands to millions is an example of this that is relevant for many IPA projects.</p>
-<p>It’s generally good practice to reduce the size of files using <code>compress</code> or by generating values in the smallest format such as <code>gen byte dummy = (q1 == "Yes")</code>, especially when the data are larger or if you are performing commands that are computationally intensive for Stata (various regressions, reshaping, etc.).</p>
+<p>It’s generally good practice to reduce the size of files using <code>compress</code> or by generating values in the smallest format such as <code>generate byte dummy = (q1 == "Yes")</code>, especially when the data are larger or if you are performing commands that are computationally intensive for Stata (various regressions, reshaping, etc.).</p>
 <p>If you are interested in more details, Stata Corp’s blog has a few good articles on <a href="https://blog.stata.com/2011/06/17/precision-yet-again-part-i/">numerical precision</a> and why <a href="https://blog.stata.com/2011/06/23/precision-yet-again-part-ii/">this</a> happens in computing, as well as the <a href="https://www.stata.com/support/faqs/data-management/float-data-type/">specific digits</a> that float precision loses values.</p>
 </section>
 </section>
@@ -1349,7 +1362,11 @@ cookieconsent.run({
 </tr>
 </tbody>
 </table>
-<p>A couple things to note: 1. This command automatically creates an indicator variable called <code>\_fillin</code> that keeps track of observations that were created from the command 2. Variables not specified in the <code>fillin</code> are filled in with a missing value. After you run <code>fillin</code> you will need to go back and replace observations as you see appropriate. For example, for typically constant variables such as gender you could replace this new missing value to match the one above it.</p>
+<p>A couple things to note:</p>
+<ol type="1">
+<li>This command automatically creates an indicator variable called <code>\_fillin</code> that keeps track of observations that were created from the command</li>
+<li>Variables not specified in the <code>fillin</code> are filled in with a missing value. After you run <code>fillin</code> you will need to go back and replace observations as you see appropriate. For example, for typically constant variables such as gender you could replace this new missing value to match the one above it.</li>
+</ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> ID Survey_Round</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> Gender = Gender[<span class="dt">_n</span>-1] <span class="kw">if</span> ID == ID[<span class="dt">_n</span>-1] &amp; _fillin == 1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -1378,7 +1395,13 @@ cookieconsent.run({
 <section id="mmerge" class="level3">
 <h3 class="anchored" data-anchor-id="mmerge">mmerge</h3>
 <p>This is not a built-in Stata command and can be installed by typing <code>ssc install mmerge</code>.</p>
-<p><code>mmerge</code> provides additional options for <code>merge</code> that make merging datasets more user friendly by removing a signfiicant amount of preprocessing work for complex datasets: - It allows for missing values in the match variable and let’s the user determine how they are treated with the <code>missing()</code> option. - It allows for differing merge variable names with the <code>umatch()</code> option - It allows for all merged variables from the using file to be prefixed as part of the merge with the <code>uname()</code> option - It stores shared variable names that are not merged in a local <code>r(common)</code></p>
+<p><code>mmerge</code> provides additional options for <code>merge</code> that make merging datasets more user friendly by removing a signfiicant amount of preprocessing work for complex datasets:</p>
+<ul>
+<li>It allows for missing values in the match variable and let’s the user determine how they are treated with the <code>missing()</code> option.</li>
+<li>It allows for differing merge variable names with the <code>umatch()</code> option</li>
+<li>It allows for all merged variables from the using file to be prefixed as part of the merge with the <code>uname()</code> option</li>
+<li>It stores shared variable names that are not merged in a local <code>r(common)</code></li>
+</ul>
 <p>There are a number of other options and syntax changes. You can see these by typing <code>help mmerge</code> once <code>mmerge</code> is installed.</p>
 </section>
 <section id="return-list" class="level3">

@@ -1154,7 +1154,7 @@ cookieconsent.run({
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">save</span> <span class="st">"filepath/dtafiles/`cleanfilename'_raw.dta"</span>, <span class="kw">replace</span></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note that the new .dta files are no longer saved in the same folder that your raw excel, csv, or any other type of files were saved in. As the imported data is no longer raw, they should be saved in either a temporary or data folder.</p>
-<p>It can be helpful set up a “dta” or “temp” folder for you to save these intermediate data files before you start. To do so, you can create a folder to save your files in directly in your script by using <code>mkdir "filepath"</code>. If the directory already exists, this will create an error. One solution is to use the <code>capture</code> command and type <code>cap mkdir "filepath"</code> which will suppress the error. We recommend avoiding <code>capture</code> in most situations.</p>
+<p>It can be helpful set up a “dta” or “temp” folder for you to save these intermediate data files before you start. To do so, you can create a folder to save your files in directly in your script by using <code>mkdir "filepath"</code>. If the directory already exists, this will create an error. One solution is to use the <code>capture</code> command and type <code>capture mkdir "filepath"</code> which will suppress the error. We recommend avoiding <code>capture</code> in most situations.</p>
 </section>
 </section>
 <section id="data-structure-and-reshaping" class="level2">
@@ -1222,7 +1222,7 @@ cookieconsent.run({
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">/*Then create a list of all of the vars with each stub</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"> and manually expand*/</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> yearmonth = . <span class="co">// create an empty var that will hold the sub-group identifier (this is the j var in reshape)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> yearmonth = . <span class="co">// create an empty var that will hold the sub-group identifier (this is the j var in reshape)</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">in</span> income {</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    *Save <span class="ot">all</span> <span class="kw">of</span> the income variables</span>
@@ -1234,7 +1234,7 @@ cookieconsent.run({
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> monthyear = <span class="fu">subinstr</span>(<span class="st">"`reshapevarlist'"</span>, <span class="st">"`var'_"</span>, <span class="st">""</span>, .)</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    *create an empty <span class="kw">version</span> <span class="kw">of</span> the stub, <span class="kw">this</span> will become the <span class="kw">long</span> <span class="kw">var</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gen</span> <span class="ot">`var'</span> = .</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">generate</span> <span class="ot">`var'</span> = .</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    *Loop through each <span class="ot">value</span></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">forvalues</span> x = 1/<span class="ot">`copies'</span> {</span>
@@ -1307,7 +1307,7 @@ cookieconsent.run({
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>*Generate translated <span class="kw">variable</span> <span class="bn">name</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> q_en = <span class="st">""</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> q_en = <span class="st">""</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> vlab : <span class="kw">variable</span> <span class="kw">label</span> <span class="fu">q</span> <span class="co">// extract variable label to copy</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> q_en <span class="st">"`vlab', English"</span> <span class="co">// label with translation info</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -1441,7 +1441,7 @@ cookieconsent.run({
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">in</span> <span class="ot">`stringvars'</span> {</span>
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">tempvar</span> <span class="ot">`var'</span>_num</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gen</span> <span class="ot">``var'</span>_num' = (<span class="fu">regexm</span>(<span class="ot">`var'</span>, <span class="st">"[0-9] [0-9]"</span>))</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">generate</span> <span class="ot">``var'</span>_num' = (<span class="fu">regexm</span>(<span class="ot">`var'</span>, <span class="st">"[0-9] [0-9]"</span>))</span>
 <span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">qui</span> <span class="kw">sum</span> <span class="ot">``var'</span>_num'</span>
 <span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="fu">r</span>(<span class="fu">max</span>) ==1 {</span>
 <span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        *add the <span class="kw">variable</span> to a <span class="ot">list</span> <span class="kw">of</span> select_multiple variables</span>
@@ -1465,7 +1465,7 @@ cookieconsent.run({
 <span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* split and de-string vars in the selec_mult list,</span></span>
 <span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="co">    which now have only numeric characters */</span></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">split</span> <span class="ot">`var'</span>, <span class="kw">gen</span>(<span class="ot">`var'</span>_) <span class="kw">destring</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">split</span> <span class="ot">`var'</span>, <span class="kw">generate</span>(<span class="ot">`var'</span>_) <span class="kw">destring</span></span>
 <span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>*Re-code <span class="fu">missing</span> <span class="kw">values</span> <span class="kw">in</span> the now-<span class="kw">numeric</span> variables</span>
@@ -1487,13 +1487,13 @@ cookieconsent.run({
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>*<span class="kw">sort</span> <span class="kw">by</span> foreign and <span class="kw">save</span> <span class="kw">order</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> foreign</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> sort_order = <span class="dt">_n</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> sort_order = <span class="dt">_n</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>*<span class="kw">sort</span> randomly so Stata will <span class="kw">sort</span> <span class="kw">by</span> foreign again</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">/*  sort first checks if it's in order, and doesn't do anything if</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">    the data are in the expected order</span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> rand = runiform()</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> rand = runiform()</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> rand</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> rand</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>

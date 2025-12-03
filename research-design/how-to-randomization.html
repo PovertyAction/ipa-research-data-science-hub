@@ -1107,13 +1107,13 @@ cookieconsent.run({
 <li>Need to ensure balance across grades</li>
 </ul>
 <p><strong>Create your dataset with participant identifiers and strata:</strong></p>
-<div id="7dd0e59e" class="cell" data-execution_count="2">
+<div id="1d76682f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>clear</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> obs <span class="dv">500</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>gen student_id <span class="op">=</span> _n</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>gen school_id <span class="op">=</span> ceil(_n<span class="op">/</span><span class="dv">50</span>)         <span class="op">//</span> <span class="dv">10</span> schools, <span class="dv">50</span> students each</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>gen grade <span class="op">=</span> mod(_n<span class="op">-</span><span class="dv">1</span>,<span class="dv">5</span>) <span class="op">+</span> <span class="dv">1</span>         <span class="op">//</span> Grades one to five, evenly distributed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>generate student_id <span class="op">=</span> _n</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>generate school_id <span class="op">=</span> ceil(_n<span class="op">/</span><span class="dv">50</span>)         <span class="op">//</span> <span class="dv">10</span> schools, <span class="dv">50</span> students each</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>generate grade <span class="op">=</span> mod(_n<span class="op">-</span><span class="dv">1</span>,<span class="dv">5</span>) <span class="op">+</span> <span class="dv">1</span>         <span class="op">//</span> Grades one to five, evenly distributed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 . clear
@@ -1121,11 +1121,12 @@ cookieconsent.run({
 . set obs 500
 Number of observations (_N) was 0, now 500.
 
-. gen student_id = _n
+. generate student_id = _n
 
-. gen school_id = ceil(_n/50)         // 10 schools, 50 students each
+. generate school_id = ceil(_n/50)         // 10 schools, 50 students each
 
-. gen grade = mod(_n-1,5) + 1         // Grades one to five, evenly distributed
+. generate grade = mod(_n-1,5) + 1         // Grades one to five, evenly distri
+&gt; buted
 
 . </code></pre>
 </div>
@@ -1134,7 +1135,7 @@ Number of observations (_N) was 0, now 500.
 <section id="step-3-set-random-seed" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-set-random-seed">Step 3: Set Random Seed</h2>
 <p><strong>Set a random seed for replicability:</strong></p>
-<div id="ba18d0ba" class="cell" data-execution_count="3">
+<div id="16d8ff30" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> seed <span class="dv">12345</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1142,7 +1143,7 @@ Number of observations (_N) was 0, now 500.
 <section id="step-4-verify-your-strata" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-verify-your-strata">Step 4: Verify Your Strata</h2>
 <p><strong>Check that your stratification variable covers all participants:</strong></p>
-<div id="db239d6f" class="cell" data-execution_count="4">
+<div id="7390b679" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tab grade</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1162,11 +1163,11 @@ Number of observations (_N) was 0, now 500.
 <section id="step-5-implement-stratified-randomization" class="level2">
 <h2 class="anchored" data-anchor-id="step-5-implement-stratified-randomization">Step 5: Implement Stratified Randomization</h2>
 <p><strong>Assign half of students to treatment within each grade—total treated equals 250. Generate a treatment variable where 1 equals treated and 0 equals control:</strong></p>
-<div id="008708eb" class="cell" data-execution_count="5">
+<div id="d34131c7" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">*</span> Install randtreat <span class="cf">if</span> <span class="kw">not</span> already installed</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cap ssc install randtreat</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>capture ssc install randtreat</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">*</span> Use randtreat <span class="cf">for</span> stratified randomization by grade</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>randtreat, strata(grade) unequal(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) generate(treatment)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1174,7 +1175,7 @@ Number of observations (_N) was 0, now 500.
 <pre><code>
 . 
 . * Install randtreat if not already installed
-. cap ssc install randtreat
+. capture ssc install randtreat
 
 . 
 . * Use randtreat for stratified randomization by grade
@@ -1188,7 +1189,7 @@ assignment produces 0 misfits
 <section id="step-6-verify-balance" class="level2">
 <h2 class="anchored" data-anchor-id="step-6-verify-balance">Step 6: Verify Balance</h2>
 <p><strong>Tabulate treatment by grade and school to verify balance:</strong></p>
-<div id="030ae7d4" class="cell" data-execution_count="6">
+<div id="bf396080" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>stata</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tab treatment grade</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>tab treatment school_id</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1253,7 +1254,7 @@ assignment produces 0 misfits
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>* Sort <span class="kw">by</span> <span class="kw">unique</span> ID before generating random numbers</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> unique_id</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> rand = runiform()</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> rand = runiform()</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>* When sorting <span class="kw">by</span> <span class="kw">strata</span> and random number, <span class="kw">include</span> <span class="kw">unique</span> ID <span class="fu">last</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> region rand unique_id</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

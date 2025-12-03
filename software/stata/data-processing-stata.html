@@ -1016,7 +1016,7 @@ cookieconsent.run({
     <ul class="collapse">
     <li><a href="#the-by-function" id="toc-the-by-function" class="nav-link" data-scroll-target="#the-by-function">The <code>by</code> function</a></li>
     </ul></li>
-    <li><a href="#bysort-gen-and-egen" id="toc-bysort-gen-and-egen" class="nav-link" data-scroll-target="#bysort-gen-and-egen"><code>bysort</code>, <code>gen</code>, and <code>egen</code></a></li>
+    <li><a href="#bysort-generate-and-egen" id="toc-bysort-generate-and-egen" class="nav-link" data-scroll-target="#bysort-generate-and-egen"><code>bysort</code>, <code>generate</code>, and <code>egen</code></a></li>
     <li><a href="#preservingrestoring-data" id="toc-preservingrestoring-data" class="nav-link" data-scroll-target="#preservingrestoring-data">Preserving/restoring data</a></li>
     <li><a href="#asserting-beforehand" id="toc-asserting-beforehand" class="nav-link" data-scroll-target="#asserting-beforehand">Asserting beforehand</a></li>
     </ul>
@@ -1065,29 +1065,31 @@ cookieconsent.run({
 <p>Not only could it be useful, but crucial, to sort your observations in a particular way when cleaning or creating outcomes.</p>
 <p>You can use the <code>sort</code> command in Stata to achieve this. Of course you can order your observation based on ordering one variable, but you can go further and sort your data on multiple variables. For example if you have a long dataset that contains two variables person id and survey round and for each person it has three survey rounds, then if you <code>sort id round</code> you will sort the data by person and within each person you will sort by the survey rounds.</p>
 <ol type="1">
-<li><code>sort</code> sorts observations in ascending order (i.e.&nbsp;lowest to highest)</li>
-<li>Missing values in stata are equivalent to infinity and thus will be sorted to the bottom of your sort if they exist</li>
+<li><p><code>sort</code> sorts observations in ascending order (i.e.&nbsp;lowest to highest)</p></li>
+<li><p>Missing values in stata are equivalent to infinity and thus will be sorted to the bottom of your sort if they exist</p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>*Example <span class="kw">of</span> points 1 and 2 above</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> bplong, <span class="kw">clear</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">sort</span> when patient</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">sort</span> patient when</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">preserve</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> when = . <span class="kw">if</span> <span class="dt">_n</span> == 25</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">sort</span> when patient <span class="co">//where did the missing value get sorted to?</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">sort</span> when patient</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">sort</span> patient when</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">preserve</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">replace</span> when = . <span class="kw">if</span> <span class="dt">_n</span> == 25</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">sort</span> when patient <span class="co">//where did the missing value get sorted to?</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">restore</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
 <li>You can flip the order you sort by using <code>gsort</code> and using a negative sign in front of the variable name (i.e.&nbsp;sort largest to smallest)</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> bplong, <span class="kw">clear</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>*Use <span class="kw">sort</span> to see how it normally sorts males first (smallest to largest)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> sex patient</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">gsort by -sex to see how to sort largest to smallest</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">(Notice the patient order does not change within gender)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">gsort</span> -sex patient</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">Use sort to see how it normally sorts males first (smallest to largest)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> sex patient</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">gsort by -sex to see how to sort largest to smallest</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">(Notice the patient order does not change within gender)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">gsort</span> -sex patient</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
 <li>If the observations of the variables you sort on are not unique, Stata will randomize their order in a new randomization every time you sort (i.e.&nbsp;you will not get a consistent order if you re-run your code, even in a script)</li>
 </ol>
@@ -1101,28 +1103,26 @@ cookieconsent.run({
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">Flag the row numbers where Stata sorted the "before"</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">observations for each person</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> flag_before1 = <span class="dt">_n</span> <span class="kw">if</span> when == 1</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> flag_before1 = <span class="dt">_n</span> <span class="kw">if</span> when == 1</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>*Do the exact same <span class="kw">sort</span> <span class="kw">as</span> above</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> sex patient</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">Again flag the row numbers where Stata sorted the "before"</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">observations for each person this time</span></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> flag_before2 = <span class="dt">_n</span> <span class="kw">if</span> when == 1</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> flag_before2 = <span class="dt">_n</span> <span class="kw">if</span> when == 1</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">Notice that the two flag_before variables are not always equal i.e.</span></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">the "before" observation ended up in a different place even though</span></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">we did the same sort twice</span></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="5" type="1">
-<li>You have two options to make sure your sorts are consistent
+<li>You have two options to make sure your sorts are consistent</li>
+</ol>
 <ol type="a">
-<li>Use the option <code>stable</code> to make sure Stata uses the same randomization every time
-<ol type="i">
+<li>Use the option <code>stable</code> to make sure Stata uses the same randomization every time</li>
 <li>You cannot use this option with `gsort’</li>
-</ol></li>
 <li>The preferred method is to specify a combination of variables that uniquely identifies your observations. This removes the randomization and makes your sort outcome be exactly what you specify and expect</li>
-</ol></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> bplong, <span class="kw">clear</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
@@ -1134,37 +1134,41 @@ cookieconsent.run({
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">Flag the row numbers where Stata sorted the "before"</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">observations for each person</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> flag_before1 = <span class="dt">_n</span> <span class="kw">if</span> when == 1</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> flag_before1 = <span class="dt">_n</span> <span class="kw">if</span> when == 1</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>*Do the exact same <span class="kw">sort</span> <span class="kw">as</span> above</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> sex patient when</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">Again flag the row numbers where Stata sorted the "before"</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">observations for each person this time</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> flag_before2 = <span class="dt">_n</span> <span class="kw">if</span> when == 1</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> flag_before2 = <span class="dt">_n</span> <span class="kw">if</span> when == 1</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>*Now the flags are always equal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="the-by-function" class="level3">
 <h3 class="anchored" data-anchor-id="the-by-function">The <code>by</code> function</h3>
 <p>You can use the <code>by</code> function to create variables within groups, but in order to use <code>by</code> you must <code>sort</code> before hand. Thus, we recommend to use <code>bysort</code> instead.</p>
 </section>
 </section>
-<section id="bysort-gen-and-egen" class="level2">
-<h2 class="anchored" data-anchor-id="bysort-gen-and-egen"><code>bysort</code>, <code>gen</code>, and <code>egen</code></h2>
-<p><code>bysort</code> combined with gen/egen is probably one of the most useful command combinations when cleaning and creating outcomes.</p>
+<section id="bysort-generate-and-egen" class="level2">
+<h2 class="anchored" data-anchor-id="bysort-generate-and-egen"><code>bysort</code>, <code>generate</code>, and <code>egen</code></h2>
+<p><code>bysort</code> combined with generate/egen is probably one of the most useful command combinations when cleaning and creating outcomes.</p>
 <ol type="1">
 <li>Notice that your data set will be sorted by all the variables (including those in parenthesis) you specify</li>
 <li>But you will create new variables by only what variables you specify outside the parenthesis</li>
-<li>Pay attention to whether the function you are using needs to specify <code>gen</code> or <code>egen</code>
+<li>Pay attention to whether the function you are using needs to specify <code>generate</code> or <code>egen</code></li>
+</ol>
 <ol type="a">
-<li>Notice that <code>sum</code> works for both gen and egen (even though it is not in the <code>egen</code> documentation and works differently
+<li>Notice that <code>sum</code> works for both generate and egen (even though it is not in the <code>egen</code> documentation and works differently</li>
+</ol>
 <ul>
 <li>egen + sum = creates a total for all values specified in the by</li>
-<li>gen + sum = creates a cumulative sum over the observations specified</li>
-</ul></li>
-</ol></li>
-</ol>
+<li>generate + sum = creates a cumulative sum over the observations specified</li>
+</ul>
 <p>See <code>help egen</code> to read about all of the egen functions</p>
-<p>Further: - You can <code>ssc install egen more</code> that has even more functions you can use. - You can <code>ssc install ereplace</code> to be able to use the egen functions but as a replace, so you don’t have to create multiples variables.</p>
+<p>Further:</p>
+<ul>
+<li>You can <code>ssc install egen more</code> that has even more functions you can use.</li>
+<li>You can <code>ssc install ereplace</code> to be able to use the egen functions but as a replace, so you don’t have to create multiples variables.</li>
+</ul>
 </section>
 <section id="preservingrestoring-data" class="level2">
 <h2 class="anchored" data-anchor-id="preservingrestoring-data">Preserving/restoring data</h2>

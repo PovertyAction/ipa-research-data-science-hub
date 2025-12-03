@@ -1180,21 +1180,21 @@ cookieconsent.run({
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> common_varname <span class="co">// sort in unique order</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>*Init project specific locals empty</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>loc survey_names    <span class="co">// project-specific variable names</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>loc common_names    <span class="co">// corresponding common variable names</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> survey_names  <span class="co">// project-specific variable names</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> common_names  <span class="co">// corresponding common variable names</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>* Loop through <span class="ot">all</span> <span class="ot">value</span> <span class="kw">of</span> the excel file</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> i = 1/<span class="ot">`=_N'</span> {</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    *Save <span class="bn">name</span> and labels <span class="kw">in</span> <span class="kw">order</span> from the excel sheet</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    loc survey_name = varname <span class="kw">in</span> <span class="ot">`i'</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    loc common_name = common_varname <span class="kw">in</span> <span class="ot">`i'</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    loc common_varl = common_varlab <span class="kw">in</span> <span class="ot">`i'</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> survey_name = varname <span class="kw">in</span> <span class="ot">`i'</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> common_name = common_varname <span class="kw">in</span> <span class="ot">`i'</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> common_varl = common_varlab <span class="kw">in</span> <span class="ot">`i'</span></span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    *Fill locals to add information to project</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    loc proj_names <span class="ot">`proj_names'</span> <span class="ot">`proj_name'</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    loc common_names <span class="ot">`common_names'</span> <span class="ot">`common_name'</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    loc common_label <span class="st">"`common_label' `"</span><span class="ot">`common_varl'</span><span class="st">"'"</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> proj_names <span class="ot">`proj_names'</span> <span class="ot">`proj_name'</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> common_names <span class="ot">`common_names'</span> <span class="ot">`common_name'</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> common_label <span class="st">"`common_label' `"</span><span class="ot">`common_varl'</span><span class="st">"'"</span></span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">// end forvalue i == 1/`N'</span></span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
@@ -1209,8 +1209,8 @@ cookieconsent.run({
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>**D. IMPORT THE DATASETS IN A LOOP AND RENAME</span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>*Clean locals</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>loc common_name <span class="co">// init empty</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>loc common_varl <span class="co">// init empty</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> common_name <span class="co">// init empty</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> common_varl <span class="co">// init empty</span></span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>*Load raw <span class="kw">data</span></span>
 <span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"``project'_directory'/`project'`input_dataset_suffix'.dta"</span>, <span class="kw">clear</span></span>
@@ -1219,9 +1219,9 @@ cookieconsent.run({
 <span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> i = 1(1)<span class="ot">`: word count `proj_names'</span>' {</span>
 <span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    *Collect names from <span class="ot">list</span> to <span class="kw">rename</span> variables</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    loc proj_name <span class="ot">`:word `i'</span> <span class="kw">of</span> <span class="ot">`proj_names'</span>'</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    loc common_name <span class="ot">`:word `i'</span> <span class="kw">of</span> <span class="ot">`common_names'</span>'</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    loc common_varl <span class="ot">`:word `i'</span> <span class="kw">of</span> <span class="ot">`common_label'</span>'</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> proj_name <span class="ot">`:word `i'</span> <span class="kw">of</span> <span class="ot">`proj_names'</span>'</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> common_name <span class="ot">`:word `i'</span> <span class="kw">of</span> <span class="ot">`common_names'</span>'</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> common_varl <span class="ot">`:word `i'</span> <span class="kw">of</span> <span class="ot">`common_label'</span>'</span>
 <span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    *Rename and <span class="kw">label</span> from common names</span>
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">rename</span> <span class="ot">`proj_name'</span> <span class="ot">`common_name'</span></span>
@@ -1296,8 +1296,8 @@ Variable label: [question_number] descriptive label</code></pre>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>*Keep variables with labels</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="dv">type</span> <span class="bn">name</span> <span class="kw">label</span> labelbangla relevance</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">ren</span> <span class="kw">label</span> labelenglish</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">ren</span> <span class="kw">label</span>* * <span class="co">// rename to remove "label_" prefix from all variables</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> <span class="kw">label</span> labelenglish</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> <span class="kw">label</span>* * <span class="co">// rename to remove "label_" prefix from all variables</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>*Remove variables <span class="kw">not</span> exported to Stata</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="fu">inlist</span>(<span class="dv">type</span>, <span class="st">"begin group"</span>,  <span class="co">///</span></span>
@@ -1306,26 +1306,26 @@ Variable label: [question_number] descriptive label</code></pre>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>*Only <span class="kw">keep</span> variables with non_missing</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="kw">ds</span> <span class="bn">name</span>, <span class="kw">not</span> <span class="co">// get list of label variables</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>loc languages <span class="ot">`r(varlist)'</span> relevance</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> languages <span class="ot">`r(varlist)'</span> relevance</span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> has_lab = <span class="fu">rownonmiss</span>(<span class="ot">`languages'</span>), <span class="fu">strok</span></span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">// keep only rows with has_lab</span></span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> has_lab &gt;= 1 &amp; !<span class="fu">mi</span>(has_lab)</span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>*Save variables and language names</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>loc varnames <span class="co">// init empty</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> varnames <span class="co">// init empty</span></span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>forval i = 1(1)<span class="ot">`=_N'</span> {</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  loc <span class="bn">name</span> = <span class="bn">name</span>[<span class="ot">`i'</span>] <span class="co">// save name of variable</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> <span class="bn">name</span> = <span class="bn">name</span>[<span class="ot">`i'</span>] <span class="co">// save name of variable</span></span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  *Save labels <span class="kw">as</span> locals</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  loc j = 1 <span class="co">// init counter at start</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> j = 1 <span class="co">// init counter at start</span></span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">foreach</span> language <span class="kw">of</span> <span class="kw">local</span> languages {</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>     loc <span class="ot">`name'</span>_<span class="ot">`j'</span> = <span class="ot">`language'</span>[<span class="ot">`i'</span>]</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>     loc ++j</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>     <span class="kw">local</span> <span class="ot">`name'</span>_<span class="ot">`j'</span> = <span class="ot">`language'</span>[<span class="ot">`i'</span>]</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>     <span class="kw">local</span> ++j</span>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="co">// end foreach language of local languages</span></span>
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  *<span class="kw">save</span> <span class="kw">local</span> <span class="kw">of</span> names to add question <span class="bn">text</span> to</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  loc varnames <span class="ot">`varnames'</span> <span class="ot">`name'</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> varnames <span class="ot">`varnames'</span> <span class="ot">`name'</span></span>
 <span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co">// end forval i = 1(1)_N</span></span>
 <span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
@@ -1335,19 +1335,19 @@ Variable label: [question_number] descriptive label</code></pre>
 <span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>*Loop through names to add characteristics</span>
 <span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="bn">name</span> <span class="kw">of</span> <span class="kw">local</span> varnames {</span>
 <span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>  <span class="kw">ds</span> <span class="ot">`name'</span>* <span class="co">// collect names that are inclusive of repeat groups</span></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>  loc varl <span class="ot">`r(varlist)'</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> varl <span class="ot">`r(varlist)'</span></span>
 <span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> varl {</span>
 <span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>  *Confirm only the <span class="kw">variable</span> <span class="kw">or</span> the <span class="kw">repeat</span> <span class="fu">group</span></span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>  cap <span class="kw">assert</span> <span class="st">"`var'"</span> == <span class="st">"`name'"</span> | <span class="fu">regexm</span>(<span class="st">"`var'"</span>,<span class="st">"^`name'[0-9][0-9]?$"</span>)</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">capture</span> <span class="kw">assert</span> <span class="st">"`var'"</span> == <span class="st">"`name'"</span> | <span class="fu">regexm</span>(<span class="st">"`var'"</span>,<span class="st">"^`name'[0-9][0-9]?$"</span>)</span>
 <span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> <span class="dt">_rc</span> <span class="kw">continue</span> <span class="co">// skip if "`name'" is a prefix</span></span>
 <span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>     *add characteristic <span class="kw">as</span> a named language</span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>     loc j = 1</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>     <span class="kw">local</span> j = 1</span>
 <span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>     <span class="kw">foreach</span> language <span class="kw">of</span> <span class="kw">local</span> languages {</span>
 <span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>        <span class="fu">char</span> <span class="kw">define</span> <span class="ot">`var'</span>[<span class="ot">`language'</span>] <span class="st">"``name'_`j''"</span></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>        loc ++j</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>        <span class="kw">local</span> ++j</span>
 <span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>     }</span>
 <span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>     <span class="co">// end foreach language of local languages</span></span>
 <span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
@@ -1383,7 +1383,7 @@ Variable label: [question_number] descriptive label</code></pre>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> yesno .n <span class="st">"No response"</span> 3 <span class="st">"Maybe"</span>, add</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>*Apply the <span class="kw">label</span> to <span class="ot">all</span> <span class="kw">of</span> the variables it should apply to</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>loc dummy_vars ex1 ex2 ex3</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> dummy_vars ex1 ex2 ex3</span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">values</span> <span class="ot">`dummy_vars'</span> yesno</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="formatting-labeling-in-stata" class="level3">
@@ -1415,7 +1415,7 @@ Variable label: [question_number] descriptive label</code></pre>
 <h3 class="anchored" data-anchor-id="defensive-workflow-for-encoding-values">Defensive Workflow for Encoding Values</h3>
 <p>One way to ensure that data is encoded in an expected way is to check that values are only encoded from a pre-specified list of value labels that you defined. The user written command <code>sencode</code> (install using <code>ssc install sencode</code>) can help support this. <code>sencode</code> labels the variable according to the values that you’ve predefined and then adds additional values in order from the highest value if it encounters values that you haven’t defined. An example data flow follows:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>*Ensure sencode is installed</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cap which sencode</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">capture</span> which sencode</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> <span class="dt">_rc</span> <span class="kw">ssc</span> install sencode</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>*Load <span class="kw">data</span></span>
@@ -1444,7 +1444,7 @@ Variable label: [question_number] descriptive label</code></pre>
 <span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a># del <span class="kw">cr</span></span>
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>*Create a <span class="kw">local</span> <span class="ot">list</span> <span class="kw">of</span> variables to <span class="kw">encode</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>loc str_var make</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> str_var make</span>
 <span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>*Encode <span class="kw">values</span> and <span class="kw">confirm</span> expected</span>
 <span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> str_var {</span>
@@ -1472,7 +1472,7 @@ Variable label: [question_number] descriptive label</code></pre>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">sort</span> hhid <span class="co">// sort in a unique order</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    *Create a <span class="kw">local</span> <span class="kw">of</span> variables</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    loc vars                        <span class="co">///</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> vars                      <span class="co">///</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    hhid        enum_id             <span class="co">/// ID Variables</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">cluster</span>     survey_date form_id <span class="co">/// File source variables</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    treatment   scto_rand           <span class="co">/// Treatment assignment</span></span>

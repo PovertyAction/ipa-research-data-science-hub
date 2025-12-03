@@ -1209,17 +1209,13 @@ cookieconsent.run({
 <h2 class="anchored" data-anchor-id="categorical-and-dummy-variables">Categorical and dummy variables</h2>
 <p>Categorical variables are ones that have no obvious ordering to the responses. For example, the question “What crop do you grow?” could have the following answers: soy bean, maize, cassava, ground nut, and yams. It can be helpful to have a numeric value attached to each response, however there is no clear ordering here. You can use the command encode to create a value for each in alphabetical order and it keeps the original response as the value label.</p>
 <p>Dummy variables are one of the most common variable types you will use. These are also referred to as Boolean or indicator variables. These variables typically take on the values 0 and 1. However, it is important to note that your variable could and/or should have missing values if applicable. For example, an indicator about whether someone has a credit score could be defined as 1 for yes, 0 for no score and missing would mean there was no credit information available about that individual. Note that 0 and missing have different meanings and you should be careful around if and what values are missing. In Stata, you have several options for creating a dummy variable. Two examples of creating this “Has a credit score” dummy variable is below.</p>
-<ol type="1">
-<li>This first way recommended method is to start with an entirely missing variable and then replace with <code>1's</code> and <code>0's</code> for each condition.</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> has_score = .</span>
+<p>This first way recommended method is to start with an entirely missing variable and then replace with <code>1's</code> and <code>0's</code> for each condition.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> has_score = .</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> has_score = 1 <span class="kw">if</span> credit_score != .</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> has_score = 0 <span class="kw">if</span> (credit_score == . &amp; info_available == 1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>It is important to note that <code>0</code> is defined for those missing a credit score but that credit information is available for, the observations that remain missing are those that are missing a credit score because there was no credit information available. You do not want to lose this information due to poor coding in which you say all these people have no score.</p>
-<ol start="2" type="1">
-<li>The second way is more concise but can be trickier.</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> has_score = (credit_score != .) <span class="kw">if</span> (info_available == 1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The second way is more concise but can be trickier.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> has_score = (credit_score != .) <span class="kw">if</span> (info_available == 1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This method does the above in one step. The first half creates a 1/0 dummy by assigning 1 to any observation that meets the condition in the first parentheses and 0 if it does not. Then it uses the if and second parenthesis to assign missing values. If the second condition <code>(info_available == 1)</code> is false, then that observation will be missing. Either method is acceptable, just be careful to take the 0’s and missing values into account.</p>
 </section>
 <section id="specify-variables" class="level2">
@@ -1244,13 +1240,13 @@ cookieconsent.run({
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">  then output an excel document with each unique response.</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>*String cleaning</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> q_oth_cl = q_oth <span class="co">// create a clean copy to preserve the raw data</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> q_oth_cl = q_oth <span class="co">// create a clean copy to preserve the raw data</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> q_oth_cl = <span class="fu">lower</span>(q_oth_cl)</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> q_oth_cl = <span class="fu">strtrim</span>(q_oth_cl) <span class="co">// only trim external spaces so "sky blue" does not become "skyblue"</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>*Save excel file</span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="kw">tempvar</span> map <span class="co">// create column header</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="ot">`map'</span> = <span class="st">""</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> <span class="ot">`map'</span> = <span class="st">""</span></span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>lab <span class="kw">var</span> <span class="ot">`map'</span>  <span class="st">"Mapping"</span></span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>lab <span class="kw">var</span> q_oth_cl <span class="st">"Other values"</span></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
@@ -1383,10 +1379,10 @@ cookieconsent.run({
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> bus_items {</span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">// don't use capture unless you control for every outcome</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    cap <span class="kw">assert</span> <span class="ot">`var'</span> == .<span class="fu">s</span> <span class="kw">if</span> b_prof_yn == 0</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">capture</span> <span class="kw">assert</span> <span class="ot">`var'</span> == .<span class="fu">s</span> <span class="kw">if</span> b_prof_yn == 0</span>
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    *Tag variables <span class="kw">if</span> <span class="kw">this</span> fails</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="dt">_rc</span> == 9 <span class="kw">gen</span> <span class="ot">`var'</span>_nos = <span class="ot">`var'</span> != .<span class="fu">s</span> &amp; b_prof_yn == 0</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="dt">_rc</span> == 9 <span class="kw">generate</span> <span class="ot">`var'</span>_nos = <span class="ot">`var'</span> != .<span class="fu">s</span> &amp; b_prof_yn == 0</span>
 <span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    *Controlling <span class="kw">for</span> other options</span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">else</span> <span class="kw">if</span> !<span class="dt">_rc</span> <span class="kw">di</span> <span class="st">"No errors in `var'"</span></span>
@@ -1444,7 +1440,7 @@ cookieconsent.run({
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>*<span class="kw">save</span> <span class="kw">tempvar</span> so indifferent to <span class="kw">var</span> <span class="fu">length</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tempvar</span> temp</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>* create <span class="kw">double</span> to <span class="kw">store</span> datetime to avoid rounding</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">double</span> <span class="ot">`temp'</span> = .</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> <span class="kw">double</span> <span class="ot">`temp'</span> = .</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>*Foreach <span class="fu">date</span> <span class="kw">variable</span>, convert to datetime and <span class="kw">run</span> checks</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">local</span> date_vars {</span>
@@ -1476,7 +1472,7 @@ cookieconsent.run({
 <span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> <span class="ot">`temp'</span> = clock(<span class="ot">`var'</span>, <span class="st">"MDYhms"</span>)</span>
 <span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    *<span class="kw">drop</span> the <span class="kw">variable</span> <span class="kw">as</span> cannot <span class="kw">replace</span> <span class="kw">values</span> and convert <span class="dv">type</span></span>
 <span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="ot">`var'</span></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gen</span> <span class="kw">double</span> <span class="ot">`var'</span> = <span class="ot">`temp'</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">generate</span> <span class="kw">double</span> <span class="ot">`var'</span> = <span class="ot">`temp'</span></span>
 <span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">format</span> <span class="ot">`var'</span> %tcCCYY_NN_DD__HH:MM:SS <span class="co">// choose a preferred format</span></span>
 <span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    *Check within <span class="kw">range</span></span>
