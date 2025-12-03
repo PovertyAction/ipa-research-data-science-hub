@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="keywords" content="A/B testing, stage-based learning, organizational capacity, evidence methods">
 
-<title>Python – Research and Data Science Hub</title>
+<title>When A/B Tests Works – Research and Data Science Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,53 +21,18 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../software/python/coding-python.html" rel="next">
-<link href="../../software/stata/data-processing-stata.html" rel="prev">
+<link href="../../monitoring-evaluation-learning/ab-testing/implementing-ab-tests.html" rel="next">
+<link href="../../monitoring-evaluation-learning/ab-testing/index.html" rel="prev">
 <link href="../../assets/logos/ipa-favicon.ico" rel="icon">
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -139,9 +105,6 @@ cookieconsent.run({
 });
 </script> 
   
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../assets/design-styles/styles.css">
@@ -441,7 +404,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Software Guides</li><li class="breadcrumb-item"><a href="../../software/python/index.html">Python</a></li><li class="breadcrumb-item"><a href="../../software/python/index.html">Getting Started with Python</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../monitoring-evaluation-learning/theory-of-change.html">Monitoring, Evaluation, and Learning (MEL)</a></li><li class="breadcrumb-item"><a href="../../monitoring-evaluation-learning/ab-testing/index.html">A/B Testing</a></li><li class="breadcrumb-item"><a href="../../monitoring-evaluation-learning/ab-testing/when-ab-tests-works.html">When A/B Testing Works</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -508,13 +471,13 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Monitoring, Evaluation, and Learning (MEL)</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../monitoring-evaluation-learning/theory-of-change.html" class="sidebar-item-text sidebar-link">
@@ -523,13 +486,13 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">A/B Testing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../monitoring-evaluation-learning/ab-testing/index.html" class="sidebar-item-text sidebar-link">
@@ -538,7 +501,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../monitoring-evaluation-learning/ab-testing/when-ab-tests-works.html" class="sidebar-item-text sidebar-link">
+  <a href="../../monitoring-evaluation-learning/ab-testing/when-ab-tests-works.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">When A/B Testing Works</span></a>
   </div>
 </li>
@@ -882,13 +845,13 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
  <span class="menu-text">Software Guides</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
@@ -1001,16 +964,16 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false">
  <span class="menu-text">Python</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../software/python/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../software/python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started with Python</span></a>
   </div>
 </li>
@@ -1085,17 +1048,36 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#how-to-install-python" id="toc-how-to-install-python" class="nav-link active" data-scroll-target="#how-to-install-python">How to install Python?</a></li>
-    <li><a href="#coding-conventions" id="toc-coding-conventions" class="nav-link" data-scroll-target="#coding-conventions">Coding Conventions</a></li>
-    <li><a href="#example-usage" id="toc-example-usage" class="nav-link" data-scroll-target="#example-usage">Example Usage</a></li>
-    <li><a href="#learning-resources" id="toc-learning-resources" class="nav-link" data-scroll-target="#learning-resources">Learning Resources</a></li>
+    <li><a href="#deciding-when-to-use-ab-testing" id="toc-deciding-when-to-use-ab-testing" class="nav-link active" data-scroll-target="#deciding-when-to-use-ab-testing">Deciding When to Use A/B Testing</a></li>
+    <li><a href="#when-to-do-ab-testing-stage-based-learning" id="toc-when-to-do-ab-testing-stage-based-learning" class="nav-link" data-scroll-target="#when-to-do-ab-testing-stage-based-learning">When to Do A/B Testing: Stage-Based Learning</a>
+    <ul class="collapse">
+    <li><a href="#learning-needs-at-different-stages" id="toc-learning-needs-at-different-stages" class="nav-link" data-scroll-target="#learning-needs-at-different-stages">Learning Needs at Different Stages</a></li>
+    <li><a href="#when-ab-testing-supports-learning-goals" id="toc-when-ab-testing-supports-learning-goals" class="nav-link" data-scroll-target="#when-ab-testing-supports-learning-goals">When A/B Testing Supports Learning Goals</a></li>
+    </ul></li>
+    <li><a href="#when-an-ab-testing-system-is-a-good-fit-for-a-tech-forward-organization" id="toc-when-an-ab-testing-system-is-a-good-fit-for-a-tech-forward-organization" class="nav-link" data-scroll-target="#when-an-ab-testing-system-is-a-good-fit-for-a-tech-forward-organization">When an A/B Testing System is a Good Fit for a Tech-Forward Organization</a>
+    <ul class="collapse">
+    <li><a href="#program-conditions" id="toc-program-conditions" class="nav-link" data-scroll-target="#program-conditions">Program Conditions</a></li>
+    <li><a href="#systems-and-tools" id="toc-systems-and-tools" class="nav-link" data-scroll-target="#systems-and-tools">Systems and Tools</a></li>
+    <li><a href="#technical-capacity" id="toc-technical-capacity" class="nav-link" data-scroll-target="#technical-capacity">Technical Capacity</a></li>
+    </ul></li>
+    <li><a href="#building-capacity-over-time" id="toc-building-capacity-over-time" class="nav-link" data-scroll-target="#building-capacity-over-time">Building Capacity Over Time</a>
+    <ul class="collapse">
+    <li><a href="#when-not-to-run-ab-experiments-and-what-to-do-instead" id="toc-when-not-to-run-ab-experiments-and-what-to-do-instead" class="nav-link" data-scroll-target="#when-not-to-run-ab-experiments-and-what-to-do-instead">When Not to Run A/B Experiments, and What to Do Instead</a></li>
+    </ul></li>
+    <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
     </ul>
     <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Authors</h2>
   <ul>
-        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/niall-keleher" class="nav-link" data-scroll-target="https\://poverty-action.org/people/niall-keleher">Niall Keleher</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/andres-parrado" class="nav-link" data-scroll-target="https\://poverty-action.org/people/andres-parrado">Andrés Parrado</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/eduardo-vargas-sanchez" class="nav-link" data-scroll-target="https\://poverty-action.org/people/eduardo-vargas-sanchez">Eduardo Vargas Sanchez</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/mariana-rodriguez" class="nav-link" data-scroll-target="https\://poverty-action.org/people/mariana-rodriguez">Mariana Rodríguez</a></li>
       </ul>
-        <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
+      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
+  <ul>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
     <li class="last-modified" style="font-size: 0.86rem;">December 3, 2025</li>
   </ul>
@@ -1103,221 +1085,257 @@ cookieconsent.run({
   <ul>
     <li class="license" style="font-size: 0.86rem;"><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="nav-link" data-scroll-target="https\://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></li>
   </ul>
-  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/software/python/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/monitoring-evaluation-learning/ab-testing/when-ab-tests-works.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Software Guides</li><li class="breadcrumb-item"><a href="../../software/python/index.html">Python</a></li><li class="breadcrumb-item"><a href="../../software/python/index.html">Getting Started with Python</a></li></ol></nav><h1 class="title display-7">Python</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../monitoring-evaluation-learning/theory-of-change.html">Monitoring, Evaluation, and Learning (MEL)</a></li><li class="breadcrumb-item"><a href="../../monitoring-evaluation-learning/ab-testing/index.html">A/B Testing</a></li><li class="breadcrumb-item"><a href="../../monitoring-evaluation-learning/ab-testing/when-ab-tests-works.html">When A/B Testing Works</a></li></ol></nav><h1 class="title display-7">When A/B Tests Works</h1></header>
 
 
 <header id="title-block-header">
     
+        <p class="abstract">A/B tests are most effective when matched to your program’s stage of development and when your organization has the capabilities to design, implement, and learn from rigorous experiments.</p>
     
 </header>
 
 
-<div class="custom-summary-block">
-<p>Python is a high-level, general-purpose programming language that is widely used in data science, machine learning, and web development. It has a large standard library and a vibrant community that provides a wide range of libraries and tools for various applications. As such, Python provides a general-purpose ecosystem that can be used for a wide range of applications.</p>
-</div>
-<section id="how-to-install-python" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-install-python">How to install Python?</h2>
-<p>There are many ways to install Python. We recommend using Python in a virtual environment to avoid conflicts with other Python installations on your system.</p>
-<p>We recommend using <a href="https://docs.astral.sh/uv">uv</a> as a a simple way to create and manage Python virtual environments.</p>
-<p>You can manage the python packages that are installed in the virtual environment using a <code>pyproject.toml</code> file. See the pyproject.toml example in this repository for an example of how to manage Python packages. To add package dependencies to the virtual environment, using <code>uv</code>, you can run:</p>
-<p>First, install <code>uv</code> using <code>winget</code> (Windows) or <code>brew</code> (MacOS/Linux):</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="OS">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">MacOS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Linux</a></li></ul>
-<div class="tab-content" data-group="OS">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install uv</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install astral-sh.uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install uv</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install uv</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<p>Add libraries to the virtual environment using <code>uv add ...</code>:</p>
-<div id="0ea82044" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> uv add jupyterlab pandas matplotlib seaborn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="coding-conventions" class="level2">
-<h2 class="anchored" data-anchor-id="coding-conventions">Coding Conventions</h2>
-<p>We highly recommend working with a <a href="../../software/guides/venv.html">virtual environment</a> to manage Python dependencies. The <code>pyproject.toml</code> is the preferred way to keep track of python dependencies as well as project-specific python conventions.</p>
-<p>We recommend using <a href="https://docs.astral.sh/ruff/">Ruff</a> to enforce <a href="https://en.wikipedia.org/wiki/Lint_(software)">linting</a> and formatting rules. In most cases you can use the default linting and formatting rules provided by <code>ruff</code>. However, you can customize the rules by modifying the <code>[tool.ruff]</code> section of the <code>pyproject.toml</code> file in the root of your project. for more about the configuration options, see the <a href="https://docs.astral.sh/ruff/configuration/">Ruff documentation</a>.</p>
-<p>If you are working in a virtual environment created in this repository, you automatically have access to <code>Ruff</code> via <code>just lint-py</code> and <code>just fmt-python</code> commands to lint and format your code.</p>
-<p>For more inspiration, see the <a href="https://handbook.gitlab.com/handbook/business-technology/data-team/platform/python-guide/">GitLab Data Team’s Python Guide</a> and <a href="https://google.github.io/styleguide/pyguide.html">Google’s Python Style Guide</a>.</p>
-</section>
-<section id="example-usage" class="level2">
-<h2 class="anchored" data-anchor-id="example-usage">Example Usage</h2>
-<p>In the example below, we show how Python can be used to explore and visualize a dataset.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Important Note">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Important Note
+<span class="screen-reader-only">Tip</span>Key Takeaways
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>To follow along, you will need to work in a <a href="https://jupyter.org/try-jupyter/notebooks/?path=notebooks/Intro.ipynb">jupyter notebook</a> with the right libraries installed in your <a href="../../software/guides/venv.html">environment</a>. Don’t worry if you cannot do this now; we just want to show you what is possible here. We will revisit this example in <a href="../../under-construction.html">Processing Data in Python</a>.</p>
+<ul>
+<li>Use the Stage-Based Learning framework to identify when A/B testing is appropriate</li>
+<li>A/B testing is most valuable at the Refine, Adapt, and Scale stages</li>
+<li>Organizations need specific technical and operational capabilities to implement A/B testing effectively</li>
+</ul>
 </div>
 </div>
+<section id="deciding-when-to-use-ab-testing" class="level2">
+<h2 class="anchored" data-anchor-id="deciding-when-to-use-ab-testing">Deciding When to Use A/B Testing</h2>
+<p>A/B testing is a powerful method, but it is not the right tool for every situation. Deciding when to do A/B testing requires reflecting on <strong>the kind of learning questions</strong> a program needs to answer <strong>at its current stage of development,</strong> and whether the <strong>organization’s current capabilities can support experimentation</strong>.</p>
+</section>
+<section id="when-to-do-ab-testing-stage-based-learning" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-do-ab-testing-stage-based-learning">When to Do A/B Testing: Stage-Based Learning</h2>
+<p>To identify when to do A/B testing, IPA’s Right-Fit Evidence Unit proposes an overarching framework that guides learning activities across programs’ stages of development. The Stage-Based Learning framework helps organizations identify their learning needs based on program maturity<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Each stage –Ideate, Refine, Prove, Adapt, and Scale– is associated with particular types of learning needs, and those needs call for different methods that can generate insights that are credible, actionable, cost-effective, and are likely to generate transportable knowledge.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/stage-based-learning.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Stage-Based Learning (© IPA)</figcaption>
+</figure>
 </div>
-<p>Let’s load an example World Bank data via <a href="https://www.gapminder.org/">Gapminder</a> using the <a href="https://github.com/NickCH-K/causaldata">causaldata</a> package.</p>
-<div id="65af7a6b" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> sm</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> causaldata <span class="im">import</span> gapminder</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Load the Gapminder data as a pandas DataFrame:</p>
-<div id="48a644f3" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gapminder.load_pandas().data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>We can check the dimensions of the DataFrame using <code>df.info()</code>:</p>
-<div id="61e43ca4" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 1704 entries, 0 to 1703
-Data columns (total 6 columns):
- #   Column     Non-Null Count  Dtype  
----  ------     --------------  -----  
- 0   country    1704 non-null   object 
- 1   continent  1704 non-null   object 
- 2   year       1704 non-null   int64  
- 3   lifeExp    1704 non-null   float64
- 4   pop        1704 non-null   int64  
- 5   gdpPercap  1704 non-null   float64
-dtypes: float64(2), int64(2), object(2)
-memory usage: 80.0+ KB</code></pre>
-</div>
-</div>
-<p>Let’s take a look at the first few rows of the DataFrame using <code>df.head()</code>:</p>
-<div id="61da9c37" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<p>In the early stages of an intervention, the focus of an organization should be on understanding the problem, rapidly testing potential solutions with users, and refining the design. In later stages, the priority shifts to demonstrating impact, adapting to new contexts, and ensuring consistent performance at scale. A/B testing is one of several learning methods, and it is particularly relevant for programs at the Refine, Adapt, and Scale stages of the framework, when organizations face questions about how to improve or adapt specific components of an intervention in a different context or at a greater scale.</p>
+<section id="learning-needs-at-different-stages" class="level3">
+<h3 class="anchored" data-anchor-id="learning-needs-at-different-stages">Learning Needs at Different Stages</h3>
+<table class="caption-top table">
+<caption>Learning needs at the Refine, Adapt, and Scale Stages</caption>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 30%">
+<col style="width: 23%">
+<col style="width: 32%">
+</colgroup>
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">country</th>
-<th data-quarto-table-cell-role="th">continent</th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">lifeExp</th>
-<th data-quarto-table-cell-role="th">pop</th>
-<th data-quarto-table-cell-role="th">gdpPercap</th>
+<th><strong>Stage</strong></th>
+<th><strong>Stage identification</strong></th>
+<th><strong>Learning focus</strong></th>
+<th><strong>Key learning questions</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1952</td>
-<td>28.801</td>
-<td>8425333</td>
-<td>779.445314</td>
+<td><strong>Refine</strong></td>
+<td>The intervention’s <strong>initial design is complete</strong> and its key components have been <strong>tested</strong> with a <strong>small group of users</strong>.</td>
+<td>Iteratively test the intervention to assess <strong>implementation quality</strong> and <strong>early signs of effectiveness</strong>.</td>
+<td>• Which delivery channels or engagement strategies are most effective at increasing take-up and/or reach among the target population?<br>• Which components of the intervention are driving changes in early outcomes?<br>• What elements can improve before the intervention is evaluated for impact and/or scaled?</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1957</td>
-<td>30.332</td>
-<td>9240934</td>
-<td>820.853030</td>
+<td><strong>Adapt</strong></td>
+<td>The intervention has <strong>demonstrated positive impact</strong> through rigorous impact evaluation and will be implemented in a <strong>new context</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</td>
+<td>Adapt the model ensuring <strong>alignment</strong> with challenges and characteristics in the <strong>new context</strong>, while aiming for efficiency.</td>
+<td>• What adaptations are needed for the intervention to be effective and relevant in the new context?<br>• How can the same or similar level of impact be achieved at lower cost?</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1962</td>
-<td>31.997</td>
-<td>10267083</td>
-<td>853.100710</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1967</td>
-<td>34.020</td>
-<td>11537966</td>
-<td>836.197138</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>Afghanistan</td>
-<td>Asia</td>
-<td>1972</td>
-<td>36.088</td>
-<td>13079460</td>
-<td>739.981106</td>
+<td><strong>Scale</strong></td>
+<td>The intervention has <strong>demonstrated positive impact</strong> and <strong>has been adapted</strong> to be implemented with quality at scale.</td>
+<td>Ensure that the <strong>implementation quality</strong> is maintained when <strong>reaching more participants</strong>.</td>
+<td>• Are there more efficient ways to deliver the program at scale maintaining the quality?</td>
 </tr>
 </tbody>
 </table>
-
-</div>
-</div>
-</div>
-<p>Take a look at the relationship between GDP per Capita and Life Expectancy:</p>
-<div id="7f469d6c" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"gdpPercap"</span>, y<span class="op">=</span><span class="st">"lifeExp"</span>, hue<span class="op">=</span><span class="st">"continent"</span>, data<span class="op">=</span>df).<span class="bu">set</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    xscale<span class="op">=</span><span class="st">"log"</span>, ylabel<span class="op">=</span><span class="st">"Life Expectancy"</span>, xlabel<span class="op">=</span><span class="st">"GDP per Capita"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-7-output-1.png" width="585" height="431" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Separate the data by year, focusing on 1957 and 2007:</p>
-<div id="c78d7f0e" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df.where(df[<span class="st">"year"</span>].isin([<span class="dv">1957</span>, <span class="dv">2007</span>])),</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"gdpPercap"</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"lifeExp"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    col<span class="op">=</span><span class="st">"year"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">"continent"</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    col_wrap<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    kind<span class="op">=</span><span class="st">"scatter"</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span><span class="st">"muted"</span>,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>).<span class="bu">set</span>(xscale<span class="op">=</span><span class="st">"log"</span>, ylabel<span class="op">=</span><span class="st">"Life Expectancy"</span>, xlabel<span class="op">=</span><span class="st">"GDP per Capita"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-8-output-1.png" width="575" height="952" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
-<section id="learning-resources" class="level2">
-<h2 class="anchored" data-anchor-id="learning-resources">Learning Resources</h2>
+<section id="when-ab-testing-supports-learning-goals" class="level3">
+<h3 class="anchored" data-anchor-id="when-ab-testing-supports-learning-goals">When A/B Testing Supports Learning Goals</h3>
+<p><strong>In the Refine stage</strong>, A/B testing can support learning needs by enabling organizations to systematically test variations<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> to the program that could address these questions.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Refine Stage Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Refine Stage Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An EdTech organization piloting an AI-enabled teaching assistant may want to test whether adding a classroom feedback feature leads to improved instructional quality. By running an A/B test comparing two groups–one with and one without the feedback feature–and tracking student performance, the organization can assess whether this addition meaningfully enhances outcomes.</p>
+</div>
+</div>
+<p><strong>In the Adapt stage</strong>, A/B testing can support learning goals by comparing different versions of the intervention or delivery model to assess which approach works best in a new context.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Adapt Stage Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Adapt Stage Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A proven student learning platform expanding to a new country might test different tones for its AI-enabled coach to determine which one is most effective at engaging students.</p>
+</div>
+</div>
+<p><strong>In the Scale stage</strong>, A/B testing can support learning goals by testing adaptations to a delivery model to determine which approach is more cost-effective at scale.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Scale Stage Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Scale Stage Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An EdTech program scaling nationwide might compare SMS reminders (costly) versus in-app notifications to see which drives higher student retention at lower cost.</p>
+</div>
+</div>
+<p>The insights gained from A/B testing help organizations strengthen interventions based on rigorous evidence from real-world implementation before making larger investments in an impact evaluation or afterwards to keep adapting the intervention at scale. A/B testing can be a very useful methodology for refining and adapting programs, but its potential depends on organizations’ ability to design credible experiments, interpret results accurately and act on them. This often limits or restricts its use, so our approach consists of developing an <strong>A/B testing system</strong> that builds the capabilities necessary to test and refine continuously.</p>
+</section>
+</section>
+<section id="when-an-ab-testing-system-is-a-good-fit-for-a-tech-forward-organization" class="level2">
+<h2 class="anchored" data-anchor-id="when-an-ab-testing-system-is-a-good-fit-for-a-tech-forward-organization">When an A/B Testing System is a Good Fit for a Tech-Forward Organization</h2>
+<p>Selecting methodologies that align with the organization’s existing capabilities is crucial to balance the learning-to-cost ratio. This means focusing on the most useful data for the lowest possible cost. While A/B testing can offer powerful insights, it is a tool more appropriate for organizations that have, or aim to build, the capabilities needed to design, implement, and learn from rigorous experiments. These include both technical and operational requirements that ensure the tests are feasible and the results are reliable. Section 3 provides a step-by-step process on how to develop these capabilities as organizations build and embed an A/B testing system within their MEL toolkit.</p>
+<p>Drawing on experience developing A/B testing systems with organizations, we have found that strengthening the following capabilities is especially important:</p>
+<section id="program-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="program-conditions">Program Conditions</h3>
+<section id="clarity-on-learning-goals" class="level4">
+<h4 class="anchored" data-anchor-id="clarity-on-learning-goals">Clarity on learning goals</h4>
 <ul>
-<li><a href="https://docs.python.org/3.12/tutorial/index.html">The Python Tutorial</a></li>
-<li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/">Python Data Science Handbook</a></li>
-<li><a href="https://khuyentran1401.github.io/Efficient_Python_tricks_and_tools_for_data_scientists/README.html">Efficient Python for Data Scientists</a></li>
-<li><a href="https://docs.python-guide.org/">The Hitchhiker’s Guide to Python</a></li>
+<li>What the organization wants to learn with the A/B test (e.g.&nbsp;improving uptake or retention rates, increasing meaningful engagement, or reducing costs)</li>
+<li>Quick rule-of-thumb: If you can state the decision you’ll make under each possible result before launching, you have clear learning goals. If not, you likely need discovery research first (needs assessment, prototyping, user research)</li>
 </ul>
+</section>
+<section id="clear-implementation-plans" class="level4">
+<h4 class="anchored" data-anchor-id="clear-implementation-plans">Clear implementation plans</h4>
+<ul>
+<li>A/B testing can only be done while an intervention is running or a product is live</li>
+<li>If the product isn’t live yet, do user tests or prototyping first</li>
+</ul>
+</section>
+<section id="stable-and-sufficiently-large-user-base" class="level4">
+<h4 class="anchored" data-anchor-id="stable-and-sufficiently-large-user-base">Stable and sufficiently large user base</h4>
+<ul>
+<li>To support rigorous comparisons</li>
+<li>If power calculations do not support statistical rigor, prioritize qualitative methods</li>
+</ul>
+</section>
+</section>
+<section id="systems-and-tools" class="level3">
+<h3 class="anchored" data-anchor-id="systems-and-tools">Systems and Tools</h3>
+<section id="reliable-data-systems" class="level4">
+<h4 class="anchored" data-anchor-id="reliable-data-systems">Reliable data systems</h4>
+<ul>
+<li>To track relevant outcomes, such as user interaction with the platform, impact-related metrics, and experiment performance indicators</li>
+</ul>
+</section>
+<section id="experimentation-tools-or-software" class="level4">
+<h4 class="anchored" data-anchor-id="experimentation-tools-or-software">Experimentation tools or software</h4>
+<ul>
+<li>Developed internally or integrated from a third party</li>
+<li>Allow for random assignment and the management of multiple tests</li>
+</ul>
+</section>
+</section>
+<section id="technical-capacity" class="level3">
+<h3 class="anchored" data-anchor-id="technical-capacity">Technical Capacity</h3>
+<section id="technology-capacity" class="level4">
+<h4 class="anchored" data-anchor-id="technology-capacity">Technology capacity</h4>
+<ul>
+<li>To build or set-up the infrastructure for experimentation</li>
+<li>Including data workflows, tool integration, and the delivery of test variations in live environments</li>
+</ul>
+</section>
+<section id="analytical-capacity" class="level4">
+<h4 class="anchored" data-anchor-id="analytical-capacity">Analytical capacity</h4>
+<ul>
+<li>A person in the team that knows both the program and the technological infrastructure</li>
+<li>Can allocate time to design valid experiments, interpret statistical results, and turn findings into actionable recommendations</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="building-capacity-over-time" class="level2">
+<h2 class="anchored" data-anchor-id="building-capacity-over-time">Building Capacity Over Time</h2>
+<p>Organizations do not need to master all these capabilities at once. Many can start with other low-cost learning methods to build capacity over time, using early experiences as opportunities to strengthen data practices and foster a culture of learning. These early steps help teams build capacities and confidence in using evidence for decision-making, laying the groundwork for more structured experimentation.</p>
+<section id="when-not-to-run-ab-experiments-and-what-to-do-instead" class="level3">
+<h3 class="anchored" data-anchor-id="when-not-to-run-ab-experiments-and-what-to-do-instead">When Not to Run A/B Experiments, and What to Do Instead</h3>
+<div class="callout callout-style-default callout-warning callout-titled" title="Alternative Approaches">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Alternative Approaches
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When analytical tools and know-how are not available:</p>
+<ul>
+<li>Explore using other methods such as user research, prototyping, or simple analog tests</li>
+<li>Start building analytical and data capabilities</li>
+</ul>
+<p>When the user base is small or volatile:</p>
+<ul>
+<li>Underpowered results won’t be credible</li>
+<li>Do usability tests, interviews, focus groups or small pilots instead</li>
+</ul>
+<p>When measuring long-term outcomes:</p>
+<ul>
+<li>For effects on long-term outcomes (e.g.&nbsp;changes in income)</li>
+<li>Consider an RCT to assess impact on final outcomes</li>
+</ul>
+<p>When high interference/spillovers expected:</p>
+<ul>
+<li>Between users</li>
+<li>Consider cluster-level tests or use system-level methods</li>
+</ul>
+<p>When outcomes are highly predictable or stakes are trivial:</p>
+<ul>
+<li>Try the obvious change and track performance with strong monitoring</li>
+</ul>
+</div>
+</div>
+<p>The next section outlines a step-by-step approach for building an A/B testing system. The approach illustrates how key capabilities can be developed over time in a way that aligns with an organization’s stage of readiness. While designed to support teams starting from scratch, the process can also be adapted by organizations that already have some capabilities in place.</p>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>IPA Right-Fit Evidence Unit. (2024, October). <em>Enabling stage-based learning: A funder’s guide to maximize impact</em>. https://poverty-action.org/sites/default/files/2024-10/Enabling-Stage-Based-Learning-Full-Guide.pdf</p>
+<p>Gugerty, M. K., &amp; Karlan, D. (2018). <em>The Goldilocks challenge: Right-fit evidence for the social sector</em>. Oxford University Press. https://doi.org/10.1093/oso/9780199366088.001.0001</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>IPA Right-Fit Evidence Unit. (2024, October). <em>Enabling stage-based learning: A funder’s guide to maximize impact</em>. https://poverty-action.org/sites/default/files/2024-10/Enabling-Stage-Based-Learning-Full-Guide.pdf<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This often involves delivering the intervention in new geographies, to new populations, at a later time, and/or through new partners.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>A recent <a href="https://www.idinsight.org/article/planning-to-conduct-a-b-tests-on-your-social-sector-program/">thought piece by IDinsight</a> highlights an important pitfall: the risk of launching A/B tests before giving enough time to work out the kinks of new program designs. To avoid this, it is essential to ensure that variations to be tested are grounded in evidence or user research, as discussed in the next section. Additionally, when testing major components of a program, it is good practice to pilot them first to confirm they work as intended. This helps ensure that resources are not spent testing a variation that is clearly ineffective or infeasible to implement.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1736,13 +1754,13 @@ memory usage: 80.0+ KB</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../software/stata/data-processing-stata.html" class="pagination-link" aria-label="Data Processing in Stata">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Processing in Stata</span>
+      <a href="../../monitoring-evaluation-learning/ab-testing/index.html" class="pagination-link" aria-label="About A/B Testing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">About A/B Testing</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../software/python/coding-python.html" class="pagination-link" aria-label="Coding in Python">
-        <span class="nav-page-text">Coding in Python</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../monitoring-evaluation-learning/ab-testing/implementing-ab-tests.html" class="pagination-link" aria-label="Implementing A/B Testing">
+        <span class="nav-page-text">Implementing A/B Testing</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1754,7 +1772,7 @@ memory usage: 80.0+ KB</code></pre>
     </div>   
     <div class="nav-footer-center">
 
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/software/python/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/monitoring-evaluation-learning/ab-testing/when-ab-tests-works.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
