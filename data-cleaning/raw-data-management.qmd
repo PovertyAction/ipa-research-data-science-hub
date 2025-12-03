@@ -104,7 +104,7 @@ foreach file in `files' {
 
 Note that the new .dta files are no longer saved in the same folder that your raw excel, csv, or any other type of files were saved in. As the imported data is no longer raw, they should be saved in either a temporary or data folder.
 
-It can be helpful set up a "dta" or "temp" folder for you to save these intermediate data files before you start. To do so, you can create a folder to save your files in directly in your script by using `mkdir "filepath"`. If the directory already exists, this will create an error. One solution is to use the `capture` command and type `cap mkdir "filepath"` which will suppress the error. We recommend avoiding `capture` in most situations.
+It can be helpful set up a "dta" or "temp" folder for you to save these intermediate data files before you start. To do so, you can create a folder to save your files in directly in your script by using `mkdir "filepath"`. If the directory already exists, this will create an error. One solution is to use the `capture` command and type `capture mkdir "filepath"` which will suppress the error. We recommend avoiding `capture` in most situations.
 
 ## Data structure and reshaping
 
@@ -152,7 +152,7 @@ expand `copies'
 
 /*Then create a list of all of the vars with each stub
  and manually expand*/
-gen yearmonth = . // create an empty var that will hold the sub-group identifier (this is the j var in reshape)
+generate yearmonth = . // create an empty var that will hold the sub-group identifier (this is the j var in reshape)
 foreach var in income {
 
     *Save all of the income variables
@@ -164,7 +164,7 @@ foreach var in income {
     local monthyear = subinstr("`reshapevarlist'", "`var'_", "", .)
 
     *create an empty version of the stub, this will become the long var
-    gen `var' = .
+    generate `var' = .
 
     *Loop through each value
     forvalues x = 1/`copies' {
@@ -252,7 +252,7 @@ This workflow is shown below:
 */
 
 *Generate translated variable name
-gen q_en = ""
+generate q_en = ""
 local vlab : variable label q // extract variable label to copy
 label variable q_en "`vlab', English" // label with translation info
 
@@ -361,7 +361,7 @@ local stringvars: list stringvars - too_long_vars
 */
 foreach var in `stringvars' {
     tempvar `var'_num
-    gen ``var'_num' = (regexm(`var', "[0-9] [0-9]"))
+    generate ``var'_num' = (regexm(`var', "[0-9] [0-9]"))
     qui sum ``var'_num'
     if r(max) ==1 {
         *add the variable to a list of select_multiple variables
@@ -385,7 +385,7 @@ foreach var in `select_mult' {
 
     /* split and de-string vars in the selec_mult list,
     which now have only numeric characters */
-    split `var', gen(`var'_) destring
+    split `var', generate(`var'_) destring
 }
 
 *Re-code missing values in the now-numeric variables
@@ -411,13 +411,13 @@ sysuse auto, clear
 
 *sort by foreign and save order
 sort foreign
-gen sort_order = _n
+generate sort_order = _n
 
 *sort randomly so Stata will sort by foreign again
 /*  sort first checks if it's in order, and doesn't do anything if
 	the data are in the expected order
 */
-gen rand = runiform()
+generate rand = runiform()
 sort rand
 drop rand
 

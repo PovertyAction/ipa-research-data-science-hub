@@ -97,21 +97,21 @@ import excel "${raw}/variable_codebook.xlsx", firstrow clear
 sort common_varname	// sort in unique order
 
 *Init project specific locals empty
-loc survey_names 	// project-specific variable names
-loc common_names	// corresponding common variable names
+local survey_names 	// project-specific variable names
+local common_names	// corresponding common variable names
 
 * Loop through all value of the excel file
 forvalues i = 1/`=_N' {
 
 	*Save name and labels in order from the excel sheet
-	loc survey_name = varname in `i'
-	loc common_name = common_varname in `i'
-	loc common_varl = common_varlab in `i'
+	local survey_name = varname in `i'
+	local common_name = common_varname in `i'
+	local common_varl = common_varlab in `i'
 
 	*Fill locals to add information to project
-	loc proj_names `proj_names' `proj_name'
-	loc common_names `common_names' `common_name'
-	loc common_label "`common_label' `"`common_varl'"'"
+	local proj_names `proj_names' `proj_name'
+	local common_names `common_names' `common_name'
+	local common_label "`common_label' `"`common_varl'"'"
 }
 // end forvalue i == 1/`N'
 
@@ -126,8 +126,8 @@ macro list
 
 **D. IMPORT THE DATASETS IN A LOOP AND RENAME
 *Clean locals
-loc common_name // init empty
-loc common_varl // init empty
+local common_name // init empty
+local common_varl // init empty
 
 *Load raw data
 use "``project'_directory'/`project'`input_dataset_suffix'.dta", clear
@@ -136,9 +136,9 @@ use "``project'_directory'/`project'`input_dataset_suffix'.dta", clear
 forvalues i = 1(1)`: word count `proj_names'' {
 
 	*Collect names from list to rename variables
-	loc proj_name `:word `i' of `proj_names''
-	loc common_name `:word `i' of `common_names''
-	loc common_varl `:word `i' of `common_label''
+	local proj_name `:word `i' of `proj_names''
+	local common_name `:word `i' of `common_names''
+	local common_varl `:word `i' of `common_label''
 
 	*Rename and label from common names
 	rename `proj_name' `common_name'
@@ -238,8 +238,8 @@ import excel using "Baseline Household Survey.xlsx", first clear
 
 *Keep variables with labels
 keep type name label labelbangla relevance
-ren label labelenglish
-ren label* * // rename to remove "label_" prefix from all variables
+rename label labelenglish
+rename label* * // rename to remove "label_" prefix from all variables
 
 *Remove variables not exported to Stata
 drop if inlist(type, "begin group",  ///
@@ -248,26 +248,26 @@ drop type
 
 *Only keep variables with non_missing
 ds name, not // get list of label variables
-loc languages `r(varlist)' relevance
+local languages `r(varlist)' relevance
 egen has_lab = rownonmiss(`languages'), strok
 // keep only rows with has_lab
 keep if has_lab >= 1 & !mi(has_lab)
 
 *Save variables and language names
-loc varnames // init empty
+local varnames // init empty
 forval i = 1(1)`=_N' {
-  loc name = name[`i'] // save name of variable
+  local name = name[`i'] // save name of variable
 
   *Save labels as locals
-  loc j = 1 // init counter at start
+  local j = 1 // init counter at start
   foreach language of local languages {
-     loc `name'_`j' = `language'[`i']
-     loc ++j
+     local `name'_`j' = `language'[`i']
+     local ++j
   }
   // end foreach language of local languages
 
   *save local of names to add question text to
-  loc varnames `varnames' `name'
+  local varnames `varnames' `name'
 }
 // end forval i = 1(1)_N
 
@@ -277,19 +277,19 @@ use survey.dta, clear
 *Loop through names to add characteristics
 foreach name of local varnames {
   ds `name'* // collect names that are inclusive of repeat groups
-  loc varl `r(varlist)'
+  local varl `r(varlist)'
 
   foreach var of local varl {
 
   *Confirm only the variable or the repeat group
-  cap assert "`var'" == "`name'" | regexm("`var'","^`name'[0-9][0-9]?$")
+  capture assert "`var'" == "`name'" | regexm("`var'","^`name'[0-9][0-9]?$")
   if _rc continue // skip if "`name'" is a prefix
 
      *add characteristic as a named language
-     loc j = 1
+     local j = 1
      foreach language of local languages {
         char define `var'[`language'] "``name'_`j''"
-        loc ++j
+        local ++j
      }
      // end foreach language of local languages
 
@@ -328,7 +328,7 @@ label define yesno 1 "No" 2 "Yes", modify
 label define yesno .n "No response" 3 "Maybe", add
 
 *Apply the label to all of the variables it should apply to
-loc dummy_vars ex1 ex2 ex3
+local dummy_vars ex1 ex2 ex3
 label values `dummy_vars' yesno
 ```
 
@@ -367,7 +367,7 @@ One way to ensure that data is encoded in an expected way is to check that value
 
 ```stata
 *Ensure sencode is installed
-cap which sencode
+capture which sencode
 if _rc ssc install sencode
 
 *Load data
@@ -396,7 +396,7 @@ label define make_label
 # del cr
 
 *Create a local list of variables to encode
-loc str_var make
+local str_var make
 
 *Encode values and confirm expected
 foreach var of local str_var {
@@ -427,7 +427,7 @@ Any script that saves data should have code that identifies the variables saved,
 	sort hhid // sort in a unique order
 
 	*Create a local of variables
-	loc vars						///
+	local vars						///
 	hhid		enum_id				/// ID Variables
 	cluster		survey_date	form_id	/// File source variables
 	treatment	scto_rand			/// Treatment assignment

@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-yaml
         stages: [pre-commit]
@@ -20,20 +20,20 @@ repos:
         additional_dependencies:
           - tomli
   - repo: https://github.com/google/yamlfmt
-    rev: v0.16.0
+    rev: v0.20.0
     hooks:
       - id: yamlfmt
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: v0.24.1
     hooks:
       - id: validate-pyproject
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.45.0
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.18.1
     hooks:
-      - id: markdownlint-fix
+      - id: markdownlint-cli2
         exclude: (.github/pull_request_template.md|LICENSE.md)
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.10
+    rev: v0.14.4
     hooks:
       - id: ruff-format
         types_or: [python, pyi, jupyter]
@@ -42,6 +42,6 @@ repos:
         types_or: [python, pyi, jupyter]
         require_serial: true
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.7
+    rev: v1.7.8
     hooks:
       - id: actionlint
