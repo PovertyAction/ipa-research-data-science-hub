@@ -40,6 +40,12 @@ This page modifies content from the [Software Carpentry Python Novice Gapminder 
 
 In this tutorial, you will learn the fundamentals of data processing in Python. We'll cover how to load data using pandas, explore it through exploratory data analysis, create visualizations, and handle missing values.
 
+::: {.callout-tip title="Pro Tip"}
+When you see a piece of code you don't understand, it's okay to Google it or ask an LLM to explain it to you.  
+Pros do this all the time. There is only so much information you can keep in your head at once.  
+Of course, when using AI, be sure to verify.
+:::
+
 ## Learning Objectives
 
 By the end of this tutorial, you will be able to:
@@ -253,6 +259,8 @@ continent_life_exp = df.groupby('continent')['lifeExp'].mean()
 print(continent_life_exp)
 ```
 
+In the example above, we grouped the dataframe rows by the values in the `continent` column, and then for each group, the `lifeExp` column was selected and the mean of that column determined fpor each group... All in one line of code!  
+
 You can group by multiple columns and calculate multiple statistics:
 
 ```{python}
@@ -267,7 +275,7 @@ print(continent_stats)
 
 ## Data Visualization
 
-Visualizations help us understand patterns and relationships in data that might not be obvious from tables of numbers. Python provides several libraries for creating visualizations, with matplotlib and seaborn being the most popular.
+A picture is worth a thousand words. Visualizations help us understand patterns and relationships in data that might not be obvious from tables of numbers. Python provides several libraries for creating visualizations, with matplotlib and seaborn being the most popular.
 
 ### Setting Up
 
@@ -280,6 +288,10 @@ import seaborn as sns
 # Set a nice style
 sns.set_style("whitegrid")
 ```
+
+::: {.callout-note}
+From our imports, `plt` is now our reference (a handle, if you will) to the tools contained in `matplotlib.pyplot`. The same is true for `sns` and `seaborn`.
+:::
 
 ### Line Plots
 
@@ -318,6 +330,11 @@ plt.legend()
 plt.grid(True)
 plt.show()
 ```
+
+::: {.callout-note}
+The code above uses a **for-loop** to repeat the same action multiple times. The `for country in countries_to_compare:` line tells Python to go through each country name in our list, one at a time. For each country, Python executes the indented code below it: first filtering the data to get only that country's rows, then plotting a line for that country. 
+This is much more efficient than writing the same filtering and plotting code four separate times—once for each country. The loop automatically stops after processing the last country in the list.
+:::
 
 ### Scatter Plots
 
@@ -403,6 +420,8 @@ plt.savefig('us_life_expectancy.png', dpi=300, bbox_inches='tight')
 plt.show()
 ```
 
+Running this code will save the plot as a PNG file on your computer called `us_life_expectancy.png`.
+
 ## Dealing with Missingness
 
 Missing data is a common challenge in data analysis. Understanding how to identify and handle missing values is crucial for producing reliable results.
@@ -448,6 +467,8 @@ print("\nRows with missing values:")
 print(sample_data[sample_data.isnull().any(axis=1)][['country', 'year', 'lifeExp', 'gdpPercap', 'pop']])
 ```
 
+Rows 2, 5, and 8, as expected!
+
 ### Handling Missing Values
 
 There are several strategies for dealing with missing data:
@@ -481,9 +502,9 @@ Instead of dropping data, you can fill missing values with a specific value:
 ```{python}
 # Fill missing values with the column mean
 sample_filled = sample_data.copy()
-sample_filled['lifeExp'].fillna(sample_data['lifeExp'].mean(), inplace=True)
-sample_filled['gdpPercap'].fillna(sample_data['gdpPercap'].mean(), inplace=True)
-sample_filled['pop'].fillna(sample_data['pop'].mean(), inplace=True)
+sample_filled['lifeExp'] = sample_filled['lifeExp'].fillna(sample_data['lifeExp'].mean())
+sample_filled['gdpPercap'] = sample_filled['gdpPercap'].fillna(sample_data['gdpPercap'].mean())
+sample_filled['pop'] = sample_filled['pop'].fillna(sample_data['pop'].mean())
 
 print("After filling with mean:")
 print(sample_filled[sample_data.isnull().any(axis=1)][['country', 'year', 'lifeExp', 'gdpPercap', 'pop']])
@@ -492,21 +513,25 @@ print(sample_filled[sample_data.isnull().any(axis=1)][['country', 'year', 'lifeE
 Other filling strategies include:
 
 ```{python}
+#| eval: false
+
 # Fill with a specific value
-sample_data['lifeExp'].fillna(0)
+sample_data["lifeExp"].fillna(0)
 
 # Forward fill (use the last valid value)
-sample_data['lifeExp'].fillna(method='ffill')
+sample_data["lifeExp"].ffill()
 
 # Backward fill (use the next valid value)
-sample_data['lifeExp'].fillna(method='bfill')
+sample_data["lifeExp"].bfill()
 ```
 
 #### 3. Interpolation
 
-For time series data, interpolation can provide more reasonable estimates:
+For time series data (data where we can view changes in a variable over time), interpolation can provide more reasonable estimates. The sample we have chosen to illustrate missingness is too small to demonstrate this adequately, but the code would look like this:
 
 ```{python}
+#| eval: false
+
 # Interpolate missing values
 sample_interpolated = sample_data.copy()
 sample_interpolated['lifeExp'] = sample_interpolated['lifeExp'].interpolate()
@@ -679,7 +704,7 @@ print(f"Missing values created: {n_missing_actual}")
 # 4. Fill with mean
 mean_life = europe_2007['lifeExp'].mean()
 europe_filled = europe_2007.copy()
-europe_filled['lifeExp'].fillna(mean_life, inplace=True)
+europe_filled['lifeExp'] = europe_filled['lifeExp'].fillna(mean_life)
 
 # 5. Compare
 print("\nComparison of original and filled values:")
