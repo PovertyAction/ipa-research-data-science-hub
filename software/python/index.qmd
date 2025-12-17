@@ -82,7 +82,7 @@ Add libraries to the virtual environment using `uv add ...`:
 
 ```{python}
 # | eval: false
-> uv add jupyterlab pandas matplotlib seaborn
+> uv add jupyterlab pandas matplotlib seaborn causaldata
 ```
 
 ## Coding Conventions
@@ -149,7 +149,7 @@ df.head()
 Take a look at the relationship between GDP per Capita and Life Expectancy:
 
 ```{python}
-sns.scatterplot(x="gdpPercap", y="lifeExp", hue="continent", data=df).set(
+sns.scatterplot(data=df, x="gdpPercap", y="lifeExp", hue="continent").set(
     xscale="log", ylabel="Life Expectancy", xlabel="GDP per Capita"
 )
 ```
