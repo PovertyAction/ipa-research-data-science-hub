@@ -1,5 +1,7 @@
 ---
 title: "Python"
+abstract: "Getting started with Python for data analysis and research."
+keywords: ["Python", "programming", "data analysis", "tutorial"]
 execute:
   eval: true
 jupyter:
@@ -82,7 +84,7 @@ Add libraries to the virtual environment using `uv add ...`:
 
 ```{python}
 # | eval: false
-> uv add jupyterlab pandas matplotlib seaborn
+> uv add jupyterlab pandas matplotlib seaborn causaldata
 ```
 
 ## Coding Conventions
@@ -110,7 +112,7 @@ and [Google's Python Style Guide](https://google.github.io/styleguide/pyguide.ht
 In the example below, we show how Python can be used to explore and visualize a dataset.
 
 ::: {.callout-important collapse="true" title="Important Note"}
-To follow along, you will need to work in a [jupyter notebook](https://jupyter.org/try-jupyter/notebooks/?path=notebooks/Intro.ipynb) with the right libraries installed in your [environment](../guides/venv.qmd). Don't worry if you cannot do this now; we just want to show you what is possible here. We will revisit this example in [Processing Data in Python](../../under-construction.qmd).
+To follow along, you will need to work in a [jupyter notebook](https://jupyter.org/try-jupyter/notebooks/?path=notebooks/Intro.ipynb) with the right libraries installed in your [environment](../guides/venv.qmd). Don't worry if you cannot do this now; we just want to show you what is possible here. We will revisit this example in [Processing Data in Python](data-processing-python.qmd).
 :::
 
 Let's load an example World Bank data via [Gapminder](https://www.gapminder.org/) using
@@ -149,7 +151,7 @@ df.head()
 Take a look at the relationship between GDP per Capita and Life Expectancy:
 
 ```{python}
-sns.scatterplot(x="gdpPercap", y="lifeExp", hue="continent", data=df).set(
+sns.scatterplot(data=df, x="gdpPercap", y="lifeExp", hue="continent").set(
     xscale="log", ylabel="Life Expectancy", xlabel="GDP per Capita"
 )
 ```
