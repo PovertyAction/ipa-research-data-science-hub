@@ -1,5 +1,5 @@
 ---
-title: "Data Processing in Python"
+title: "Processing Data in Python"
 description: "Learn to load, explore, visualize, and clean data using pandas and matplotlib"
 
 execute:
@@ -41,8 +41,8 @@ This page modifies content from the [Software Carpentry Python Novice Gapminder 
 In this tutorial, you will learn the fundamentals of data processing in Python. We'll cover how to load data using pandas, explore it through exploratory data analysis, create visualizations, and handle missing values.
 
 ::: {.callout-tip title="Pro Tip"}
-When you see a piece of code you don't understand, it's okay to Google it or ask an LLM to explain it to you.  
-Pros do this all the time. There is only so much information you can keep in your head at once.  
+When you see a piece of code you don't understand, it's okay to Google it or ask an LLM to explain it to you.
+Pros do this all the time. There is only so much information you can keep in your head at once.
 Of course, when using AI, be sure to verify.
 :::
 
@@ -77,7 +77,7 @@ import pandas as pd
 from causaldata import gapminder
 ```
 
-The `pandas` library (abbreviated as `pd` by convention) is the primary tool for data manipulation in Python. The `causaldata` package provides easy access to several datasets commonly used in statistics and research, including Gapminder.
+The `pandas` library (abbreviated as `pd` by convention) is the primary tool for data manipulation in Python. The `causaldata` package provides easy access to several datasets commonly used in statistics and research, including Gapminder. If you do not have these libraries installed in your [python virtual environment](../guides/venv.qmd), you can add them by running `uv add pandas causaldata` from your terminal.
 
 ### Loading the Gapminder Dataset
 
@@ -259,7 +259,7 @@ continent_life_exp = df.groupby('continent')['lifeExp'].mean()
 print(continent_life_exp)
 ```
 
-In the example above, we grouped the dataframe rows by the values in the `continent` column, and then for each group, the `lifeExp` column was selected and the mean of that column determined fpor each group... All in one line of code!  
+In the example above, we grouped the dataframe rows by the values in the `continent` column, and then for each group, the `lifeExp` column was selected and the mean of that column determined fpor each group... All in one line of code!
 
 You can group by multiple columns and calculate multiple statistics:
 
@@ -298,15 +298,17 @@ From our imports, `plt` is now our reference (a handle, if you will) to the tool
 Line plots are great for showing trends over time. Let's look at how life expectancy has changed for a specific country:
 
 ```{python}
+# | out-width: 100%
+# | fig-align: center
 # Filter data for United States
-us_data = df[df['country'] == 'United States']
+us_data = df[df["country"] == "United States"]
 
 # Create line plot
-plt.figure(figsize=(10, 6))
-plt.plot(us_data['year'], us_data['lifeExp'], marker='o')
-plt.xlabel('Year')
-plt.ylabel('Life Expectancy (years)')
-plt.title('Life Expectancy in the United States Over Time')
+plt.figure(figsize=(8, 6))
+plt.plot(us_data["year"], us_data["lifeExp"], marker="o")
+plt.xlabel("Year")
+plt.ylabel("Life Expectancy (years)")
+plt.title("Life Expectancy in the United States Over Time")
 plt.grid(True)
 plt.show()
 ```
@@ -314,25 +316,26 @@ plt.show()
 We can compare multiple countries:
 
 ```{python}
+# | out-width: 100%
+# | fig-align: center
 # Compare several countries
-countries_to_compare = ['United States', 'China', 'India', 'Brazil']
+countries_to_compare = ["United States", "China", "India", "Brazil"]
 
-plt.figure(figsize=(12, 6))
+plt.figure(figsize=(8, 6))
 for country in countries_to_compare:
-    country_data = df[df['country'] == country]
-    plt.plot(country_data['year'], country_data['lifeExp'],
-             marker='o', label=country)
+    country_data = df[df["country"] == country]
+    plt.plot(country_data["year"], country_data["lifeExp"], marker="o", label=country)
 
-plt.xlabel('Year')
-plt.ylabel('Life Expectancy (years)')
-plt.title('Life Expectancy Trends: Selected Countries')
+plt.xlabel("Year")
+plt.ylabel("Life Expectancy (years)")
+plt.title("Life Expectancy Trends: Selected Countries")
 plt.legend()
 plt.grid(True)
 plt.show()
 ```
 
 ::: {.callout-note}
-The code above uses a **for-loop** to repeat the same action multiple times. The `for country in countries_to_compare:` line tells Python to go through each country name in our list, one at a time. For each country, Python executes the indented code below it: first filtering the data to get only that country's rows, then plotting a line for that country. 
+The code above uses a **for-loop** to repeat the same action multiple times. The `for country in countries_to_compare:` line tells Python to go through each country name in our list, one at a time. For each country, Python executes the indented code below it: first filtering the data to get only that country's rows, then plotting a line for that country.
 This is much more efficient than writing the same filtering and plotting code four separate times—once for each country. The loop automatically stops after processing the last country in the list.
 :::
 
@@ -341,15 +344,17 @@ This is much more efficient than writing the same filtering and plotting code fo
 Scatter plots help us see relationships between two variables. Let's explore the relationship between GDP per capita and life expectancy:
 
 ```{python}
+# | out-width: 100%
+# | fig-align: center
 # Scatter plot for 2007 data
-data_2007 = df[df['year'] == 2007]
+data_2007 = df[df["year"] == 2007]
 
-plt.figure(figsize=(10, 6))
-plt.scatter(data_2007['gdpPercap'], data_2007['lifeExp'], alpha=0.6)
-plt.xlabel('GDP per Capita (USD)')
-plt.ylabel('Life Expectancy (years)')
-plt.title('GDP per Capita vs Life Expectancy (2007)')
-plt.xscale('log')  # Use log scale for GDP
+plt.figure(figsize=(8, 6))
+plt.scatter(data_2007["gdpPercap"], data_2007["lifeExp"], alpha=0.6)
+plt.xlabel("GDP per Capita (USD)")
+plt.ylabel("Life Expectancy (years)")
+plt.title("GDP per Capita vs Life Expectancy (2007)")
+plt.xscale("log")  # Use log scale for GDP
 plt.grid(True)
 plt.show()
 ```
@@ -357,15 +362,23 @@ plt.show()
 We can enhance this by coloring points by continent:
 
 ```{python}
-plt.figure(figsize=(12, 7))
-sns.scatterplot(data=data_2007, x='gdpPercap', y='lifeExp',
-                hue='continent', size='pop', sizes=(20, 500),
-                alpha=0.7)
-plt.xlabel('GDP per Capita (USD)')
-plt.ylabel('Life Expectancy (years)')
-plt.title('GDP per Capita vs Life Expectancy by Continent (2007)')
-plt.xscale('log')
-plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+# | out-width: 100%
+# | fig-align: center
+plt.figure(figsize=(8, 6))
+sns.scatterplot(
+    data=data_2007,
+    x="gdpPercap",
+    y="lifeExp",
+    hue="continent",
+    size="pop",
+    sizes=(20, 500),
+    alpha=0.7,
+)
+plt.xlabel("GDP per Capita (USD)")
+plt.ylabel("Life Expectancy (years)")
+plt.title("GDP per Capita vs Life Expectancy by Continent (2007)")
+plt.xscale("log")
+plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
 plt.tight_layout()
 plt.show()
 ```
@@ -375,14 +388,16 @@ plt.show()
 Bar charts are useful for comparing values across categories:
 
 ```{python}
+# | out-width: 100%
+# | fig-align: center
 # Average life expectancy by continent in 2007
-continent_2007 = data_2007.groupby('continent')['lifeExp'].mean().sort_values()
+continent_2007 = data_2007.groupby("continent")["lifeExp"].mean().sort_values()
 
-plt.figure(figsize=(10, 6))
-continent_2007.plot(kind='bar', color='steelblue')
-plt.xlabel('Continent')
-plt.ylabel('Average Life Expectancy (years)')
-plt.title('Average Life Expectancy by Continent (2007)')
+plt.figure(figsize=(8, 6))
+continent_2007.plot(kind="bar", color="steelblue")
+plt.xlabel("Continent")
+plt.ylabel("Average Life Expectancy (years)")
+plt.title("Average Life Expectancy by Continent (2007)")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
@@ -393,14 +408,16 @@ plt.show()
 Pandas DataFrames have built-in plotting methods that can be more convenient:
 
 ```{python}
+# | out-width: 100%
+# | fig-align: center
 # Average life expectancy over time
-yearly_avg = df.groupby('year')['lifeExp'].mean()
+yearly_avg = df.groupby("year")["lifeExp"].mean()
 
 plt.figure(figsize=(10, 6))
-yearly_avg.plot(marker='o')
-plt.xlabel('Year')
-plt.ylabel('Average Life Expectancy (years)')
-plt.title('Global Average Life Expectancy Over Time')
+yearly_avg.plot(marker="o")
+plt.xlabel("Year")
+plt.ylabel("Average Life Expectancy (years)")
+plt.title("Global Average Life Expectancy Over Time")
 plt.grid(True)
 plt.show()
 ```
@@ -410,13 +427,13 @@ plt.show()
 To save a figure, use `plt.savefig()` before `plt.show()`:
 
 ```{python}
-#| eval: false
+# | eval: false
 plt.figure(figsize=(10, 6))
-plt.plot(us_data['year'], us_data['lifeExp'], marker='o')
-plt.xlabel('Year')
-plt.ylabel('Life Expectancy (years)')
-plt.title('Life Expectancy in the United States')
-plt.savefig('us_life_expectancy.png', dpi=300, bbox_inches='tight')
+plt.plot(us_data["year"], us_data["lifeExp"], marker="o")
+plt.xlabel("Year")
+plt.ylabel("Life Expectancy (years)")
+plt.title("Life Expectancy in the United States")
+plt.savefig("us_life_expectancy.png", dpi=300, bbox_inches="tight")
 plt.show()
 ```
 
@@ -450,10 +467,10 @@ Good news! The Gapminder dataset we're using has no missing values. However, let
 # Create a sample dataset with missing values
 import numpy as np
 
-sample_data = df[df['country'].isin(['United States', 'Canada', 'Mexico'])].copy()
-sample_data.loc[2, 'lifeExp'] = np.nan
-sample_data.loc[5, 'gdpPercap'] = np.nan
-sample_data.loc[8, 'pop'] = np.nan
+sample_data = df[df["country"].isin(["United States", "Canada", "Mexico"])].copy()
+sample_data.loc[2, "lifeExp"] = np.nan
+sample_data.loc[5, "gdpPercap"] = np.nan
+sample_data.loc[8, "pop"] = np.nan
 
 print("Missing values in sample data:")
 print(sample_data.isnull().sum())
@@ -464,7 +481,10 @@ We can also visualize which specific rows have missing values:
 ```{python}
 # Show rows with any missing values
 print("\nRows with missing values:")
-print(sample_data[sample_data.isnull().any(axis=1)][['country', 'year', 'lifeExp', 'gdpPercap', 'pop']])
+print(
+    sample_data[sample_data.isnull().any(axis=1)][
+        ["country", "year", "lifeExp", "gdpPercap", "pop"]
+    ]
 ```
 
 Rows 2, 5, and 8, as expected!
@@ -487,7 +507,7 @@ You can also drop rows only if specific columns have missing values:
 
 ```{python}
 # Drop rows only if lifeExp is missing
-cleaned_life = sample_data.dropna(subset=['lifeExp'])
+cleaned_life = sample_data.dropna(subset=["lifeExp"])
 print(f"After dropping rows with missing lifeExp: {len(cleaned_life)}")
 ```
 
@@ -502,18 +522,24 @@ Instead of dropping data, you can fill missing values with a specific value:
 ```{python}
 # Fill missing values with the column mean
 sample_filled = sample_data.copy()
-sample_filled['lifeExp'] = sample_filled['lifeExp'].fillna(sample_data['lifeExp'].mean())
-sample_filled['gdpPercap'] = sample_filled['gdpPercap'].fillna(sample_data['gdpPercap'].mean())
-sample_filled['pop'] = sample_filled['pop'].fillna(sample_data['pop'].mean())
+sample_filled["lifeExp"] = sample_filled["lifeExp"].fillna(
+    sample_data["lifeExp"].mean()
+)
+sample_filled["gdpPercap"] = sample_filled["gdpPercap"].fillna(
+    sample_data["gdpPercap"].mean()
+)
+sample_filled["pop"] = sample_filled["pop"].fillna(sample_data["pop"].mean())
 
 print("After filling with mean:")
-print(sample_filled[sample_data.isnull().any(axis=1)][['country', 'year', 'lifeExp', 'gdpPercap', 'pop']])
-```
+print(
+    sample_filled[sample_data.isnull().any(axis=1)][
+        ["country", "year", "lifeExp", "gdpPercap", "pop"]
+    ]```
 
 Other filling strategies include:
 
 ```{python}
-#| eval: false
+# | eval: false
 
 # Fill with a specific value
 sample_data["lifeExp"].fillna(0)
@@ -530,17 +556,19 @@ sample_data["lifeExp"].bfill()
 For time series data (data where we can view changes in a variable over time), interpolation can provide more reasonable estimates. The sample we have chosen to illustrate missingness is too small to demonstrate this adequately, but the code would look like this:
 
 ```{python}
-#| eval: false
+# | eval: false
 
 # Interpolate missing values
 sample_interpolated = sample_data.copy()
-sample_interpolated['lifeExp'] = sample_interpolated['lifeExp'].interpolate()
-sample_interpolated['gdpPercap'] = sample_interpolated['gdpPercap'].interpolate()
-sample_interpolated['pop'] = sample_interpolated['pop'].interpolate()
+sample_interpolated["lifeExp"] = sample_interpolated["lifeExp"].interpolate()
+sample_interpolated["gdpPercap"] = sample_interpolated["gdpPercap"].interpolate()
+sample_interpolated["pop"] = sample_interpolated["pop"].interpolate()
 
 print("After interpolation:")
-print(sample_interpolated[sample_data.isnull().any(axis=1)][['country', 'year', 'lifeExp', 'gdpPercap', 'pop']])
-```
+print(
+    sample_interpolated[sample_data.isnull().any(axis=1)][
+        ["country", "year", "lifeExp", "gdpPercap", "pop"]
+    ]```
 
 ### Choosing the Right Strategy
 
@@ -573,24 +601,27 @@ Using the Gapminder dataset:
 4. Calculate the overall average life expectancy across all countries and years
 
 ```{python}
-#| code-fold: true
-#| code-summary: "Show the code"
-#| eval: false
+# | code-fold: true
+# | code-summary: "Show the code"
+# | eval: false
 
 # 1. Load the data
 from causaldata import gapminder
+
 df = gapminder.load_pandas().data
 
 # 2. Display information
 df.info()
 
 # 3. Find year with most countries
-countries_per_year = df.groupby('year')['country'].nunique()
+countries_per_year = df.groupby("year")["country"].nunique()
 max_year = countries_per_year.idxmax()
-print(f"Year with most countries: {max_year} ({countries_per_year[max_year]} countries)")
+print(
+    f"Year with most countries: {max_year} ({countries_per_year[max_year]} countries)"
+)
 
 # 4. Calculate overall average life expectancy
-overall_avg = df['lifeExp'].mean()
+overall_avg = df["lifeExp"].mean()
 print(f"Overall average life expectancy: {overall_avg:.2f} years")
 ```
 
@@ -602,25 +633,25 @@ print(f"Overall average life expectancy: {overall_avg:.2f} years")
 4. Count how many African countries had a life expectancy above 50 years in 2007
 
 ```{python}
-#| code-fold: true
-#| code-summary: "Show the code"
-#| eval: false
+# | code-fold: true
+# | code-summary: "Show the code"
+# | eval: false
 
 # 1. Filter for African countries in 2007
-africa_2007 = df[(df['continent'] == 'Africa') & (df['year'] == 2007)]
+africa_2007 = df[(df["continent"] == "Africa") & (df["year"] == 2007)]
 
 # 2. Calculate average GDP per capita
-avg_gdp = africa_2007['gdpPercap'].mean()
+avg_gdp = africa_2007["gdpPercap"].mean()
 print(f"Average GDP per capita in Africa (2007): ${avg_gdp:.2f}")
 
 # 3. Find country with highest life expectancy
-max_life_idx = africa_2007['lifeExp'].idxmax()
-max_life_country = africa_2007.loc[max_life_idx, 'country']
-max_life_value = africa_2007.loc[max_life_idx, 'lifeExp']
+max_life_idx = africa_2007["lifeExp"].idxmax()
+max_life_country = africa_2007.loc[max_life_idx, "country"]
+max_life_value = africa_2007.loc[max_life_idx, "lifeExp"]
 print(f"Highest life expectancy: {max_life_country} ({max_life_value:.2f} years)")
 
 # 4. Count countries with life expectancy > 50
-count_above_50 = (africa_2007['lifeExp'] > 50).sum()
+count_above_50 = (africa_2007["lifeExp"] > 50).sum()
 total_countries = len(africa_2007)
 print(f"Countries with life expectancy > 50: {count_above_50} out of {total_countries}")
 ```
@@ -632,40 +663,40 @@ print(f"Countries with life expectancy > 50: {count_above_50} out of {total_coun
 3. Create a bar chart showing the average life expectancy for each continent in 2007
 
 ```{python}
-#| code-fold: true
-#| code-summary: "Show the code"
-#| eval: false
+# | code-fold: true
+# | code-summary: "Show the code"
+# | eval: false
 
 import matplotlib.pyplot as plt
 
 # 1. Line plot of average global GDP over time
-avg_gdp_by_year = df.groupby('year')['gdpPercap'].mean()
-plt.figure(figsize=(10, 6))
-plt.plot(avg_gdp_by_year.index, avg_gdp_by_year.values, marker='o')
-plt.xlabel('Year')
-plt.ylabel('Average GDP per Capita (USD)')
-plt.title('Global Average GDP per Capita Over Time')
+avg_gdp_by_year = df.groupby("year")["gdpPercap"].mean()
+plt.figure(figsize=(8, 6))
+plt.plot(avg_gdp_by_year.index, avg_gdp_by_year.values, marker="o")
+plt.xlabel("Year")
+plt.ylabel("Average GDP per Capita (USD)")
+plt.title("Global Average GDP per Capita Over Time")
 plt.grid(True)
 plt.show()
 
 # 2. Scatter plot of population vs life expectancy (2007)
-data_2007 = df[df['year'] == 2007]
+data_2007 = df[df["year"] == 2007]
 plt.figure(figsize=(10, 6))
-plt.scatter(data_2007['pop'], data_2007['lifeExp'], alpha=0.6)
-plt.xlabel('Population')
-plt.ylabel('Life Expectancy (years)')
-plt.title('Population vs Life Expectancy (2007)')
-plt.xscale('log')  # Log scale for population
+plt.scatter(data_2007["pop"], data_2007["lifeExp"], alpha=0.6)
+plt.xlabel("Population")
+plt.ylabel("Life Expectancy (years)")
+plt.title("Population vs Life Expectancy (2007)")
+plt.xscale("log")  # Log scale for population
 plt.grid(True)
 plt.show()
 
 # 3. Bar chart of average life expectancy by continent (2007)
-continent_life = data_2007.groupby('continent')['lifeExp'].mean().sort_values()
-plt.figure(figsize=(10, 6))
-continent_life.plot(kind='bar', color='steelblue')
-plt.xlabel('Continent')
-plt.ylabel('Average Life Expectancy (years)')
-plt.title('Average Life Expectancy by Continent (2007)')
+continent_life = data_2007.groupby("continent")["lifeExp"].mean().sort_values()
+plt.figure(figsize=(8, 6))
+continent_life.plot(kind="bar", color="steelblue")
+plt.xlabel("Continent")
+plt.ylabel("Average Life Expectancy (years)")
+plt.title("Average Life Expectancy by Continent (2007)")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
@@ -682,34 +713,34 @@ Create a subset of data and practice handling missing values:
 5. Compare the original and filled values
 
 ```{python}
-#| code-fold: true
-#| code-summary: "Show the code"
-#| eval: false
+# | code-fold: true
+# | code-summary: "Show the code"
+# | eval: false
 
 import numpy as np
 
 # 1. Create subset
-europe_2007 = df[(df['continent'] == 'Europe') & (df['year'] == 2007)].copy()
+europe_2007 = df[(df["continent"] == "Europe") & (df["year"] == 2007)].copy()
 
 # 2. Randomly set 10% to NaN
 np.random.seed(42)  # For reproducibility
 n_missing = int(len(europe_2007) * 0.1)
 missing_indices = np.random.choice(europe_2007.index, n_missing, replace=False)
-europe_2007.loc[missing_indices, 'lifeExp'] = np.nan
+europe_2007.loc[missing_indices, "lifeExp"] = np.nan
 
 # 3. Count missing values
-n_missing_actual = europe_2007['lifeExp'].isnull().sum()
+n_missing_actual = europe_2007["lifeExp"].isnull().sum()
 print(f"Missing values created: {n_missing_actual}")
 
 # 4. Fill with mean
-mean_life = europe_2007['lifeExp'].mean()
+mean_life = europe_2007["lifeExp"].mean()
 europe_filled = europe_2007.copy()
-europe_filled['lifeExp'] = europe_filled['lifeExp'].fillna(mean_life)
+europe_filled["lifeExp"] = europe_filled["lifeExp"].fillna(mean_life)
 
 # 5. Compare
 print("\nComparison of original and filled values:")
-comparison = europe_filled.loc[missing_indices, ['country', 'lifeExp']]
-comparison.columns = ['country', 'filled_lifeExp']
+comparison = europe_filled.loc[missing_indices, ["country", "lifeExp"]]
+comparison.columns = ["country", "filled_lifeExp"]
 print(comparison)
 print(f"\nMean value used for filling: {mean_life:.2f}")
 ```
