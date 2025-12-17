@@ -1,6 +1,10 @@
 ---
 title: "Processing Data in Python"
-description: "Learn to load, explore, visualize, and clean data using pandas and matplotlib"
+abstract: |
+    Learn to load, explore, visualize, and clean data using pandas and matplotlib.
+    This tutorial covers loading tabular data into DataFrames, exploratory data
+    analysis, creating visualizations, and handling missing values.
+keywords: ["Python", "pandas", "data processing", "visualization", "tutorial"]
 
 execute:
   eval: true
@@ -259,7 +263,7 @@ continent_life_exp = df.groupby('continent')['lifeExp'].mean()
 print(continent_life_exp)
 ```
 
-In the example above, we grouped the dataframe rows by the values in the `continent` column, and then for each group, the `lifeExp` column was selected and the mean of that column determined fpor each group... All in one line of code!
+In the example above, we grouped the dataframe rows by the values in the `continent` column, and then for each group, the `lifeExp` column was selected and the mean of that column determined for each group... All in one line of code!
 
 You can group by multiple columns and calculate multiple statistics:
 
@@ -347,6 +351,7 @@ Scatter plots help us see relationships between two variables. Let's explore the
 # | out-width: 100%
 # | fig-align: center
 # Scatter plot for 2007 data
+# Note: We're redefining `data_2007` here for clarity, but you could reuse the object from earlier.
 data_2007 = df[df["year"] == 2007]
 
 plt.figure(figsize=(8, 6))
@@ -605,7 +610,7 @@ Using the Gapminder dataset:
 # | code-summary: "Show the code"
 # | eval: false
 
-# 1. Load the data
+# If starting fresh, load the data first
 from causaldata import gapminder
 
 df = gapminder.load_pandas().data
