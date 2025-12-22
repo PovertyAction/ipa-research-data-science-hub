@@ -500,6 +500,114 @@
     ]
   },
   {
+    "objectID": "research-transparency/publication-preparation.html",
+    "href": "research-transparency/publication-preparation.html",
+    "title": "Data Publication Preparation",
+    "section": "",
+    "text": "This reference guide documents standardized procedures for preparing research materials—including data, code, and documentation—for public sharing in data repositories.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Data Publication Preparation"
+    ]
+  },
+  {
+    "objectID": "research-transparency/publication-preparation.html#purpose-and-scope",
+    "href": "research-transparency/publication-preparation.html#purpose-and-scope",
+    "title": "Data Publication Preparation",
+    "section": "Purpose and Scope",
+    "text": "Purpose and Scope\nData repositories allow researchers to share study materials publicly, raising research reliability by enabling verification and reuse of data. This guide documents standardized procedures for preparing materials for public sharing.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Data Publication Preparation"
+    ]
+  },
+  {
+    "objectID": "research-transparency/publication-preparation.html#required-materials-for-publication",
+    "href": "research-transparency/publication-preparation.html#required-materials-for-publication",
+    "title": "Data Publication Preparation",
+    "section": "Required Materials for Publication",
+    "text": "Required Materials for Publication\nWe strongly recommend sharing the following materials:\n\n\n\n\n\n\n\n\nFile Type\nDescription\nRequired?\n\n\n\n\nDatasets\nFull set of collected variables (survey, administrative data, etc.), excluding PII\nYes\n\n\nData documentation\nContext, notes on data-cleaning process, methodological details\nYes\n\n\nUser-written commands\nZIP file of all custom commands/programs\nIf applicable\n\n\nAnalysis code\nCode required to reproduce publication results\nIf applicable\n\n\nReadMe file\nInstructions for replication, including software requirements and command lists\nYes\n\n\nCodebook\nVariable labels, names, and descriptions\nYes\n\n\nSurvey instruments\nAll questionnaires and data collection tools\nYes\n\n\n\n\nOrganizing Materials\nEstablish a clear directory structure:\nstudy-materials/\n├── data/\n│   ├── raw/\n│   ├── intermediate/\n│   └── final/\n├── code/\n│   ├── cleaning/\n│   ├── analysis/\n│   └── figures-tables/\n├── documentation/\n│   ├── surveys/\n│   ├── codebooks/\n│   └── readme/\n└── user-commands/",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Data Publication Preparation"
+    ]
+  },
+  {
+    "objectID": "research-transparency/publication-preparation.html#data-preparation",
+    "href": "research-transparency/publication-preparation.html#data-preparation",
+    "title": "Data Publication Preparation",
+    "section": "Data Preparation",
+    "text": "Data Preparation\n\nVariable Naming and Labeling\nVariable names should be:\n\nShort (under 32 characters)\nDescriptive\nLinked to survey questions where applicable\nFree of spaces and special characters\n\nVariable labels must:\n\nStay within Stata’s 80-character limit\nReference survey question numbers\nBe interpretable without additional context\n\nExample:\nVariable name: gender_q1\nVariable label: Q1. Gender of respondent\n\n\nCategorical Variables with “Other” Options\nMany surveys include categorical variables with “Other, specify” options. Review these carefully to:\n\nRecode responses that match existing categories\nCreate new categories if multiple responses suggest a pattern\nDocument any recoding decisions\n\n\n\nQuality Checks Before Sharing\nVerify that:\n\nAll variables have descriptive labels\nValue labels exist for all categorical variables\nMissing value codes are consistent and documented\nOutliers have been reviewed and documented\nVariable types are appropriate (numeric vs. string)\nDate variables are in standard formats",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Data Publication Preparation"
+    ]
+  },
+  {
+    "objectID": "research-transparency/publication-preparation.html#removing-personally-identifiable-information",
+    "href": "research-transparency/publication-preparation.html#removing-personally-identifiable-information",
+    "title": "Data Publication Preparation",
+    "section": "Removing Personally Identifiable Information",
+    "text": "Removing Personally Identifiable Information\nBefore sharing data publicly, all personally identifiable information (PII) must be removed or anonymized. PII includes direct identifiers (names, contact information, precise locations) and indirect identifiers (combinations of variables that could identify individuals).\n\n\n\n\n\n\nImportantComprehensive PII Guidance\n\n\n\nFor detailed information on identifying and removing PII, including HIPAA guidelines, detection strategies, and anonymization techniques, see the Data Security Protocol: Personally Identifiable Information section of IPA’s Data Security Hub.\n\n\n\nQuick PII Removal Checklist\nAlways remove or anonymize:\n\nNames (participants, relatives, staff, enumerators)\nContact information (phone, email, address)\nGeographic locations smaller than 20,000 people\nFinancial identifiers (bank accounts, credit cards)\nGovernment IDs and medical identifiers\n\nCheck for PII in:\n\nVariable names and labels\nString variables and free-text responses\nCode comments and file paths\nSurvey instruments and documentation",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Data Publication Preparation"
+    ]
+  },
+  {
+    "objectID": "research-transparency/publication-preparation.html#code-documentation",
+    "href": "research-transparency/publication-preparation.html#code-documentation",
+    "title": "Data Publication Preparation",
+    "section": "Code Documentation",
+    "text": "Code Documentation\n\nEssential Code Components\nEvery code file should include:\n\nHeader with study information:\n\n/*******************************************************************************\n* Study: [Full study name]\n* Purpose: [What this code does]\n* Last updated: [Date]\n* Stata version: [Version number]\n*******************************************************************************/\n\n* Basic settings\nclear all\nset more off\nset maxvar 10000\n\n* Set working directory\ncd \"INSERT WORKING DIRECTORY HERE\"\n\nClear comments explaining:\n\nMajor sections and subsections\nComplex operations\nNon-obvious decisions\n\nOutput linked to publications:\n\n* Table 1: Baseline characteristics\neststo clear\neststo: reg outcome treatment controls\nesttab using \"output/table1_baseline.tex\", replace ///\n    title(\"Table 1: Baseline Characteristics\")\n\n\nMaster Do-File\nCreate a master file that runs all code in the correct sequence:\n/*******************************************************************************\n* Master do-file for [Study Name]\n* Runs all code to reproduce paper results\n*******************************************************************************/\n\ncd \"INSERT WORKING DIRECTORY HERE\"\n\n* Data preparation\ndo \"code/01_clean_data.do\"\ndo \"code/02_construct_variables.do\"\n\n* Analysis\ndo \"code/03_main_analysis.do\"\ndo \"code/04_robustness_checks.do\"\n\n* Output\ndo \"code/05_tables.do\"\ndo \"code/06_figures.do\"\n\n\nUser-Written Commands\nInclude all custom commands (.ado files) used in your analysis:\n\nIdentify them: which outreg2\nCollect from: C:\\Users\\[username]\\ado\\plus\\ or \\ado\\personal\\\nPackage as: ZIP file with list in ReadMe\n\n\n\nCode Verification\nBefore sharing, verify that:\n\nCode runs without errors from a fresh Stata session\nGenerated tables match publication results\nAll file paths work on a different computer",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Data Publication Preparation"
+    ]
+  },
+  {
+    "objectID": "research-transparency/publication-preparation.html#documentation-files",
+    "href": "research-transparency/publication-preparation.html#documentation-files",
+    "title": "Data Publication Preparation",
+    "section": "Documentation Files",
+    "text": "Documentation Files\n\nReadMe File Structure\n# [Study Title]\n\n## Citation\n[Full citation for publication]\n\n## Authors\n[List of authors and affiliations]\n\n## Files Included\n- Data files with descriptions\n- Code files with purposes\n- Survey instruments\n- User-written commands\n\n## Software Requirements\n- Software version (e.g., Stata 17.0)\n- Required user-written commands\n\n## Replication Instructions\n1. Unzip files maintaining directory structure\n2. Update working directory in master.do\n3. Run master.do\n\n## Notes and Discrepancies\n[Document any differences between paper and reproducible results]\n\n## Contact\n[Contact information for questions]\n\n\nMetadata Requirements\nProvide complete metadata including:\n\nStudy title and description\nAuthors and affiliations\nGeographic and temporal coverage\nUnit of observation and sample size\nKey variables and collection methods\nRelated publications and funding source",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Data Publication Preparation"
+    ]
+  },
+  {
+    "objectID": "research-transparency/publication-preparation.html#pre-publication-checklist",
+    "href": "research-transparency/publication-preparation.html#pre-publication-checklist",
+    "title": "Data Publication Preparation",
+    "section": "Pre-Publication Checklist",
+    "text": "Pre-Publication Checklist\nBefore sharing materials publicly:\nData and Documentation:\n\nAll PII removed from all materials\nVariable labels are descriptive\nValue labels exist for categorical variables\nReadMe file is complete\nCodebook documents all variables\nSurvey instruments are included\n\nCode and Reproducibility:\n\nCode runs without errors from master file\nGenerated output matches publication\nUser-written commands are included\nWorking directories use generic placeholders\nFile paths are relative, not absolute\n\nMetadata:\n\nMetadata template is complete\nAll referenced files exist\nContact information is current",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Data Publication Preparation"
+    ]
+  },
+  {
+    "objectID": "research-transparency/publication-preparation.html#sharing-procedures",
+    "href": "research-transparency/publication-preparation.html#sharing-procedures",
+    "title": "Data Publication Preparation",
+    "section": "Sharing Procedures",
+    "text": "Sharing Procedures\n\nInternal Archiving\nMinimum requirements before project close include a de-identified dataset, survey instruments, and ReadMe file. Recommended additions are analysis code and variable construction code to enable full reproducibility of results.\n\n\nPublic Repository Options\nPublic data repositories provide specialized infrastructure for sharing research materials with the broader scientific community. These platforms offer standardized systems for depositing, documenting, and preserving datasets beyond internal archiving.\nBenefits:\n\nPersistent DOI for citation\nLong-term preservation\nIncreased discoverability\nStandard metadata formats\n\n\n\n\n\n\n\nNoteIPA’s Data Repository\n\n\n\nIPA maintains a data repository using Harvard’s Dataverse at dataverse.harvard.edu/dataverse/IPA. For IPA researchers, contact researchsupport@poverty-action.org for support with uploading, PII verification, and documentation review.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Data Publication Preparation"
+    ]
+  },
+  {
     "objectID": "research-ethics/irb-reliance-agreements.html#what-is-a-reliance-agreement",
     "href": "research-ethics/irb-reliance-agreements.html#what-is-a-reliance-agreement",
     "title": "Reliance Agreements",
@@ -5469,6 +5577,90 @@
       "Contributing",
       "Research Ethics",
       "IRB review"
+    ]
+  },
+  {
+    "objectID": "research-transparency/understanding-transparency.html",
+    "href": "research-transparency/understanding-transparency.html",
+    "title": "Understanding Research Transparency",
+    "section": "",
+    "text": "This article explores the principles and importance of research transparency in impact evaluation, explaining why open science practices strengthen the credibility and replicability of research findings.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Understanding Research Transparency"
+    ]
+  },
+  {
+    "objectID": "research-transparency/understanding-transparency.html#defining-research-transparency",
+    "href": "research-transparency/understanding-transparency.html#defining-research-transparency",
+    "title": "Understanding Research Transparency",
+    "section": "Defining Research Transparency",
+    "text": "Defining Research Transparency\nResearch transparency refers to the practice of openly sharing the methods, data, and materials used in research studies so that others can understand, verify, and build upon scientific findings. At its core, transparency in research is about making the research process visible—from initial hypotheses through data collection and analysis to final results.\n\n\n\n\n\n\nNoteIPA’s Research Transparency Initiative\n\n\n\nIn 2014, IPA launched the Research Transparency Initiative to promote openness, transparency, and reproducibility of research. This Initiative positions IPA within a growing movement that includes funders, journals, and other research organizations, all working to encourage higher quality research practices. At IPA, we believe that high quality research goes hand in hand with research transparency.\nThrough the advocacy of registering studies and sharing materials such as data and code, other researchers, analysts, and academics can replicate and reanalyze results, strengthening the overall credibility of development economics research.\n\n\nResearch transparency is not simply about following rules or checking boxes; it is about creating an ecosystem where research findings can be trusted, verified, and used to inform policy decisions that affect people’s lives. When we conduct randomized controlled trials to evaluate poverty alleviation programs, for example, the stakes are high. Policymakers and organizations rely on this evidence to make decisions about resource allocation. Transparent research practices ensure that these decisions rest on solid, verifiable foundations.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Understanding Research Transparency"
+    ]
+  },
+  {
+    "objectID": "research-transparency/understanding-transparency.html#five-critical-problems-in-research-practice",
+    "href": "research-transparency/understanding-transparency.html#five-critical-problems-in-research-practice",
+    "title": "Understanding Research Transparency",
+    "section": "Five Critical Problems in Research Practice",
+    "text": "Five Critical Problems in Research Practice\nResearch transparency emerged as a response to several interconnected problems that affect the reliability and credibility of scientific findings. Understanding these problems helps clarify why transparency practices matter.\n\nPublication Bias\nPublication bias occurs when statistically significant results are more likely to be published than null results. Studies showing that an intervention “worked” are more exciting and publishable than those showing it had no effect. This creates a distorted picture in the published literature.\n\n\n\n\n\n\nTipExample: The File Drawer Problem\n\n\n\nImagine ten research teams each conduct a study on the same intervention. Seven find no effect, but three find positive effects. If only the three positive studies get published (while the seven null results remain in the “file drawer”), readers of the literature will incorrectly conclude that the intervention is effective. This phenomenon is sometimes called the “file drawer problem.”\n\n\nIn development economics, this bias can lead to overestimating program effectiveness, resulting in resources being allocated to interventions that may not actually work when implemented at scale.\n\n\nP-Hacking and Data Mining\nP-hacking (also called data mining or data hacking) refers to the practice of manipulating data analysis until statistically significant results emerge. Since statistically significant results (typically p &lt; 0.05) are considered noteworthy and more publishable, researchers may feel pressured to obtain them.\nThis manipulation can take many forms:\n\nTesting multiple outcome variables and reporting only those that show significance\nTrying different ways of coding variables until one produces significant results\nExcluding outliers selectively to change results\nTesting multiple subgroups and reporting only those showing effects\nStopping data collection once significant results appear\n\nThe problem with p-hacking is that it inflates false positive rates. When researchers run enough tests or try enough specifications, they will eventually find something that appears “significant” purely by chance. This undermines the meaning of statistical significance and produces findings that fail to replicate.\n\n\n\n\n\n\nTipExample: Multiple Testing and False Positives\n\n\n\nConsider a researcher evaluating a microfinance program who measures 20 different outcomes. Even if the program has no real effect, we’d expect one of those 20 outcomes to show a “significant” result purely by chance (since p &lt; 0.05 means a 5% probability of a false positive). If the researcher reports only that one significant outcome without mentioning the 19 null results, readers will be misled about the program’s effectiveness.\n\n\n\n\nSelective Reporting\nSelective reporting involves cherry-picking results to present while omitting others. This differs from p-hacking in that it may not involve manipulating the analysis itself, but rather choosing which results to report.\nA researcher might collect data on multiple outcomes, conduct the planned analyses, but then report only the positive findings. Or they might conduct subgroup analyses and report only the subgroups where effects were found, without mentioning that effects were absent in other subgroups.\nSelective reporting distorts the evidence base because readers cannot assess the full picture of what was studied and what was found. It becomes impossible to distinguish between:\n\nA focused study that found clear effects on its primary outcomes\nA fishing expedition that tested many hypotheses and reported only the “catches”\n\nIn impact evaluation, selective reporting can lead to overoptimistic assessments of programs and misunderstanding of for whom and under what conditions interventions work.\n\n\nLack of Replication\nReplication—conducting a study again to see if the same results emerge—is fundamental to the scientific method. However, the research community has historically lacked strong incentives for replication.\nJournals prefer to publish “original” research and are often reluctant to publish replications. Researchers face pressure to produce novel findings rather than verify existing ones. Funding for replication studies is limited. As a result, even influential findings that shape policy may never be independently verified.\nThis lack of replication creates several problems:\n\nFindings based on chance or error can persist in the literature\nThe robustness of results across contexts remains unknown\nTrust in research findings may be misplaced\n\n\n\n\n\n\n\nWarningReplication crisis\n\n\n\nThe replication crisis has been particularly evident in psychology and medicine, but development economics is not immune. Without replication, we cannot be confident that programs that worked in one context will work in another, or even that the original findings were accurate.\n\n\n\n\nLack of Transparency and Failure to Replicate\nEven when researchers want to replicate published findings, lack of transparency can make it impossible. If the original data, code, and materials are not available, other researchers cannot verify the results or explore alternative analyses.\nThis lack of transparency has several consequences:\n\nErrors in published work may go undetected\nOther researchers cannot build directly on existing work\nResources are wasted when researchers cannot access materials they need\nTrust in research findings is undermined\n\nFurthermore, when replications do occur but fail to reproduce the original findings, there is often no good venue for publishing these results. Journals may view them as “unoriginal” or “negative” findings. Simply posting replication results on websites is not ideal either, as they lack peer review and may not be discoverable by other researchers.\nThis creates a troubling situation where both successful and unsuccessful replications struggle to find their place in the scientific literature, leaving the community without clear information about which findings are robust and which are not.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Understanding Research Transparency"
+    ]
+  },
+  {
+    "objectID": "research-transparency/understanding-transparency.html#how-research-transparency-addresses-these-problems",
+    "href": "research-transparency/understanding-transparency.html#how-research-transparency-addresses-these-problems",
+    "title": "Understanding Research Transparency",
+    "section": "How Research Transparency Addresses These Problems",
+    "text": "How Research Transparency Addresses These Problems\nResearch transparency practices directly address each of the problems described above through concrete mechanisms and tools.\n\nTrial Registration and Pre-Analysis Plans\nTrial registration involves publicly recording key information about a study before it begins. Registering a trial in the American Economic Association’s Registry for Randomized Controlled Trials (AEA RCT Registry) or ClinicalTrials.gov creates a public record of the study’s existence, combating publication bias.\nWhen studies are registered in advance:\n\nThe research community knows the study is happening, even if results are never published\nIt becomes harder to bury null results in the “file drawer”\nSystematic reviews can search registries to find unpublished studies\n\nPre-analysis plans (PAPs) are more detailed documents that specify the study’s hypotheses, primary and secondary outcomes, and planned analyses before data analysis begins. Pre-analysis plans combat p-hacking by creating a public record of what the researchers intended to test and how they intended to test it.\nWhen researchers commit to a pre-analysis plan:\n\nIt is clear which outcomes were planned and which were explored post-hoc\nChanges to the analysis approach must be noted and justified\nSubgroup analyses are distinguished from primary analyses\nThe risk of selective reporting is reduced\n\nPre-analysis plans don’t prevent researchers from conducting exploratory analyses—those are valuable! But they make it clear which findings were predicted in advance (confirmatory) and which emerged from exploration. This distinction is crucial for proper interpretation of results.\n\n\n\n\n\n\nTipHow to Register a Study\n\n\n\n\n\nThe AEA RCT Registry provides a platform for registering randomized controlled trials. Registration typically includes: study title, research questions, intervention description, primary and secondary outcomes, sample size and power calculations, and planned analysis methods. Pre-analysis plans can be uploaded as attachments to provide more detailed specifications. Visit the AEA RCT Registry for registration instructions and templates.\n\n\n\n\n\nResults-Neutral Publishing\nA growing number of publishers, including PLOS ONE and BioMed Central journals, have created environments where publication decisions are based on scientific validity rather than perceived impact or the “excitement” of findings.\nIn results-neutral publishing:\n\nStudies with null results are as publishable as those with positive results\nThe quality of research design and execution matters more than whether hypotheses were supported\nReplications are valued as important contributions\n\nThis approach helps address publication bias by removing the incentive to produce only positive findings. It also creates space for replication studies, which are crucial for building cumulative knowledge but have traditionally struggled to find publication venues.\nResults-neutral publishing acknowledges that a well-designed study that finds no effect is just as valuable as one that finds a large effect—both contribute to our understanding of what works and what doesn’t in development programs.\n\n\nReplication Programs and Projects\nDespite the value of replication studies, they remain rare. Several initiatives have emerged to increase the number of replications. These programs help address the lack of replication by:\n\nProviding funding for replication work\nCreating legitimate venues for publishing replications\nBuilding a culture that values verification\nTraining early-career researchers in replication methods\n\nReplication programs also help identify which findings are robust across different contexts, samples, and specifications—crucial information for policy applications.\n\n\nPublishing All Results\nRather than selectively reporting favorable findings, research transparency calls for publishing all results from a study—both primary and secondary outcomes, both positive and null findings, both main effects and subgroup analyses.\nComplete reporting enables:\n\nReaders to assess the full pattern of results\nMeta-analysts to synthesize evidence accurately\nOther researchers to compare their findings to the complete picture\nProper assessment of which outcomes were affected and which were not\n\nPublishing all results doesn’t mean treating all results equally. Researchers can and should distinguish between:\n\nPrimary and secondary outcomes\nPre-specified and exploratory analyses\nMain effects and subgroup effects\nConfirmatory and exploratory findings\n\nBut all should be reported, with appropriate context and interpretation. This gives readers the full information they need to assess the study’s contributions and limitations.\n\n\nData Sharing and Open Materials\nData sharing refers to making data, code, survey instruments, user-written commands, and other research materials publicly available. This practice facilitates:\n\nVerification: Other researchers can check published results for errors\nReplication: Studies can be reproduced to test robustness\nReanalysis: Alternative analyses can be conducted to test sensitivity\nMeta-analysis: Data from multiple studies can be combined\nSecondary use: Data can be used to answer new questions\nLearning: Students and early-career researchers can learn from real data\nEfficiency: Resources are not wasted recreating data that already exist\n\nData sharing promotes the development of better quality materials by project teams. When researchers know their data will be public, they have additional incentive to ensure quality, clear documentation, and proper organization.\n\n\n\n\n\n\nNoteIPA’s Data Repository\n\n\n\nIPA has created its own data repository using Harvard’s Dataverse platform. The repository makes data from IPA studies publicly accessible while ensuring proper documentation and ethical protection of participants. Visit IPA’s Dataverse to explore available datasets.\n\n\nData sharing must balance transparency with ethical obligations to protect research participants. Personally identifiable information (PII) must be removed before data is shared publicly. Despite this necessary limitation, anonymized data can still serve all the functions described above.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Understanding Research Transparency"
+    ]
+  },
+  {
+    "objectID": "research-transparency/understanding-transparency.html#the-research-transparency-ecosystem",
+    "href": "research-transparency/understanding-transparency.html#the-research-transparency-ecosystem",
+    "title": "Understanding Research Transparency",
+    "section": "The Research Transparency Ecosystem",
+    "text": "The Research Transparency Ecosystem\nResearch transparency is not just a set of individual practices; it is an ecosystem involving multiple stakeholders working together to establish and maintain higher standards.\n\nFunders Requiring Transparency\nMany funding agencies now require research transparency practices as a condition of funding. These requirements create incentives for researchers to adopt transparency practices and ensure that publicly-funded research produces publicly-accessible knowledge.\n\n\nJournals Promoting Openness\nAcademic journals play a crucial role in the transparency ecosystem:\n\nData availability statements: Many journals now require authors to state whether and where data are available\nPre-registration badges: Some journals award badges to studies that pre-registered\nOpen data badges: Recognition for studies that share data publicly\nRegistered reports: Some journals peer-review study designs before results are known, guaranteeing publication regardless of outcomes\n\nThe American Economic Association (AEA) provides a Data and Code Availability Policy, which states:\n\nIt is the policy of the American Economic Association to publish papers only if the data and code used in the analysis are clearly and precisely documented and access to the data and code is nonexclusive to the authors.\n\nSimilarly, the American Political Science Association (APSA) requires authors of empirical papers to submit files for replication (see APSA Data Policy).\nThe Quarterly Journal of Economics also provides a Data Policy.\nOther journals like Proceedings of the National Academy of Sciences (PNAS) now require data to be deposited in a repository prior to publication, making openness a condition of publishing.\nA good reference for developing replication packages is provided by Social Science Data Editors.\n\n\nUniversities Setting Standards\nUniversities are increasingly establishing transparency policies:\n\nCenters for Open Science at various universities\nGraduate training that includes transparency practices\nPromotion and tenure policies that value open science\nResearch integrity offices that monitor transparency\n\n\n\nResearch Organizations Leading by Example\nOrganizations like IPA and J-PAL have made transparency a core part of their mission, demonstrating that high-quality research and transparent practices go hand in hand. By building transparency into organizational processes, these groups help normalize openness as standard practice rather than exceptional effort.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Understanding Research Transparency"
+    ]
+  },
+  {
+    "objectID": "research-transparency/understanding-transparency.html#transparencys-role-in-development-policy",
+    "href": "research-transparency/understanding-transparency.html#transparencys-role-in-development-policy",
+    "title": "Understanding Research Transparency",
+    "section": "Transparency’s Role in Development Policy",
+    "text": "Transparency’s Role in Development Policy\nIn development economics and impact evaluation, research transparency has particular importance because research findings directly inform policy decisions that affect people’s lives.\nWhen a government decides whether to scale up a cash transfer program, or an NGO chooses between different education interventions, they rely on research evidence. If that evidence is:\n\nBased on cherry-picked results\nInflated by p-hacking\nNever verified through replication\nImpossible to scrutinize because materials aren’t available\n\n…then decisions may be based on unreliable foundations. Resources may be wasted on ineffective programs, or effective programs may be overlooked.\nResearch transparency helps ensure that development policy is built on solid evidence. It allows:\n\nRigorous scrutiny of influential findings\nAccumulation of knowledge across studies and contexts\nLearning from both successes and failures\nEfficient use of research resources\nTrust in research as a basis for policy\n\nUltimately, research transparency is about accountability to the research community, to funders, to policymakers, and most importantly, to the populations that development programs aim to serve.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Understanding Research Transparency"
+    ]
+  },
+  {
+    "objectID": "research-transparency/understanding-transparency.html#cultivating-a-culture-of-openness",
+    "href": "research-transparency/understanding-transparency.html#cultivating-a-culture-of-openness",
+    "title": "Understanding Research Transparency",
+    "section": "Cultivating a Culture of Openness",
+    "text": "Cultivating a Culture of Openness\nResearch transparency is not achieved through rules and requirements alone—it requires building a culture where openness is valued and practiced routinely.\nThis culture is built through:\n\nTraining: Teaching transparency practices to early-career researchers\nInfrastructure: Providing tools and repositories that make sharing easy\nRecognition: Valuing transparent research in hiring, promotion, and awards\nNorms: Making transparency the expected standard rather than the exception\nSupport: Providing resources to help researchers implement transparency practices\n\nWhen transparency becomes the default approach, the entire research enterprise benefits, and the evidence base for development policy becomes more reliable and trustworthy.",
+    "crumbs": [
+      "Contributing",
+      "Research Transparency",
+      "Understanding Research Transparency"
     ]
   },
   {

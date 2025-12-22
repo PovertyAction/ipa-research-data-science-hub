@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="data quality, data backup, double entry, data security, explanation">
+<meta name="keywords" content="data preparation, data sharing, data repository, personally identifiable information, PII removal, data anonymization, code documentation, reproducibility, data curation, metadata, readme files, codebook">
 
-<title>Data Integrity – Research and Data Science Hub</title>
+<title>Data Publication Preparation – Research and Data Science Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,8 +66,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../data-quality/data-management-system.html" rel="next">
-<link href="../data-quality/aea-registry.html" rel="prev">
+<link href="../software/guides/venv.html" rel="next">
+<link href="../research-transparency/understanding-transparency.html" rel="prev">
 <link href="../assets/logos/ipa-favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -404,7 +439,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-quality/index.html">Data Quality</a></li><li class="breadcrumb-item"><a href="../data-quality/survey-plan.html">IPA Research Protocols</a></li><li class="breadcrumb-item"><a href="../data-quality/data-integrity.html">Data Integrity</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-transparency/understanding-transparency.html">Research Transparency</a></li><li class="breadcrumb-item"><a href="../research-transparency/publication-preparation.html">Data Publication Preparation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -564,13 +599,13 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Data Quality</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../data-quality/index.html" class="sidebar-item-text sidebar-link">
@@ -579,13 +614,13 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">IPA Research Protocols</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../data-quality/survey-plan.html" class="sidebar-item-text sidebar-link">
@@ -642,7 +677,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/data-integrity.html" class="sidebar-item-text sidebar-link active">
+  <a href="../data-quality/data-integrity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Integrity</span></a>
   </div>
 </li>
@@ -903,13 +938,13 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true">
  <span class="menu-text">Research Transparency</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../research-transparency/understanding-transparency.html" class="sidebar-item-text sidebar-link">
@@ -918,7 +953,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-transparency/publication-preparation.html" class="sidebar-item-text sidebar-link">
+  <a href="../research-transparency/publication-preparation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data Publication Preparation</span></a>
   </div>
 </li>
@@ -1129,39 +1164,62 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#what-is-data-integrity" id="toc-what-is-data-integrity" class="nav-link active" data-scroll-target="#what-is-data-integrity">What is Data Integrity?</a></li>
-    <li><a href="#double-entry" id="toc-double-entry" class="nav-link" data-scroll-target="#double-entry">Double Entry</a></li>
-    <li><a href="#maintaining-data-backups" id="toc-maintaining-data-backups" class="nav-link" data-scroll-target="#maintaining-data-backups">Maintaining Data Backups</a></li>
-    <li><a href="#storing-files-on-box" id="toc-storing-files-on-box" class="nav-link" data-scroll-target="#storing-files-on-box">Storing Files on Box</a></li>
-    <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+    <li><a href="#purpose-and-scope" id="toc-purpose-and-scope" class="nav-link active" data-scroll-target="#purpose-and-scope">Purpose and Scope</a></li>
+    <li><a href="#required-materials-for-publication" id="toc-required-materials-for-publication" class="nav-link" data-scroll-target="#required-materials-for-publication">Required Materials for Publication</a>
+    <ul class="collapse">
+    <li><a href="#organizing-materials" id="toc-organizing-materials" class="nav-link" data-scroll-target="#organizing-materials">Organizing Materials</a></li>
+    </ul></li>
+    <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a>
+    <ul class="collapse">
+    <li><a href="#variable-naming-and-labeling" id="toc-variable-naming-and-labeling" class="nav-link" data-scroll-target="#variable-naming-and-labeling">Variable Naming and Labeling</a></li>
+    <li><a href="#categorical-variables-with-other-options" id="toc-categorical-variables-with-other-options" class="nav-link" data-scroll-target="#categorical-variables-with-other-options">Categorical Variables with “Other” Options</a></li>
+    <li><a href="#quality-checks-before-sharing" id="toc-quality-checks-before-sharing" class="nav-link" data-scroll-target="#quality-checks-before-sharing">Quality Checks Before Sharing</a></li>
+    </ul></li>
+    <li><a href="#removing-personally-identifiable-information" id="toc-removing-personally-identifiable-information" class="nav-link" data-scroll-target="#removing-personally-identifiable-information">Removing Personally Identifiable Information</a>
+    <ul class="collapse">
+    <li><a href="#quick-pii-removal-checklist" id="toc-quick-pii-removal-checklist" class="nav-link" data-scroll-target="#quick-pii-removal-checklist">Quick PII Removal Checklist</a></li>
+    </ul></li>
+    <li><a href="#code-documentation" id="toc-code-documentation" class="nav-link" data-scroll-target="#code-documentation">Code Documentation</a>
+    <ul class="collapse">
+    <li><a href="#essential-code-components" id="toc-essential-code-components" class="nav-link" data-scroll-target="#essential-code-components">Essential Code Components</a></li>
+    <li><a href="#master-do-file" id="toc-master-do-file" class="nav-link" data-scroll-target="#master-do-file">Master Do-File</a></li>
+    <li><a href="#user-written-commands" id="toc-user-written-commands" class="nav-link" data-scroll-target="#user-written-commands">User-Written Commands</a></li>
+    <li><a href="#code-verification" id="toc-code-verification" class="nav-link" data-scroll-target="#code-verification">Code Verification</a></li>
+    </ul></li>
+    <li><a href="#documentation-files" id="toc-documentation-files" class="nav-link" data-scroll-target="#documentation-files">Documentation Files</a>
+    <ul class="collapse">
+    <li><a href="#readme-file-structure" id="toc-readme-file-structure" class="nav-link" data-scroll-target="#readme-file-structure">ReadMe File Structure</a></li>
+    <li><a href="#metadata-requirements" id="toc-metadata-requirements" class="nav-link" data-scroll-target="#metadata-requirements">Metadata Requirements</a></li>
+    </ul></li>
+    <li><a href="#pre-publication-checklist" id="toc-pre-publication-checklist" class="nav-link" data-scroll-target="#pre-publication-checklist">Pre-Publication Checklist</a></li>
+    <li><a href="#sharing-procedures" id="toc-sharing-procedures" class="nav-link" data-scroll-target="#sharing-procedures">Sharing Procedures</a>
+    <ul class="collapse">
+    <li><a href="#internal-archiving" id="toc-internal-archiving" class="nav-link" data-scroll-target="#internal-archiving">Internal Archiving</a></li>
+    <li><a href="#public-repository-options" id="toc-public-repository-options" class="nav-link" data-scroll-target="#public-repository-options">Public Repository Options</a></li>
+    </ul></li>
     </ul>
     <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Authors</h2>
   <ul>
-        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/kelly-montano" class="nav-link" data-scroll-target="https\://poverty-action.org/people/kelly-montano">Kelly Montaño</a></li>
       </ul>
-      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
-  <ul>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/cristhian-pulido" class="nav-link" data-scroll-target="https\://poverty-action.org/people/cristhian-pulido">Cristhian Pulido</a></li>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/ishmail-azindoo-baako" class="nav-link" data-scroll-target="https\://poverty-action.org/people/ishmail-azindoo-baako">Ishmail Azindoo Baako</a></li>
-      </ul>
-      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
+        <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
     <li class="last-modified" style="font-size: 0.86rem;">December 22, 2025</li>
   </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
   <ul>
-    <li class="license" style="font-size: 0.86rem;"><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="nav-link" data-scroll-target="https\://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></li>
+    <li class="license" style="font-size: 0.86rem;"><a href="" class="nav-link" data-scroll-target=""></a></li>
   </ul>
-  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-quality/data-integrity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-transparency/publication-preparation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-quality/index.html">Data Quality</a></li><li class="breadcrumb-item"><a href="../data-quality/survey-plan.html">IPA Research Protocols</a></li><li class="breadcrumb-item"><a href="../data-quality/data-integrity.html">Data Integrity</a></li></ol></nav><h1 class="title display-7">Data Integrity</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-transparency/understanding-transparency.html">Research Transparency</a></li><li class="breadcrumb-item"><a href="../research-transparency/publication-preparation.html">Data Publication Preparation</a></li></ol></nav><h1 class="title display-7">Data Publication Preparation</h1></header>
 
 
 <header id="title-block-header">
     
-        <p class="abstract">This guide covers procedures for ensuring data integrity in research, including double data entry methods, data backup strategies, and secure file storage using Box.</p>
+        <p class="abstract">This reference guide documents standardized procedures for preparing research materials—including data, code, and documentation—for public sharing in data repositories.</p>
     
 </header>
 
@@ -1177,90 +1235,350 @@ cookieconsent.run({
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>Double Entry:</strong> A method to ensure data accuracy by independently entering data twice and comparing for discrepancies.</li>
-<li><strong>Maintaining Data Backups:</strong> Protects against data loss by storing multiple copies in different locations with version control.</li>
-<li><strong>Storing Files on Box:</strong> Ensures secure access, collaboration, and compliance with data protection policies.</li>
+<li>Data publication requires systematic removal of personally identifiable information (PII) while maintaining analytical integrity.</li>
+<li>Complete documentation includes datasets, code, survey instruments, user-written commands, readme files, and codebooks.</li>
+<li>Materials must be cleaned, tested for reproducibility, and properly documented before public sharing.</li>
 </ul>
 </div>
 </div>
-<section id="what-is-data-integrity" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-data-integrity">What is Data Integrity?</h2>
-<p>Ensuring data integrity and security is crucial for high-quality research. This involves verifying data accuracy through <strong>Double Entry</strong>, protecting against loss by <strong>Maintaining Data Backups</strong>, and ensuring secure access by <strong>Storing Files on Box</strong>. Adopting these best practices minimizes errors, preserves data, and promotes reliability.</p>
+<section id="purpose-and-scope" class="level2">
+<h2 class="anchored" data-anchor-id="purpose-and-scope">Purpose and Scope</h2>
+<p>Data repositories allow researchers to share study materials publicly, raising research reliability by enabling verification and reuse of data. This guide documents standardized procedures for preparing materials for public sharing.</p>
 </section>
-<section id="double-entry" class="level2">
-<h2 class="anchored" data-anchor-id="double-entry">Double Entry</h2>
-<p><strong>Definition:</strong> Double entry is a method where researchers enter data twice independently and then compare the entries to detect discrepancies.</p>
-<p><strong>Steps:</strong></p>
+<section id="required-materials-for-publication" class="level2">
+<h2 class="anchored" data-anchor-id="required-materials-for-publication">Required Materials for Publication</h2>
+<p>We strongly recommend sharing the following materials:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 37%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File Type</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Datasets</strong></td>
+<td>Full set of collected variables (survey, administrative data, etc.), excluding PII</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td><strong>Data documentation</strong></td>
+<td>Context, notes on data-cleaning process, methodological details</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td><strong>User-written commands</strong></td>
+<td>ZIP file of all custom commands/programs</td>
+<td>If applicable</td>
+</tr>
+<tr class="even">
+<td><strong>Analysis code</strong></td>
+<td>Code required to reproduce publication results</td>
+<td>If applicable</td>
+</tr>
+<tr class="odd">
+<td><strong>ReadMe file</strong></td>
+<td>Instructions for replication, including software requirements and command lists</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td><strong>Codebook</strong></td>
+<td>Variable labels, names, and descriptions</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td><strong>Survey instruments</strong></td>
+<td>All questionnaires and data collection tools</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<section id="organizing-materials" class="level3">
+<h3 class="anchored" data-anchor-id="organizing-materials">Organizing Materials</h3>
+<p>Establish a clear directory structure:</p>
+<pre class="text"><code>study-materials/
+├── data/
+│   ├── raw/
+│   ├── intermediate/
+│   └── final/
+├── code/
+│   ├── cleaning/
+│   ├── analysis/
+│   └── figures-tables/
+├── documentation/
+│   ├── surveys/
+│   ├── codebooks/
+│   └── readme/
+└── user-commands/</code></pre>
+</section>
+</section>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
+<section id="variable-naming-and-labeling" class="level3">
+<h3 class="anchored" data-anchor-id="variable-naming-and-labeling">Variable Naming and Labeling</h3>
+<p><strong>Variable names</strong> should be:</p>
+<ul>
+<li>Short (under 32 characters)</li>
+<li>Descriptive</li>
+<li>Linked to survey questions where applicable</li>
+<li>Free of spaces and special characters</li>
+</ul>
+<p><strong>Variable labels</strong> must:</p>
+<ul>
+<li>Stay within Stata’s 80-character limit</li>
+<li>Reference survey question numbers</li>
+<li>Be interpretable without additional context</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Variable <span class="bn">name</span>: gender_q1</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Variable <span class="kw">label</span>: Q1. Gender <span class="kw">of</span> respondent</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="categorical-variables-with-other-options" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-variables-with-other-options">Categorical Variables with “Other” Options</h3>
+<p>Many surveys include categorical variables with “Other, specify” options. Review these carefully to:</p>
 <ol type="1">
-<li><strong>Initial Data Entry:</strong> Enumerators or data clerks enter data from source documents into the database.</li>
-<li><strong>Second Independent Entry:</strong> A different person re-enters the same data into a separate database.</li>
-<li><strong>Comparison and Validation:</strong> Researchers compare the two datasets to identify inconsistencies.</li>
-<li><strong>Error Resolution:</strong> Staff review discrepancies and correct them using the original source.</li>
+<li>Recode responses that match existing categories</li>
+<li>Create new categories if multiple responses suggest a pattern</li>
+<li>Document any recoding decisions</li>
 </ol>
-<p><strong>Why it Matters:</strong></p>
+</section>
+<section id="quality-checks-before-sharing" class="level3">
+<h3 class="anchored" data-anchor-id="quality-checks-before-sharing">Quality Checks Before Sharing</h3>
+<p>Verify that:</p>
 <ul>
-<li>Reduces human error in manual data entry.</li>
-<li>Ensures higher accuracy and reliability of data.</li>
-<li>Essential for sensitive data where precision is critical.</li>
-</ul>
-<p><strong>Best Practices:</strong></p>
-<ul>
-<li>Use automated comparison tools to speed up validation.</li>
-<li>Train staff on accurate data entry techniques.</li>
-<li>Implement a tracking system to monitor common errors.</li>
+<li>All variables have descriptive labels</li>
+<li>Value labels exist for all categorical variables</li>
+<li>Missing value codes are consistent and documented</li>
+<li>Outliers have been reviewed and documented</li>
+<li>Variable types are appropriate (numeric vs.&nbsp;string)</li>
+<li>Date variables are in standard formats</li>
 </ul>
 </section>
-<section id="maintaining-data-backups" class="level2">
-<h2 class="anchored" data-anchor-id="maintaining-data-backups">Maintaining Data Backups</h2>
-<p><strong>Definition:</strong> A backup is a copy of data stored to protect against accidental loss, corruption, or hardware failure.</p>
-<p><strong>Steps:</strong></p>
+</section>
+<section id="removing-personally-identifiable-information" class="level2">
+<h2 class="anchored" data-anchor-id="removing-personally-identifiable-information">Removing Personally Identifiable Information</h2>
+<p>Before sharing data publicly, all personally identifiable information (PII) must be removed or anonymized. PII includes direct identifiers (names, contact information, precise locations) and indirect identifiers (combinations of variables that could identify individuals).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Comprehensive PII Guidance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For detailed information on identifying and removing PII, including HIPAA guidelines, detection strategies, and anonymization techniques, see the <a href="https://data.poverty-action.org/data-security/data-security-protocol.html#personally-identifiable-information-pii">Data Security Protocol: Personally Identifiable Information</a> section of IPA’s Data Security Hub.</p>
+</div>
+</div>
+<section id="quick-pii-removal-checklist" class="level3">
+<h3 class="anchored" data-anchor-id="quick-pii-removal-checklist">Quick PII Removal Checklist</h3>
+<p><strong>Always remove or anonymize</strong>:</p>
+<ul>
+<li>Names (participants, relatives, staff, enumerators)</li>
+<li>Contact information (phone, email, address)</li>
+<li>Geographic locations smaller than 20,000 people</li>
+<li>Financial identifiers (bank accounts, credit cards)</li>
+<li>Government IDs and medical identifiers</li>
+</ul>
+<p><strong>Check for PII in</strong>:</p>
+<ul>
+<li>Variable names and labels</li>
+<li>String variables and free-text responses</li>
+<li>Code comments and file paths</li>
+<li>Survey instruments and documentation</li>
+</ul>
+</section>
+</section>
+<section id="code-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="code-documentation">Code Documentation</h2>
+<section id="essential-code-components" class="level3">
+<h3 class="anchored" data-anchor-id="essential-code-components">Essential Code Components</h3>
+<p>Every code file should include:</p>
 <ol type="1">
-<li><strong>Automated Backups:</strong> Schedule automatic backups at regular intervals.</li>
-<li><strong>Multiple Storage Locations:</strong> Store backups in at least two locations, such as cloud storage or an external drive.</li>
-<li><strong>Version Control:</strong> Maintain different versions of files to recover previous states.</li>
-<li><strong>Regular Testing:</strong> Periodically restore files to ensure backups are functional.</li>
+<li><strong>Header with study information</strong>:</li>
 </ol>
-<p><strong>Why it Matters:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*******************************************************************************</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">* Study: [Full study name]</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">* Purpose: [What this code does]</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">* Last updated: [Date]</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">* Stata version: [Version number]</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">*******************************************************************************/</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>* Basic settings</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span> <span class="ot">all</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="kw">more</span> <span class="kw">off</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="dv">maxvar</span> 10000</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>* Set working directory</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"INSERT WORKING DIRECTORY HERE"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li><p><strong>Clear comments explaining</strong>:</p>
 <ul>
-<li>Prevents loss of critical research data.</li>
-<li>Ensures continuity in case of system failure.</li>
-<li>Protects against accidental deletions and cyber threats.</li>
-</ul>
-<p><strong>Best Practices:</strong></p>
+<li>Major sections and subsections</li>
+<li>Complex operations</li>
+<li>Non-obvious decisions</li>
+</ul></li>
+<li><p><strong>Output linked to publications</strong>:</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>* Table 1: Baseline characteristics</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>eststo <span class="kw">clear</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>eststo: <span class="kw">reg</span> outcome treatment controls</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>esttab <span class="kw">using</span> <span class="st">"output/table1_baseline.tex"</span>, <span class="kw">replace</span> <span class="co">///</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bn">title</span>(<span class="st">"Table 1: Baseline Characteristics"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="master-do-file" class="level3">
+<h3 class="anchored" data-anchor-id="master-do-file">Master Do-File</h3>
+<p>Create a master file that runs all code in the correct sequence:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*******************************************************************************</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">* Master do-file for [Study Name]</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">* Runs all code to reproduce paper results</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">*******************************************************************************/</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"INSERT WORKING DIRECTORY HERE"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>* Data preparation</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"code/01_clean_data.do"</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"code/02_construct_variables.do"</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>* Analysis</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"code/03_main_analysis.do"</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"code/04_robustness_checks.do"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>* Output</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"code/05_tables.do"</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"code/06_figures.do"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="user-written-commands" class="level3">
+<h3 class="anchored" data-anchor-id="user-written-commands">User-Written Commands</h3>
+<p>Include all custom commands (.ado files) used in your analysis:</p>
 <ul>
-<li>Use encrypted backups to secure sensitive data.</li>
-<li>Follow the 3-2-1 rule: Keep three copies of data, on two different media, with one copy offsite.</li>
-<li>Document backup procedures for easy recovery.</li>
+<li>Identify them: <code>which outreg2</code></li>
+<li>Collect from: <code>C:\Users\[username]\ado\plus\</code> or <code>\ado\personal\</code></li>
+<li>Package as: ZIP file with list in ReadMe</li>
 </ul>
 </section>
-<section id="storing-files-on-box" class="level2">
-<h2 class="anchored" data-anchor-id="storing-files-on-box">Storing Files on Box</h2>
-<p><strong>Definition:</strong> Box is a secure cloud storage platform that allows teams to store, access, and share files efficiently.</p>
-<p><strong>Steps:</strong></p>
+<section id="code-verification" class="level3">
+<h3 class="anchored" data-anchor-id="code-verification">Code Verification</h3>
+<p>Before sharing, verify that:</p>
 <ol type="1">
-<li><strong>Upload Files to Box:</strong> Organize files into appropriate folders.</li>
-<li><strong>Set Access Permissions:</strong> Restrict access based on roles, such as view-only, edit, or admin.</li>
-<li><strong>Enable File Versioning:</strong> Maintain previous versions to track changes.</li>
-<li><strong>Use Encryption and Two-Factor Authentication:</strong> Enhance data security with two-factor authentication (2FA).</li>
+<li>Code runs without errors from a fresh Stata session</li>
+<li>Generated tables match publication results</li>
+<li>All file paths work on a different computer</li>
 </ol>
-<p><strong>Why it Matters:</strong></p>
+</section>
+</section>
+<section id="documentation-files" class="level2">
+<h2 class="anchored" data-anchor-id="documentation-files">Documentation Files</h2>
+<section id="readme-file-structure" class="level3">
+<h3 class="anchored" data-anchor-id="readme-file-structure">ReadMe File Structure</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># [Study Title]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Citation</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Full citation for publication</span><span class="co">]</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Authors</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">List of authors and affiliations</span><span class="co">]</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Files Included</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Data files with descriptions</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Code files with purposes</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Survey instruments</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>User-written commands</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Software Requirements</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Software version (e.g., Stata 17.0)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Required user-written commands</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Replication Instructions</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Unzip files maintaining directory structure</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Update working directory in master.do</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Run master.do</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Notes and Discrepancies</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Document any differences between paper and reproducible results</span><span class="co">]</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contact</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Contact information for questions</span><span class="co">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="metadata-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="metadata-requirements">Metadata Requirements</h3>
+<p>Provide complete metadata including:</p>
 <ul>
-<li>Provides secure storage with controlled access.</li>
-<li>Facilitates team collaboration with real-time file sharing.</li>
-<li>Ensures compliance with data protection policies.</li>
-</ul>
-<p><strong>Best Practices:</strong></p>
-<ul>
-<li>Audit file permissions and access logs.</li>
-<li>Use Box Sync or Box Drive for seamless integration with local storage.</li>
-<li>Set up automated alerts for unauthorized access attempts.</li>
+<li>Study title and description</li>
+<li>Authors and affiliations</li>
+<li>Geographic and temporal coverage</li>
+<li>Unit of observation and sample size</li>
+<li>Key variables and collection methods</li>
+<li>Related publications and funding source</li>
 </ul>
 </section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<p>Abdul Latif Jameel Poverty Action Lab (J-PAL). “Data Security Procedures for Researchers.” Accessed October 31, 2025. https://www.povertyactionlab.org/resource/data-security-procedures-researchers.</p>
+</section>
+<section id="pre-publication-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="pre-publication-checklist">Pre-Publication Checklist</h2>
+<p>Before sharing materials publicly:</p>
+<p><strong>Data and Documentation</strong>:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">All PII removed from all materials</label></li>
+<li><label><input type="checkbox">Variable labels are descriptive</label></li>
+<li><label><input type="checkbox">Value labels exist for categorical variables</label></li>
+<li><label><input type="checkbox">ReadMe file is complete</label></li>
+<li><label><input type="checkbox">Codebook documents all variables</label></li>
+<li><label><input type="checkbox">Survey instruments are included</label></li>
+</ul>
+<p><strong>Code and Reproducibility</strong>:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Code runs without errors from master file</label></li>
+<li><label><input type="checkbox">Generated output matches publication</label></li>
+<li><label><input type="checkbox">User-written commands are included</label></li>
+<li><label><input type="checkbox">Working directories use generic placeholders</label></li>
+<li><label><input type="checkbox">File paths are relative, not absolute</label></li>
+</ul>
+<p><strong>Metadata</strong>:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Metadata template is complete</label></li>
+<li><label><input type="checkbox">All referenced files exist</label></li>
+<li><label><input type="checkbox">Contact information is current</label></li>
+</ul>
+</section>
+<section id="sharing-procedures" class="level2">
+<h2 class="anchored" data-anchor-id="sharing-procedures">Sharing Procedures</h2>
+<section id="internal-archiving" class="level3">
+<h3 class="anchored" data-anchor-id="internal-archiving">Internal Archiving</h3>
+<p><strong>Minimum requirements</strong> before project close include a de-identified dataset, survey instruments, and ReadMe file. <strong>Recommended additions</strong> are analysis code and variable construction code to enable full reproducibility of results.</p>
+</section>
+<section id="public-repository-options" class="level3">
+<h3 class="anchored" data-anchor-id="public-repository-options">Public Repository Options</h3>
+<p>Public data repositories provide specialized infrastructure for sharing research materials with the broader scientific community. These platforms offer standardized systems for depositing, documenting, and preserving datasets beyond internal archiving.</p>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>Persistent DOI for citation</li>
+<li>Long-term preservation</li>
+<li>Increased discoverability</li>
+<li>Standard metadata formats</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>IPA’s Data Repository
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>IPA maintains a data repository using Harvard’s Dataverse at <a href="https://dataverse.harvard.edu/dataverse/IPA">dataverse.harvard.edu/dataverse/IPA</a>. For IPA researchers, contact researchsupport@poverty-action.org for support with uploading, PII verification, and documentation review.</p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1679,13 +1997,13 @@ cookieconsent.run({
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../data-quality/aea-registry.html" class="pagination-link" aria-label="AEA Registry">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">AEA Registry</span>
+      <a href="../research-transparency/understanding-transparency.html" class="pagination-link" aria-label="Understanding Research Transparency">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Understanding Research Transparency</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../data-quality/data-management-system.html" class="pagination-link" aria-label="IPA's Data Management System">
-        <span class="nav-page-text">IPA’s Data Management System</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../software/guides/venv.html" class="pagination-link" aria-label="Virtual Environments">
+        <span class="nav-page-text">Virtual Environments</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1697,7 +2015,7 @@ cookieconsent.run({
     </div>   
     <div class="nav-footer-center">
 
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-quality/data-integrity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-transparency/publication-preparation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
