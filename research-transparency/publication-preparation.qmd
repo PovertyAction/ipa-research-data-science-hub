@@ -1,0 +1,323 @@
+---
+title: "Data Publication Preparation"
+
+abstract: "This reference guide documents standardized procedures for preparing research materials—including data, code, and documentation—for public sharing in data repositories."
+
+keywords:
+  - data preparation
+  - data sharing
+  - data repository
+  - personally identifiable information
+  - PII removal
+  - data anonymization
+  - code documentation
+  - reproducibility
+  - data curation
+  - metadata
+  - readme files
+  - codebook
+
+authors-ipa:
+  - "[Kelly Montaño](https://poverty-action.org/people/kelly-montano)"
+
+# contributors: []
+license: "CC BY-SA"
+---
+
+:::{.callout-tip appearance="simple"}
+
+## Key Takeaways
+
+* Data publication requires systematic removal of personally identifiable information (PII) while maintaining analytical integrity.
+* Complete documentation includes datasets, code, survey instruments, user-written commands, readme files, and codebooks.
+* Materials must be cleaned, tested for reproducibility, and properly documented before public sharing.
+
+:::
+
+## Purpose and Scope
+
+Data repositories allow researchers to share study materials publicly, raising research reliability by enabling verification and reuse of data. This guide documents standardized procedures for preparing materials for public sharing.
+
+## Required Materials for Publication
+
+We strongly recommend sharing the following materials:
+
+| File Type | Description | Required? |
+| ----------- | ------------- | ----------- |
+| **Datasets** | Full set of collected variables (survey, administrative data, etc.), excluding PII | Yes |
+| **Data documentation** | Context, notes on data-cleaning process, methodological details | Yes |
+| **User-written commands** | ZIP file of all custom commands/programs | If applicable |
+| **Analysis code** | Code required to reproduce publication results | If applicable |
+| **ReadMe file** | Instructions for replication, including software requirements and command lists | Yes |
+| **Codebook** | Variable labels, names, and descriptions | Yes |
+| **Survey instruments** | All questionnaires and data collection tools | Yes |
+
+### Organizing Materials
+
+Establish a clear directory structure:
+```text
+study-materials/
+├── data/
+│   ├── raw/
+│   ├── intermediate/
+│   └── final/
+├── code/
+│   ├── cleaning/
+│   ├── analysis/
+│   └── figures-tables/
+├── documentation/
+│   ├── surveys/
+│   ├── codebooks/
+│   └── readme/
+└── user-commands/
+```
+
+## Data Preparation
+
+### Variable Naming and Labeling
+
+**Variable names** should be:
+
+- Short (under 32 characters)
+- Descriptive
+- Linked to survey questions where applicable
+- Free of spaces and special characters
+
+**Variable labels** must:
+
+- Stay within Stata's 80-character limit
+- Reference survey question numbers
+- Be interpretable without additional context
+
+**Example**:
+
+```stata
+Variable name: gender_q1
+Variable label: Q1. Gender of respondent
+```
+
+### Categorical Variables with "Other" Options
+
+Many surveys include categorical variables with "Other, specify" options. Review these carefully to:
+
+1. Recode responses that match existing categories
+2. Create new categories if multiple responses suggest a pattern
+3. Document any recoding decisions
+
+### Quality Checks Before Sharing
+
+Verify that:
+
+- All variables have descriptive labels
+- Value labels exist for all categorical variables
+- Missing value codes are consistent and documented
+- Outliers have been reviewed and documented
+- Variable types are appropriate (numeric vs. string)
+- Date variables are in standard formats
+
+## Removing Personally Identifiable Information
+
+Before sharing data publicly, all personally identifiable information (PII) must be removed or anonymized. PII includes direct identifiers (names, contact information, precise locations) and indirect identifiers (combinations of variables that could identify individuals).
+
+:::{.callout-important}
+
+## Comprehensive PII Guidance
+
+For detailed information on identifying and removing PII, including HIPAA guidelines, detection strategies, and anonymization techniques, see the [Data Security Protocol: Personally Identifiable Information](https://data.poverty-action.org/data-security/data-security-protocol.html#personally-identifiable-information-pii) section of IPA's Data Security Hub.
+
+:::
+
+### Quick PII Removal Checklist
+
+**Always remove or anonymize**:
+
+- Names (participants, relatives, staff, enumerators)
+- Contact information (phone, email, address)
+- Geographic locations smaller than 20,000 people
+- Financial identifiers (bank accounts, credit cards)
+- Government IDs and medical identifiers
+
+**Check for PII in**:
+
+- Variable names and labels
+- String variables and free-text responses
+- Code comments and file paths
+- Survey instruments and documentation
+
+## Code Documentation
+
+### Essential Code Components
+
+Every code file should include:
+
+1. **Header with study information**:
+
+```stata
+/*******************************************************************************
+* Study: [Full study name]
+* Purpose: [What this code does]
+* Last updated: [Date]
+* Stata version: [Version number]
+*******************************************************************************/
+
+* Basic settings
+clear all
+set more off
+set maxvar 10000
+
+* Set working directory
+cd "INSERT WORKING DIRECTORY HERE"
+```
+
+2. **Clear comments explaining**:
+
+   - Major sections and subsections
+   - Complex operations
+   - Non-obvious decisions
+
+3. **Output linked to publications**:
+
+```stata
+* Table 1: Baseline characteristics
+eststo clear
+eststo: reg outcome treatment controls
+esttab using "output/table1_baseline.tex", replace ///
+    title("Table 1: Baseline Characteristics")
+```
+
+### Master Do-File
+
+Create a master file that runs all code in the correct sequence:
+```stata
+/*******************************************************************************
+* Master do-file for [Study Name]
+* Runs all code to reproduce paper results
+*******************************************************************************/
+
+cd "INSERT WORKING DIRECTORY HERE"
+
+* Data preparation
+do "code/01_clean_data.do"
+do "code/02_construct_variables.do"
+
+* Analysis
+do "code/03_main_analysis.do"
+do "code/04_robustness_checks.do"
+
+* Output
+do "code/05_tables.do"
+do "code/06_figures.do"
+```
+
+### User-Written Commands
+
+Include all custom commands (.ado files) used in your analysis:
+
+- Identify them: `which outreg2`
+- Collect from: `C:\Users\[username]\ado\plus\` or `\ado\personal\`
+- Package as: ZIP file with list in ReadMe
+
+### Code Verification
+
+Before sharing, verify that:
+
+1. Code runs without errors from a fresh Stata session
+2. Generated tables match publication results
+3. All file paths work on a different computer
+
+## Documentation Files
+
+### ReadMe File Structure
+```markdown
+# [Study Title]
+
+## Citation
+[Full citation for publication]
+
+## Authors
+[List of authors and affiliations]
+
+## Files Included
+- Data files with descriptions
+- Code files with purposes
+- Survey instruments
+- User-written commands
+
+## Software Requirements
+- Software version (e.g., Stata 17.0)
+- Required user-written commands
+
+## Replication Instructions
+1. Unzip files maintaining directory structure
+2. Update working directory in master.do
+3. Run master.do
+
+## Notes and Discrepancies
+[Document any differences between paper and reproducible results]
+
+## Contact
+[Contact information for questions]
+```
+
+### Metadata Requirements
+
+Provide complete metadata including:
+
+- Study title and description
+- Authors and affiliations
+- Geographic and temporal coverage
+- Unit of observation and sample size
+- Key variables and collection methods
+- Related publications and funding source
+
+## Pre-Publication Checklist
+
+Before sharing materials publicly:
+
+**Data and Documentation**:
+
+- [ ] All PII removed from all materials
+- [ ] Variable labels are descriptive
+- [ ] Value labels exist for categorical variables
+- [ ] ReadMe file is complete
+- [ ] Codebook documents all variables
+- [ ] Survey instruments are included
+
+**Code and Reproducibility**:
+
+- [ ] Code runs without errors from master file
+- [ ] Generated output matches publication
+- [ ] User-written commands are included
+- [ ] Working directories use generic placeholders
+- [ ] File paths are relative, not absolute
+
+**Metadata**:
+
+- [ ] Metadata template is complete
+- [ ] All referenced files exist
+- [ ] Contact information is current
+
+## Sharing Procedures
+
+### Internal Archiving
+
+**Minimum requirements** before project close include a de-identified dataset, survey instruments, and ReadMe file. **Recommended additions** are analysis code and variable construction code to enable full reproducibility of results.
+
+### Public Repository Options
+
+Public data repositories provide specialized infrastructure for sharing research materials with the broader scientific community. These platforms offer standardized systems for depositing, documenting, and preserving datasets beyond internal archiving.
+
+**Benefits**:
+
+- Persistent DOI for citation
+- Long-term preservation
+- Increased discoverability
+- Standard metadata formats
+
+:::{.callout-note}
+
+#### IPA's Data Repository
+
+IPA maintains a data repository using Harvard's Dataverse at [dataverse.harvard.edu/dataverse/IPA](https://dataverse.harvard.edu/dataverse/IPA). For IPA researchers, contact researchsupport@poverty-action.org for support with uploading, PII verification, and documentation review.
+
+:::
