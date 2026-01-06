@@ -23,7 +23,9 @@ authors-ipa:
 contributors:
   - "Angie Ibrahim"
 
-license: "CC BY-SA"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
 :::{.callout-tip appearance="simple"}
@@ -54,15 +56,25 @@ We strongly recommend sharing the following materials:
 | **Codebook** | Variable labels, names, and descriptions | Yes |
 | **Survey instruments** | All questionnaires and data collection tools | Yes |
 
+We recommend sharing materials in the following format to encourage accessibility and long-term usability:
+
+| Material Type | Recommended Formats |
+| -------------- | ------------------- |
+| Data | `.csv`, `.json`, `.dta` (with version specified), `.parquet` (with compression-method specified)  |
+| Code | `.do`, `.py`, `.r`, use notebooks sparingly (`.ipynb`, `.Rmd`, `.qmd`) |
+| Documentation | `.pdf`, `.md`, `.txt` |
+| Codebooks | `.pdf`, `.xlsx`, `.csv` |
+| Surveys | `.pdf`, `.docx`, `.xlsx` |
+
 ### Levels of Material Sharing
 
 Replication packages can be shared at different levels of completeness:
 
-| Level | Materials Included | Enables | Recommended Formats |
-| ----- | ------------------ | ------- | ------------------- |
-| **Minimum** | Data and code underlying published results, ReadMe explaining file relationships, minimal study-level metadata | Verifying that tables in the published article can be reproduced by running the code; limited reuse | Data: `.dta`, `.csv` + codebook; Code: `.do`, `.py`, `.r`; ReadMe: `.pdf`, `.md`; Surveys: `.pdf`, `.xlsx` |
-| **IPA-Recommended** | Minimum level, plus full set of collected variables (excluding PII), detailed data documentation, survey instruments | Fuller potential for reuse and secondary analysis; better understanding of study context for systematic reviews and policy application | Same as above |
-| **Exceptional** | IPA-Recommended level, plus cleaning and variable construction code | Start-to-finish reproducibility | Same as above |
+| Level | Materials Included | Enables |
+| ----- | ------------------ | ------- |
+| **Minimum** | Data and code underlying published results, ReadMe explaining file relationships, minimal study-level metadata | Verifying that tables in the published article can be reproduced by running the code; limited reuse |
+| **Recommended** | Minimum level, plus full set of collected variables (excluding PII), detailed data documentation, survey instruments | Full potential for reuse and secondary analysis; better understanding of study context for systematic reviews and policy application |
+| **Exceptional** | Recommended level, plus cleaning and variable construction code | Start-to-finish reproducibility |
 
 ### Organizing Materials
 
