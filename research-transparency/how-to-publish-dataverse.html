@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="research design, theory of change, impact evaluation, randomized controlled trials, experimental design, causal inference, explanation">
+<meta name="keywords" content="how-to, data curation, dataverse, replication package, data sharing, research transparency, data publication, reproducibility">
 
-<title>Research Design – Research and Data Science Hub</title>
+<title>How to Publish a Replication Package to Dataverse – Research and Data Science Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +66,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../research-design/survey-translation.html" rel="next">
+<link href="../software/guides/venv.html" rel="next">
+<link href="../research-transparency/publication-preparation.html" rel="prev">
 <link href="../assets/logos/ipa-favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -411,7 +447,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/index.html">About Research Design</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-transparency/understanding-transparency.html">Research Transparency</a></li><li class="breadcrumb-item"><a href="../research-transparency/how-to-publish-dataverse.html">How to Publish to Dataverse</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -431,16 +467,16 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Research Design</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../research-design/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Research Design</span></a>
   </div>
 </li>
@@ -910,13 +946,13 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true">
  <span class="menu-text">Research Transparency</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../research-transparency/understanding-transparency.html" class="sidebar-item-text sidebar-link">
@@ -931,7 +967,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-transparency/how-to-publish-dataverse.html" class="sidebar-item-text sidebar-link">
+  <a href="../research-transparency/how-to-publish-dataverse.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">How to Publish to Dataverse</span></a>
   </div>
 </li>
@@ -1142,13 +1178,52 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#core-research-design-elements" id="toc-core-research-design-elements" class="nav-link active" data-scroll-target="#core-research-design-elements">Core Research Design Elements</a>
+    <li><a href="#before-you-begin" id="toc-before-you-begin" class="nav-link active" data-scroll-target="#before-you-begin">Before You Begin</a></li>
+    <li><a href="#step-1-set-up-your-curation-workspace" id="toc-step-1-set-up-your-curation-workspace" class="nav-link" data-scroll-target="#step-1-set-up-your-curation-workspace">Step 1: Set Up Your Curation Workspace</a>
     <ul class="collapse">
-    <li><a href="#statistical-power-and-sample-size" id="toc-statistical-power-and-sample-size" class="nav-link" data-scroll-target="#statistical-power-and-sample-size">Statistical Power and Sample Size</a></li>
-    <li><a href="#randomization-strategy" id="toc-randomization-strategy" class="nav-link" data-scroll-target="#randomization-strategy">Randomization Strategy</a></li>
-    <li><a href="#measurement-strategy" id="toc-measurement-strategy" class="nav-link" data-scroll-target="#measurement-strategy">Measurement Strategy</a></li>
+    <li><a href="#create-the-folder-structure" id="toc-create-the-folder-structure" class="nav-link" data-scroll-target="#create-the-folder-structure">Create the Folder Structure</a></li>
+    <li><a href="#curation-checklist-overview" id="toc-curation-checklist-overview" class="nav-link" data-scroll-target="#curation-checklist-overview">Curation Checklist Overview</a></li>
     </ul></li>
-    <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+    <li><a href="#step-2-remove-personally-identifiable-information" id="toc-step-2-remove-personally-identifiable-information" class="nav-link" data-scroll-target="#step-2-remove-personally-identifiable-information">Step 2: Remove Personally Identifiable Information</a>
+    <ul class="collapse">
+    <li><a href="#run-pii-detection" id="toc-run-pii-detection" class="nav-link" data-scroll-target="#run-pii-detection">Run PII Detection</a></li>
+    <li><a href="#document-your-decisions" id="toc-document-your-decisions" class="nav-link" data-scroll-target="#document-your-decisions">Document Your Decisions</a></li>
+    <li><a href="#apply-pii-removal" id="toc-apply-pii-removal" class="nav-link" data-scroll-target="#apply-pii-removal">Apply PII Removal</a></li>
+    <li><a href="#check-other-materials" id="toc-check-other-materials" class="nav-link" data-scroll-target="#check-other-materials">Check Other Materials</a></li>
+    </ul></li>
+    <li><a href="#step-3-verify-code-runs-without-errors" id="toc-step-3-verify-code-runs-without-errors" class="nav-link" data-scroll-target="#step-3-verify-code-runs-without-errors">Step 3: Verify Code Runs Without Errors</a>
+    <ul class="collapse">
+    <li><a href="#set-up-the-master-do-file" id="toc-set-up-the-master-do-file" class="nav-link" data-scroll-target="#set-up-the-master-do-file">Set Up the Master Do-File</a></li>
+    <li><a href="#run-and-fix-code" id="toc-run-and-fix-code" class="nav-link" data-scroll-target="#run-and-fix-code">Run and Fix Code</a></li>
+    <li><a href="#document-changes" id="toc-document-changes" class="nav-link" data-scroll-target="#document-changes">Document Changes</a></li>
+    </ul></li>
+    <li><a href="#step-4-check-for-discrepancies" id="toc-step-4-check-for-discrepancies" class="nav-link" data-scroll-target="#step-4-check-for-discrepancies">Step 4: Check for Discrepancies</a>
+    <ul class="collapse">
+    <li><a href="#compare-results" id="toc-compare-results" class="nav-link" data-scroll-target="#compare-results">Compare Results</a></li>
+    <li><a href="#define-discrepancies" id="toc-define-discrepancies" class="nav-link" data-scroll-target="#define-discrepancies">Define Discrepancies</a></li>
+    <li><a href="#document-and-resolve" id="toc-document-and-resolve" class="nav-link" data-scroll-target="#document-and-resolve">Document and Resolve</a></li>
+    </ul></li>
+    <li><a href="#step-5-prepare-the-final-package" id="toc-step-5-prepare-the-final-package" class="nav-link" data-scroll-target="#step-5-prepare-the-final-package">Step 5: Prepare the Final Package</a>
+    <ul class="collapse">
+    <li><a href="#verify-readme-file" id="toc-verify-readme-file" class="nav-link" data-scroll-target="#verify-readme-file">Verify ReadMe File</a></li>
+    <li><a href="#peer-review" id="toc-peer-review" class="nav-link" data-scroll-target="#peer-review">Peer Review</a></li>
+    <li><a href="#secondary-pii-check" id="toc-secondary-pii-check" class="nav-link" data-scroll-target="#secondary-pii-check">Secondary PII Check</a></li>
+    <li><a href="#prepare-files-for-upload" id="toc-prepare-files-for-upload" class="nav-link" data-scroll-target="#prepare-files-for-upload">Prepare Files for Upload</a></li>
+    </ul></li>
+    <li><a href="#step-6-upload-to-dataverse" id="toc-step-6-upload-to-dataverse" class="nav-link" data-scroll-target="#step-6-upload-to-dataverse">Step 6: Upload to Dataverse</a>
+    <ul class="collapse">
+    <li><a href="#create-new-dataset" id="toc-create-new-dataset" class="nav-link" data-scroll-target="#create-new-dataset">Create New Dataset</a></li>
+    <li><a href="#enter-initial-metadata" id="toc-enter-initial-metadata" class="nav-link" data-scroll-target="#enter-initial-metadata">Enter Initial Metadata</a></li>
+    <li><a href="#upload-files" id="toc-upload-files" class="nav-link" data-scroll-target="#upload-files">Upload Files</a></li>
+    <li><a href="#save-and-add-remaining-metadata" id="toc-save-and-add-remaining-metadata" class="nav-link" data-scroll-target="#save-and-add-remaining-metadata">Save and Add Remaining Metadata</a></li>
+    <li><a href="#enable-guestbook" id="toc-enable-guestbook" class="nav-link" data-scroll-target="#enable-guestbook">Enable Guestbook</a></li>
+    <li><a href="#final-review-and-publish" id="toc-final-review-and-publish" class="nav-link" data-scroll-target="#final-review-and-publish">Final Review and Publish</a></li>
+    </ul></li>
+    <li><a href="#step-7-post-publication-tasks" id="toc-step-7-post-publication-tasks" class="nav-link" data-scroll-target="#step-7-post-publication-tasks">Step 7: Post-Publication Tasks</a>
+    <ul class="collapse">
+    <li><a href="#share-the-link" id="toc-share-the-link" class="nav-link" data-scroll-target="#share-the-link">Share the Link</a></li>
+    <li><a href="#related-documentation" id="toc-related-documentation" class="nav-link" data-scroll-target="#related-documentation">Related Documentation</a></li>
+    </ul></li>
     </ul>
     <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Authors</h2>
@@ -1157,8 +1232,7 @@ cookieconsent.run({
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
   <ul>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/cristhian-pulido" class="nav-link" data-scroll-target="https\://poverty-action.org/people/cristhian-pulido">Cristhian Pulido</a></li>
+        <li class="contributors" style="font-size: 0.86rem;">Angie Ibrahim</li>
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
@@ -1168,63 +1242,596 @@ cookieconsent.run({
   <ul>
     <li class="license" style="font-size: 0.86rem;"><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="nav-link" data-scroll-target="https\://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></li>
   </ul>
-  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-transparency/how-to-publish-dataverse.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/index.html">About Research Design</a></li></ol></nav><h1 class="title display-7">Research Design</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-transparency/understanding-transparency.html">Research Transparency</a></li><li class="breadcrumb-item"><a href="../research-transparency/how-to-publish-dataverse.html">How to Publish to Dataverse</a></li></ol></nav><h1 class="title display-7">How to Publish a Replication Package to Dataverse</h1></header>
 
 
 <header id="title-block-header">
     
-        <p class="abstract">Essential considerations for designing rigorous impact evaluations, from theoretical foundations to practical implementation strategies for randomized controlled trials and quasi-experimental studies.</p>
+        <p class="abstract">This how-to guide provides step-by-step instructions for curating research materials and publishing a replication package to IPA’s Dataverse.</p>
     
 </header>
 
 
-<p>Research design is a key ingredient for reliable, policy-relevant research and data science projects. It determines whether you can credibly measure and attribute observed changes to your intervention, rather than to other factors. This page provides an overview of key research design considerations and links to detailed guidance on specific topics.</p>
-<section id="core-research-design-elements" class="level2">
-<h2 class="anchored" data-anchor-id="core-research-design-elements">Core Research Design Elements</h2>
-<p>Every research and data science project must address several fundamental questions that determine the strength and credibility of your findings:</p>
-<section id="statistical-power-and-sample-size" class="level3">
-<h3 class="anchored" data-anchor-id="statistical-power-and-sample-size">Statistical Power and Sample Size</h3>
-<p>Your study must be adequately powered to detect meaningful effects. This requires careful consideration of the minimum effect size worth detecting, expected variability in outcomes, and practical constraints.</p>
-<p><strong>Key considerations:</strong></p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Key Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li>What is the minimum detectable effect that would be policy-relevant?</li>
-<li>What sample size do you need to achieve adequate statistical power?</li>
-<li>How will attrition and non-compliance affect your power?</li>
+<li>Set up a curation workspace with separate folders for original files, working files, and final Dataverse files.</li>
+<li>Remove all personally identifiable information using IPA’s PII detection tools and document your decisions.</li>
+<li>Verify that all code runs without errors and produces outputs matching published results.</li>
+<li>Complete a peer review and secondary PII check before uploading to Dataverse.</li>
 </ul>
-<p>👉 <strong>Learn more:</strong> <a href="../research-design/sample-size-power.html">Sample and Power Calculations</a> | <a href="../research-design/how-to-power-calculation.html">How-to Guide to Power Calculations</a></p>
-</section>
-<section id="randomization-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="randomization-strategy">Randomization Strategy</h3>
-<p>The method of assigning participants to treatment and control groups is crucial for causal identification. The right approach depends on your intervention, context, and implementation constraints.</p>
-<p><strong>Key considerations:</strong></p>
+</div>
+</div>
+<section id="before-you-begin" class="level2">
+<h2 class="anchored" data-anchor-id="before-you-begin">Before You Begin</h2>
+<p>This guide walks you through the data curation workflow for publishing a replication package to <a href="https://dataverse.harvard.edu/dataverse/ipa">IPA’s Dataverse</a>. Before starting, ensure you have:</p>
 <ul>
-<li>Should you randomize at the individual or cluster level?</li>
-<li>Do you need stratification to ensure balance on key characteristics?</li>
-<li>How will you handle spillovers between treatment and control groups?</li>
+<li>Access to the complete research materials (datasets, code, survey instruments)</li>
+<li>Access to the final publication or manuscript for comparison</li>
+<li>Stata installed (or the relevant statistical software used in analysis)</li>
+<li>A Dataverse account with permissions to upload to IPA’s repository</li>
 </ul>
-<p>👉 <strong>Learn more:</strong> <a href="../research-design/randomization.html">Randomization</a> | <a href="../research-design/how-to-randomization.html">How-to Guide to Randomization</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Background Resources
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For background on why data sharing matters, see <a href="../research-transparency/understanding-transparency.html">Understanding Research Transparency</a>. For detailed requirements on what materials to include, see <a href="../research-transparency/publication-preparation.html">Data Publication Preparation</a>.</p>
+</div>
+</div>
 </section>
-<section id="measurement-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="measurement-strategy">Measurement Strategy</h3>
-<p>Valid and reliable measurement of outcomes is essential for credible impact evaluation. This involves both technical considerations about instruments and practical considerations about data collection.</p>
-<p><strong>Key considerations:</strong></p>
+<section id="step-1-set-up-your-curation-workspace" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-set-up-your-curation-workspace">Step 1: Set Up Your Curation Workspace</h2>
+<p>Create a folder structure that preserves original files while allowing you to work on modifications.</p>
+<section id="create-the-folder-structure" class="level3">
+<h3 class="anchored" data-anchor-id="create-the-folder-structure">Create the Folder Structure</h3>
+<p>Within your replication folder (named with the study title and primary PI), create three subfolders:</p>
+<pre class="text"><code>[Study Name - PI Name]/
+├── Original Files/     # Preserve unmodified copies of all received files
+├── Working Files/      # Make all modifications here
+└── Dataverse Files/    # Final package for publication</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/dataverse/dataverse_folders.png" class="img-fluid figure-img"></p>
+<figcaption>Folder Structure</figcaption>
+</figure>
+</div>
+<p>The “Working Files” and “Dataverse Files” folders should use the following structure:</p>
+<pre class="text"><code>Working Files/
+├── data/
+│   ├── raw/
+│   ├── intermediate/
+│   └── final/
+├── code/
+│   ├── cleaning/
+│   ├── analysis/
+│   └── figures-tables/
+├── documentation/
+│   ├── surveys/
+│   ├── codebooks/
+│   └── readme/
+├── output/
+│   ├── tables/
+│   ├── figures/
+│   └── logs/
+└── user-commands/</code></pre>
+</section>
+<section id="curation-checklist-overview" class="level3">
+<h3 class="anchored" data-anchor-id="curation-checklist-overview">Curation Checklist Overview</h3>
+<p>Use this checklist to track your progress through the curation workflow:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Set up project folder</td>
+<td>Create original files, working files, and Dataverse files folders using the structure above</td>
+</tr>
+<tr class="even">
+<td>Initial PII checks</td>
+<td>Run PII detection tools and document flagged variables</td>
+</tr>
+<tr class="odd">
+<td>Code runs and checks</td>
+<td>Verify all code runs without errors</td>
+</tr>
+<tr class="even">
+<td>Output checks</td>
+<td>Compare code outputs against the academic paper or manuscript</td>
+</tr>
+<tr class="odd">
+<td>Secondary PII checks</td>
+<td>Run a second PII check after code modifications</td>
+</tr>
+<tr class="even">
+<td>Status update with PI</td>
+<td>Share findings from PII checks and code runs with the research team</td>
+</tr>
+<tr class="odd">
+<td>Write ReadMe</td>
+<td>Document the replication package contents and instructions</td>
+</tr>
+<tr class="even">
+<td>Fill in metadata</td>
+<td>Complete the metadata template for Dataverse</td>
+</tr>
+<tr class="odd">
+<td>Create Dataverse entry</td>
+<td>Set up the dataset entry with metadata and guestbook</td>
+</tr>
+<tr class="even">
+<td>Final replication test</td>
+<td>Verify successful push-button replication</td>
+</tr>
+<tr class="odd">
+<td>Upload to Dataverse</td>
+<td>Double-compress files and upload to the Dataverse entry</td>
+</tr>
+<tr class="even">
+<td>Update project records</td>
+<td>Add Dataverse link to project page and notify communications team</td>
+</tr>
+</tbody>
+</table>
+<p>The following sections walk through each of these tasks in detail.</p>
+</section>
+</section>
+<section id="step-2-remove-personally-identifiable-information" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-remove-personally-identifiable-information">Step 2: Remove Personally Identifiable Information</h2>
+<p>All datasets must be checked for and stripped of personally identifiable information before publication.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Comprehensive PII Guidance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For detailed information on identifying PII, including HIPAA guidelines, detection strategies, and anonymization techniques, see <a href="../data-security/data-security-protocol.html#personally-identifiable-information-pii">Data Security Protocol: Personally Identifiable Information</a>.</p>
+</div>
+</div>
+<section id="run-pii-detection" class="level3">
+<h3 class="anchored" data-anchor-id="run-pii-detection">Run PII Detection</h3>
+<p>IPA provides two options for detecting PII:</p>
+<ol type="1">
+<li><p><strong>PII Detection Tool</strong>: A web-based tool that checks datasets one at a time. Upload each dataset and review the flagged variables. See <a href="https://github.com/PovertyAction/PII_detection">PII Detection Tool</a> on GitHub for instructions.</p></li>
+<li><p><strong>PII Flagging Code</strong>: A Stata do-file that outputs flagged variables to a log file. You can process multiple datasets by listing them in the local macro. See <a href="https://github.com/PovertyAction/split_pii">split_pii</a> on GitHub for instructions.</p></li>
+</ol>
+</section>
+<section id="document-your-decisions" class="level3">
+<h3 class="anchored" data-anchor-id="document-your-decisions">Document Your Decisions</h3>
+<p>For each flagged variable, record in the curation checklist (PII Checks tab):</p>
 <ul>
-<li>Which outcomes should you measure and when?</li>
-<li>How will you ensure measurement validity and reliability?</li>
-<li>What baseline data do you need for analysis and balance checks?</li>
+<li>The variable name</li>
+<li>Why it was flagged</li>
+<li>Your decision: keep, drop, or encode</li>
+<li>Justification for your decision</li>
 </ul>
-<p>👉 <strong>Learn more:</strong> <a href="../research-design/measurement.html">Measurement</a></p>
-<p>We recommend starting with a clear Theory of Change and then iteratively refining your design as you consider these elements. Each project is unique, so adapt these principles to fit your specific context and research questions.</p>
+</section>
+<section id="apply-pii-removal" class="level3">
+<h3 class="anchored" data-anchor-id="apply-pii-removal">Apply PII Removal</h3>
+<p>Based on your decisions:</p>
+<ul>
+<li><strong>Drop</strong> variables containing PII that are not used in analysis</li>
+<li><strong>Encode</strong> variables used in analysis that contain identifiable information (anonymize variable and value labels too)</li>
+<li><strong>Modify specific entries</strong> in free-text fields (<code>_spec</code> and <code>_oth</code> variables) rather than dropping the entire variable when only some responses contain PII</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Handling Free-Text Responses
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Variables with <code>_spec</code> and <code>_oth</code> suffixes often contain free-form responses. Review these with care—they may contain PII within participant responses such as names, locations, and contact details. Modify only the entries containing PII rather than dropping the entire variable, as these responses are often informative.</p>
+</div>
+</div>
+</section>
+<section id="check-other-materials" class="level3">
+<h3 class="anchored" data-anchor-id="check-other-materials">Check Other Materials</h3>
+<p>Review all other materials for PII:</p>
+<ul>
+<li>Survey instruments and documentation</li>
+<li>Code comments and file paths</li>
+<li>Variable labels and value labels</li>
+<li>Analysis plans and reports</li>
+</ul>
 </section>
 </section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<p><strong><a href="https://www.povertyactionlab.org/resource/elements-randomized-evaluation">The Elements of a Randomized Evaluation</a></strong> - A comprehensive guide to designing and implementing randomized controlled trials, covering the fundamental principles and practical considerations for rigorous impact evaluation.</p>
+<section id="step-3-verify-code-runs-without-errors" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-verify-code-runs-without-errors">Step 3: Verify Code Runs Without Errors</h2>
+<p>After anonymizing datasets, verify that all analysis code runs through without breaking.</p>
+<section id="set-up-the-master-do-file" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-the-master-do-file">Set Up the Master Do-File</h3>
+<p>If one does not exist, create a master do-file that:</p>
+<ol type="1">
+<li>Sets relevant globals pointing to appropriate folders</li>
+<li>Creates a master log file saved to the logs folder</li>
+<li>Documents inputs and outputs for each do-file</li>
+<li>Runs all cleaning, shaping, and analysis code in sequence</li>
+</ol>
+<p>Example structure:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*******************************************************************************</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">* Master do-file for [Study Name]</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">* Runs all code to reproduce paper results</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">*******************************************************************************/</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span> <span class="ot">all</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="kw">more</span> <span class="kw">off</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">version</span> 17 <span class="co">// Specify Stata version used</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>* Set working directory - USER MUST UPDATE THIS PATH</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> main <span class="st">"INSERT WORKING DIRECTORY HERE"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>* Define folder paths</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> <span class="kw">data</span>     <span class="st">"$main/data"</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> code     <span class="st">"$main/code"</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> output   <span class="st">"$main/output"</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>* Start master <span class="fu">log</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">"$output/logs/master_log.smcl"</span>, <span class="kw">replace</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>* Data preparation</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/01_clean_data.do"</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/02_construct_variables.do"</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>* Analysis</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/03_main_analysis.do"</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/04_robustness_checks.do"</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>* Output</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/05_tables.do"</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/06_figures.do"</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">close</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="run-and-fix-code" class="level3">
+<h3 class="anchored" data-anchor-id="run-and-fix-code">Run and Fix Code</h3>
+<p>Run each do-file sequentially, fixing breakage as you encounter it. Common sources of code breakage include:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Typos in variable or filenames</td>
+<td>Correct the typo</td>
+</tr>
+<tr class="even">
+<td>User-specific file paths</td>
+<td>Replace with globals from master do-file</td>
+</tr>
+<tr class="odd">
+<td>Missing user-written commands</td>
+<td>Install required commands (<code>ssc install [command]</code>)</td>
+</tr>
+<tr class="even">
+<td>Variables dropped during anonymization</td>
+<td>Remove references or use alternative variables</td>
+</tr>
+<tr class="odd">
+<td>Assert violations from changed variable counts</td>
+<td>Update assertions to match anonymized data</td>
+</tr>
+<tr class="even">
+<td>Version incompatibility</td>
+<td>Update syntax for current Stata version</td>
+</tr>
+<tr class="odd">
+<td>Incorrect filenames</td>
+<td>Correct the filename references</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="document-changes" class="level3">
+<h3 class="anchored" data-anchor-id="document-changes">Document Changes</h3>
+<p>Record all modifications in the curation checklist (Code Runs tab):</p>
+<ul>
+<li>Which do-file required changes</li>
+<li>What the original code was</li>
+<li>What you changed it to</li>
+<li>Why the change was necessary</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be cautious with modifications. Ensure changes do not alter result outputs in ways that create discrepancies between code output and reported results.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="step-4-check-for-discrepancies" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-check-for-discrepancies">Step 4: Check for Discrepancies</h2>
+<p>When code runs completely, compare outputs to the published manuscript.</p>
+<section id="compare-results" class="level3">
+<h3 class="anchored" data-anchor-id="compare-results">Compare Results</h3>
+<p>Check that:</p>
+<ul>
+<li>All tables can be reproduced from the code</li>
+<li>All figures can be reproduced from the code</li>
+<li>Statistical results match what is reported in the paper</li>
+</ul>
+</section>
+<section id="define-discrepancies" class="level3">
+<h3 class="anchored" data-anchor-id="define-discrepancies">Define Discrepancies</h3>
+<p>IPA defines a discrepancy as any difference greater than 0.001 between code output and published results.</p>
+</section>
+<section id="document-and-resolve" class="level3">
+<h3 class="anchored" data-anchor-id="document-and-resolve">Document and Resolve</h3>
+<p>For each discrepancy:</p>
+<ol type="1">
+<li>Record it in the curation checklist (Discrepancy Checks tab)</li>
+<li>Flag the discrepancy to the research team</li>
+<li>Work with the team to resolve discrepancies where possible</li>
+<li>List any unresolved discrepancies in the ReadMe file</li>
+</ol>
+</section>
+</section>
+<section id="step-5-prepare-the-final-package" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-prepare-the-final-package">Step 5: Prepare the Final Package</h2>
+<p>Before uploading, complete final preparation steps.</p>
+<section id="verify-readme-file" class="level3">
+<h3 class="anchored" data-anchor-id="verify-readme-file">Verify ReadMe File</h3>
+<p>Ensure the ReadMe includes:</p>
+<ul>
+<li>Title and authors</li>
+<li>Citation information</li>
+<li>Software requirements and version numbers</li>
+<li>List of user-written commands</li>
+<li>File structure of the replication package</li>
+<li>Description of each dataset</li>
+<li>Description of each do-file with inputs and outputs</li>
+<li>Any unresolved discrepancies</li>
+</ul>
+<p>See <a href="../research-transparency/publication-preparation.html#readme-file-structure">Data Publication Preparation</a> for a complete ReadMe template.</p>
+</section>
+<section id="peer-review" class="level3">
+<h3 class="anchored" data-anchor-id="peer-review">Peer Review</h3>
+<p>Have a second person who did not work on the curation:</p>
+<ol type="1">
+<li>Run the complete replication package on their machine</li>
+<li>Verify that code runs without errors after updating only the main path</li>
+<li>Confirm outputs match the publication</li>
+</ol>
+</section>
+<section id="secondary-pii-check" class="level3">
+<h3 class="anchored" data-anchor-id="secondary-pii-check">Secondary PII Check</h3>
+<p>The peer reviewer should also conduct a secondary PII check to ensure no identifiable information remains in the datasets.</p>
+</section>
+<section id="prepare-files-for-upload" class="level3">
+<h3 class="anchored" data-anchor-id="prepare-files-for-upload">Prepare Files for Upload</h3>
+<ol type="1">
+<li>Copy all finalized files from “Working Files” to “Dataverse Files”</li>
+<li>Rename the “Dataverse Files” folder to the study title</li>
+<li>Compress the folder in ZIP format</li>
+<li>Remove the “(2)” from the final filename; filenames should be brief, descriptive, without unnecessary suffixes, and avoid spaces (use underscores, hyphens)</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Why Double Compression?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Double compression ensures the folder structure remains intact when users download and unzip the files from Dataverse.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="step-6-upload-to-dataverse" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-upload-to-dataverse">Step 6: Upload to Dataverse</h2>
+<p>With your package prepared, upload to IPA’s Dataverse repository.</p>
+<section id="create-new-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="create-new-dataset">Create New Dataset</h3>
+<ol type="1">
+<li>Log in to <a href="https://dataverse.harvard.edu/dataverse/ipa">IPA’s Dataverse</a></li>
+<li>Click the “+ Add Data” button on the right side</li>
+<li>Select “New Dataset”</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/dataverse/dataverse_new_dataset.png" class="img-fluid figure-img"></p>
+<figcaption>Add New Dataset</figcaption>
+</figure>
+</div>
+</section>
+<section id="enter-initial-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="enter-initial-metadata">Enter Initial Metadata</h3>
+<p>Fill in the metadata fields using information from the project page and publication:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Title</td>
+<td>Publication title, or study name if no publication</td>
+</tr>
+<tr class="even">
+<td>Authors</td>
+<td>All authors with institutional affiliations</td>
+</tr>
+<tr class="odd">
+<td>Description</td>
+<td>Paper abstract or summary of intervention, methods, outcomes, and results</td>
+</tr>
+<tr class="even">
+<td>Keywords</td>
+<td>Relevant topic keywords</td>
+</tr>
+<tr class="odd">
+<td>Related Materials</td>
+<td>Link to open-access PDF or preprint if available</td>
+</tr>
+<tr class="even">
+<td>Date of Collection</td>
+<td>Data collection period (Start Date - End Date, <code>YYYY - YYYY</code> or <code>YYYY-MM - YYYY-MM</code>)</td>
+</tr>
+<tr class="odd">
+<td>Country/Location</td>
+<td>Countries where data was collected</td>
+</tr>
+<tr class="even">
+<td>Geographic Coverage</td>
+<td>Specific regions, cities, or areas</td>
+</tr>
+<tr class="odd">
+<td>Unit of Analysis</td>
+<td>Individual, household, firm, etc.</td>
+</tr>
+<tr class="even">
+<td>Universe</td>
+<td>Population from which participants were drawn</td>
+</tr>
+<tr class="odd">
+<td>Kind of Data</td>
+<td>Survey data, administrative data, etc.</td>
+</tr>
+<tr class="even">
+<td>Data Collection Methodology</td>
+<td>How data was collected</td>
+</tr>
+<tr class="odd">
+<td>Data Collector</td>
+<td>Organization that collected data</td>
+</tr>
+<tr class="even">
+<td>Sampling Procedure</td>
+<td>How participants were selected</td>
+</tr>
+<tr class="odd">
+<td>Collection Mode</td>
+<td>In-person, phone, online, etc.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="upload-files" class="level3">
+<h3 class="anchored" data-anchor-id="upload-files">Upload Files</h3>
+<p>Upload the double-compressed folder when prompted to add files.</p>
+</section>
+<section id="save-and-add-remaining-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="save-and-add-remaining-metadata">Save and Add Remaining Metadata</h3>
+<ol type="1">
+<li>Click “Save Dataset” to create the entry</li>
+<li>From the entry page, click “Edit Dataset” &gt; “Metadata”</li>
+<li>Complete any remaining metadata fields</li>
+<li>Save changes</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/dataverse/dataverse_save_dataset.png" class="img-fluid figure-img"></p>
+<figcaption>Save Dataset</figcaption>
+</figure>
+</div>
+</section>
+<section id="enable-guestbook" class="level3">
+<h3 class="anchored" data-anchor-id="enable-guestbook">Enable Guestbook</h3>
+<ol type="1">
+<li>From the entry page, click “Terms”</li>
+<li>Select “Edit Terms Requirements”</li>
+<li>Scroll to “Guestbook” and select “IPA Dataverse”</li>
+<li>Save changes</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/dataverse/dataverse_edit_terms.png" class="img-fluid figure-img"></p>
+<figcaption>Edit Terms</figcaption>
+</figure>
+</div>
+</section>
+<section id="final-review-and-publish" class="level3">
+<h3 class="anchored" data-anchor-id="final-review-and-publish">Final Review and Publish</h3>
+<ol type="1">
+<li>Review all metadata for accuracy</li>
+<li>Confirm the guestbook is enabled</li>
+<li>Click “Publish Dataset”</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/dataverse/dataverse_publish_dataset.png" class="img-fluid figure-img"></p>
+<figcaption>Publish Dataset</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="step-7-post-publication-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="step-7-post-publication-tasks">Step 7: Post-Publication Tasks</h2>
+<p>After publishing, complete these follow-up tasks.</p>
+<section id="share-the-link" class="level3">
+<h3 class="anchored" data-anchor-id="share-the-link">Share the Link</h3>
+<p>Share the Dataverse entry link with:</p>
+<ul>
+<li>Research team members you corresponded with</li>
+<li>Principal investigators</li>
+<li>IPA Communications team (for potential social media sharing)</li>
+</ul>
+</section>
+<section id="related-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="related-documentation">Related Documentation</h3>
+<ul>
+<li><a href="../research-transparency/understanding-transparency.html">Understanding Research Transparency</a></li>
+<li><a href="../research-transparency/publication-preparation.html">Data Publication Preparation</a></li>
+<li><a href="https://data.poverty-action.org/data-security/data-security-protocol.html">Data Security Protocol</a></li>
+<li><a href="https://dataverse.harvard.edu/dataverse/ipa">IPA’s Dataverse Repository</a></li>
+</ul>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1643,10 +2250,13 @@ cookieconsent.run({
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../research-transparency/publication-preparation.html" class="pagination-link" aria-label="Data Publication Preparation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Publication Preparation</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../research-design/survey-translation.html" class="pagination-link" aria-label="Survey Translation">
-        <span class="nav-page-text">Survey Translation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../software/guides/venv.html" class="pagination-link" aria-label="Virtual Environments">
+        <span class="nav-page-text">Virtual Environments</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1658,7 +2268,7 @@ cookieconsent.run({
     </div>   
     <div class="nav-footer-center">
 
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-transparency/how-to-publish-dataverse.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
