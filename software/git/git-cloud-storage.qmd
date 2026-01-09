@@ -1,0 +1,422 @@
+---
+title: "Combining Git with Cloud Storage"
+
+abstract: "This tutorial guides research analysts and data scientists through setting up a workflow that combines Git/GitHub for code version control with cloud storage (Dropbox, Box, OneDrive) for data management and team collaboration."
+
+keywords:
+  - tutorial
+  - git
+  - github
+  - dropbox
+  - box
+  - cloud storage
+  - version control
+  - data management
+  - reproducibility
+
+#------------------------------------------------------------------
+# Authors
+#------------------------------------------------------------------
+# Authors are the main creators of the site's content, credited
+# for their work and responsible for its core development,
+# including writing and editing.
+#------------------------------------------------------------------
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+
+#------------------------------------------------------------------
+# Contributors
+#------------------------------------------------------------------
+# Contributors provide support, such as feedback or supplementary
+# materials for the site. They can also be responsible for
+# updating/maintaining the site.
+#------------------------------------------------------------------
+contributors:
+  - "[Kristoffer Bjärkefur](https://github.com/kbjarkefur)"
+
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from [Kristoffer Bjärkefur's GitHubDropBox tutorial](https://github.com/kbjarkefur/GitHubDropBox)
+
+**Original citation:**
+Bjarkefur, K. (n.d.). "GitHubDropBox: A tutorial for how to combine GitHub and DropBox in a research project." GitHub. <https://github.com/kbjarkefur/GitHubDropBox>
+
+:::
+
+
+![Combining version control with cloud storage enables secure collaboration across research teams (© IPA)](../../assets/images/git-cloud-intro.jpg){width=80%}
+
+:::{.callout-tip appearance="simple"}
+## Key Takeaways
+* **Separate code from data**: Code belongs in Git/GitHub; data stays in access-controlled cloud storage.
+* **PII requires special handling**: Personally identifiable information must be separated from analysis data and encrypted.
+* **Two-clone workflow**: Maintain a working clone outside cloud storage and a synced clone inside for non-Git users.
+:::
+
+## Why combine Git with cloud storage?
+
+Research projects typically involve multiple file types that require different management approaches. Code files benefit from version control, while data files need access controls and encryption. Many research teams also include members who don't use Git but need access to the latest code outputs.
+
+::: {.callout-note}
+## The Core Problem
+Both Dropbox and GitHub sync files—but in fundamentally different ways. If you edit a file that's synced by both services simultaneously, Dropbox immediately syncs changes to all team members, while GitHub Desktop on other computers interprets these changes as local edits needing commits. This creates conflicts and confusion, especially when team members try to work on different branches.
+:::
+
+The solution recommended in this tutorial, adapted from [Kristoffer Bjärkefur's GitHubDropBox tutorial](https://github.com/kbjarkefur/GitHubDropBox)[^1], creates a workflow where:
+
+1. Code contributors work in a **non-synced local clone** and push changes to GitHub
+2. A **second clone in the cloud storage folder** receives updates from GitHub
+3. Team members who only use Dropbox/Box can access the latest code through cloud sync
+
+This approach separates the version control workflow from the file sharing workflow, preventing the conflicts that arise when both systems try to sync the same files.
+
+## Critical principle: Separate code from data
+
+::: {.callout-warning}
+## Data Security Requirement
+Before implementing this workflow, understand that **code and data must be managed separately**. Code goes to Git/GitHub. Data stays in access-controlled cloud storage with appropriate encryption. This separation is essential for data security and IRB compliance.
+:::
+
+### Why separation matters
+
+| Content Type | Storage Location | Why |
+| -------------- | ------------------ | ----- |
+| Code files (`.do`, `.py`, `.R`, `.sql`) | Git/GitHub | Version control, collaboration, reproducibility |
+| Non-PII data | Cloud folder with end-to-end encryption | Access control, backup, team sharing |
+| PII data | Separate encrypted vault | Restricted access, IRB compliance |
+| Binary and compressed files (`.xlsx`, `.docx`, `.zip`, `.exe`) | Cloud storage only | Git stores full history inefficiently |
+
+: Recommended storage locations by file type {#tbl-storage-locations} {.striped}
+
+### Handling PII securely
+
+Personally identifiable information requires additional protections beyond standard data management:
+
+::: {.callout-tip collapse="true"}
+## Separate PII from analysis data early
+Create distinct datasets: one containing PII (names, phone numbers, GPS coordinates) linked only by a unique ID, and another containing research variables linked by the same ID. Store these in separate locations with different access permissions.
+:::
+
+::: {.callout-tip collapse="true"}
+## Encrypt PII at rest
+Use tools like [Cryptomator](https://cryptomator.org/) to create encrypted vaults within your cloud storage. Only IRB-approved team members should have access to the vault password. See IPA's [Data Security Protocol](https://data.poverty-action.org/data-security/data-security-protocol.html) for detailed encryption requirements.
+:::
+
+::: {.callout-tip collapse="true"}
+## Never commit data to Git
+Use a `.gitignore` file to prevent data files from being tracked. This protects against accidentally pushing sensitive data to GitHub and keeps your repository size manageable.
+:::
+
+## Setting up your environment
+
+### Requirements
+
+Before starting, ensure you have:
+
+* **Git installed**: Download from [git-scm.com](https://git-scm.com/downloads) and install with default options
+* **GitHub Desktop** (optional but recommended for beginners)
+* **Git Bash** (included with Git for Windows) or Terminal (Mac/Linux)
+* **Cloud storage client**: Dropbox, Box Sync, or OneDrive installed and syncing
+
+::: {.callout-tip}
+## Verify Git installation
+Open Git Bash (Windows) or Terminal (Mac) and type:
+
+```bash
+git --version
+```
+You should see output like `git version 2.25.0`. If you get "command not found," the installation wasn't successful.
+:::
+
+### Essential Git Bash commands
+
+If you're new to the command line, these are the only commands you'll need:
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `cd` | Change directory | `cd "C:/Users/Name/Dropbox"` |
+| `pwd` | Print working directory | Shows current location |
+| `git clone` | Copy repository | `git clone https://github.com/user/repo.git` |
+| `git pull` | Download updates | `git pull` |
+
+: Essential Git Bash commands {#tbl-git-commands} {.striped}
+
+::: {.callout-note}
+## Path formatting in Git Bash
+* Use **forward slashes** `/` not backslashes `\`
+* Enclose paths with spaces in **quotation marks**
+* The tilde `~` represents your user folder (e.g., `C:/Users/YourName`)
+:::
+
+## Initial setup
+
+### Step 1: Create your project structure
+
+First, set up your GitHub repository and cloud storage folder. A typical research project structure looks like:
+
+```text
+ProjectFolder/                    # In Dropbox/Box
+├── admin/                        # Contracts, budgets, MOUs
+├── literature/                   # Background readings
+├── data/                         # Data folder (NOT in Git)
+│   ├── raw/                      # Original data files
+│   ├── clean/                    # Processed data
+│   └── pii/                      # Encrypted PII vault
+└── code/                         # This folder is the Git repository
+    ├── cleaning/
+    ├── analysis/
+    └── outputs/
+```
+
+### Step 2: Create the non-synced working clone
+
+This clone is where you'll do your actual coding work. **Do not place this in your cloud storage folder.**
+
+::: {.numbered-list}
+(@) **Using GitHub Desktop:**
+   - Click "Clone a Repository"
+   - Select your repository
+   - Choose a local path outside Dropbox/Box (e.g., `C:/Users/YourName/Documents/GitHub`)
+   - Click "Clone"
+
+(@) **Or using command line:**
+:::
+
+```bash
+# Navigate to your GitHub folder (outside cloud storage)
+cd "C:/Users/YourName/Documents/code"
+
+# Clone the repository
+git clone https://github.com/username/repository-name.git
+```
+
+### Step 3: Create the synced clone in cloud storage
+
+This second clone allows non-Git users to access the code. Only **one team member** needs to do this step.
+
+::: {.callout-warning}
+## Important
+GitHub Desktop cannot create a second clone of the same repository. You must use the command line for this step.
+:::
+
+::: {.numbered-list}
+(@) **Open Git Bash and navigate to your cloud storage project folder:**
+:::
+
+```bash
+cd "C:/Users/YourName/Dropbox/ProjectFolder"
+```
+
+Verify your location—Git Bash displays the current directory above the command prompt:
+
+```
+username@computer ~/Dropbox/ProjectFolder
+$
+```
+
+::: {.numbered-list}
+(@) **Get the repository URL from GitHub:**
+   - Go to your repository on GitHub.com
+   - Click the green "Code" button
+   - Copy the HTTPS URL (e.g., `https://github.com/username/repository-name.git`)
+
+(@) **Clone the repository:**
+:::
+
+```bash
+git clone https://github.com/username/repository-name.git
+```
+
+If successful, you'll see:
+
+```
+Cloning into 'repository-name'...
+remote: Counting objects: 42, done.
+remote: Compressing objects: 100% (31/31), done.
+remote: Total 42 (delta 7), reused 38 (delta 6), pack-reused 0
+Unpacking objects: 100% (42/42), done.
+```
+
+A new folder with your repository name now exists in your cloud storage folder.
+
+## The recommended workflow
+
+### For code contributors (using Git)
+
+::: {.callout-tip collapse="true"}
+## Daily workflow
+1. Work in your **non-synced clone** (outside Dropbox/Box)
+2. Make changes to code files
+3. Commit and push changes to GitHub using GitHub Desktop or command line
+4. When ready to share with the team, update the cloud clone (see next section)
+:::
+
+### Updating the cloud clone
+
+After pushing changes to GitHub, update the cloud storage clone so non-Git users can access the latest code:
+
+```bash
+# Navigate to the cloud clone
+cd "C:/Users/YourName/Dropbox/ProjectFolder/repository-name"
+
+# Pull the latest changes
+git pull
+```
+
+Dropbox/Box will automatically sync these updates to all team members.
+
+::: {.callout-note}
+## When to update
+Update the cloud clone whenever you want non-Git team members to see your changes. This could be daily, weekly, or at project milestones—whatever suits your team's workflow.
+:::
+
+### For non-Git team members
+
+Team members who don't use Git can:
+
+* Access the latest code in the shared cloud folder
+* View outputs and results
+* **Not edit code files directly** (this would create conflicts)
+
+If non-Git team members need to suggest changes, they should communicate through comments, emails, or shared documents rather than editing files in the cloud clone.
+
+## Configuring .gitignore for research projects
+
+A `.gitignore` file tells Git which files to exclude from version control. This is critical for keeping data out of your repository.
+
+### Example .gitignore for research projects
+
+Create a file named `.gitignore` in your repository root with content like:
+
+```gitignore
+# Data files - AVOID committing these
+*.dta
+*.xlsx
+*.xls
+*.sav
+*.rds
+*.RData
+*.parquet
+
+# Output files that can be regenerated
+*.log
+*.pdf
+*.png
+*.jpg
+*.doc
+*.docx
+
+# Sensitive files
+**/pii/
+**/confidential/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+*.Rproj.user
+
+# Large files
+*.zip
+*.tar.gz
+```
+
+::: {.callout-tip}
+## DIME Analytics template
+The World Bank's DIME Analytics team maintains a comprehensive [.gitignore template](https://github.com/worldbank/dime-standards/blob/master/dime-research-standards/pillar-4-data-security/data-security-resources/github-resources/gitignore-templates) designed for economics research. Consider using this as a starting point.
+:::
+
+## Handling binary files
+
+Binary files (images, PDFs, Excel files) pose a special challenge for Git. Unlike text files where Git stores only the changes between versions, Git stores the **complete file** for each version of a binary file. This can quickly bloat your repository size.
+
+### Best practices for binary files
+
+| File Type | Recommendation |
+|-----------|----------------|
+| Data files (.dta, .csv, .xlsx) | Keep in cloud storage only, add to .gitignore |
+| Documentation (.pdf, .docx) | Keep in cloud storage only |
+| Small images for documentation | Acceptable in Git if rarely changed |
+| Large images or figures | Generate from code, or keep in cloud storage |
+
+: Handling binary files {#tbl-binary-files} {.striped}
+
+::: {.callout-warning}
+## Repository size warning
+If binary files are frequently edited and committed to Git, your repository—and therefore your cloud clone—can grow very large. This slows down cloning, syncing, and can cause storage issues. The solution is to exclude binary files using `.gitignore`.
+:::
+
+## Troubleshooting common issues
+
+::: {.callout-warning collapse="true"}
+## "Permission denied" when cloning to Dropbox
+This can occur if Dropbox is actively syncing. Try:
+1. Pause Dropbox syncing temporarily
+2. Run the `git clone` command
+3. Resume Dropbox syncing after clone completes
+:::
+
+::: {.callout-warning collapse="true"}
+## Changes in cloud clone showing as local changes
+This happens when someone edits files directly in the cloud clone. These edits conflict with the Git workflow. Options:
+1. Discard local changes: `git checkout -- .`
+2. Stash changes for later review: `git stash`
+3. Communicate with team about the editing workflow
+:::
+
+::: {.callout-warning collapse="true"}
+## Branch issues in cloud clone
+Changing branches in the cloud clone changes files for all team members, which can be confusing. Keep the cloud clone on the `main` branch and only switch branches in your non-synced working clone.
+:::
+
+::: {.callout-warning collapse="true"}
+## Credentials not saved
+If you're prompted for GitHub credentials repeatedly:
+```bash
+git config --global credential.helper store
+```
+Then enter your credentials once, and they'll be saved for future use.
+:::
+
+## Security considerations
+
+::: {.callout-note}
+## Repository history exposure
+The `.git` folder in your cloud clone contains the complete history of your repository. Anyone with access to the cloud folder can technically access this history. In most research teams, this isn't a concern since cloud folder access and repository access overlap. However, keep this in mind when publishing or sharing your work.
+:::
+
+### Security checklist
+
+Before starting data collection:
+
+- [ ] Code repository created and `.gitignore` configured
+- [ ] Data folder structure established in cloud storage
+- [ ] PII vault created with Cryptomator or similar encryption
+- [ ] Team members trained on which files go where
+- [ ] Access permissions set appropriately for different data sensitivity levels
+
+See IPA's [How to Implement Data Security Protocols](https://data.poverty-action.org/data-security/how-to-data-security.html) for comprehensive security setup guidance.
+
+## Summary
+
+This workflow allows research teams to enjoy the benefits of both version control (through Git) and cloud storage (through Dropbox/Box):
+
+1. **Code contributors** work in non-synced clones and push to GitHub
+2. **One team member** maintains a synced clone in the cloud folder
+3. **Non-Git users** access the latest code through regular cloud sync
+4. **Data stays separate** from code, with appropriate encryption for PII
+
+The key to success is maintaining clear separation between code and data, and ensuring all team members understand which files belong where.
+
+## References
+
+* [GitHubDropBox Tutorial](https://github.com/kbjarkefur/GitHubDropBox) by Kristoffer Bjarkefur (MIT License)
+* [DIME Analytics .gitignore Templates](https://github.com/worldbank/dime-standards/blob/master/dime-research-standards/pillar-4-data-security/data-security-resources/github-resources/gitignore-templates)
+* [IPA Data Security Protocol](https://data.poverty-action.org/data-security/data-security-protocol.html)
+* [IPA Data Security Implementation Guide](https://data.poverty-action.org/data-security/how-to-data-security.html)
