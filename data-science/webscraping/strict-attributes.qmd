@@ -1,0 +1,914 @@
+---
+title: "Advanced Selection and Attributes"
+abstract: |
+  Master advanced HTML element selection techniques using gazpacho's partial matching and attribute extraction. Learn to work with complex selectors, handle dynamic content, and extract precise data from HTML attributes.
+date: last-modified
+
+format:
+  html: default
+
+# Authors
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+
+# # Contributors
+# contributors:
+#   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+
+keywords: ["Python", "Web Scraping", "Gazpacho", "HTML Attributes", "CSS Selectors", "Partial Matching", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Understand the difference between strict and partial matching
+- Use the `partial` parameter for flexible element selection
+- Extract and work with HTML element attributes
+- Handle complex class names and attribute patterns
+- Build robust selectors for dynamic content
+- Parse structured data from HTML attributes
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- When should I use strict vs. partial matching for element selection?
+- How do I extract specific attributes like timestamps, URLs, and IDs?
+- What are the best practices for handling complex CSS classes?
+- How can I make my selectors more resilient to website changes?
+:::
+
+::: {.callout-note}
+
+## Attribution
+
+This tutorial is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from the [calmcode.io gazpacho course](https://calmcode.io/course/gazpacho/strict) and [attributes tutorial](https://calmcode.io/course/gazpacho/attributes) (CC BY 4.0 License).
+:::
+
+## Understanding Partial Matching
+
+Gazpacho's `find()` method supports a `partial` parameter that controls how class name matching works. This is crucial for working with modern websites that use complex CSS frameworks.
+
+### Strict Matching (partial=False)
+
+By default, gazpacho uses strict matching:
+
+```python
+from gazpacho import get, Soup
+
+# Example HTML with complex class names
+html = """
+<div class="card">
+    <h2 class="card-title">Simple Title</h2>
+    <p class="card-text primary-text">Content here</p>
+    <span class="btn btn-primary btn-lg">Button</span>
+</div>
+"""
+
+soup = Soup(html)
+
+# Strict matching - must match exact class
+title = soup.find('h2', {'class': 'card-title'}, partial=False)
+print(f"Title (strict): {title.text if title else 'Not found'}")
+
+# This won't match because class has multiple values
+button = soup.find('span', {'class': 'btn'}, partial=False)
+print(f"Button (strict): {button.text if button else 'Not found'}")
+```
+
+### Partial Matching (partial=True)
+
+Partial matching allows substring matches in class names:
+
+```python
+from gazpacho import Soup
+
+html = """
+<div class="card shadow-lg rounded">
+    <h2 class="card-title text-primary">Advanced Title</h2>
+    <p class="card-text secondary-text small">Content here</p>
+    <span class="btn btn-primary btn-lg">Click Me</span>
+</div>
+"""
+
+soup = Soup(html)
+
+# Partial matching - matches if class contains the substring
+button = soup.find('span', {'class': 'btn'}, partial=True)
+print(f"Button (partial): {button.text if button else 'Not found'}")
+
+title = soup.find('h2', {'class': 'card'}, partial=True)
+print(f"Title (partial): {title.text if title else 'Not found'}")
+
+# Can match on any part of complex class names
+text = soup.find('p', {'class': 'text'}, partial=True)
+print(f"Text (partial): {text.text if text else 'Not found'}")
+```
+
+### When to Use Each Approach
+
+**Use strict matching when**:
+
+- You need exact class name matches
+- Working with simple, predictable HTML
+- You want to avoid false positives
+
+**Use partial matching when**:
+
+- Working with CSS frameworks (Bootstrap, Tailwind, etc.)
+- Class names include generated or dynamic parts
+- You need flexible, maintainable selectors
+
+::: {.callout-note}
+
+## Try This: Compare Matching Modes
+
+Experiment with both matching modes on complex HTML:
+
+```python
+from gazpacho import Soup
+
+# Modern website HTML with framework classes
+html = """
+<article class="post-item bg-white shadow-sm rounded-lg p-4 mb-4">
+    <header class="post-header mb-3">
+        <h3 class="post-title text-xl font-bold text-gray-900">Article Title</h3>
+        <div class="post-meta text-sm text-gray-600">
+            <span class="author-name mr-2">John Doe</span>
+            <time class="publish-date" datetime="2023-01-15">Jan 15, 2023</time>
+        </div>
+    </header>
+    <div class="post-content text-gray-800">
+        <p class="post-excerpt mb-4">This is the article excerpt...</p>
+    </div>
+    <footer class="post-footer">
+        <a href="#" class="btn btn-primary btn-sm">Read More</a>
+    </footer>
+</article>
+"""
+
+soup = Soup(html)
+
+print("=== Strict Matching ===")
+# These will likely fail with strict matching
+title_strict = soup.find('h3', {'class': 'post-title'}, partial=False)
+button_strict = soup.find('a', {'class': 'btn'}, partial=False)
+
+print(f"Title: {title_strict.text if title_strict else 'Not found'}")
+print(f"Button: {button_strict.text if button_strict else 'Not found'}")
+
+print("\n=== Partial Matching ===")
+# These should work with partial matching
+title_partial = soup.find('h3', {'class': 'post-title'}, partial=True)
+button_partial = soup.find('a', {'class': 'btn'}, partial=True)
+author_partial = soup.find('span', {'class': 'author'}, partial=True)
+
+print(f"Title: {title_partial.text if title_partial else 'Not found'}")
+print(f"Button: {button_partial.text if button_partial else 'Not found'}")
+print(f"Author: {author_partial.text if author_partial else 'Not found'}")
+```
+
+:::
+
+## Working with HTML Attributes
+
+HTML attributes contain valuable structured data - IDs, URLs, timestamps, data attributes, and more.
+
+### Accessing Element Attributes
+
+Use the `.attrs` property to access all element attributes:
+
+```python
+from gazpacho import Soup
+
+html = """
+<article id="post-123" class="blog-post" data-category="technology">
+    <h2 class="post-title">Understanding Web APIs</h2>
+    <img src="/images/api-diagram.jpg" alt="API Diagram" width="600" height="400">
+    <a href="https://example.com/full-article" target="_blank" rel="noopener">
+        Read Full Article
+    </a>
+    <time datetime="2023-01-15T10:30:00Z" data-format="iso">
+        January 15, 2023
+    </time>
+</article>
+"""
+
+soup = Soup(html)
+
+# Access all attributes of an element
+article = soup.find('article')
+print("Article attributes:")
+for key, value in article.attrs.items():
+    print(f"  {key}: {value}")
+
+# Access specific attributes
+image = soup.find('img')
+print(f"\nImage details:")
+print(f"  Source: {image.attrs.get('src', 'No source')}")
+print(f"  Alt text: {image.attrs.get('alt', 'No alt text')}")
+print(f"  Dimensions: {image.attrs.get('width')} x {image.attrs.get('height')}")
+
+# Extract link information
+link = soup.find('a')
+print(f"\nLink details:")
+print(f"  URL: {link.attrs.get('href', 'No URL')}")
+print(f"  Target: {link.attrs.get('target', 'Same window')}")
+print(f"  Text: {link.text}")
+```
+
+### Extracting Temporal Data
+
+Time-related attributes are common in modern web content:
+
+```python
+from gazpacho import Soup
+from datetime import datetime
+
+html = """
+<div class="timeline">
+    <div class="event" data-timestamp="1642248600">
+        <time datetime="2022-01-15T10:30:00Z">January 15, 2022</time>
+        <h4>Product Launch</h4>
+    </div>
+    <div class="event" data-timestamp="1644926400">
+        <time datetime="2022-02-15T12:00:00Z">February 15, 2022</time>
+        <h4>Feature Update</h4>
+    </div>
+</div>
+"""
+
+soup = Soup(html)
+
+# Extract datetime attributes
+time_element = soup.find('time')
+if time_element:
+    iso_datetime = time_element.attrs.get('datetime')
+    timestamp = time_element.get_parent().attrs.get('data-timestamp') if hasattr(time_element, 'get_parent') else None
+
+    print(f"ISO datetime: {iso_datetime}")
+    print(f"Timestamp: {timestamp}")
+    print(f"Display text: {time_element.text}")
+
+    # Parse ISO datetime
+    if iso_datetime:
+        try:
+            dt = datetime.fromisoformat(iso_datetime.replace('Z', '+00:00'))
+            print(f"Parsed datetime: {dt}")
+        except ValueError:
+            print("Could not parse datetime")
+```
+
+### Data Attributes
+
+Modern websites use data attributes for structured information:
+
+```python
+from gazpacho import Soup
+import json
+
+html = """
+<div class="product-grid">
+    <div class="product-card"
+         data-product-id="12345"
+         data-price="29.99"
+         data-category="electronics"
+         data-tags='["gadget", "portable", "battery"]'
+         data-in-stock="true">
+        <h3>Wireless Earbuds</h3>
+        <p class="price">$29.99</p>
+    </div>
+    <div class="product-card"
+         data-product-id="67890"
+         data-price="15.99"
+         data-category="accessories"
+         data-tags='["cable", "usb", "charging"]'
+         data-in-stock="false">
+        <h3>USB Cable</h3>
+        <p class="price">$15.99</p>
+    </div>
+</div>
+"""
+
+soup = Soup(html)
+
+def extract_product_data(product_element):
+    """Extract structured data from product element."""
+    attrs = product_element.attrs
+
+    # Basic attributes
+    product_id = attrs.get('data-product-id')
+    price = float(attrs.get('data-price', 0))
+    category = attrs.get('data-category')
+    in_stock = attrs.get('data-in-stock', 'false').lower() == 'true'
+
+    # Parse JSON data
+    tags = []
+    try:
+        tags_json = attrs.get('data-tags', '[]')
+        tags = json.loads(tags_json)
+    except json.JSONDecodeError:
+        tags = []
+
+    # Extract text content
+    title_element = product_element.find('h3') if hasattr(product_element, 'find') else soup.find('h3')
+    title = title_element.text if title_element else 'Unknown'
+
+    return {
+        'id': product_id,
+        'title': title,
+        'price': price,
+        'category': category,
+        'tags': tags,
+        'in_stock': in_stock
+    }
+
+# Extract first product data
+product = soup.find('div', {'class': 'product-card'})
+if product:
+    data = extract_product_data(product)
+    print("Product data:")
+    for key, value in data.items():
+        print(f"  {key}: {value}")
+```
+
+::: {.callout-note}
+
+## Try This: URL and Media Attribute Extraction
+
+Practice extracting different types of attributes:
+
+```python
+from gazpacho import Soup
+from urllib.parse import urljoin, urlparse
+
+html = """
+<div class="media-gallery">
+    <div class="video-player" data-video-id="abc123" data-duration="300">
+        <video poster="/thumbs/video1.jpg" controls>
+            <source src="/videos/sample.mp4" type="video/mp4">
+            <source src="/videos/sample.webm" type="video/webm">
+        </video>
+    </div>
+    <div class="image-grid">
+        <img src="/images/photo1.jpg"
+             alt="Sunset landscape"
+             data-full-size="/images/full/photo1.jpg"
+             width="300"
+             height="200">
+        <img src="/images/photo2.jpg"
+             alt="Mountain view"
+             data-full-size="/images/full/photo2.jpg"
+             width="300"
+             height="200">
+    </div>
+    <div class="links-section">
+        <a href="https://example.com/external" rel="external" target="_blank">
+            External Link
+        </a>
+        <a href="/internal/page" class="internal-link">
+            Internal Link
+        </a>
+        <a href="mailto:contact@example.com" class="email-link">
+            Email Us
+        </a>
+    </div>
+</div>
+"""
+
+soup = Soup(html)
+
+def analyze_media_attributes():
+    """Analyze various media and link attributes."""
+    base_url = "https://mysite.com"
+
+    # Video attributes
+    video = soup.find('video')
+    if video:
+        print("=== Video Information ===")
+        print(f"Poster: {video.attrs.get('poster', 'None')}")
+        print(f"Controls: {'Yes' if 'controls' in video.attrs else 'No'}")
+
+        # Video container data
+        container = soup.find('div', {'class': 'video-player'})
+        if container:
+            duration = int(container.attrs.get('data-duration', 0))
+            print(f"Duration: {duration // 60}:{duration % 60:02d}")
+            print(f"Video ID: {container.attrs.get('data-video-id')}")
+
+    # Image attributes
+    image = soup.find('img')
+    if image:
+        print(f"\n=== Image Information ===")
+        print(f"Source: {image.attrs.get('src')}")
+        print(f"Alt text: {image.attrs.get('alt')}")
+        print(f"Dimensions: {image.attrs.get('width')}x{image.attrs.get('height')}")
+        print(f"Full size: {image.attrs.get('data-full-size')}")
+
+    # Link analysis
+    link = soup.find('a')
+    if link:
+        print(f"\n=== Link Information ===")
+        href = link.attrs.get('href', '')
+        print(f"URL: {href}")
+        print(f"Type: {get_link_type(href)}")
+        print(f"Target: {link.attrs.get('target', 'same window')}")
+        print(f"Relationship: {link.attrs.get('rel', 'none')}")
+
+def get_link_type(href):
+    """Determine link type from href."""
+    if href.startswith('mailto:'):
+        return 'Email'
+    elif href.startswith('tel:'):
+        return 'Phone'
+    elif href.startswith('http'):
+        return 'External'
+    elif href.startswith('/'):
+        return 'Internal (absolute)'
+    else:
+        return 'Internal (relative)'
+
+analyze_media_attributes()
+```
+
+:::
+
+## Real-World Example: Enhanced PyPI Parsing
+
+Let's extend the PyPI parsing example to extract more detailed information using attributes:
+
+```python
+from gazpacho import get, Soup
+import json
+from datetime import datetime
+
+def parse_pypi_release_history(package_name):
+    """Parse PyPI project history using attributes."""
+    url = f"https://pypi.org/project/{package_name}/#history"
+
+    try:
+        html = get(url)
+        soup = Soup(html)
+
+        # Find release cards using partial matching
+        # (PyPI uses complex CSS classes)
+        cards = []
+
+        # Try to find the first release card
+        card = soup.find('div', {'class': 'card'}, partial=True)
+
+        if card:
+            # Extract version information
+            version_element = soup.find('p', {'class': 'release__version'}, partial=True)
+            version = version_element.text.strip() if version_element else 'Unknown'
+
+            # Extract timestamp from time element
+            time_element = soup.find('time')
+            timestamp = None
+            release_date = None
+
+            if time_element:
+                timestamp = time_element.attrs.get('datetime')
+                release_date = time_element.text.strip()
+
+            return {
+                'package': package_name,
+                'latest_version': version,
+                'release_date': release_date,
+                'timestamp': timestamp,
+                'url': url,
+                'success': True
+            }
+
+        return {
+            'package': package_name,
+            'error': 'No release information found',
+            'url': url,
+            'success': False
+        }
+
+    except Exception as e:
+        return {
+            'package': package_name,
+            'error': str(e),
+            'url': url,
+            'success': False
+        }
+
+# Function to parse card data as shown in calmcode tutorial
+def parse_card(card_soup):
+    """Parse individual release card (calmcode example)."""
+    try:
+        # Extract version
+        version_elem = card_soup.find('p', {'class': 'release__version'}, partial=False)
+        version = version_elem.text.strip() if version_elem else None
+
+        # Extract timestamp
+        time_elem = card_soup.find('time')
+        timestamp = time_elem.attrs.get('datetime') if time_elem else None
+
+        return {
+            'version': version,
+            'timestamp': timestamp
+        }
+    except Exception as e:
+        return {'error': str(e)}
+
+# Test the enhanced parser
+packages = ['requests', 'beautifulsoup4']
+
+for package in packages:
+    result = parse_pypi_release_history(package)
+
+    if result['success']:
+        print(f"\n--- {result['package']} ---")
+        print(f"Latest version: {result['latest_version']}")
+        print(f"Release date: {result['release_date']}")
+        print(f"Timestamp: {result['timestamp']}")
+    else:
+        print(f"\nError parsing {package}: {result['error']}")
+```
+
+## Advanced Attribute Handling
+
+### ID and Class Utilities
+
+Work with complex ID and class patterns:
+
+```python
+from gazpacho import Soup
+
+html = """
+<div id="main-content-123" class="container fluid responsive">
+    <section id="article-456" class="content-section featured">
+        <h2 id="title-789" class="section-title text-primary">
+            Important Article
+        </h2>
+    </section>
+    <aside id="sidebar-101" class="sidebar widget-area">
+        <div class="widget social-widget">
+            <h3 class="widget-title">Follow Us</h3>
+        </div>
+    </aside>
+</div>
+"""
+
+soup = Soup(html)
+
+def extract_id_patterns(soup_obj):
+    """Extract and analyze ID patterns."""
+    # Find elements with IDs
+    elements_with_ids = [
+        soup_obj.find('div'),
+        soup_obj.find('section'),
+        soup_obj.find('h2'),
+        soup_obj.find('aside')
+    ]
+
+    print("=== ID Patterns ===")
+    for elem in elements_with_ids:
+        if elem and 'id' in elem.attrs:
+            element_id = elem.attrs['id']
+            tag_name = elem.tag if hasattr(elem, 'tag') else 'unknown'
+            print(f"  {tag_name}: {element_id}")
+
+            # Extract numeric part if present
+            import re
+            numbers = re.findall(r'\d+', element_id)
+            if numbers:
+                print(f"    Numeric ID: {numbers[0]}")
+
+def analyze_class_combinations(soup_obj):
+    """Analyze complex class combinations."""
+    elements = [
+        soup_obj.find('div'),
+        soup_obj.find('section'),
+        soup_obj.find('h2')
+    ]
+
+    print("\n=== Class Analysis ===")
+    for elem in elements:
+        if elem and 'class' in elem.attrs:
+            classes = elem.attrs['class'].split()
+            tag_name = elem.tag if hasattr(elem, 'tag') else 'unknown'
+            print(f"  {tag_name} classes: {classes}")
+            print(f"    Count: {len(classes)}")
+
+            # Check for framework patterns
+            if any('container' in cls or 'fluid' in cls for cls in classes):
+                print(f"    Layout classes detected")
+            if any('text-' in cls or 'bg-' in cls for cls in classes):
+                print(f"    Utility classes detected")
+
+extract_id_patterns(soup)
+analyze_class_combinations(soup)
+```
+
+### Custom Attribute Selectors
+
+Create specialized functions for common attribute patterns:
+
+```python
+from gazpacho import Soup
+
+def find_by_data_attribute(soup, attr_name, attr_value=None):
+    """Find elements by data attribute."""
+    # Simplified approach - in practice you'd need to search through elements
+    # This is a conceptual example
+    all_divs = soup.find('div')  # This gets first div
+    if all_divs and f'data-{attr_name}' in all_divs.attrs:
+        if attr_value is None or all_divs.attrs[f'data-{attr_name}'] == attr_value:
+            return all_divs
+    return None
+
+def extract_structured_data(soup):
+    """Extract structured data from various attribute patterns."""
+    data = {
+        'meta_tags': {},
+        'data_attributes': {},
+        'aria_labels': {},
+        'media_info': {}
+    }
+
+    # Extract meta information (conceptual)
+    # In practice, you'd search for meta tags
+
+    # Extract data attributes
+    elements = [soup.find('div'), soup.find('section'), soup.find('article')]
+    for elem in elements:
+        if elem:
+            for attr_name, attr_value in elem.attrs.items():
+                if attr_name.startswith('data-'):
+                    data['data_attributes'][attr_name] = attr_value
+                elif attr_name.startswith('aria-'):
+                    data['aria_labels'][attr_name] = attr_value
+
+    return data
+
+# Example usage
+html = """
+<article data-post-id="123"
+         data-category="technology"
+         data-author="jane-doe"
+         aria-label="Technology article">
+    <h1>Article Title</h1>
+    <img src="image.jpg"
+         alt="Technology image"
+         data-lazy-load="true"
+         aria-describedby="img-caption">
+</article>
+"""
+
+soup = Soup(html)
+structured_data = extract_structured_data(soup)
+print("Structured data:")
+print(json.dumps(structured_data, indent=2))
+```
+
+::: {.callout-note}
+
+## Exercise: Build an Attribute-Rich Data Extractor
+
+Create a comprehensive data extractor that handles various attribute patterns:
+
+```python
+from gazpacho import get, Soup
+import json
+import re
+from urllib.parse import urljoin
+
+class AttributeDataExtractor:
+    def __init__(self, base_url=None):
+        self.base_url = base_url
+        self.extracted_data = {
+            'links': [],
+            'images': [],
+            'temporal_data': [],
+            'structured_data': {},
+            'metadata': {}
+        }
+
+    def extract_from_html(self, html):
+        """Extract all attribute-based data from HTML."""
+        soup = Soup(html)
+
+        # Extract different data types
+        self._extract_links(soup)
+        self._extract_images(soup)
+        self._extract_temporal_data(soup)
+        self._extract_structured_data(soup)
+
+        return self.extracted_data
+
+    def _extract_links(self, soup):
+        """Extract link information."""
+        # This is simplified - in practice you'd find all 'a' elements
+        link = soup.find('a')
+        if link and 'href' in link.attrs:
+            link_data = {
+                'url': link.attrs['href'],
+                'text': link.text.strip(),
+                'title': link.attrs.get('title', ''),
+                'target': link.attrs.get('target', ''),
+                'rel': link.attrs.get('rel', ''),
+                'type': self._classify_link(link.attrs['href'])
+            }
+
+            # Make absolute URL if base_url provided
+            if self.base_url and not link_data['url'].startswith('http'):
+                link_data['absolute_url'] = urljoin(self.base_url, link_data['url'])
+
+            self.extracted_data['links'].append(link_data)
+
+    def _extract_images(self, soup):
+        """Extract image information."""
+        img = soup.find('img')
+        if img and 'src' in img.attrs:
+            img_data = {
+                'src': img.attrs['src'],
+                'alt': img.attrs.get('alt', ''),
+                'width': img.attrs.get('width'),
+                'height': img.attrs.get('height'),
+                'loading': img.attrs.get('loading', 'eager'),
+                'data_attributes': {}
+            }
+
+            # Extract data attributes
+            for attr, value in img.attrs.items():
+                if attr.startswith('data-'):
+                    img_data['data_attributes'][attr] = value
+
+            self.extracted_data['images'].append(img_data)
+
+    def _extract_temporal_data(self, soup):
+        """Extract time-related data."""
+        time_elem = soup.find('time')
+        if time_elem:
+            temporal = {
+                'text': time_elem.text.strip(),
+                'datetime': time_elem.attrs.get('datetime'),
+                'data_attributes': {}
+            }
+
+            # Extract additional data attributes
+            for attr, value in time_elem.attrs.items():
+                if attr.startswith('data-'):
+                    temporal['data_attributes'][attr] = value
+
+            self.extracted_data['temporal_data'].append(temporal)
+
+    def _extract_structured_data(self, soup):
+        """Extract structured data from data attributes."""
+        # Find elements with data attributes (simplified)
+        elements = [
+            soup.find('article'),
+            soup.find('section'),
+            soup.find('div')
+        ]
+
+        for elem in elements:
+            if elem:
+                tag_name = elem.tag if hasattr(elem, 'tag') else 'unknown'
+                for attr, value in elem.attrs.items():
+                    if attr.startswith('data-'):
+                        if tag_name not in self.extracted_data['structured_data']:
+                            self.extracted_data['structured_data'][tag_name] = {}
+
+                        # Try to parse JSON values
+                        try:
+                            parsed_value = json.loads(value)
+                            self.extracted_data['structured_data'][tag_name][attr] = parsed_value
+                        except:
+                            self.extracted_data['structured_data'][tag_name][attr] = value
+
+    def _classify_link(self, href):
+        """Classify link type."""
+        if href.startswith('mailto:'):
+            return 'email'
+        elif href.startswith('tel:'):
+            return 'phone'
+        elif href.startswith('http'):
+            return 'external'
+        elif href.startswith('#'):
+            return 'anchor'
+        else:
+            return 'internal'
+
+# Test the extractor
+test_html = """
+<article data-post-id="456"
+         data-category="research"
+         data-tags='["data-science", "python", "web-scraping"]'
+         data-published="2023-01-15">
+    <h1>Advanced Data Extraction</h1>
+    <div class="meta">
+        <time datetime="2023-01-15T10:30:00Z" data-format="iso">
+            January 15, 2023
+        </time>
+    </div>
+    <img src="/images/data-viz.jpg"
+         alt="Data visualization chart"
+         width="600"
+         height="400"
+         data-lazy="true"
+         data-src-large="/images/data-viz-large.jpg">
+    <p>Learn about <a href="https://python.org"
+                      title="Python Programming"
+                      target="_blank">Python</a> for data analysis.</p>
+    <a href="mailto:contact@example.com" class="contact-link">
+        Contact us
+    </a>
+</article>
+"""
+
+extractor = AttributeDataExtractor(base_url="https://example.com")
+results = extractor.extract_from_html(test_html)
+
+print("=== Extraction Results ===")
+print(json.dumps(results, indent=2))
+```
+
+:::
+
+## Best Practices for Attribute Extraction
+
+### Error-Safe Attribute Access
+
+Always use `.get()` method for optional attributes:
+
+```python
+# Safe attribute access
+width = element.attrs.get('width', 'unknown')
+data_id = element.attrs.get('data-id', '')
+
+# Handle missing attributes
+if 'required-attr' in element.attrs:
+    process_attribute(element.attrs['required-attr'])
+```
+
+### Type Conversion and Validation
+
+Convert attribute values to appropriate types:
+
+```python
+def safe_int_convert(value, default=0):
+    """Safely convert string to integer."""
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        return default
+
+def safe_bool_convert(value, default=False):
+    """Safely convert string to boolean."""
+    if isinstance(value, str):
+        return value.lower() in ('true', '1', 'yes', 'on')
+    return bool(value) if value is not None else default
+
+# Usage example
+width = safe_int_convert(img.attrs.get('width'))
+is_lazy = safe_bool_convert(img.attrs.get('data-lazy'))
+```
+
+### Handling Dynamic Content
+
+Build flexible selectors for dynamic websites:
+
+```python
+def flexible_find(soup, selectors):
+    """Try multiple selectors until one works."""
+    for selector in selectors:
+        element = soup.find(selector['tag'], selector['attrs'],
+                          partial=selector.get('partial', True))
+        if element:
+            return element
+    return None
+
+# Example usage
+title_selectors = [
+    {'tag': 'h1', 'attrs': {'class': 'main-title'}, 'partial': False},
+    {'tag': 'h1', 'attrs': {'class': 'title'}, 'partial': True},
+    {'tag': 'h1', 'attrs': {}, 'partial': False}
+]
+
+title = flexible_find(soup, title_selectors)
+```
+
+::: {.callout-important}
+
+## Key Points
+
+- Use `partial=True` for flexible class matching with CSS frameworks
+- Use `partial=False` when you need exact class name matches
+- Access attributes with `.attrs` dictionary
+- Always use `.get()` for optional attributes to avoid errors
+- Parse JSON data from data attributes when needed
+- Extract temporal data from datetime attributes
+- Build flexible selectors that handle website changes
+- Validate and convert attribute values to appropriate types
+- Use multiple fallback selectors for robust parsing
+:::
+
+[← Previous: Parsing with Soup](03-parsing-soup.qmd) | [Next: Pandas Integration →](05-pandas-integration.qmd)

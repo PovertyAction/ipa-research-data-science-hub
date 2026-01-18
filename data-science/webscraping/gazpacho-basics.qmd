@@ -1,0 +1,553 @@
+---
+title: "Getting Started with Gazpacho"
+abstract: |
+  Learn the fundamentals of gazpacho, a simple Python library for web scraping. Install the library, understand basic concepts, and write your first web scraping script.
+date: last-modified
+
+format:
+  html: default
+
+# Authors
+authors:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+
+# # Contributors
+# contributors:
+#   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+
+keywords: ["Python", "Web Scraping", "Gazpacho", "Installation", "HTML", "HTTP Requests", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Install and configure gazpacho for web scraping
+- Understand basic HTML structure and web scraping concepts
+- Make your first HTTP request using gazpacho.get()
+- Handle common installation and certificate issues
+- Write a simple web scraping script
+- Understand the difference between HTML and text content
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- How do I install and set up gazpacho?
+- What is HTML and how does web scraping work?
+- How do I make basic HTTP requests to fetch web pages?
+- What common issues might I encounter and how do I fix them?
+:::
+
+::: {.callout-note}
+
+## Attribution
+
+This tutorial is based on concepts from the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and the [calmcode.io gazpacho course](https://calmcode.io/course/gazpacho/introduction) (CC BY 4.0 License).
+:::
+
+## What is Gazpacho?
+
+Gazpacho is a lightweight Python library designed to make web scraping simple and accessible. Unlike more complex alternatives like requests + BeautifulSoup, gazpacho provides a streamlined API for common web scraping tasks.
+
+**Key benefits of gazpacho**:
+
+- **Simple syntax**: Minimal code to get started
+- **Built-in HTTP handling**: No need for separate requests library
+- **Intuitive parsing**: Easy-to-understand methods for data extraction
+- **Lightweight**: Fast and efficient for basic scraping needs
+
+### Web Scraping Fundamentals
+
+Before diving into gazpacho, let's understand what happens when we scrape a website:
+
+1. **HTTP Request**: Your script requests a webpage from a server
+2. **HTML Response**: The server returns HTML content
+3. **HTML Parsing**: Your script extracts data from the HTML structure
+4. **Data Processing**: Convert extracted data into usable formats
+
+## Installation and Setup
+
+### Installing Gazpacho
+
+Install gazpacho using pip:
+
+```bash
+pip install gazpacho
+```
+
+**Verify installation**:
+
+```python
+import gazpacho
+print(gazpacho.__version__)
+```
+
+### Common Installation Issues
+
+#### Certificate Verification Errors (macOS)
+
+If you encounter SSL certificate errors, try one of these solutions:
+
+#### Solution 1: Install certifi
+
+```bash
+pip install certifi
+```
+
+#### Solution 2: Update certificates (macOS)
+
+```bash
+/Applications/Python\ 3.x/Install\ Certificates.command
+```
+
+Replace `3.x` with your Python version (e.g., `3.9`, `3.10`).
+
+::: {.callout-note}
+
+## Try This: Test Your Installation
+
+Create a simple test file to verify gazpacho works:
+
+```python
+# test_gazpacho.py
+from gazpacho import get
+
+# Test with a simple webpage
+url = "https://httpbin.org/html"
+html = get(url)
+print("Installation successful!")
+print(f"Fetched {len(html)} characters of HTML")
+```
+
+Run this script to confirm everything is working properly.
+:::
+
+## Understanding HTML Structure
+
+Web scraping requires basic understanding of HTML (HyperText Markup Language).
+
+### HTML Basics
+
+HTML uses **tags** to structure content:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+    <h1>Main Heading</h1>
+    <p>This is a paragraph.</p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+    </ul>
+</body>
+</html>
+```
+
+### Common HTML Elements
+
+**Text elements**:
+
+- `<h1>`, `<h2>`, etc.: Headings
+- `<p>`: Paragraphs
+- `<span>`: Inline text
+
+**Structure elements**:
+
+- `<div>`: Block containers
+- `<ul>`, `<ol>`: Lists
+- `<li>`: List items
+
+**Data elements**:
+
+- `<table>`: Tables
+- `<tr>`: Table rows
+- `<td>`: Table cells
+
+### HTML Attributes
+
+Elements can have attributes that provide additional information:
+
+```html
+<div class="content" id="main">
+<a href="https://example.com">Link</a>
+<img src="image.jpg" alt="Description">
+```
+
+Common attributes:
+
+- `class`: CSS styling class
+- `id`: Unique identifier
+- `href`: Link destination
+- `src`: Source for images/media
+
+## Your First Web Scraping Script
+
+### Making HTTP Requests with gazpacho.get()
+
+The `get()` function is gazpacho's primary method for fetching web pages:
+
+```python
+from gazpacho import get
+
+# Fetch a webpage
+url = "https://example.com"
+html = get(url)
+```
+
+### Practical Example: Scraping a Simple Page
+
+Let's scrape a page with structured data:
+
+```python
+from gazpacho import get
+
+# Target a page with structured content
+url = "https://httpbin.org/html"
+html = get(url)
+
+# Display the raw HTML
+print("Raw HTML content:")
+print(html[:500])  # First 500 characters
+print("...")
+```
+
+### Understanding the Response
+
+The `get()` function returns the raw HTML as a string:
+
+```python
+from gazpacho import get
+
+html = get("https://httpbin.org/html")
+
+# Check what we received
+print(f"Type: {type(html)}")
+print(f"Length: {len(html)} characters")
+print(f"First 100 chars: {html[:100]}")
+```
+
+::: {.callout-note}
+
+## Try This: Explore Different Websites
+
+Try fetching HTML from different websites to see various HTML structures:
+
+```python
+from gazpacho import get
+
+# Try different sites
+sites = [
+    "https://httpbin.org/html",
+    "https://example.com",
+    "https://httpbin.org/json"  # This returns JSON, not HTML
+]
+
+for site in sites:
+    try:
+        html = get(site)
+        print(f"\n{site}:")
+        print(f"Length: {len(html)} characters")
+        print(f"First 100 chars: {html[:100]}")
+    except Exception as e:
+        print(f"Error fetching {site}: {e}")
+```
+
+:::
+
+## Error Handling and Debugging
+
+### Common HTTP Errors
+
+**404 Not Found**:
+
+```python
+from gazpacho import get
+
+try:
+    html = get("https://example.com/nonexistent-page")
+except Exception as e:
+    print(f"Error: {e}")
+```
+
+**Connection Errors**:
+
+```python
+from gazpacho import get
+import time
+
+def safe_get(url, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            return get(url)
+        except Exception as e:
+            print(f"Attempt {attempt + 1} failed: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(2)  # Wait before retry
+            else:
+                raise e
+
+# Use safe_get for unreliable connections
+html = safe_get("https://example.com")
+```
+
+### Debugging Tips
+
+**Inspect HTML structure**:
+
+```python
+from gazpacho import get
+
+html = get("https://example.com")
+
+# Save HTML to file for inspection
+with open("scraped_page.html", "w", encoding="utf-8") as f:
+    f.write(html)
+
+print("HTML saved to scraped_page.html for inspection")
+```
+
+**Check response content**:
+
+```python
+from gazpacho import get
+
+html = get("https://httpbin.org/html")
+
+# Look for specific content
+if "<title>" in html:
+    print("Found title tag")
+if "<!DOCTYPE html>" in html:
+    print("Valid HTML document")
+```
+
+## Practical Example: Scraping Real Data
+
+Let's put it all together with a practical example:
+
+```python
+from gazpacho import get
+import re
+
+def scrape_page_title(url):
+    """Extract the title from a webpage."""
+    try:
+        # Fetch the HTML
+        html = get(url)
+
+        # Find the title using regex
+        title_match = re.search(r'<title>(.*?)</title>', html, re.IGNORECASE)
+
+        if title_match:
+            title = title_match.group(1).strip()
+            return title
+        else:
+            return "No title found"
+
+    except Exception as e:
+        return f"Error: {e}"
+
+# Test with different websites
+urls = [
+    "https://example.com",
+    "https://httpbin.org/html",
+    "https://python.org"
+]
+
+for url in urls:
+    title = scrape_page_title(url)
+    print(f"{url}: {title}")
+```
+
+::: {.callout-note}
+
+## Try This: Extract Multiple Elements
+
+Practice extracting different HTML elements:
+
+```python
+from gazpacho import get
+import re
+
+def analyze_webpage(url):
+    """Analyze basic elements of a webpage."""
+    html = get(url)
+
+    # Count different elements
+    title_count = len(re.findall(r'<title>', html, re.IGNORECASE))
+    h1_count = len(re.findall(r'<h1>', html, re.IGNORECASE))
+    p_count = len(re.findall(r'<p>', html, re.IGNORECASE))
+    link_count = len(re.findall(r'<a\s+[^>]*href', html, re.IGNORECASE))
+
+    print(f"Analysis of {url}:")
+    print(f"  Titles: {title_count}")
+    print(f"  H1 tags: {h1_count}")
+    print(f"  Paragraphs: {p_count}")
+    print(f"  Links: {link_count}")
+
+# Analyze different pages
+analyze_webpage("https://example.com")
+```
+
+:::
+
+## Best Practices for HTTP Requests
+
+### Respectful Scraping
+
+**Add delays between requests**:
+
+```python
+from gazpacho import get
+import time
+
+def polite_scraper(urls, delay=1):
+    """Scrape multiple URLs with delays."""
+    results = []
+
+    for url in urls:
+        print(f"Scraping {url}...")
+        html = get(url)
+        results.append(html)
+
+        # Be polite - wait between requests
+        time.sleep(delay)
+
+    return results
+
+urls = ["https://example.com", "https://httpbin.org/html"]
+pages = polite_scraper(urls, delay=2)
+```
+
+### User Agent Headers
+
+While gazpacho handles basic headers automatically, understanding user agents is important:
+
+```python
+# Gazpacho automatically sets appropriate headers
+# but you can still inspect what was sent
+from gazpacho import get
+
+html = get("https://httpbin.org/user-agent")
+print("User agent information:")
+print(html)
+```
+
+## Troubleshooting Common Issues
+
+### Issue: "Module not found" Error
+
+**Solution**: Ensure gazpacho is installed in the correct Python environment
+
+```bash
+python -m pip install gazpacho
+# or
+pip3 install gazpacho
+```
+
+### Issue: Certificate Verification Failed
+
+**Solution**: Install certifi or update certificates
+
+```bash
+pip install certifi
+```
+
+### Issue: Connection Timeout
+
+**Solution**: Implement retry logic with delays
+
+```python
+from gazpacho import get
+import time
+
+def robust_get(url, retries=3, delay=2):
+    for i in range(retries):
+        try:
+            return get(url)
+        except Exception as e:
+            if i < retries - 1:
+                time.sleep(delay)
+                continue
+            else:
+                raise e
+```
+
+::: {.callout-note}
+
+## Exercise: Build Your First Scraper
+
+Create a script that:
+
+1. Fetches a webpage of your choice
+2. Checks if the request was successful
+3. Extracts and displays the page title
+4. Counts the number of links on the page
+5. Saves the HTML to a file for inspection
+
+```python
+from gazpacho import get
+import re
+
+def my_first_scraper(url):
+    """A complete first scraper example."""
+    try:
+        # Step 1: Fetch the webpage
+        print(f"Fetching {url}...")
+        html = get(url)
+
+        # Step 2: Check if successful
+        if not html:
+            print("Failed to fetch content")
+            return
+
+        print(f"Successfully fetched {len(html)} characters")
+
+        # Step 3: Extract title
+        title_match = re.search(r'<title>(.*?)</title>', html, re.IGNORECASE)
+        title = title_match.group(1).strip() if title_match else "No title"
+        print(f"Page title: {title}")
+
+        # Step 4: Count links
+        links = re.findall(r'<a\s+[^>]*href', html, re.IGNORECASE)
+        print(f"Number of links: {len(links)}")
+
+        # Step 5: Save HTML
+        filename = f"scraped_{url.split('//')[1].replace('/', '_')}.html"
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(html)
+        print(f"HTML saved to {filename}")
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+# Test your scraper
+my_first_scraper("https://example.com")
+```
+
+:::
+
+## Next Steps
+
+Now that you understand gazpacho basics and can make HTTP requests, you're ready to learn more advanced parsing techniques. In the next tutorial, we'll explore how to extract specific data from HTML using gazpacho's parsing capabilities.
+
+::: {.callout-important}
+
+## Key Points
+
+- Gazpacho simplifies web scraping with an intuitive API
+- The `get()` function fetches HTML content from URLs
+- Always handle errors and implement retry logic
+- Understanding basic HTML structure is essential
+- Be respectful with request timing and frequency
+- Save scraped content for debugging and analysis
+- Practice with simple examples before tackling complex sites
+:::
+
+[← Previous: Introduction](index.qmd) | [Next: Getting Data →](02-getting-data.qmd)

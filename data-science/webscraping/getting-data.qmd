@@ -1,0 +1,736 @@
+---
+title: "Making HTTP Requests and Getting Data"
+abstract: |
+  Master the fundamentals of HTTP requests using gazpacho.get(). Learn to fetch web pages, handle different response types, implement error handling, and work with various websites effectively.
+date: last-modified
+
+format:
+  html: default
+
+# Authors
+authors:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+
+# # Contributors
+# contributors:
+#   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+
+keywords: ["Python", "Web Scraping", "Gazpacho", "HTTP Requests", "Error Handling", "Data Fetching", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Master the gazpacho.get() function for HTTP requests
+- Handle different types of web responses (HTML, JSON, text)
+- Implement robust error handling and retry mechanisms
+- Work with headers and request parameters
+- Debug common HTTP request issues
+- Build reliable data fetching workflows
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- How do I reliably fetch data from different types of websites?
+- What are the common HTTP errors and how do I handle them?
+- How can I make my web scraping more robust and reliable?
+- What request parameters and headers should I consider?
+:::
+
+::: {.callout-note}
+
+## Attribution
+
+This tutorial is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from the [calmcode.io gazpacho course](https://calmcode.io/course/gazpacho/get) (CC BY 4.0 License).
+:::
+
+## Understanding HTTP Requests
+
+When you scrape a website, you're making HTTP (HyperText Transfer Protocol) requests. Understanding these requests helps you build more effective scrapers.
+
+### HTTP Request Process
+
+1. **Client Request**: Your script sends a request to a web server
+2. **Server Processing**: The server processes your request
+3. **Server Response**: The server sends back data (HTML, JSON, etc.)
+4. **Client Processing**: Your script processes the received data
+
+### HTTP Status Codes
+
+Common status codes you'll encounter:
+
+- **200 OK**: Request successful
+- **404 Not Found**: Page doesn't exist
+- **403 Forbidden**: Access denied
+- **500 Internal Server Error**: Server error
+- **429 Too Many Requests**: Rate limiting
+
+## The gazpacho.get() Function
+
+The `get()` function is your primary tool for fetching web content.
+
+### Basic Usage
+
+```python
+from gazpacho import get
+
+# Simple GET request
+url = "https://httpbin.org/html"
+html = get(url)
+print(f"Received {len(html)} characters")
+```
+
+### Function Parameters
+
+Gazpacho's `get()` function accepts several parameters:
+
+```python
+# Basic syntax
+get(url, headers=None, params=None)
+```
+
+**Parameters**:
+
+- `url`: The webpage URL to fetch
+- `headers`: Dictionary of HTTP headers (optional)
+- `params`: Dictionary of query parameters (optional)
+
+## Working with Different Content Types
+
+### HTML Content
+
+Most web scraping targets HTML content:
+
+```python
+from gazpacho import get
+
+# Fetch HTML page
+url = "https://example.com"
+html = get(url)
+
+# Verify it's HTML
+if html.strip().startswith('<!DOCTYPE html>') or '<html>' in html.lower():
+    print("Successfully fetched HTML content")
+    print(f"Content length: {len(html)} characters")
+```
+
+### JSON APIs
+
+Some endpoints return JSON data:
+
+```python
+from gazpacho import get
+import json
+
+# Fetch JSON data
+url = "https://httpbin.org/json"
+response = get(url)
+
+try:
+    # Parse JSON
+    data = json.loads(response)
+    print("JSON data received:")
+    print(json.dumps(data, indent=2))
+except json.JSONDecodeError:
+    print("Response is not valid JSON")
+```
+
+### Plain Text Content
+
+Some pages return plain text:
+
+```python
+from gazpacho import get
+
+# Fetch plain text
+url = "https://httpbin.org/robots.txt"
+text = get(url)
+print("Plain text content:")
+print(text)
+```
+
+::: {.callout-note}
+
+## Try This: Content Type Detection
+
+Create a function to detect different content types:
+
+```python
+from gazpacho import get
+import json
+
+def detect_content_type(url):
+    """Detect the type of content returned by a URL."""
+    try:
+        content = get(url)
+
+        # Check for JSON
+        try:
+            json.loads(content)
+            return "JSON"
+        except json.JSONDecodeError:
+            pass
+
+        # Check for HTML
+        if (content.strip().startswith('<!DOCTYPE html>') or
+            '<html>' in content.lower()):
+            return "HTML"
+
+        # Check for XML
+        if content.strip().startswith('<?xml'):
+            return "XML"
+
+        # Default to text
+        return "TEXT"
+
+    except Exception as e:
+        return f"ERROR: {e}"
+
+# Test with different URLs
+test_urls = [
+    "https://httpbin.org/html",
+    "https://httpbin.org/json",
+    "https://httpbin.org/robots.txt"
+]
+
+for url in test_urls:
+    content_type = detect_content_type(url)
+    print(f"{url}: {content_type}")
+```
+
+:::
+
+## Error Handling and Debugging
+
+### Common HTTP Errors
+
+**Connection Errors**:
+
+```python
+from gazpacho import get
+
+def safe_get(url):
+    try:
+        return get(url)
+    except ConnectionError:
+        print(f"Failed to connect to {url}")
+        return None
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        return None
+
+# Test with unreachable URL
+html = safe_get("https://nonexistent-site-12345.com")
+```
+
+**Timeout Handling**:
+
+```python
+from gazpacho import get
+import time
+
+def get_with_retry(url, max_retries=3, delay=2):
+    """Get URL with retry logic."""
+    for attempt in range(max_retries):
+        try:
+            print(f"Attempt {attempt + 1} for {url}")
+            html = get(url)
+            print(f"Success! Received {len(html)} characters")
+            return html
+        except Exception as e:
+            print(f"Attempt {attempt + 1} failed: {e}")
+            if attempt < max_retries - 1:
+                print(f"Waiting {delay} seconds before retry...")
+                time.sleep(delay)
+            else:
+                print("All attempts failed")
+                raise e
+
+# Test retry mechanism
+html = get_with_retry("https://httpbin.org/delay/1")
+```
+
+### Response Validation
+
+Always validate responses before processing:
+
+```python
+from gazpacho import get
+
+def validate_response(url):
+    """Validate HTTP response content."""
+    try:
+        content = get(url)
+
+        # Check if content exists
+        if not content:
+            return False, "Empty response"
+
+        # Check minimum content length
+        if len(content) < 50:
+            return False, "Response too short"
+
+        # Check for error pages
+        error_indicators = ["404", "not found", "error", "forbidden"]
+        if any(indicator in content.lower() for indicator in error_indicators):
+            return False, "Error page detected"
+
+        return True, "Valid response"
+
+    except Exception as e:
+        return False, f"Request failed: {e}"
+
+# Test validation
+url = "https://example.com"
+is_valid, message = validate_response(url)
+print(f"{url}: {message}")
+```
+
+## Advanced Request Techniques
+
+### Custom Headers
+
+Sometimes you need custom headers:
+
+```python
+from gazpacho import get
+
+# Note: gazpacho sets reasonable default headers
+# But you can inspect what headers are sent using httpbin
+
+def test_headers():
+    """Test what headers gazpacho sends by default."""
+    url = "https://httpbin.org/headers"
+    response = get(url)
+    print("Headers sent by gazpacho:")
+    print(response)
+
+test_headers()
+```
+
+### Query Parameters
+
+Handle URLs with parameters:
+
+```python
+from gazpacho import get
+
+# Manual parameter construction
+base_url = "https://httpbin.org/get"
+params = {"key1": "value1", "key2": "value2"}
+
+# Build URL with parameters
+url_with_params = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in params.items()])}"
+response = get(url_with_params)
+print("Response with parameters:")
+print(response)
+```
+
+### Working with Different Encodings
+
+Handle different text encodings:
+
+```python
+from gazpacho import get
+
+def get_with_encoding(url):
+    """Get content and handle encoding issues."""
+    try:
+        html = get(url)
+
+        # Try to decode if needed
+        if isinstance(html, bytes):
+            # Try common encodings
+            encodings = ['utf-8', 'latin-1', 'cp1252']
+            for encoding in encodings:
+                try:
+                    html = html.decode(encoding)
+                    print(f"Successfully decoded with {encoding}")
+                    break
+                except UnicodeDecodeError:
+                    continue
+
+        return html
+
+    except Exception as e:
+        print(f"Error fetching {url}: {e}")
+        return None
+
+# Test with international content
+html = get_with_encoding("https://example.com")
+```
+
+::: {.callout-note}
+
+## Try This: Build a URL Checker
+
+Create a tool to check if multiple URLs are accessible:
+
+```python
+from gazpacho import get
+import time
+
+def check_urls(urls, delay=1):
+    """Check accessibility of multiple URLs."""
+    results = []
+
+    for url in urls:
+        try:
+            start_time = time.time()
+            html = get(url)
+            response_time = time.time() - start_time
+
+            status = {
+                'url': url,
+                'success': True,
+                'content_length': len(html),
+                'response_time': round(response_time, 2),
+                'has_html': '<html>' in html.lower()
+            }
+
+        except Exception as e:
+            status = {
+                'url': url,
+                'success': False,
+                'error': str(e),
+                'response_time': None,
+                'content_length': 0,
+                'has_html': False
+            }
+
+        results.append(status)
+        print(f"Checked {url}: {'✓' if status['success'] else '✗'}")
+
+        # Be polite - delay between requests
+        time.sleep(delay)
+
+    return results
+
+# Test with various URLs
+test_urls = [
+    "https://example.com",
+    "https://httpbin.org/html",
+    "https://httpbin.org/status/404",  # Will return 404
+    "https://python.org"
+]
+
+results = check_urls(test_urls)
+
+# Print summary
+print("\nSummary:")
+for result in results:
+    if result['success']:
+        print(f"✓ {result['url']}: {result['content_length']} chars in {result['response_time']}s")
+    else:
+        print(f"✗ {result['url']}: {result.get('error', 'Unknown error')}")
+```
+
+:::
+
+## Real-World Example: Scraping PyPI
+
+Let's implement the example from the calmcode tutorial - scraping PyPI project pages:
+
+```python
+from gazpacho import get
+import re
+
+def scrape_pypi_project(package_name):
+    """Scrape basic information from a PyPI project page."""
+    url = f"https://pypi.org/project/{package_name}/"
+
+    try:
+        html = get(url)
+
+        # Extract project title
+        title_pattern = r'<h1[^>]*class="[^"]*package-header__name[^"]*"[^>]*>(.*?)</h1>'
+        title_match = re.search(title_pattern, html, re.DOTALL)
+        title = title_match.group(1).strip() if title_match else "Not found"
+
+        # Extract description
+        desc_pattern = r'<p[^>]*class="[^"]*package-description__summary[^"]*"[^>]*>(.*?)</p>'
+        desc_match = re.search(desc_pattern, html, re.DOTALL)
+        description = desc_match.group(1).strip() if desc_match else "Not found"
+
+        # Count download links
+        download_links = len(re.findall(r'href="[^"]*#files"', html))
+
+        return {
+            'package': package_name,
+            'title': title,
+            'description': description,
+            'download_links': download_links,
+            'url': url
+        }
+
+    except Exception as e:
+        return {
+            'package': package_name,
+            'error': str(e),
+            'url': url
+        }
+
+# Test with popular packages
+packages = ['pandas', 'requests', 'beautifulsoup4']
+
+for package in packages:
+    info = scrape_pypi_project(package)
+
+    if 'error' in info:
+        print(f"Error scraping {package}: {info['error']}")
+    else:
+        print(f"\nPackage: {info['package']}")
+        print(f"Title: {info['title']}")
+        print(f"Description: {info['description'][:100]}...")
+        print(f"Download links: {info['download_links']}")
+```
+
+## Handling Rate Limits and Politeness
+
+### Implementing Delays
+
+Always add delays between requests:
+
+```python
+from gazpacho import get
+import time
+import random
+
+def polite_scraper(urls, min_delay=1, max_delay=3):
+    """Scrape URLs with random delays to be polite."""
+    results = []
+
+    for i, url in enumerate(urls):
+        print(f"Scraping {i+1}/{len(urls)}: {url}")
+
+        try:
+            html = get(url)
+            results.append({'url': url, 'content': html, 'success': True})
+        except Exception as e:
+            results.append({'url': url, 'error': str(e), 'success': False})
+
+        # Random delay between min and max
+        if i < len(urls) - 1:  # Don't delay after last request
+            delay = random.uniform(min_delay, max_delay)
+            print(f"Waiting {delay:.1f} seconds...")
+            time.sleep(delay)
+
+    return results
+
+# Example usage
+urls = [
+    "https://httpbin.org/html",
+    "https://example.com",
+    "https://python.org"
+]
+
+results = polite_scraper(urls, min_delay=2, max_delay=4)
+print(f"\nSuccessfully scraped {sum(1 for r in results if r['success'])}/{len(results)} URLs")
+```
+
+### Checking robots.txt
+
+Always check robots.txt before scraping:
+
+```python
+from gazpacho import get
+from urllib.parse import urljoin, urlparse
+
+def check_robots_txt(url):
+    """Check robots.txt for a given URL."""
+    try:
+        # Parse the URL to get the base domain
+        parsed_url = urlparse(url)
+        base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
+        robots_url = urljoin(base_url, '/robots.txt')
+
+        print(f"Checking {robots_url}")
+        robots_content = get(robots_url)
+
+        return {
+            'url': robots_url,
+            'content': robots_content,
+            'exists': True
+        }
+
+    except Exception as e:
+        return {
+            'url': robots_url if 'robots_url' in locals() else 'Unknown',
+            'error': str(e),
+            'exists': False
+        }
+
+# Check robots.txt for a site
+robots_info = check_robots_txt("https://python.org/some/page")
+
+if robots_info['exists']:
+    print("robots.txt content:")
+    print(robots_info['content'][:500])  # First 500 characters
+else:
+    print(f"Could not access robots.txt: {robots_info['error']}")
+```
+
+::: {.callout-note}
+
+## Exercise: Build a Robust Web Scraper
+
+Create a comprehensive web scraper that combines all the techniques learned:
+
+```python
+from gazpacho import get
+import time
+import json
+import re
+from datetime import datetime
+
+class WebScraper:
+    def __init__(self, delay_range=(1, 3)):
+        self.delay_range = delay_range
+        self.session_log = []
+
+    def log_request(self, url, success, details):
+        """Log request details."""
+        log_entry = {
+            'timestamp': datetime.now().isoformat(),
+            'url': url,
+            'success': success,
+            'details': details
+        }
+        self.session_log.append(log_entry)
+
+    def get_with_validation(self, url):
+        """Get URL with comprehensive validation."""
+        try:
+            # Make request
+            start_time = time.time()
+            html = get(url)
+            response_time = time.time() - start_time
+
+            # Validate response
+            if not html or len(html) < 10:
+                raise ValueError("Response too short or empty")
+
+            details = {
+                'content_length': len(html),
+                'response_time': round(response_time, 2),
+                'content_type': self._detect_content_type(html)
+            }
+
+            self.log_request(url, True, details)
+            return html
+
+        except Exception as e:
+            self.log_request(url, False, {'error': str(e)})
+            raise e
+
+    def _detect_content_type(self, content):
+        """Detect content type."""
+        try:
+            json.loads(content)
+            return 'JSON'
+        except:
+            pass
+
+        if '<html>' in content.lower():
+            return 'HTML'
+
+        return 'TEXT'
+
+    def scrape_multiple(self, urls):
+        """Scrape multiple URLs with proper delays."""
+        results = []
+
+        for i, url in enumerate(urls):
+            try:
+                print(f"Scraping {i+1}/{len(urls)}: {url}")
+                html = self.get_with_validation(url)
+                results.append({'url': url, 'content': html, 'success': True})
+
+            except Exception as e:
+                print(f"Error scraping {url}: {e}")
+                results.append({'url': url, 'error': str(e), 'success': False})
+
+            # Delay between requests (except for last one)
+            if i < len(urls) - 1:
+                delay = random.uniform(*self.delay_range)
+                time.sleep(delay)
+
+        return results
+
+    def get_session_stats(self):
+        """Get statistics for the current session."""
+        total_requests = len(self.session_log)
+        successful_requests = sum(1 for log in self.session_log if log['success'])
+
+        return {
+            'total_requests': total_requests,
+            'successful_requests': successful_requests,
+            'success_rate': successful_requests / total_requests if total_requests > 0 else 0,
+            'log': self.session_log
+        }
+
+# Test the robust scraper
+import random
+
+scraper = WebScraper(delay_range=(1, 2))
+
+test_urls = [
+    "https://example.com",
+    "https://httpbin.org/html",
+    "https://httpbin.org/json",
+    "https://httpbin.org/status/404"  # This will fail
+]
+
+results = scraper.scrape_multiple(test_urls)
+stats = scraper.get_session_stats()
+
+print(f"\nSession Statistics:")
+print(f"Total requests: {stats['total_requests']}")
+print(f"Successful requests: {stats['successful_requests']}")
+print(f"Success rate: {stats['success_rate']:.1%}")
+```
+
+:::
+
+## Best Practices Summary
+
+### Error Handling
+
+- Always wrap requests in try-catch blocks
+- Implement retry logic with exponential backoff
+- Validate responses before processing
+- Log errors for debugging
+
+### Respectful Scraping
+
+- Check robots.txt before scraping
+- Add delays between requests (1-3 seconds minimum)
+- Use appropriate user agents
+- Monitor your request rate
+
+### Code Organization
+
+- Create reusable functions for common tasks
+- Implement logging for debugging
+- Separate data fetching from data processing
+- Handle different content types appropriately
+
+::: {.callout-important}
+
+## Key Points
+
+- The `get()` function is your primary tool for HTTP requests
+- Always implement error handling and retry logic
+- Validate responses before processing
+- Be respectful with request timing and frequency
+- Check robots.txt and respect website terms of service
+- Log requests for debugging and monitoring
+- Handle different content types (HTML, JSON, text) appropriately
+- Test with various URLs to ensure robustness
+:::
+
+[← Previous: Gazpacho Basics](01-gazpacho-basics.qmd) | [Next: Parsing with Soup →](03-parsing-soup.qmd)

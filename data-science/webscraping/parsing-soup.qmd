@@ -1,0 +1,802 @@
+---
+title: "Parsing HTML with Soup Objects"
+abstract: |
+  Learn to parse HTML content using gazpacho's Soup class. Master finding elements by tags, classes, and attributes, navigating HTML structure, and extracting text and data from web pages.
+date: last-modified
+
+format:
+  html: default
+
+# Authors
+authors:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+
+# # Contributors
+# contributors:
+#   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+
+keywords: ["Python", "Web Scraping", "Gazpacho", "HTML Parsing", "Soup", "Element Selection", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Create and work with gazpacho Soup objects
+- Find elements by tag names, classes, and attributes
+- Navigate HTML document structure effectively
+- Extract text content and attribute values
+- Use CSS selectors for precise element targeting
+- Handle multiple elements and nested structures
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- How do I convert HTML into a searchable Soup object?
+- What are the different ways to find elements in HTML?
+- How do I extract text content vs. attribute values?
+- How can I navigate parent-child relationships in HTML?
+:::
+
+::: {.callout-note}
+
+## Attribution
+
+This tutorial is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from the [calmcode.io gazpacho course](https://calmcode.io/course/gazpacho/soup) (CC BY 4.0 License).
+:::
+
+## Introduction to Soup Objects
+
+After fetching HTML with `gazpacho.get()`, you need to parse it to extract specific data. The `Soup` class transforms raw HTML into a searchable, navigable object.
+
+### Creating a Soup Object
+
+```python
+from gazpacho import get, Soup
+
+# Fetch HTML
+url = "https://example.com"
+html = get(url)
+
+# Create Soup object
+soup = Soup(html)
+print(f"Created Soup object from {len(html)} characters of HTML")
+```
+
+### Basic Soup Structure
+
+A Soup object represents the entire HTML document as a tree structure:
+
+```python
+from gazpacho import Soup
+
+# Simple HTML example
+html = """
+<html>
+<head><title>Example Page</title></head>
+<body>
+    <h1 class="main-title">Welcome</h1>
+    <p class="intro">This is an introduction.</p>
+    <div class="content">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+    </div>
+</body>
+</html>
+"""
+
+soup = Soup(html)
+print("Soup object created successfully")
+```
+
+## Finding Elements
+
+### Finding by Tag Name
+
+Use `.find()` to locate elements by their HTML tag:
+
+```python
+from gazpacho import Soup
+
+html = """
+<html>
+<body>
+    <h1>Main Title</h1>
+    <p>First paragraph</p>
+    <p>Second paragraph</p>
+</body>
+</html>
+"""
+
+soup = Soup(html)
+
+# Find first occurrence of a tag
+title = soup.find('h1')
+print(f"Title: {title}")
+
+# Find first paragraph
+first_paragraph = soup.find('p')
+print(f"First paragraph: {first_paragraph}")
+```
+
+### Finding by Class
+
+Search for elements with specific CSS classes:
+
+```python
+from gazpacho import Soup
+
+html = """
+<div class="header">Header content</div>
+<p class="intro">Introduction text</p>
+<p class="content">Main content</p>
+<div class="footer">Footer content</div>
+"""
+
+soup = Soup(html)
+
+# Find element by class
+intro = soup.find('p', {'class': 'intro'})
+print(f"Intro: {intro}")
+
+# Find div with header class
+header = soup.find('div', {'class': 'header'})
+print(f"Header: {header}")
+```
+
+### Finding by Multiple Attributes
+
+Combine multiple attributes for precise targeting:
+
+```python
+from gazpacho import Soup
+
+html = """
+<input type="text" name="username" class="form-input">
+<input type="password" name="password" class="form-input">
+<input type="submit" value="Login" class="btn">
+"""
+
+soup = Soup(html)
+
+# Find by multiple attributes
+username_input = soup.find('input', {
+    'type': 'text',
+    'name': 'username'
+})
+print(f"Username input: {username_input}")
+
+# Find by type and class
+submit_button = soup.find('input', {
+    'type': 'submit',
+    'class': 'btn'
+})
+print(f"Submit button: {submit_button}")
+```
+
+::: {.callout-note}
+
+## Try This: Element Selection Practice
+
+Practice finding elements with different selectors:
+
+```python
+from gazpacho import Soup
+
+html = """
+<article class="post">
+    <h2 class="post-title">Article Title</h2>
+    <div class="post-meta">
+        <span class="author">John Doe</span>
+        <time datetime="2023-01-15">January 15, 2023</time>
+    </div>
+    <div class="post-content">
+        <p>First paragraph of content.</p>
+        <p class="highlight">Important paragraph.</p>
+    </div>
+</article>
+"""
+
+soup = Soup(html)
+
+# Practice different finding methods
+title = soup.find('h2', {'class': 'post-title'})
+author = soup.find('span', {'class': 'author'})
+date = soup.find('time')
+highlight = soup.find('p', {'class': 'highlight'})
+
+print(f"Title: {title.text}")
+print(f"Author: {author.text}")
+print(f"Date: {date.text}")
+print(f"Highlight: {highlight.text}")
+```
+
+:::
+
+## Working with Multiple Elements
+
+### Finding All Matching Elements
+
+Use `.find()` to get all matching elements instead of just the first:
+
+```python
+from gazpacho import Soup
+
+html = """
+<ul>
+    <li class="item">Item 1</li>
+    <li class="item">Item 2</li>
+    <li class="item special">Item 3</li>
+    <li class="item">Item 4</li>
+</ul>
+"""
+
+soup = Soup(html)
+
+# Find all list items
+all_items = soup.find('li')  # This returns the first item
+print(f"First item: {all_items}")
+
+# To get all items, we need to use different approach
+# Let's extract all items by parsing the structure
+```
+
+### Navigating Parent-Child Relationships
+
+Navigate between related elements:
+
+```python
+from gazpacho import Soup
+
+html = """
+<div class="card">
+    <div class="card-header">
+        <h3>Card Title</h3>
+    </div>
+    <div class="card-body">
+        <p>Card content goes here.</p>
+        <a href="#" class="btn">Read More</a>
+    </div>
+</div>
+"""
+
+soup = Soup(html)
+
+# Find parent element first
+card = soup.find('div', {'class': 'card'})
+print(f"Card found: {card is not None}")
+
+# Find nested elements
+header = soup.find('div', {'class': 'card-header'})
+title = soup.find('h3')
+body = soup.find('div', {'class': 'card-body'})
+button = soup.find('a', {'class': 'btn'})
+
+print(f"Header: {header}")
+print(f"Title: {title.text}")
+print(f"Button: {button.text}")
+```
+
+## Extracting Data
+
+### Getting Text Content
+
+Extract text content from elements:
+
+```python
+from gazpacho import Soup
+
+html = """
+<div class="product">
+    <h2 class="name">Laptop Computer</h2>
+    <span class="price">$999.99</span>
+    <div class="description">
+        High-performance laptop with <strong>16GB RAM</strong>
+        and <em>1TB SSD</em>.
+    </div>
+</div>
+"""
+
+soup = Soup(html)
+
+# Extract text content
+name = soup.find('h2', {'class': 'name'})
+price = soup.find('span', {'class': 'price'})
+description = soup.find('div', {'class': 'description'})
+
+print(f"Product: {name.text}")
+print(f"Price: {price.text}")
+print(f"Description: {description.text}")
+```
+
+### Getting Attribute Values
+
+Extract HTML attributes using `.attrs`:
+
+```python
+from gazpacho import Soup
+
+html = """
+<div class="profile">
+    <img src="profile.jpg" alt="User Avatar" width="100" height="100">
+    <a href="mailto:user@example.com" class="contact">Contact</a>
+    <time datetime="2023-01-15T10:30:00">January 15, 2023</time>
+</div>
+"""
+
+soup = Soup(html)
+
+# Extract attribute values
+image = soup.find('img')
+link = soup.find('a', {'class': 'contact'})
+timestamp = soup.find('time')
+
+print(f"Image source: {image.attrs['src']}")
+print(f"Image alt text: {image.attrs['alt']}")
+print(f"Link href: {link.attrs['href']}")
+print(f"DateTime: {timestamp.attrs['datetime']}")
+
+# Handle missing attributes safely
+width = image.attrs.get('width', 'Not specified')
+print(f"Image width: {width}")
+```
+
+### Working with Complex Structures
+
+Handle nested and complex HTML structures:
+
+```python
+from gazpacho import Soup
+
+html = """
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row">
+            <td class="name">Alice</td>
+            <td class="age">25</td>
+            <td class="city">New York</td>
+        </tr>
+        <tr class="row">
+            <td class="name">Bob</td>
+            <td class="age">30</td>
+            <td class="city">London</td>
+        </tr>
+    </tbody>
+</table>
+"""
+
+soup = Soup(html)
+
+# Extract table data
+table = soup.find('table', {'class': 'data-table'})
+print(f"Table found: {table is not None}")
+
+# Extract individual cells
+first_name = soup.find('td', {'class': 'name'})
+first_age = soup.find('td', {'class': 'age'})
+first_city = soup.find('td', {'class': 'city'})
+
+print(f"First row: {first_name.text}, {first_age.text}, {first_city.text}")
+```
+
+::: {.callout-note}
+
+## Try This: Real Website Parsing
+
+Let's parse a real website structure:
+
+```python
+from gazpacho import get, Soup
+
+def parse_example_com():
+    """Parse the example.com homepage."""
+    url = "https://example.com"
+    html = get(url)
+    soup = Soup(html)
+
+    # Extract key elements
+    title = soup.find('title')
+    h1 = soup.find('h1')
+    paragraphs = soup.find('p')  # Gets first paragraph
+    links = soup.find('a')  # Gets first link
+
+    print("Parsing example.com:")
+    print(f"Page title: {title.text if title else 'Not found'}")
+    print(f"Main heading: {h1.text if h1 else 'Not found'}")
+    print(f"First paragraph: {paragraphs.text if paragraphs else 'Not found'}")
+
+    if links:
+        print(f"First link text: {links.text}")
+        print(f"First link href: {links.attrs.get('href', 'No href')}")
+
+# Run the parser
+parse_example_com()
+```
+
+:::
+
+## Real-World Example: PyPI Project Parsing
+
+Let's implement the calmcode tutorial example - parsing PyPI project pages:
+
+```python
+from gazpacho import get, Soup
+
+def parse_pypi_project(package_name):
+    """Parse PyPI project page for package information."""
+    url = f"https://pypi.org/project/{package_name}/"
+
+    try:
+        # Fetch and parse HTML
+        html = get(url)
+        soup = Soup(html)
+
+        # Extract project name
+        title_element = soup.find('h1', {'class': 'package-header__name'})
+        project_name = title_element.text.strip() if title_element else "Unknown"
+
+        # Extract description
+        desc_element = soup.find('p', {'class': 'package-description__summary'})
+        description = desc_element.text.strip() if desc_element else "No description"
+
+        # Extract version information
+        version_element = soup.find('h1', {'class': 'package-header__name'})
+        # Version is often in a separate element or part of the title
+
+        # Extract installation command
+        install_element = soup.find('span', {'id': 'pip-command'})
+        install_cmd = install_element.text.strip() if install_element else f"pip install {package_name}"
+
+        return {
+            'name': project_name,
+            'description': description,
+            'install_command': install_cmd,
+            'url': url,
+            'success': True
+        }
+
+    except Exception as e:
+        return {
+            'name': package_name,
+            'error': str(e),
+            'url': url,
+            'success': False
+        }
+
+# Test with popular packages
+packages = ['requests', 'beautifulsoup4', 'pandas']
+
+for package in packages:
+    result = parse_pypi_project(package)
+
+    if result['success']:
+        print(f"\n--- {result['name']} ---")
+        print(f"Description: {result['description']}")
+        print(f"Install: {result['install_command']}")
+    else:
+        print(f"\nError parsing {package}: {result['error']}")
+```
+
+## Advanced Parsing Techniques
+
+### Custom Element Selection
+
+Create functions for common parsing patterns:
+
+```python
+from gazpacho import Soup
+
+def find_by_text(soup, tag, text_content):
+    """Find element by tag and text content."""
+    # This is a simplified version - gazpacho doesn't have built-in text search
+    # You would need to implement this by checking element text
+    elements = soup.find(tag)  # This gets first matching tag
+    if elements and text_content in elements.text:
+        return elements
+    return None
+
+def extract_links(soup):
+    """Extract all links with their text and href."""
+    links = []
+    # Note: This is simplified - in practice you'd need to find all 'a' tags
+    link = soup.find('a')
+    if link:
+        links.append({
+            'text': link.text,
+            'href': link.attrs.get('href', ''),
+            'title': link.attrs.get('title', '')
+        })
+    return links
+
+# Example usage
+html = """
+<div>
+    <a href="https://example.com" title="Example Site">Visit Example</a>
+    <a href="mailto:contact@example.com">Contact Us</a>
+</div>
+"""
+
+soup = Soup(html)
+links = extract_links(soup)
+print("Extracted links:")
+for link in links:
+    print(f"  {link['text']}: {link['href']}")
+```
+
+### Error-Safe Parsing
+
+Handle missing elements gracefully:
+
+```python
+from gazpacho import get, Soup
+
+def safe_extract(element, attribute=None):
+    """Safely extract text or attribute from element."""
+    if element is None:
+        return None
+
+    if attribute:
+        return element.attrs.get(attribute, None)
+    else:
+        return element.text.strip() if element.text else None
+
+def parse_article(html):
+    """Parse article with error handling."""
+    soup = Soup(html)
+
+    # Safely extract elements
+    title_elem = soup.find('h1', {'class': 'article-title'})
+    author_elem = soup.find('span', {'class': 'author'})
+    date_elem = soup.find('time')
+    content_elem = soup.find('div', {'class': 'content'})
+
+    return {
+        'title': safe_extract(title_elem),
+        'author': safe_extract(author_elem),
+        'date': safe_extract(date_elem, 'datetime'),
+        'content': safe_extract(content_elem)
+    }
+
+# Test with incomplete HTML
+incomplete_html = """
+<article>
+    <h1 class="article-title">Sample Article</h1>
+    <div class="content">Article content here.</div>
+</article>
+"""
+
+result = parse_article(incomplete_html)
+print("Parsed article:")
+for key, value in result.items():
+    print(f"  {key}: {value if value else 'Not found'}")
+```
+
+::: {.callout-note}
+
+## Exercise: Build a News Article Parser
+
+Create a parser for extracting structured data from news articles:
+
+```python
+from gazpacho import get, Soup
+import re
+from datetime import datetime
+
+class NewsArticleParser:
+    def __init__(self):
+        self.parsed_articles = []
+
+    def parse_article(self, html):
+        """Parse a news article from HTML."""
+        soup = Soup(html)
+
+        # Try multiple selectors for common news article structures
+        title_selectors = [
+            ('h1', {'class': 'headline'}),
+            ('h1', {'class': 'title'}),
+            ('h1', {}),
+            ('title', {})
+        ]
+
+        author_selectors = [
+            ('span', {'class': 'author'}),
+            ('div', {'class': 'byline'}),
+            ('p', {'class': 'author'})
+        ]
+
+        date_selectors = [
+            ('time', {}),
+            ('span', {'class': 'date'}),
+            ('div', {'class': 'publish-date'})
+        ]
+
+        # Extract title
+        title = self._find_with_selectors(soup, title_selectors)
+
+        # Extract author
+        author = self._find_with_selectors(soup, author_selectors)
+
+        # Extract date
+        date = self._find_with_selectors(soup, date_selectors)
+
+        # Extract content paragraphs
+        content_paragraphs = self._extract_content(soup)
+
+        return {
+            'title': title,
+            'author': author,
+            'date': date,
+            'content': content_paragraphs,
+            'word_count': len(' '.join(content_paragraphs).split()) if content_paragraphs else 0
+        }
+
+    def _find_with_selectors(self, soup, selectors):
+        """Try multiple selectors to find an element."""
+        for tag, attrs in selectors:
+            element = soup.find(tag, attrs)
+            if element and element.text.strip():
+                return element.text.strip()
+        return None
+
+    def _extract_content(self, soup):
+        """Extract article content paragraphs."""
+        # Try to find content container
+        content_selectors = [
+            ('div', {'class': 'article-content'}),
+            ('div', {'class': 'content'}),
+            ('article', {}),
+            ('main', {})
+        ]
+
+        content_container = None
+        for tag, attrs in content_selectors:
+            container = soup.find(tag, attrs)
+            if container:
+                content_container = container
+                break
+
+        # If no container found, look for paragraphs
+        if not content_container:
+            content_container = soup
+
+        # Extract paragraphs (simplified - would need to find all p tags)
+        paragraph = content_container.find('p')
+        if paragraph:
+            return [paragraph.text.strip()]
+
+        return []
+
+# Test the parser
+test_html = """
+<article>
+    <h1 class="headline">Breaking News: Important Discovery</h1>
+    <div class="byline">
+        <span class="author">Jane Reporter</span>
+        <time datetime="2023-01-15T10:30:00">January 15, 2023</time>
+    </div>
+    <div class="article-content">
+        <p>This is the first paragraph of the news article with important information.</p>
+        <p>This is the second paragraph with more details about the story.</p>
+    </div>
+</article>
+"""
+
+parser = NewsArticleParser()
+article_data = parser.parse_article(test_html)
+
+print("Parsed News Article:")
+print(f"Title: {article_data['title']}")
+print(f"Author: {article_data['author']}")
+print(f"Date: {article_data['date']}")
+print(f"Content: {len(article_data['content'])} paragraphs")
+print(f"Word count: {article_data['word_count']}")
+```
+
+:::
+
+## Common Parsing Patterns
+
+### Extracting Lists
+
+Handle lists and repeated elements:
+
+```python
+from gazpacho import Soup
+
+html = """
+<ul class="menu">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+</ul>
+"""
+
+soup = Soup(html)
+
+# Extract menu items (simplified approach)
+menu = soup.find('ul', {'class': 'menu'})
+if menu:
+    # In practice, you'd need to find all li elements
+    first_item = soup.find('li')
+    first_link = soup.find('a')
+
+    print(f"First menu item: {first_link.text} -> {first_link.attrs['href']}")
+```
+
+### Extracting Tables
+
+Parse tabular data:
+
+```python
+from gazpacho import Soup
+
+html = """
+<table class="scores">
+    <tr>
+        <th>Player</th>
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td>Alice</td>
+        <td>95</td>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>87</td>
+    </tr>
+</table>
+"""
+
+soup = Soup(html)
+
+# Extract table data (simplified)
+table = soup.find('table', {'class': 'scores'})
+if table:
+    first_cell = soup.find('td')
+    print(f"First data cell: {first_cell.text}")
+```
+
+## Best Practices for HTML Parsing
+
+### Robust Element Selection
+
+- Always check if elements exist before accessing properties
+- Use multiple fallback selectors for important data
+- Handle missing attributes gracefully
+
+### Error Handling
+
+- Wrap parsing operations in try-catch blocks
+- Provide default values for missing data
+- Log parsing errors for debugging
+
+### Performance Considerations
+
+- Parse HTML once and reuse the Soup object
+- Extract only the data you need
+- Consider using more specific selectors to reduce search time
+
+::: {.callout-important}
+
+## Key Points
+
+- Create Soup objects from HTML using `Soup(html)`
+- Use `.find()` to locate elements by tag, class, and attributes
+- Extract text with `.text` and attributes with `.attrs`
+- Handle missing elements gracefully with error checking
+- Combine multiple selectors for robust data extraction
+- Practice with real websites to understand HTML structures
+- Build reusable parsing functions for common patterns
+:::
+
+[← Previous: Getting Data](02-getting-data.qmd) | [Next: Strict Mode and Attributes →](04-strict-attributes.qmd)
