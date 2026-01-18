@@ -1,0 +1,581 @@
+---
+title: "Labels, Scales, and Customization"
+abstract: |
+  Learn how to customize plots with clear labels and titles. Control scales and axes. Format plots for professional presentations and publications.
+date: last-modified
+
+format:
+  html: default
+
+# Authors
+authors-ipa:
+  - "[Author Name](https://poverty-action.org/people/author_name)"
+
+# Contributors
+contributors:
+  - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+
+keywords: ["Python", "Data Visualization", "Seaborn", "Customization"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Add clear, informative labels to plots
+- Customize axis titles and legends
+- Control scale transformations and limits
+- Format tick labels and numbers
+- Create publication-ready visualizations
+- Apply accessibility best practices
+
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- How do I add titles and labels to my plots?
+- How do I control axis scales and limits?
+- How do I format numbers and dates on axes?
+- How do I make my plots presentation-ready?
+
+:::
+
+## The Importance of Clear Labels
+
+A visualization without proper labels is like a research paper without citations - the data might be there, but the message is unclear. Consider your audience:
+
+- **Policymakers** need context and clear units
+- **Community members** need plain language
+- **Colleagues** need technical precision
+- **Everyone** needs to understand what they're looking at
+
+## Setting Up
+
+```python
+import seaborn as sns
+import seaborn.objects as so
+import pandas as pd
+import numpy as np
+
+# Load data
+penguins = sns.load_dataset("penguins").dropna()
+```
+
+## Adding Labels with .label()
+
+The `.label()` method adds titles and axis labels to your plot:
+
+```python
+# Basic plot without labels - not ready to share!
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot())
+)
+
+# Now with proper labels - ready for presentation!
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot())
+    .label(
+        title="Relationship Between Flipper Length and Body Mass in Penguins",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+```
+
+### Components of .label()
+
+The `.label()` method accepts several arguments:
+
+- `title` - Main plot title
+- `x` - X-axis label
+- `y` - Y-axis label
+- `color` - Legend title for color aesthetic
+- `pointsize` - Legend title for size aesthetic
+- `marker` - Legend title for shape aesthetic
+
+```python
+# Complex plot with multiple aesthetics labeled
+(
+    so.Plot(
+        penguins,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        color="species",
+        pointsize="body_mass_g"
+    )
+    .add(so.Dot(alpha=0.6))
+    .label(
+        title="Penguin Bill Dimensions by Species and Body Mass",
+        x="Bill Length (mm)",
+        y="Bill Depth (mm)",
+        color="Penguin Species",
+        pointsize="Body Mass (g)"
+    )
+)
+```
+
+## Multi-line Titles and Labels
+
+For longer titles, use `\n` for line breaks:
+
+```python
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot())
+    .label(
+        title="Impact of Flipper Length on Body Mass:\nAnalysis of Three Penguin Species in Antarctica",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)"
+    )
+)
+```
+
+## Controlling Scales with .scale()
+
+The `.scale()` method controls how data values map to visual properties.
+
+### Continuous Scales
+
+```python
+# Default linear scale
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
+    .add(so.Dot())
+    .label(title="Linear Scale (Default)")
+)
+
+# Logarithmic scale (useful for data spanning orders of magnitude)
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
+    .add(so.Dot())
+    .scale(y="log")
+    .label(title="Logarithmic Y-axis")
+)
+```
+
+### Setting Axis Limits
+
+Control the range of your axes:
+
+```python
+# Zoom in on a specific range
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot())
+    .scale(
+        x=(170, 230),  # Only show flipper lengths between 170-230mm
+        y=(2500, 6500)  # Only show body mass between 2500-6500g
+    )
+    .label(
+        title="Penguin Measurements (Zoomed)",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)"
+    )
+)
+```
+
+::: {.callout-warning}
+
+## Be Careful with Axis Limits
+
+Cutting off parts of your data range can be misleading! Always:
+
+- Indicate if you've zoomed in
+- Ensure you're not hiding important patterns
+- Consider starting axes at zero for bar charts
+
+:::
+
+### Color Scales
+
+Control color palettes:
+
+```python
+# Using a different color palette
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot(pointsize=8))
+    .scale(color="colorblind")  # Colorblind-friendly palette
+    .label(
+        title="Colorblind-Friendly Palette",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+```
+
+Common palettes for categorical data:
+
+- `"colorblind"` - Safe for colorblind viewers
+- `"deep"` - Seaborn default
+- `"pastel"` - Softer colors
+- `"dark"` - Darker tones
+
+For continuous data:
+
+- `"viridis"` - Perceptually uniform
+- `"rocket"` - Sequential
+- `"coolwarm"` - Diverging
+
+## Formatting Tick Labels
+
+### Custom Tick Locations
+
+```python
+# Specify exactly which ticks to show
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
+    .add(so.Dot())
+    .scale(
+        x=so.Continuous().tick(at=[180, 200, 220]),
+        y=so.Continuous().tick(at=[3000, 4000, 5000, 6000])
+    )
+)
+```
+
+### Number Formatting
+
+For research data with different units:
+
+```python
+# Create income data example
+np.random.seed(42)
+income_data = pd.DataFrame({
+    'education_years': np.random.uniform(0, 20, 100),
+    'annual_income': np.random.uniform(50000, 500000, 100),
+    'county': np.random.choice(['Nairobi', 'Kisumu', 'Mombasa'], 100)
+})
+
+# Format as thousands with 'K' suffix
+from matplotlib.ticker import FuncFormatter
+
+(
+    so.Plot(income_data, x="education_years", y="annual_income", color="county")
+    .add(so.Dot(alpha=0.6))
+    .label(
+        title="Income by Education Level Across Counties",
+        x="Years of Education",
+        y="Annual Income (KSh)",
+        color="County"
+    )
+)
+```
+
+## Real Research Example: Program Impact
+
+Let's create a complete, publication-ready visualization:
+
+```python
+# Create realistic program evaluation data
+np.random.seed(123)
+periods = [0, 6, 12, 18, 24]  # Months
+treatment_baseline = 45
+control_baseline = 46
+
+program_data = pd.DataFrame({
+    'month': periods * 2,
+    'outcome': (
+        [control_baseline, 47, 48, 49, 50] +  # Control group
+        [treatment_baseline, 50, 55, 60, 65]   # Treatment group
+    ),
+    'lower_ci': (
+        [43, 44, 45, 46, 47] +
+        [43, 47, 52, 57, 62]
+    ),
+    'upper_ci': (
+        [47, 50, 51, 52, 53] +
+        [47, 53, 58, 63, 68]
+    ),
+    'group': ['Control'] * 5 + ['Treatment'] * 5
+})
+
+# Create publication-ready plot
+(
+    so.Plot(program_data, x="month", color="group")
+    .add(so.Band(alpha=0.2), ymin="lower_ci", ymax="upper_ci")
+    .add(so.Line(linewidth=2.5), y="outcome")
+    .add(so.Dot(pointsize=10), y="outcome")
+    .scale(
+        x=so.Continuous().tick(at=[0, 6, 12, 18, 24]),
+        color=so.Nominal(["#E69F00", "#56B4E9"])  # Custom colors
+    )
+    .label(
+        title="Impact of Agricultural Training Program on Crop Yields\nRandomized Controlled Trial: 2021-2023",
+        x="Months Since Baseline",
+        y="Average Yield (bags per acre)",
+        color="Group"
+    )
+)
+```
+
+This plot is ready for:
+
+- Stakeholder presentations
+- Reports
+- Academic papers
+- Policy briefs
+
+## Best Practices for Labels
+
+### 1. Be Specific with Units
+
+❌ Bad: `x="Income"`
+✅ Good: `x="Monthly Income (KSh)"`
+
+❌ Bad: `y="Distance"`
+✅ Good: `y="Distance to Health Facility (km)"`
+
+### 2. Use Plain Language
+
+❌ Bad: `title="DV regressed on IV controlling for confounds"`
+✅ Good: `title="Relationship Between Education and Income, Controlling for Age"`
+
+### 3. Provide Context
+
+❌ Bad: `title="Survey Results"`
+✅ Good: `title="Household Food Security Survey Results: Kisumu County, 2023"`
+
+### 4. Capitalize Appropriately
+
+- **Title case** for titles: "Impact of Agricultural Program"
+- **Sentence case** for axes: "Years of education"
+- **Be consistent** throughout
+
+## Accessibility Guidelines
+
+### Color Contrast
+
+```python
+# Check your palette is colorblind-friendly
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot(pointsize=8))
+    .scale(color="colorblind")
+    .label(
+        title="Colorblind-Safe Visualization",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)"
+    )
+)
+```
+
+### Combine Visual Cues
+
+Use multiple aesthetics for critical distinctions:
+
+```python
+# Color + shape for maximum accessibility
+(
+    so.Plot(
+        penguins,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        color="species",
+        marker="species"  # Shape also encodes species
+    )
+    .add(so.Dot(pointsize=8))
+    .label(
+        title="Penguin Bill Measurements (Accessible Design)",
+        x="Bill Length (mm)",
+        y="Bill Depth (mm)",
+        color="Species"
+    )
+)
+```
+
+## Exercises
+
+::: {.callout-note}
+
+## Exercise 1: Label a Complex Plot
+
+Create a plot with the penguins data that:
+
+- Shows flipper length vs. body mass
+- Uses color for species and size for bill length
+- Has clear, descriptive labels for ALL aesthetics
+- Has an informative title
+
+```python
+# Your code here
+```
+
+::: {.callout-tip collapse="true"}
+
+## Solution 1
+
+```python
+(
+    so.Plot(
+        penguins,
+        x="flipper_length_mm",
+        y="body_mass_g",
+        color="species",
+        pointsize="bill_length_mm"
+    )
+    .add(so.Dot(alpha=0.6))
+    .label(
+        title="Penguin Morphology: Flipper Length, Body Mass, and Bill Length by Species",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)",
+        color="Species",
+        pointsize="Bill Length (mm)"
+    )
+)
+```
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 2: Scale Transformation
+
+Create sample data for household income (which often follows a log-normal distribution):
+
+```python
+income_data = pd.DataFrame({
+    'households': range(100),
+    'income': np.random.lognormal(10, 1, 100)
+})
+```
+
+Create two plots:
+
+1. One with a linear y-axis
+2. One with a logarithmic y-axis
+
+Which is more effective for showing the distribution?
+
+::: {.callout-tip collapse="true"}
+
+## Solution 2
+
+```python
+# Linear scale
+(
+    so.Plot(income_data, x="households", y="income")
+    .add(so.Dot())
+    .label(
+        title="Household Income (Linear Scale)",
+        x="Household ID",
+        y="Annual Income (KSh)"
+    )
+)
+
+# Log scale
+(
+    so.Plot(income_data, x="households", y="income")
+    .add(so.Dot())
+    .scale(y="log")
+    .label(
+        title="Household Income (Log Scale)",
+        x="Household ID",
+        y="Annual Income (KSh, log scale)"
+    )
+)
+```
+
+The log scale is often more effective for income data because it:
+
+- Shows relative differences more clearly
+- Prevents a few high values from compressing the rest
+- Makes the distribution easier to interpret
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 3: Publication-Ready Plot
+
+Imagine you're preparing a plot for a policy brief on education outcomes. Create a plot that shows test scores across different schools with these requirements:
+
+1. Create sample data for 5 schools with 20 students each
+2. Use appropriate labels with units
+3. Use a colorblind-friendly palette
+4. Add an informative title that includes location and year
+5. Make sure legend labels are clear
+
+::: {.callout-tip collapse="true"}
+
+## Solution 3
+
+```python
+# Create data
+np.random.seed(42)
+schools = ['School A', 'School B', 'School C', 'School D', 'School E']
+test_data = pd.DataFrame({
+    'school': np.repeat(schools, 20),
+    'score': np.concatenate([
+        np.random.normal(75, 10, 20),  # School A
+        np.random.normal(68, 12, 20),  # School B
+        np.random.normal(82, 8, 20),   # School C
+        np.random.normal(71, 11, 20),  # School D
+        np.random.normal(79, 9, 20)    # School E
+    ])
+})
+
+# Create publication-ready plot
+(
+    so.Plot(test_data, x="school", y="score", color="school")
+    .add(so.Bar(alpha=0.7))
+    .add(so.Dot(alpha=0.3), so.Jitter(0.3))
+    .scale(
+        color="colorblind",
+        y=(0, 100)  # Test scores range from 0-100
+    )
+    .label(
+        title="Primary School Mathematics Test Scores: Nairobi County, 2023",
+        x="School",
+        y="Test Score (out of 100)",
+        color="School"
+    )
+)
+```
+
+:::
+
+:::
+
+## Quick Reference: Customization Methods
+
+| Method | Purpose | Example |
+| -------- | --------- | --------- |
+| `.label()` | Add titles and labels | `.label(title="My Title", x="X Label")` |
+| `.scale()` | Control scales | `.scale(y="log", color="colorblind")` |
+| `.scale(x=(min, max))` | Set axis limits | `.scale(x=(0, 100))` |
+| `.scale(color=palette)` | Set color palette | `.scale(color="viridis")` |
+
+::: {.callout-important}
+
+## Key Points
+
+- Always label your plots with title, axis labels, and legend titles
+- Include units in axis labels (mm, KSh, %, etc.)
+- Use `.label()` to add all text elements
+- Use `.scale()` to control axis limits, transformations, and palettes
+- Consider logarithmic scales for data spanning orders of magnitude
+- Use colorblind-friendly palettes for accessibility
+- Combine multiple visual cues (color + shape) for critical distinctions
+- Write labels for your audience - use plain language
+- A good plot should be understandable without additional explanation
+
+:::
+
+::: {.callout-tip}
+
+## Looking Ahead
+
+In the next lesson, we'll learn about faceting - creating multiple subplots to compare across categories. We'll also explore how to layer multiple marks and create complex multi-panel figures for comprehensive data stories.
+
+:::

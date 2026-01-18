@@ -1,0 +1,339 @@
+---
+title: "Introduction to Data Visualization with Seaborn"
+abstract: |
+  Understand the importance of data visualization in research. Learn about the seaborn library and its modern objects interface. Create your first visualization.
+date: last-modified
+
+format:
+  html: default
+
+# Authors
+authors-ipa:
+  - "[Author Name](https://poverty-action.org/people/author_name)"
+
+# Contributors
+contributors:
+  - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+
+keywords: ["Python", "Data Visualization", "Seaborn", "Data Science"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Understand why data visualization is essential for research and policy work
+- Learn about the seaborn library and its objects interface
+- Install and import seaborn
+- Create your first visualization with seaborn.objects
+- Understand the basic structure of a seaborn.objects plot
+
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- Why is data visualization important in research?
+- What is seaborn and why use it?
+- What makes seaborn.objects different from traditional plotting?
+- How do I create a simple visualization?
+
+:::
+
+## Why Data Visualization Matters in Research
+
+As research professionals working on policy and development issues, we often deal with complex datasets containing information about communities, programs, and interventions. Data visualization helps us:
+
+- **Discover patterns and trends** that might be hidden in tables of numbers
+- **Communicate findings** effectively to stakeholders, policymakers, and communities
+- **Quality check our data** by spotting outliers and errors
+- **Tell stories** that drive evidence-based decision making
+
+Consider this scenario: You've collected data on household income and education levels across several Kenyan counties. Which would be more effective in a stakeholder meeting - showing a table of 500 rows of numbers, or a clear visualization that immediately reveals the relationship between these variables?
+
+## Introduction to Seaborn
+
+[Seaborn](https://seaborn.pydata.org/) is a Python data visualization library built on top of matplotlib. It provides:
+
+- **Beautiful default styles** that produce publication-ready graphics
+- **High-level functions** for common statistical plots
+- **Excellent integration** with pandas DataFrames
+- **Modern interface** through seaborn.objects
+
+### Why Seaborn.Objects?
+
+Seaborn has two interfaces:
+
+1. **Function-based interface** (traditional) - uses functions like `sns.scatterplot()`
+2. **Objects interface** (modern) - uses a grammar of graphics approach
+
+We'll focus on the **objects interface** (`seaborn.objects`) because it:
+
+- Uses a more intuitive, declarative syntax
+- Makes it easier to build complex visualizations step by step
+- Follows the "grammar of graphics" principles (similar to R's ggplot2)
+- Encourages better understanding of visualization components
+
+## Setting Up Seaborn
+
+First, let's make sure seaborn is installed. Seaborn comes with many Python distributions, but you can install it using:
+
+```bash
+# Using uv (recommended for this workshop)
+uv pip install seaborn
+
+# Or using pip
+pip install seaborn
+```
+
+Now let's import the libraries we'll need:
+
+```python
+import seaborn as sns
+import seaborn.objects as so
+import pandas as pd
+```
+
+::: {.callout-note}
+
+## Import Conventions
+
+- `sns` is the standard alias for seaborn
+- `so` is the standard alias for seaborn.objects
+- `pd` is the standard alias for pandas
+
+Using these conventions makes your code more readable to other Python users.
+
+:::
+
+## Your First Visualization: The Penguins Dataset
+
+Let's start with a dataset that's built into seaborn - the Palmer Penguins dataset. This dataset contains measurements of penguin species from islands in Antarctica.
+
+```python
+# Load the penguins dataset
+penguins = sns.load_dataset("penguins")
+
+# Take a look at the first few rows
+print(penguins.head())
+```
+
+```output
+  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex
+0  Adelie  Torgersen            39.1           18.7              181.0       3750.0    Male
+1  Adelie  Torgersen            39.5           17.4              186.0       3800.0  Female
+2  Adelie  Torgersen            40.3           18.0              195.0       3250.0  Female
+3  Adelie  Torgersen             NaN            NaN                NaN          NaN     NaN
+4  Adelie  Torgersen            36.7           19.3              193.0       3450.0  Female
+```
+
+### Understanding the Data
+
+Before we visualize, let's understand what we have:
+
+```python
+# Check the shape of the data
+print(f"Rows: {len(penguins)}, Columns: {len(penguins.columns)}")
+
+# See what columns we have
+print("\nColumn names:")
+print(penguins.columns.tolist())
+
+# Check data types
+print("\nData types:")
+print(penguins.dtypes)
+```
+
+## Creating Your First Plot
+
+Let's create a simple scatter plot showing the relationship between flipper length and body mass:
+
+```python
+# Create a plot using seaborn.objects
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
+    .add(so.Dot())
+)
+```
+
+Let's break down what's happening here:
+
+1. **`so.Plot()`** - Creates a plot object and specifies:
+   - The data source (`penguins`)
+   - The variable for the x-axis (`flipper_length_mm`)
+   - The variable for the y-axis (`body_mass_g`)
+
+2. **`.add(so.Dot())`** - Adds a layer to the plot:
+   - `so.Dot()` creates a scatter plot (dots for each data point)
+
+3. **Parentheses and line breaks** - We use parentheses to split the plot across multiple lines, making it more readable
+
+::: {.callout-note}
+
+## Building Plots Layer by Layer
+
+One of the key features of seaborn.objects is that you build plots by adding layers. Each `.add()` call adds a new layer to your visualization. This makes it easy to create complex plots step by step.
+
+:::
+
+## Understanding What We See
+
+The plot shows that penguins with longer flippers tend to have greater body mass. This makes biological sense - larger penguins would have longer flippers and more body mass!
+
+Let's improve our plot by adding more information:
+
+```python
+# Enhanced plot with color by species
+(
+    so.Plot(
+        penguins,
+        x="flipper_length_mm",
+        y="body_mass_g",
+        color="species"
+    )
+    .add(so.Dot())
+)
+```
+
+Now we can see that different penguin species cluster in different parts of the plot. The `color="species"` parameter automatically:
+
+- Assigns different colors to each species
+- Creates a legend
+- Makes it easy to identify patterns
+
+## Exercises
+
+::: {.callout-note}
+
+## Exercise 1: Explore the Data
+
+Use pandas methods to answer these questions about the penguins dataset:
+
+1. How many penguin species are in the dataset?
+2. What islands are represented?
+3. Are there any missing values?
+
+```python
+# Your code here
+```
+
+::: {.callout-tip collapse="true"}
+
+## Solution 1
+
+```python
+# 1. Count species
+print("Number of species:", penguins["species"].nunique())
+print("Species:", penguins["species"].unique())
+
+# 2. Check islands
+print("\nNumber of islands:", penguins["island"].nunique())
+print("Islands:", penguins["island"].unique())
+
+# 3. Check for missing values
+print("\nMissing values per column:")
+print(penguins.isnull().sum())
+```
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 2: Create a Different Plot
+
+Create a scatter plot showing the relationship between `bill_length_mm` and `bill_depth_mm`, with points colored by `species`.
+
+::: {.callout-tip collapse="true"}
+
+## Solution 2
+
+```python
+(
+    so.Plot(
+        penguins,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        color="species"
+    )
+    .add(so.Dot())
+)
+```
+
+What do you notice about the three species? Does bill length relate to bill depth the same way across all species?
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 3: Research Context
+
+Think about your own research work:
+
+1. What types of data do you regularly work with?
+2. What relationships or comparisons would you want to visualize?
+3. Who is your audience (colleagues, policymakers, community members)?
+
+Discuss with a partner how visualization might help you communicate your findings more effectively.
+
+:::
+
+## The Anatomy of a Seaborn.Objects Plot
+
+Every seaborn.objects plot has three main components:
+
+1. **Data and mappings** - Specified in `so.Plot()`
+   - What dataset to use
+   - Which variables map to which visual properties (x, y, color, size, etc.)
+
+2. **Geometric objects (marks)** - Added with `.add()`
+   - How to represent the data (dots, lines, bars, etc.)
+   - Can have multiple layers
+
+3. **Customizations** - Added with additional methods
+   - Labels, themes, scales (we'll learn more about these later)
+
+This structure is based on the "grammar of graphics" - a systematic way to describe visualizations by their components rather than chart types.
+
+## Saving Your Plot
+
+Once you've created a plot you're happy with, you can save it:
+
+```python
+# Create and save a plot
+plot = (
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot())
+)
+
+# Save to file
+plot.save("penguins_flipper_mass.png", dpi=300)
+```
+
+The `dpi` parameter controls resolution - 300 is good for publications, 150 is usually fine for presentations.
+
+::: {.callout-important}
+
+## Key Points
+
+- Data visualization is essential for discovering patterns and communicating findings
+- Seaborn is a powerful Python library for creating statistical graphics
+- Seaborn.objects uses a grammar of graphics approach for building plots
+- Plots are built by combining data mappings with geometric objects (marks)
+- The basic structure is: `so.Plot(data, mappings).add(mark)`
+- Start with simple plots and add complexity layer by layer
+
+:::
+
+::: {.callout-tip}
+
+## Looking Ahead
+
+In the next lesson, we'll dive deeper into the grammar of graphics and learn how to map data to different visual properties (not just x, y, and color). We'll also explore different types of marks beyond dots.
+
+:::

@@ -1,0 +1,692 @@
+---
+title: "Themes and Final Polish"
+abstract: |
+  Apply professional themes to visualizations. Fine-tune every aspect of your plots. Create publication-ready figures. Learn best practices for presenting research visualizations.
+date: last-modified
+
+format:
+  html: default
+
+# Authors
+authors-ipa:
+  - "[Author Name](https://poverty-action.org/people/author_name)"
+
+# Contributors
+contributors:
+  - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+
+keywords: ["Python", "Data Visualization", "Seaborn", "Themes", "Publication"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Apply seaborn themes with `sns.set_theme()`
+- Customize plot aesthetics with `.theme()`
+- Control figure size and resolution
+- Add annotations and text to plots
+- Export publication-quality figures
+- Follow best practices for research visualizations
+
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- How do I apply professional themes to my plots?
+- How do I fine-tune visual elements?
+- How do I add annotations and notes to plots?
+- How do I save high-quality figures for publication?
+- What makes a visualization publication-ready?
+
+:::
+
+## The Importance of Visual Polish
+
+You've learned to create powerful visualizations with seaborn.objects. Now let's make them **publication-ready**:
+
+- **Professional appearance** increases credibility
+- **Consistent styling** across figures looks polished
+- **Proper formatting** helps reviewers and stakeholders take your work seriously
+- **Attention to detail** reflects the quality of your research
+
+## Setting Up
+
+```python
+import seaborn as sns
+import seaborn.objects as so
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load data
+penguins = sns.load_dataset("penguins").dropna()
+```
+
+## Seaborn Themes
+
+Seaborn provides several pre-built themes that control the overall appearance:
+
+```python
+# Default seaborn theme
+sns.set_theme()
+
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot())
+    .label(title="Default Theme")
+)
+```
+
+### Available Themes
+
+```python
+themes = ["darkgrid", "whitegrid", "dark", "white", "ticks"]
+
+for theme in themes:
+    sns.set_theme(style=theme)
+    (
+        so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+        .add(so.Dot(pointsize=8))
+        .label(title=f"Theme: {theme}")
+    )
+```
+
+**Theme descriptions:**
+
+- **`darkgrid`** - Gray background with white grid lines (good for presentations)
+- **`whitegrid`** - White background with gray grid lines (clean, professional)
+- **`dark`** - Dark background without grid (minimalist)
+- **`white`** - White background without grid (publication standard)
+- **`ticks`** - White background with tick marks (classic academic)
+
+### Setting Context
+
+Control the scale of plot elements for different outputs:
+
+```python
+# For papers (smallest)
+sns.set_theme(context="paper")
+
+# For notebooks (medium, default)
+sns.set_theme(context="notebook")
+
+# For talks (larger)
+sns.set_theme(context="talk")
+
+# For posters (largest)
+sns.set_theme(context="poster")
+```
+
+### Combining Style and Context
+
+```python
+# Perfect for academic papers
+sns.set_theme(style="white", context="paper")
+
+# Great for presentations
+sns.set_theme(style="darkgrid", context="talk")
+
+# Ideal for posters
+sns.set_theme(style="whitegrid", context="poster")
+```
+
+## Fine-Tuning with .theme()
+
+For plot-specific customization, use `.theme()`:
+
+```python
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot(pointsize=8, alpha=0.7))
+    .theme({
+        "axes.facecolor": "#f8f9fa",     # Light gray background
+        "axes.edgecolor": "#343a40",      # Dark edges
+        "axes.linewidth": 1.5,            # Thicker borders
+        "grid.color": "white",            # White grid lines
+        "grid.linewidth": 1.2,            # Thicker grid
+    })
+    .label(
+        title="Custom Theme Example",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+```
+
+### Common Theme Parameters
+
+| Parameter | Controls | Example Values |
+| ----------- | ---------- | ---------------- |
+| `axes.facecolor` | Background color | `"white"`, `"#f0f0f0"` |
+| `axes.edgecolor` | Border color | `"black"`, `"gray"` |
+| `axes.linewidth` | Border thickness | `1.0`, `2.0` |
+| `grid.color` | Grid line color | `"gray"`, `"#e0e0e0"` |
+| `grid.linewidth` | Grid thickness | `0.5`, `1.0` |
+| `font.size` | Base font size | `10`, `12`, `14` |
+| `axes.labelsize` | Axis label size | `"medium"`, `12` |
+| `axes.titlesize` | Title size | `"large"`, `14` |
+
+## Controlling Figure Size
+
+Figure size is crucial for different outputs:
+
+```python
+# Small for inline display
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
+    .add(so.Dot())
+    .theme({"figure.figsize": (6, 4)})
+)
+
+# Large for presentations
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
+    .add(so.Dot())
+    .theme({"figure.figsize": (12, 8)})
+)
+
+# Wide for multi-panel
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
+    .facet(col="species")
+    .add(so.Dot())
+    .theme({"figure.figsize": (15, 4)})
+)
+```
+
+## Complete Research Example
+
+Let's create a publication-ready figure for a research paper:
+
+```python
+# Set publication theme
+sns.set_theme(style="white", context="paper")
+
+# Create realistic program data
+np.random.seed(42)
+time_points = [0, 3, 6, 9, 12]
+groups = ['Control', 'Treatment']
+
+program_data = []
+for group in groups:
+    for time in time_points:
+        n = 50
+        if group == 'Control':
+            mean = 50 + time * 0.4 + np.random.normal(0, 1)
+        else:
+            mean = 50 + time * 1.2 + np.random.normal(0, 1)
+
+        values = np.random.normal(mean, 8, n)
+        for val in values:
+            program_data.append({
+                'group': group,
+                'month': time,
+                'outcome': val
+            })
+
+program_df = pd.DataFrame(program_data)
+
+# Create publication-quality plot
+plot = (
+    so.Plot(program_df, x="month", y="outcome", color="group")
+    # Data layer
+    .add(so.Dot(alpha=0.2, pointsize=4))
+    # Statistical layers
+    .add(so.Line(linewidth=3), so.Agg())
+    .add(so.Band(alpha=0.15), so.Est())
+    # Styling
+    .scale(
+        color=so.Nominal(["#666666", "#E69F00"]),  # Colorblind-safe
+        x=so.Continuous().tick(at=time_points),
+        y=(30, 80)
+    )
+    .label(
+        title="Impact of Microfinance Training on Household Savings\nRandomized Controlled Trial, 2022-2023",
+        x="Months Since Baseline",
+        y="Monthly Savings (KSh, thousands)",
+        color="Group"
+    )
+    .theme({
+        "axes.facecolor": "white",
+        "axes.edgecolor": "#333333",
+        "axes.linewidth": 1.2,
+        "grid.color": "#e5e5e5",
+        "grid.linewidth": 0.8,
+        "figure.figsize": (8, 5),
+        "axes.labelsize": 11,
+        "axes.titlesize": 12,
+        "legend.fontsize": 10
+    })
+)
+
+# Display
+plot
+```
+
+## Saving Figures
+
+### Basic Saving
+
+```python
+# Save as PNG (good for most uses)
+plot.save("figure1_program_impact.png", dpi=300)
+
+# Save as PDF (best for publications)
+plot.save("figure1_program_impact.pdf")
+
+# Save as SVG (scalable, good for editing)
+plot.save("figure1_program_impact.svg")
+```
+
+### Resolution Settings
+
+```python
+# Lower resolution (presentations, web)
+plot.save("figure_web.png", dpi=150)
+
+# Medium resolution (reports)
+plot.save("figure_report.png", dpi=300)
+
+# High resolution (print publications)
+plot.save("figure_print.png", dpi=600)
+```
+
+### Controlling Output Size
+
+```python
+# Specific dimensions in inches
+plot = (
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
+    .add(so.Dot())
+    .theme({"figure.figsize": (7, 5)})  # Width=7", Height=5"
+)
+
+plot.save("figure_sized.png", dpi=300)
+# Results in: 2100 x 1500 pixel image (7*300 x 5*300)
+```
+
+## Adding Text and Annotations
+
+While seaborn.objects doesn't have built-in annotation, we can access the underlying matplotlib axes:
+
+```python
+# Create plot
+plot = (
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot(alpha=0.6))
+    .label(
+        title="Penguin Measurements with Annotation",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+
+# Get the matplotlib figure and axes
+fig = plot.plot()._figure
+ax = fig.axes[0]
+
+# Add annotation
+ax.annotate(
+    'Largest penguins',
+    xy=(230, 6000),
+    xytext=(215, 5500),
+    arrowprops=dict(arrowstyle='->', color='red', lw=1.5),
+    fontsize=10,
+    color='red'
+)
+
+# Add text box
+ax.text(
+    175, 3200,
+    'Smallest penguins\nfound here',
+    fontsize=9,
+    bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Multi-Panel Publication Figure
+
+Create a complete figure with multiple subplots:
+
+```python
+# Set theme
+sns.set_theme(style="white", context="paper")
+
+# Panel A: Scatter with regression
+panel_a = (
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot(alpha=0.5, pointsize=5))
+    .add(so.Line(linewidth=2), so.PolyFit(order=1))
+    .scale(color="colorblind")
+    .label(
+        title="A. Flipper Length vs Body Mass",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+
+# Panel B: Distributions
+panel_b = (
+    so.Plot(penguins, x="body_mass_g")
+    .facet(row="species")
+    .add(so.Bars(), so.Hist(bins=20))
+    .label(
+        title="B. Body Mass Distributions",
+        x="Body Mass (g)",
+        y="Count"
+    )
+)
+
+# Panel C: Means with error bars
+panel_c = (
+    so.Plot(penguins, x="species", y="body_mass_g", color="species")
+    .add(so.Dot(pointsize=10), so.Agg())
+    .add(so.Dash(width=0.5), so.Est())
+    .scale(color="colorblind")
+    .label(
+        title="C. Mean Body Mass by Species",
+        x="Species",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+
+# Display each panel
+panel_a
+panel_b
+panel_c
+```
+
+## Best Practices Checklist
+
+### ✅ Before Sharing Your Visualization
+
+- [ ] **Clear title** that describes what is shown
+- [ ] **Axis labels** with units included
+- [ ] **Legend** with clear category labels
+- [ ] **Appropriate theme** for your medium (paper/presentation/poster)
+- [ ] **Readable font sizes** (not too small when saved)
+- [ ] **Colorblind-friendly palette** if using color
+- [ ] **High resolution** if saving (300+ dpi)
+- [ ] **Consistent styling** across related figures
+- [ ] **Caption prepared** explaining what to see
+- [ ] **Data source** noted (in caption or footer)
+
+### ✅ Design Principles
+
+1. **Maximize data-ink ratio**: Remove unnecessary elements
+2. **Use consistent scales**: Make comparisons easy
+3. **Order meaningfully**: Arrange categories logically
+4. **Show uncertainty**: Include error bars or confidence bands
+5. **Highlight key findings**: Use color/size strategically
+6. **Label directly**: Put labels near data when possible
+7. **Test with audience**: Ask if the message is clear
+
+## Style Guide for Research Visualizations
+
+### For Academic Papers
+
+```python
+sns.set_theme(style="white", context="paper")
+# - Clean, minimal design
+# - Black and white friendly (use shapes)
+# - 300+ dpi resolution
+# - PDF or TIFF format
+```
+
+### For Presentations
+
+```python
+sns.set_theme(style="darkgrid", context="talk")
+# - High contrast
+# - Large text and points
+# - Bold colors
+# - 150 dpi is sufficient
+# - PNG format
+```
+
+### For Policy Briefs
+
+```python
+sns.set_theme(style="whitegrid", context="notebook")
+# - Clear, clean design
+# - Color for emphasis
+# - Simple, direct message
+# - 300 dpi
+# - PNG or PDF
+```
+
+### For Posters
+
+```python
+sns.set_theme(style="whitegrid", context="poster")
+# - Extra large text
+# - Bold colors and markers
+# - Visible from distance
+# - High resolution (300+ dpi)
+# - PDF format
+```
+
+## Exercises
+
+::: {.callout-note}
+
+## Exercise 1: Theme Comparison
+
+Create the same plot with three different themes:
+
+1. One appropriate for an academic paper
+2. One for a presentation
+3. One for a poster
+
+Compare them - what differences do you notice?
+
+```python
+# Your code here
+```
+
+::: {.callout-tip collapse="true"}
+
+## Solution 1
+
+```python
+# Academic paper
+sns.set_theme(style="white", context="paper")
+(
+    so.Plot(penguins, x="bill_length_mm", y="bill_depth_mm", color="species")
+    .add(so.Dot(pointsize=6), marker="species")
+    .scale(color="colorblind")
+    .label(title="For Academic Paper")
+)
+
+# Presentation
+sns.set_theme(style="darkgrid", context="talk")
+(
+    so.Plot(penguins, x="bill_length_mm", y="bill_depth_mm", color="species")
+    .add(so.Dot(pointsize=12))
+    .label(title="For Presentation")
+)
+
+# Poster
+sns.set_theme(style="whitegrid", context="poster")
+(
+    so.Plot(penguins, x="bill_length_mm", y="bill_depth_mm", color="species")
+    .add(so.Dot(pointsize=18))
+    .label(title="For Poster")
+)
+```
+
+Notice:
+
+- Font sizes increase from paper → talk → poster
+- Paper version uses both color and shape (for B&W printing)
+- Talk version has grid for easier reading at distance
+- Poster version has largest points for visibility
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 2: Publication-Ready Figure
+
+Create a complete, publication-ready figure showing program impact:
+
+Requirements:
+
+- Use the tips dataset
+- Show how tip percentage varies by day and time (lunch/dinner)
+- Use faceting or color appropriately
+- Add proper labels with units
+- Use a professional theme
+- Save as both PNG (300 dpi) and PDF
+
+```python
+# Your code here
+```
+
+::: {.callout-tip collapse="true"}
+
+## Solution 2
+
+```python
+# Prepare data
+tips_clean = tips.copy()
+tips_clean['tip_percent'] = (tips_clean['tip'] / tips_clean['total_bill']) * 100
+
+# Set theme
+sns.set_theme(style="white", context="paper")
+
+# Create plot
+plot = (
+    so.Plot(tips_clean, x="day", y="tip_percent", color="time")
+    .add(so.Dot(alpha=0.3, pointsize=4), so.Jitter(width=0.2))
+    .add(so.Dash(width=0.5, linewidth=2), so.Est())
+    .add(so.Dot(pointsize=10), so.Agg())
+    .scale(color=["#0072B2", "#D55E00"])
+    .label(
+        title="Tipping Patterns by Day and Meal Time",
+        x="Day of Week",
+        y="Tip Percentage (%)",
+        color="Meal Time"
+    )
+    .theme({
+        "figure.figsize": (8, 5),
+        "axes.facecolor": "white",
+        "grid.color": "#e5e5e5"
+    })
+)
+
+# Save
+plot.save("tips_analysis.png", dpi=300)
+plot.save("tips_analysis.pdf")
+
+plot  # Display
+```
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 3: Complete Figure with Caption
+
+Create a figure for a research report and write an appropriate caption:
+
+1. Use any dataset (penguins, tips, or your own)
+2. Create a visualization addressing a research question
+3. Apply appropriate theme and styling
+4. Write a complete figure caption (3-5 sentences) that:
+   - Describes what is shown
+   - Explains key patterns
+   - Notes sample size and any important details
+
+Share your figure and caption with a partner for feedback.
+
+:::
+
+## Final Tips for Great Visualizations
+
+### 1. Know Your Audience
+
+- **Academics**: Expect precision, statistical tests, standard formats
+- **Policymakers**: Want clear takeaways, simple language, action implications
+- **General public**: Need context, plain language, compelling narratives
+
+### 2. Iterate and Refine
+
+- Create a rough version quickly
+- Get feedback from colleagues
+- Refine based on feedback
+- Test with someone unfamiliar with your work
+
+### 3. Tell a Story
+
+- Every figure should have a clear message
+- Guide the viewer's eye to key findings
+- Use titles and captions effectively
+- Connect visualizations to your narrative
+
+### 4. Be Honest
+
+- Don't manipulate axes to exaggerate effects
+- Show uncertainty and variability
+- Include all relevant data
+- Report negative findings fairly
+
+::: {.callout-important}
+
+## Key Points
+
+- Set global themes with `sns.set_theme(style=, context=)`
+- Fine-tune individual plots with `.theme()`
+- Choose themes based on output medium (paper, presentation, poster)
+- Control figure size with `{"figure.figsize": (width, height)}`
+- Save with appropriate format and resolution (`.save(filename, dpi=300)`)
+- Use `dpi=300` for print, `dpi=150` for web/presentations
+- PDF format is best for publications (scalable)
+- PNG is good for presentations and web
+- Always include clear titles, labels, and legends
+- Test your figures with your target audience
+- Consistency across figures is professional
+- A polished visualization increases the impact of your research
+
+:::
+
+::: {.callout-tip}
+
+## Congratulations
+
+You've completed the Introduction to Data Visualization with Seaborn! You now know how to:
+
+- Create visualizations using the grammar of graphics
+- Map data to visual properties
+- Use different marks (dots, lines, bars, etc.)
+- Customize with labels, scales, and colors
+- Create multi-panel figures with faceting
+- Layer multiple marks for rich displays
+- Add statistical summaries
+- Apply professional themes
+- Create publication-ready figures
+
+**Next steps:**
+
+- Practice with your own research data
+- Explore the [seaborn documentation](https://seaborn.pydata.org/)
+- Look at published papers in your field for inspiration
+- Share your visualizations and get feedback
+- Keep learning and experimenting!
+
+:::
