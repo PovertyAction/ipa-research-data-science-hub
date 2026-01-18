@@ -1,0 +1,329 @@
+---
+title: "Pipes and Filters"
+abstract: |
+  Discover the power of combining shell commands using pipes and filters. Learn to chain simple commands together to perform complex data processing tasks efficiently. Master the Unix philosophy of building powerful workflows from simple tools.
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+contributors:
+  - "[The Carpentries](https://carpentries.org/)"
+keywords: ["Shell", "Pipes", "Filters", "Command Chaining", "Data Processing", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
+
+**Original citation:**
+Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+:::
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Redirect a command's output to a file.
+- Construct command pipelines with two or more stages.
+- Explain what usually happens if a program or pipeline isn't given any input to process.
+- Explain Unix's "small pieces, loosely joined" philosophy.
+
+## Questions
+
+- How can I combine existing commands to do new things?
+:::
+
+Now that we know a few basic commands,
+we can finally look at the shell's most powerful feature:
+the ease with which it allows us to combine existing programs in new ways.
+We'll work with the directory `data/exercise-data/survey-data`
+that contains CSV files from Amara's household survey data collection.
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+ls exercise-data/survey-data
+```
+
+```output
+expected_columns.txt    hh_baseline_003.csv    hh_baseline_007.csv
+hh_baseline_001.csv     hh_baseline_004.csv    hh_baseline_008.csv
+hh_baseline_002.csv     hh_baseline_005.csv    hh_baseline_009.csv
+                        hh_baseline_006.csv    hh_baseline_010.csv
+validate_survey.sh      validate_survey.ps1    validate_survey.nu
+```
+
+## PowerShell
+
+```powershell
+ls exercise-data/survey-data
+```
+
+```output
+    Directory: C:\Users\amara\shell-lesson-data\exercise-data\survey-data
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          12/23/2024  10:45 AM             85 expected_columns.txt
+-a---          12/23/2024  10:45 AM           1245 hh_baseline_001.csv
+-a---          12/23/2024  10:45 AM            956 hh_baseline_002.csv
+...
+```
+
+## NuShell
+
+```bash
+ls exercise-data/survey-data
+```
+
+```output
+╭────┬──────────────────────┬──────┬─────────┬──────────────╮
+│  # │         name         │ type │  size   │   modified   │
+├────┼──────────────────────┼──────┼─────────┼──────────────┤
+│  0 │ expected_columns.txt │ file │    85 B │ 1 hour ago   │
+│  1 │ hh_baseline_001.csv  │ file │ 1.2 KiB │ 1 hour ago   │
+│  2 │ hh_baseline_002.csv  │ file │   956 B │ 1 hour ago   │
+│ ...│ ...                  │ ...  │   ...   │ ...          │
+╰────┴──────────────────────┴──────┴─────────┴──────────────╯
+```
+
+:::
+
+Let's go into that directory with `cd` and run an example command `wc` (word count) to count lines in a survey file:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+cd exercise-data/survey-data
+wc hh_baseline_001.csv
+```
+
+```output
+21  21 602 hh_baseline_001.csv
+```
+
+## PowerShell
+
+```powershell
+cd exercise-data/survey-data
+Get-Content hh_baseline_001.csv | Measure-Object -Line -Word -Character
+```
+
+```output
+Lines Words Characters Property
+----- ----- ---------- --------
+   21    21        602
+```
+
+## NuShell
+
+In NuShell, you can use multiple commands to get similar information:
+
+```bash
+cd exercise-data/survey-data
+open hh_baseline_001.csv | length  # count records (excludes header)
+```
+
+```output
+20
+```
+
+Or to see line stats on the raw file:
+
+```bash
+open hh_baseline_001.csv --raw | str stats
+```
+
+```output
+╭───────────┬───────╮
+│ lines     │    21 │
+│ words     │    21 │
+│ bytes     │   602 │
+│ chars     │   602 │
+╰───────────┴───────╯
+```
+
+:::
+
+`wc` is the 'word count' command: it counts the number of lines, words, and characters in files (from left to right, in that order). In PowerShell, you use `Measure-Object`, and in NuShell you can use `length` on parsed CSV data or `str stats` on raw files.
+
+### Viewing and Exploring CSV Data
+
+Let's look at the contents of a survey file to understand its structure:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+head -n 5 hh_baseline_001.csv
+```
+
+```output
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH001,2024-03-15,Kibera,treatment,yes,34,12
+HH002,2024-03-15,Kibera,treatment,yes,45,8
+HH003,2024-03-15,Kibera,treatment,yes,28,14
+HH004,2024-03-15,Kibera,treatment,yes,52,6
+```
+
+## PowerShell
+
+```powershell
+Get-Content hh_baseline_001.csv | Select-Object -First 5
+```
+
+```output
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH001,2024-03-15,Kibera,treatment,yes,34,12
+HH002,2024-03-15,Kibera,treatment,yes,45,8
+HH003,2024-03-15,Kibera,treatment,yes,28,14
+HH004,2024-03-15,Kibera,treatment,yes,52,6
+```
+
+## NuShell
+
+```bash
+open hh_baseline_001.csv | first 5
+```
+
+```output
+╭───┬───────┬─────────────┬─────────┬───────────────┬─────────┬─────┬─────────────────╮
+│ # │ hhid  │ survey_date │ village │ treatment_arm │ consent │ age │ education_years │
+├───┼───────┼─────────────┼─────────┼───────────────┼─────────┼─────┼─────────────────┤
+│ 0 │ HH001 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  34 │              12 │
+│ 1 │ HH002 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  45 │               8 │
+│ 2 │ HH003 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  28 │              14 │
+│ 3 │ HH004 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  52 │               6 │
+│ 4 │ HH005 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  39 │              10 │
+╰───┴───────┴─────────────┴─────────┴───────────────┴─────────┴─────┴─────────────────╯
+```
+
+Notice how NuShell automatically parses the CSV and displays it as a formatted table!
+
+:::
+
+### Counting Records in Survey Files
+
+One of Amara's first validation checks is to count how many records are in each file. Let's count the lines (remember, the first line is the header):
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+wc -l hh_baseline_001.csv
+```
+
+```output
+21 hh_baseline_001.csv
+```
+
+This shows 21 lines total (1 header + 20 data rows). To get just the data rows:
+
+```bash
+tail -n +2 hh_baseline_001.csv | wc -l
+```
+
+```output
+20
+```
+
+## PowerShell
+
+```powershell
+(Get-Content hh_baseline_001.csv | Measure-Object -Line).Lines
+```
+
+```output
+21
+```
+
+To count only data rows (excluding header):
+
+```powershell
+(Get-Content hh_baseline_001.csv | Select-Object -Skip 1 | Measure-Object -Line).Lines
+```
+
+```output
+20
+```
+
+## NuShell
+
+```bash
+open hh_baseline_001.csv | length
+```
+
+```output
+20
+```
+
+NuShell's `open` command automatically parses the CSV and excludes the header, so it directly shows 20 records.
+
+:::
+
+### Checking for Missing Values
+
+Amara needs to find rows where required fields are missing. Let's look for rows with missing `hhid` values:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+# Show rows where the first field (hhid) is empty
+cut -d',' -f1 hh_baseline_009.csv | tail -n +2 | grep "^$"
+```
+
+This extracts the first column, skips the header, and finds empty lines. If you want to count them:
+
+```bash
+cut -d',' -f1 hh_baseline_009.csv | tail -n +2 | grep -c "^$"
+```
+
+```output
+3
+```
+
+## PowerShell
+
+```powershell
+# Import CSV and filter for empty hhid
+Import-Csv hh_baseline_009.csv | Where-Object { $_.hhid -eq '' } | Measure-Object
+```
+
+```output
+Count    : 3
+```
+
+## NuShell
+
+```bash
+open hh_baseline_009.csv | where hhid == "" | length
+```
+
+```output
+3
+```
+
+:::
+
+These piped commands show how we can combine simple tools to perform data validation—exactly what Amara needs for her survey quality checks.
+
+## Key Points
+
+- `wc` (Bash) / `Measure-Object` (PowerShell) / `str stats` (NuShell) counts lines, words, and characters.
+- `cat` (Bash) / `Get-Content` (PowerShell) / `open` (NuShell) displays file contents.
+- `sort` (Bash) / `Sort-Object` (PowerShell) / `sort` (NuShell) sorts its inputs.
+- `head` (Bash) / `Select-Object -First` (PowerShell) / `first` (NuShell) displays the first lines.
+- `tail` (Bash) / `Select-Object -Last` (PowerShell) / `last` (NuShell) displays the last lines.
+- `command > [file]` redirects output to a file (overwriting). In PowerShell: `command | Out-File [file]`. In NuShell: `command | save [file]`.
+- `command >> [file]` appends output to a file. In PowerShell: `command | Out-File -Append [file]`. In NuShell: `command | save --append [file]`.
+- `[first] | [second]` is a pipeline: the output of the first command is used as the input to the second (works the same in all shells).
+- The best way to use the shell is to use pipes to combine simple single-purpose programs (filters).

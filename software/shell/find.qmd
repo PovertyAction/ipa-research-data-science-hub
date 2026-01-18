@@ -1,0 +1,192 @@
+---
+title: "Finding Things"
+abstract: |
+  Master powerful search techniques using find and grep commands. Learn to locate files and directories by various criteria, search within file contents, and use regular expressions for complex pattern matching. Essential skills for managing large datasets and codebases.
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+contributors:
+  - "[The Carpentries](https://carpentries.org/)"
+keywords: ["Shell", "Find", "Grep", "Search", "Regular Expressions", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
+
+**Original citation:**
+Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+:::
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Use `grep` to select lines from text files that match simple patterns.
+- Use `find` to find files and directories whose names match simple patterns.
+- Use the output of one command as the command-line argument(s) to another command.
+- Explain what is meant by 'text' and 'binary' files, and why many common tools don't handle the latter well.
+
+## Questions
+
+- How can I find files?
+- How can I find things in files?
+:::
+
+In the same way that many of us now use "Google" as a
+verb meaning "to find", Unix programmers often use the
+word "grep".
+"grep" is a contraction of "global/regular expression/print",
+a common sequence of operations in early Unix text editors.
+It is also the name of a very useful command-line program.
+
+`grep` finds and prints lines in files that match a pattern.
+For our examples,
+we will use Amara's survey data files to search for specific patterns. For this set of examples,
+we're going to be working in the survey-data subdirectory:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+cd
+cd Desktop/data/exercise-data/survey-data
+head -n 5 hh_baseline_001.csv
+```
+
+```output
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH001,2024-03-15,Kibera,treatment,yes,34,12
+HH002,2024-03-15,Kibera,treatment,yes,45,8
+HH003,2024-03-15,Kibera,treatment,yes,28,14
+HH004,2024-03-15,Kibera,treatment,yes,52,6
+```
+
+## PowerShell
+
+```powershell
+cd ~
+cd Desktop/data/exercise-data/survey-data
+Get-Content hh_baseline_001.csv | Select-Object -First 5
+```
+
+```output
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH001,2024-03-15,Kibera,treatment,yes,34,12
+HH002,2024-03-15,Kibera,treatment,yes,45,8
+HH003,2024-03-15,Kibera,treatment,yes,28,14
+HH004,2024-03-15,Kibera,treatment,yes,52,6
+```
+
+## NuShell
+
+```bash
+cd ~
+cd Desktop/data/exercise-data/survey-data
+open hh_baseline_001.csv | first 5
+```
+
+```output
+╭───┬───────┬─────────────┬─────────┬───────────────┬─────────┬─────┬─────────────────╮
+│ # │ hhid  │ survey_date │ village │ treatment_arm │ consent │ age │ education_years │
+├───┼───────┼─────────────┼─────────┼───────────────┼─────────┼─────┼─────────────────┤
+│ 0 │ HH001 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  34 │              12 │
+│ 1 │ HH002 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  45 │               8 │
+│ 2 │ HH003 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  28 │              14 │
+│ 3 │ HH004 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  52 │               6 │
+│ 4 │ HH005 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  39 │              10 │
+╰───┴───────┴─────────────┴─────────┴───────────────┴─────────┴─────┴─────────────────╯
+```
+
+:::
+
+## Using `grep` and equivalents
+
+Let's find lines that contain the village "Kibera":
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+grep Kibera hh_baseline_001.csv
+```
+
+```output
+HH001,2024-03-15,Kibera,treatment,yes,34,12
+HH002,2024-03-15,Kibera,treatment,yes,45,8
+HH003,2024-03-15,Kibera,treatment,yes,28,14
+...
+```
+
+## PowerShell
+
+```powershell
+Select-String -Pattern "Kibera" -Path hh_baseline_001.csv
+```
+
+```output
+hh_baseline_001.csv:2:HH001,2024-03-15,Kibera,treatment,yes,34,12
+hh_baseline_001.csv:3:HH002,2024-03-15,Kibera,treatment,yes,45,8
+hh_baseline_001.csv:4:HH003,2024-03-15,Kibera,treatment,yes,28,14
+...
+```
+
+Or to get just the matching lines (like grep):
+
+```powershell
+Select-String -Pattern "Kibera" -Path hh_baseline_001.csv | ForEach-Object { $_.Line }
+```
+
+```output
+HH001,2024-03-15,Kibera,treatment,yes,34,12
+HH002,2024-03-15,Kibera,treatment,yes,45,8
+HH003,2024-03-15,Kibera,treatment,yes,28,14
+```
+
+## NuShell
+
+```bash
+open hh_baseline_001.csv | where village == "Kibera"
+```
+
+```output
+╭───┬───────┬─────────────┬─────────┬───────────────┬─────────┬─────┬─────────────────╮
+│ # │ hhid  │ survey_date │ village │ treatment_arm │ consent │ age │ education_years │
+├───┼───────┼─────────────┼─────────┼───────────────┼─────────┼─────┼─────────────────┤
+│ 0 │ HH001 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  34 │              12 │
+│ 1 │ HH002 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  45 │               8 │
+│ 2 │ HH003 │ 2024-03-15  │ Kibera  │ treatment     │ yes     │  28 │              14 │
+...
+╰───┴───────┴─────────────┴─────────┴───────────────┴─────────┴─────┴─────────────────╯
+```
+
+Or using regex pattern matching on raw file:
+
+```bash
+open hh_baseline_001.csv --raw | lines | find "Kibera"
+```
+
+:::
+
+## Key Points
+
+- Finding files by name or properties:
+    - **Bash**: `find` command with options like `-name`, `-type`, `-mtime`
+    - **PowerShell**: `Get-ChildItem -Recurse -Filter` or `Where-Object`
+    - **NuShell**: `ls **/*` with `where` filtering
+- Searching within file contents:
+    - **Bash**: `grep pattern file`
+    - **PowerShell**: `Select-String -Pattern pattern -Path file`
+    - **NuShell**: `open file | lines | find pattern` or `where {|x| $x =~ pattern}`
+- Getting help:
+    - **Bash**: `--help` option, `man [command]`
+    - **PowerShell**: `Get-Help [command]` or `[command] -?`
+    - **NuShell**: `help [command]` or `[command] --help`
+- Command substitution (inserting output):
+    - **Bash**: `$([command])` or backticks
+    - **PowerShell**: `$([command])` or `(command)`
+    - **NuShell**: `(command)` or pipeline composition
