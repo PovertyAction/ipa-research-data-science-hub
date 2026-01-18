@@ -16,14 +16,18 @@ license:
 ---
 
 :::{.custom-summary-block}
-The use of virtual environments is recommended when working on shared projects. Virtual environments create an isolated workspace for each project, helping to prevent conflicts between dependencies that may require different versions of the same package.
+Virtual environments create isolated workspaces for each project, preventing conflicts between dependencies that require different versions of the same package. This guide covers virtual environment approaches for Python (uv, venv, conda), R (renv), Stata (repado), and Docker containers. For detailed guidance, see the individual pages for each tool.
 :::
 
 ## Python Virtual Environments
 
-We recommend using `uv` to manage Python virtual environments as it provides an
-overarching framework for managing Python installations and virtual environments. See
-information on `uv` in the [uv documentation](https://docs.astral.sh/uv).
+Python offers several approaches to virtual environments:
+
+- **[uv](python-uv.qmd)** (Recommended): A fast, modern Python package manager that simplifies environment and dependency management
+- **venv**: Python's built-in virtual environment tool
+- **conda**: Popular environment manager, especially for scientific computing
+
+For comprehensive guidance on using uv, see the dedicated [Python with uv](python-uv.qmd) guide.
 
 ## R Virtual Environments
 
@@ -42,12 +46,16 @@ See the `repado` [documentation](https://worldbank.github.io/repkit/reference/re
 and [tutorial](https://worldbank.github.io/repkit/articles/ado-management-with-repado.html)
 developed by the [World Bank DIME Analytics unit](https://www.worldbank.org/en/about/unit/unit-dec/impactevaluation/analytics).
 
-## Docker
+## Docker Containers
 
-[Docker](https://docs.docker.com/get-started/overview/) is a tool that allows you to
-create, deploy, and run applications using containers. In some instances, it may be more
-appropriate to use Docker containers to manage your project environment, especially when
-there is a project environment that needs to be deployed to cloud computing services.
+[Docker](docker.qmd) is a containerization platform that packages applications and their dependencies into portable containers. Docker is particularly useful when:
+
+- Deploying projects to cloud computing services
+- Managing complex multi-language environments
+- Ensuring reproducibility across different systems
+- Isolating system-level dependencies
+
+For a complete guide to using Docker for research projects, see the [Docker Containers](docker.qmd) page.
 
 ## Learning Resources
 
