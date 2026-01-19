@@ -1,0 +1,482 @@
+---
+title: "The Grammar of Graphics"
+abstract: |
+  Understand the grammar of graphics framework. Learn how to map data to visual properties. Explore different aesthetic mappings beyond x and y coordinates.
+authors-ipa:
+  - "[Ishmail Baako](https://poverty-action.org/people/ishmail-baako)"
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+contributors:
+  - "[The Carpentries](https://carpentries.org/)"
+keywords: ["Python", "Data Visualization", "Seaborn", "Grammar of Graphics", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Understand the grammar of graphics framework
+- Map data variables to different visual properties (aesthetics)
+- Use color, size, and shape to encode information
+- Create multi-dimensional visualizations
+- Choose appropriate aesthetic mappings for different data types
+
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- What is the grammar of graphics?
+- How do I map data to visual properties?
+- What aesthetic properties can I use?
+- How do I choose the right mappings for my data?
+
+:::
+
+## The Grammar of Graphics Framework
+
+The **grammar of graphics** is a systematic approach to creating data visualizations. Instead of thinking about "chart types" (bar chart, scatter plot, etc.), we think about the **components** that make up any visualization.
+
+Think of it like building with LEGO blocks:
+
+- You don't have pre-made houses or cars
+- You have basic blocks that you can combine in infinite ways
+- Different combinations create different results
+
+Similarly, data visualizations are built by combining:
+
+1. **Data** - What you want to visualize
+2. **Aesthetic mappings** - How data variables map to visual properties
+3. **Geometric objects (marks)** - The shapes that represent data
+4. **Scales** - How data values translate to visual values
+5. **Coordinate systems** - The space where the plot is drawn
+6. **Facets** - Subplots for different data subsets
+
+## Visual Properties (Aesthetics)
+
+When we create a visualization, we're **encoding** data as visual properties. The main aesthetic properties we can use are:
+
+| Aesthetic | What it controls | Best for |
+| ----------- | ------------------ | ---------- |
+| `x` | Horizontal position | Continuous or categorical data |
+| `y` | Vertical position | Continuous or categorical data |
+| `color` | Color of marks | Categorical groups or continuous gradients |
+| `pointsize` | Size of marks | Continuous values (showing magnitude) |
+| `marker` | Shape of marks | Categorical groups (limited categories) |
+| `alpha` | Transparency | Emphasis or showing density |
+| `stroke` | Border thickness | Emphasis or additional grouping |
+| `fill` | Fill color | Similar to color, for filled shapes |
+
+## Setting Up
+
+Let's load our libraries and data:
+
+```python
+import seaborn as sns
+import seaborn.objects as so
+import pandas as pd
+
+# Load the penguins dataset
+penguins = sns.load_dataset("penguins")
+
+# Remove rows with missing values for cleaner examples
+penguins_clean = penguins.dropna()
+```
+
+## Mapping Color
+
+Color is one of the most powerful ways to encode information. Let's see how it works:
+
+```python
+# Color by categorical variable (species)
+(
+    so.Plot(
+        penguins_clean,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        color="species"
+    )
+    .add(so.Dot())
+)
+```
+
+Here, each species gets a different color automatically. Seaborn:
+
+- Assigns distinct colors to each category
+- Creates a legend
+- Maintains consistent colors across plots
+
+### Color for Continuous Variables
+
+Color can also represent continuous data:
+
+```python
+# Color by continuous variable (body mass)
+(
+    so.Plot(
+        penguins_clean,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        color="body_mass_g"
+    )
+    .add(so.Dot())
+)
+```
+
+Notice how the color gradient shows the range of body mass values. Lighter or darker colors indicate higher or lower values.
+
+::: {.callout-note}
+
+## Choosing Colors for Data Types
+
+- **Categorical data** (species, gender, treatment group) → Use distinct colors
+- **Continuous data** (income, temperature, age) → Use color gradients
+- **Diverging data** (change from baseline, profit/loss) → Use diverging palettes (e.g., blue-white-red)
+
+:::
+
+## Mapping Size
+
+Size is excellent for showing magnitude or importance:
+
+```python
+# Size by continuous variable
+(
+    so.Plot(
+        penguins_clean,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        pointsize="body_mass_g"
+    )
+    .add(so.Dot())
+)
+```
+
+Larger dots represent penguins with greater body mass. This creates a "bubble plot" where we're visualizing three variables simultaneously!
+
+### Combining Multiple Aesthetics
+
+Let's get more sophisticated by combining color AND size:
+
+```python
+# Multi-dimensional visualization
+(
+    so.Plot(
+        penguins_clean,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        color="species",
+        pointsize="body_mass_g"
+    )
+    .add(so.Dot(alpha=0.6))  # Added transparency to see overlapping points
+)
+```
+
+Now we're showing **four** variables at once:
+
+- Bill length (x-axis)
+- Bill depth (y-axis)
+- Species (color)
+- Body mass (size)
+
+This is powerful for exploratory data analysis!
+
+## Mapping Shape (Marker)
+
+Shape (called `marker` in seaborn.objects) is useful for categorical variables, especially when printing in black and white:
+
+```python
+# Different shapes for different categories
+(
+    so.Plot(
+        penguins_clean,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        marker="species"
+    )
+    .add(so.Dot())
+)
+```
+
+::: {.callout-warning}
+
+## Limit Shape Categories
+
+Don't use shape for variables with many categories (more than 6-7). It becomes hard to distinguish between shapes. For many categories, use color instead.
+
+:::
+
+## Combining Color and Shape
+
+For maximum clarity and accessibility (including for colorblind viewers), combine color and shape:
+
+```python
+# Both color and shape for species
+(
+    so.Plot(
+        penguins_clean,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        color="species",
+        marker="species"
+    )
+    .add(so.Dot())
+)
+```
+
+Now species are distinguished by both color AND shape - making the plot accessible to everyone!
+
+## Using Alpha (Transparency)
+
+Alpha controls transparency and is useful when points overlap:
+
+```python
+# Without alpha - hard to see overlapping points
+(
+    so.Plot(
+        penguins_clean,
+        x="flipper_length_mm",
+        y="body_mass_g"
+    )
+    .add(so.Dot())
+)
+
+# With alpha - can see density of overlapping points
+(
+    so.Plot(
+        penguins_clean,
+        x="flipper_length_mm",
+        y="body_mass_g"
+    )
+    .add(so.Dot(alpha=0.5))
+)
+```
+
+Where many points overlap, the color becomes darker, showing areas of high density.
+
+## Research Example: Education and Income Data
+
+Let's imagine we have data from a household survey in Kenya. Here's how we might use different aesthetics:
+
+```python
+# Create sample research data
+import numpy as np
+
+np.random.seed(42)
+n = 200
+
+research_data = pd.DataFrame({
+    'household_income': np.random.lognormal(10, 1, n),
+    'years_education': np.random.normal(8, 3, n),
+    'household_size': np.random.randint(1, 10, n),
+    'county': np.random.choice(['Nairobi', 'Kisumu', 'Mombasa', 'Nakuru'], n),
+    'program_participant': np.random.choice(['Yes', 'No'], n)
+})
+
+# Ensure positive values
+research_data['years_education'] = research_data['years_education'].clip(lower=0)
+```
+
+Now let's visualize this data with multiple aesthetics:
+
+```python
+# Rich multi-dimensional visualization
+(
+    so.Plot(
+        research_data,
+        x="years_education",
+        y="household_income",
+        color="county",
+        pointsize="household_size",
+        marker="program_participant"
+    )
+    .add(so.Dot(alpha=0.6))
+)
+```
+
+This single plot shows:
+
+- Education level (x-axis)
+- Household income (y-axis)
+- County (color)
+- Household size (point size)
+- Program participation (shape)
+
+That's **five** variables in one visualization!
+
+## Exercises
+
+::: {.callout-note}
+
+## Exercise 1: Experiment with Aesthetics
+
+Using the penguins dataset, create a plot that shows:
+
+- `flipper_length_mm` on the x-axis
+- `body_mass_g` on the y-axis
+- `island` as color
+- `sex` as marker shape
+
+```python
+# Your code here
+```
+
+::: {.callout-tip collapse="true"}
+
+## Solution 1
+
+```python
+# Clean data to remove missing sex values
+penguins_complete = penguins.dropna(subset=['sex'])
+
+(
+    so.Plot(
+        penguins_complete,
+        x="flipper_length_mm",
+        y="body_mass_g",
+        color="island",
+        marker="sex"
+    )
+    .add(so.Dot(alpha=0.7))
+)
+```
+
+What patterns do you see? Do males and females differ in body mass? Do penguins from different islands cluster differently?
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 2: Too Many Aesthetics?
+
+Create a plot with the penguins data that uses all of these aesthetics:
+
+- x, y, color, pointsize, marker, alpha
+
+Then discuss: Is this plot easy to understand? When does adding more aesthetics become confusing rather than helpful?
+
+::: {.callout-tip collapse="true"}
+
+## Solution 2
+
+```python
+(
+    so.Plot(
+        penguins_clean,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        color="species",
+        pointsize="body_mass_g",
+        marker="sex"
+    )
+    .add(so.Dot(alpha=0.5))
+)
+```
+
+**Discussion**: While technically you can encode many variables, there's a limit to how much information people can process visually. Generally:
+
+- 3-4 variables is very manageable
+- 5 variables can work if the relationships are clear
+- 6+ variables usually creates confusion
+
+Consider whether faceting (small multiples) might be clearer than packing everything into one plot.
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 3: Research Application
+
+Think about a dataset from your own research work. Sketch out (on paper or describe in words) a visualization that would show:
+
+1. What would be on your x and y axes?
+2. What categorical variable would you show with color?
+3. Is there a continuous variable you could show with size?
+4. Would you need shape for an additional categorical variable?
+
+Discuss with a partner: Would stakeholders understand this visualization? What would make it clearer?
+
+:::
+
+## Choosing the Right Aesthetics
+
+Here are some guidelines for choosing aesthetic mappings:
+
+### For Position (x, y)
+
+- The most important variables should go on axes
+- Position is the most accurate way humans perceive quantitative data
+- Typically: independent variable on x, dependent variable on y
+
+### For Color
+
+- **Categorical**: Use for up to 8-10 categories maximum
+- **Continuous**: Use for highlighting patterns or gradients
+- Ensure sufficient contrast between colors
+- Consider colorblind-friendly palettes
+
+### For Size
+
+- Best for continuous positive values
+- Don't use size for negative values or data that includes zero
+- Humans aren't great at comparing areas - use size as a supplementary encoding
+
+### For Shape
+
+- Only for categorical data
+- Limit to 3-6 categories maximum
+- Essential for black-and-white printing
+- Combine with color for accessibility
+
+### For Alpha (Transparency)
+
+- Use to show density when points overlap
+- Use to de-emphasize less important data
+- Usually set as a constant (like `alpha=0.5`), not mapped to data
+
+## Common Pitfalls
+
+::: {.callout-warning}
+
+## Things to Avoid
+
+1. **Rainbow color schemes** for continuous data - they're not perceptually uniform and are problematic for colorblind viewers
+
+2. **Too many aesthetics** - More isn't always better. Keep it simple enough to understand.
+
+3. **Inappropriate mappings** - Don't use size for categorical data or shape for continuous data
+
+4. **No legend** - Always ensure viewers can decode your aesthetic mappings
+
+5. **Inconsistent mappings** - If you use color for species in one plot, use the same mapping in related plots
+
+:::
+
+::: {.callout-important}
+
+## Key Points
+
+- The grammar of graphics breaks visualizations into reusable components
+- Aesthetic mappings connect data variables to visual properties
+- Main aesthetics: position (x, y), color, size (pointsize), shape (marker), and alpha
+- Color works for both categorical and continuous data
+- Size is best for continuous positive values
+- Shape works for small numbers of categories
+- Combining multiple aesthetics creates multi-dimensional visualizations
+- Choose aesthetics based on your data type and what you want to emphasize
+- Always consider accessibility and clarity for your audience
+
+:::
+
+::: {.callout-tip}
+
+## Looking Ahead
+
+In the next lesson, we'll explore different types of marks (geometric objects) beyond dots - including lines, bars, areas, and bands. We'll learn how to choose the right mark for your data and research questions.
+
+:::

@@ -1,0 +1,919 @@
+---
+title: "Docker Containers for Research Environments"
+abstract: "Guide to using Docker containers for creating reproducible, portable research environments that can be deployed locally or to cloud services."
+keywords: ["Docker", "containers", "reproducibility", "deployment", "cloud computing", "tutorial", "how-to"]
+
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+
+# contributors:
+  # - "[]()"
+
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+---
+
+:::{.custom-summary-block}
+Docker is a containerization platform that packages applications and their dependencies into portable, isolated containers. This guide covers Docker fundamentals, creating research environments, managing data in containers, and deploying to cloud services for reproducible research workflows.
+:::
+
+## What is Docker?
+
+[Docker](https://www.docker.com/) is a platform that uses containerization technology to package applications and their dependencies into standardized units called containers. Containers include everything needed to run an application: code, runtime, system tools, libraries, and settings.
+
+### Why Use Docker for Research?
+
+- **Reproducibility**: Package exact software versions and dependencies
+- **Portability**: Run the same environment on any system (Windows, macOS, Linux, cloud)
+- **Isolation**: Separate project environments without conflicts
+- **Collaboration**: Share complete working environments with collaborators
+- **Deployment**: Easily move from local development to cloud computing
+- **Complex dependencies**: Handle system-level dependencies that virtual environments cannot manage
+
+### Docker vs Virtual Environments
+
+| Aspect | Docker | Python venv/uv | R renv |
+| ------ | ------ | -------------- | ------ |
+| **Scope** | System-level isolation | Python packages only | R packages only |
+| **Portability** | Complete environment | Python dependencies | R dependencies |
+| **System dependencies** | Yes | No | No |
+| **Multi-language** | Yes | Python only | R only |
+| **Learning curve** | Steeper | Gentle | Gentle |
+| **Overhead** | Higher | Minimal | Minimal |
+| **Best for** | Complex multi-tool workflows, cloud deployment | Python-only projects | R-only projects |
+
+**Use Docker when**:
+
+- Working with multiple programming languages (Python + R + Stata)
+- Need specific system-level dependencies (database drivers, GIS libraries)
+- Deploying to cloud computing services
+- Sharing complete working environments across different operating systems
+- Running legacy software with specific OS requirements
+
+**Use virtual environments when**:
+
+- Working exclusively in one language (Python or R)
+- Simple dependency management needs
+- Local development only
+- Minimizing overhead and complexity
+
+## Installing Docker
+
+### Docker Desktop vs Docker Engine
+
+- **Docker Desktop**: Graphical interface, easier for beginners, includes Docker Engine
+    - Recommended for Windows and macOS users
+    - Includes Docker Compose and Kubernetes
+    - Easier environment management
+
+- **Docker Engine**: Command-line only, lighter weight
+    - Common on Linux servers
+    - Better for production environments
+
+For research workflows, Docker Desktop is recommended for local development.
+
+### Installation by Platform
+
+::: {.panel-tabset group="OS"}
+
+# Windows
+
+1. **System Requirements**:
+   - Windows 10/11 Pro, Enterprise, or Education (64-bit)
+   - WSL 2 (Windows Subsystem for Linux) enabled
+   - Virtualization enabled in BIOS
+
+2. **Download and Install**:
+   - Download [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+   - Run the installer
+   - Follow the installation wizard
+   - Restart your computer when prompted
+
+3. **Enable WSL 2** (if not already enabled):
+
+```bash
+# Run in PowerShell as Administrator
+wsl --install
+wsl --set-default-version 2
+```
+
+4. **Verify Installation**:
+
+```bash
+docker --version
+docker run hello-world
+```
+
+# macOS
+
+1. **System Requirements**:
+   - macOS 10.15 or newer
+   - Apple Silicon (M1/M2) or Intel processor
+
+2. **Download and Install**:
+   - Download [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
+   - Open the `.dmg` file
+   - Drag Docker to Applications folder
+   - Launch Docker Desktop from Applications
+
+3. **Verify Installation**:
+
+```bash
+docker --version
+docker run hello-world
+```
+
+# Linux
+
+1. **Install Docker Engine** (Ubuntu/Debian example):
+
+```bash
+# Update package index
+sudo apt-get update
+
+# Install prerequisites
+sudo apt-get install ca-certificates curl gnupg
+
+# Add Docker's official GPG key
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+  sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Set up repository
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Install Docker Engine
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+2. **Post-Installation Steps**:
+
+```bash
+# Add your user to docker group (avoid using sudo)
+sudo usermod -aG docker $USER
+
+# Log out and back in, then verify
+docker --version
+docker run hello-world
+```
+
+For other Linux distributions, see [Docker's official installation guide](https://docs.docker.com/engine/install/).
+
+:::
+
+## Verify Installation
+
+After installation, verify Docker is working:
+
+```bash
+# Check Docker version
+docker --version
+
+# Run test container
+docker run hello-world
+
+# Check Docker Compose version
+docker compose version
+```
+
+## Docker Fundamentals
+
+### Images vs Containers
+
+- **Image**: Read-only template containing application code, dependencies, and configuration
+    - Like a recipe or blueprint
+    - Shared and versioned (e.g., on Docker Hub)
+
+- **Container**: Running instance of an image
+    - Like a dish made from a recipe
+    - Isolated, writable, ephemeral
+
+### Basic Docker Commands
+
+#### Working with Images
+
+```bash
+# List local images
+docker images
+
+# Pull an image from Docker Hub
+docker pull python:3.12
+
+# Remove an image
+docker rmi python:3.12
+
+# Build image from Dockerfile
+docker build -t my-image .
+```
+
+#### Working with Containers
+
+```bash
+# List running containers
+docker ps
+
+# List all containers (including stopped)
+docker ps -a
+
+# Run a container
+docker run -it python:3.12 bash
+
+# Run container in background (detached)
+docker run -d --name mycontainer python:3.12
+
+# Stop a running container
+docker stop mycontainer
+
+# Start a stopped container
+docker start mycontainer
+
+# Remove a container
+docker rm mycontainer
+
+# View container logs
+docker logs mycontainer
+
+# Execute command in running container
+docker exec -it mycontainer bash
+```
+
+#### Cleaning Up
+
+```bash
+# Remove stopped containers
+docker container prune
+
+# Remove unused images
+docker image prune
+
+# Remove everything (containers, images, volumes, networks)
+docker system prune -a
+```
+
+### Understanding Dockerfiles
+
+A Dockerfile is a text file containing instructions to build a Docker image.
+
+**Basic Dockerfile example**:
+
+```text
+# Start from base image
+FROM python:3.12-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements file
+COPY requirements.txt .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Set default command
+CMD ["python", "analysis.py"]
+```
+
+**Key Dockerfile instructions**:
+
+- `FROM`: Specifies base image
+- `WORKDIR`: Sets working directory in container
+- `COPY`: Copies files from host to container
+- `RUN`: Executes commands during image build
+- `CMD`: Default command when container starts
+- `ENV`: Sets environment variables
+- `EXPOSE`: Documents which ports the container uses
+
+## Creating a Research Environment
+
+### Python Data Science Environment
+
+Create a Dockerfile for Python data analysis:
+
+```text
+# Start with official Python image
+FROM python:3.12-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /workspace
+
+# Copy requirements file
+COPY requirements.txt .
+
+# Install Python packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install Jupyter
+RUN pip install --no-cache-dir jupyterlab
+
+# Expose Jupyter port
+EXPOSE 8888
+
+# Set default command to launch Jupyter
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+```
+
+**requirements.txt**:
+
+```text
+pandas>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+scipy>=1.10.0
+statsmodels>=0.14.0
+scikit-learn>=1.3.0
+```
+
+**Build and run**:
+
+```bash
+# Build image
+docker build -t my-data-env .
+
+# Run container with volume mount
+docker run -p 8888:8888 -v $(pwd):/workspace my-data-env
+```
+
+Access Jupyter at `http://localhost:8888`
+
+### R Analysis Environment
+
+Dockerfile for R projects:
+
+```text
+# Start with rocker R image
+FROM rocker/tidyverse:4.3.0
+
+# Install additional R packages
+RUN install2.r --error \
+    --deps TRUE \
+    haven \
+    readxl \
+    janitor \
+    skimr
+
+# Install system dependencies for specific packages
+RUN apt-get update && apt-get install -y \
+    libgdal-dev \
+    libproj-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /workspace
+
+# Default command: start R
+CMD ["R"]
+```
+
+**Build and run**:
+
+```bash
+# Build image
+docker build -t my-r-env .
+
+# Run RStudio Server (rocker images include it)
+docker run -p 8787:8787 \
+  -e PASSWORD=mypassword \
+  -v $(pwd):/workspace \
+  my-r-env
+```
+
+Access RStudio at `http://localhost:8787` (username: rstudio, password: mypassword)
+
+### Multi-Language Environment
+
+Dockerfile with Python and R:
+
+```text
+# Start with rocker image (includes R)
+FROM rocker/tidyverse:4.3.0
+
+# Install Python
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python packages
+RUN pip3 install --no-cache-dir \
+    pandas \
+    numpy \
+    matplotlib \
+    seaborn \
+    jupyterlab
+
+# Install R packages
+RUN install2.r --error haven readxl
+
+# Set working directory
+WORKDIR /workspace
+
+# Expose ports for Jupyter and RStudio
+EXPOSE 8888 8787
+
+# Default command
+CMD ["bash"]
+```
+
+## Managing Data in Containers
+
+### Volume Mounting
+
+Mount local directories into containers to access data:
+
+```bash
+# Mount current directory to /workspace in container
+docker run -v $(pwd):/workspace my-image
+
+# Mount specific data directory
+docker run -v /path/to/data:/data my-image
+
+# Mount multiple directories
+docker run \
+  -v $(pwd):/workspace \
+  -v /path/to/data:/data \
+  -v /path/to/output:/output \
+  my-image
+```
+
+**Windows paths** (PowerShell):
+
+```bash
+docker run -v ${PWD}:/workspace my-image
+```
+
+### Named Volumes
+
+Create persistent volumes for data that survives container deletion:
+
+```bash
+# Create named volume
+docker volume create project-data
+
+# Use named volume
+docker run -v project-data:/data my-image
+
+# List volumes
+docker volume ls
+
+# Inspect volume
+docker volume inspect project-data
+
+# Remove volume
+docker volume rm project-data
+```
+
+### Best Practices for Data
+
+1. **Separate code and data**: Mount code and data from different directories
+2. **Read-only mounts**: Protect source data with `:ro` flag
+
+```bash
+docker run -v $(pwd)/data:/data:ro my-image
+```
+
+3. **Use .dockerignore**: Exclude data files from image builds
+
+**.dockerignore**:
+
+```text
+data/
+*.csv
+*.xlsx
+*.dta
+output/
+.git/
+```
+
+4. **Sensitive data**: Never include sensitive data in Docker images
+   - Use volume mounts at runtime
+   - Use environment variables for credentials
+   - Consider encryption for sensitive data volumes
+
+## Docker Compose for Multi-Service Projects
+
+Docker Compose manages multi-container applications using YAML configuration.
+
+### When to Use Docker Compose
+
+- Running multiple related services (database + analysis environment)
+- Complex setups with specific networking requirements
+- Reproducible multi-service deployments
+
+### Example: Database + Analysis Environment
+
+**docker-compose.yml**:
+
+```yaml
+version: '3.8'
+
+services:
+  # PostgreSQL database
+  database:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: researcher
+      POSTGRES_PASSWORD: secure_password
+      POSTGRES_DB: survey_data
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Python analysis environment
+  analysis:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/workspace
+      - ./data:/data:ro
+    environment:
+      DATABASE_URL: postgresql://researcher:secure_password@database:5432/survey_data
+    depends_on:
+      - database
+
+volumes:
+  postgres-data:
+```
+
+**Usage**:
+
+```bash
+# Start all services
+docker compose up
+
+# Start in background
+docker compose up -d
+
+# View logs
+docker compose logs
+
+# Stop all services
+docker compose down
+
+# Stop and remove volumes
+docker compose down -v
+```
+
+### Environment Variables
+
+Store configuration in `.env` file (don't commit to git):
+
+**.env**:
+
+```text
+POSTGRES_USER=researcher
+POSTGRES_PASSWORD=secure_password
+DATABASE_NAME=survey_data
+```
+
+**docker-compose.yml**:
+
+```yaml
+services:
+  database:
+    image: postgres:15
+    env_file:
+      - .env
+```
+
+## Deployment to Cloud Services
+
+### Overview of Cloud Container Services
+
+| Service | Provider | Best For |
+| ------- | -------- | -------- |
+| **Azure Container Instances** | Microsoft Azure | Windows containers, Azure integration |
+| **AWS ECS/Fargate** | Amazon Web Services | Enterprise, integration with AWS services |
+| **Google Cloud Run** | Google Cloud | Simple deployments, autoscaling |
+
+### Basic Deployment Workflow
+
+1. **Build and test locally**:
+
+```bash
+docker build -t my-analysis .
+docker run my-analysis
+```
+
+2. **Tag image for registry**:
+
+```bash
+# For Docker Hub
+docker tag my-analysis username/my-analysis:v1
+
+# For AWS ECR
+docker tag my-analysis aws-account-id.dkr.ecr.region.amazonaws.com/my-analysis:v1
+```
+
+3. **Push to container registry**:
+
+```bash
+# Docker Hub
+docker push username/my-analysis:v1
+
+# AWS ECR (after authentication)
+docker push aws-account-id.dkr.ecr.region.amazonaws.com/my-analysis:v1
+```
+
+4. **Deploy to cloud service**: Use cloud provider's console or CLI
+
+### Example: Azure Container Instances
+
+```bash
+# Login to Azure
+az login
+
+# Create resource group (if needed)
+az group create --name my-research-rg --location eastus
+
+# Create container registry
+az acr create --resource-group my-research-rg \
+  --name myanalysisregistry --sku Basic
+
+# Build and push to Azure Container Registry
+az acr build --registry myanalysisregistry \
+  --image my-analysis:v1 .
+
+# Deploy to Azure Container Instances
+az container create \
+  --resource-group my-research-rg \
+  --name my-analysis \
+  --image myanalysisregistry.azurecr.io/my-analysis:v1 \
+  --cpu 1 --memory 1.5 \
+  --registry-login-server myanalysisregistry.azurecr.io \
+  --registry-username $(az acr credential show --name myanalysisregistry --query username -o tsv) \
+  --registry-password $(az acr credential show --name myanalysisregistry --query passwords[0].value -o tsv) \
+  --dns-name-label my-analysis-app \
+  --ports 8888
+```
+
+### Secrets and Credentials
+
+Never include credentials in Docker images. Use cloud provider secrets management:
+
+```bash
+# AWS: Use environment variables from Secrets Manager
+# GCP: Use Secret Manager
+# Azure: Use Key Vault
+
+# Example: Azure Key Vault integration
+az container create \
+  --resource-group my-research-rg \
+  --name my-analysis \
+  --image myanalysisregistry.azurecr.io/my-analysis:v1 \
+  --secrets-mount-path /mnt/secrets \
+  --secrets api-key=my-keyvault-secret
+```
+
+## Best Practices
+
+### Image Optimization
+
+1. **Use specific base images**:
+
+```text
+# Good: Specific version
+FROM python:3.12-slim
+
+# Avoid: Latest tag (unpredictable)
+FROM python:latest
+```
+
+2. **Minimize layers**: Combine RUN commands
+
+```text
+# Good
+RUN apt-get update && apt-get install -y \
+    package1 \
+    package2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Avoid
+RUN apt-get update
+RUN apt-get install -y package1
+RUN apt-get install -y package2
+```
+
+3. **Order for cache efficiency**: Put changing content last
+
+```text
+# Copy requirements first (changes less often)
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy code last (changes often)
+COPY . .
+```
+
+4. **Use .dockerignore**: Exclude unnecessary files
+
+### Security
+
+1. **Don't run as root**:
+
+```text
+# Create non-root user
+RUN useradd -m -u 1000 researcher
+USER researcher
+```
+
+2. **Scan for vulnerabilities**:
+
+```bash
+# Using Docker Scout
+docker scout cves my-image
+```
+
+3. **Keep images updated**: Regularly rebuild with latest base images
+
+4. **Never commit secrets**: Use environment variables or secret managers
+
+### Reproducibility
+
+1. **Pin versions**:
+
+```text
+FROM python:3.12.5-slim
+RUN pip install pandas==2.0.3 numpy==1.24.3
+```
+
+2. **Document dependencies**: Include README with build instructions
+
+3. **Version control**: Commit Dockerfile and docker-compose.yml to git
+
+4. **Tag images**: Use meaningful version tags, not just `latest`
+
+### Documentation
+
+Include in your repository:
+
+- **Dockerfile**: Well-commented with explanations
+- **README.md**: Build and run instructions
+- **docker-compose.yml**: Multi-service setup if needed
+- **.dockerignore**: Exclude unnecessary files
+- **requirements.txt** or **environment.yml**: Dependency specifications
+
+## Troubleshooting
+
+### Container Exits Immediately
+
+**Problem**: Container starts but stops right away.
+
+**Solution**:
+
+```bash
+# Check logs
+docker logs container-name
+
+# Run interactively to debug
+docker run -it my-image bash
+```
+
+### Permission Denied Errors
+
+**Problem**: Permission errors accessing mounted volumes.
+
+**Solution**:
+
+1. Match user IDs between host and container:
+
+```text
+# Use host user ID
+ARG USER_ID=1000
+RUN useradd -m -u ${USER_ID} researcher
+USER researcher
+```
+
+Build with:
+
+```bash
+docker build --build-arg USER_ID=$(id -u) -t my-image .
+```
+
+2. On Linux, ensure files are readable:
+
+```bash
+chmod -R 755 ./data
+```
+
+### Port Already in Use
+
+**Problem**: `Error: bind: address already in use`
+
+**Solution**:
+
+1. Use different port:
+
+```bash
+docker run -p 8889:8888 my-image
+```
+
+2. Find and stop conflicting container:
+
+```bash
+docker ps
+docker stop conflicting-container
+```
+
+### Out of Disk Space
+
+**Problem**: Docker uses too much disk space.
+
+**Solution**:
+
+```bash
+# Remove unused resources
+docker system prune -a
+
+# Check disk usage
+docker system df
+
+# Remove specific items
+docker container prune
+docker image prune
+docker volume prune
+```
+
+### Slow Builds
+
+**Problem**: Docker builds take too long.
+
+**Solution**:
+
+1. Use BuildKit (faster):
+
+```bash
+DOCKER_BUILDKIT=1 docker build -t my-image .
+```
+
+2. Optimize layer caching (copy requirements before code)
+3. Use smaller base images (`-slim` or `-alpine` variants)
+
+### Cannot Connect to Services
+
+**Problem**: Container cannot reach other services.
+
+**Solution**:
+
+1. Use Docker Compose networking:
+
+```yaml
+services:
+  app:
+    # Use service name as hostname
+    environment:
+      DATABASE_HOST: database
+  database:
+    # ...
+```
+
+2. Check service is running:
+
+```bash
+docker compose ps
+docker compose logs database
+```
+
+## Learning Resources
+
+### Official Documentation
+
+- [Docker Documentation](https://docs.docker.com/) - Comprehensive Docker guide
+- [Docker Hub](https://hub.docker.com/) - Public container registry
+- [Docker Compose Documentation](https://docs.docker.com/compose/) - Multi-container applications
+
+### Docker for Research
+
+- [Rocker Project](https://rocker-project.org/) - Docker images for R
+- [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/) - Ready-to-run Jupyter environments
+- [The Turing Way: Reproducible Environments](https://the-turing-way.netlify.app/reproducible-research/renv.html) - Research reproducibility guide
+
+### Tutorials
+
+- [Docker Getting Started](https://docs.docker.com/get-started/) - Official beginner tutorial
+- [Docker Curriculum](https://docker-curriculum.com/) - Comprehensive Docker tutorial
+- [Play with Docker](https://labs.play-with-docker.com/) - Browser-based Docker playground
+
+### Related Guides
+
+- [Virtual Environments Overview](index.qmd) - Comparison of environment management tools
+- [Python with uv](python-uv.qmd) - Python-specific virtual environments

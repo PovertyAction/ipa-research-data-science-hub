@@ -1,0 +1,902 @@
+---
+title: "Integration with Pandas"
+abstract: |
+  Learn to convert scraped web data into pandas DataFrames for analysis. Master techniques for cleaning, transforming, and structuring web data, and build automated data collection workflows that integrate seamlessly with data science pipelines.
+authors:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+# # Contributors
+# contributors:
+#   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+
+keywords: ["Python", "Web Scraping", "Gazpacho", "Pandas", "Data Analysis", "DataFrames", "Data Cleaning", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Convert scraped data into pandas DataFrames
+- Clean and preprocess web data for analysis
+- Handle different data types from web sources
+- Build automated data collection workflows
+- Create reproducible web scraping pipelines
+- Export and save scraped datasets
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- How do I structure scraped data for pandas analysis?
+- What data cleaning steps are commonly needed for web data?
+- How can I automate the scraping-to-analysis pipeline?
+- What are the best practices for handling missing or malformed data?
+:::
+
+::: {.callout-note}
+
+## Attribution
+
+This tutorial is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from the [calmcode.io gazpacho pandas tutorial](https://calmcode.io/course/gazpacho/pandas) (CC BY 4.0 License).
+:::
+
+## From Web Data to DataFrames
+
+The ultimate goal of web scraping is often to get data into a format suitable for analysis. Pandas DataFrames provide the perfect structure for working with tabular web data.
+
+### Basic Conversion Workflow
+
+```python
+import pandas as pd
+from gazpacho import get, Soup
+
+def basic_scrape_to_dataframe():
+    """Basic example of converting scraped data to DataFrame."""
+    # Sample data structure from scraping
+    scraped_data = [
+        {'name': 'Alice', 'age': 25, 'city': 'New York'},
+        {'name': 'Bob', 'age': 30, 'city': 'London'},
+        {'name': 'Charlie', 'age': 35, 'city': 'Tokyo'}
+    ]
+
+    # Convert to DataFrame
+    df = pd.DataFrame(scraped_data)
+    print("Basic DataFrame:")
+    print(df)
+    print(f"\nShape: {df.shape}")
+    print(f"Columns: {df.columns.tolist()}")
+
+    return df
+
+# Test basic conversion
+df = basic_scrape_to_dataframe()
+```
+
+### Real Web Scraping to DataFrame
+
+Let's scrape actual web data and convert it to a DataFrame:
+
+```python
+import pandas as pd
+from gazpacho import get, Soup
+from datetime import datetime
+
+def scrape_quotes_to_dataframe():
+    """Scrape quotes data and convert to DataFrame."""
+    # Using a quotes website for demonstration
+    url = "http://quotes.toscrape.com/"
+
+    try:
+        html = get(url)
+        soup = Soup(html)
+
+        # Extract quote data (simplified - would need to find all quotes)
+        quote_data = []
+
+        # Find first quote for demonstration
+        quote_element = soup.find('span', {'class': 'text'})
+        author_element = soup.find('small', {'class': 'author'})
+
+        if quote_element and author_element:
+            quote_data.append({
+                'quote': quote_element.text.strip('"'),
+                'author': author_element.text,
+                'scraped_at': datetime.now(),
+                'source_url': url
+            })
+
+        # Convert to DataFrame
+        df = pd.DataFrame(quote_data)
+
+        if not df.empty:
+            print("Scraped Quotes DataFrame:")
+            print(df)
+            return df
+        else:
+            print("No quotes found")
+            return pd.DataFrame()
+
+    except Exception as e:
+        print(f"Error scraping quotes: {e}")
+        return pd.DataFrame()
+
+# Test quote scraping
+quotes_df = scrape_quotes_to_dataframe()
+```
+
+::: {.callout-note}
+
+## Try This: Multiple Pages to DataFrame
+
+Practice scraping multiple data points and combining them:
+
+```python
+import pandas as pd
+from gazpacho import get, Soup
+import time
+
+def scrape_multiple_pages():
+    """Scrape data from multiple pages into one DataFrame."""
+    base_url = "https://httpbin.org"
+    endpoints = ["/json", "/user-agent", "/headers"]
+
+    all_data = []
+
+    for endpoint in endpoints:
+        try:
+            url = base_url + endpoint
+            html = get(url)
+
+            # Different processing for different endpoints
+            if endpoint == "/json":
+                # This returns JSON, but let's treat it as text for demo
+                data = {
+                    'endpoint': endpoint,
+                    'url': url,
+                    'content_length': len(html),
+                    'content_type': 'json',
+                    'scraped_at': datetime.now()
+                }
+            else:
+                data = {
+                    'endpoint': endpoint,
+                    'url': url,
+                    'content_length': len(html),
+                    'content_type': 'text',
+                    'scraped_at': datetime.now()
+                }
+
+            all_data.append(data)
+
+            # Be polite - wait between requests
+            time.sleep(1)
+
+        except Exception as e:
+            print(f"Error scraping {endpoint}: {e}")
+
+    # Convert to DataFrame
+    df = pd.DataFrame(all_data)
+    print("Multi-page scraping results:")
+    print(df)
+
+    return df
+
+# Test multiple page scraping
+multi_df = scrape_multiple_pages()
+```
+
+:::
+
+## PyPI Example: Complete Implementation
+
+Let's implement the calmcode tutorial example - scraping PyPI package history:
+
+```python
+import pandas as pd
+from gazpacho import get, Soup
+import re
+from datetime import datetime
+
+def parse_card(card_html):
+    """Parse individual release card from PyPI."""
+    soup = Soup(card_html)
+
+    # Extract version
+    version_elem = soup.find('p', {'class': 'release__version'}, partial=False)
+    version = version_elem.text.strip() if version_elem else None
+
+    # Extract timestamp
+    time_elem = soup.find('time')
+    timestamp = time_elem.attrs.get('datetime') if time_elem else None
+
+    return {
+        'version': version,
+        'timestamp': timestamp
+    }
+
+def scrape_pypi_history(package_name):
+    """Scrape PyPI package release history and convert to DataFrame."""
+    url = f"https://pypi.org/project/{package_name}/#history"
+
+    try:
+        print(f"Scraping {package_name} from PyPI...")
+        html = get(url)
+        soup = Soup(html)
+
+        # This is a simplified version - in practice, you'd need to find all cards
+        # For demonstration, we'll create sample data based on the structure
+
+        # Find the first release information
+        version_elem = soup.find('p', {'class': 'release__version'}, partial=True)
+        time_elem = soup.find('time')
+
+        releases_data = []
+
+        if version_elem and time_elem:
+            releases_data.append({
+                'version': version_elem.text.strip(),
+                'timestamp': time_elem.attrs.get('datetime'),
+                'release_date': time_elem.text.strip(),
+                'package': package_name
+            })
+
+        # Convert to DataFrame
+        df = pd.DataFrame(releases_data)
+
+        if not df.empty:
+            # Data cleaning and transformation
+            df = clean_pypi_data(df)
+            print(f"Successfully scraped {len(df)} releases for {package_name}")
+            return df
+        else:
+            print(f"No release data found for {package_name}")
+            return pd.DataFrame()
+
+    except Exception as e:
+        print(f"Error scraping {package_name}: {e}")
+        return pd.DataFrame()
+
+def clean_pypi_data(df):
+    """Clean and enhance PyPI data."""
+    if df.empty:
+        return df
+
+    # Convert timestamp to datetime
+    if 'timestamp' in df.columns:
+        df['parsed_datetime'] = pd.to_datetime(df['timestamp'], errors='coerce')
+
+    # Add additional calculated columns
+    df['scraped_at'] = datetime.now()
+
+    # Clean version strings
+    if 'version' in df.columns:
+        df['version_clean'] = df['version'].str.strip()
+
+    return df
+
+# Test PyPI scraping
+packages = ['requests', 'beautifulsoup4', 'pandas']
+all_releases = []
+
+for package in packages:
+    df = scrape_pypi_history(package)
+    if not df.empty:
+        all_releases.append(df)
+
+    # Be polite between requests
+    time.sleep(2)
+
+# Combine all package data
+if all_releases:
+    combined_df = pd.concat(all_releases, ignore_index=True)
+    print("\nCombined PyPI Release Data:")
+    print(combined_df)
+    print(f"\nTotal releases scraped: {len(combined_df)}")
+else:
+    print("No data was successfully scraped")
+```
+
+## Data Cleaning and Preprocessing
+
+Web data often requires cleaning before analysis:
+
+```python
+import pandas as pd
+import re
+from datetime import datetime
+
+def clean_web_data(df):
+    """Comprehensive data cleaning for web-scraped data."""
+    df_clean = df.copy()
+
+    # Text cleaning
+    text_columns = df_clean.select_dtypes(include=['object']).columns
+    for col in text_columns:
+        if col in df_clean.columns:
+            # Remove extra whitespace
+            df_clean[col] = df_clean[col].astype(str).str.strip()
+
+            # Remove HTML entities
+            df_clean[col] = df_clean[col].str.replace('&amp;', '&', regex=False)
+            df_clean[col] = df_clean[col].str.replace('&lt;', '<', regex=False)
+            df_clean[col] = df_clean[col].str.replace('&gt;', '>', regex=False)
+
+            # Remove excessive whitespace
+            df_clean[col] = df_clean[col].str.replace(r'\s+', ' ', regex=True)
+
+    return df_clean
+
+def extract_numbers_from_text(df, column_name, new_column_name):
+    """Extract numeric values from text columns."""
+    if column_name in df.columns:
+        # Extract numbers using regex
+        df[new_column_name] = df[column_name].str.extract(r'(\d+\.?\d*)', expand=False)
+        df[new_column_name] = pd.to_numeric(df[new_column_name], errors='coerce')
+
+    return df
+
+def standardize_dates(df, date_columns):
+    """Standardize various date formats."""
+    for col in date_columns:
+        if col in df.columns:
+            # Try multiple date formats
+            df[f'{col}_parsed'] = pd.to_datetime(df[col], errors='coerce', infer_datetime_format=True)
+
+    return df
+
+# Example data cleaning workflow
+def cleaning_example():
+    """Demonstrate data cleaning workflow."""
+    # Sample messy web data
+    messy_data = [
+        {'title': '  Product A  ', 'price': '$29.99', 'date': '2023-01-15', 'description': 'Great product &amp; affordable'},
+        {'title': 'Product B\n', 'price': '15.50 USD', 'date': 'Jan 20, 2023', 'description': 'Another great item'},
+        {'title': '', 'price': 'N/A', 'date': '2023/02/01', 'description': 'No title product'},
+        {'title': 'Product C   ', 'price': '45', 'date': 'Invalid date', 'description': 'Premium &lt;quality&gt;'}
+    ]
+
+    df = pd.DataFrame(messy_data)
+    print("Original messy data:")
+    print(df)
+
+    # Clean the data
+    df_clean = clean_web_data(df)
+    df_clean = extract_numbers_from_text(df_clean, 'price', 'price_numeric')
+    df_clean = standardize_dates(df_clean, ['date'])
+
+    # Handle missing values
+    df_clean['title'] = df_clean['title'].replace('', 'Unknown Product')
+    df_clean['price_numeric'] = df_clean['price_numeric'].fillna(0)
+
+    print("\nCleaned data:")
+    print(df_clean)
+
+    return df_clean
+
+# Test cleaning workflow
+cleaned_df = cleaning_example()
+```
+
+::: {.callout-note}
+
+## Try This: Product Data Pipeline
+
+Build a complete pipeline from scraping to analysis:
+
+```python
+import pandas as pd
+from gazpacho import get, Soup
+import time
+from datetime import datetime
+
+class ProductDataPipeline:
+    def __init__(self):
+        self.scraped_data = []
+        self.df = None
+
+    def scrape_product_data(self, urls):
+        """Scrape product data from multiple URLs."""
+        for url in urls:
+            try:
+                html = get(url)
+                soup = Soup(html)
+
+                # Extract product information (this is a simplified example)
+                # In practice, you'd adapt this to actual product pages
+                title_elem = soup.find('title')
+                h1_elem = soup.find('h1')
+
+                product_data = {
+                    'url': url,
+                    'title': title_elem.text if title_elem else 'No title',
+                    'heading': h1_elem.text if h1_elem else 'No heading',
+                    'content_length': len(html),
+                    'scraped_at': datetime.now()
+                }
+
+                self.scraped_data.append(product_data)
+                print(f"Scraped: {url}")
+
+                # Polite delay
+                time.sleep(1)
+
+            except Exception as e:
+                print(f"Error scraping {url}: {e}")
+
+    def create_dataframe(self):
+        """Convert scraped data to DataFrame."""
+        self.df = pd.DataFrame(self.scraped_data)
+        return self.df
+
+    def clean_data(self):
+        """Clean the scraped data."""
+        if self.df is not None:
+            # Clean text columns
+            for col in ['title', 'heading']:
+                if col in self.df.columns:
+                    self.df[col] = self.df[col].str.strip()
+                    self.df[col] = self.df[col].str.replace(r'\s+', ' ', regex=True)
+
+            # Add derived columns
+            self.df['title_length'] = self.df['title'].str.len()
+            self.df['domain'] = self.df['url'].str.extract(r'https?://([^/]+)')
+
+    def analyze_data(self):
+        """Basic analysis of scraped data."""
+        if self.df is not None and not self.df.empty:
+            print("=== Data Analysis ===")
+            print(f"Total pages scraped: {len(self.df)}")
+            print(f"Average content length: {self.df['content_length'].mean():.0f} characters")
+            print(f"Average title length: {self.df['title_length'].mean():.1f} characters")
+
+            # Domain distribution
+            if 'domain' in self.df.columns:
+                print("\nDomain distribution:")
+                print(self.df['domain'].value_counts())
+
+            return self.df.describe()
+
+    def save_data(self, filename):
+        """Save data to CSV."""
+        if self.df is not None:
+            self.df.to_csv(filename, index=False)
+            print(f"Data saved to {filename}")
+
+# Test the pipeline
+pipeline = ProductDataPipeline()
+
+# Sample URLs (using test sites)
+test_urls = [
+    "https://httpbin.org/html",
+    "https://example.com",
+    "https://httpbin.org/json"
+]
+
+# Run the pipeline
+pipeline.scrape_product_data(test_urls)
+df = pipeline.create_dataframe()
+
+if not df.empty:
+    pipeline.clean_data()
+    analysis = pipeline.analyze_data()
+
+    print("\nFinal DataFrame:")
+    print(df.head())
+
+    # Save results
+    pipeline.save_data('scraped_products.csv')
+```
+
+:::
+
+## Advanced DataFrame Operations
+
+### Handling Nested Data
+
+Web scraping often produces nested or complex data structures:
+
+```python
+import pandas as pd
+import json
+
+def handle_nested_data():
+    """Handle nested data structures from web scraping."""
+    # Sample nested data from web scraping
+    nested_data = [
+        {
+            'product_id': '123',
+            'name': 'Laptop',
+            'specs': {'ram': '16GB', 'storage': '512GB SSD', 'cpu': 'Intel i7'},
+            'prices': [999, 899, 950],  # Price history
+            'tags': ['electronics', 'computers', 'portable']
+        },
+        {
+            'product_id': '456',
+            'name': 'Phone',
+            'specs': {'ram': '8GB', 'storage': '128GB', 'cpu': 'Snapdragon'},
+            'prices': [699, 649],
+            'tags': ['electronics', 'mobile', 'smartphone']
+        }
+    ]
+
+    df = pd.DataFrame(nested_data)
+    print("Original nested data:")
+    print(df)
+
+    # Normalize nested specs
+    specs_df = pd.json_normalize(nested_data, sep='_')
+    print("\nNormalized specs:")
+    print(specs_df[['name', 'specs_ram', 'specs_storage', 'specs_cpu']])
+
+    # Handle array data - get latest price
+    df['latest_price'] = df['prices'].apply(lambda x: x[-1] if x else None)
+    df['price_count'] = df['prices'].apply(len)
+
+    # Handle tags - create binary columns
+    all_tags = set()
+    for tags in df['tags']:
+        all_tags.update(tags)
+
+    for tag in all_tags:
+        df[f'has_{tag}'] = df['tags'].apply(lambda x: tag in x)
+
+    print("\nProcessed DataFrame:")
+    print(df[['name', 'latest_price', 'price_count', 'has_electronics', 'has_portable']])
+
+    return df
+
+# Test nested data handling
+nested_df = handle_nested_data()
+```
+
+### Time Series Data from Scraping
+
+Handle temporal data from web scraping:
+
+```python
+import pandas as pd
+from datetime import datetime, timedelta
+
+def create_time_series_data():
+    """Create and analyze time series data from scraping."""
+    # Simulate scraping data over time
+    dates = pd.date_range(start='2023-01-01', periods=30, freq='D')
+
+    time_series_data = []
+    for date in dates:
+        # Simulate daily scraping results
+        data = {
+            'date': date,
+            'pages_scraped': np.random.randint(50, 200),
+            'success_rate': np.random.uniform(0.8, 1.0),
+            'avg_response_time': np.random.uniform(1.0, 3.0),
+            'total_data_points': np.random.randint(100, 500)
+        }
+        time_series_data.append(data)
+
+    df = pd.DataFrame(time_series_data)
+    df.set_index('date', inplace=True)
+
+    print("Time series scraping data:")
+    print(df.head())
+
+    # Time series analysis
+    print(f"\nAverage pages scraped per day: {df['pages_scraped'].mean():.1f}")
+    print(f"Best success rate: {df['success_rate'].max():.1%}")
+    print(f"Average response time: {df['avg_response_time'].mean():.2f}s")
+
+    # Rolling averages
+    df['pages_scraped_7d'] = df['pages_scraped'].rolling(window=7).mean()
+    df['success_rate_7d'] = df['success_rate'].rolling(window=7).mean()
+
+    return df
+
+import numpy as np  # Add this import
+ts_df = create_time_series_data()
+```
+
+## Data Export and Persistence
+
+### Multiple Export Formats
+
+```python
+def export_scraped_data(df, base_filename):
+    """Export DataFrame to multiple formats."""
+    if df.empty:
+        print("No data to export")
+        return
+
+    # CSV export
+    csv_file = f"{base_filename}.csv"
+    df.to_csv(csv_file, index=False)
+    print(f"Exported to CSV: {csv_file}")
+
+    # JSON export
+    json_file = f"{base_filename}.json"
+    df.to_json(json_file, orient='records', indent=2)
+    print(f"Exported to JSON: {json_file}")
+
+    # Excel export (if openpyxl is available)
+    try:
+        excel_file = f"{base_filename}.xlsx"
+        df.to_excel(excel_file, index=False)
+        print(f"Exported to Excel: {excel_file}")
+    except ImportError:
+        print("Excel export requires openpyxl: pip install openpyxl")
+
+    # Parquet export (if pyarrow is available)
+    try:
+        parquet_file = f"{base_filename}.parquet"
+        df.to_parquet(parquet_file, index=False)
+        print(f"Exported to Parquet: {parquet_file}")
+    except ImportError:
+        print("Parquet export requires pyarrow: pip install pyarrow")
+
+# Example usage
+if not quotes_df.empty:
+    export_scraped_data(quotes_df, 'scraped_quotes')
+```
+
+### Database Integration
+
+```python
+import duckdb
+
+def save_to_database(df, db_name, table_name):
+    """Save DataFrame to DuckDB database."""
+    if df.empty:
+        print("No data to save")
+        return
+
+    try:
+        conn = duckdb.connect(db_name)
+        conn.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT * FROM df")
+
+        # Verify data was saved
+        count = conn.execute(f"SELECT COUNT(*) as count FROM {table_name}").fetchone()[0]
+        print(f"Saved {count} records to {db_name}:{table_name}")
+
+        conn.close()
+
+    except Exception as e:
+        print(f"Error saving to database: {e}")
+
+def load_from_database(db_name, table_name):
+    """Load DataFrame from DuckDB database."""
+    try:
+        conn = duckdb.connect(db_name)
+        df = conn.execute(f"SELECT * FROM {table_name}").df()
+        conn.close()
+
+        print(f"Loaded {len(df)} records from {db_name}:{table_name}")
+        return df
+
+    except Exception as e:
+        print(f"Error loading from database: {e}")
+        return pd.DataFrame()
+
+# Example usage
+if not quotes_df.empty:
+    save_to_database(quotes_df, 'scraped_data.duckdb', 'quotes')
+    loaded_df = load_from_database('scraped_data.duckdb', 'quotes')
+```
+
+::: {.callout-note}
+
+## Exercise: Complete Scraping-to-Analysis Pipeline
+
+Build a comprehensive pipeline that scrapes, processes, and analyzes web data:
+
+```python
+import pandas as pd
+from gazpacho import get, Soup
+import time
+from datetime import datetime
+import json
+
+class WebScrapingAnalyticsPipeline:
+    def __init__(self, name="WebScraping"):
+        self.name = name
+        self.raw_data = []
+        self.df = None
+        self.cleaned_df = None
+        self.analysis_results = {}
+
+    def scrape_data(self, urls, delay=1):
+        """Scrape data from multiple URLs."""
+        print(f"Starting scraping pipeline: {self.name}")
+
+        for i, url in enumerate(urls, 1):
+            try:
+                print(f"Scraping {i}/{len(urls)}: {url}")
+                html = get(url)
+                soup = Soup(html)
+
+                # Extract structured data
+                data = self._extract_page_data(soup, url)
+                self.raw_data.append(data)
+
+                # Polite delay
+                if i < len(urls):
+                    time.sleep(delay)
+
+            except Exception as e:
+                print(f"Error scraping {url}: {e}")
+                # Add error record
+                self.raw_data.append({
+                    'url': url,
+                    'error': str(e),
+                    'scraped_at': datetime.now(),
+                    'success': False
+                })
+
+    def _extract_page_data(self, soup, url):
+        """Extract data from a single page."""
+        title = soup.find('title')
+        h1 = soup.find('h1')
+
+        # Count different elements
+        links = len([elem for elem in [soup.find('a')] if elem])  # Simplified
+        paragraphs = len([elem for elem in [soup.find('p')] if elem])  # Simplified
+
+        return {
+            'url': url,
+            'title': title.text.strip() if title else 'No title',
+            'h1': h1.text.strip() if h1 else 'No H1',
+            'link_count': links,
+            'paragraph_count': paragraphs,
+            'scraped_at': datetime.now(),
+            'success': True
+        }
+
+    def create_dataframe(self):
+        """Convert raw data to DataFrame."""
+        self.df = pd.DataFrame(self.raw_data)
+        print(f"Created DataFrame with {len(self.df)} records")
+        return self.df
+
+    def clean_data(self):
+        """Clean and preprocess the data."""
+        if self.df is None:
+            print("No DataFrame to clean")
+            return
+
+        self.cleaned_df = self.df.copy()
+
+        # Filter successful scrapes
+        successful_scrapes = self.cleaned_df['success'] == True
+        print(f"Successful scrapes: {successful_scrapes.sum()}/{len(self.cleaned_df)}")
+
+        # Clean text fields
+        text_fields = ['title', 'h1']
+        for field in text_fields:
+            if field in self.cleaned_df.columns:
+                self.cleaned_df[field] = self.cleaned_df[field].str.strip()
+                self.cleaned_df[field] = self.cleaned_df[field].str.replace(r'\\s+', ' ', regex=True)
+
+        # Add derived features
+        self.cleaned_df['title_length'] = self.cleaned_df['title'].str.len()
+        self.cleaned_df['has_h1'] = self.cleaned_df['h1'] != 'No H1'
+        self.cleaned_df['domain'] = self.cleaned_df['url'].str.extract(r'https?://([^/]+)')
+
+        return self.cleaned_df
+
+    def analyze_data(self):
+        """Perform data analysis."""
+        if self.cleaned_df is None:
+            print("No cleaned data to analyze")
+            return
+
+        successful_df = self.cleaned_df[self.cleaned_df['success'] == True]
+
+        if successful_df.empty:
+            print("No successful scrapes to analyze")
+            return
+
+        # Basic statistics
+        self.analysis_results = {
+            'total_pages': len(self.cleaned_df),
+            'successful_scrapes': len(successful_df),
+            'success_rate': len(successful_df) / len(self.cleaned_df),
+            'avg_title_length': successful_df['title_length'].mean(),
+            'avg_link_count': successful_df['link_count'].mean(),
+            'pages_with_h1': successful_df['has_h1'].sum(),
+            'unique_domains': successful_df['domain'].nunique()
+        }
+
+        # Print analysis
+        print("\n=== Analysis Results ===")
+        for key, value in self.analysis_results.items():
+            if isinstance(value, float):
+                if 'rate' in key:
+                    print(f"{key}: {value:.1%}")
+                else:
+                    print(f"{key}: {value:.2f}")
+            else:
+                print(f"{key}: {value}")
+
+        # Domain distribution
+        if 'domain' in successful_df.columns:
+            print("\nDomain distribution:")
+            print(successful_df['domain'].value_counts())
+
+        return self.analysis_results
+
+    def save_results(self, base_filename):
+        """Save all results."""
+        if self.cleaned_df is not None:
+            # Save data
+            self.cleaned_df.to_csv(f"{base_filename}_data.csv", index=False)
+
+            # Save analysis
+            with open(f"{base_filename}_analysis.json", 'w') as f:
+                # Convert numpy types to native Python types for JSON serialization
+                serializable_results = {}
+                for k, v in self.analysis_results.items():
+                    if hasattr(v, 'item'):  # numpy types
+                        serializable_results[k] = v.item()
+                    else:
+                        serializable_results[k] = v
+
+                json.dump(serializable_results, f, indent=2)
+
+            print(f"Results saved to {base_filename}_data.csv and {base_filename}_analysis.json")
+
+# Run the complete pipeline
+pipeline = WebScrapingAnalyticsPipeline("Example Sites Analysis")
+
+# Test URLs
+test_urls = [
+    "https://example.com",
+    "https://httpbin.org/html",
+    "https://httpbin.org/json"
+]
+
+# Execute pipeline
+pipeline.scrape_data(test_urls, delay=2)
+pipeline.create_dataframe()
+pipeline.clean_data()
+pipeline.analyze_data()
+pipeline.save_results("web_scraping_results")
+
+print("\nPipeline completed successfully!")
+```
+
+:::
+
+## Best Practices for Pandas Integration
+
+### Memory Management
+
+- Process data in chunks for large datasets
+- Use appropriate data types to reduce memory usage
+- Clean up intermediate DataFrames
+
+### Data Validation
+
+- Always validate data types after scraping
+- Check for missing values and handle appropriately
+- Verify data ranges and constraints
+
+### Reproducibility
+
+- Save raw scraped data before cleaning
+- Document all transformation steps
+- Use version control for scraping scripts
+
+::: {.callout-important}
+
+## Key Points
+
+- Convert scraped data to DataFrames for analysis
+- Clean web data by handling text, numbers, and dates
+- Use pandas methods for data transformation and analysis
+- Handle nested and complex data structures appropriately
+- Export data in multiple formats for different use cases
+- Build reusable pipelines for consistent data processing
+- Validate and document your data processing steps
+- Consider memory usage for large-scale scraping projects
+:::
+
+[← Previous: Strict Mode and Attributes](04-strict-attributes.qmd) | [Back to Index](index.qmd)
