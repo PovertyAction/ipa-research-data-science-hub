@@ -2,22 +2,23 @@
 title: "Built-in Functions and Help"
 abstract: |
   Explain the purpose of functions. Correctly call built-in Python functions. Correctly nest calls to built-in functions. Use help to display documentation for built-in functions. Correctly describe situations in which SyntaxError and NameError occur.
-date: last-modified
-
-format:
-  html: default
-
-# Authors
 authors-ipa:
-  - "[Author Name](https://poverty-action.org/people/author_name)"
-
-# Contributors
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
-  - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
-
+  - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
 license: "CC BY 4.0"
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
+
+**Original citation:**
+Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+:::
 
 ::: {.callout-note}
 
@@ -28,8 +29,7 @@ license: "CC BY 4.0"
 - Correctly nest calls to built-in functions.
 - Use help to display documentation for built-in functions.
 - Correctly describe situations in which SyntaxError and NameError occur.
-
-::: {.callout-tip}
+:::
 
 ## Key Questions
 
@@ -349,8 +349,6 @@ radiance = max(2.1, 2.0 + min(radiance, 1.1 * radiance - 0.5))
 
 ## Solution
 
-## Solution
-
 1. Order of operations:
 1. `1.1 * radiance = 1.1`
 2. `1.1 - 0.5 = 0.6`
@@ -358,7 +356,9 @@ radiance = max(2.1, 2.0 + min(radiance, 1.1 * radiance - 0.5))
 4. `2.0 + 0.6 = 2.6`
 5. `max(2.1, 2.6) = 2.6`
 2. At the end, `radiance = 2.6`
-  
+:::
+:::
+
 ::: {.callout-note}
 
 ## Exercise: Spot the Difference
@@ -377,8 +377,6 @@ print(max(len(rich), len(poor)))
 ```
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -416,6 +414,8 @@ TypeError                                 Traceback (most recent call last)
 
 TypeError: '>' not supported between instances of 'str' and 'int'
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -427,12 +427,12 @@ Why is it that `max` and `min` do not return `None` when they are called with no
 
 ## Solution
 
-## Solution
-
 `max` and `min` return TypeErrors in this case because the correct number of parameters
 was not supplied. If it just returned `None`, the error would be much harder to trace as it
 would likely be stored into a variable and used later in the program, only to likely throw
 a runtime error.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -447,9 +447,9 @@ what index expression will get the last character in the string `name`?
 
 ## Solution
 
-## Solution
-
 `name[len(name) - 1]`
+:::
+:::
 
 ::: {.callout-note}
 
@@ -460,6 +460,7 @@ source of information about the language. It is available in different languages
 resources. The [Built-in Functions page](https://docs.python.org/3/library/functions.html) contains a catalogue of
 all of these functions, including the ones that we've covered in this lesson. Some of these are more advanced and
 unnecessary at the moment, but others are very simple and useful.
+:::
 
 ::: {.callout-important}
 
@@ -476,3 +477,4 @@ unnecessary at the moment, but others are very simple and useful.
 - Python reports a syntax error when it can't understand the source of a program.
 - Python reports a runtime error when something goes wrong while a program is executing.
 - Fix syntax errors by reading the source code, and runtime errors by tracing the program's execution.
+:::

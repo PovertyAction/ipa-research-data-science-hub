@@ -2,22 +2,23 @@
 title: "Libraries"
 abstract: |
   Explain what software libraries are and why programmers create and use them. Write programs that import and use modules from Python's standard library. Find and read documentation for the standard library interactively (in the interpreter) and online.
-date: last-modified
-
-format:
-  html: default
-
-# Authors
 authors-ipa:
-  - "[Author Name](https://poverty-action.org/people/author_name)"
-
-# Contributors
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
-  - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
-
+  - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
 license: "CC BY 4.0"
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
+
+**Original citation:**
+Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+:::
 
 ::: {.callout-note}
 
@@ -26,8 +27,7 @@ license: "CC BY 4.0"
 - Explain what software libraries are and why programmers create and use them.
 - Write programs that import and use modules from Python's standard library.
 - Find and read documentation for the standard library interactively (in the interpreter) and online.
-
-::: {.callout-tip}
+:::
 
 ## Key Questions
 
@@ -52,6 +52,7 @@ license: "CC BY 4.0"
 A library is a collection of modules, but the terms are often used
 interchangeably, especially since many libraries only consist of a single
 module, so don't worry if you mix them.
+:::
 
 ## A program must import a library module before using it
 
@@ -156,19 +157,19 @@ cos(pi) is -1.0
 
 ## Solution
 
-## Solution
-
 1. Using `help(math)` we see that we've got `pow(x,y)` in addition to `sqrt(x)`,
   so we could use `pow(x, 0.5)` to find a square root.
 
 2. The `sqrt(x)` function is arguably more readable than `pow(x, 0.5)` when
   implementing equations. Readability is a cornerstone of good programming, so it
   makes sense to provide a special function for this specific common case.
-  
+
   Also, the design of Python's `math` library has its origin in the C standard,
   which includes both `sqrt(x)` and `pow(x,y)`, so a little bit of the history
   of programming is showing in Python's function names.
-  
+:::
+:::
+
 ::: {.callout-note}
 
 ## Exercise: Locating the Right Module
@@ -184,8 +185,6 @@ bases = 'ACTTGCTTGAC'
 3. Try to write a program that uses the function.
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -231,6 +230,8 @@ from random import choice
 
 print(choice(bases))
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -254,16 +255,16 @@ print("random base ", bases[___], "base index", ___)
 
 ## Solution
 
-## Solution
-
 ```python
-import math 
+import math
 import random
-bases = "ACTTGCTTGAC" 
+bases = "ACTTGCTTGAC"
 n_bases = len(bases)
 idx = random.randrange(n_bases)
 print("random base", bases[idx], "base index", idx)
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -282,9 +283,9 @@ What has your colleague forgotten to do?
 
 ## Solution
 
-## Solution
-
 Importing the math module (`import math`)
+:::
+:::
 
 ::: {.callout-note}
 
@@ -301,8 +302,6 @@ print(____)
 ```
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -325,6 +324,8 @@ find the first version easier to read. But when trying to read a huge piece
 of code written by someone else, or when getting back to your own huge piece
 of code after several months, non-abbreviated names are often easier, except
 where there are clear abbreviation conventions.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -349,8 +350,6 @@ Library calls:
 
 ## Solution
 
-## Solution
-
 1. Library calls 1 and 4. In order to directly refer to `sin` and `pi` without
   the library name as prefix, you need to use the `from ... import ...`
   statement. Whereas library call 1 specifically imports the two functions
@@ -368,6 +367,8 @@ are used in the code. In general it is best to make your imports as specific as 
 only import what your code uses. In library call 1, the `import` statement explicitly tells us
 that the `sin` function is imported from the `math` module, but library call 4 does not
 convey this information.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -387,8 +388,6 @@ print(angle)
 
 ## Solution
 
-## Solution
-
 ```python
 from math import degrees, pi
 angle = degrees(pi / 2)
@@ -400,6 +399,8 @@ The main reason not to use this form of import is to avoid name clashes.
 For instance, you wouldn't import `degrees` this way if you also wanted to
 use the name `degrees` for a variable or function of your own. Or if you
 were to also import a function named `degrees` from another library.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -414,8 +415,6 @@ log(0)
 ```
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -434,7 +433,9 @@ ValueError: math domain error
 2. You get an error of type `ValueError`, indicating that the function
   received an inappropriate argument value. The additional message
   "math domain error" makes it clearer what the problem is.
-  
+:::
+:::
+
 [stdlib]: https://docs.python.org/3/library/
 [pypi]: https://pypi.python.org/pypi/
 [randommod]: https://docs.python.org/3/library/random.html
@@ -449,3 +450,4 @@ ValueError: math domain error
 - Use `help` to learn about the contents of a library module.
 - Import specific items from a library to shorten programs.
 - Create an alias for a library when importing it to shorten programs.
+:::
