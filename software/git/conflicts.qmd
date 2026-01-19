@@ -20,12 +20,12 @@ license: "CC BY 4.0"
 :::
 
 As soon as people can work in parallel, they'll likely step on each other's
-toes.  This will even happen with a single person: if we are working on
+toes. This will even happen with a single person: if we are working on
 a piece of software on two different computers, we could make
-different changes to each copy.  Version control helps us manage these
+different changes to each copy. Version control helps us manage these
 conflicts by giving us tools to resolve overlapping changes.
 
-To see how we can resolve conflicts, we must first create one.  The
+To see how we can resolve conflicts, we must first create one. The
 file `earth.txt` currently looks like this in our `multiverse` repository:
 
 ```output
@@ -41,7 +41,8 @@ Let's create a new branch to describe 1 possible version of events to occur next
 git branch loki-twist
 ```
 
-But before we checkout the `loki-twist` branch and add the event where Loki enters the picture, let's add a line to `earth.txt` here in the `main` branch.
+But before we checkout the `loki-twist` branch and add the event where Loki enters
+the picture, let's add a line to `earth.txt` here in the `main` branch.
 
 ```output
 Thor defends New Asgard from invaders.
@@ -185,15 +186,15 @@ Unmerged paths:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-![The Conflicting Changes](figures/conflict.svg)
+![The Conflicting Changes](/assets/images/git/conflict.svg)
 
 Git detects that the changes made in one copy overlap with those made
 in the other and stops us from trampling on our previous work. It also
 marks that conflict in the affected file, `earth.txt`.
 
-![Merge conflict in earth.txt](figures/vscode-merge-conflict.png)
+![Merge conflict in earth.txt](/assets/images/git/vscode-merge-conflict.png)
 
-Our change — the one at the `HEAD` of the `main` branch — is preceded by `<<<<<<<`.
+Our change, the one at the `HEAD` of the `main` branch, is preceded by `<<<<<<<`.
 Git has then inserted `=======` as a separator between the conflicting changes
 and marked the end of our commit from the `loki-twist` branch with `>>>>>>>`.
 (The string of letters and digits after that marker
@@ -208,9 +209,10 @@ Let's keep both of these events, but save Loki's reveal for after the invaders r
 
 VS Code will prompt you to "Resolve in Merge Editor". Click this button.
 
-![Resolving the merge conflict with the merge editor](figures/vscode-merge-editor.png)
+![Resolving the merge conflict with the merge editor](/assets/images/git/vscode-merge-editor.png)
 
-In the Merge Editor, you will see the two versions side by side, and the final version of the file below. We want the final version to look like:
+In the Merge Editor, you will see the two versions side by side, and the final version
+of the file below. We want the final version to look like:
 
 ```output
 Thor defends New Asgard from invaders.
@@ -221,11 +223,14 @@ Loki appears, revealing the invasion was his test all along.
 
 ```
 
-So we want to click "Accept Combination (Current First)". You should now see the resolved version with both lines, the line from the `main` branch first. Click "Complete Merge".
+We want to click "Accept Combination (Current First)". You should now see the
+resolved version with both lines, the line from the `main` branch first. Click "Complete Merge".
 
-![The bottom pane contains the resolved earth.txt contents](figures/vscode-merge-resolved.png)
+![The bottom pane contains the resolved earth.txt contents](/assets/images/git/vscode-merge-resolved.png)
 
-By clicking "Complete Merge", you are doing the same thing as running the command `git add earth.txt`. If you open the Source Control pane, you should see `earth.txt` under "Staged Changes". You can then complete the commit using the VS Code UI or on the command line
+By clicking "Complete Merge", you are doing the same thing as running the command `git add earth.txt`.
+If you open the Source Control pane, you should see `earth.txt` under "Staged Changes". You can then
+complete the commit using the VS Code UI or on the command line
 
 ```bash
 git commit -m "Merge changes from loki-twist"
@@ -235,7 +240,8 @@ git commit -m "Merge changes from loki-twist"
 [main c5c81b3] Merge changes from loki-twist
 ```
 
-Take a look at the Source Control Graph window (in the lower portion of the Source Control pane) for a visual representation of the git log.
+Take a look at the Source Control Graph window (in the lower portion of the Source
+Control pane) for a visual representation of the git log.
 
 ```bash
 git log
@@ -364,23 +370,19 @@ You can repeat this exercise twice, once in your `multiverse` repo, and once in 
 
 You will first need to clone your partner's `multiverse` repo in order to make edits in it.
 
-You will each create a new branch in the same `multiverse` repo, and make a small conflicting change (e.g. adding two different lines to the end of `earth.txt`).
+You will each create a new branch in the same `multiverse` repo, and make a small
+conflicting change (e.g. adding two different lines to the end of `earth.txt`).
 
 The repo owner should then create a Pull Request and merge their branch first.
 
 The other person should then create a Pull Request to merge their branch. They will get a merge conflict.
 
-In VS Code, they can merge main into their branch and resolve the conflict, then push the commit with the resolved merge to GitHub. They should now be able to merge their branch into main as well.
+In VS Code, they can merge main into their branch and resolve the conflict, then
+push the commit with the resolved merge to GitHub. They should now be able to merge
+their branch into main as well.
 :::
 
 ## Key Points
 
 - Conflicts occur when files are changed in the same place in two commits that are being merged
 - The version control system does not allow one to overwrite changes blindly during a merge, but highlights conflicts so that they can be resolved
-
-::: {.callout-tip}
-
-## Navigation
-
-[◀ Previous: Pull Requests](pull-request.qmd) | [Next: Practice ▶](practice.qmd)
-:::
