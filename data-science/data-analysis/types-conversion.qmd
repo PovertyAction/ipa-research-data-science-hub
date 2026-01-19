@@ -2,22 +2,23 @@
 title: "Data Types and Type Conversion"
 abstract: |
   Explain key differences between integers and floating point numbers. Explain key differences between numbers and character strings. Use built-in functions to convert between integers, floating point numbers, and strings.
-date: last-modified
-
-format:
-  html: default
-
-# Authors
 authors-ipa:
-  - "[Author Name](https://poverty-action.org/people/author_name)"
-
-# Contributors
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
-  - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
-
+  - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
 license: "CC BY 4.0"
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
+
+**Original citation:**
+Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+:::
 
 ::: {.callout-note}
 
@@ -26,8 +27,7 @@ license: "CC BY 4.0"
 - Explain key differences between integers and floating point numbers.
 - Explain key differences between numbers and character strings.
 - Use built-in functions to convert between integers, floating point numbers, and strings.
-
-::: {.callout-tip}
+:::
 
 ## Key Questions
 
@@ -222,8 +222,6 @@ How can you find out?
 
 ## Solution
 
-## Solution
-
 It is a floating-point number (often abbreviated "float").
 It is possible to find out by using the built-in function `type()`.
 
@@ -234,6 +232,8 @@ print(type(3.4))
 ```output
 <class 'float'>
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -242,8 +242,6 @@ print(type(3.4))
 What type of value is 3.25 + 4?
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -258,6 +256,8 @@ print(result, 'is', type(result))
 ```output
 7.25 is <class 'float'>
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -277,8 +277,6 @@ would you use to represent each of the following?  Try to come up with more than
 
 ## Solution
 
-## Solution
-
 The answers to the questions are:
 
 1. Integer, since the number of days would lie between 1 and 365.
@@ -287,6 +285,8 @@ The answers to the questions are:
 4. This will vary! How do you define a specimen's age? whole days since collection (integer)? date and time (string)?
 5. Choose floating point to represent population as large aggregates (eg millions), or integer to represent population in units of individuals.
 6. Floating point number, since an average is likely to have a fractional part.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -333,6 +333,8 @@ print(num_subjects, 'subjects,', num_per_survey, 'per survey:', num_surveys)
 ```output
 600 subjects, 42 per survey: 15
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -380,8 +382,6 @@ print("fractional string to int:", int("3.4"))
 
 ## Solution
 
-## Solution
-
 What do you expect this program to do? It would not be so unreasonable to expect the Python 3 `int` command to
 convert the string "3.4" to 3.4 and an additional type conversion to 3. After all, Python 3 performs a lot of other
 magic - isn't that part of its charm?
@@ -408,6 +408,8 @@ int(float("3.4"))
 ```output
 3
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -433,9 +435,9 @@ third = "1.1"
 
 ## Solution
 
-## Solution
-
 Answer: 1 and 4
+:::
+:::
 
 ::: {.callout-note}
 
@@ -466,8 +468,6 @@ print(a_complex_number.imag)
 
 ## Solution
 
-## Solution
-
 1. Standard mathematics treatments typically use `i` to denote an imaginary number. However, from media reports it
   was an early convention established from electrical engineering that now presents a technically expensive area to
   change. [Stack Overflow provides additional explanation and
@@ -475,6 +475,8 @@ print(a_complex_number.imag)
 2. `(4+2j)`
 3. `4j` and `Syntax Error: invalid syntax`. In the latter cases, `j` is considered a variable and the statement
   depends on if `j` is defined and if so, its assigned value.
+:::
+:::
 
 ::: {.callout-important}
 
@@ -488,3 +490,4 @@ print(a_complex_number.imag)
 - Must convert numbers to strings or vice versa when operating on them.
 - Can mix integers and floats freely in operations.
 - Variables only change value when something is assigned to them.
+:::

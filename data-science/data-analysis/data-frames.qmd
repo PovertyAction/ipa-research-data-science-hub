@@ -2,22 +2,23 @@
 title: "Pandas DataFrames"
 abstract: |
   Select individual values from a Pandas dataframe. Select entire rows or entire columns from a dataframe. Select a subset of both rows and columns from a dataframe in a single operation. Select a subset of a dataframe by a single Boolean criterion.
-date: last-modified
-
-format:
-  html: default
-
-# Authors
 authors-ipa:
-  - "[Author Name](https://poverty-action.org/people/author_name)"
-
-# Contributors
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
-  - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
-
+  - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
 license: "CC BY 4.0"
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
+
+**Original citation:**
+Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+:::
 
 ::: {.callout-note}
 
@@ -27,8 +28,7 @@ license: "CC BY 4.0"
 - Select entire rows or entire columns from a dataframe.
 - Select a subset of both rows and columns from a dataframe in a single operation.
 - Select a subset of a dataframe by a single Boolean criterion.
-
-::: {.callout-tip}
+:::
 
 ## Key Questions
 
@@ -356,8 +356,6 @@ Write an expression to find the Per Capita GDP of Serbia in 2007.
 
 ## Solution
 
-## Solution
-
 The selection can be done by using the labels for both the row ("Serbia") and the column ("gdpPercap\_2007"):
 
 ```python
@@ -369,6 +367,8 @@ The output is
 ```output
 9786.534714
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -384,8 +384,6 @@ print(data_europe.loc['Albania':'Belgium', 'gdpPercap_1952':'gdpPercap_1962'])
 ```
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -412,6 +410,8 @@ Clearly, the second statement produces an additional column and an additional ro
 What conclusion can we draw? We see that a numerical slice, 0:2, *omits* the final index (i.e. index 2)
 in the range provided,
 while a named slice, 'gdpPercap\_1952':'gdpPercap\_1962', *includes* the final element.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -429,8 +429,6 @@ fourth.to_csv('result.csv')
 ```
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -476,6 +474,8 @@ fourth.to_csv('result.csv')
 The final step is to write the data that we have been working on to a csv file. Pandas makes this easy
 with the `to_csv()` function. The only required argument to the function is the filename. Note that the
 file will be written in the directory from which you started the Jupyter or Python session.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -494,12 +494,12 @@ print(data.idxmax())
 
 ## Solution
 
-## Solution
-
 For each column in `data`, `idxmin` will return the index value corresponding to each column's minimum;
 `idxmax` will do accordingly the same for each column's maximum value.
 
 You can use these functions whenever you want to get the row index of the minimum/maximum value and not the actual minimum/maximum value.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -515,8 +515,6 @@ Write an expression to select each of the following:
   GDP per capita for that country in 1952.
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -545,6 +543,8 @@ Pandas is smart enough to recognize the number at the end of the column label an
 ```python
 data['gdpPercap_2007']/data['gdpPercap_1952']
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -565,8 +565,6 @@ Suggest different ways of doing the following operations on a DataFrame:
 7. Access a subset of row and column ranges
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -703,6 +701,8 @@ data.loc[:, "col1_name":"col2_name"].iloc[row1_index:row2_index]
 # column indices + row names
 data.iloc[:, col1_index:col2_index].loc["row1":"row2"]
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -735,8 +735,6 @@ Assume Pandas has been imported and the Gapminder GDP data for Europe has been l
 to find the function that prints out the median per-capita GDP across all European countries for each year that information is available.
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 

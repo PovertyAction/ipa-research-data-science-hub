@@ -2,22 +2,23 @@
 title: "Variables and Assignment"
 abstract: |
   Write programs that assign scalar values to variables and perform calculations with those values. Correctly trace value changes in programs that use scalar assignment.
-date: last-modified
-
-format:
-  html: default
-
-# Authors
 authors-ipa:
-  - "[Author Name](https://poverty-action.org/people/author_name)"
-
-# Contributors
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
-  - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
-
+  - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
 license: "CC BY 4.0"
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
+
+**Original citation:**
+Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+:::
 
 ::: {.callout-note}
 
@@ -25,8 +26,7 @@ license: "CC BY 4.0"
 
 - Write programs that assign scalar values to variables and perform calculations with those values.
 - Correctly trace value changes in programs that use scalar assignment.
-
-::: {.callout-tip}
+:::
 
 ## Key Questions
 
@@ -120,6 +120,7 @@ myval = 1
 If you execute this in order, the first cell will give an error. However, if you run the first cell *after* the second
 cell it will print out `1`. To prevent confusion, it can be helpful to use the `Kernel` -> `Restart & Run All` option which
 clears the interpreter and runs everything from a clean slate going top to bottom.
+:::
 
 ## Variables can be used in calculations
 
@@ -233,8 +234,6 @@ y = swap   #              #              #               #
 
 ## Solution
 
-## Solution
-
 ```output
 # Command  # Value of x   # Value of y   # Value of swap #
 x = 1.0    # 1.0          # not defined  # not defined   #
@@ -246,6 +245,8 @@ y = swap   # 3.0          # 1.0          # 1.0           #
 
 These three lines exchange the values in `x` and `y` using the `swap`
 variable for temporary storage. This is a fairly common programming idiom.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -265,8 +266,6 @@ initial = 'right'
 
 ## Solution
 
-## Solution
-
 ```python
 print(position)
 ```
@@ -280,6 +279,8 @@ In the second line, the `position` variable also receives
 the string value `'left'`. In third line, the `initial` variable is given the
 value `'right'`, but the `position` variable retains its string value
 of `'left'`.
+:::
+:::
 
 ::: {.callout-note}
 
@@ -289,8 +290,6 @@ If you assign `a = 123`,
 what happens if you try to get the second digit of `a` via `a[1]`?
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -316,6 +315,8 @@ print(a[1])
 ```output
 2
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -334,10 +335,10 @@ from someone who is leaving the lab:
 
 ## Solution
 
-## Solution
-
 `minutes` is better because `min` might mean something like "minimum"
 (and actually is an existing built-in function in Python that we will cover later).
+:::
+:::
 
 ::: {.callout-note}
 
@@ -354,11 +355,11 @@ print('atom_name[1:3] is:', atom_name[1:3])
 
 ## Solution
 
-## Solution
-
 ```output
 atom_name[1:3] is: ar
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -384,8 +385,6 @@ What would these expressions return?
 
 ## Solution
 
-## Solutions
-
 1. `species_name[2:8]` returns the substring `'acia b'`
 2. `species_name[11:]` returns the substring `'folia'`, from position 11 until the end
 3. `species_name[:4]` returns the substring `'Acac'`, from the start up to but not including position 4
@@ -393,6 +392,8 @@ What would these expressions return?
 5. `species_name[11:-3]` returns the substring `'fo'`, from the 11th position to the third last position
 6. `species_name[-5:-3]` also returns the substring `'fo'`, from the fifth last position to the third last
 7. If a part of the slice is out of range, the operation does not fail. `species_name[0:20]` gives the same result as `species_name[0:]`, and `species_name[:103]` gives the same result as `species_name[:]`
+:::
+:::
 
 ::: {.callout-important}
 
@@ -408,3 +409,4 @@ What would these expressions return?
 - Use the built-in function `len` to find the length of a string.
 - Python is case-sensitive.
 - Use meaningful variable names.
+:::

@@ -2,22 +2,23 @@
 title: "Reading Tabular Data into DataFrames"
 abstract: |
   Import the Pandas library. Use Pandas to load a simple CSV data set. Get some basic information about a Pandas DataFrame.
-date: last-modified
-
-format:
-  html: default
-
-# Authors
 authors-ipa:
-  - "[Author Name](https://poverty-action.org/people/author_name)"
-
-# Contributors
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
-  - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
-
+  - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
 license: "CC BY 4.0"
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
+
+**Original citation:**
+Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+:::
 
 ::: {.callout-note}
 
@@ -26,8 +27,7 @@ license: "CC BY 4.0"
 - Import the Pandas library.
 - Use Pandas to load a simple CSV data set.
 - Get some basic information about a Pandas DataFrame.
-
-::: {.callout-tip}
+:::
 
 ## Key Questions
 
@@ -87,6 +87,7 @@ that ends with a line like this:
 ```error
 FileNotFoundError: [Errno 2] No such file or directory: 'data/gapminder_gdp_oceania.csv'
 ```
+:::
 
 ## Use `index_col` to specify that a column's values should be used as row headings
 
@@ -250,8 +251,6 @@ and display its summary statistics.
 
 ## Solution
 
-## Solution
-
 To read in a CSV, we use `pd.read_csv` and pass the filename `'data/gapminder_gdp_americas.csv'` to it.
 We also once again pass the column name `'country'` to the parameter `index_col` in order to index by country.
 The summary statistics can be displayed with the `DataFrame.describe()` method.
@@ -260,6 +259,8 @@ The summary statistics can be displayed with the `DataFrame.describe()` method.
 data_americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
 data_americas.describe()
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -274,8 +275,6 @@ to find out what `DataFrame.head` and `DataFrame.tail` do.
   (Hint: you may need to change your view of the data.)
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -364,6 +363,8 @@ to find out what `DataFrame.head` and `DataFrame.tail` do.
   ```python
   data_americas.T.tail(n=3).T
   ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -388,8 +389,6 @@ What value(s) should you pass to `read_csv` to read `microbes.csv` in `analysis.
 
 ## Solution
 
-## Solution
-
 We need to specify the path to the file of interest in the call to `pd.read_csv`. We first need to 'jump' out of
 the folder `thesis` using '../' and then into the folder `field_data` using 'field\_data/'. Then we can specify the filename \`microbes.csv.
 The result is as follows:
@@ -397,6 +396,8 @@ The result is as follows:
 ```python
 data_microbes = pd.read_csv('../field_data/microbes.csv')
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -409,8 +410,6 @@ write one of your dataframes to a file called `processed.csv`.
 You can use `help` to get information on how to use `to_csv`.
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -430,6 +429,8 @@ help(pd.read_csv)
 Note that `help(to_csv)` or `help(pd.to_csv)` throws an error! This is due to the fact that `to_csv` is not a global Pandas function, but
 a member function of DataFrames. This means you can only call it on an instance of a DataFrame
 e.g., `data_americas.to_csv` or `data_oceania.to_csv`
+:::
+:::
 
 ::: {.callout-important}
 
@@ -441,3 +442,4 @@ e.g., `data_americas.to_csv` or `data_oceania.to_csv`
 - The `DataFrame.columns` variable stores information about the dataframe's columns.
 - Use `DataFrame.T` to transpose a dataframe.
 - Use `DataFrame.describe` to get summary statistics about data.
+:::

@@ -29,13 +29,9 @@ Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers 
 - Explain what usually happens if a program or pipeline isn't given any input to process.
 - Explain Unix's "small pieces, loosely joined" philosophy.
 
-## Questions
-
-- How can I combine existing commands to do new things?
 :::
 
-Now that we know a few basic commands,
-we can finally look at the shell's most powerful feature:
+Now that we know a few basic commands, we can finally look at the shell's most powerful feature:
 the ease with which it allows us to combine existing programs in new ways.
 We'll work with the directory `data/exercise-data/survey-data`
 that contains CSV files from Amara's household survey data collection.
@@ -92,7 +88,8 @@ ls exercise-data/survey-data
 
 :::
 
-Let's go into that directory with `cd` and run an example command `wc` (word count) to count lines in a survey file:
+Let's navigate into that directory with `cd` and run an example command
+`wc` (word count) to count lines in a survey file:
 
 ::: {.panel-tabset group="Shell"}
 
@@ -150,7 +147,10 @@ open hh_baseline_001.csv --raw | str stats
 
 :::
 
-`wc` is the 'word count' command: it counts the number of lines, words, and characters in files (from left to right, in that order). In PowerShell, you use `Measure-Object`, and in NuShell you can use `length` on parsed CSV data or `str stats` on raw files.
+`wc` is the 'word count' command: it counts the number of lines, words,
+and characters in files (from left to right, in that order). In PowerShell,
+you use `Measure-Object`, and in NuShell you can use `length` on parsed CSV
+data or `str stats` on raw files.
 
 ### Viewing and Exploring CSV Data
 
@@ -210,7 +210,8 @@ Notice how NuShell automatically parses the CSV and displays it as a formatted t
 
 ### Counting Records in Survey Files
 
-One of Amara's first validation checks is to count how many records are in each file. Let's count the lines (remember, the first line is the header):
+One of Amara's first validation checks is to count how many records are in each file.
+Let's count the lines (remember, the first line is the header):
 
 ::: {.panel-tabset group="Shell"}
 
@@ -264,13 +265,15 @@ open hh_baseline_001.csv | length
 20
 ```
 
-NuShell's `open` command automatically parses the CSV and excludes the header, so it directly shows 20 records.
+NuShell's `open` command automatically parses the CSV and excludes the header, so it
+directly shows 20 records.
 
 :::
 
 ### Checking for Missing Values
 
-Amara needs to find rows where required fields are missing. Let's look for rows with missing `hhid` values:
+Amara needs to find rows where required fields are missing. Let's look for rows with
+missing `hhid` values:
 
 ::: {.panel-tabset group="Shell"}
 
@@ -314,7 +317,8 @@ open hh_baseline_009.csv | where hhid == "" | length
 
 :::
 
-These piped commands show how we can combine simple tools to perform data validation—exactly what Amara needs for her survey quality checks.
+These piped commands show how we can combine simple tools to perform data
+validation. This is exactly what Amara needs for her survey quality checks!
 
 ## Key Points
 
