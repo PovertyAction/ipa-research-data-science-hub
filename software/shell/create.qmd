@@ -1,0 +1,239 @@
+---
+title: "Working With Files and Directories"
+abstract: |
+  Master essential file and directory operations in the shell. Learn to create, copy, move, and delete files and directories. Discover text editors for the command line and understand how to organize your filesystem efficiently.
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+contributors:
+  - "[The Carpentries](https://carpentries.org/)"
+keywords: ["Shell", "File Operations", "Text Editors", "Directory Creation", "Command Line", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+:::{.callout-note collapse="true"}
+
+## Recognition and Attribution
+
+This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
+
+**Original citation:**
+Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+:::
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Delete, copy and move specified files and/or directories.
+- Create files in that hierarchy using an editor or by copying and renaming existing files.
+- Create a directory hierarchy that matches a given diagram.
+:::
+
+## Creating directories
+
+We now know how to explore files and directories, but how do we create them in the first place?
+
+In this episode we will learn about creating and moving files and directories,
+using the `exercise-data/survey-data` directory as an example.
+
+### Step one: See where we are and what we already have
+
+We should still be in the `shell-lesson-data` directory on the Desktop,
+which we can check using:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+pwd
+```
+
+```output
+/Users/amara/Desktop/shell-lesson-data
+```
+
+## PowerShell
+
+```powershell
+pwd
+```
+
+```output
+Path
+----
+C:\Users\amara\Desktop\shell-lesson-data
+```
+
+## NuShell
+
+```bash
+pwd
+```
+
+```output
+C:\Users\amara\Desktop\shell-lesson-data
+```
+
+:::
+
+Next, we'll move to the `exercise-data/survey-data` directory and see what it contains:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+cd exercise-data/survey-data/
+ls -F
+```
+
+```output
+expected_columns.txt    hh_baseline_003.csv    hh_baseline_007.csv
+hh_baseline_001.csv     hh_baseline_004.csv    hh_baseline_008.csv
+hh_baseline_002.csv     hh_baseline_005.csv    hh_baseline_009.csv
+                        hh_baseline_006.csv    hh_baseline_010.csv
+validate_survey.sh      validate_survey.ps1    validate_survey.nu
+```
+
+## PowerShell
+
+```powershell
+cd exercise-data/survey-data/
+ls
+```
+
+```output
+    Directory: C:\Users\amara\Desktop\shell-lesson-data\exercise-data\survey-data
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          12/23/2024  10:45 AM             85 expected_columns.txt
+-a---          12/23/2024  10:45 AM           1245 hh_baseline_001.csv
+-a---          12/23/2024  10:45 AM            956 hh_baseline_002.csv
+...
+```
+
+## NuShell
+
+```bash
+cd exercise-data/survey-data/
+ls
+```
+
+```output
+╭────┬──────────────────────┬──────┬─────────┬──────────────╮
+│  # │         name         │ type │  size   │   modified   │
+├────┼──────────────────────┼──────┼─────────┼──────────────┤
+│  0 │ expected_columns.txt │ file │    85 B │ 1 hour ago   │
+│  1 │ hh_baseline_001.csv  │ file │ 1.2 KiB │ 1 hour ago   │
+│  2 │ hh_baseline_002.csv  │ file │   956 B │ 1 hour ago   │
+│ ...│ ...                  │ ...  │   ...   │ ...          │
+╰────┴──────────────────────┴──────┴─────────┴──────────────╯
+```
+
+:::
+
+### Create a directory
+
+Let's create a new directory called `report` using the command `mkdir report`
+(which has no output):
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+mkdir report
+```
+
+## PowerShell
+
+```powershell
+mkdir report
+```
+
+or using the full cmdlet name:
+
+```powershell
+New-Item -ItemType Directory -Name report
+```
+
+## NuShell
+
+```bash
+mkdir report
+```
+
+:::
+
+As you might guess from its name, `mkdir` means 'make directory'.
+Since `report` is a relative path (i.e., it doesn't have a leading slash,
+like `/what/ever/report`), the new directory is created in the current working directory:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+ls -F
+```
+
+```output
+expected_columns.txt    hh_baseline_003.csv    hh_baseline_007.csv    report/
+hh_baseline_001.csv     hh_baseline_004.csv    hh_baseline_008.csv
+hh_baseline_002.csv     hh_baseline_005.csv    hh_baseline_009.csv
+                        hh_baseline_006.csv    hh_baseline_010.csv
+validate_survey.sh      validate_survey.ps1    validate_survey.nu
+```
+
+## PowerShell
+
+```powershell
+ls
+```
+
+```output
+    Directory: C:\Users\amara\Desktop\shell-lesson-data\exercise-data\survey-data
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          12/23/2024  11:00 AM                report
+-a---          12/23/2024  10:45 AM             85 expected_columns.txt
+-a---          12/23/2024  10:45 AM           1245 hh_baseline_001.csv
+...
+```
+
+## NuShell
+
+```bash
+ls
+```
+
+```output
+╭────┬──────────────────────┬──────┬─────────┬──────────────╮
+│  # │         name         │ type │  size   │   modified   │
+├────┼──────────────────────┼──────┼─────────┼──────────────┤
+│  0 │ report               │ dir  │    0 B  │ just now     │
+│  1 │ expected_columns.txt │ file │    85 B │ 1 hour ago   │
+│  2 │ hh_baseline_001.csv  │ file │ 1.2 KiB │ 1 hour ago   │
+│ ...│ ...                  │ ...  │   ...   │ ...          │
+╰────┴──────────────────────┴──────┴─────────┴──────────────╯
+```
+
+:::
+
+## Key Points
+
+- `cp [old] [new]` (Bash/NuShell) or `Copy-Item` (PowerShell) copies a file.
+- `mkdir [path]` (all shells) or `New-Item -ItemType Directory` (PowerShell) creates a new directory.
+- `mv [old] [new]` (Bash/NuShell) or `Move-Item` (PowerShell) moves or renames a file or directory.
+- `rm [path]` (Bash/NuShell) or `Remove-Item` (PowerShell) removes (deletes) a file.
+- `*` matches zero or more characters in a filename, so `*.txt` matches all files ending in `.txt`.
+- `?` matches any single character in a filename, so `?.txt` matches `a.txt` but not `any.txt`.
+- Use of the Control key may be described in many ways, including `Ctrl-X`, `Control-X`, and `^X`.
+- The shell does not have a trash bin: once something is deleted, it's really gone.
+- Most files' names are `something.extension`. The extension isn't required, and doesn't guarantee anything, but is normally used to indicate the type of data in the file.
+- Text editors vary by platform: `nano` on Unix/macOS, `edit` on Windows (https://github.com/microsoft/edit), or cross-platform editors like VS Code (`code`).

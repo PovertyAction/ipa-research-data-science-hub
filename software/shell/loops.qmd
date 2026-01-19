@@ -1,0 +1,301 @@
+---
+title: "Loops"
+abstract: |
+  Automate repetitive tasks using shell loops. Learn to write for loops that process multiple files efficiently, applying the same operations across datasets. Master the syntax and patterns for effective shell scripting automation.
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+contributors:
+  - "[The Carpentries](https://carpentries.org/)"
+keywords: ["Shell", "Loops", "Automation", "Scripting", "Batch Processing", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
+
+**Original citation:**
+Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+:::
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Write a loop that applies one or more commands separately to each file in a set of files.
+- Trace the values taken on by a loop variable during execution of the loop.
+- Explain the difference between a variable's name and its value.
+- Explain why spaces and some punctuation characters shouldn't be used in file names.
+- Demonstrate how to see what commands have recently been executed.
+- Re-run recently executed commands without retyping them.
+
+:::
+
+**Loops** are a programming construct which allow us to repeat a command or set of commands
+for each item in a list. As such they are key to productivity improvements through automation.
+Similar to wildcards and tab completion, using loops also reduces the
+amount of typing required (and hence reduces the number of typing mistakes).
+
+Suppose Amara has hundreds of survey CSV files that need to be processed.
+For this example, we'll use the `exercise-data/survey-data` directory which has ten sample files,
+but the principles can be applied to many more files at once.
+
+Let's first look at the first few lines of a couple survey files:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+head -n 3 exercise-data/survey-data/hh_baseline_00*.csv
+```
+
+```output
+==> exercise-data/survey-data/hh_baseline_001.csv <==
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH001,2024-03-15,Kibera,treatment,yes,34,12
+HH002,2024-03-15,Kibera,treatment,yes,45,8
+
+==> exercise-data/survey-data/hh_baseline_002.csv <==
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH021,2024-03-16,Mathare,treatment,yes,42,10
+HH022,2024-03-16,Mathare,treatment,yes,31,13
+```
+
+## PowerShell
+
+```powershell
+Get-ChildItem exercise-data/survey-data/hh_baseline_00*.csv | ForEach-Object {
+    Write-Output "==> $($_.Name) <=="
+    Get-Content $_.FullName | Select-Object -First 3
+    Write-Output ""
+}
+```
+
+```output
+==> hh_baseline_001.csv <==
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH001,2024-03-15,Kibera,treatment,yes,34,12
+HH002,2024-03-15,Kibera,treatment,yes,45,8
+
+==> hh_baseline_002.csv <==
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH021,2024-03-16,Mathare,treatment,yes,42,10
+HH022,2024-03-16,Mathare,treatment,yes,31,13
+```
+
+## NuShell
+
+```bash
+ls exercise-data/survey-data/hh_baseline_00*.csv | each { |file|
+    print $"==> ($file.name) <=="
+    open $file.name --raw | lines | first 3 | each { |line| print $line }
+    print ""
+}
+```
+
+```output
+==> hh_baseline_001.csv <==
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH001,2024-03-15,Kibera,treatment,yes,34,12
+HH002,2024-03-15,Kibera,treatment,yes,45,8
+
+==> hh_baseline_002.csv <==
+hhid,survey_date,village,treatment_arm,consent,age,education_years
+HH021,2024-03-16,Mathare,treatment,yes,42,10
+HH022,2024-03-16,Mathare,treatment,yes,31,13
+```
+
+:::
+
+Notice how each shell handles iteration differently:
+
+- **Bash**: Uses wildcard expansion (`*.csv`) and the `head` command handles multiple files automatically
+- **PowerShell**: Uses `ForEach-Object` to iterate over files from `Get-ChildItem`
+- **NuShell**: Uses the `each` command with a closure `{ |file| ... }` to process each item
+
+### Looping Over Survey Files
+
+Now let's apply loops to Amara's real-world problem: processing multiple survey CSV files.
+First, let's count the records in each file:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+cd exercise-data/survey-data
+for file in hh_baseline_*.csv; do
+    count=$(tail -n +2 "$file" | wc -l)
+    echo "$file: $count records"
+done
+```
+
+```output
+hh_baseline_001.csv: 20 records
+hh_baseline_002.csv: 15 records
+hh_baseline_003.csv: 20 records
+hh_baseline_004.csv: 10 records
+hh_baseline_005.csv: 10 records
+hh_baseline_006.csv: 15 records
+hh_baseline_007.csv: 15 records
+hh_baseline_008.csv: 15 records
+hh_baseline_009.csv: 10 records
+hh_baseline_010.csv: 20 records
+```
+
+## PowerShell
+
+```powershell
+cd exercise-data\survey-data
+Get-ChildItem hh_baseline_*.csv | ForEach-Object {
+    $count = (Import-Csv $_.Name | Measure-Object).Count
+    Write-Output "$($_.Name): $count records"
+}
+```
+
+```output
+hh_baseline_001.csv: 20 records
+hh_baseline_002.csv: 15 records
+hh_baseline_003.csv: 20 records
+hh_baseline_004.csv: 10 records
+hh_baseline_005.csv: 10 records
+hh_baseline_006.csv: 15 records
+hh_baseline_007.csv: 15 records
+hh_baseline_008.csv: 15 records
+hh_baseline_009.csv: 10 records
+hh_baseline_010.csv: 20 records
+```
+
+## NuShell
+
+```bash
+cd exercise-data/survey-data
+ls hh_baseline_*.csv | each { |file|
+    let count = (open $file.name | length)
+    print $"($file.name): ($count) records"
+}
+```
+
+```output
+hh_baseline_001.csv: 20 records
+hh_baseline_002.csv: 15 records
+hh_baseline_003.csv: 20 records
+hh_baseline_004.csv: 10 records
+hh_baseline_005.csv: 10 records
+hh_baseline_006.csv: 15 records
+hh_baseline_007.csv: 15 records
+hh_baseline_008.csv: 15 records
+hh_baseline_009.csv: 10 records
+hh_baseline_010.csv: 20 records
+```
+
+:::
+
+### Checking for Data Quality Issues Across Files
+
+Amara needs to identify files with missing required fields.
+Let's loop through and check for missing `hhid` values:
+
+::: {.panel-tabset group="Shell"}
+
+## Bash
+
+```bash
+for file in hh_baseline_*.csv; do
+    missing=$(cut -d',' -f1 "$file" | tail -n +2 | grep -c "^$")
+    if [ "$missing" -gt 0 ]; then
+        echo "WARNING: $file has $missing rows with missing hhid"
+    else
+        echo "OK: $file"
+    fi
+done
+```
+
+```output
+OK: hh_baseline_001.csv
+OK: hh_baseline_002.csv
+OK: hh_baseline_003.csv
+OK: hh_baseline_004.csv
+OK: hh_baseline_005.csv
+OK: hh_baseline_006.csv
+OK: hh_baseline_007.csv
+OK: hh_baseline_008.csv
+WARNING: hh_baseline_009.csv has 3 rows with missing hhid
+OK: hh_baseline_010.csv
+```
+
+## PowerShell
+
+```powershell
+Get-ChildItem hh_baseline_*.csv | ForEach-Object {
+    $missing = (Import-Csv $_.Name | Where-Object { $_.hhid -eq '' }).Count
+    if ($missing -gt 0) {
+        Write-Output "WARNING: $($_.Name) has $missing rows with missing hhid"
+    } else {
+        Write-Output "OK: $($_.Name)"
+    }
+}
+```
+
+```output
+OK: hh_baseline_001.csv
+OK: hh_baseline_002.csv
+OK: hh_baseline_003.csv
+OK: hh_baseline_004.csv
+OK: hh_baseline_005.csv
+OK: hh_baseline_006.csv
+OK: hh_baseline_007.csv
+OK: hh_baseline_008.csv
+WARNING: hh_baseline_009.csv has 3 rows with missing hhid
+OK: hh_baseline_010.csv
+```
+
+## NuShell
+
+```bash
+ls hh_baseline_*.csv | each { |file|
+    let missing = (open $file.name | where hhid == "" | length)
+    if $missing > 0 {
+        print $"WARNING: ($file.name) has ($missing) rows with missing hhid"
+    } else {
+        print $"OK: ($file.name)"
+    }
+}
+```
+
+```output
+OK: hh_baseline_001.csv
+OK: hh_baseline_002.csv
+OK: hh_baseline_003.csv
+OK: hh_baseline_004.csv
+OK: hh_baseline_005.csv
+OK: hh_baseline_006.csv
+OK: hh_baseline_007.csv
+OK: hh_baseline_008.csv
+WARNING: hh_baseline_009.csv has 3 rows with missing hhid
+OK: hh_baseline_010.csv
+```
+
+:::
+
+This is exactly the kind of automation Amara needs! In the next lesson,
+we'll learn how to save these commands in a reusable script.
+
+## Key Points
+
+- Loops repeat commands for each item in a list:
+    - **Bash**: `for item in list; do commands; done`
+    - **PowerShell**: `foreach ($item in $list) { commands }` or `ForEach-Object { $_ }`
+    - **NuShell**: `$list | each { |item| commands }`
+- Every loop needs a variable to refer to the current item:
+    - **Bash**: `$name` or `${name}`
+    - **PowerShell**: `$_` (in pipeline) or `$item` (in foreach)
+    - **NuShell**: closure parameter like `|item|`
+- Do not use spaces, quotes, or wildcard characters such as '*' or '?' in filenames, as it complicates variable expansion.
+- Give files consistent names that are easy to match with wildcard patterns to make it easy to select them for looping.
+- Use the up-arrow key to scroll up through previous commands to edit and repeat them.
+- Use `Ctrl+R` to search through previously entered commands.
+- Use `history` (Bash/NuShell) or `Get-History` (PowerShell) to display recent commands.
