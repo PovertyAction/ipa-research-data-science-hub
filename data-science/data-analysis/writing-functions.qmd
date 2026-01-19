@@ -17,11 +17,7 @@ license: "CC BY 4.0"
 - Explain and identify the difference between function definition and function call.
 - Write a function that takes a small, fixed number of arguments and produces a single result.
 
-::: {.callout-tip}
-
-## Key Questions
-
-- How can I create my own functions?
+:::
 
 ## Break programs down into functions to make them easier to understand
 
@@ -149,8 +145,6 @@ print('result of call is:', result)
 result of call is: None
 ```
 
-::: {.callout-note}
-
 ## Exercise: Identifying Syntax Errors
 
 1. Read the code below and try to identify what the errors are
@@ -171,8 +165,6 @@ def another_function
 
 ## Solution
 
-## Solution
-
 ```python
 def another_function():
   print("Syntax errors are annoying.")
@@ -180,7 +172,7 @@ def another_function():
   print("So they are usually not too hard to fix.")
 ```
 
-::: {.callout-note}
+:::
 
 ## Exercise: Definition and Use
 
@@ -194,8 +186,6 @@ print('calling', report, 22.5)
 ```
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -215,7 +205,7 @@ calling
 pressure is 22.5
 ```
 
-::: {.callout-note}
+:::
 
 ## Exercise: Order of Operations
 
@@ -249,8 +239,6 @@ pressure is 22.5
 
 ## Solution
 
-## Solution
-
 1. The problem with the example is that the function `print_time()` is defined *after* the call to the function is made. Python
   doesn't know how to resolve the name `print_time` since it hasn't been defined yet and will raise a `NameError` e.g.,
   `NameError: name 'print_time' is not defined`
@@ -261,7 +249,7 @@ pressure is 22.5
 
 3. `print_time()` does not explicitly `return` a value, so it automatically returns `None`.
 
-::: {.callout-note}
+:::
 
 ## Exercise: Encapsulation
 
@@ -281,7 +269,6 @@ def min_in_data(____):
 
 ## Solution
 
-## Solution
 
 ```python
 import pandas as pd
@@ -291,7 +278,7 @@ def min_in_data(filename):
     return data.min()
 ```
 
-::: {.callout-note}
+:::
 
 ## Exercise: Find the First
 
@@ -307,8 +294,6 @@ def first_negative(values):
 ```
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -330,7 +315,7 @@ print(first_negative(my_list))
 None
 ```
 
-::: {.callout-note}
+:::
 
 ## Exercise: Calling by Name
 
@@ -356,17 +341,15 @@ print_date(day=1, month=2, year=2003)
 
 ## Solution
 
-## Solution
-
 1. `2003/2/1`
 2. We saw examples of using *named arguments* when working with the pandas library. For example, when reading in a dataset
   using `data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')`, the last argument `index_col` is a
   named argument.
-3. Using named arguments can make code more readable since one can see from the function call what name the different arguments
+1. Using named arguments can make code more readable since one can see from the function call what name the different arguments
   have inside the function. It can also reduce the chances of passing arguments in the wrong order, since by using named arguments
   the order doesn't matter.
 
-::: {.callout-note}
+:::
 
 ## Exercise: Encapsulation of an If/Print Block
 
@@ -418,8 +401,6 @@ for i in range(10):
 
 ## Solution
 
-## Solution
-
 ```python
 def get_egg_label(mass):
     # egg sizing machinery prints a label
@@ -439,7 +420,8 @@ def get_egg_label(mass):
     return egg_label
 ```
 
-::: {.callout-note}
+:::
+
 
 ## Exercise: Encapsulating Data Analysis
 
@@ -479,8 +461,6 @@ japan = data_asia.loc['Japan']
   instead of enumerating them in the code.)
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -529,7 +509,8 @@ avg_gdp_in_decade('Japan','asia',1983)
 20880.023800000003
 ```
 
-::: {.callout-note}
+:::
+
 
 ## Exercise: Simulating a dynamical system
 
@@ -561,7 +542,6 @@ density. In the model, time takes discrete values 0, 1, 2, ...
 
 ## Solution
 
-## Solution
 
 1.
 
@@ -604,7 +584,9 @@ density. In the model, time takes discrete values 0, 1, 2, ...
 
   The population seems to be approaching zero.
 
-::: {.callout-note}
+:::
+
+
 
 ## Using Functions With Conditionals in Pandas
 
@@ -653,6 +635,7 @@ column in the dataframe called `data` labeled `lifExp`. We use the
 `apply()` to do what it says, apply the `calculate_life_quartile` to the
 value of this column for every row in the dataframe.
 
+
 ::: {.callout-important}
 
 ## Key Points
@@ -662,3 +645,5 @@ value of this column for every row in the dataframe.
 - Defining a function does not run it.
 - Arguments in a function call are matched to its defined parameters.
 - Functions may return a result to their caller using `return`.
+
+:::
