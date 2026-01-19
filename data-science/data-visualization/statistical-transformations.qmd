@@ -1,0 +1,603 @@
+---
+title: "Statistical Transformations and Summaries"
+abstract: |
+  Add statistical summaries to visualizations. Create regression lines, confidence intervals, and aggregations. Transform data visually to reveal patterns.
+authors-ipa:
+  - "[Ishmail Baako](https://poverty-action.org/people/ishmail-baako)"
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+contributors:
+  - "[The Carpentries](https://carpentries.org/)"
+keywords: ["Python", "Data Visualization", "Seaborn", "Statistics", "Tutorial"]
+license: "CC BY 4.0"
+---
+
+::: {.callout-note}
+
+## Learning Objectives
+
+- Add statistical transformations to plots with `.add(mark, stat)`
+- Create aggregated summaries with `so.Agg()`
+- Add confidence intervals with `so.Est()`
+- Fit regression lines with `so.PolyFit()`
+- Create histograms and density plots
+- Understand when and how to use statistical visualizations
+
+:::
+
+::: {.callout-tip}
+
+## Key Questions
+
+- How do I add statistical summaries to my plots?
+- How do I create regression lines?
+- How do I show confidence intervals?
+- How do I visualize distributions?
+- When should I use statistical transformations?
+
+:::
+
+## Understanding Statistical Transformations
+
+So far, we've been plotting **raw data** directly. But often we want to show **summaries** of the data:
+
+- Means or medians
+- Regression lines
+- Confidence intervals
+- Distributions
+
+In seaborn.objects, we do this by combining **marks** (what to draw) with **stats** (how to transform the data first).
+
+The pattern is:
+
+```python
+.add(so.Mark(), so.Stat())
+```
+
+## Setting Up
+
+```python
+import seaborn as sns
+import seaborn.objects as so
+import pandas as pd
+import numpy as np
+
+# Load data
+penguins = sns.load_dataset("penguins").dropna()
+tips = sns.load_dataset("tips")
+```
+
+## Aggregation with so.Agg()
+
+`so.Agg()` computes summary statistics (by default, the mean):
+
+```python
+# Show raw data
+(
+    so.Plot(penguins, x="species", y="body_mass_g")
+    .add(so.Dot(alpha=0.5))
+    .label(title="Raw Data")
+)
+
+# Show mean for each species
+(
+    so.Plot(penguins, x="species", y="body_mass_g")
+    .add(so.Bar(), so.Agg())
+    .label(title="Mean Body Mass by Species")
+)
+```
+
+### Combining Raw Data and Summaries
+
+Often you want to show both:
+
+```python
+(
+    so.Plot(penguins, x="species", y="body_mass_g", color="species")
+    .add(so.Dot(alpha=0.3), so.Jitter(width=0.3))  # Raw data with jitter
+    .add(so.Bar(alpha=0.5), so.Agg())               # Mean as bars
+    .label(
+        title="Penguin Body Mass: Individual Values and Means",
+        x="Species",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+```
+
+### Aggregating Over Continuous Variables
+
+You can also aggregate over continuous x-values:
+
+```python
+# Create time series with multiple observations per time point
+np.random.seed(42)
+months = np.repeat(range(1, 13), 20)  # 20 observations per month
+values = months * 2 + np.random.normal(0, 5, len(months))
+
+time_data = pd.DataFrame({
+    'month': months,
+    'value': values
+})
+
+(
+    so.Plot(time_data, x="month", y="value")
+    .add(so.Dot(alpha=0.2, color="gray"))  # All data points
+    .add(so.Line(color="red", linewidth=3), so.Agg())  # Mean line
+    .label(
+        title="Monthly Values: Raw Data and Mean Trend",
+        x="Month",
+        y="Value"
+    )
+)
+```
+
+## Confidence Intervals with so.Est()
+
+`so.Est()` computes estimates with confidence intervals:
+
+```python
+# Show means with confidence intervals
+(
+    so.Plot(penguins, x="species", y="body_mass_g", color="species")
+    .add(so.Dot(pointsize=10), so.Agg())  # Mean as points
+    .add(so.Dash(width=0.5), so.Est())     # Confidence intervals as error bars
+    .label(
+        title="Mean Body Mass with 95% Confidence Intervals",
+        x="Species",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+```
+
+### Confidence Bands for Continuous Data
+
+For trends over time or continuous variables:
+
+```python
+# Time series with confidence band
+(
+    so.Plot(time_data, x="month", y="value")
+    .add(so.Line(linewidth=2.5), so.Agg())  # Mean line
+    .add(so.Band(alpha=0.2), so.Est())       # Confidence band
+    .label(
+        title="Monthly Trend with 95% Confidence Band",
+        x="Month",
+        y="Value"
+    )
+)
+```
+
+## Regression Lines with so.PolyFit()
+
+`so.PolyFit()` fits polynomial regression lines:
+
+```python
+# Linear regression (order=1)
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
+    .add(so.Dot(alpha=0.5, color="gray"))
+    .add(so.Line(color="red"), so.PolyFit(order=1))
+    .label(
+        title="Flipper Length vs Body Mass (Linear Fit)",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)"
+    )
+)
+```
+
+### Polynomial Fits
+
+For curved relationships:
+
+```python
+# Create data with curved relationship
+x = np.linspace(0, 10, 100)
+y = 2 * x - 0.3 * x**2 + np.random.normal(0, 2, 100)
+curve_data = pd.DataFrame({'x': x, 'y': y})
+
+# Linear fit (underfits)
+(
+    so.Plot(curve_data, x="x", y="y")
+    .add(so.Dot(alpha=0.5))
+    .add(so.Line(color="blue"), so.PolyFit(order=1))
+    .label(title="Linear Fit (Order=1)")
+)
+
+# Quadratic fit (better)
+(
+    so.Plot(curve_data, x="x", y="y")
+    .add(so.Dot(alpha=0.5))
+    .add(so.Line(color="blue"), so.PolyFit(order=2))
+    .label(title="Quadratic Fit (Order=2)")
+)
+```
+
+::: {.callout-warning}
+
+## Don't Overfit
+
+Higher order polynomials (order > 3) can overfit your data, creating misleading patterns. Use them cautiously and only when you have theoretical reasons to expect complex curves.
+
+:::
+
+### Regression by Groups
+
+Show separate regression lines for different categories:
+
+```python
+(
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
+    .add(so.Dot(alpha=0.5))
+    .add(so.Line(linewidth=2), so.PolyFit(order=1))
+    .label(
+        title="Flipper-Mass Relationship by Species",
+        x="Flipper Length (mm)",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+```
+
+## Histograms with so.Hist()
+
+Visualize distributions:
+
+```python
+# Basic histogram
+(
+    so.Plot(penguins, x="body_mass_g")
+    .add(so.Bars(), so.Hist())
+    .label(
+        title="Distribution of Penguin Body Mass",
+        x="Body Mass (g)",
+        y="Count"
+    )
+)
+```
+
+### Controlling Bins
+
+```python
+# More bins for finer detail
+(
+    so.Plot(penguins, x="body_mass_g")
+    .add(so.Bars(), so.Hist(bins=30))
+    .label(title="Body Mass Distribution (30 bins)")
+)
+
+# Fewer bins for broader patterns
+(
+    so.Plot(penguins, x="body_mass_g")
+    .add(so.Bars(), so.Hist(bins=10))
+    .label(title="Body Mass Distribution (10 bins)")
+)
+```
+
+### Comparing Distributions
+
+```python
+# Stacked histograms by group
+(
+    so.Plot(penguins, x="body_mass_g", color="species")
+    .add(so.Bars(alpha=0.5), so.Hist())
+    .label(
+        title="Body Mass Distributions by Species",
+        x="Body Mass (g)",
+        y="Count",
+        color="Species"
+    )
+)
+
+# Better: use facets for clearer comparison
+(
+    so.Plot(penguins, x="body_mass_g")
+    .facet(row="species")
+    .add(so.Bars(), so.Hist(bins=20))
+    .label(
+        title="Body Mass Distributions by Species",
+        x="Body Mass (g)",
+        y="Count"
+    )
+)
+```
+
+## Count Statistics with so.Count()
+
+Count occurrences in categories:
+
+```python
+# Count penguins by species
+(
+    so.Plot(penguins, x="species")
+    .add(so.Bar(), so.Count())
+    .label(
+        title="Number of Penguins by Species",
+        x="Species",
+        y="Count"
+    )
+)
+
+# Count by two variables
+(
+    so.Plot(penguins, x="species", color="sex")
+    .add(so.Bar(), so.Count())
+    .label(
+        title="Penguin Counts by Species and Sex",
+        x="Species",
+        y="Count",
+        color="Sex"
+    )
+)
+```
+
+## Research Example: Program Impact Analysis
+
+Let's create a comprehensive impact visualization:
+
+```python
+# Create realistic program evaluation data
+np.random.seed(42)
+
+# Pre and post measurements for treatment and control
+eval_data = []
+for group in ['Control', 'Treatment']:
+    for time in ['Baseline', 'Endline']:
+        n = 100
+        if group == 'Control':
+            mean = 50 if time == 'Baseline' else 52
+        else:
+            mean = 50 if time == 'Baseline' else 65
+
+        values = np.random.normal(mean, 10, n)
+        for val in values:
+            eval_data.append({
+                'group': group,
+                'time': time,
+                'score': val
+            })
+
+eval_df = pd.DataFrame(eval_data)
+
+# Comprehensive visualization
+(
+    so.Plot(eval_df, x="time", y="score", color="group")
+    # Show individual data points (transparency shows density)
+    .add(so.Dot(alpha=0.1, pointsize=5), so.Jitter(width=0.2))
+    # Show means with error bars
+    .add(so.Dash(width=0.5, linewidth=2), so.Est())
+    .add(so.Dot(pointsize=10), so.Agg())
+    # Connect means with lines
+    .add(so.Line(linewidth=2.5), so.Agg())
+    .scale(color=["#999999", "#E69F00"])
+    .label(
+        title="Agricultural Training Program Impact\nBaseline to Endline Comparison",
+        x="Time Point",
+        y="Food Security Score",
+        color="Group"
+    )
+)
+```
+
+This plot shows:
+
+- All individual data points (dots with jitter and transparency)
+- Mean values (larger dots)
+- Confidence intervals (error bars)
+- Change over time (connecting lines)
+
+## Percentile Ranges with so.Perc()
+
+Show percentile bands instead of confidence intervals:
+
+```python
+# Show median and quartiles
+(
+    so.Plot(penguins, x="species", y="body_mass_g", color="species")
+    # Interquartile range (25th to 75th percentile)
+    .add(so.Bar(alpha=0.3), so.Perc(25, 75))
+    # Median line
+    .add(so.Dash(width=0.5, linewidth=3), so.Agg("median"))
+    .label(
+        title="Body Mass: Median and Interquartile Range",
+        x="Species",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+```
+
+## Combining Multiple Statistical Layers
+
+Create rich analytical visualizations:
+
+```python
+# Research question: How does bill length relate to body mass, and does this differ by species?
+(
+    so.Plot(penguins, x="bill_length_mm", y="body_mass_g", color="species")
+    # Raw data
+    .add(so.Dot(alpha=0.4, pointsize=6))
+    # Regression lines
+    .add(so.Line(linewidth=2.5), so.PolyFit(order=1))
+    # Confidence bands
+    .add(so.Band(alpha=0.2), so.PolyFit(order=1))
+    .label(
+        title="Bill Length vs Body Mass by Species\nwith Linear Regression and 95% CI",
+        x="Bill Length (mm)",
+        y="Body Mass (g)",
+        color="Species"
+    )
+)
+```
+
+## Exercises
+
+::: {.callout-note}
+
+## Exercise 1: Compare Summary Statistics
+
+Using the tips dataset, create a plot showing:
+
+- Mean tip amount by day of the week
+- With confidence intervals
+- Points colored by day
+
+```python
+# Your code here
+```
+
+::: {.callout-tip collapse="true"}
+
+## Solution 1
+
+```python
+(
+    so.Plot(tips, x="day", y="tip", color="day")
+    .add(so.Dot(pointsize=12), so.Agg())
+    .add(so.Dash(width=0.5), so.Est())
+    .label(
+        title="Average Tips by Day of Week (with 95% CI)",
+        x="Day",
+        y="Tip Amount ($)",
+        color="Day"
+    )
+)
+```
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 2: Distribution Analysis
+
+Create a histogram showing the distribution of total bill amounts in the tips dataset. Experiment with different numbers of bins (10, 20, 30). Which gives the clearest picture of the data?
+
+```python
+# Your code here
+```
+
+::: {.callout-tip collapse="true"}
+
+## Solution 2
+
+```python
+# Try different bin counts
+for n_bins in [10, 20, 30]:
+    (
+        so.Plot(tips, x="total_bill")
+        .add(so.Bars(), so.Hist(bins=n_bins))
+        .label(
+            title=f"Distribution of Total Bills ({n_bins} bins)",
+            x="Total Bill ($)",
+            y="Count"
+        )
+    )
+```
+
+The optimal number depends on your sample size and data distribution. For this dataset, 20 bins probably provides good detail without being too noisy.
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Exercise 3: Regression Analysis
+
+Using the penguins dataset:
+
+1. Create a scatter plot of bill_length_mm vs bill_depth_mm
+2. Add regression lines for each species (use color)
+3. Add confidence bands
+4. What do you notice about the relationships?
+
+```python
+# Your code here
+```
+
+::: {.callout-tip collapse="true"}
+
+## Solution 3
+
+```python
+(
+    so.Plot(penguins, x="bill_length_mm", y="bill_depth_mm", color="species")
+    .add(so.Dot(alpha=0.5))
+    .add(so.Line(linewidth=2), so.PolyFit(order=1))
+    .add(so.Band(alpha=0.2), so.PolyFit(order=1))
+    .label(
+        title="Bill Dimensions by Species with Linear Fits",
+        x="Bill Length (mm)",
+        y="Bill Depth (mm)",
+        color="Species"
+    )
+)
+```
+
+**Observation**: Interestingly, while each species shows a positive relationship between bill length and depth, overall (ignoring species) the relationship appears negative! This is Simpson's Paradox - a reminder to always consider grouping variables.
+
+:::
+
+:::
+
+## When to Use Statistical Transformations
+
+### Use Aggregations When
+
+- You have many data points per category
+- You want to emphasize group comparisons
+- Raw data would be too cluttered
+
+### Use Confidence Intervals When
+
+- You want to show uncertainty in estimates
+- Making statistical inferences
+- Comparing groups statistically
+
+### Use Regression Lines When
+
+- Showing relationships between continuous variables
+- Predicting values
+- Testing theoretical relationships
+
+### Use Histograms When
+
+- Exploring distributions
+- Checking for normality or skewness
+- Looking for multiple modes or outliers
+
+## Best Practices
+
+1. **Show the Data**: When possible, show both raw data and summaries
+2. **Report Sample Size**: Larger samples give narrower confidence intervals
+3. **Check Assumptions**: Linear regression assumes linearity; check if it fits
+4. **Don't Hide Outliers**: They often tell important stories
+5. **Label Statistical Elements**: Make clear what the bands, lines, or bars represent
+
+::: {.callout-important}
+
+## Key Points
+
+- Statistical transformations add summaries to visualizations
+- Use `.add(mark, stat)` to combine marks with statistics
+- `so.Agg()` computes means or other aggregations
+- `so.Est()` adds confidence intervals
+- `so.PolyFit()` fits regression lines (order=1 for linear, order=2 for quadratic)
+- `so.Hist()` creates histograms for distributions
+- `so.Count()` counts occurrences in categories
+- Combine raw data with statistical summaries for complete stories
+- Layer multiple statistical elements (lines + bands, means + CIs)
+- Choose appropriate transformations based on research questions
+- Always show uncertainty when making statistical inferences
+
+:::
+
+::: {.callout-tip}
+
+## Looking Ahead
+
+In the final lesson, we'll bring everything together - learning about themes, final polish, and creating a complete, publication-ready figure for a research report or presentation.
+
+:::

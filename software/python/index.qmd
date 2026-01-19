@@ -1,7 +1,7 @@
 ---
 title: "Python"
-abstract: "Getting started with Python for data analysis and research."
-keywords: ["Python", "programming", "data analysis", "tutorial"]
+abstract: "Getting started with Python for data analysis and research, including installation, setup, troubleshooting, and best practices."
+keywords: ["Python", "programming", "data analysis", "tutorial", "installation", "setup"]
 execute:
   eval: true
 jupyter:
@@ -36,24 +36,21 @@ license:
 Python is a high-level, general-purpose programming language that is widely used in data
 science, machine learning, and web development. It has a large standard library and a
 vibrant community that provides a wide range of libraries and tools for various
-applications. As such, Python provides a general-purpose ecosystem that can be used for
-a wide range of applications.
+applications. This guide covers Python installation, package management, environment
+setup, troubleshooting common issues, and best practices for data analysis and research.
 :::
 
 ## How to install Python?
 
-There are many ways to install Python. We recommend using Python in a virtual
+There are many ways to install Python. This guide recommends using Python in a virtual
 environment to avoid conflicts with other Python installations on your system.
 
-We recommend using [uv](https://docs.astral.sh/uv) as a a simple way to create and
+The recommended tool is [uv](https://docs.astral.sh/uv), a simple way to create and
 manage Python virtual environments.
 
-You can manage the python packages that are installed in the virtual
-environment using a `pyproject.toml` file. See the pyproject.toml example in this
-repository for an example of how to manage Python packages. To add package dependencies
-to the virtual environment, using `uv`, you can run:
+## Installing uv
 
-First, install `uv` using `winget` (Windows) or `brew` (MacOS/Linux):
+First, install `uv` using `winget` on Windows or `brew` on MacOS/Linux:
 
 ::: {.panel-tabset group="OS"}
 
@@ -80,12 +77,252 @@ brew install uv
 
 :::
 
-Add libraries to the virtual environment using `uv add ...`:
+## Installing Python Packages
+
+You can manage Python packages installed in the virtual environment using a `pyproject.toml` file. See the pyproject.toml example in this repository for an example of how to manage Python packages.
+
+Choose one of the following methods to install packages:
+
+::: {.panel-tabset group="install-method"}
+
+# uv (Recommended)
+
+Add libraries to the virtual environment using `uv add`:
 
 ```{python}
 # | eval: false
-> uv add jupyterlab pandas matplotlib seaborn causaldata
+uv add jupyterlab pandas matplotlib seaborn causaldata
 ```
+
+This will install:
+
+- **jupyterlab**: Interactive development environment for data science
+- **pandas**: Data manipulation and analysis
+- **matplotlib**: Plotting and visualization library
+- **seaborn**: Statistical data visualization
+- **causaldata**: Example datasets for causal inference
+
+# pip
+
+If you prefer pip (Python's standard package manager):
+
+```bash
+pip install jupyterlab pandas matplotlib seaborn causaldata
+```
+
+# conda
+
+If you use Anaconda or Miniconda:
+
+```bash
+conda install jupyterlab pandas matplotlib seaborn
+pip install causaldata
+```
+
+Note: causaldata is not available in conda channels, so use pip for that package.
+
+:::
+
+## Using Virtual Environments
+
+Using a virtual environment keeps your project packages separate and avoids conflicts. For more guidance, see the [virtual environment guide](../virtualenv/index.qmd).
+
+::: {.panel-tabset group="venv-method"}
+
+# uv
+
+Create and activate a virtual environment with uv:
+
+```bash
+# Create virtual environment
+uv venv myproject-env
+
+# Activate it
+```
+
+**On Windows:**
+
+```bash
+myproject-env\Scripts\activate
+```
+
+**On macOS/Linux:**
+
+```bash
+source myproject-env/bin/activate
+```
+
+# venv (Built-in)
+
+Create and activate using Python's built-in venv:
+
+```bash
+# Create virtual environment
+python -m venv myproject-env
+
+# Activate it
+```
+
+**On Windows:**
+
+```bash
+myproject-env\Scripts\activate
+```
+
+**On macOS/Linux:**
+
+```bash
+source myproject-env/bin/activate
+```
+
+:::
+
+For more details on virtual environments, see the [virtual environment guide](../virtualenv/index.qmd).
+
+## Version Requirements
+
+To ensure compatibility with the examples and tools used throughout this guide, you will need:
+
+- **Python**: 3.8 or higher
+- **pandas**: 1.3 or higher
+- **seaborn**: 0.12 or higher (required for seaborn.objects interface)
+- **matplotlib**: 3.4 or higher
+- **numpy**: 1.20 or higher
+- **jupyter**: Latest version recommended
+
+The seaborn.objects interface, used in many visualization examples in this guide, requires seaborn version 0.12 or higher. If you encounter errors related to seaborn.objects, make sure you have the correct version installed.
+
+## Verify Your Installation
+
+After installing Python and the required packages, you should verify that everything is working correctly.
+
+### Check Package Versions
+
+Open Python and run the following to check that all packages are installed and verify their versions:
+
+```{python}
+# | eval: false
+import pandas as pd
+import seaborn as sns
+import seaborn.objects as so
+import matplotlib.pyplot as plt
+import numpy as np
+
+print(f"pandas version: {pd.__version__}")
+print(f"seaborn version: {sns.__version__}")
+print(f"matplotlib version: {plt.matplotlib.__version__}")
+print(f"numpy version: {np.__version__}")
+```
+
+You should see version numbers printed without errors.
+
+### Test Seaborn.Objects
+
+Make sure seaborn.objects is available by creating a simple plot:
+
+```{python}
+# | eval: false
+import seaborn as sns
+import seaborn.objects as so
+
+# Load built-in dataset
+penguins = sns.load_dataset("penguins")
+
+# Create a simple plot
+(
+    so.Plot(penguins, x="bill_length_mm", y="bill_depth_mm")
+    .add(so.Dot())
+)
+```
+
+If this works without errors, the installation is complete.
+
+## Troubleshooting
+
+### Problem: "No module named 'seaborn.objects'"
+
+Your seaborn version is too old. Update it:
+
+```bash
+pip install --upgrade seaborn
+# or
+uv pip install --upgrade seaborn
+```
+
+### Problem: Plots not showing
+
+**In Jupyter notebooks**: Plots should display automatically.
+
+**In Python scripts**: Add `plt.show()` at the end:
+
+```python
+import matplotlib.pyplot as plt
+# ... your plotting code ...
+plt.show()
+```
+
+Or save the plot to a file:
+
+```python
+plot.save("filename.png")
+```
+
+### Problem: Import errors
+
+Make sure you're using the correct Python environment. Check with:
+
+```bash
+# On Windows
+where python
+
+# On macOS/Linux
+which python
+```
+
+If this shows an unexpected Python installation, make sure the virtual environment is activated.
+
+### Problem: Permission errors during installation
+
+Try installing with the `--user` flag:
+
+```bash
+pip install --user package_name
+```
+
+Or use a virtual environment (recommended) to avoid permission issues.
+
+## Setting Up Your Working Environment
+
+Choose one of the following environments for working with Python:
+
+### JupyterLab (Recommended for Beginners)
+
+JupyterLab provides an interactive environment perfect for data analysis:
+
+```bash
+# Start JupyterLab
+jupyter lab
+```
+
+This will open JupyterLab in your web browser. Create a notebook to start coding.
+
+### VS Code with Python Extension
+
+1. Install [VS Code](https://code.visualstudio.com/)
+2. Install the Python extension
+3. Create a Python file (`.py`) or Jupyter notebook (`.ipynb`)
+
+VS Code provides excellent support for both scripts and notebooks with features like debugging, linting, and code completion.
+
+### Positron
+
+[Positron](https://github.com/posit-dev/positron) is a new IDE specifically designed for data science:
+
+1. Download from [positron.posit.co](https://positron.posit.co/)
+2. Install and open
+3. Create a Python file or notebook
+
+Positron combines the best features of traditional IDEs with notebook-style interactive computing.
 
 ## Coding Conventions
 
@@ -101,7 +338,7 @@ you can customize the rules by modifying the `[tool.ruff]` section of the
 options, see the [Ruff documentation](https://docs.astral.sh/ruff/configuration/).
 
 If you are working in a virtual environment created in this repository, you automatically have
-access to `Ruff` via  `just lint-py` and `just fmt-python` commands to lint and format your code.
+access to `Ruff` through `just lint-py` and `just fmt-python` commands to lint and format your code.
 
 For more inspiration, see the
 [GitLab Data Team's Python Guide](https://handbook.gitlab.com/handbook/business-technology/data-team/platform/python-guide/)
@@ -109,13 +346,13 @@ and [Google's Python Style Guide](https://google.github.io/styleguide/pyguide.ht
 
 ## Example Usage
 
-In the example below, we show how Python can be used to explore and visualize a dataset.
+The example below shows how to use Python to explore and visualize a dataset.
 
 ::: {.callout-important collapse="true" title="Important Note"}
 To follow along, you will need to work in a [jupyter notebook](https://jupyter.org/try-jupyter/notebooks/?path=notebooks/Intro.ipynb) with the right libraries installed in your [environment](../virtualenv/index.qmd). Don't worry if you cannot do this now; we just want to show you what is possible here. We will revisit this example in [Processing Data in Python](data-processing-python.qmd).
 :::
 
-Let's load an example World Bank data via [Gapminder](https://www.gapminder.org/) using
+The following example loads World Bank data from [Gapminder](https://www.gapminder.org/) using
 the [causaldata](https://github.com/NickCH-K/causaldata) package.
 
 ```{python}
