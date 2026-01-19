@@ -47,10 +47,10 @@ should also have Git installed
 To get started, make sure you have `Just` installed on your computer by running the
 following from the command line:
 
-| Platform  | Commands                                                                                  |
-| --------- | ----------------------------------------------------------------------------------------- |
+| Platform  | Commands                    |
+| --------- | --------------------------- |
 | Windows   | `winget install Casey.Just` |
-| Mac/Linux | `brew install just`                                                |
+| Mac/Linux | `brew install just`         |
 
 This will make sure that you have the latest version of `Just`.
 
