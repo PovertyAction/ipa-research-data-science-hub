@@ -88,7 +88,7 @@ ls exercise-data/survey-data
 
 :::
 
-Let's navigate into that directory with `cd` and run an example command 
+Let's navigate into that directory with `cd` and run an example command
 `wc` (word count) to count lines in a survey file:
 
 ::: {.panel-tabset group="Shell"}
@@ -147,9 +147,9 @@ open hh_baseline_001.csv --raw | str stats
 
 :::
 
-`wc` is the 'word count' command: it counts the number of lines, words, 
-and characters in files (from left to right, in that order). In PowerShell, 
-you use `Measure-Object`, and in NuShell you can use `length` on parsed CSV 
+`wc` is the 'word count' command: it counts the number of lines, words,
+and characters in files (from left to right, in that order). In PowerShell,
+you use `Measure-Object`, and in NuShell you can use `length` on parsed CSV
 data or `str stats` on raw files.
 
 ### Viewing and Exploring CSV Data
@@ -210,7 +210,7 @@ Notice how NuShell automatically parses the CSV and displays it as a formatted t
 
 ### Counting Records in Survey Files
 
-One of Amara's first validation checks is to count how many records are in each file. 
+One of Amara's first validation checks is to count how many records are in each file.
 Let's count the lines (remember, the first line is the header):
 
 ::: {.panel-tabset group="Shell"}
@@ -265,14 +265,14 @@ open hh_baseline_001.csv | length
 20
 ```
 
-NuShell's `open` command automatically parses the CSV and excludes the header, so it 
+NuShell's `open` command automatically parses the CSV and excludes the header, so it
 directly shows 20 records.
 
 :::
 
 ### Checking for Missing Values
 
-Amara needs to find rows where required fields are missing. Let's look for rows with 
+Amara needs to find rows where required fields are missing. Let's look for rows with
 missing `hhid` values:
 
 ::: {.panel-tabset group="Shell"}
@@ -317,7 +317,7 @@ open hh_baseline_009.csv | where hhid == "" | length
 
 :::
 
-These piped commands show how we can combine simple tools to perform data 
+These piped commands show how we can combine simple tools to perform data
 validation. This is exactly what Amara needs for her survey quality checks!
 
 ## Key Points
