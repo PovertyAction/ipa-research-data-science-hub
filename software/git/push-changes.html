@@ -1338,6 +1338,12 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../software/git/clone-repo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloning a Repository</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../software/git/configuration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Configuration</span></a>
   </div>
@@ -1523,7 +1529,7 @@ cookieconsent.run({
       </ul>
         <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">January 20, 2026</li>
+    <li class="last-modified" style="font-size: 0.86rem;">January 21, 2026</li>
   </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
   <ul>
@@ -1590,14 +1596,14 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that our local repository still contains our earlier work on <code>earth.txt</code>, but the remote repository on GitHub only contains the README file.</p>
+<p>Note that our local repository still contains our earlier work on <code>campaigns.txt</code>, but the remote repository on GitHub only contains the README file.</p>
 <p>Because we created our repo on GitHub first and then cloned it to our local computer, the two repositories are already connected. If we had instead created the local repo first, then the remote repo on GitHub, we would need to manually connect the two repos, with a command like:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin git@github.com:loki-god-of-stories/multiverse.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin git@github.com:simon-bolivar-historian/multiverse.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>origin</code> is a local name used to refer to the remote repository. It could be called anything, but <code>origin</code> is a convention that is often used by default in git and GitHub, so it’s helpful to stick with this unless there’s a reason not to.</p>
 <p>Instead, we can simply verify that the two repositories are connected with the command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>origin  https://github.com/loki-god-of-stories/multiverse.git (fetch)
-origin  https://github.com/loki-god-of-stories/multiverse.git (push)</code></pre>
+<pre class="output"><code>origin  https://github.com/simon-bolivar-historian/multiverse.git (fetch)
+origin  https://github.com/simon-bolivar-historian/multiverse.git (push)</code></pre>
 </div>
 </div>
 </section>
@@ -1612,11 +1618,11 @@ Compressing objects: 100% (8/8), done.
 Writing objects: 100% (9/9), 992 bytes | 992.00 KiB/s, done.
 Total 9 (delta 1), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (1/1), done.
-To https://github.com/loki-god-of-stories/multiverse.git
+To https://github.com/simon-bolivar-historian/multiverse.git
    f537d84..2f2d364  main -&gt; main</code></pre>
 <p>We can pull changes from the remote repository to the local one as well:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>From https://github.com/loki-god-of-stories/multiverse
+<pre class="output"><code>From https://github.com/simon-bolivar-historian/multiverse
  * branch            main       -&gt; FETCH_HEAD
 Already up to date.</code></pre>
 <p>Pulling has no effect in this case because the two repositories are already synchronized. If someone else had pushed some changes to the repository on GitHub, though, this command would download them to our local repository.</p>
@@ -1627,18 +1633,18 @@ Already up to date.</code></pre>
 <figcaption>Changes have been pushed</figcaption>
 </figure>
 </div>
-<p>You should now see the <code>earth.txt</code> file. <strong>Click on the file</strong>, and you can see the contents of the file are the same as in VS Code.</p>
+<p>You should now see the <code>campaigns.txt</code> file. <strong>Click on the file</strong>, and you can see the contents of the file are the same as in VS Code.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../assets/images/git/github-earth.png" class="img-fluid figure-img"></p>
-<figcaption>View earth.txt</figcaption>
+<figcaption>View campaigns.txt</figcaption>
 </figure>
 </div>
 <p>Now <strong>click on the “History” link</strong>. You should see each commit made to the file, even though we only pushed once.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../assets/images/git/github-earth-history.png" class="img-fluid figure-img"></p>
-<figcaption>View earth.txt commits</figcaption>
+<figcaption>View campaigns.txt commits</figcaption>
 </figure>
 </div>
 </section>

@@ -1338,6 +1338,12 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../software/git/clone-repo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloning a Repository</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../software/git/configuration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Configuration</span></a>
   </div>
@@ -1522,7 +1528,7 @@ cookieconsent.run({
       </ul>
         <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">January 20, 2026</li>
+    <li class="last-modified" style="font-size: 0.86rem;">January 21, 2026</li>
   </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
   <ul>
@@ -1575,57 +1581,57 @@ cookieconsent.run({
 </div>
 </div>
 <p>As soon as people can work in parallel, they’ll likely step on each other’s toes. This will even happen with a single person: if we are working on a piece of software on two different computers, we could make different changes to each copy. Version control helps us manage these conflicts by giving us tools to resolve overlapping changes.</p>
-<p>To see how we can resolve conflicts, we must first create one. The file <code>earth.txt</code> currently looks like this in our <code>multiverse</code> repository:</p>
-<pre class="output"><code>Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
-Thor reunites with Jane Foster at the sanctuary.
+<p>To see how we can resolve conflicts, we must first create one. The file <code>campaigns.txt</code> currently looks like this in our <code>multiverse</code> repository:</p>
+<pre class="output"><code>Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
+Bolivar establishes Gran Colombia after successful campaign.
 </code></pre>
-<p>Let’s create a new branch to describe 1 possible version of events to occur next.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch loki-twist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>But before we checkout the <code>loki-twist</code> branch and add the event where Loki enters the picture, let’s add a line to <code>earth.txt</code> here in the <code>main</code> branch.</p>
-<pre class="output"><code>Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
-Thor reunites with Jane Foster at the sanctuary.
-The invaders retreat as Heimdall's rainbow bridge returns.
+<p>Let’s create a new branch to describe 1 possible interpretation of what happens next.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch bolivarian-federation</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>But before we checkout the <code>bolivarian-federation</code> branch and add an alternate interpretation, let’s add a line to <code>campaigns.txt</code> here in the <code>main</code> branch.</p>
+<pre class="output"><code>Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
+Bolivar establishes Gran Colombia after successful campaign.
+The liberation forces retreat as reinforcements arrive.
 </code></pre>
 <p>and commit that change to the <code>main</code> branch</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add earth.txt</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add invaders retreat"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>[main a521b20] Add invaders retreat
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add campaigns.txt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add account of tactical retreat"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output"><code>[main a521b20] Add account of tactical retreat
  1 file changed, 1 insertion(+)</code></pre>
 <p>We can then examine the commit history of the <code>main</code> branch.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>a521b20 (HEAD -&gt; main) Add invaders retreat
-976b48e (origin/main, origin/HEAD) Merge pull request #1 from loki-god-of-stories/heimdall-aware
-daf95c3 (origin/heimdall-aware) Create asgard.txt detailing Heimdall's awareness of invasion
+<pre class="output"><code>a521b20 (HEAD -&gt; main) Add account of tactical retreat
+976b48e (origin/main, origin/HEAD) Merge pull request #1 from simon-bolivar-historian/gran-colombia-formation
+daf95c3 (origin/gran-colombia-formation) Create asgard.txt detailing Heimdall's awareness of invasion
 2f2d364 Complete story with Thor-Jane reunion
 ee67c8b Implement counterattack strategy
-9b26458 Start story for New Asgard in earth.txt
+9b26458 Start story for New Asgard in campaigns.txt
 f537d84 Initial commit</code></pre>
-<p>Now that we’ve made our changes in the <code>main</code> branch, let’s add an event to the <code>loki-twist</code> branch.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout loki-twist</span>
+<p>Now that we’ve made our changes in the <code>main</code> branch, let’s add an event to the <code>bolivarian-federation</code> branch.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout bolivarian-federation</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>* loki-twist
+<pre class="output"><code>* bolivarian-federation
   main</code></pre>
-<p>Let’s add a line in <code>earth.txt</code> with Loki’s reveal. Note that when we open this file the line we added about the invaders retreating will not be present as that change is not part of this branch.</p>
-<pre class="output"><code>Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
-Thor reunites with Jane Foster at the sanctuary.
-Loki appears, revealing the invasion was his test all along.
+<p>Let’s add a line in <code>campaigns.txt</code> with Loki’s reveal. Note that when we open this file the line we added about the invaders retreating will not be present as that change is not part of this branch.</p>
+<pre class="output"><code>Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
+Bolivar establishes Gran Colombia after successful campaign.
+Bolivar proposes the Bolivarian federation after the victory.
 </code></pre>
-<p>Now let’s commit this change to the <code>loki-twist</code> branch</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add earth.txt</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add twist ending with Loki as mastermind"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>[loki-twist 7b972b4] Add twist ending with Loki as mastermind
+<p>Now let’s commit this change to the <code>bolivarian-federation</code> branch</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add campaigns.txt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add proposal for Bolivarian federation"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output"><code>[bolivarian-federation 7b972b4] Add proposal for Bolivarian federation
  1 file changed, 1 insertion(+)</code></pre>
 <p>Again, we can look at the history of this branch.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>7b972b4 (HEAD -&gt; loki-twist) Add twist ending with Loki as mastermind
-976b48e (origin/main, origin/HEAD) Merge pull request #1 from loki-god-of-stories/heimdall-aware
-daf95c3 (origin/heimdall-aware) Create asgard.txt detailing Heimdall's awareness of invasion
+<pre class="output"><code>7b972b4 (HEAD -&gt; bolivarian-federation) Add proposal for Bolivarian federation
+976b48e (origin/main, origin/HEAD) Merge pull request #1 from simon-bolivar-historian/gran-colombia-formation
+daf95c3 (origin/gran-colombia-formation) Create asgard.txt detailing Heimdall's awareness of invasion
 2f2d364 Complete story with Thor-Jane reunion
 ee67c8b Implement counterattack strategy
-9b26458 Start story for New Asgard in earth.txt
+9b26458 Start story for New Asgard in campaigns.txt
 f537d84 Initial commit</code></pre>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1637,19 +1643,19 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Notice that the commit related to the invaders retreating is not present as it is part of the <code>main</code> branch, not the <code>loki-twist</code> branch.</p>
+<p>Notice that the commit related to the invaders retreating is not present as it is part of the <code>main</code> branch, not the <code>bolivarian-federation</code> branch.</p>
 </div>
 </div>
 <p>Now that we’ve added Loki’s big reveal, we can merge this branch into the <code>main</code> branch. We’re going to do this merge in VS Code rather than through a Pull Request in GitHub this time.</p>
 <p>First, let’s checkout the <code>main</code> branch.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>  loki-twist
+<pre class="output"><code>  bolivarian-federation
 * main</code></pre>
-<p>And then merge the changes from <code>loki-twist</code> into our current branch, <code>main</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge loki-twist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>Auto-merging earth.txt
-CONFLICT (content): Merge conflict in earth.txt
+<p>And then merge the changes from <code>bolivarian-federation</code> into our current branch, <code>main</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge bolivarian-federation</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output"><code>Auto-merging campaigns.txt
+CONFLICT (content): Merge conflict in campaigns.txt
 Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <p>Review the status of the repository now that we’ve been told merging has resulted in a conflict.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1663,7 +1669,7 @@ You have unmerged paths.
 
 Unmerged paths:
   (use "git add &lt;file&gt;..." to mark resolution)
-        both modified:   earth.txt
+        both modified:   campaigns.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
 <div class="quarto-figure quarto-figure-center">
@@ -1672,15 +1678,15 @@ no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
 <figcaption>The Conflicting Changes</figcaption>
 </figure>
 </div>
-<p>Git detects that the changes made in one copy overlap with those made in the other and stops us from trampling on our previous work. It also marks that conflict in the affected file, <code>earth.txt</code>.</p>
+<p>Git detects that the changes made in one copy overlap with those made in the other and stops us from trampling on our previous work. It also marks that conflict in the affected file, <code>campaigns.txt</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../assets/images/git/vscode-merge-conflict.png" class="img-fluid figure-img"></p>
-<figcaption>Merge conflict in earth.txt</figcaption>
+<figcaption>Merge conflict in campaigns.txt</figcaption>
 </figure>
 </div>
-<p>Our change, the one at the <code>HEAD</code> of the <code>main</code> branch, is preceded by <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>. Git has then inserted <code>=======</code> as a separator between the conflicting changes and marked the end of our commit from the <code>loki-twist</code> branch with <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. (The string of letters and digits after that marker identifies the commit we made in the <code>loki-twist</code> branch.)</p>
-<p>It is now up to us to edit this file and reconcile the changes. We can do anything we want: keep the change made in the <code>main</code> branch, keep the change made in the <code>loki-twist</code> branch, write something new to replace both, or get rid of the change entirely.</p>
+<p>Our change, the one at the <code>HEAD</code> of the <code>main</code> branch, is preceded by <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>. Git has then inserted <code>=======</code> as a separator between the conflicting changes and marked the end of our commit from the <code>bolivarian-federation</code> branch with <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. (The string of letters and digits after that marker identifies the commit we made in the <code>bolivarian-federation</code> branch.)</p>
+<p>It is now up to us to edit this file and reconcile the changes. We can do anything we want: keep the change made in the <code>main</code> branch, keep the change made in the <code>bolivarian-federation</code> branch, write something new to replace both, or get rid of the change entirely.</p>
 <p>Let’s keep both of these events, but save Loki’s reveal for after the invaders reatreat.</p>
 <p>VS Code will prompt you to “Resolve in Merge Editor”. Click this button.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -1690,63 +1696,63 @@ no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
 </figure>
 </div>
 <p>In the Merge Editor, you will see the two versions side by side, and the final version of the file below. We want the final version to look like:</p>
-<pre class="output"><code>Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
-Thor reunites with Jane Foster at the sanctuary.
-The invaders retreat as Heimdall's rainbow bridge returns.
-Loki appears, revealing the invasion was his test all along.
+<pre class="output"><code>Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
+Bolivar establishes Gran Colombia after successful campaign.
+The liberation forces retreat as reinforcements arrive.
+Bolivar proposes the Bolivarian federation after the victory.
 </code></pre>
 <p>We want to click “Accept Combination (Current First)”. You should now see the resolved version with both lines, the line from the <code>main</code> branch first. Click “Complete Merge”.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../assets/images/git/vscode-merge-resolved.png" class="img-fluid figure-img"></p>
-<figcaption>The bottom pane contains the resolved earth.txt contents</figcaption>
+<figcaption>The bottom pane contains the resolved campaigns.txt contents</figcaption>
 </figure>
 </div>
-<p>By clicking “Complete Merge”, you are doing the same thing as running the command <code>git add earth.txt</code>. If you open the Source Control pane, you should see <code>earth.txt</code> under “Staged Changes”. You can then complete the commit using the VS Code UI or on the command line</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Merge changes from loki-twist"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>[main c5c81b3] Merge changes from loki-twist</code></pre>
+<p>By clicking “Complete Merge”, you are doing the same thing as running the command <code>git add campaigns.txt</code>. If you open the Source Control pane, you should see <code>campaigns.txt</code> under “Staged Changes”. You can then complete the commit using the VS Code UI or on the command line</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Merge changes from bolivarian-federation"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output"><code>[main c5c81b3] Merge changes from bolivarian-federation</code></pre>
 <p>Take a look at the Source Control Graph window (in the lower portion of the Source Control pane) for a visual representation of the git log.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>commit c5c81b35d7631b4aa9c7d71d06253c593cbaf644 (HEAD -&gt; main)
 Merge: a521b20 7b972b4
-Author: Loki Odinson &lt;loki.odinson@tva.org&gt;
+Author: Simon Bolivar &lt;simon.bolivar@liberation.org&gt;
 Date:   Sat May 17 21:36:55 2025 -0400
 
-    Merge branch 'loki-twist'
+    Merge branch 'bolivarian-federation'
 
-commit 7b972b4d86972ddfbacac225c5c84c8b4a5609ff (loki-twist)
-Author: Loki Odinson &lt;loki.odinson@tva.org&gt;
+commit 7b972b4d86972ddfbacac225c5c84c8b4a5609ff (bolivarian-federation)
+Author: Simon Bolivar &lt;simon.bolivar@liberation.org&gt;
 Date:   Sat May 17 21:27:20 2025 -0400
 
-    Add twist ending with Loki as mastermind
+    Add proposal for Bolivarian federation
 
 commit a521b20ef97343b49b3b25717e485b360fcb8d64
-Author: Loki Odinson &lt;loki.odinson@tva.org&gt;
+Author: Simon Bolivar &lt;simon.bolivar@liberation.org&gt;
 Date:   Sat May 17 21:25:13 2025 -0400
 
-    Add invaders retreat</code></pre>
+    Add account of tactical retreat</code></pre>
 <section id="when-conflicts-resolve-themselves" class="level2">
 <h2 class="anchored" data-anchor-id="when-conflicts-resolve-themselves">When conflicts resolve themselves</h2>
-<p>Let’s make another change to the <code>loki-twist</code> branch:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout loki-twist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Add another line to <code>earth.txt</code>:</p>
-<pre class="output"><code>Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
-Thor reunites with Jane Foster at the sanctuary.
-Loki appears, revealing the invasion was his test all along.
-Thor smiles, having known his brother's scheme from the beginning.
+<p>Let’s make another change to the <code>bolivarian-federation</code> branch:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout bolivarian-federation</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Add another line to <code>campaigns.txt</code>:</p>
+<pre class="output"><code>Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
+Bolivar establishes Gran Colombia after successful campaign.
+Bolivar proposes the Bolivarian federation after the victory.
+The campaign concludes with unified territories under the new federation.
 </code></pre>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add earth.txt</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add Thor's knowing reaction to Loki's scheme"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>[loki-twist 959f09c] Add Thor's knowing reaction to Loki's scheme
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add campaigns.txt</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Document federation unification of territories"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output"><code>[bolivarian-federation 959f09c] Document federation unification of territories
  1 file changed, 1 insertion(+)</code></pre>
 <p>And merge that change into main branch</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge loki-twist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge bolivarian-federation</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>Updating c5c81b3..959f09c
 Fast-forward
- earth.txt | 1 +
+ campaigns.txt | 1 +
  1 file changed, 1 insertions(+), 0 deletions(-)</code></pre>
 <p>Git keeps track of what we’ve merged with what, so we don’t have to fix things by hand again. There is no conflict and our changes are added automatically.</p>
 <p>Finally, let’s update our remote repository:</p>
@@ -1761,15 +1767,15 @@ Fast-forward
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This exercise is dependent on how the merge conflict was resolved in our first merge of the loki-twist branch and may still result in a conflict when merging additional commits from the loki-twist branch.</p>
+<p>This exercise is dependent on how the merge conflict was resolved in our first merge of the bolivarian-federation branch and may still result in a conflict when merging additional commits from the bolivarian-federation branch.</p>
 </div>
 </div>
-<pre class="text"><code>Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
-Thor reunites with Jane Foster at the sanctuary.
-The invaders retreat as Heimdall's rainbow bridge returns.
-Loki appears, revealing the invasion was his test all along.
-Thor smiles, having known his brother's scheme from the beginning.</code></pre>
+<pre class="text"><code>Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
+Bolivar establishes Gran Colombia after successful campaign.
+The liberation forces retreat as reinforcements arrive.
+Bolivar proposes the Bolivarian federation after the victory.
+The campaign concludes with unified territories under the new federation.</code></pre>
 <p>We don’t need to merge again because Git knows someone has already done that.</p>
 <p>Git’s ability to resolve conflicts is very useful, but conflict resolution costs time and effort, and can introduce errors if conflicts are not resolved correctly. If you find yourself resolving a lot of conflicts in a project, consider these technical approaches to reducing them:</p>
 <ul>
@@ -1797,7 +1803,7 @@ Thor smiles, having known his brother's scheme from the beginning.</code></pre>
 <div class="callout-body-container callout-body">
 <p>You can repeat this exercise twice, once in your <code>multiverse</code> repo, and once in your partner’s.</p>
 <p>You will first need to clone your partner’s <code>multiverse</code> repo in order to make edits in it.</p>
-<p>You will each create a new branch in the same <code>multiverse</code> repo, and make a small conflicting change (e.g.&nbsp;adding two different lines to the end of <code>earth.txt</code>).</p>
+<p>You will each create a new branch in the same <code>multiverse</code> repo, and make a small conflicting change (e.g.&nbsp;adding two different lines to the end of <code>campaigns.txt</code>).</p>
 <p>The repo owner should then create a Pull Request and merge their branch first.</p>
 <p>The other person should then create a Pull Request to merge their branch. They will get a merge conflict.</p>
 <p>In VS Code, they can merge main into their branch and resolve the conflict, then push the commit with the resolved merge to GitHub. They should now be able to merge their branch into main as well.</p>

@@ -1338,6 +1338,12 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../software/git/clone-repo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloning a Repository</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../software/git/configuration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Configuration</span></a>
   </div>
@@ -1512,7 +1518,7 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#loki-writes-a-story-about-thor-in-new-asgard" id="toc-loki-writes-a-story-about-thor-in-new-asgard" class="nav-link active" data-scroll-target="#loki-writes-a-story-about-thor-in-new-asgard">Loki writes a story about Thor in New Asgard</a></li>
+    <li><a href="#simon-bolivar-documents-the-liberation-campaigns" id="toc-simon-bolivar-documents-the-liberation-campaigns" class="nav-link active" data-scroll-target="#simon-bolivar-documents-the-liberation-campaigns">Simon Bolivar documents the liberation campaigns</a></li>
     <li><a href="#create-a-file" id="toc-create-a-file" class="nav-link" data-scroll-target="#create-a-file">Create a file</a></li>
     <li><a href="#track-changes-to-the-file" id="toc-track-changes-to-the-file" class="nav-link" data-scroll-target="#track-changes-to-the-file">Track Changes to the File</a></li>
     <li><a href="#make-more-changes-to-the-file" id="toc-make-more-changes-to-the-file" class="nav-link" data-scroll-target="#make-more-changes-to-the-file">Make more changes to the file</a></li>
@@ -1525,7 +1531,7 @@ cookieconsent.run({
       </ul>
         <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">January 20, 2026</li>
+    <li class="last-modified" style="font-size: 0.86rem;">January 21, 2026</li>
   </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
   <ul>
@@ -1578,18 +1584,18 @@ cookieconsent.run({
 </ul>
 </div>
 </div>
-<section id="loki-writes-a-story-about-thor-in-new-asgard" class="level2">
-<h2 class="anchored" data-anchor-id="loki-writes-a-story-about-thor-in-new-asgard">Loki writes a story about Thor in New Asgard</h2>
-<p>Loki, in his role as God of Stories, oversees the many branching timelines in the multiverse. But even an infinitely clever being like Loki has trouble keeping track of all of the events across the multiverse. Fortunately, there is a tool that can help keep track of these events across different timeline branches: git! Loki has decided to start logging events in a git repository named <code>multiverse</code>. Each planet will have their own file. Loki starts recording the events of New Asgard on Earth, where his brother Thor lives.</p>
+<section id="simon-bolivar-documents-the-liberation-campaigns" class="level2">
+<h2 class="anchored" data-anchor-id="simon-bolivar-documents-the-liberation-campaigns">Simon Bolivar documents the liberation campaigns</h2>
+<p>Simon Bolivar, historian and documenter of South American independence movements, needs to track the many events across the liberation campaigns. Even for a dedicated historian, keeping accurate records of campaigns across multiple territories presents challenges. Fortunately, there is a tool that can help track these historical records across different interpretations and sources: git! Simon has decided to start logging events in a git repository named <code>multiverse</code>. Each major campaign will have its own file. Simon starts recording the liberation campaigns, beginning with the campaign to free Caracas.</p>
 </section>
 <section id="create-a-file" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-file">Create a file</h2>
 <p>First let’s make sure we’re in the right directory. You should be in the <code>multiverse</code> directory.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Let’s create a file called <code>earth.txt</code> to start recording the events taking place on the planet Earth.</p>
-<p>Make sure you have the Explorer pane open in VS Code, and <strong>click the “New File” button</strong>. Name the file <code>earth.txt</code>.</p>
-<p>Type the text below into the <code>earth.txt</code> file:</p>
-<pre class="output"><code>Thor defends New Asgard from invaders.
+<p>Let’s create a file called <code>campaigns.txt</code> to start recording the liberation campaigns.</p>
+<p>Make sure you have the Explorer pane open in VS Code, and <strong>click the “New File” button</strong>. Name the file <code>campaigns.txt</code>.</p>
+<p>Type the text below into the <code>campaigns.txt</code> file:</p>
+<pre class="output"><code>Bolivar leads forces to liberate Caracas from Spanish control.
 </code></pre>
 <p>Make sure to end the file with a newline!</p>
 <p>Save the file.</p>
@@ -1603,11 +1609,11 @@ Your branch is up to date with 'origin/main'.
 
 Untracked files:
   (use "git add &lt;file&gt;..." to include in what will be committed)
-        earth.txt
+        campaigns.txt
 
 nothing added to commit but untracked files present (use "git add" to track)</code></pre>
 <p>The “untracked files” message means that there’s a file in the directory that Git isn’t keeping track of. We can tell Git to track a file using <code>git add</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add earth.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add campaigns.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>and then check that the right thing happened:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>On branch main
@@ -1615,12 +1621,12 @@ Your branch is up to date with 'origin/main'.
 
 Changes to be committed:
   (use "git restore --staged &lt;file&gt;..." to unstage)
-        new file:   earth.txt</code></pre>
-<p>Git now knows that it’s supposed to keep track of <code>earth.txt</code>, but it hasn’t recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Start story for New Asgard in earth.txt"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>[main 9b26458] Start story for New Asgard in earth.txt
+        new file:   campaigns.txt</code></pre>
+<p>Git now knows that it’s supposed to keep track of <code>campaigns.txt</code>, but it hasn’t recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Document liberation of Caracas"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output"><code>[main 9b26458] Document liberation of Caracas
  1 file changed, 1 insertion(+)
- create mode 100644 earth.txt</code></pre>
+ create mode 100644 campaigns.txt</code></pre>
 <p>When we run <code>git commit</code>, Git takes everything we have told it to save by using <code>git add</code> and stores a copy permanently inside the special <code>.git</code> directory. This permanent copy is called a commit (or revision) and its short identifier is <code>9b26458</code> (Your commit will have another identifier.)</p>
 <p>We use the <code>-m</code> flag (for “message”) to record a short, descriptive, and specific comment that will help us remember later on what we did and why. If we just run <code>git commit</code> without the <code>-m</code> option, Git will launch a VS Code window (or whatever other editor we configured as <code>core.editor</code>) so that we can write a longer message.</p>
 <p><a href="https://chris.beams.io/posts/git-commit/">Good commit messages</a> start with a brief (&lt;50 characters) summary of changes made in the commit. If you want to go into more detail, add a blank line between the summary line and your additional notes.</p>
@@ -1634,13 +1640,13 @@ nothing to commit, working tree clean</code></pre>
 <p>It tells us everything is up to date. If we want to know what we’ve done recently, we can ask Git to show us the project’s history using <code>git log</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>commit 9b26458f5d229d48be61023bcb510f8beb3f13db (HEAD -&gt; main)
-Author: Loki Odinson &lt;loki.odinson@tva.org&gt;
+Author: Simon Bolivar &lt;simon.bolivar@liberation.org&gt;
 Date:   Sat May 17 20:18:55 2025 -0400
 
-    Start story for New Asgard in earth.txt
+    Document liberation of Caracas
 
 commit f537d84c6ef9b6d988f642400b2017f855f9aaa1 (origin/main, origin/HEAD)
-Author: Loki Odinson &lt;loki.odinson@tva.org&gt;
+Author: Simon Bolivar &lt;simon.bolivar@liberation.org&gt;
 Date:   Sat May 17 18:34:45 2025 -0400
 
     Initial commit</code></pre>
@@ -1648,10 +1654,10 @@ Date:   Sat May 17 18:34:45 2025 -0400
 </section>
 <section id="make-more-changes-to-the-file" class="level2">
 <h2 class="anchored" data-anchor-id="make-more-changes-to-the-file">Make more changes to the file</h2>
-<p>Now suppose Loki records another event in the file.</p>
-<p>Click back into the <code>earth.txt</code> file, and add a second line:</p>
-<pre class="output"><code>Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
+<p>Now suppose Simon records another campaign event in the file.</p>
+<p>Click back into the <code>campaigns.txt</code> file, and add a second line:</p>
+<pre class="output"><code>Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
 </code></pre>
 <p>Save the file (make sure to have a newline at the end!).</p>
 <p>When we run <code>git status</code> now, it tells us that a file it already knows about has been modified:</p>
@@ -1663,18 +1669,18 @@ Your branch is ahead of 'origin/main' by 1 commit.
 Changes not staged for commit:
   (use "git add &lt;file&gt;..." to update what will be committed)
   (use "git restore &lt;file&gt;..." to discard changes in working directory)
-        modified:   earth.txt
+        modified:   campaigns.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
 <p>The last line is the key phrase: “no changes added to commit”. We have changed this file, but we haven’t told Git we will want to save those changes (which we do with <code>git add</code>) nor have we saved them (which we do with <code>git commit</code>). Let’s do that now. It is good practice to always review our changes before saving them. We do this using <code>git diff</code>. This shows us the differences between the current state of the file and the most recently saved version:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>diff --git a/earth.txt b/earth.txt
+<pre class="output"><code>diff --git a/campaigns.txt b/campaigns.txt
 index 0b592c6..d27fc77 100644
---- a/earth.txt
-+++ b/earth.txt
+--- a/campaigns.txt
++++ b/campaigns.txt
 @@ -1 +1,2 @@
- Thor defends New Asgard from invaders.
-+Thor and Valkyrie coordinate a counterattack.</code></pre>
+ Bolivar leads forces to liberate Caracas from Spanish control.
++Bolivar and Sucre coordinate the liberation of Quito.</code></pre>
 <p>The output is cryptic because it is actually a series of commands for tools like editors and <code>patch</code> telling them how to reconstruct one file given the other. If we break it down into pieces:</p>
 <ol type="1">
 <li>The first line tells us that Git is producing output similar to the Unix <code>diff</code> command comparing the old and new versions of the file.</li>
@@ -1683,7 +1689,7 @@ index 0b592c6..d27fc77 100644
 <li>The remaining lines are the most interesting, they show us the actual differences and the lines on which they occur. In particular, the <code>+</code> marker in the first column shows where we added a line.</li>
 </ol>
 <p>After reviewing our change, it’s time to commit it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Implement counterattack strategy"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add Sucre's coordination in Quito campaign"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>On branch main
 Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
@@ -1691,13 +1697,13 @@ Your branch is ahead of 'origin/main' by 1 commit.
 Changes not staged for commit:
   (use "git add &lt;file&gt;..." to update what will be committed)
   (use "git restore &lt;file&gt;..." to discard changes in working directory)
-        modified:   earth.txt
+        modified:   campaigns.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
 <p>Whoops: Git won’t commit because we didn’t use <code>git add</code> first. Let’s fix that:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add earth.txt</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Implement counterattack strategy"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>[main ee67c8b] Implement counterattack strategy
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add campaigns.txt</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add Sucre's coordination in Quito campaign"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output"><code>[main ee67c8b] Add Sucre's coordination in Quito campaign
  1 file changed, 1 insertion(+)</code></pre>
 <p>Git insists that we add files to the set we want to commit before actually committing anything. This allows us to commit our changes in stages and capture changes in logical portions rather than only large batches.</p>
 <p>To allow for this, Git has a special <em>staging area</em> where it keeps track of things that have been added to the current changeset but not yet committed.</p>
@@ -1724,31 +1730,31 @@ Tip
 <section id="using-the-source-control-pane-in-vs-code" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-source-control-pane-in-vs-code">Using the Source Control pane in VS Code</h2>
 <p>Let’s watch as our changes to a file move from our editor to the staging area and into long-term storage. First, we’ll add another line to the file:</p>
-<pre class="output"><code>Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
-Thor reunites with Jane Foster at the sanctuary.
+<pre class="output"><code>Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
+Bolivar establishes Gran Colombia after successful campaign.
 </code></pre>
 <p>Save the file (with a newline at the end!).</p>
 <p>Switch from the Explorer pane view to the Source Control pane view in VS Code.</p>
-<p>Under “Changes”, you should see your <code>earth.txt</code> file. Click the file.</p>
+<p>Under “Changes”, you should see your <code>campaigns.txt</code> file. Click the file.</p>
 <p>In your Terminal window, type the command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>diff --git a/earth.txt b/earth.txt
+<pre class="output"><code>diff --git a/campaigns.txt b/campaigns.txt
 index d27fc77..8938f14 100644
---- a/earth.txt
-+++ b/earth.txt
+--- a/campaigns.txt
++++ b/campaigns.txt
 @@ -1,2 +1,3 @@
- Thor defends New Asgard from invaders.
- Thor and Valkyrie coordinate a counterattack.
-+Thor reunites with Jane Foster at the sanctuary.</code></pre>
+ Bolivar leads forces to liberate Caracas from Spanish control.
+ Bolivar and Sucre coordinate the liberation of Quito.
++Bolivar establishes Gran Colombia after successful campaign.</code></pre>
 <p>The <code>git diff</code> command is accomplishing the same thing as clicking on the file under “Changes”: that we’ve added one line to the end of the file (shown with a <code>+</code> in the first column).</p>
-<p>In the Source Control pane, click the <code>+</code> icon next to the <code>earth.txt</code> file. The <code>earth.txt</code> file gets moved to the “Saved Changes” section.</p>
-<p>Clicking the <code>+</code> icon accomplished the same thing as typing <code>git add earth.txt</code> in the terminal.</p>
+<p>In the Source Control pane, click the <code>+</code> icon next to the <code>campaigns.txt</code> file. The <code>campaigns.txt</code> file gets moved to the “Saved Changes” section.</p>
+<p>Clicking the <code>+</code> icon accomplished the same thing as typing <code>git add campaigns.txt</code> in the terminal.</p>
 <p>Now, let’s save our changes. We could use the Terminal to commit our changes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Complete story with Thor-Jane reunion"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>[main 2f2d364] Complete story with Thor-Jane reunion
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Record formation of Gran Colombia"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output"><code>[main 2f2d364] Record formation of Gran Colombia
  1 file changed, 1 insertion(+)</code></pre>
-<p>Or, we can type the commit message “Complete story with Thor-Jane reunion” in the “Message” box and click “Commit”.</p>
+<p>Or, we can type the commit message “Record formation of Gran Colombia” in the “Message” box and click “Commit”.</p>
 <p>Let’s check our status:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>On branch main
@@ -1759,25 +1765,25 @@ nothing to commit, working tree clean</code></pre>
 <p>and look at the history of what we’ve done so far:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>commit 2f2d364f559efb1101647591d9fbf2cc30ade8bb (HEAD -&gt; main)
-Author: Loki Odinson &lt;loki.odinson@tva.org&gt;
+Author: Simon Bolivar &lt;simon.bolivar@liberation.org&gt;
 Date:   Sat May 17 20:29:51 2025 -0400
 
-    Complete story with Thor-Jane reunion
+    Record formation of Gran Colombia
 
 commit ee67c8b551612e09be46c97726866d04c7b0d785
-Author: Loki Odinson &lt;loki.odinson@tva.org&gt;
+Author: Simon Bolivar &lt;simon.bolivar@liberation.org&gt;
 Date:   Sat May 17 20:24:35 2025 -0400
 
-    Implement counterattack strategy
+    Add Sucre's coordination in Quito campaign
 
 commit 9b26458f5d229d48be61023bcb510f8beb3f13db
-Author: Loki Odinson &lt;loki.odinson@tva.org&gt;
+Author: Simon Bolivar &lt;simon.bolivar@liberation.org&gt;
 Date:   Sat May 17 20:18:55 2025 -0400
 
-    Start story for New Asgard in earth.txt
+    Document liberation of Caracas
 
 commit f537d84c6ef9b6d988f642400b2017f855f9aaa1 (origin/main, origin/HEAD)
-Author: Loki Odinson &lt;loki.odinson@tva.org&gt;
+Author: Simon Bolivar &lt;simon.bolivar@liberation.org&gt;
 Date:   Sat May 17 18:34:45 2025 -0400
 
     Initial commit</code></pre>
