@@ -18,12 +18,7 @@ license: "CC BY 4.0"
 - Create a time series plot showing a single data set.
 - Create a scatter plot showing relationship between two data sets.
 
-::: {.callout-tip}
-
-## Key Questions
-
-- How can I plot my data?
-- How can I save my plot for publishing?
+:::
 
 ## [`matplotlib`](https://matplotlib.org/) is the most widely used scientific plotting library in Python
 
@@ -46,8 +41,6 @@ plt.ylabel('Position (km)')
 ```
 
 ![](figures/9_simple_position_time_plot.svg){alt='A line chart showing time (hr) relative to position (km), using the values provided in the code block above. By default, the plotted line is blue against a white background, and the axes have been scaled automatically to fit the range of the input data.'}
-
-::: {.callout-note}
 
 ## Display All Open Figures
 
@@ -152,8 +145,6 @@ plt.xlabel('Year')
 plt.ylabel('GDP per capita ($)')
 ```
 
-::: {.callout-note}
-
 ## Adding a Legend
 
 Often when plotting multiple datasets on the same figure it is desirable to have
@@ -215,8 +206,6 @@ plt.xticks(rotation=90)
 
 ## Solution
 
-## Solution
-
 ```python
 data_europe = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
 data_europe.min().plot(label='min')
@@ -225,7 +214,10 @@ plt.legend(loc='best')
 plt.xticks(rotation=90)
 ```
 
-![](figures/9_minima_maxima_solution.png){alt='Minima Maxima Solution'}
+![Minima Maxima Solution](../../assets/images/data-analysis/9_minima_maxima_solution.png/)
+
+:::
+:::
 
 ::: {.callout-note}
 
@@ -367,3 +359,5 @@ Whenever you are generating plots to go into a paper or a presentation, there ar
 - Select and transform data, then plot it.
 - Many styles of plot are available: see the [Python Graph Gallery](https://python-graph-gallery.com/matplotlib/) for more options.
 - Can plot many sets of data together.
+
+:::

@@ -18,6 +18,7 @@ This page is adapted from the [Software Carpentry Python Gapminder lesson](https
 
 **Original citation:**
 Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+
 :::
 
 ::: {.callout-note}
@@ -29,10 +30,6 @@ Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpent
 - Select a subset of both rows and columns from a dataframe in a single operation.
 - Select a subset of a dataframe by a single Boolean criterion.
 :::
-
-## Key Questions
-
-- How can I do statistical analysis of tabular data?
 
 ## Note about Pandas DataFrames/Series
 
@@ -248,15 +245,6 @@ max      13450.401510    16361.876470    18965.055510
 ```
 
 ## Group By: split-apply-combine
-
-::::::::::::::::::::::::::::::::::::: instructor
-Learners often struggle here, many may not work with financial data and concepts so they
-find the example concepts difficult to get their head around. The biggest problem
-though is the line generating the wealth_score, this step needs to be talked through thoroughly:
-
-- It uses implicit conversion between boolean and float values which
-has not been covered in the course so far.
-- The axis=1 argument needs to be explained clearly.
 
 Pandas vectorizing methods and grouping operations are features that provide users
 much flexibility to analyse their data.
@@ -568,7 +556,7 @@ Suggest different ways of doing the following operations on a DataFrame:
 
 ## Solution
 
-1\. Access a single column:
+1. Access a single column:
 
 ```python
 # by name
@@ -590,7 +578,7 @@ data.iloc[:, [col_index]] # as a DataFrame
 data.T[data.T.index == "col_name"].T
 ```
 
-2\. Access a single row:
+2. Access a single row:
 
 ```python
 # by name using .loc
@@ -609,7 +597,7 @@ data.iloc[[row_index]]   # as a DataFrame
 data[data.index == "row_name"]
 ```
 
-3\. Access an individual DataFrame element:
+3. Access an individual DataFrame element:
 
 ```python
 # by column/row names
@@ -649,7 +637,7 @@ data.iloc[:, [col_index]].loc[["row_name"]]  # as a DataFrame
 data[data.index == "row_name"].T[data.T.index == "col_name"].T
 ```
 
-4\. Access several columns:
+4. Access several columns:
 
 ```python
 # by name
@@ -660,7 +648,7 @@ data.loc[:, ["col1", "col2", "col3"]]
 data.iloc[:, [col1_index, col2_index, col3_index]]
 ```
 
-5\. Access several rows
+5. Access several rows
 
 ```python
 # by name
@@ -670,7 +658,7 @@ data.loc[["row1", "row2", "row3"]]
 data.iloc[[row1_index, row2_index, row3_index]]
 ```
 
-6\. Access a subset of specific rows and columns
+6. Access a subset of specific rows and columns
 
 ```python
 # by names
@@ -686,7 +674,7 @@ data[["col1", "col2", "col3"]].iloc[[row1_index, row2_index, row3_index]]
 data.iloc[:, [col1_index, col2_index, col3_index]].loc[["row1", "row2", "row3"]]
 ```
 
-7\. Access a subset of row and column ranges
+7. Access a subset of row and column ranges
 
 ```python
 # by name
@@ -744,6 +732,9 @@ Among many choices, `dir()` lists the `median()` function as a possibility. Thus
 data.median()
 ```
 
+:::
+:::
+
 ::: {.callout-note}
 
 ## Exercise: Interpretation
@@ -757,6 +748,8 @@ for the entire twentieth century?
 [pandas-series]: https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html
 [numpy]: https://www.numpy.org/
 
+:::
+
 ::: {.callout-important}
 
 ## Key Points
@@ -767,3 +760,5 @@ for the entire twentieth century?
 - Result of slicing can be used in further operations.
 - Use comparisons to select data based on value.
 - Select values or NaN using a Boolean mask.
+
+:::
