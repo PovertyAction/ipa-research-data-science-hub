@@ -30,9 +30,9 @@ This tutorial modifies content from [Jenna Jordan's Intro to Git & GitHub (Speed
 - Distinguish between descriptive and non-descriptive commit messages
 :::
 
-## Loki writes a story about Thor in New Asgard
+## Simon Bolivar documents the liberation campaigns
 
-Loki, in his role as God of Stories, oversees the many branching timelines in the multiverse. But even an infinitely clever being like Loki has trouble keeping track of all of the events across the multiverse. Fortunately, there is a tool that can help keep track of these events across different timeline branches: git! Loki has decided to start logging events in a git repository named `multiverse`. Each planet will have their own file. Loki starts recording the events of New Asgard on Earth, where his brother Thor lives.
+Simon Bolivar, historian and documenter of South American independence movements, needs to track the many events across the liberation campaigns. Even for a dedicated historian, keeping accurate records of campaigns across multiple territories presents challenges. Fortunately, there is a tool that can help track these historical records across different interpretations and sources: git! Simon has decided to start logging events in a git repository named `multiverse`. Each major campaign will have its own file. Simon starts recording the liberation campaigns, beginning with the campaign to free Caracas.
 
 ## Create a file
 
@@ -43,14 +43,14 @@ You should be in the `multiverse` directory.
 pwd
 ```
 
-Let's create a file called `earth.txt` to start recording the events taking place on the planet Earth.
+Let's create a file called `campaigns.txt` to start recording the liberation campaigns.
 
-Make sure you have the Explorer pane open in VS Code, and **click the "New File" button**. Name the file `earth.txt`.
+Make sure you have the Explorer pane open in VS Code, and **click the "New File" button**. Name the file `campaigns.txt`.
 
-Type the text below into the `earth.txt` file:
+Type the text below into the `campaigns.txt` file:
 
 ```output
-Thor defends New Asgard from invaders.
+Bolivar leads forces to liberate Caracas from Spanish control.
 
 ```
 
@@ -72,7 +72,7 @@ Your branch is up to date with 'origin/main'.
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        earth.txt
+        campaigns.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
@@ -82,7 +82,7 @@ that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
 ```bash
-git add earth.txt
+git add campaigns.txt
 ```
 
 and then check that the right thing happened:
@@ -97,22 +97,22 @@ Your branch is up to date with 'origin/main'.
 
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        new file:   earth.txt
+        new file:   campaigns.txt
 ```
 
-Git now knows that it's supposed to keep track of `earth.txt`,
+Git now knows that it's supposed to keep track of `campaigns.txt`,
 but it hasn't recorded these changes as a commit yet.
 To get it to do that,
 we need to run one more command:
 
 ```bash
-git commit -m "Start story for New Asgard in earth.txt"
+git commit -m "Document liberation of Caracas"
 ```
 
 ```output
-[main 9b26458] Start story for New Asgard in earth.txt
+[main 9b26458] Document liberation of Caracas
  1 file changed, 1 insertion(+)
- create mode 100644 earth.txt
+ create mode 100644 campaigns.txt
 ```
 
 When we run `git commit`,
@@ -156,13 +156,13 @@ git log
 
 ```output
 commit 9b26458f5d229d48be61023bcb510f8beb3f13db (HEAD -> main)
-Author: Loki Odinson <loki.odinson@tva.org>
+Author: Simon Bolivar <simon.bolivar@liberation.org>
 Date:   Sat May 17 20:18:55 2025 -0400
 
-    Start story for New Asgard in earth.txt
+    Document liberation of Caracas
 
 commit f537d84c6ef9b6d988f642400b2017f855f9aaa1 (origin/main, origin/HEAD)
-Author: Loki Odinson <loki.odinson@tva.org>
+Author: Simon Bolivar <simon.bolivar@liberation.org>
 Date:   Sat May 17 18:34:45 2025 -0400
 
     Initial commit
@@ -179,13 +179,13 @@ and the log message Git was given when the commit was created
 
 ## Make more changes to the file
 
-Now suppose Loki records another event in the file.
+Now suppose Simon records another campaign event in the file.
 
-Click back into the `earth.txt` file, and add a second line:
+Click back into the `campaigns.txt` file, and add a second line:
 
 ```output
-Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
+Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
 
 ```
 
@@ -206,7 +206,7 @@ Your branch is ahead of 'origin/main' by 1 commit.
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        modified:   earth.txt
+        modified:   campaigns.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
@@ -227,13 +227,13 @@ git diff
 ```
 
 ```output
-diff --git a/earth.txt b/earth.txt
+diff --git a/campaigns.txt b/campaigns.txt
 index 0b592c6..d27fc77 100644
---- a/earth.txt
-+++ b/earth.txt
+--- a/campaigns.txt
++++ b/campaigns.txt
 @@ -1 +1,2 @@
- Thor defends New Asgard from invaders.
-+Thor and Valkyrie coordinate a counterattack.
+ Bolivar leads forces to liberate Caracas from Spanish control.
++Bolivar and Sucre coordinate the liberation of Quito.
 ```
 
 The output is cryptic because
@@ -255,7 +255,7 @@ If we break it down into pieces:
 After reviewing our change, it's time to commit it:
 
 ```bash
-git commit -m "Implement counterattack strategy"
+git commit -m "Add Sucre's coordination in Quito campaign"
 ```
 
 ```output
@@ -266,7 +266,7 @@ Your branch is ahead of 'origin/main' by 1 commit.
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        modified:   earth.txt
+        modified:   campaigns.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
@@ -276,12 +276,12 @@ Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ```bash
-git add earth.txt
-git commit -m "Implement counterattack strategy"
+git add campaigns.txt
+git commit -m "Add Sucre's coordination in Quito campaign"
 ```
 
 ```output
-[main ee67c8b] Implement counterattack strategy
+[main ee67c8b] Add Sucre's coordination in Quito campaign
  1 file changed, 1 insertion(+)
 ```
 
@@ -324,9 +324,9 @@ to the staging area and into long-term storage.
 First, we'll add another line to the file:
 
 ```output
-Thor defends New Asgard from invaders.
-Thor and Valkyrie coordinate a counterattack.
-Thor reunites with Jane Foster at the sanctuary.
+Bolivar leads forces to liberate Caracas from Spanish control.
+Bolivar and Sucre coordinate the liberation of Quito.
+Bolivar establishes Gran Colombia after successful campaign.
 
 ```
 
@@ -334,7 +334,7 @@ Save the file (with a newline at the end!).
 
 Switch from the Explorer pane view to the Source Control pane view in VS Code.
 
-Under "Changes", you should see your `earth.txt` file. Click the file.
+Under "Changes", you should see your `campaigns.txt` file. Click the file.
 
 In your Terminal window, type the command:
 
@@ -343,36 +343,36 @@ git diff
 ```
 
 ```output
-diff --git a/earth.txt b/earth.txt
+diff --git a/campaigns.txt b/campaigns.txt
 index d27fc77..8938f14 100644
---- a/earth.txt
-+++ b/earth.txt
+--- a/campaigns.txt
++++ b/campaigns.txt
 @@ -1,2 +1,3 @@
- Thor defends New Asgard from invaders.
- Thor and Valkyrie coordinate a counterattack.
-+Thor reunites with Jane Foster at the sanctuary.
+ Bolivar leads forces to liberate Caracas from Spanish control.
+ Bolivar and Sucre coordinate the liberation of Quito.
++Bolivar establishes Gran Colombia after successful campaign.
 ```
 
 The `git diff` command is accomplishing the same thing as clicking on the file under "Changes": that we've added one line to the end of the file
 (shown with a `+` in the first column).
 
-In the Source Control pane, click the `+` icon next to the `earth.txt` file.
-The `earth.txt` file gets moved to the "Saved Changes" section.
+In the Source Control pane, click the `+` icon next to the `campaigns.txt` file.
+The `campaigns.txt` file gets moved to the "Saved Changes" section.
 
-Clicking the `+` icon accomplished the same thing as typing `git add earth.txt` in the terminal.
+Clicking the `+` icon accomplished the same thing as typing `git add campaigns.txt` in the terminal.
 
 Now, let's save our changes. We could use the Terminal to commit our changes:
 
 ```bash
-git commit -m "Complete story with Thor-Jane reunion"
+git commit -m "Record formation of Gran Colombia"
 ```
 
 ```output
-[main 2f2d364] Complete story with Thor-Jane reunion
+[main 2f2d364] Record formation of Gran Colombia
  1 file changed, 1 insertion(+)
 ```
 
-Or, we can type the commit message "Complete story with Thor-Jane reunion" in the "Message" box and click "Commit".
+Or, we can type the commit message "Record formation of Gran Colombia" in the "Message" box and click "Commit".
 
 Let's check our status:
 
@@ -396,25 +396,25 @@ git log
 
 ```output
 commit 2f2d364f559efb1101647591d9fbf2cc30ade8bb (HEAD -> main)
-Author: Loki Odinson <loki.odinson@tva.org>
+Author: Simon Bolivar <simon.bolivar@liberation.org>
 Date:   Sat May 17 20:29:51 2025 -0400
 
-    Complete story with Thor-Jane reunion
+    Record formation of Gran Colombia
 
 commit ee67c8b551612e09be46c97726866d04c7b0d785
-Author: Loki Odinson <loki.odinson@tva.org>
+Author: Simon Bolivar <simon.bolivar@liberation.org>
 Date:   Sat May 17 20:24:35 2025 -0400
 
-    Implement counterattack strategy
+    Add Sucre's coordination in Quito campaign
 
 commit 9b26458f5d229d48be61023bcb510f8beb3f13db
-Author: Loki Odinson <loki.odinson@tva.org>
+Author: Simon Bolivar <simon.bolivar@liberation.org>
 Date:   Sat May 17 20:18:55 2025 -0400
 
-    Start story for New Asgard in earth.txt
+    Document liberation of Caracas
 
 commit f537d84c6ef9b6d988f642400b2017f855f9aaa1 (origin/main, origin/HEAD)
-Author: Loki Odinson <loki.odinson@tva.org>
+Author: Simon Bolivar <simon.bolivar@liberation.org>
 Date:   Sat May 17 18:34:45 2025 -0400
 
     Initial commit
