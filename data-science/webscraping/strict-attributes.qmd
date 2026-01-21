@@ -13,6 +13,11 @@ keywords: ["Python", "Web Scraping", "Gazpacho", "HTML Attributes", "CSS Selecto
 license: "CC BY 4.0"
 ---
 
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This content is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from [calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which are licensed under CC BY 4.0. The gazpacho library is used under the MIT License.
+:::
+
 ::: {.callout-note}
 
 ## Learning Objectives
@@ -23,23 +28,6 @@ license: "CC BY 4.0"
 - Handle complex class names and attribute patterns
 - Build robust selectors for dynamic content
 - Parse structured data from HTML attributes
-:::
-
-::: {.callout-tip}
-
-## Key Questions
-
-- When should I use strict vs. partial matching for element selection?
-- How do I extract specific attributes like timestamps, URLs, and IDs?
-- What are the best practices for handling complex CSS classes?
-- How can I make my selectors more resilient to website changes?
-:::
-
-::: {.callout-note}
-
-## Attribution
-
-This tutorial is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from the [calmcode.io gazpacho course](https://calmcode.io/course/gazpacho/strict) and [attributes tutorial](https://calmcode.io/course/gazpacho/attributes) (CC BY 4.0 License).
 :::
 
 ## Understanding Partial Matching
@@ -492,9 +480,9 @@ def parse_pypi_release_history(package_name):
             'success': False
         }
 
-# Function to parse card data as shown in calmcode tutorial
+# Function to parse card data
 def parse_card(card_soup):
-    """Parse individual release card (calmcode example)."""
+    """Parse individual release card."""
     try:
         # Extract version
         version_elem = card_soup.find('p', {'class': 'release__version'}, partial=False)
@@ -904,5 +892,3 @@ title = flexible_find(soup, title_selectors)
 - Validate and convert attribute values to appropriate types
 - Use multiple fallback selectors for robust parsing
 :::
-
-[← Previous: Parsing with Soup](03-parsing-soup.qmd) | [Next: Pandas Integration →](05-pandas-integration.qmd)
