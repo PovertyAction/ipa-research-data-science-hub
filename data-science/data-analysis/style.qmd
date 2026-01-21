@@ -7,8 +7,20 @@ authors-ipa:
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
-license: "CC BY 4.0"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
+
+**Original citation:**
+Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+:::
 
 ::: {.callout-note}
 
@@ -18,13 +30,7 @@ license: "CC BY 4.0"
 - Refactor one-page programs to make them more readable and justify the changes.
 - Use Python community coding standards (PEP-8).
 
-::: {.callout-tip}
-
-## Key Questions
-
-- How can I make my programs more readable?
-- How do most programmers format their code?
-- How can programs check their own operation?
+:::
 
 ## Coding style
 
@@ -45,8 +51,9 @@ Some points worth highlighting:
   how to structure your `import` statements,
   etc.
   Adhering to PEP8 makes it easier for other Python developers to read and understand your code, and to understand what their contributions should look like.
-- To check your code for compliance with PEP8, you can use the [pycodestyle application](https://pypi.org/project/pycodestyle/) and tools like the [black code formatter](https://github.com/psf/black) can automatically format your code to conform to PEP8 and pycodestyle (a Jupyter notebook formatter also exists [nb\_black](https://github.com/dnanhkhoa/nb_black)).
-- Some groups and organizations follow different style guidelines besides PEP8. For example, the [Google style guide on Python](https://google.github.io/styleguide/pyguide.html) makes slightly different recommendations. Google wrote an application that can help you format your code in either their style or PEP8 called [yapf](https://github.com/google/yapf/).
+- To check your code for compliance with PEP8, you can use modern tools like [Ruff](https://docs.astral.sh/ruff/), which combines linting and formatting in a single fast tool. Ruff can automatically format your code to conform to PEP8 and can fix many common issues automatically. It works with both regular Python files and Jupyter notebooks.
+- Some groups and organizations follow different style guidelines besides PEP8. For example, the [Google style guide on Python](https://google.github.io/styleguide/pyguide.html) makes slightly different recommendations. Modern formatters like Ruff can be configured to follow different style preferences through their configuration files.
+- For IPA projects, we use Ruff for both linting and formatting. See the [Python guide](../../software/python/index.qmd#coding-conventions) for setup instructions and configuration details. You can run `ruff check` to find issues and `ruff format` to automatically format your code.
 - With respect to coding style, the key is *consistency*. Choose a style for your project be it PEP8, the Google style, or something else and do your best to ensure that you and anyone else you are collaborating with sticks to it. Consistency within a project is often more impactful than the particular style used. A consistent style will make your software easier to read and understand for others and for your future self.
 
 ## Use assertions to check for internal errors
@@ -83,8 +90,6 @@ Help on function average in module __main__:
 average(values)
     Return average of values, or None if no values are supplied.
 ```
-
-::: {.callout-note}
 
 ## Multiline Strings
 
@@ -126,6 +131,8 @@ def overall_max(sequences):
     return highest
 ```
 
+:::
+
 ::: {.callout-note}
 
 ## Exercise: Document This
@@ -154,8 +161,6 @@ def middle(a, b, c):
 
 ## Solution
 
-## Solution
-
 ```python
 def middle(a, b, c):
     '''Return the middle value of three.
@@ -164,6 +169,9 @@ def middle(a, b, c):
     values.sort()
     return values[1]
 ```
+
+:::
+:::
 
 ::: {.callout-note}
 
@@ -196,8 +204,6 @@ while i < n:
 ```
 
 ::: {.callout-tip collapse="true"}
-
-## Solution
 
 ## Solution
 
@@ -245,9 +251,14 @@ et cetera
 ---*---*-
 ```
 
+:::
+:::
+
 ::: {.callout-important}
 
 ## Key Points
 
 - Follow standard Python style in your code.
 - Use docstrings to provide builtin help.
+
+:::

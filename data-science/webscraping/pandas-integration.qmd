@@ -1,7 +1,7 @@
 ---
 title: "Integration with Pandas"
 abstract: |
-  Learn to convert scraped web data into pandas DataFrames for analysis. Master techniques for cleaning, transforming, and structuring web data, and build automated data collection workflows that integrate seamlessly with data science pipelines.
+  Learn to convert scraped web data into pandas DataFrames for analysis. Apply techniques for cleaning, transforming, and structuring web data, and build automated data collection workflows that integrate seamlessly with data science pipelines.
 authors:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 # # Contributors
@@ -9,8 +9,15 @@ authors:
 #   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
 
 keywords: ["Python", "Web Scraping", "Gazpacho", "Pandas", "Data Analysis", "DataFrames", "Data Cleaning", "Tutorial"]
-license: "CC BY 4.0"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This content is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from [calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which are licensed under CC BY 4.0. The gazpacho library is used under the MIT License.
+:::
 
 ::: {.callout-note}
 
@@ -22,23 +29,6 @@ license: "CC BY 4.0"
 - Build automated data collection workflows
 - Create reproducible web scraping pipelines
 - Export and save scraped datasets
-:::
-
-::: {.callout-tip}
-
-## Key Questions
-
-- How do I structure scraped data for pandas analysis?
-- What data cleaning steps are commonly needed for web data?
-- How can I automate the scraping-to-analysis pipeline?
-- What are the best practices for handling missing or malformed data?
-:::
-
-::: {.callout-note}
-
-## Attribution
-
-This tutorial is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from the [calmcode.io gazpacho pandas tutorial](https://calmcode.io/course/gazpacho/pandas) (CC BY 4.0 License).
 :::
 
 ## From Web Data to DataFrames
@@ -127,7 +117,7 @@ quotes_df = scrape_quotes_to_dataframe()
 
 ::: {.callout-note}
 
-## Try This: Multiple Pages to DataFrame
+## Exercise: Multiple Pages to DataFrame
 
 Practice scraping multiple data points and combining them:
 
@@ -190,7 +180,7 @@ multi_df = scrape_multiple_pages()
 
 ## PyPI Example: Complete Implementation
 
-Let's implement the calmcode tutorial example - scraping PyPI package history:
+Let's implement an example - scraping PyPI package history:
 
 ```python
 import pandas as pd
@@ -380,7 +370,7 @@ cleaned_df = cleaning_example()
 
 ::: {.callout-note}
 
-## Try This: Product Data Pipeline
+## Exercise: Product Data Pipeline
 
 Build a complete pipeline from scraping to analysis:
 
@@ -898,5 +888,3 @@ print("\nPipeline completed successfully!")
 - Validate and document your data processing steps
 - Consider memory usage for large-scale scraping projects
 :::
-
-[← Previous: Strict Mode and Attributes](04-strict-attributes.qmd) | [Back to Index](index.qmd)

@@ -7,8 +7,20 @@ authors-ipa:
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
-license: "CC BY 4.0"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
+
+**Original citation:**
+Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+:::
 
 ::: {.callout-note}
 
@@ -17,12 +29,7 @@ license: "CC BY 4.0"
 - Explain what for loops are normally used for.
 - Trace the execution of a simple (unnested) loop and correctly state the values of variables in each iteration.
 - Write for loops that use the Accumulator pattern to aggregate values.
-
-::: {.callout-tip}
-
-## Key Questions
-
-- How can I make a program do many things?
+:::
 
 ## A *for loop* executes commands once for each value in a collection
 
@@ -183,10 +190,11 @@ Is an indentation error a syntax error or a runtime error?
 
 ## Solution
 
-## Solution
-
 An IndentationError is a syntax error. Programs with syntax errors cannot be started.
 A program with a runtime error will start but an error will be thrown under certain conditions.
+
+:::
+:::
 
 ::: {.callout-note}
 
@@ -205,8 +213,6 @@ for char in "tin":
 
 ## Solution
 
-## Solution
-
 | Line no | Variables            |
 | ------- | -------------------- |
 | 1       | total = 0            |
@@ -216,6 +222,9 @@ for char in "tin":
 | 3       | total = 2 char = 'i' |
 | 2       | total = 2 char = 'n' |
 | 3       | total = 3 char = 'n' |
+
+:::
+:::
 
 ::: {.callout-note}
 
@@ -236,8 +245,6 @@ print(result)
 
 ## Solution
 
-## Solution
-
 ```python
 original = "tin"
 result = ""
@@ -246,7 +253,8 @@ for char in original:
 print(result)
 ```
 
-::: {.callout-note}
+:::
+:::
 
 ## Exercise: Practice Accumulating
 
@@ -265,14 +273,14 @@ print(total)
 
 ## Solution
 
-## Solution
-
 ```python
 total = 0
 for word in ["red", "green", "blue"]:
     total = total + len(word)
 print(total)
 ```
+
+:::
 
 ```python
 # List of word lengths: ["red", "green", "blue"] => [3, 5, 4]
@@ -286,14 +294,14 @@ print(lengths)
 
 ## Solution
 
-## Solution
-
 ```python
 lengths = []
 for word in ["red", "green", "blue"]:
     lengths.append(len(word))
 print(lengths)
 ```
+
+:::
 
 ```python
 # Concatenate all words: ["red", "green", "blue"] => "redgreenblue"
@@ -308,8 +316,6 @@ print(result)
 
 ## Solution
 
-## Solution
-
 ```python
 words = ["red", "green", "blue"]
 result = ""
@@ -317,6 +323,7 @@ for word in words:
     result = result + word
 print(result)
 ```
+:::
 
 **Create an acronym:** Starting from the list `["red", "green", "blue"]`, create the acronym `"RGB"` using
 a for loop.
@@ -327,14 +334,14 @@ a for loop.
 
 ## Solution
 
-## Solution
-
 ```python
 acronym = ""
 for word in ["red", "green", "blue"]:
     acronym = acronym + word[0].upper()
 print(acronym)
 ```
+
+:::
 
 ::: {.callout-note}
 
@@ -358,8 +365,6 @@ data = [1,2,2,5]
 
 ## Solution
 
-## Solution
-
 ```python
 total = 0
 data = [1,2,2,5]
@@ -369,6 +374,8 @@ for number in data:
     cumulative.append(total)
 print(cumulative)
 ```
+:::
+:::
 
 ::: {.callout-note}
 
@@ -397,8 +404,6 @@ print(message)
 
 ## Solution
 
-## Solution
-
 - Python variable names are case sensitive: `number` and `Number` refer to different variables.
 - The variable `message` needs to be initialized as an empty string.
 - We want to add the string `"a"` to `message`, not the undefined variable `a`.
@@ -413,6 +418,9 @@ for number in range(10):
         message = message + "b"
 print(message)
 ```
+
+:::
+:::
 
 ::: {.callout-note}
 
@@ -432,14 +440,15 @@ print('My favorite season is ', seasons[4])
 
 ## Solution
 
-## Solution
-
 This list has 4 elements and the index to access the last element in the list is `3`.
 
 ```python
 seasons = ['Spring', 'Summer', 'Fall', 'Winter']
 print('My favorite season is ', seasons[3])
 ```
+
+:::
+:::
 
 ::: {.callout-important}
 
@@ -453,3 +462,5 @@ print('My favorite season is ', seasons[3])
 - The body of a loop can contain many statements.
 - Use `range` to iterate over a sequence of numbers.
 - The Accumulator pattern turns many values into one.
+
+:::

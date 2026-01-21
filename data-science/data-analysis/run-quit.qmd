@@ -7,7 +7,9 @@ authors-ipa:
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
-license: "CC BY 4.0"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
 :::{.callout-note collapse="true" title="Recognition and Attribution"}
@@ -33,13 +35,9 @@ Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpent
 - Create and run Python cells in a notebook.
 :::
 
-## Key Questions
-
-- How can I run Python programs?
-
 To run Python, we are going to use [Jupyter Notebooks][jupyter] via [JupyterLab][jupyterlab] for the remainder of this workshop. Jupyter notebooks are common in data science and visualization and serve as a convenient common-denominator experience for running Python code interactively where we can easily view and share the results of our Python code.
 
-There are other ways of editing, managing, and running code. Software developers often use an integrated development environment (IDE) like [Visual Studio Code](https://code.visualstudio.com/), or [Positron](https://positron.app/), or text editors like Vim or Emacs, to create and edit their Python programs. After editing and saving your Python programs you can execute those programs within the IDE itself or directly on the command line. In contrast, Jupyter notebooks let us execute and view the results of our Python code immediately within the notebook.
+There are other ways of editing, managing, and running code. Software developers often use an integrated development environment (IDE) like [Visual Studio Code](https://code.visualstudio.com/), or [Positron](https://positron.app/) to create and edit their Python programs. After editing and saving your Python programs you can execute those programs within the IDE itself or directly on the command line. In contrast, Jupyter notebooks let us execute and view the results of our Python code immediately within the notebook.
 
 JupyterLab has several other handy features:
 
@@ -61,8 +59,8 @@ and even custom components in a flexible, integrated, and extensible manner. Jup
 reasonably up-to-date browser (ideally a current version of Chrome, Safari, or Firefox); Internet
 Explorer versions 9 and below are *not* supported.
 
-JupyterLab is included as part of the the uv Python virtual environment set up in this repository.
-If you have not already installed the uv Python virtual environment, see [the setup instructions](../learners/setup.md) for installation instructions.
+JupyterLab is included as part of the IPA recommended uv Python virtual environment set up in this repository.
+If you have not already installed the uv Python virtual environment, see [the setup instructions](../../software/virtualenv/python-uv.qmd) for installation instructions.
 
 In this lesson we will run JupyterLab locally on our own machines so it will not require an internet connection besides
 the initial connection to download and install uv and JupyterLab
@@ -96,11 +94,16 @@ There are two ways to open Terminal on Mac.
 After you have launched Terminal, type the command to launch the JupyterLab server.
 
 ```bash
+# Launch JupyterLab with uv
 uv run jupyter lab
 ```
 
+or activate your python virtual environment and run jupyter lab:
 ```bash
-uv run jupyter lab
+# Activate the virtual environment
+.\venv\Scripts\activate
+# Launch JupyterLab
+jupyter lab
 ```
 
 ## The JupyterLab Interface
@@ -141,8 +144,7 @@ etc.
 
 A screenshot of the default Menu Bar is provided below.
 
-<p align='center'>   <img alt="JupyterLab Menu Bar" src="figures/0_jupyterlab_menu_bar.png" width="750"/>
-</p>
+![JupyterLab Menu Bar](../../assets/images/data-analysis/0_jupyterlab_menu_bar.png)
 
 ### Left Sidebar
 
@@ -151,8 +153,7 @@ contents of the directory where the JupyterLab server was launched), a list of r
 and terminals, the command palette, and a list of open tabs in the main work area. A screenshot of
 the default Left Side Bar is provided below.
 
-<p align='center'>   <img alt="JupyterLab Left Side Bar" src="figures/0_jupyterlab_left_side_bar.png" width="250"/>
-</p>
+![JupyterLab Left Side Bar](../../assets/images/data-analysis/0_jupyterlab_left_side_bar.png)
 
 The left sidebar can be collapsed or expanded by selecting "Show Left Sidebar" in the View menu or
 by clicking on the active sidebar tab.
@@ -165,8 +166,7 @@ subdivided. A screenshot of the default Main Work Area is provided below.
 
 If you do not see the Launcher tab, click the blue plus sign under the "File" and "Edit" menus and it will appear.
 
-<p align='center'>   <img alt="JupyterLab Main Work Area" src="figures/0_jupyterlab_main_work_area.png" width="750"/>
-</p>
+![JupyterLab Main Work Area](../../assets/images/data-analysis/0_jupyterlab_main_work_area.png)
 
 Drag a tab to the center of a tab panel to move the tab to the panel. Subdivide a tab panel by
 dragging a tab to the left, right, top, or bottom of the panel. The work area has a single current
@@ -193,8 +193,7 @@ Additional notes on Jupyter notebooks.
 Below is a screenshot of a Jupyter notebook running inside JupyterLab. If you are interested in
 more details, then see the [official notebook documentation][jupyterlab-notebook-docs].
 
-<p align='center'>   <img alt="Example Jupyter Notebook" src="figures/0_jupyterlab_notebook_screenshot.png" width="750"/>
-</p>
+![Example Jupyter Notebook](../../assets/images/data-analysis/0_jupyterlab_notebook_screenshot.png)
 
 ::: {.callout-note}
 
@@ -212,8 +211,7 @@ more details, then see the [official notebook documentation][jupyterlab-notebook
 In the JupyterLab Main Work Area you can arrange documents into panels of tabs. Here is an
 example from the [official documentation][jupyterlab].
 
-<p align='center'>   <img alt="Multi-panel JupyterLab" src="figures/0_multipanel_jupyterlab_screenshot.png" width="750"/>
-</p>
+![Multi-panel JupyterLab](../../assets/images/data-analysis/0_multipanel_jupyterlab_screenshot.png)
 
 First, create a text file, Python console, and terminal window and arrange them into three
 panels in the main work area. Next, create a notebook, terminal window, and text file and
@@ -486,6 +484,9 @@ Similarly, `-i` is in curly braces to make the whole statement the superscript f
 - To restart the JupyterLab server you will need to re-run the following command from a shell.
 
 ```bash
+# via uv
+uv run jupyter lab
+# or activate your python virtual environment and run
 jupyter lab
 ```
 

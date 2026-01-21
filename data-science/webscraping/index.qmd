@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Web Scraping with Gazpacho"
 abstract: |
-  Learn the fundamentals of web scraping using gazpacho, a lightweight Python library that simplifies extracting data from websites. Master essential techniques for collecting data from web pages for research and analysis.
+  Learn the fundamentals of web scraping using gazpacho, a lightweight Python library that simplifies extracting data from websites. Apply essential techniques for collecting data from web pages for research and analysis.
 authors:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 
@@ -9,8 +9,15 @@ authors:
 # contributors:
 #   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
 keywords: ["Python", "Web Scraping", "Gazpacho", "Data Collection", "HTML Parsing", "Tutorial", "Diataxis Framework"]
-license: "CC BY 4.0"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This content is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from [calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which are licensed under CC BY 4.0. The gazpacho library is used under the MIT License.
+:::
 
 ::: {.callout-note}
 
@@ -22,23 +29,6 @@ license: "CC BY 4.0"
 - Navigate website structures to locate target data
 - Integrate scraped data with pandas for analysis
 - Apply ethical web scraping practices and respect robots.txt
-:::
-
-::: {.callout-tip}
-
-## Key Questions
-
-- What is web scraping and how does gazpacho make it accessible?
-- How do I identify and extract specific data from web pages?
-- What are the legal and ethical considerations for web scraping?
-- How can I integrate scraped data into my research workflow?
-:::
-
-::: {.callout-note}
-
-## Attribution
-
-This content is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from [calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which are licensed under CC BY 4.0. The gazpacho library is used under the MIT License.
 :::
 
 ## What is Web Scraping?
@@ -78,35 +68,35 @@ Gazpacho is a lightweight Python library that simplifies web scraping by providi
 
 This tutorial series will guide you through web scraping fundamentals using gazpacho:
 
-### [1. Getting Started with Gazpacho](01-gazpacho-basics.qmd)
+### [1. Getting Started with Gazpacho](gazpacho-basics.qmd)
 
 - Installation and setup
 - Basic concepts and terminology
 - Your first web scraping script
 - Understanding HTML structure
 
-### [2. Making HTTP Requests and Getting Data](02-getting-data.qmd)
+### [2. Making HTTP Requests and Getting Data](getting-data.qmd)
 
 - Using gazpacho.get() for HTTP requests
 - Handling different response types
 - Error handling and debugging
 - Working with different websites
 
-### [3. Parsing HTML with Soup Objects](03-parsing-soup.qmd)
+### [3. Parsing HTML with Soup Objects](parsing-soup.qmd)
 
 - Creating and working with Soup objects
 - Finding elements by tag, class, and attributes
 - Navigating HTML structure
 - Extracting text and content
 
-### [4. Advanced Selection and Strict Mode](04-strict-attributes.qmd)
+### [4. Advanced Selection and Strict Mode](strict-attributes.qmd)
 
 - Using strict mode for precise selection
 - Working with HTML attributes
 - Advanced CSS selectors
 - Handling dynamic content
 
-### [5. Integration with Pandas](05-pandas-integration.qmd)
+### [5. Integration with Pandas](pandas-integration.qmd)
 
 - Converting scraped data to DataFrames
 - Data cleaning and preprocessing
@@ -134,13 +124,13 @@ This tutorial assumes basic familiarity with:
 Install gazpacho using pip:
 
 ```bash
-pip install gazpacho
+uv pip install gazpacho
 ```
 
 For data analysis integration:
 
 ```bash
-pip install gazpacho pandas
+uv pip install gazpacho pandas
 ```
 
 ## Ethical Web Scraping Guidelines
@@ -223,7 +213,8 @@ By the end of this tutorial series, you'll be able to:
 
 ## Next Steps
 
-Ready to start? Begin with [Getting Started with Gazpacho](01-gazpacho-basics.qmd) to install the library and write your first web scraping script.
+Ready to start? Begin with [Getting Started with Gazpacho](gazpacho-basics.qmd)
+to install the library and write your first web scraping script.
 
 ::: {.callout-important}
 
@@ -235,6 +226,5 @@ Ready to start? Begin with [Getting Started with Gazpacho](01-gazpacho-basics.qm
 - Focus on publicly available data for research
 - Rate limiting and error handling are essential
 - Integration with pandas enables powerful data analysis
-:::
 
-[Next: Gazpacho Basics →](01-gazpacho-basics.qmd)
+:::

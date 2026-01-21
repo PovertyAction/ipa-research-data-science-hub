@@ -1,14 +1,17 @@
 ---
 title: "Statistical Transformations and Summaries"
 abstract: |
-  Add statistical summaries to visualizations. Create regression lines, confidence intervals, and aggregations. Transform data visually to reveal patterns.
+  Add statistical summaries to visualizations. Create regression lines, confidence
+  intervals, and aggregations. Transform data visually to reveal patterns.
 authors-ipa:
   - "[Ishmail Baako](https://poverty-action.org/people/ishmail-baako)"
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
 keywords: ["Python", "Data Visualization", "Seaborn", "Statistics", "Tutorial"]
-license: "CC BY 4.0"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
 ::: {.callout-note}
@@ -38,14 +41,15 @@ license: "CC BY 4.0"
 
 ## Understanding Statistical Transformations
 
-So far, we've been plotting **raw data** directly. But often we want to show **summaries** of the data:
+Thus far, we've been plotting **raw data** directly. But often we want to show **summaries** of the data:
 
 - Means or medians
 - Regression lines
 - Confidence intervals
 - Distributions
 
-In seaborn.objects, we do this by combining **marks** (what to draw) with **stats** (how to transform the data first).
+In seaborn.objects, we do this by combining **marks** (what to draw) with **stats**
+(how to transform the data first).
 
 The pattern is:
 
@@ -217,7 +221,9 @@ curve_data = pd.DataFrame({'x': x, 'y': y})
 
 ## Don't Overfit
 
-Higher order polynomials (order > 3) can overfit your data, creating misleading patterns. Use them cautiously and only when you have theoretical reasons to expect complex curves.
+Higher order polynomials (order > 3) can overfit your data, creating misleading
+patterns. Use them cautiously and only when you have theoretical reasons to expect
+complex curves.
 
 :::
 
@@ -472,7 +478,9 @@ Using the tips dataset, create a plot showing:
 
 ## Exercise 2: Distribution Analysis
 
-Create a histogram showing the distribution of total bill amounts in the tips dataset. Experiment with different numbers of bins (10, 20, 30). Which gives the clearest picture of the data?
+Create a histogram showing the distribution of total bill amounts in the tips dataset.
+Experiment with different numbers of bins (10, 20, 30). Which gives the clearest
+picture of the data?
 
 ```python
 # Your code here
@@ -496,7 +504,8 @@ for n_bins in [10, 20, 30]:
     )
 ```
 
-The optimal number depends on your sample size and data distribution. For this dataset, 20 bins probably provides good detail without being too noisy.
+The optimal number depends on your sample size and data distribution. For this dataset,
+20 bins probably provides good detail without being too noisy.
 
 :::
 
@@ -536,7 +545,9 @@ Using the penguins dataset:
 )
 ```
 
-**Observation**: Interestingly, while each species shows a positive relationship between bill length and depth, overall (ignoring species) the relationship appears negative! This is Simpson's Paradox - a reminder to always consider grouping variables.
+**Observation**: Interestingly, while each species shows a positive relationship
+between bill length and depth, overall (ignoring species) the relationship appears
+negative! This is Simpson's Paradox - a reminder to always consider grouping variables.
 
 :::
 
@@ -598,6 +609,8 @@ Using the penguins dataset:
 
 ## Looking Ahead
 
-In the final lesson, we'll bring everything together - learning about themes, final polish, and creating a complete, publication-ready figure for a research report or presentation.
+In the final lesson, we'll bring everything together - learning about themes,
+final polish, and creating a complete, publication-ready figure for a research
+report or presentation.
 
 :::
