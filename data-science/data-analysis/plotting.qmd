@@ -52,7 +52,7 @@ plt.xlabel('Time (hr)')
 plt.ylabel('Position (km)')
 ```
 
-![](figures/9_simple_position_time_plot.svg){alt='A line chart showing time (hr) relative to position (km), using the values provided in the code block above. By default, the plotted line is blue against a white background, and the axes have been scaled automatically to fit the range of the input data.'}
+![](../../assets/images/data-analysis/9_simple_position_time_plot.svg){alt='A line chart showing time (hr) relative to position (km), using the values provided in the code block above. By default, the plotted line is blue against a white background, and the axes have been scaled automatically to fit the range of the input data.'}
 
 ## Display All Open Figures
 
@@ -98,7 +98,7 @@ data.columns = years.astype(int)
 data.loc['Australia'].plot()
 ```
 
-![](figures/9_gdp_australia.svg){alt='GDP plot for Australia'}
+![](../../assets/images/data-analysis/9_gdp_australia.svg){alt='GDP plot for Australia'}
 
 ## Select and transform data, then plot it
 
@@ -110,7 +110,7 @@ data.T.plot()
 plt.ylabel('GDP per capita')
 ```
 
-![](figures/9_gdp_australia_nz.svg){alt='GDP plot for Australia and New Zealand'}
+![](../../assets/images/data-analysis/9_gdp_australia_nz.svg){alt='GDP plot for Australia and New Zealand'}
 
 ## Many styles of plot are available
 
@@ -122,7 +122,7 @@ data.T.plot(kind='bar')
 plt.ylabel('GDP per capita')
 ```
 
-![](figures/9_gdp_bar.svg){alt='GDP barplot for Australia'}
+![](../../assets/images/data-analysis/9_gdp_bar.svg){alt='GDP barplot for Australia'}
 
 ## Data can also be plotted by calling the `matplotlib` `plot` function directly
 
@@ -138,7 +138,7 @@ gdp_australia = data.loc['Australia']
 plt.plot(years, gdp_australia, 'g--')
 ```
 
-![](figures/9_gdp_australia_formatted.svg){alt='GDP formatted plot for Australia'}
+![](../../assets/images/data-analysis/9_gdp_australia_formatted.svg){alt='GDP formatted plot for Australia'}
 
 ## Can plot many sets of data together
 
@@ -181,7 +181,7 @@ By default matplotlib will attempt to place the legend in a suitable position. I
 would rather specify a position this can be done with the `loc=` argument, e.g to place
 the legend in the upper left corner of the plot, specify `loc='upper left'`
 
-![](figures/9_gdp_australia_nz_formatted.svg){alt='GDP formatted plot for Australia and New Zealand'}
+![](../../assets/images/data-analysis/9_gdp_australia_nz_formatted.svg){alt='GDP formatted plot for Australia and New Zealand'}
 
 - Plot a scatter plot correlating the GDP of Australia and New Zealand
 - Use either `plt.scatter` or `DataFrame.plot.scatter`
@@ -190,13 +190,13 @@ the legend in the upper left corner of the plot, specify `loc='upper left'`
 plt.scatter(gdp_australia, gdp_nz)
 ```
 
-![](figures/9_gdp_correlation_plt.svg){alt='GDP correlation using plt.scatter'}
+![](../../assets/images/data-analysis/9_gdp_correlation_plt.svg){alt='GDP correlation using plt.scatter'}
 
 ```python
 data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
 ```
 
-![](figures/9_gdp_correlation_data.svg){alt='GDP correlation using data.T.plot.scatter'}
+![](../../assets/images/data-analysis/9_gdp_correlation_data.svg){alt='GDP correlation using data.T.plot.scatter'}
 
 ::: {.callout-note}
 
@@ -229,6 +229,7 @@ plt.xticks(rotation=90)
 ![Minima Maxima Solution](../../assets/images/data-analysis/9_minima_maxima_solution.png/)
 
 :::
+
 :::
 
 ::: {.callout-note}
@@ -244,14 +245,12 @@ What relationship do you see (if any)?
 
 ## Solution
 
-## Solution
-
 ```python
 data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col='country')
 data_asia.describe().T.plot(kind='scatter', x='min', y='max')
 ```
 
-![](figures/9_correlations_solution1.svg){alt='Correlations Solution 1'}
+![](../../assets/images/data-analysis/9_correlations_solution1.svg){alt='Correlations Solution 1'}
 
 No particular correlations can be seen between the minimum and maximum GDP values
 year on year. It seems the fortunes of asian countries do not rise and fall together.
@@ -266,19 +265,17 @@ print(data_asia.idxmax())
 print(data_asia.idxmin())
 ```
 
-::: {.callout-tip collapse="true"}
-
-## Solution
-
-## Solution
-
-![](figures/9_correlations_solution2.png){alt='Correlations Solution 2'}
+![](../../assets/images/data-analysis/9_correlations_solution2.png){alt='Correlations Solution 2'}
 
 Seems the variability in this value is due to a sharp drop after 1972.
 Some geopolitics at play perhaps? Given the dominance of oil producing countries,
 maybe the Brent crude index would make an interesting comparison?
 Whilst Myanmar consistently has the lowest GDP, the highest GDP nation has varied
 more notably.
+
+:::
+
+:::
 
 ::: {.callout-note}
 
@@ -301,9 +298,7 @@ explain what each argument to `plot` does.
 
 ## Solution
 
-## Solution
-
-![](figures/9_more_correlations_solution.svg){alt='More Correlations Solution'}
+![](../../assets/images/data-analysis/9_more_correlations_solution.svg){alt='More Correlations Solution'}
 
 A good place to look is the documentation for the plot function -
 help(data\_all.plot).
@@ -317,7 +312,9 @@ s - Details for this can be found in the documentation of plt.scatter.
 A single number or one value for each data point. Determines the size
 of the plotted points.
 
-::: {.callout-note}
+:::
+
+:::
 
 ## Saving your plot to a file
 
@@ -337,7 +334,7 @@ are pdf, ps, eps and svg).
 
 Note that functions in `plt` refer to a global figure variable
 and after a figure has been displayed to the screen (e.g. with `plt.show`)
-matplotlib will make this  variable refer to a new empty figure.
+matplotlib will make this variable refer to a new empty figure.
 Therefore, make sure you call `plt.savefig` before the plot is displayed to
 the screen, otherwise you may find a file with an empty plot.
 
@@ -351,8 +348,6 @@ data.plot(kind='bar')
 fig = plt.gcf() # get current figure
 fig.savefig('my_figure.png')
 ```
-
-::: {.callout-note}
 
 ## Making your plots accessible
 
