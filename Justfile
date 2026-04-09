@@ -75,15 +75,15 @@ lint-sql:
 
 # Report vale errors for a file
 vale-errors f:
-    vale --filter='.Level in ["error"]' {{ f }}
+    vale --filter=".Level in ['error']" {{ f }}
 
 # Report vale warnings for a file
 vale-warnings f:
-    vale --filter='.Level in ["warning"]' {{ f }}
+    vale --filter=".Level in ['warning']" {{ f }}
 
 # Report vale suggestions for a file
 vale-suggestions f:
-    vale --filter='.Level in ["suggestion"]' {{ f }}
+    vale --filter=".Level in ['suggestion']" {{ f }}
 
 # Report vale errors, warnings, and suggestions for a file
 vale-file f:
@@ -91,11 +91,11 @@ vale-file f:
 
 # Report all vale errors in repository
 vale-errors-all:
-    vale --filter='.Level in ["error"]' --glob='*.qmd' .
+    vale --filter=".Level in ['error']" --glob='*.qmd' .
 
 # Report all vale errors in repository
 vale-warnings-all:
-    vale --filter='.Level in ["warning"]' --glob='*.qmd' .
+    vale --filter=".Level in ['warning']" --glob='*.qmd' .
 
 # Format all markdown and config files
 fmt-markdown:
