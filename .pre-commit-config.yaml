@@ -12,7 +12,7 @@ repos:
       - id: check-merge-conflict
         stages: [pre-commit]
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.1
+    rev: v2.4.2
     hooks:
       - id: codespell
         args: [--toml, pyproject.toml, --ignore-words=.codespell-ignore.txt]
@@ -24,16 +24,16 @@ repos:
     hooks:
       - id: yamlfmt
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.24.1
+    rev: v0.25
     hooks:
       - id: validate-pyproject
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.20.0
+    rev: v0.22.0
     hooks:
       - id: markdownlint-cli2
         exclude: (.github/pull_request_template.md|LICENSE.md)
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.13
+    rev: v0.15.10
     hooks:
       - id: ruff-format
         types_or: [python, pyi, jupyter]
@@ -42,6 +42,6 @@ repos:
         types_or: [python, pyi, jupyter]
         require_serial: true
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.10
+    rev: v1.7.12
     hooks:
       - id: actionlint
