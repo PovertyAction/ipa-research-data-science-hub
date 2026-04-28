@@ -1,0 +1,375 @@
+---
+title: "How to Use DataSure"
+abstract: |
+  A step-by-step guide to installing DataSure, setting up your first project,
+  importing survey data, configuring quality checks, and reviewing your data
+  quality reports. This guide is for data managers and survey coordinators
+  implementing DataSure for field data collection.
+
+authors-ipa:
+  - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
+  - "[Wesley Kirui](https://poverty-action.org/people/wesley-kirui)"
+
+contributors:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+  - "[Dania Ochoa](https://poverty-action.org/people/dania-ochoa)"
+  - "[Laura Lahoz](https://poverty-action.org/people/laura-lahoz)"
+
+keywords:
+  - data quality
+  - high-frequency checks
+  - data management system
+  - SurveyCTO
+  - survey monitoring
+  - DataSure
+  - how-to guide
+
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+---
+
+:::{.callout-tip appearance="simple"}
+
+## Key Takeaways
+
+- DataSure follows a six-step workflow: create a project, import data, prepare data, configure checks, review DQA reports, and correct data.
+- First-time users should start with Demo Mode, which provides a guided walkthrough using sample household survey data.
+- Data can be imported directly from a SurveyCTO server or uploaded as a CSV, Excel, Stata, or JSON file.
+- Quality check reports update automatically each time you import new data.
+
+:::
+
+## Before You Start
+
+Before installing DataSure, confirm you have:
+
+- **Python 3.11 or higher** installed on your computer. To check, open a terminal and run `python --version` or `python3 --version`.
+- **uv**, a Python package manager. The installation steps below cover how to install it.
+- A **SurveyCTO account** if you plan to connect directly to a SurveyCTO server. You will need your server URL, username, and password.
+- At least **4 GB of RAM** and **1 GB of free storage**.
+
+::: {.callout-note}
+If you are unsure whether Python is installed, or if you are not comfortable working in a terminal, ask your IT support team or a technically experienced colleague to help with the installation steps.
+:::
+
+## Installing DataSure
+
+DataSure is installed as a command-line tool using `uv`.
+
+### Step 1: Install uv
+
+**Windows:**
+
+```bash
+winget install astral-sh.uv
+```
+
+**macOS or Linux:**
+
+```bash
+brew install uv
+```
+
+After installation on Windows, run the following command to update your system path so that tools installed by `uv` are accessible:
+
+```bash
+uv tool update-shell
+```
+
+For more on `uv`, see [Python with uv](../../software/virtualenv/python-uv.qmd).
+
+### Step 2: Install DataSure
+
+```bash
+uv tool install datasure
+```
+
+### Step 3: Verify the installation
+
+```bash
+datasure --version
+```
+
+You should see `datasure 0.8.0`. If you see an error, confirm that `uv` is installed correctly and that your system path was updated after installation.
+
+## Launching DataSure
+
+To start DataSure, open a terminal and run:
+
+```bash
+datasure
+```
+
+DataSure opens in your default web browser, typically at `http://localhost:8501`. Keep the terminal window open while you work; closing it will stop the application.
+
+*[Screenshot: DataSure landing page showing the Start Here page with options to create a new project, open an existing project, or start Demo Mode.]*
+
+### Command-line options
+
+```bash
+# Launch on a custom host and port
+datasure --host 0.0.0.0 --port 8080
+
+# View all available options
+datasure --help
+```
+
+## Getting Familiar: Try Demo Mode First
+
+If this is your first time using DataSure, work through Demo Mode before importing your own data. Demo Mode provides a complete guided walkthrough of all six steps using realistic sample household survey data, so you can explore the interface and understand the workflow without risk.
+
+To start Demo Mode:
+
+1. Launch DataSure with `datasure`.
+2. On the **Start Here** page, click **Start Demo**.
+3. Follow the on-screen guidance at each step. Look for the yellow **Learn More** boxes, which explain what to do and what to expect.
+
+Demo Mode includes two sample datasets:
+
+- **Survey data**: 132 household survey responses covering demographics, income, land ownership, and living conditions
+- **Backcheck data**: 30 re-interview validation records matched to the survey data by household ID
+
+Both datasets contain intentional data quality issues, including missing values, duplicate household IDs, and numeric outliers, so you can practice identifying and correcting them before working with real project data.
+
+*[Screenshot: Demo Mode Learn More box on the Import Data page showing guided instructions.]*
+
+After completing all six steps, DataSure will prompt you to restart the demo or create a real project.
+
+## Step 1: Create or Open a Project
+
+Each survey or data collection exercise in DataSure is organized as a **project**. A project stores your imported datasets, configuration settings, quality check outputs, and correction history.
+
+**To create a new project:**
+
+1. On the **Start Here** page, click **Create New Project**.
+2. Enter a descriptive project name, for example: `baseline_2024` or `midline_ghana`.
+3. Click **Create**.
+
+**To open an existing project:**
+
+1. On the **Start Here** page, select the project from the list.
+2. Click **Open**.
+
+::: {.callout-tip}
+Use one project per survey wave or data collection phase. Consistent naming conventions, such as `[study]_[wave]_[year]`, make it easier to manage multiple projects over time.
+:::
+
+*[Screenshot: Start Here page showing the project creation form and a list of existing projects.]*
+
+## Step 2: Import Data
+
+DataSure supports two ways to import data: directly from a SurveyCTO server, or by uploading a local file. Navigate to the **Import Data** page from the sidebar.
+
+### Option A: Import from SurveyCTO
+
+1. Click the **SurveyCTO** tab.
+2. Enter your server credentials:
+   - **Server Name**: Your SurveyCTO server URL (for example, `yourserver.surveycto.com`)
+   - **Username**: Your SurveyCTO username
+   - **Password**: Your SurveyCTO password
+3. Click **Connect**.
+4. Select the form or forms you want to import.
+5. Configure any filters, such as a date range, then click **Import Data**.
+
+*[Screenshot: SurveyCTO import tab showing credential fields and form selection.]*
+
+::: {.callout-tip}
+Use date range filters when importing from large SurveyCTO forms. Filtering to recent submissions reduces processing time and keeps your project cache manageable during active data collection.
+:::
+
+### Option B: Upload a Local File
+
+DataSure accepts CSV (`.csv`), Excel (`.xlsx` or `.xls`), Stata (`.dta`), and JSON (`.json`) files.
+
+1. Click the **Local Files** tab.
+2. Drag and drop your file into the upload area, or click **Browse** to select it.
+3. Enter a short, descriptive **alias** for the dataset, for example: `survey` or `backcheck_wave1`. DataSure uses this alias to refer to the dataset throughout the application.
+4. For Excel files with multiple sheets, select the correct sheet.
+5. Click **Load Data**.
+
+*[Screenshot: Local Files upload tab showing the file drop zone and alias field.]*
+
+### Reviewing imported data
+
+After importing, DataSure shows a preview of your dataset with column names, data types, row and column counts, and the first 100 rows. Review this preview to confirm the file loaded correctly before moving on.
+
+You can import up to 10 datasets per project. To add a backcheck dataset, repeat the import process and assign it a separate alias such as `backcheck`.
+
+## Step 3: Prepare Your Data
+
+The **Prepare Data** page lets you clean and transform imported datasets before running quality checks. Navigate to it from the sidebar.
+
+Most projects need at least one preparation step: converting date columns from text to datetime format. DataSure requires date columns to be in datetime format for the Survey Progress and Enumerator Performance checks to work correctly.
+
+### Converting a date column to datetime
+
+1. Select the dataset tab for your survey data.
+2. Click **Add data prep step**.
+3. Select **Transform Column**.
+4. Choose your date column, for example: `submissiondate` or `starttime`.
+5. Select **string to datetime**.
+6. Click **Add**.
+7. Repeat for your backcheck dataset if it has a separate date column.
+
+### Other preparation actions
+
+| Action | When to Use |
+| ------ | ----------- |
+| Transform Column | Convert data types, standardize text casing, or extract patterns from a column |
+| Add Column | Create a unique key column if one does not already exist in the dataset |
+| Remove Column | Remove columns that are not needed for quality checks |
+| Remove Row | Filter out test submissions or records that should not be analyzed |
+
+::: {.callout-important}
+If your dataset does not have a column where every row has a unique value, use **Add Column** to create one before configuring checks. DataSure requires a unique key column for most quality check modules.
+:::
+
+*[Screenshot: Prepare Data page showing a list of preparation steps applied to a dataset.]*
+
+## Step 4: Configure Quality Checks
+
+The **Configure Checks** page is where you tell DataSure which dataset to analyze and which columns correspond to key identifiers. Navigate to it from the sidebar.
+
+### Creating a check configuration
+
+1. Click **Add New Check Configuration**.
+2. Enter a **name** for this configuration, for example: `Household Survey Checks`.
+3. Select your **survey dataset** from the dropdown.
+4. Configure the four key columns:
+
+| Field | What It Represents | Example |
+| ----- | ------------------ | ------- |
+| Key Column | A column where every row has a unique value | `KEY` or `uuid` |
+| ID Column | The respondent identifier, which may repeat across multiple visits | `hhid` or `respondent_id` |
+| Enumerator Column | The field staff identifier | `enum_name` or `enumerator_id` |
+| Date Column | The submission or interview date | `submissiondate` or `starttime` |
+
+5. To include backcheck data, select your backcheck dataset and specify its matching ID column.
+6. Click **Add Check Configuration**.
+
+DataSure creates a new **DQA Report** page in the sidebar, named after the configuration you created. All nine quality check modules are available as tabs on this page.
+
+*[Screenshot: Configure Checks page showing the configuration form with key column fields populated.]*
+
+::: {.callout-tip}
+The **Key Column** and **ID Column** serve different purposes. The Key Column must be unique for every single row, like a UUID generated per submission. The ID Column identifies the respondent and may appear more than once if the same person was surveyed multiple times.
+:::
+
+## Step 5: Review Your DQA Reports
+
+Your DQA Report pages appear in the sidebar after you save a check configuration. Each report contains tabs for all nine quality check modules. Navigate between tabs to review different aspects of your data.
+
+Reports update automatically when you import new data. During active data collection, review them daily.
+
+### Using report tabs
+
+Each tab has a **Settings** section at the top where you configure display options and thresholds for that specific check. Settings persist across sessions once saved.
+
+Below the settings, each tab displays:
+
+- Summary statistics for that check
+- Visualizations such as charts, heatmaps, or maps
+- Detailed tables listing flagged records
+
+Use the **Column Selector** within each tab to choose which columns to include in the analysis.
+
+### Summary of check tabs
+
+| Tab | What to Look For |
+| --- | ---------------- |
+| **Summary** | Overall quality score, submission trend, and progress toward target sample |
+| **Survey Progress** | Daily and weekly submission pace, consent and completion rates |
+| **Duplicates** | Records sharing the same respondent ID or other identifiers |
+| **Missing Data** | Columns with high rates of missing or "Don't Know" responses |
+| **Outliers** | Flagged numeric values outside expected ranges |
+| **Enumerator Stats** | Submission productivity, interview duration, and response patterns by enumerator |
+| **GPS Checks** | Missing or implausible coordinates, and a map of interview locations |
+| **Descriptive Stats** | Value distributions and frequency tables for selected variables |
+| **Back Checks** | Discrepancy rates between original survey and re-interview data |
+
+*[Screenshot: DQA Report page showing the Summary tab with a submission trend chart and key quality metrics.]*
+
+### Configuring the Outliers tab
+
+The Outliers tab requires additional setup before showing results:
+
+1. Go to the **Outliers** tab and click **Add Outlier Column**.
+2. Select the numeric columns to check. You can search by exact name or use pattern matching, for example "contains: `income`" to find all income-related columns.
+3. Choose a detection method:
+   - **IQR** (default): Robust to extreme values; recommended for most survey data
+   - **Standard Deviation**: More sensitive; suitable when data is approximately normally distributed
+4. Set the multiplier. The default is 1.5 for IQR and 3.0 for standard deviation. Lower values flag more records as outliers; higher values flag fewer.
+5. Optionally, set a **Soft Minimum** or **Soft Maximum** for variables with known valid ranges, for example: land area must be greater than 0.
+6. Click **Save**.
+
+### Configuring the Back Checks tab
+
+The Back Checks tab requires you to specify which columns to compare between your survey and backcheck datasets:
+
+1. Go to the **Back Checks** tab settings.
+2. Specify the survey ID, key, enumerator, and date columns.
+3. Set your target backcheck rate, for example: `10` for 10%.
+4. Click **Add a back check column** for each variable you want to validate.
+5. For each column, assign a category for grouping, an acceptable error range for numeric variables, and a comparison condition.
+6. Click **Save**.
+
+## Step 6: Correct Data
+
+The **Correct Data** page provides a structured workflow for fixing data quality issues identified in your reports. All corrections are logged with the original value, new value, reason, and timestamp, creating a full audit trail.
+
+Navigate to **Correct Data** from the sidebar.
+
+### Adding a correction
+
+1. Click **Add correction**.
+2. Select the **Key** of the record you want to modify. This is the unique row identifier set in your check configuration.
+3. Select the **Action**:
+
+| Action | When to Use |
+| ------ | ----------- |
+| Modify Value | Fix a specific value in a column, for example correcting a typo in a respondent ID |
+| Remove Row | Delete an entire record, for example removing a test submission |
+| Remove Value | Set a specific value to missing, for example removing a response that is out of range |
+
+4. Select the **Column** to modify (not required for Remove Row).
+5. Enter the new value, or confirm the removal.
+6. Enter a **Reason** for the correction. This is required.
+7. Click **Apply**.
+
+*[Screenshot: Correct Data page showing the correction form and the correction history table.]*
+
+### Verifying a correction
+
+After applying a correction, navigate back to the relevant report tab and confirm that the flagged issue no longer appears. If it persists, check that you selected the correct key and column.
+
+::: {.callout-tip}
+Write clear, specific reasons for each correction. Audit trails are important for research transparency and for responding to questions from reviewers or collaborators.
+:::
+
+### Recommended correction workflow
+
+1. Identify an issue in a DQA report tab.
+2. Investigate the root cause before correcting. Check whether the issue is a data entry error, a survey programming error, or a legitimate value.
+3. Apply the correction with a documented reason.
+4. Verify the resolution by reviewing the relevant report tab.
+5. Follow up with the enumerator if the issue reflects a training or process problem.
+
+## Keeping DataSure Up to Date
+
+To upgrade DataSure to the latest version, run:
+
+```bash
+uv tool upgrade datasure
+```
+
+Check the [DataSure release notes](https://github.com/PovertyAction/datasure/blob/main/RELEASENOTES.md) for a summary of what has changed in each version.
+
+## Getting Help
+
+- **GitHub Issues**: Report bugs or request features at the [DataSure repository](https://github.com/PovertyAction/datasure/issues)
+- **Email support**: Contact IPA's Global Research and Data Science team at [researchsupport@poverty-action.org](mailto:researchsupport@poverty-action.org)
+
+::: {.callout-warning title="Need Direct Support?"}
+If your project needs help setting up or running DataSure, IPA's Global Research and Data Science team provides direct technical support. Email [researchsupport@poverty-action.org](mailto:researchsupport@poverty-action.org).
+:::
