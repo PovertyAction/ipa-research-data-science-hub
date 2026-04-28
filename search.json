@@ -4101,6 +4101,97 @@
     "text": "Instructions\n\nSection 1: Package Overview\nTo download the exercise, start by using the ipacheck command. This will initialize a folder structure, readme files, all the input sheets, and the data for the exercise:\n* To download the exercise folder and files to current directory\nipacheck new, exercise\n\n* To download the exercise folder and files to a different directory, use the folder option as follows\nipacheck new, exercise folder(\"folder path here\")\n\n\n\n\n\n\nNote\n\n\n\nThe program may take longer to fetch files with slow internet connections.\n\n\nThere are also a few additional utility functions included in the ipacheck package including:\n\nipacheck update - downloads the updated ado files directly from GitHub whenever IPA HQ releases an update so you don’t have to go through the above Installation process again.\nipacheck version - lists the current installed versions of the user-written commands to verify you have the latest version.\n\nAfter downloading the exercise files, navigate to the proper directory and examine the HFC files. Start with the 3_checks/1_inputs folder, which contains these files:\n\nhfc_inputs.xlsm - input Excel file; inside you’ll find a convenient form for configuring some of the HFC commands.\ncorrections.xlsm - replacement Excel file; it is a running list of edits/corrections based on HFC outputs; these replacements can be automatically added to your workflow using ipacheckcorrections.\nspecifyrecode.xlsm - other specify input Excel file; it is a running list instruction for recoding other specify values; these instructions will be automatically added to your workflow using ipacheckspecifyrecode.\n\nNow go back to the main folders.\n\n0_master.do - master dofile; it runs all other do-files 2_dofiles folder\n\nNow navigate to 2_dofiles.\n\n1_globals.do - globals do-file; it contains globals for setting up the Data Management System.\n3_prepsurvey.do - data preparation do-file; it contains sample code for preparing the raw Survey data for High-Frequency Checks (HFCs).\n4_checksurvey.do - HFC do-file; it contains code for running checks on the Survey dataset.\n5_prepbc.do - data preparation do-file; it contains sample code for preparing the raw Back Check data for Back Check Comparison (HFCs).\n6_checkbc.do - Back Check do-file; it contains code for running checks on the back check dataset as well as running the back check comparison.\n\n\n\nSection 2: Configure Main Inputs\nThis section walks you through setting up your DMS configuration.\n\nOpen the Globals File\nNavigate to the 2_dofiles folder and open the 1_globals.do file. This file configures the High-Frequency Checks. Each section includes descriptions for each global variable. Some globals contain default values that you may need to modify.\nConfigure the following sections:\n\n\nRun/Turn Off Specific Checks\nSet the value “1” for each check you want to run. The value “1” tells Stata to run and configure that check. To turn off a specific check, change the corresponding global value to 0. This exercise runs almost all available checks, so activate all checks as shown in the code below.\n\n**# Run/Turn Off Specific Checks\n*------------------------------------------------------------------------------*\n\n\n    * NB: Edit this section: Change the value to 0 to turn off specific checks\n\n    gl run_corrections      1   //  Apply corrections\n    gl run_specifyrecode    1   //  Recode other specify\n    gl run_version      1   //  Check for outdated survey form versions\n    gl run_ids      1   //  Check Survey ID for duplicates\n    gl run_dups     1   //  Check other Survey variables for duplicates\n    gl run_missing      1   //  Check variable missingness\n    gl run_outlier      1   //  Check numeric variables for outliers\n        gl run_constraints  1   //  Check numeric variables for constraint violations\n    gl run_logic        1   //  Check variables for logical violations\n    gl run_specify      1   //  Check for other specify values\n    gl run_comments     1   //  Collate and output field comments\n    gl run_textaudit    1   //  Check Survey duration using text audit data\n    gl run_timeuse      1   //  Check active survey hours using text audit data\n    gl run_surveydb     1   //  Create survey Dashboard\n    gl run_enumdb       1   //  Create enumerator Dashboard\n    gl run_tracksurvey  1   //  Report on survey progress\n    gl run_trackbc      0   //  Report on Back check progress\n    gl run_bc       1   //  Back Check comparison\n\n\nInput Files\nThis section specifies file paths for the hfc_inputs, corrections, and recode specify input files. The default values are correct for this exercise, so no changes are needed.\n\n\nDatasets\nThis section specifies file paths and filenames for input datasets required by various commands, including:\n\nRaw, prepped and de-duplicated survey datasets\nBack check datasets\nCollated field comments and text audit datasets\n\nThe default values for rawsurvey, preppedsurvey, checkedsurvey, rawbc, preppedbc and checkedbc are correct for this exercise.\nYou will be configuring the ipatracksurveys command using a master dataset which has information for each target respondent. Navigate to the 4_data/2_survey folder and examine the household_preloads.xlsx file. This file will be used as the master dataset when comparing the surveys submitted to the individuals to be interviewed. After viewing this file, go back to the 1_globals.do file and indicate the value \"${cwd}/4_data/2_survey/household_preloads.xlsx\" for the global mastersurvey. Note that the master data can also be a dta or csv file.\n\n\n\n\n\n\nNote\n\n\n\ntrackingsurvey is an alternative to mastersurvey. However, trackingsurvey expects a dataset than contains targets for specified groups. eg. community, district, treatment_status. It is more suitable for census-type surveys when we don’t have a pre-selected list of respondents. Explore the dataset respondent_targets.xlsx in 4_data/2_survey to see an example of a trackingsurvey dataset.\n\n\nIgnore the masterbc & trackingbc globals for now. When will configure those when reviewing the back check sections.\nNow configure the commentsdata and textauditdata global by yourself. Note that these files currently do not exist and will be created when you run your DMS. It is recommended to set the file path for these files to \"${cwd}/4_data/2_survey\". Also, ensure to use file names that will be easier to identify later on.\nCompare your do-file to the code below and make any adjustments if necessary.\n\n* Datasets\n*------------------------------------------------------------------------------*\n\n    * NB: Edit this section: Change filenames if necessary\n\n    gl rawsurvey            \"${cwd}/4_data/2_survey/household_survey.dta\"\n    gl preppedsurvey        \"${cwd}/4_data/2_survey/household_survey_prepped.dta\"\n    gl checkedsurvey        \"${cwd}/4_data/2_survey/household_survey_checked.dta\"\n\n    gl mastersurvey         \"${cwd}/4_data/2_survey/household_preloads.xlsx\"\n    gl trackingsurvey       \"\"\n\n    gl rawbc            \"${cwd}/4_data/3_backcheck/household_backcheck.dta\"\n    gl preppedbc            \"${cwd}/4_data/3_backcheck/household_backcheck_prepped.dta\"\n    gl checkedbc            \"${cwd}/4_data/3_backcheck/household_backcheck_checked.dta\"\n\n    gl masterbc             \"${cwd}/4_data/3_backcheck/household_backcheck_preloads.xlsx\"\n    gl trackingbc           \"\"\n\n    gl commentsdata         \"${cwd}/4_data/2_survey/comments_data.dta\"\n    gl textauditdata        \"${cwd}/4_data/2_survey/textaudit_data.dta\"\n\n\nSurveyCTO media folder\nThis section specifies the folder that contains the SurveyCTO generated comments and text audits files. You do not need to make changes here since the default values are correct for this exercise.\n\n\nOutput Date Folder\nThis section creates a subfolder in 3_checks/2_outputs for the current date that the DMS is running. This section should never be edited.\n\n\nOutput files\nThis section specifies the output files from the various checks. The output files include the duplicates, corrections, recode specify, hfc, text audit, timeuse, survey dashboard, enumerator dashboard and survey tracking outputs. You do not need to make changes here since the default values are correct for this exercise.\n\n\nAdmin variables\nThis section specifies the global administrative variables for the DMS. These are variables that are used in various sections of the DMS. These include the key, survey id, enumerator, date, team, starttime, duration, form version, field comments, text audit, consent and outcome variables as well as variables to keep in all checks. The default variables specified for some of the globals are correct for this check, however, we need to configure the remaining additional checks as follows.\n* Admin variables\n*------------------------------------------------------------------------------*\n\n    * NB: Edit this section: Change variable names if necessary.\n\n    * Required Variables:\n\n    gl key              \"key\"\n    gl id               \"hhid\"\n    gl enum             \"a_enum_id\"\n    gl enumteam             \"a_team_id\"\n    gl bcer             \"a_bcer_id\"\n    gl bcerteam         \"a_team_id\"\n    gl date             \"starttime\"\n\n    * Optional Variables:\n\n    gl team             \"a_team_name\"\n    gl starttime            \"starttime\"\n    gl duration         \"duration\"\n    gl formversion          \"formdef_version\"\n    gl fieldcomments        \"field_comments\"\n    gl textaudit            \"text_audit\"\n    gl keepvars             \"a_kg a_district\"\n    gl consent          \"c_consent\"\n    gl outcome          \"\"\n\n\n\n\n\n\nNote\n\n\n\nThe survey has no outcome variable so we will leave the outcome global blank.\n\n\n\n\nResponse values\nThis section specifies values that represent specified response values in the survey. You will be making some adjustments to this section to reflect the dataset. The values for cons_vals are correct and should not be modified. However, you remember from the previous section that the survey does not include an outcome variable, therefore set the value for the outc_vals global to empty ie. \"\".\nAfter reviewing the data, we realize that the survey programming allowed the values -999, 999 and .999 as don;t know values for numeric variables and -888, 888 and .888 as “refuse to answer” values for numeric variables.\nTo account for this, modify the values of the dk_num and ref_num globals as follows:\n* Missing values\n*------------------------------------------------------------------------------*\n\n    * NB: Edit this section: Change values if necessary.\n\n    gl cons_vals            \"1\"\n    gl outc_vals            \"1\"\n    gl dk_num           \"-999 999 .999\"\n    gl dk_str           \"-999\"\n    gl ref_num          \"-888 888 .888\"\n    gl ref_str          \"-888\"\n\n\n\nSection 3: Configure additional inputs\nThe second half of 1_globals.do specify settings that are peculiar to individual checks in the DMS. Review the remaining sections carefully. Note that for many of these sections, you will not need to make any additional changes. After review, make changes to the following sections:\n\nipacheckdups: Export variable duplicates\nSet the value of the global dp_vars as \"resp_contact\" to flag duplicates in phone numbers.\n\n\nipachecksurveydb: Export Survey Dashboard\nSet the value of the global sv_by as \"a_district\" to disaggregate the survey dashboard by the values of the a_district variable.\n\n\nipatracksurvey: Export tracking sheet\nSet the values of the following globals as follows:\n* ipatracksurvey: Export tracking sheet\n*------------------------------------------------------------------------------*\n\n    gl tr_by            \"a_kg\"\n    gl tr_target            \"\"\n    gl tr_keepmaster        \"a_district\"\n    gl tr_keeptracking      \"\"\n    gl tr_keepsurvey        \"submissiondate c_consent\"\n    gl tr_summaryonly       \"\"\n    gl tr_workbooks         \"workbooks\"\n        gl tr_save                      \"\"\n        gl tr_surveyok          \"surveyok\"\nSave the 1_globals.do file.\nNavigate to the 3_checks/1_inputs folder and open the hfc_inputs.xlsm file in Excel. This is where you’ll do the additional configuration for the ipacheckoutliers, ipacheckconstraints, ipachecklogic, ipacheckspecify and enumstats for ipacheckenumdb.\nExplore the dataset 4_data/2_survey/household_survey.dta and identify the variables for the following sheets:\n\n\nother specify\nThe “other specify” sheet specifies the parent and child variables for other specify responses. Explore the household dataset and identify the parent and child variables. The parent variables are the control variables which trigger the other specify question. Note that all the child variables in this dataset include _osp in their variable names.\nUpon completion, navigate to 0_archive and open the file hfc_inputs_exercise.xlsm and compare your work with the sheet \"other specify\".\n\n\noutliers\nThe “outliers” sheet specifies the numeric variables to check for outliers. These are usually numeric variables that are not constrained or have a wide constraint range. Review the help file for ipacheckoutliers to understand what is required for by, method, multiplier, combine and the keep columns.\nUpon completion, navigate to 0_archive and open the file hfc_inputs_exercise.xlsm and compare your work with the sheet \"outliers\".\n\n\nconstraints\nThe constraints sheet specifies the numeric variables to check for constraint violations. These are usually numeric variables which you want to check for soft constraints. Review the help file for ipacheckconstraints to understand what is required for hard_min, soft_min, soft_max, hard_max and the keep columns.\nUpon completion, navigate to 0_archive and open the file hfc_inputs_exercise.xlsm and compare your work with the sheet \"constraints\".\n\n\nlogic\nThe logic sheet specifies the variables to check for logical inconsistencies in survey variables. ipachecklogic checks for logic violations using logical statements as indicated in the assert column of the input sheet. Review the help file for ipachecklogic to understand what is required for assert, if_condition and the keep columns.\nThe scope of this exercise does not cover the ipachecklogic so you are free to exclude it from this exercise. You may also read the help file for ipachecklogic for examples of how to use this check.\n\n\nenumstats\nThe enumstats sheet specifies the variables and additional setup for the enumstats option of ipacheckenumdb. The variables specified are usually numeric variables for which we want to check for variations among enumerators. For instance, we may want to examine how enumerators are reporting household member counts or total household income. Review the help file for ipacheckenumdb to understand what is required for the columns min, mean, show_mean_as, median, sd, max and combine. Please note that for this section, there is no single correct or wrong answer, however, to help guide the exercise complete the enumstats sheet as follows:\n\n\n\nTable 1: enumstats sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvariable\nlabel\nmin\nmean\nshow_mean_as\nmedian\nsd\nmax\ncombine\n\n\n\n\ngpsaccuracy\nGPS Accuracy\nyes\nyes\n\n\n\nyes\n\n\n\nf_hhm_cnt\n(FA2) Based on the definition that I just read to you, how many members are in y\nyes\nyes\n\nyes\n\nyes\n\n\n\ni_phone_num\n(I01) How many household members own a working mobile phone?\nyes\n\n\nyes\n\nyes\n\n\n\nj_land_yn\n(J01) Does your household own any land?\n\nyes\npercentage\n\n\n\n\n\n\nk_own_yn\n(K01) Does your household own any livestock?\n\nyes\npercentage\n\n\n\n\n\n\n\n\n\n\nYou may also include other variables that you find useful.\nSave the hfc_inputs.xlsm file\nNavigate back to 2_dofiles folder and open up the 3_prepsurvey.do file. This do-file contains sections of sample codes that may be needed to prepare your data before running the checks. These include dropping variables, destringing variables, generating a short key if needed, generating date variables from default datetime variables and dropping observations that were started before specified dates.\nReview this do-file carefully and make edits where necessary.\nThe data includes temporary variables that were added for SurveyCTO programming purposes only and therefore do not contain any useful information. Luckily these variables are prefixed by tmp_. Drop these variables by adding tmp_* to the list of variables to drop in the “drop unwanted variables” section.\nThe data also contains “calculate fields” that were imported as strings instead of numeric variables. Include *_yn* to the “destring numeric” variables sections to destring all variables that have the `_yn’ in their variable names. Explore the data and include more variables to destring.\nSave the 3_prepsurvey.do file.\n\n\n\nSection 4: Run and Review the Output\nNavigate back to the main folder and open the 0_master.do file. Before running your checks, make sure that your current working directory is the directory that contains 0_master.do file.\nComment out the section of the code that runs the import do-file, the back check prep and the back check comparison.\n**# Survey 1\n*------------------------------------------------------------------------------*\n\n    do \"2_dofiles/1_globals.do\"         // globals do-file\n    * do \"2_dofiles/2_import_wbnp_hhs_2021.do\"  // import do-file\n    do \"2_dofiles/3_prepsurvey.do\"          // prep survey do-file\n    do \"2_dofiles/4_checksurvey.do\"         // check survey do-file\n    * do \"2_dofiles/5_prepbc.do\"            // prep back check do-file\n    * do \"2_dofiles/6_checkbc.do\"           // check survey do-file\nRun the entire do file.\nAfter running the do-file, you should get the following error:\nworksheet duplicates corrections not found\nTo resolve this error, we need to set-up the correction sheet. Navigate to 3_checks\\1_inputs and open the file corrections.xlsm. Read the instructions and create 2 correction sheets on this workbook using the following information:\n\ncorrection sheet for duplicates\n\n\n\nduplicates_corrections\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe SurveyCTO generated key variable or another type of key variable should be used as ID when resolving duplicates. Although you can use the key and hence the same sheet to resolve other duplicates, it is recommended to create a separate sheet using the Survey ID since that will facilitate communication when resolving these issues.\n\n\n\n\ncorrection sheet for other issues\n\n\n\nother_corrections\n\n\nRun the 0_master.do again. Once it runs successfully, you should have a list of output files in the date subfolder the in 3_checks/2_outputs folder. Open each file and inspect its content.\nNavigate to the 04_checks/02_outputs folder and open the various output files and answer the following questions:\n\nHow many interviews have been conducted?\nAre we missing any submissions that we planned?\nIs everyone using the latest form version?\nHow many Survey ID duplicates are there in the dataset?\nHow many variables have all missing values that shouldn’t be missing?\nHow many outliers are flagged? Do any values appear to be nonsensical? What should be done?\nDo you see any specify options that could be recoded?\nWhich 3 enumerators have the lowest survey productivity scores.\nWhich 5 enumerators have the highest “don’t know” response rate\nAre there any useful comments? What should be done?\nWhat time period during the day are the enumerators most active on the field.\n\n\n\n\nSection 5: Make Replacements & Recode Other Specify\nTry adding some corrections yourself using the instructions in corrections.xlsm that was set-up earlier. Navigate to 0_archive and open the corrections_exercise.xlsm for guidance on how to make some of the corrections.\nRe-run the DMS to effect the corrections. Review the corrections logfile in 3_checks/2_outputs to verify that the changes were effected.\nNavigate to 3_checks/2_outputs to inspect the new output files. Review the hfc_output file and include your corrections in the corrections.xlsm file.\n\n\n\n\n\n\nNote\n\n\n\nOther specify recodes cannot be done in the corrections.xlsm file and must be done in the specifyrecode.xlsm file.\n\n\nOpen the specifyrecode.xlsm file (in 3_checks/1_inputs folder). Read the Stata help file for ipacheckspecifyrecode to understand how to use the specifyrecode.xlsm file.\nNavigate to 0_archive and open the specifyrecode_exercise.xlsm for guidance on how to recode other specify values.\nRe-run the DMS to effect the recodes. Review the other specify recode logfile in 3_checks/2_outputs to verify that the changes were effected.\n\n\nSection 6: Set-up back check comparison\nNavigate back to 2_dofiles folder and open up the 5_prepbc.do file. This do-file contains sections of sample codes that may be needed to prepare your back check dataset as well as running back check comparison. Before we edit this do-file, open the 0_globals.do file and make the following changes to the section titled ipabcstats: Compare survey and back check data\n*ipabcstats: Compare survey and back check data\n*----------------------------------------------\n    * Comparison variables\n    * --------------------\n\n    gl bs_t1vars        \"e_hhh_relig e_hhh_native e_hhh_howlong h_rooms h_electricity h_cook_fuel h_toilet i_radio i_mosquito_net j_land_yn \"\n\n    gl bs_t2vars        \"f_hhm_cnt\"\n\n    gl bs_t3vars        \"j_land_size j_land_value m_mon_exp m_mon_inc\"\n\n    * Enumerator Checks\n    * -----------------\n\n    gl bs_showid        \"30%\"\n\n    * Stability Checks\n    * ----------------\n\n    gl bs_ttest         \"f_hhm_cnt j_land_size j_land_value m_mon_exp m_mon_inc\"\n\n    gl bs_prtest        \"\"\n\n    gl bs_signrank      \"\"\n\n    gl bs_level         \"95\"\n\n    * Reliability Checks\n        * ------------------\n\n    gl bs_reliability   \"j_land_size j_land_value m_mon_exp m_mon_inc\"\n\n    * Comparison datasets\n    * -------------------\n\n    gl bs_keepsurvey    \"\"\n\n    gl bs_keepbc        \"\"\n\n    gl bs_full      \"\"\n\n    gl bs_nolabel       \"nolabel\"\n\n    gl bs_dta       \"\"\n\n\n    * Options\n    * -------\n\n    gl bs_okrange       \"e_hhh_howlong[-1, 1], j_land_size[-5%, 5%], j_land_value [-5%, 5%], m_mon_exp [-10%, 10%], m_mon_inc [-10%, 10%]\"\n\n    gl bs_nodiffnum     \"\"\n\n    gl bs_nodiffstr     \"\"\n\n    gl bs_excludenum    \"${dk_num} ${ref_num}\"\n\n    gl bs_excludestr    \"${dk_str} ${ref_str}\"\n\n    gl bs_exclusemissing    \"excludemissing\"\n\n    gl bs_lower         \"lower\"\n\n    gl bs_upper         \"\"\n\n    gl bs_nosymbol      \"nosymbol\"\n\n    gl bs_trim      \"trim\"\nNavigate back to 2_dofiles folder and open up the 3_prepbc.do file. This do-file contains sections of sample codes that may be needed to prepare your back check data before comparison. These include dropping variables, destringing variables, generating a short key if needed, generating date variables from default datetime variables and dropping observations that were started before specified dates.\nReview this do-file and make any changes that are necessary.\nNavigate to 3_checks/1_inputs and re-open the corrections.xlsm file. Add a new sheet bc duplicates corrections using a_bcer_id as the Enumerator “ID Variable (required)” and key as the “ID Variable (required)”.\nRe-activate the section of the code that runs the import do-file, the back check prep and the back check comparison.\n**# Survey 1\n*------------------------------------------------------------------------------*\n\n    do \"2_dofiles/1_globals.do\"         // globals do-file\n    do \"2_dofiles/2_import_wbnp_hhs_2021.do\"    // import do-file\n    do \"2_dofiles/3_prepsurvey.do\"          // prep survey do-file\n    do \"2_dofiles/4_checksurvey.do\"         // check survey do-file\n    do \"2_dofiles/5_prepbc.do\"          // prep back check do-file\n    do \"2_dofiles/6_checkbc.do\"         // check survey do-file\nRe-run the 0_master.do file again and review the output."
   },
   {
+    "objectID": "data-quality/datasure/index.html",
+    "href": "data-quality/datasure/index.html",
+    "title": "DataSure",
+    "section": "",
+    "text": "DataSure is IPA’s Data Management System Dashboard, a free, open-source tool for real-time survey data quality monitoring. Learn what DataSure does, what checks it runs, and whether it is right for your project.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "About DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/index.html#what-is-datasure",
+    "href": "data-quality/datasure/index.html#what-is-datasure",
+    "title": "DataSure",
+    "section": "What is DataSure?",
+    "text": "What is DataSure?\nDataSure is IPA’s Data Management System (DMS) Dashboard, a free, open-source application for monitoring and improving survey data quality during field data collection. Built by IPA’s Global Research and Data Science (GRDS) team, DataSure gives data managers, survey coordinators, and research teams an interactive dashboard for reviewing the quality of their survey data as it is collected.\nDataSure runs locally on your computer and opens in a web browser. It connects directly to your SurveyCTO server or accepts uploaded data files in common formats, automatically runs a comprehensive set of quality checks, and presents the results in clear, interactive dashboards. When issues are found, DataSure provides tools to record and track corrections with a full audit trail.\nThe current version of DataSure is 0.8.0.\n\n\n\nThe DataSure Summary dashboard showing submission trends, collection progress, and key data quality metrics.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "About DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/index.html#datasure-and-ipas-research-protocols",
+    "href": "data-quality/datasure/index.html#datasure-and-ipas-research-protocols",
+    "title": "DataSure",
+    "section": "DataSure and IPA’s Research Protocols",
+    "text": "DataSure and IPA’s Research Protocols\nIPA requires all research projects to follow data quality protocols known as the Minimum Must Dos (MMDs). These protocols cover data management, data quality, data security and ethics, and knowledge management.\nDataSure directly supports the following MMD requirements:\n\nHigh-frequency checks (HFCs): DataSure automates nine types of quality checks covering the full scope of what IPA’s MMDs require for HFCs. See High-Frequency Checks for more on what HFCs are and why they matter.\nBackchecks: DataSure’s Back Checks module compares survey responses against re-interview validation data to identify discrepancies and measure enumerator reliability. See Backchecks for background on the backcheck protocol.\nSurvey progress tracking: DataSure tracks submissions in real time, reporting daily, weekly, and monthly progress toward your survey target.\n\nDataSure is an alternative to IPA’s Stata-based DMS (ipacheck), not a replacement. Teams that already use Stata can continue using ipacheck. DataSure is especially useful for teams that do not use Stata, or that prefer a visual dashboard interface. See IPA’s Data Management System for more on the Stata-based DMS.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "About DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/index.html#what-datasure-checks",
+    "href": "data-quality/datasure/index.html#what-datasure-checks",
+    "title": "DataSure",
+    "section": "What DataSure Checks",
+    "text": "What DataSure Checks\nDataSure runs nine specialized quality check modules. Each module focuses on a specific dimension of data quality.\n\nSummary\nProvides a high-level overview of your project, including total submissions, submission trends over time, and key quality metrics such as duplicate rates, missing data rates, and backcheck error rates. Use this module to get a quick picture of how data collection is progressing.\n\n\nSurvey Progress\nTracks interview completion relative to your target sample size. Shows submissions by day, week, and month, and monitors consent and completion rates. Use this module to assess whether collection is on pace and to identify slowdowns or gaps.\n\n\nDuplicates\nFinds records that share the same respondent ID or other identifiers that should be unique, such as phone numbers or household IDs. Reports which columns contain duplicates and which records are affected. Use this module to catch and investigate duplicate submissions before they affect your analysis.\n\n\nMissing Data\nIdentifies patterns of incomplete responses across your dataset. Reports missing values by column, including structured codes such as “Don’t Know” or “Refused to Answer.” Shows how missingness changes over time and varies across enumerators. Use this module to catch systematic data collection problems early.\n\n\nOutliers\nFlags numeric responses that fall outside expected ranges using statistical detection methods. You can configure detection thresholds and set known hard limits for specific variables. Use this module to identify data entry errors, implausible values, and responses that need follow-up.\n\n\nEnumerator Performance\nMonitors individual enumerator productivity and data quality. Tracks submission counts, interview duration, consent rates, completion rates, and response patterns by enumerator. Use this module to identify enumerators who may need additional supervision or retraining.\n\n\n\nThe Enumerator Performance module showing a productivity heatmap and per-enumerator submission statistics.\n\n\n\n\nGPS Checks\nValidates geographic coordinate data by checking for missing, out-of-range, or low-accuracy GPS readings. Displays interview locations on an interactive map. Use this module to verify that surveys are being conducted in the expected locations.\n\n\n\nThe GPS Checks module displaying interview locations on an interactive map, with outliers flagged for review.\n\n\n\n\nDescriptive Statistics\nProvides distribution summaries for selected variables, including histograms, frequency tables, and cross-tabulations. Use this module to review the composition of your data and detect unusual distributions that may indicate collection problems.\n\n\nBack Checks\nCompares responses from re-interview validation visits against the original survey responses. Reports discrepancy rates by column, enumerator, and back-checker. Use this module to assess enumerator reliability and identify systematic errors in data collection.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "About DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/index.html#who-datasure-is-for",
+    "href": "data-quality/datasure/index.html#who-datasure-is-for",
+    "title": "DataSure",
+    "section": "Who DataSure is For",
+    "text": "Who DataSure is For\nDataSure is designed for anyone responsible for managing or reviewing survey data during field data collection:\n\nData managers running high-frequency checks for an IPA or other research project\nSurvey coordinators monitoring field team performance and submission progress\nResearch teams that want to review data quality without writing code\nOrganizations conducting large-scale surveys who need systematic quality monitoring tools\n\nDataSure does not require programming knowledge to use. It is designed for users who are comfortable with spreadsheets and web applications.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "About DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/index.html#system-requirements",
+    "href": "data-quality/datasure/index.html#system-requirements",
+    "title": "DataSure",
+    "section": "System Requirements",
+    "text": "System Requirements\n\n\n\nRequirement\nMinimum\nRecommended\n\n\n\n\nOperating System\nWindows, macOS, or Linux\nAny\n\n\nPython\n3.11 or higher\nLatest 3.11+\n\n\nRAM\n4 GB\n8 GB\n\n\nStorage\n1 GB free\n2 GB free\n\n\nBrowser\nChrome, Firefox, Safari, or Edge\nChrome or Firefox\n\n\nInternet\nRequired only for SurveyCTO\nRequired only for SurveyCTO\n\n\n\nDataSure runs locally on your computer. No server is required, and no internet connection is needed for local file analysis.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "About DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/index.html#is-datasure-right-for-your-project",
+    "href": "data-quality/datasure/index.html#is-datasure-right-for-your-project",
+    "title": "DataSure",
+    "section": "Is DataSure Right for Your Project?",
+    "text": "Is DataSure Right for Your Project?\nDataSure is a good fit for your project if:\n\nYou are conducting a survey-based research project and need to monitor data quality during data collection\nYour survey data is in SurveyCTO, CSV, Excel, or Stata format\nYou want a visual dashboard for quality checks without writing code\nYou need to track enumerator performance and survey progress in real time\nYou are running backchecks and want an integrated tool to compare survey and re-interview data\n\nDataSure may not be the right fit if:\n\nYou need highly customized or automated checks beyond the nine built-in modules\n\n\n\n\n\n\n\nNoteGet Started with DataSure\n\n\n\nReady to install and use DataSure? See the How to Use DataSure guide for step-by-step installation instructions and a full workflow walkthrough.\n\n\n\n\n\n\n\n\nWarningNeed Support?\n\n\n\nIf your project needs help setting up or running DataSure, IPA’s Global Research and Data Science team provides direct technical support. Email researchsupport@poverty-action.org.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "About DataSure"
+    ]
+  },
+  {
     "objectID": "data-quality/data-management-system.html",
     "href": "data-quality/data-management-system.html",
     "title": "IPA’s Data Management System",
@@ -6969,6 +7060,175 @@
       "Data Quality",
       "IPA Research Protocols",
       "Data Integrity"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html",
+    "href": "data-quality/datasure/how-to-datasure.html",
+    "title": "How to Use DataSure",
+    "section": "",
+    "text": "A step-by-step guide to installing DataSure, setting up your first project, importing survey data, configuring quality checks, and reviewing your data quality reports. This guide is for data managers and survey coordinators implementing DataSure for field data collection.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#before-you-start",
+    "href": "data-quality/datasure/how-to-datasure.html#before-you-start",
+    "title": "How to Use DataSure",
+    "section": "Before You Start",
+    "text": "Before You Start\nBefore installing DataSure, confirm you have:\n\nPython 3.11 or higher installed on your computer. To check, open a terminal and run python --version or python3 --version.\nuv, a Python package manager. The installation steps below cover how to install it.\nA SurveyCTO account if you plan to connect directly to a SurveyCTO server. You will need your server URL, username, and password.\nAt least 4 GB of RAM and 1 GB of free storage.\n\n\n\n\n\n\n\nNote\n\n\n\nIf you are unsure whether Python is installed, or if you are not comfortable working in a terminal, ask your IT support team or a technically experienced colleague to help with the installation steps.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#installing-datasure",
+    "href": "data-quality/datasure/how-to-datasure.html#installing-datasure",
+    "title": "How to Use DataSure",
+    "section": "Installing DataSure",
+    "text": "Installing DataSure\nDataSure is installed as a command-line tool using uv.\n\nStep 1: Install uv\nWindows:\nwinget install astral-sh.uv\nmacOS or Linux:\nbrew install uv\nAfter installation on Windows, run the following command to update your system path so that tools installed by uv are accessible:\nuv tool update-shell\nFor more on uv, see Python with uv.\n\n\nStep 2: Install DataSure\nuv tool install datasure\n\n\nStep 3: Verify the installation\ndatasure --version\nYou should see datasure 0.8.0. If you see an error, confirm that uv is installed correctly and that your system path was updated after installation.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#launching-datasure",
+    "href": "data-quality/datasure/how-to-datasure.html#launching-datasure",
+    "title": "How to Use DataSure",
+    "section": "Launching DataSure",
+    "text": "Launching DataSure\nTo start DataSure, open a terminal and run:\ndatasure\nDataSure opens in your default web browser, typically at http://localhost:8501. Keep the terminal window open while you work; closing it will stop the application.\n[Screenshot: DataSure landing page showing the Start Here page with options to create a new project, open an existing project, or start Demo Mode.]\n\nCommand-line options\n# Launch on a custom host and port\ndatasure --host 0.0.0.0 --port 8080\n\n# View all available options\ndatasure --help",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#getting-familiar-try-demo-mode-first",
+    "href": "data-quality/datasure/how-to-datasure.html#getting-familiar-try-demo-mode-first",
+    "title": "How to Use DataSure",
+    "section": "Getting Familiar: Try Demo Mode First",
+    "text": "Getting Familiar: Try Demo Mode First\nIf this is your first time using DataSure, work through Demo Mode before importing your own data. Demo Mode provides a complete guided walkthrough of all six steps using realistic sample household survey data, so you can explore the interface and understand the workflow without risk.\nTo start Demo Mode:\n\nLaunch DataSure with datasure.\nOn the Start Here page, click Start Demo.\nFollow the on-screen guidance at each step. Look for the yellow Learn More boxes, which explain what to do and what to expect.\n\nDemo Mode includes two sample datasets:\n\nSurvey data: 132 household survey responses covering demographics, income, land ownership, and living conditions\nBackcheck data: 30 re-interview validation records matched to the survey data by household ID\n\nBoth datasets contain intentional data quality issues, including missing values, duplicate household IDs, and numeric outliers, so you can practice identifying and correcting them before working with real project data.\n[Screenshot: Demo Mode Learn More box on the Import Data page showing guided instructions.]\nAfter completing all six steps, DataSure will prompt you to restart the demo or create a real project.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#step-1-create-or-open-a-project",
+    "href": "data-quality/datasure/how-to-datasure.html#step-1-create-or-open-a-project",
+    "title": "How to Use DataSure",
+    "section": "Step 1: Create or Open a Project",
+    "text": "Step 1: Create or Open a Project\nEach survey or data collection exercise in DataSure is organized as a project. A project stores your imported datasets, configuration settings, quality check outputs, and correction history.\nTo create a new project:\n\nOn the Start Here page, click Create New Project.\nEnter a descriptive project name, for example: baseline_2024 or midline_ghana.\nClick Create.\n\nTo open an existing project:\n\nOn the Start Here page, select the project from the list.\nClick Open.\n\n\n\n\n\n\n\nTip\n\n\n\nUse one project per survey wave or data collection phase. Consistent naming conventions, such as [study]_[wave]_[year], make it easier to manage multiple projects over time.\n\n\n[Screenshot: Start Here page showing the project creation form and a list of existing projects.]",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#step-2-import-data",
+    "href": "data-quality/datasure/how-to-datasure.html#step-2-import-data",
+    "title": "How to Use DataSure",
+    "section": "Step 2: Import Data",
+    "text": "Step 2: Import Data\nDataSure supports two ways to import data: directly from a SurveyCTO server, or by uploading a local file. Navigate to the Import Data page from the sidebar.\n\nOption A: Import from SurveyCTO\n\nClick the SurveyCTO tab.\nEnter your server credentials:\n\nServer Name: Your SurveyCTO server URL (for example, yourserver.surveycto.com)\nUsername: Your SurveyCTO username\nPassword: Your SurveyCTO password\n\nClick Connect.\nSelect the form or forms you want to import.\nConfigure any filters, such as a date range, then click Import Data.\n\n[Screenshot: SurveyCTO import tab showing credential fields and form selection.]\n\n\n\n\n\n\nTip\n\n\n\nUse date range filters when importing from large SurveyCTO forms. Filtering to recent submissions reduces processing time and keeps your project cache manageable during active data collection.\n\n\n\n\nOption B: Upload a Local File\nDataSure accepts CSV (.csv), Excel (.xlsx or .xls), Stata (.dta), and JSON (.json) files.\n\nClick the Local Files tab.\nDrag and drop your file into the upload area, or click Browse to select it.\nEnter a short, descriptive alias for the dataset, for example: survey or backcheck_wave1. DataSure uses this alias to refer to the dataset throughout the application.\nFor Excel files with multiple sheets, select the correct sheet.\nClick Load Data.\n\n[Screenshot: Local Files upload tab showing the file drop zone and alias field.]\n\n\nReviewing imported data\nAfter importing, DataSure shows a preview of your dataset with column names, data types, row and column counts, and the first 100 rows. Review this preview to confirm the file loaded correctly before moving on.\nYou can import up to 10 datasets per project. To add a backcheck dataset, repeat the import process and assign it a separate alias such as backcheck.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#step-3-prepare-your-data",
+    "href": "data-quality/datasure/how-to-datasure.html#step-3-prepare-your-data",
+    "title": "How to Use DataSure",
+    "section": "Step 3: Prepare Your Data",
+    "text": "Step 3: Prepare Your Data\nThe Prepare Data page lets you clean and transform imported datasets before running quality checks. Navigate to it from the sidebar.\nMost projects need at least one preparation step: converting date columns from text to datetime format. DataSure requires date columns to be in datetime format for the Survey Progress and Enumerator Performance checks to work correctly.\n\nConverting a date column to datetime\n\nSelect the dataset tab for your survey data.\nClick Add data prep step.\nSelect Transform Column.\nChoose your date column, for example: submissiondate or starttime.\nSelect string to datetime.\nClick Add.\nRepeat for your backcheck dataset if it has a separate date column.\n\n\n\nOther preparation actions\n\n\n\n\n\n\n\nAction\nWhen to Use\n\n\n\n\nTransform Column\nConvert data types, standardize text casing, or extract patterns from a column\n\n\nAdd Column\nCreate a unique key column if one does not already exist in the dataset\n\n\nRemove Column\nRemove columns that are not needed for quality checks\n\n\nRemove Row\nFilter out test submissions or records that should not be analyzed\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nIf your dataset does not have a column where every row has a unique value, use Add Column to create one before configuring checks. DataSure requires a unique key column for most quality check modules.\n\n\n[Screenshot: Prepare Data page showing a list of preparation steps applied to a dataset.]",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#step-4-configure-quality-checks",
+    "href": "data-quality/datasure/how-to-datasure.html#step-4-configure-quality-checks",
+    "title": "How to Use DataSure",
+    "section": "Step 4: Configure Quality Checks",
+    "text": "Step 4: Configure Quality Checks\nThe Configure Checks page is where you tell DataSure which dataset to analyze and which columns correspond to key identifiers. Navigate to it from the sidebar.\n\nCreating a check configuration\n\nClick Add New Check Configuration.\nEnter a name for this configuration, for example: Household Survey Checks.\nSelect your survey dataset from the dropdown.\nConfigure the four key columns:\n\n\n\n\n\n\n\n\n\nField\nWhat It Represents\nExample\n\n\n\n\nKey Column\nA column where every row has a unique value\nKEY or uuid\n\n\nID Column\nThe respondent identifier, which may repeat across multiple visits\nhhid or respondent_id\n\n\nEnumerator Column\nThe field staff identifier\nenum_name or enumerator_id\n\n\nDate Column\nThe submission or interview date\nsubmissiondate or starttime\n\n\n\n\nTo include backcheck data, select your backcheck dataset and specify its matching ID column.\nClick Add Check Configuration.\n\nDataSure creates a new DQA Report page in the sidebar, named after the configuration you created. All nine quality check modules are available as tabs on this page.\n[Screenshot: Configure Checks page showing the configuration form with key column fields populated.]\n\n\n\n\n\n\nTip\n\n\n\nThe Key Column and ID Column serve different purposes. The Key Column must be unique for every single row, like a UUID generated per submission. The ID Column identifies the respondent and may appear more than once if the same person was surveyed multiple times.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#step-5-review-your-dqa-reports",
+    "href": "data-quality/datasure/how-to-datasure.html#step-5-review-your-dqa-reports",
+    "title": "How to Use DataSure",
+    "section": "Step 5: Review Your DQA Reports",
+    "text": "Step 5: Review Your DQA Reports\nYour DQA Report pages appear in the sidebar after you save a check configuration. Each report contains tabs for all nine quality check modules. Navigate between tabs to review different aspects of your data.\nReports update automatically when you import new data. During active data collection, review them daily.\n\nUsing report tabs\nEach tab has a Settings section at the top where you configure display options and thresholds for that specific check. Settings persist across sessions once saved.\nBelow the settings, each tab displays:\n\nSummary statistics for that check\nVisualizations such as charts, heatmaps, or maps\nDetailed tables listing flagged records\n\nUse the Column Selector within each tab to choose which columns to include in the analysis.\n\n\nSummary of check tabs\n\n\n\n\n\n\n\nTab\nWhat to Look For\n\n\n\n\nSummary\nOverall quality score, submission trend, and progress toward target sample\n\n\nSurvey Progress\nDaily and weekly submission pace, consent and completion rates\n\n\nDuplicates\nRecords sharing the same respondent ID or other identifiers\n\n\nMissing Data\nColumns with high rates of missing or “Don’t Know” responses\n\n\nOutliers\nFlagged numeric values outside expected ranges\n\n\nEnumerator Stats\nSubmission productivity, interview duration, and response patterns by enumerator\n\n\nGPS Checks\nMissing or implausible coordinates, and a map of interview locations\n\n\nDescriptive Stats\nValue distributions and frequency tables for selected variables\n\n\nBack Checks\nDiscrepancy rates between original survey and re-interview data\n\n\n\n[Screenshot: DQA Report page showing the Summary tab with a submission trend chart and key quality metrics.]\n\n\nConfiguring the Outliers tab\nThe Outliers tab requires additional setup before showing results:\n\nGo to the Outliers tab and click Add Outlier Column.\nSelect the numeric columns to check. You can search by exact name or use pattern matching, for example “contains: income” to find all income-related columns.\nChoose a detection method:\n\nIQR (default): Robust to extreme values; recommended for most survey data\nStandard Deviation: More sensitive; suitable when data is approximately normally distributed\n\nSet the multiplier. The default is 1.5 for IQR and 3.0 for standard deviation. Lower values flag more records as outliers; higher values flag fewer.\nOptionally, set a Soft Minimum or Soft Maximum for variables with known valid ranges, for example: land area must be greater than 0.\nClick Save.\n\n\n\nConfiguring the Back Checks tab\nThe Back Checks tab requires you to specify which columns to compare between your survey and backcheck datasets:\n\nGo to the Back Checks tab settings.\nSpecify the survey ID, key, enumerator, and date columns.\nSet your target backcheck rate, for example: 10 for 10%.\nClick Add a back check column for each variable you want to validate.\nFor each column, assign a category for grouping, an acceptable error range for numeric variables, and a comparison condition.\nClick Save.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#step-6-correct-data",
+    "href": "data-quality/datasure/how-to-datasure.html#step-6-correct-data",
+    "title": "How to Use DataSure",
+    "section": "Step 6: Correct Data",
+    "text": "Step 6: Correct Data\nThe Correct Data page provides a structured workflow for fixing data quality issues identified in your reports. All corrections are logged with the original value, new value, reason, and timestamp, creating a full audit trail.\nNavigate to Correct Data from the sidebar.\n\nAdding a correction\n\nClick Add correction.\nSelect the Key of the record you want to modify. This is the unique row identifier set in your check configuration.\nSelect the Action:\n\n\n\n\n\n\n\n\nAction\nWhen to Use\n\n\n\n\nModify Value\nFix a specific value in a column, for example correcting a typo in a respondent ID\n\n\nRemove Row\nDelete an entire record, for example removing a test submission\n\n\nRemove Value\nSet a specific value to missing, for example removing a response that is out of range\n\n\n\n\nSelect the Column to modify (not required for Remove Row).\nEnter the new value, or confirm the removal.\nEnter a Reason for the correction. This is required.\nClick Apply.\n\n[Screenshot: Correct Data page showing the correction form and the correction history table.]\n\n\nVerifying a correction\nAfter applying a correction, navigate back to the relevant report tab and confirm that the flagged issue no longer appears. If it persists, check that you selected the correct key and column.\n\n\n\n\n\n\nTip\n\n\n\nWrite clear, specific reasons for each correction. Audit trails are important for research transparency and for responding to questions from reviewers or collaborators.\n\n\n\n\nRecommended correction workflow\n\nIdentify an issue in a DQA report tab.\nInvestigate the root cause before correcting. Check whether the issue is a data entry error, a survey programming error, or a legitimate value.\nApply the correction with a documented reason.\nVerify the resolution by reviewing the relevant report tab.\nFollow up with the enumerator if the issue reflects a training or process problem.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#keeping-datasure-up-to-date",
+    "href": "data-quality/datasure/how-to-datasure.html#keeping-datasure-up-to-date",
+    "title": "How to Use DataSure",
+    "section": "Keeping DataSure Up to Date",
+    "text": "Keeping DataSure Up to Date\nTo upgrade DataSure to the latest version, run:\nuv tool upgrade datasure\nCheck the DataSure release notes for a summary of what has changed in each version.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
+    ]
+  },
+  {
+    "objectID": "data-quality/datasure/how-to-datasure.html#getting-help",
+    "href": "data-quality/datasure/how-to-datasure.html#getting-help",
+    "title": "How to Use DataSure",
+    "section": "Getting Help",
+    "text": "Getting Help\n\nGitHub Issues: Report bugs or request features at the DataSure repository\nEmail support: Contact IPA’s Global Research and Data Science team at researchsupport@poverty-action.org\n\n\n\n\n\n\n\nWarningNeed Direct Support?\n\n\n\nIf your project needs help setting up or running DataSure, IPA’s Global Research and Data Science team provides direct technical support. Email researchsupport@poverty-action.org.",
+    "crumbs": [
+      "Contributing",
+      "Data Quality",
+      "DataSure",
+      "How to Use DataSure"
     ]
   },
   {
