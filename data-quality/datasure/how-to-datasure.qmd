@@ -2,16 +2,19 @@
 title: "How to Use DataSure"
 abstract: |
   A step-by-step guide to installing DataSure, setting up your first project,
-  importing survey data, configuring quality checks, and reviewing your data
-  quality reports. This guide is for data managers and survey coordinators
-  implementing DataSure for field data collection.
+  importing survey data, configuring quality checks, reviewing data quality
+  reports, correcting data, and exporting a replication package. This guide
+  is for data managers and survey coordinators implementing DataSure for
+  field data collection.
+
+date: "2026-05-18"
 
 authors-ipa:
   - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
   - "[Wesley Kirui](https://poverty-action.org/people/wesley-kirui)"
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 
 contributors:
-  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
   - "[Dania Ochoa](https://poverty-action.org/people/dania-ochoa)"
   - "[Laura Lahoz](https://poverty-action.org/people/laura-lahoz)"
 
@@ -33,24 +36,23 @@ license:
 
 ## Key Takeaways
 
-- DataSure follows a six-step workflow: create a project, import data, prepare data, configure checks, review DQA reports, and correct data.
+- DataSure follows a seven-step workflow: create a project, import data, prepare data, configure checks, review DQA reports, correct data, and export a replication package.
 - First-time users should start with Demo Mode, which provides a guided walkthrough using sample household survey data.
 - Data can be imported directly from a SurveyCTO server or uploaded as a CSV, Excel, Stata, or JSON file.
 - Quality check reports update automatically each time you import new data.
+- The Replication Package exports auto-generated Stata do-files and audit logs, allowing anyone to reproduce your corrected dataset from raw source data.
 
 :::
 
 ## Before You Start
 
-Before installing DataSure, confirm you have:
+Before installing DataSure, confirm you have the following:
 
-- **Python 3.11 or higher** installed on your computer. To check, open a terminal and run `python --version` or `python3 --version`.
-- **uv**, a Python package manager. The installation steps below cover how to install it.
-- A **SurveyCTO account** if you plan to connect directly to a SurveyCTO server. You will need your server URL, username, and password.
+- **uv**, a Python package manager used to install DataSure. When you install DataSure with `uv`, it automatically installs the correct version of Python and all required dependencies. You do not need to install Python separately. Installation steps are covered below.
 - At least **4 GB of RAM** and **1 GB of free storage**.
 
 ::: {.callout-note}
-If you are unsure whether Python is installed, or if you are not comfortable working in a terminal, ask your IT support team or a technically experienced colleague to help with the installation steps.
+If you are not comfortable working in a terminal, ask your IT support team or a technically experienced colleague to help with the installation steps.
 :::
 
 ## Installing DataSure
@@ -65,19 +67,19 @@ DataSure is installed as a command-line tool using `uv`.
 winget install astral-sh.uv
 ```
 
+After installing on Windows, run the following command to update your system path so that tools installed by `uv` are accessible from the terminal:
+
+```bash
+uv tool update-shell
+```
+
 **macOS or Linux:**
 
 ```bash
 brew install uv
 ```
 
-After installation on Windows, run the following command to update your system path so that tools installed by `uv` are accessible:
-
-```bash
-uv tool update-shell
-```
-
-For more on `uv`, see [Python with uv](../../software/virtualenv/python-uv.qmd).
+If you run into any issues installing `uv`, refer to the [uv installation documentation](https://docs.astral.sh/uv/getting-started/installation/) for additional installation methods and troubleshooting guidance. For more on using `uv` with Python projects, see [Python with uv](../../software/virtualenv/python-uv.qmd).
 
 ### Step 2: Install DataSure
 
@@ -91,7 +93,7 @@ uv tool install datasure
 datasure --version
 ```
 
-You should see `datasure 0.8.0`. If you see an error, confirm that `uv` is installed correctly and that your system path was updated after installation.
+You should see a version number, for example `datasure 1.0.0`. If you see an error, confirm that `uv` is installed correctly and that your system path was updated after installation.
 
 ## Launching DataSure
 
@@ -103,7 +105,9 @@ datasure
 
 DataSure opens in your default web browser, typically at `http://localhost:8501`. Keep the terminal window open while you work; closing it will stop the application.
 
-*[Screenshot: DataSure landing page showing the Start Here page with options to create a new project, open an existing project, or start Demo Mode.]*
+You will land on the **Start Here** page, which is your home base for creating, selecting, and managing projects.
+
+> *[Screenshot: The DataSure Start Here page showing the welcome header, "Learn More" expandable section, and the project selector.]*
 
 ### Command-line options
 
@@ -117,243 +121,505 @@ datasure --help
 
 ## Getting Familiar: Try Demo Mode First
 
-If this is your first time using DataSure, work through Demo Mode before importing your own data. Demo Mode provides a complete guided walkthrough of all six steps using realistic sample household survey data, so you can explore the interface and understand the workflow without risk.
+If this is your first time using DataSure, start with Demo Mode before working with your own data. Demo Mode loads a pre-built sample project and guides you through all seven steps of the DataSure workflow with realistic household survey data. It is the fastest way to understand how each part of the tool works without any risk to real project data.
 
-To start Demo Mode:
+### Starting Demo Mode
 
-1. Launch DataSure with `datasure`.
-2. On the **Start Here** page, click **Start Demo**.
-3. Follow the on-screen guidance at each step. Look for the yellow **Learn More** boxes, which explain what to do and what to expect.
+1. On the **Start Here** page, select **DataSure Demo** from the project dropdown.
+2. If you have not run the demo before, click **Start Demo**. DataSure will automatically load the sample datasets.
+3. If you have run the demo previously, you will see two options:
+   - **Resume Demo**: Continue from where you left off, including any prep steps, configurations, and corrections you made.
+   - **Restart Demo**: Delete all demo progress and start fresh. DataSure will ask you to confirm before proceeding, since this cannot be undone.
 
-Demo Mode includes two sample datasets:
+> *[GIF or short video: Selecting DataSure Demo from the dropdown and clicking Start Demo, showing the automatic data loading and navigation to the Import Data page.]*
 
-- **Survey data**: 132 household survey responses covering demographics, income, land ownership, and living conditions
-- **Backcheck data**: 30 re-interview validation records matched to the survey data by household ID
+### What the demo includes
 
-Both datasets contain intentional data quality issues, including missing values, duplicate household IDs, and numeric outliers, so you can practice identifying and correcting them before working with real project data.
+Demo Mode uses two sample datasets based on a fictional household survey in rural India:
 
-*[Screenshot: Demo Mode Learn More box on the Import Data page showing guided instructions.]*
+- **demo_survey**: 132 household survey responses covering demographics, income, land ownership, education access, and living conditions
+- **demo_backcheck**: 30 re-interview validation records matched to the survey data by household ID (`hhid`)
 
-After completing all six steps, DataSure will prompt you to restart the demo or create a real project.
+Both datasets contain intentional data quality issues, including missing values, duplicate household IDs, and numeric outliers, so you can practice identifying and correcting real problems.
+
+### Following demo guidance
+
+Throughout Demo Mode, look for the light blue **Learn More** boxes that appear on each page. These boxes explain what to do at each step and why, and they include specific instructions tailored to the demo data. They are expanded by default; click to collapse them once you have read them.
+
+> *[Screenshot: An expanded "Learn More" box on the Configure Checks page showing step-by-step instructions for the demo configuration.]*
+
+The demo tracks your progress through a seven-step indicator at the top of each page. Steps you have completed are marked, and your current step is highlighted.
+
+After completing all seven steps, DataSure will confirm that the demo is complete and give you the option to restart the demo or end it. You can then create your own project from the **Start Here** page.
 
 ## Step 1: Create or Open a Project
 
-Each survey or data collection exercise in DataSure is organized as a **project**. A project stores your imported datasets, configuration settings, quality check outputs, and correction history.
+Each survey or data collection exercise in DataSure is organized as a **project**. A project stores your imported datasets, configuration settings, quality check outputs, correction history, and prep logs, all in a local cache on your computer.
 
-**To create a new project:**
+### Creating a new project
 
-1. On the **Start Here** page, click **Create New Project**.
-2. Enter a descriptive project name, for example: `baseline_2024` or `midline_ghana`.
-3. Click **Create**.
+1. On the **Start Here** page, select **Create New Project** from the project dropdown.
+2. Enter a descriptive project name. Project names can contain letters, numbers, spaces, dashes, and underscores, and must be at least three characters long.
 
-**To open an existing project:**
+   Good examples: `TCAI Baseline 2026`, `Kidigo DDEP Endline 2024`, `ORS-Zinc Midline 2020`
 
-1. On the **Start Here** page, select the project from the list.
-2. Click **Open**.
+3. Click **Create Project**. DataSure generates a unique project ID from the name and sets up the local cache folder structure automatically.
 
 ::: {.callout-tip}
-Use one project per survey wave or data collection phase. Consistent naming conventions, such as `[study]_[wave]_[year]`, make it easier to manage multiple projects over time.
+Use one project per survey wave or data collection phase. A consistent naming convention such as `[survey] [wave] [year]` makes it easy to manage multiple projects over time and to hand off projects to colleagues.
 :::
 
-*[Screenshot: Start Here page showing the project creation form and a list of existing projects.]*
+### Opening an existing project
+
+1. On the **Start Here** page, select the project from the dropdown. DataSure automatically highlights the most recently used project.
+2. The project's creation date and last-used date are shown below the selector.
+3. Click **Load Project**.
+
+### Deleting a project
+
+To permanently delete a project and all its data, expand the **Delete Project** section under the project selector. DataSure will ask you to confirm before deleting. This action cannot be undone.
+
+> *[Screenshot: The Start Here page showing the project selector with an existing project selected, the creation and last-used dates displayed, and the Load Project button.]*
 
 ## Step 2: Import Data
 
-DataSure supports two ways to import data: directly from a SurveyCTO server, or by uploading a local file. Navigate to the **Import Data** page from the sidebar.
+DataSure supports two ways to get data into a project: connecting directly to a SurveyCTO server, or uploading a local file. You can import multiple datasets per project, up to 10 in total. Navigate to the **Import Data** page from the sidebar.
 
 ### Option A: Import from SurveyCTO
 
-1. Click the **SurveyCTO** tab.
+Connecting to SurveyCTO is the recommended approach for active data collection. DataSure downloads submissions incrementally, meaning it only fetches new submissions since the last import rather than re-downloading the full dataset each time. This saves significant time when refreshing data during active collection.
+
+To use SurveyCTO integration, you will need your SurveyCTO server name, username, and password.
+
+1. On the **Import Data** page, click the **SurveyCTO** tab.
 2. Enter your server credentials:
-   - **Server Name**: Your SurveyCTO server URL (for example, `yourserver.surveycto.com`)
-   - **Username**: Your SurveyCTO username
-   - **Password**: Your SurveyCTO password
-3. Click **Connect**.
+   - **Server Name**: The prefix of your SurveyCTO server URL. For example, if your server is `yourserver.surveycto.com`, enter only `yourserver`.
+   - **Username**: Your SurveyCTO account username
+   - **Password**: Your SurveyCTO account password
+3. Click **Connect**. DataSure will retrieve the list of forms available on your server.
 4. Select the form or forms you want to import.
-5. Configure any filters, such as a date range, then click **Import Data**.
+5. If your form uses encryption, provide the **Private key**.
+6. Click **Import Data**.
 
-*[Screenshot: SurveyCTO import tab showing credential fields and form selection.]*
+> *[Screenshot: The SurveyCTO tab showing the server credential fields, connected form list, and Import Data button.]*
 
-::: {.callout-tip}
-Use date range filters when importing from large SurveyCTO forms. Filtering to recent submissions reduces processing time and keeps your project cache manageable during active data collection.
-:::
+### Option B: Upload a local file
 
-### Option B: Upload a Local File
+DataSure accepts the following file formats: CSV (`.csv`), Excel (`.xlsx`, `.xls`), Stata (`.dta`), and JSON (`.json`).
 
-DataSure accepts CSV (`.csv`), Excel (`.xlsx` or `.xls`), Stata (`.dta`), and JSON (`.json`) files.
-
-1. Click the **Local Files** tab.
+1. On the **Import Data** page, click the **Local Files** tab.
 2. Drag and drop your file into the upload area, or click **Browse** to select it.
-3. Enter a short, descriptive **alias** for the dataset, for example: `survey` or `backcheck_wave1`. DataSure uses this alias to refer to the dataset throughout the application.
-4. For Excel files with multiple sheets, select the correct sheet.
+3. Enter a short, descriptive **alias** for the dataset. The alias is how DataSure refers to this dataset throughout the application, so it should be meaningful and consistent.
+
+   Good examples: `survey`, `baseline_hh`, `backcheck_wave1`
+
+4. For Excel files with multiple sheets, select the correct sheet from the dropdown.
 5. Click **Load Data**.
 
-*[Screenshot: Local Files upload tab showing the file drop zone and alias field.]*
+> *[Screenshot: The Local Files tab showing the upload area with a file dropped in, the alias input field, and the Load Data button.]*
 
 ### Reviewing imported data
 
-After importing, DataSure shows a preview of your dataset with column names, data types, row and column counts, and the first 100 rows. Review this preview to confirm the file loaded correctly before moving on.
+After importing, DataSure shows a preview of your dataset with column names, data types, row and column counts, and the first 100 rows. Review this preview carefully before moving on:
 
-You can import up to 10 datasets per project. To add a backcheck dataset, repeat the import process and assign it a separate alias such as `backcheck`.
+- Are column names what you expect?
+- Do data types look correct? (Dates often import as text and will need to be converted in the Prepare Data step.)
+- Does the row count match what you expect from your server or file?
+
+You can return to the Import Data page at any time to refresh your data from SurveyCTO or re-upload an updated file. DataSure will replace the existing version of the dataset.
+
+::: {.callout-important}
+If you are running backchecks, import both your survey dataset and your backcheck dataset before moving on. Give them distinct aliases, for example `survey` and `backcheck`, so they are easy to identify when configuring checks.
+:::
 
 ## Step 3: Prepare Your Data
 
-The **Prepare Data** page lets you clean and transform imported datasets before running quality checks. Navigate to it from the sidebar.
+The **Prepare Data** page lets you clean and transform imported datasets before running quality checks. All preparation steps are logged automatically and later used to generate Stata do-files in the Replication Package. Navigate to it from the sidebar.
 
-Most projects need at least one preparation step: converting date columns from text to datetime format. DataSure requires date columns to be in datetime format for the Survey Progress and Enumerator Performance checks to work correctly.
+Most projects need at least one preparation step: converting date columns from text to datetime format. DataSure requires date columns to be in datetime format for several quality check modules to function correctly.
 
-### Converting a date column to datetime
+### Why data preparation matters
 
-1. Select the dataset tab for your survey data.
-2. Click **Add data prep step**.
-3. Select **Transform Column**.
-4. Choose your date column, for example: `submissiondate` or `starttime`.
-5. Select **string to datetime**.
-6. Click **Add**.
-7. Repeat for your backcheck dataset if it has a separate date column.
+SurveyCTO data is typically well-structured because column types are determined by the XLS form design. Most columns arrive in the correct format and do not require transformation. However, one common exception is **calculate fields**: these are fields where SurveyCTO computes a value automatically (for example, a calculated age or a score), but stores the result as a string rather than a number. If you need to use a calculate field in outlier detection or descriptive statistics, you will need to convert it to numeric using the Transform Column action.
 
-### Other preparation actions
+For data imported from CSV or other flat files, additional preparation may be needed, such as converting date strings to datetime format or standardizing inconsistent text casing in ID columns.
 
-| Action | When to Use |
-| ------ | ----------- |
-| Transform Column | Convert data types, standardize text casing, or extract patterns from a column |
-| Add Column | Create a unique key column if one does not already exist in the dataset |
-| Remove Column | Remove columns that are not needed for quality checks |
-| Remove Row | Filter out test submissions or records that should not be analyzed |
+### Available transformation functions
+
+The **Transform Column** action supports the following functions:
+
+| Function | What it Does | Example Use Case |
+| -------- | ------------ | ---------------- |
+| **string to datetime** | Converts a text column containing date or timestamp values into a proper datetime format | Convert `submissiondate` from `"2024-03-15 08:42:00"` to a datetime value so it works correctly in date-based checks |
+| **string to numeric** | Converts a text column containing numbers into a numeric type | Convert a SurveyCTO calculate field storing a computed score as text into a number for outlier detection |
+| **string to uppercase** | Converts all text in a column to uppercase | Standardize an ID column where some values were entered as `"hh001"` and others as `"HH001"` |
+| **string to lowercase** | Converts all text in a column to lowercase | Normalize enumerator name entries for consistent grouping |
+| **extract pattern** | Extracts a substring matching a regular expression from each value in a column | Extract a district code from a composite ID field |
+| **mathematical operation** | Applies an arithmetic operation (add, subtract, multiply, divide) to a numeric column | Divide a duration column from milliseconds to seconds |
+
+> *[Screenshot: The Transform Column dialog showing the column selector, function dropdown with all options listed, and any additional parameter fields that appear based on the selected function.]*
+
+### All available preparation actions
+
+| Action | What it Does | Example Use Case |
+| ------ | ------------ | ---------------- |
+| **Transform Column** | Convert or modify values in an existing column | Convert `submissiondate` from text to datetime; convert `enum_name` to uppercase |
+| **Add Column** | Create a new column, including unique identifiers | Add a UUID key column if the dataset does not have one |
+| **Remove Column** | Delete a column from the dataset | Remove PII columns not needed for quality checks |
+| **Remove Row** | Filter out rows matching a condition | Remove test submissions or rows with a specific flag value |
 
 ::: {.callout-important}
-If your dataset does not have a column where every row has a unique value, use **Add Column** to create one before configuring checks. DataSure requires a unique key column for most quality check modules.
+If your dataset does not have a column where every row has a unique value, use **Add Column** to create one before configuring checks. DataSure requires a unique key column to track individual records across all quality check modules.
 :::
 
-*[Screenshot: Prepare Data page showing a list of preparation steps applied to a dataset.]*
+### Reviewing and editing preparation steps
+
+All preparation steps you add are shown in a log below the dataset preview. Each step records the action type, the column affected, and the time it was applied. You can review this log to confirm that steps were applied correctly.
+
+Preparation steps are applied in order. If you need to remove a step, you can delete it from the log.
+
+> *[Screenshot: The preparation log showing a list of applied steps with action type, affected column, and timestamp for each.]*
 
 ## Step 4: Configure Quality Checks
 
-The **Configure Checks** page is where you tell DataSure which dataset to analyze and which columns correspond to key identifiers. Navigate to it from the sidebar.
+The **Configure Checks** page is where you tell DataSure which dataset to analyze and how the columns in your dataset map to the identifiers DataSure needs to run its checks. Each configuration you create becomes a separate **DQA Report** page in the sidebar.
+
+Navigate to Configure Checks from the sidebar.
 
 ### Creating a check configuration
 
 1. Click **Add New Check Configuration**.
-2. Enter a **name** for this configuration, for example: `Household Survey Checks`.
-3. Select your **survey dataset** from the dropdown.
-4. Configure the four key columns:
+2. Enter a **Page Name** for this configuration. This becomes the label for the DQA Report page in the sidebar. Keep it descriptive but concise, for example: `Household HFCs` or `Midline Survey Checks`. The name must be between 1 and 20 characters.
+3. Select your **Survey Dataset** from the dropdown. This should be the main survey dataset you imported.
+4. Configure the column fields as described in the sections below.
+5. Click **Submit** to create the configuration.
 
-| Field | What It Represents | Example |
-| ----- | ------------------ | ------- |
-| Key Column | A column where every row has a unique value | `KEY` or `uuid` |
-| ID Column | The respondent identifier, which may repeat across multiple visits | `hhid` or `respondent_id` |
-| Enumerator Column | The field staff identifier | `enum_name` or `enumerator_id` |
-| Date Column | The submission or interview date | `submissiondate` or `starttime` |
+DataSure validates your inputs when you submit. If any required fields are missing or column selections are invalid, it will show a specific error message.
 
-5. To include backcheck data, select your backcheck dataset and specify its matching ID column.
-6. Click **Add Check Configuration**.
+> *[Screenshot: The Add New Check Configuration dialog fully filled out, showing all fields with example values.]*
 
-DataSure creates a new **DQA Report** page in the sidebar, named after the configuration you created. All nine quality check modules are available as tabs on this page.
+### Survey columns
 
-*[Screenshot: Configure Checks page showing the configuration form with key column fields populated.]*
+Only the **Key Column** is required. All other columns are optional, but omitting them will disable the checks that depend on them. The table below describes each column field and which modules it affects.
+
+| Field | Required | What It Represents | Affected Checks | Example Values |
+| ----- | -------- | ------------------ | --------------- | -------------- |
+| **Key Column** | Yes | A column where every single row has a unique value. Used to identify specific records for corrections and to track flagged issues across check modules. | All modules | `KEY`, `uuid`, `_uuid` |
+| **ID Column** | No | The respondent identifier. May repeat if the same respondent appears in multiple rows. Without it, duplicate detection and back check matching are unavailable. | Duplicates, Back Checks, Survey Progress | `hhid`, `respondent_id`, `hh_id` |
+| **Enumerator Column** | No | Identifies the field staff member who collected each record. Without it, all enumerator-level breakdowns are unavailable. | Enumerator Stats, Missing Data (by enumerator), Outliers (by enumerator) | `enum_name`, `enumerator_id`, `interviewer` |
+| **Date Column** | No | The date and time the survey was submitted or the interview was conducted. Must be in datetime format. Without it, all time-based charts and trends are unavailable. | Summary, Survey Progress, Enumerator Stats, Missing Data (over time) | `submissiondate`, `starttime`, `date_collected` |
+| **Team Column** | No | Identifies the team or group the enumerator belongs to. When provided, Enumerator Stats adds team-level breakdowns alongside individual breakdowns. | Enumerator Stats | `team_id`, `supervisor_name`, `region_team` |
+| **Duration Column** | No | The interview duration, typically in seconds. SurveyCTO records this automatically in a column called `duration`. Without it, duration statistics are unavailable. | Enumerator Stats | `duration`, `interview_duration` |
+| **Form Version Column** | No | The survey form version used for each submission. SurveyCTO stores this as `formdef_version`. Without it, the Summary tab omits form version tracking. | Summary | `formdef_version`, `form_version` |
+| **Survey Target** | No | The expected total number of completed interviews. Without it, progress charts display submission trends but without a target reference line. | Summary, Survey Progress | `200`, `500`, `1500` |
 
 ::: {.callout-tip}
-The **Key Column** and **ID Column** serve different purposes. The Key Column must be unique for every single row, like a UUID generated per submission. The ID Column identifies the respondent and may appear more than once if the same person was surveyed multiple times.
+The **Key Column** and **ID Column** serve different purposes. The Key Column must be unique for every row, like a UUID generated per submission. The ID Column identifies the respondent and may appear more than once if the same person was surveyed on multiple occasions.
 :::
+
+### Backcheck dataset (optional)
+
+If you have imported a backcheck dataset, you can link it to this configuration to enable the Back Checks module.
+
+1. Select your **Backcheck Dataset** from the dropdown.
+2. Configure the backcheck columns:
+
+| Field | What It Represents | Example Values |
+| ----- | ------------------ | -------------- |
+| **Backcheck Date Column** | The date of the re-interview visit | `submissiondate`, `bc_date` |
+| **Backchecker Column** | The identifier of the person conducting the re-interview | `bcer_name`, `backchecker_id` |
+| **Backchecker Team Column** (optional) | The team the backchecker belongs to | `team_id`, `bc_team` |
+| **Target Percentage** (optional) | The target proportion of interviews to backcheck, as a percentage | `10` for 10% |
+
+::: {.callout-note}
+The backcheck dataset must share the same ID column as the main survey dataset so that DataSure can match survey records to their corresponding re-interview records.
+:::
+
+### Editing and removing configurations
+
+To edit an existing configuration, click **Edit Check Configuration** and select the configuration to modify. To delete a configuration, click **Remove Check Configuration**. Removing a configuration also removes its DQA Report page from the sidebar, but does not delete the underlying data.
+
+> *[Screenshot: The Configure Checks page showing an existing configuration displayed in the configuration table, with the Edit and Remove buttons visible.]*
 
 ## Step 5: Review Your DQA Reports
 
-Your DQA Report pages appear in the sidebar after you save a check configuration. Each report contains tabs for all nine quality check modules. Navigate between tabs to review different aspects of your data.
+After saving a check configuration, a **DQA Report** page appears in the sidebar with the name you gave the configuration. This is where you review the results of all nine quality check modules.
 
-Reports update automatically when you import new data. During active data collection, review them daily.
+Navigate to your DQA Report from the sidebar. Reports update automatically each time you import new data. During active data collection, review them at least once per day.
 
-### Using report tabs
+### Navigating check tabs
 
-Each tab has a **Settings** section at the top where you configure display options and thresholds for that specific check. Settings persist across sessions once saved.
+Each DQA Report page has nine tabs, one for each quality check module. Each tab has two sections:
 
-Below the settings, each tab displays:
+- **Settings**: Configure display options and thresholds for that specific check. Settings are saved and persist across sessions so you do not need to reconfigure them each time.
+- **Results**: The actual check output, including summary statistics, charts, and tables of flagged records.
 
-- Summary statistics for that check
-- Visualizations such as charts, heatmaps, or maps
-- Detailed tables listing flagged records
+Use the **Column Selector** within each tab to choose which columns to include in that check. This is useful for focusing on the variables most relevant to your project.
 
-Use the **Column Selector** within each tab to choose which columns to include in the analysis.
+> *[Screenshot: A DQA Report page with the tab bar visible at the top and the Summary tab open, showing the submission trend chart and quality metric cards.]*
 
-### Summary of check tabs
+### Summary tab
 
-| Tab | What to Look For |
-| --- | ---------------- |
-| **Summary** | Overall quality score, submission trend, and progress toward target sample |
-| **Survey Progress** | Daily and weekly submission pace, consent and completion rates |
-| **Duplicates** | Records sharing the same respondent ID or other identifiers |
-| **Missing Data** | Columns with high rates of missing or "Don't Know" responses |
-| **Outliers** | Flagged numeric values outside expected ranges |
-| **Enumerator Stats** | Submission productivity, interview duration, and response patterns by enumerator |
-| **GPS Checks** | Missing or implausible coordinates, and a map of interview locations |
-| **Descriptive Stats** | Value distributions and frequency tables for selected variables |
-| **Back Checks** | Discrepancy rates between original survey and re-interview data |
+The Summary tab is the starting point for each monitoring session. It gives a high-level picture of your data collection at a glance.
 
-*[Screenshot: DQA Report page showing the Summary tab with a submission trend chart and key quality metrics.]*
+Key metrics shown:
 
-### Configuring the Outliers tab
+- **Submission totals**: Total interviews today, this week, this month, and all time
+- **Submission trend**: A line chart showing submissions over time, so you can spot slowdowns or unusual spikes
+- **Progress bar**: Percentage toward your Survey Target (if configured), with average daily submission rate
+- **Data quality overview**: At-a-glance percentages for duplicate rate, outlier rate, missing data rate, and backcheck error rate
+- **Subgroup progress**: Progress broken down by a grouping variable you choose, such as region or enumerator team
 
-The Outliers tab requires additional setup before showing results:
+### Survey Progress tab
 
-1. Go to the **Outliers** tab and click **Add Outlier Column**.
-2. Select the numeric columns to check. You can search by exact name or use pattern matching, for example "contains: `income`" to find all income-related columns.
-3. Choose a detection method:
-   - **IQR** (default): Robust to extreme values; recommended for most survey data
-   - **Standard Deviation**: More sensitive; suitable when data is approximately normally distributed
-4. Set the multiplier. The default is 1.5 for IQR and 3.0 for standard deviation. Lower values flag more records as outliers; higher values flag fewer.
-5. Optionally, set a **Soft Minimum** or **Soft Maximum** for variables with known valid ranges, for example: land area must be greater than 0.
-6. Click **Save**.
+The Survey Progress tab provides a more detailed view of collection pacing. It is most useful for project managers who need to monitor whether the team is on track to meet the target sample size by the end of the data collection period.
 
-### Configuring the Back Checks tab
+Configure the tab settings before reviewing results:
 
-The Back Checks tab requires you to specify which columns to compare between your survey and backcheck datasets:
+- Select the **Survey ID**, **Date**, and **Enumerator** columns
+- Enter the **Target Number of Interviews**
+- Optionally, specify **Consent** and **Completion** columns and their expected values (for example, `consent = "yes"` and `completion_status = "complete"`)
 
-1. Go to the **Back Checks** tab settings.
-2. Specify the survey ID, key, enumerator, and date columns.
-3. Set your target backcheck rate, for example: `10` for 10%.
-4. Click **Add a back check column** for each variable you want to validate.
-5. For each column, assign a category for grouping, an acceptable error range for numeric variables, and a comparison condition.
-6. Click **Save**.
+The tab then shows submission trends, attempt rates per respondent, and consent and completion rates over time.
+
+> *[Screenshot: The Survey Progress tab showing a cumulative submissions chart with a target reference line, and a completion rate summary.]*
+
+### Duplicates tab
+
+The Duplicates tab identifies records that share the same value in columns that should be unique.
+
+Configure the tab settings:
+
+- Select the **Survey ID** column (the respondent identifier to check for duplicates)
+- Optionally add other columns to check, such as phone numbers or national ID numbers
+
+The results show the total number of duplicates found, which columns have duplicates, and a table listing every duplicate record. You can filter the table to focus on specific columns.
+
+When you identify a duplicate that needs to be resolved, use the **Correct Data** page (Step 6) to either modify the incorrect ID or remove the duplicate record.
+
+### Missing Data tab
+
+The Missing Data tab shows the extent and patterns of incomplete responses across your dataset.
+
+Before reviewing results, configure your missing value codes:
+
+- **Missing Labels**: Names for categories of missing responses, such as `Don't Know`, `Refused`, `Not Applicable`
+- **Missing Codes**: The numeric codes used in the dataset to represent these categories, such as `-99`, `-88`, `-77`. Separate multiple codes with commas.
+
+The tab then shows:
+
+- Overall and per-column missing rates
+- A breakdown by category (null, Don't Know, Refused, Not Applicable)
+- Missing rates grouped by enumerator or other categorical variable
+- Missingness over time (to detect when problems started)
+- A nullity matrix: a visual grid where each row is a record and each column is a variable, with missing values shown in red. This is useful for spotting systematic patterns, such as an entire block of questions being skipped.
+
+> *[Screenshot: The Missing Data tab showing the nullity matrix with red blocks indicating missing values, and the per-column missing rate table sorted by highest missingness.]*
+
+### Outliers tab
+
+The Outliers tab flags numeric values that are statistically unusual and may indicate data entry errors or implausible responses.
+
+The tab requires additional setup before showing results. Click **Add Outlier Column** for each numeric variable you want to check:
+
+1. **Select Columns**: Choose the column or columns to check. You can search by exact name or by pattern:
+   - `exact`: Match specific column names, for example `land_acre`
+   - `contains`: Match any column containing a substring, for example `income` will match `hh_income`, `farm_income`, `total_income`
+   - `startswith` / `endswith`: Match by prefix or suffix
+   - `regex`: Use a regular expression pattern
+
+2. **Detection Method**: Choose how outliers are identified:
+   - **IQR (Interquartile Range)**: The default method. Flags values more than 1.5 times the IQR above the 75th percentile or below the 25th percentile. Robust to extreme values and recommended for most survey data.
+   - **Standard Deviation**: Flags values more than 3 standard deviations from the mean. More sensitive; suitable when the data is approximately normally distributed.
+
+3. **Multiplier**: Adjust the sensitivity threshold. Lower values (for example, IQR multiplier of 1.0) flag more records; higher values flag fewer. Start with the default and adjust based on domain knowledge.
+
+4. **Soft Minimum / Soft Maximum** (optional): Set known valid ranges for a variable. Any value below the soft minimum or above the soft maximum is flagged as an outlier regardless of the statistical threshold. For example, land area should always be greater than 0, and age should be between 15 and 95.
+
+> *[Screenshot: The Add Outlier Column dialog showing the column search field, detection method selector, multiplier input, and optional soft min/max fields.]*
+
+The results show a summary table with outlier counts and statistics per column, and a record-level table listing each flagged value with the reason it was flagged. Clicking on a column shows a box plot with outliers highlighted.
+
+### Enumerator Stats tab
+
+The Enumerator Stats tab monitors the productivity and data quality of individual field staff. It is one of the most actionable tabs during active data collection because it helps you identify which enumerators need follow-up.
+
+Configure the tab settings to map your dataset's columns to the expected fields (Enumerator, Date, Duration, Team, etc.).
+
+The tab shows:
+
+- **Overview metrics**: Total enumerators, active enumerators in the past 7 days, and submission range across enumerators
+- **Enumerator summary table**: Per-enumerator statistics including total submissions, active days, missing value rates, mean and median interview duration, and consent and completion rates
+- **Productivity heatmap**: A grid showing how many interviews each enumerator completed per day. This makes it easy to spot enumerators who stopped submitting or whose output dropped suddenly.
+- **Statistics by enumerator**: Compare any numeric column across enumerators to detect systematic differences in how questions were answered
+
+> *[Screenshot: The Enumerator Stats tab showing the productivity heatmap with enumerators as rows and dates as columns, colored by submission count.]*
+
+### GPS Checks tab
+
+The GPS Checks tab validates geographic coordinate data.
+
+Configure the tab to specify whether your GPS data is stored as separate latitude and longitude columns or as a single combined column. Optionally specify an accuracy column (SurveyCTO stores GPS accuracy in a separate column).
+
+The results show:
+
+- Total GPS records, valid coordinates, and invalid coordinates
+- Accuracy statistics
+- An interactive map with all interview locations plotted as markers
+- A table of flagged records: missing coordinates, out-of-range values (latitude outside -90 to 90, longitude outside -180 to 180), and low-accuracy readings
+
+> *[Screenshot: The GPS Checks tab showing the interactive map with interview location markers, and the flagged records table below it.]*
+
+### Descriptive Stats tab
+
+The Descriptive Stats tab shows distribution summaries for selected variables. It is useful for reviewing the composition of your data and detecting unusual distributions that might indicate collection problems, such as all respondents reporting the same income value.
+
+Select up to 10 columns to analyze. For each column, you can choose between:
+
+- **One-Way Table**: Frequency distribution for a single variable
+- **Two-Way Table**: Cross-tabulation with another variable
+- **Summary Statistics**: Count, mean, standard deviation, min, max, and percentiles
+
+### Back Checks tab
+
+The Back Checks tab compares original survey responses against re-interview validation data to measure enumerator reliability.
+
+Before reviewing results, configure the tab:
+
+1. Map the survey ID, key, enumerator, and date columns.
+2. Set your target backcheck rate.
+3. Click **Add a back check column** for each variable to validate. For each column, set:
+   - **Category**: A grouping number (1, 2, 3) used to organize columns in the results table
+   - **OK Range**: For numeric variables, the maximum acceptable difference between the original and re-interview response. For example, an OK range of 5 for an age variable means differences of up to 5 years are not counted as errors.
+   - **Comparison Condition**: Whether to skip comparisons when a value is missing in either dataset (`ignore_missing_values`) or compare all records including those with missing values (`compare_all`)
+
+The results show error rates by column, by enumerator, and by back-checker, along with a record-level table showing each comparison.
+
+> *[Screenshot: The Back Checks tab showing the error rate by enumerator table, sorted by highest error rate, and the record-level comparison table.]*
 
 ## Step 6: Correct Data
 
-The **Correct Data** page provides a structured workflow for fixing data quality issues identified in your reports. All corrections are logged with the original value, new value, reason, and timestamp, creating a full audit trail.
+The **Correct Data** page provides a structured workflow for fixing data quality issues found in your DQA Reports. Every correction is logged with the original value, new value, reason, action type, and timestamp. This creates a full audit trail that is also used to auto-generate Stata do-files in the Replication Package.
 
 Navigate to **Correct Data** from the sidebar.
 
 ### Adding a correction
 
 1. Click **Add correction**.
-2. Select the **Key** of the record you want to modify. This is the unique row identifier set in your check configuration.
+2. Select the **Key** of the record you want to modify. This is the unique row identifier from the Key Column you specified in your check configuration.
 3. Select the **Action**:
 
-| Action | When to Use |
-| ------ | ----------- |
-| Modify Value | Fix a specific value in a column, for example correcting a typo in a respondent ID |
-| Remove Row | Delete an entire record, for example removing a test submission |
-| Remove Value | Set a specific value to missing, for example removing a response that is out of range |
+| Action | When to Use | Example |
+| ------ | ----------- | ------- |
+| **Modify Value** | Fix a specific value in a column | Correcting a typo in a household ID from `UP015-005` to `UP015-055` |
+| **Remove Row** | Delete an entire record | Removing a test submission or a fully duplicated record after investigation |
+| **Remove Value** | Set a specific value to missing | Removing an implausible income value that cannot be corrected |
 
 4. Select the **Column** to modify (not required for Remove Row).
 5. Enter the new value, or confirm the removal.
-6. Enter a **Reason** for the correction. This is required.
+6. Enter a **Reason** for the correction. This field is required and becomes part of the permanent audit trail. Write reasons that will be meaningful to a future reviewer who was not present during data collection.
+
+   Good examples:
+   - `"Duplicate record confirmed with supervisor -- original submission retained, duplicate removed"`
+   - `"Household ID typo confirmed via field notes -- corrected from UP015-005 to UP015-055"`
+   - `"Income value of 999999 is a data entry error confirmed by enumerator -- removed"`
+
 7. Click **Apply**.
 
-*[Screenshot: Correct Data page showing the correction form and the correction history table.]*
+> *[Screenshot: The Add Correction dialog showing the Key selector, Action dropdown set to "Modify Value", Column selector, Current Value (auto-populated), New Value input, and Reason field.]*
 
 ### Verifying a correction
 
-After applying a correction, navigate back to the relevant report tab and confirm that the flagged issue no longer appears. If it persists, check that you selected the correct key and column.
-
-::: {.callout-tip}
-Write clear, specific reasons for each correction. Audit trails are important for research transparency and for responding to questions from reviewers or collaborators.
-:::
+After applying a correction, navigate back to the relevant DQA Report tab and confirm the flagged issue no longer appears. If it persists, check that you selected the correct key and column.
 
 ### Recommended correction workflow
 
-1. Identify an issue in a DQA report tab.
-2. Investigate the root cause before correcting. Check whether the issue is a data entry error, a survey programming error, or a legitimate value.
-3. Apply the correction with a documented reason.
-4. Verify the resolution by reviewing the relevant report tab.
-5. Follow up with the enumerator if the issue reflects a training or process problem.
+Corrections should always follow an investigation, not precede one. Before correcting a record, confirm the root cause.
+
+1. Identify the issue in a DQA Report tab.
+2. Investigate: is it a data entry error, a survey programming bug, or a legitimate extreme value?
+3. Consult field notes, supervisor reports, or the enumerator directly if needed.
+4. Apply the correction with a specific documented reason.
+5. Verify the resolution in the DQA Report.
+6. If the issue reflects a training or process problem, follow up with the enumerator to prevent recurrence.
+
+::: {.callout-warning}
+Do not remove or modify records before investigating their root cause. A duplicate ID, for example, may be a data entry error in one record, or it may indicate that a respondent was surveyed twice. The correct action depends on the investigation outcome.
+:::
+
+> *[Screenshot: The Correct Data page showing the correction history table with several logged corrections, their reasons, and timestamps.]*
+
+## Step 7: Export a Replication Package
+
+The **Replication Package** page is the final step of the DataSure workflow. It exports a self-contained zip file that allows anyone with Stata to reproduce your corrected dataset exactly from the original raw source data. This supports IPA's research transparency and data management standards.
+
+Navigate to **Replication Package** from the sidebar.
+
+### What the replication package contains
+
+The zip file is organized into a structured folder layout:
+
+```
+replication_[project]_[page]/
+├── 0_README.txt
+├── 1_docs/
+│   ├── 1_surveys/          ← SurveyCTO questionnaire (.xlsx), if applicable
+│   ├── 2_codebooks/
+│   └── 3_notes/
+├── 2_scripts/
+│   ├── 0_main.do           ← Master script that runs all others in order
+│   ├── 1_install_packages.do
+│   ├── 2_import_data.do    ← Imports the raw CSV into Stata
+│   ├── 3_prepare_data.do   ← Applies all prep steps from the Prepare Data log
+│   └── 4_corrections.do    ← Applies all corrections from the Correct Data log
+├── 3_data/
+│   ├── 1_raw/              ← Raw survey data as CSV
+│   ├── 2_intermediate/     ← Generated when scripts are run
+│   └── 3_final/            ← Generated when scripts are run
+└── 4_output/
+    ├── 1_tables/
+    ├── 2_figures/
+    └── 3_logs/
+        ├── correction_log.csv
+        └── prep_log.csv
+```
+
+The Stata do-files (`2_import_data.do`, `3_prepare_data.do`, `4_corrections.do`) are **auto-generated** by DataSure from the preparation steps and corrections you logged during your project. You do not need to write any Stata code yourself. Running `0_main.do` in Stata will reproduce the full corrected dataset from scratch.
+
+If your data was imported from SurveyCTO, DataSure will also attempt to download the survey questionnaire (`.xlsx`) from the server and include it in the `1_docs/1_surveys/` folder.
+
+### Building the package
+
+1. On the **Replication Package** page, select the **Page Name** corresponding to the check configuration you want to export.
+2. Review the configuration details that appear below the selector to confirm the correct dataset and key column are shown.
+3. Expand **What's inside the zip?** to preview the full directory structure before building.
+4. Click **Build Replication Package**. DataSure assembles the package in the background and shows progress as each component is built.
+
+> *[Screenshot or GIF: The Replication Package page showing the page selector, configuration details table, expanded directory tree preview, and the Build Replication Package button.]*
+
+### Downloading the package
+
+::: {.callout-warning title="This package contains PII"}
+The replication package includes raw survey data, which may contain personally identifiable information (PII) such as respondent names, locations, or contact details. You must download it only to an **encrypted, access-controlled storage location** in compliance with IPA data security and confidentiality policies. Do not store the package on unencrypted drives, shared folders, or cloud services not approved for confidential data.
+
+See [IPA's Data Security Protocol](../../data-security/data-security-protocol.qmd) for guidance on approved storage.
+:::
+
+Once the build is complete:
+
+1. Read the PII warning carefully.
+2. Check the confirmation box to confirm you are saving to an encrypted location.
+3. Click **Download replication package (.zip)**.
+
+> *[Screenshot: The download section showing the PII confirmation checkbox and the Download button, with the confirmation checkbox checked.]*
+
+### Who should use the replication package
+
+The replication package is intended for:
+
+- **Archiving at project closure**: Submit the package alongside your final dataset so that future researchers or auditors can reproduce your data processing pipeline.
+- **Peer review and verification**: Share with a colleague or IPA's GRDS team to verify that corrections and prep steps were applied correctly.
+- **Handover**: If a project changes hands, the package provides a complete record of every decision made during data cleaning.
 
 ## Keeping DataSure Up to Date
 
@@ -363,7 +629,7 @@ To upgrade DataSure to the latest version, run:
 uv tool upgrade datasure
 ```
 
-Check the [DataSure release notes](https://github.com/PovertyAction/datasure/blob/main/RELEASENOTES.md) for a summary of what has changed in each version.
+Check the [DataSure release notes](https://github.com/PovertyAction/datasure/blob/main/RELEASENOTES.md) for a summary of what changed in each version before upgrading.
 
 ## Getting Help
 
