@@ -272,6 +272,121 @@ The **Transform Column** action supports the following functions:
 If your dataset does not have a column where every row has a unique value, use **Add Column** to create one before configuring checks. DataSure requires a unique key column to track individual records across all quality check modules.
 :::
 
+:::{.callout-note collapse="true" title="Reference: All preparation functions"}
+
+#### Transform Column
+
+Use **Transform Column** to modify values in an existing column. Select a column and a function from the dropdown. Some functions require additional parameters that appear after you select the function.
+
+**String functions**
+
+| Function | What it Does | Example |
+| -------- | ------------ | ------- |
+| Trim | Remove leading and trailing whitespace from string values | Clean up extra spaces in manually entered enumerator names |
+| Substring | Extract a portion of a string by start position and length | Extract the first 3 characters of a district code |
+| Replace | Replace all occurrences of a target string with a new string | Replace `"N/A"` with an empty string |
+| Strip | Remove all occurrences of a specified character from a string | Strip hyphens from a formatted phone number |
+| To Lowercase | Convert all string values to lowercase | Normalize enumerator name entries |
+| To Uppercase | Convert all string values to uppercase | Standardize ID column values for consistent matching |
+| String to Number | Convert string values to numeric | Convert a calculate field stored as text to an integer or float |
+| String to Date | Convert string values to date format | Convert `"2024-01-15"` stored as text to a date column |
+| String to Datetime | Convert string values to datetime format | Convert `submissiondate` stored as text to a datetime column for trend analysis |
+| Extract Pattern | Extract substrings matching a regular expression pattern | Pull a numeric code from a compound string like `"HH-042-K"` |
+| Get Dummies | One-hot encode categorical string values into binary indicator columns | Expand a `region` column into separate `region_North`, `region_South` columns |
+
+**Numeric functions**
+
+| Function | What it Does | Example |
+| -------- | ------------ | ------- |
+| Add | Add a constant value to every row | Add an offset to correct a systematic entry error |
+| Multiply | Multiply every value by a constant | Convert a distance column from kilometers to meters |
+| Subtract | Subtract a constant value from every row | Subtract a baseline offset from a numeric response |
+| Divide | Divide every value by a constant | Convert `duration` from milliseconds to seconds |
+| Round | Round values to a specified number of decimal places | Round GPS accuracy to two decimal places |
+| Floor | Round values down to the nearest integer | Truncate fractional ages to whole years |
+| Ceiling | Round values up to the nearest integer | Round up partial interview counts |
+| Absolute Value | Replace each value with its absolute value | Remove negative signs from response differences |
+
+**Datetime functions**
+
+These functions extract a component from a datetime column and return it as a new numeric value in the same column.
+
+| Function | What it Returns | Example |
+| -------- | --------------- | ------- |
+| Second | Second component (0--59) | Extract the seconds component from a timestamp |
+| Minute | Minute component (0--59) | Extract the minute of submission for time-of-day analysis |
+| Hour | Hour component (0--23) | Extract submission hour to identify peak collection hours |
+| Day of Month | Day of the month (1--31) | Extract the calendar day from `submissiondate` |
+| Day of Week | Day of the week (0=Monday, 6=Sunday) | Identify which day of the week interviews were conducted |
+| Day of Year | Day of the year (1--366) | Calculate cumulative collection day within a year |
+| Date | Extract the date portion only (removes time) | Strip the time component from a datetime column |
+| Week of Year | Week number within the year (1--53) | Group submissions by collection week |
+| Month of Year | Month number (1--12) | Extract the month of data collection |
+| Quarter of Year | Quarter (1--4) | Group submissions by quarter |
+| Year | Four-digit year | Extract the year from a multi-year dataset |
+
+---
+
+#### Add Column
+
+Use **Add Column** to create a new column in your dataset. Select a method and configure any required parameters.
+
+| Method | What it Does | Example |
+| ------ | ------------ | ------- |
+| Constant | Add a column where every row has the same fixed value | Add a `country` column with value `"Kenya"` for all rows |
+| Sum | Add a column with the row-wise sum of selected columns | Sum multiple expenditure columns into a `total_expenditure` column |
+| Mean | Add a column with the row-wise mean of selected columns | Average multiple food security scores into a composite index |
+| Median | Add a column with the row-wise median of selected columns | Compute the median of repeated measurement columns |
+| Min | Add a column with the row-wise minimum of selected columns | Record the lowest value across multiple numeric columns |
+| Max | Add a column with the row-wise maximum of selected columns | Record the highest value across multiple numeric columns |
+| Standard Deviation | Add a column with the row-wise standard deviation | Measure variability across repeated responses |
+| Variance | Add a column with the row-wise variance | Compute variance across repeated measurements |
+| First | Add a column with the first non-null value across selected columns | Retrieve the first available response from a set of fallback columns |
+| Last | Add a column with the last non-null value across selected columns | Retrieve the most recent value from a set of columns |
+| Count | Add a column with the count of non-null values across selected columns | Count how many modules a respondent completed |
+| Count Unique | Add a column with the count of unique values across selected columns | Count distinct responses across repeated-choice columns |
+| Product | Add a column with the row-wise product of selected columns | Multiply unit price and quantity to compute total value |
+| Difference | Add a column with the row-wise difference between two columns | Compute the gap between endline and baseline scores |
+| Quotient | Add a column with the row-wise quotient of two columns | Divide a total score by maximum possible to compute a proportion |
+| Index | Add a column containing the row number (0-based integer index) | Add a row number for reference when there is no existing unique identifier |
+| UUID | Add a column of randomly generated universally unique identifiers | Generate a key column when the dataset has no unique row identifier |
+| Random | Add a column of random numbers drawn from a uniform distribution | Generate a random assignment or sampling variable |
+
+---
+
+#### Remove Column
+
+Use **Remove Column** to delete one or more columns from the dataset. Select the column or columns to remove from the list.
+
+::: {.callout-warning}
+Removing a column is a preparation step that is applied before checks run. Removing a column that you later need for check configuration will require you to delete the step and re-add it.
+:::
+
+---
+
+#### Remove Row
+
+Use **Remove Row** to filter out rows that match a condition. Select a column, a condition, and any required values.
+
+**Conditions**
+
+| Condition | What it Does | Example |
+| --------- | ------------ | ------- |
+| Missing | Keep only rows where the column value is null or empty | Remove rows with no submission date |
+| Not Missing | Keep only rows where the column value is not null | Remove rows missing the respondent ID |
+| Equal To | Keep only rows where the value equals a specified value | Remove rows where `is_test == 1` |
+| Not Equal To | Keep only rows where the value does not equal a specified value | Retain only consented interviews where `consent != 0` |
+| Greater Than | Keep only rows where the value is greater than a threshold | Remove rows where `duration > 7200` (more than 2 hours) |
+| Less Than | Keep only rows where the value is less than a threshold | Remove rows where `duration < 60` (less than one minute) |
+| Greater Than or Equal To | Keep only rows where the value is greater than or equal to a threshold | Retain rows where `age >= 18` |
+| Less Than or Equal To | Keep only rows where the value is less than or equal to a threshold | Remove rows where `progress_pct <= 0` |
+| Between | Keep only rows where the value falls within a specified range (inclusive) | Retain rows where `duration` is between 180 and 3600 seconds |
+| Not Between | Keep only rows where the value falls outside a specified range | Remove rows where `age` is not between 15 and 65 |
+| Like | Keep only rows where the string value matches a pattern (case-insensitive substring match) | Remove rows where `enum_name` contains `"test"` |
+| Not Like | Keep only rows where the string value does not match a pattern | Retain rows where `status` does not contain `"draft"` |
+
+:::
+
 ### Reviewing and editing preparation steps
 
 All preparation steps you add are shown in a log below the dataset preview. Each step records the action type, the column affected, and the time it was applied. You can review this log to confirm that steps were applied correctly.
