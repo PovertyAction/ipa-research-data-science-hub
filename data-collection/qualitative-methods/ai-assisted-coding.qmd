@@ -1,0 +1,141 @@
+---
+title: "AI-Assisted Qualitative Coding"
+abstract: |
+  Practical guidance for qualitative researchers on how to use large language models as an additional review layer in the qualitative coding process. Covers embedding-based classification, inductive theme identification, behavioral cue coding, and model comparison using IPA's open source qualitative coding toolkit.
+
+keywords:
+  - qualitative research
+  - AI
+  - large language models
+  - qualitative coding
+  - data analysis
+  - how-to guide
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+
+#------------------------------------------------------------------
+# Authors
+#------------------------------------------------------------------
+# Authors are the main creators of the site's content, credited
+# for their work and responsible for its core development,
+# including writing and editing.
+#------------------------------------------------------------------
+authors-ipa:
+  - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
+#------------------------------------------------------------------
+# Contributors
+#------------------------------------------------------------------
+# Contributors provide support, such as feedback or supplementary
+# materials for the site. They can also be responsible for
+# updating/maintaining the site.
+#------------------------------------------------------------------
+contributors:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+  - "[Kwadwo Agyapon-Ntra](https://poverty-action.org/people/kwadwo-agyapon-ntra)"
+  - "[Jack Cavanagh (JPAL)]()"
+---
+
+:::{.callout-tip appearance="simple"}
+
+## Key Takeaways
+
+- AI tools can help qualitative researchers add a systematic review layer to the coding process, but they do not replace researcher judgment.
+- Choosing the right coding approach depends on whether you have a predefined codebook, the type of features you need to code, and the size of your dataset.
+- Do not share transcripts covered by an IRB protocol or confidentiality agreement with external AI services without appropriate review.
+
+:::
+
+## Overview
+
+Qualitative coding is a labor-intensive process that requires close reading, interpretation, and contextual judgment. Large language models, or LLMs, and embedding-based techniques can serve as a useful additional review layer in this process. They can surface patterns across large volumes of text and flag transcript chunks you may have missed. They also provide a second pass on theme classification to check whether coders are applying themes consistently.
+
+These tools are not a replacement for the qualitative researcher. They work best as a systematic complement to human coding, helping teams catch inconsistencies and scale review across large transcript sets.
+
+::: {.callout-warning}
+
+## AI tools do not replace human judgment in qualitative research
+
+LLMs and embeddings cannot interpret context, cultural nuance, or researcher positionality the way a human can. Your research team must review and validate all outputs from these tools. Agree on your analytic choices with your principal investigator before operationalizing any AI-assisted workflow.
+
+:::
+
+## Data classification and external API use
+
+Before sending any transcript to an external AI service, review your data classification.
+
+::: {.callout-important}
+
+## Transcripts containing PII or IRB-covered information are Confidential
+
+Transcripts that include participant names, locations, identifying details, or information covered by an IRB protocol or confidentiality agreement are **Confidential** under IPA's data policy. You must not share Confidential data with external AI APIs, such as OpenAI or Anthropic, without appropriate review and approval.
+
+Use anonymized or de-identified transcripts when running AI-assisted coding workflows. If you are unsure about your data classification, contact [support@poverty-action.org](mailto:support@poverty-action.org) or review the [IPA AI Usage Guidelines](https://ipastorage.box.com/s/mvr67ygvz1y3v8qmgjey67lk7msmyeks).
+
+:::
+
+## The IPA Qualitative Coding Toolkit
+
+IPA maintains an open source toolkit for AI-assisted qualitative coding: [PovertyAction/llm-quali-coding](https://github.com/PovertyAction/llm-quali-coding). The toolkit provides Python scripts and reusable modules for the following coding techniques:
+
+| Technique | Best for |
+| --- | --- |
+| Embedding-based theme classification | Applying a predefined codebook to transcript chunks |
+| Relevance filtering | Surfacing chunks most related to a specific research question |
+| Inductive theme extraction | Identifying emergent themes when no codebook exists |
+| Behavioral cue coding | Detecting laughter, pauses, tone changes, and group dynamics |
+| Model comparison | Assessing agreement between two LLMs to validate reliability |
+
+### Choosing an approach
+
+Use this decision framework to select the right technique for your workflow:
+
+- **You have a predefined codebook**: Use embedding-based theme classification.
+- **You have no codebook**: Run inductive theme extraction first, validate the themes with your team, then classify.
+- **You need to code behavioral cues** such as laughter, pauses, or group dynamics: Use the behavioral cue coding approach.
+- **You want to filter a large dataset** before coding: Use relevance filtering with your research question.
+- **You are uncertain about model reliability**: Run model comparison and review agreement statistics before relying on outputs.
+
+## Getting started
+
+### Prerequisites
+
+Before working with the toolkit, you need:
+
+- Python 3.11 or later, with [uv](../../software/virtualenv/python-uv.qmd) as the recommended environment manager
+- An OpenAI API key, or an Anthropic API key as an alternative
+- Basic familiarity with the command line and [Git](../../software/git/getting-started.qmd)
+- [VS Code](../../software/vscode/index.qmd) or Positron as your code editor
+
+### Setup
+
+Clone the repository and create a virtual environment:
+
+```bash
+git clone https://github.com/PovertyAction/llm-quali-coding
+cd llm-quali-coding
+just venv
+```
+
+Add your API key to a `.env` file in the project root:
+
+```bash
+OPENAI_API_KEY=your-key-here
+```
+
+Activate the environment and run the example scripts in order, following the session guides in the `docs/` folder of the repository.
+
+## Cost and scale considerations
+
+- **Embeddings** are fast and inexpensive. You compute them once and reuse them across all subsequent coding steps.
+- **Model-based coding** such as theme extraction, behavioral cue coding, and model comparison is slower and more expensive. For large datasets, consider sampling transcripts or running jobs overnight.
+- **Model comparison** doubles API costs by running two models in parallel. Use it when you need to assess reliability before scaling to a full dataset.
+
+## Validating results
+
+AI-assisted coding outputs require researcher validation before use in analysis:
+
+- Review a sample of coded chunks manually to assess accuracy against your codebook or research questions.
+- When model comparison shows low agreement between two LLMs, this typically indicates that theme definitions are too vague. Refine the definitions and re-run rather than assuming the tool has failed.
+- For behavioral cue coding, compute inter-rater reliability such as Cohen's kappa between the AI output and a human coder before relying on the results.
+- Document all analytic choices, including model versions, prompts, and similarity thresholds, for transparency in your research outputs.
