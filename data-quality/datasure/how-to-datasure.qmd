@@ -317,7 +317,7 @@ These functions extract a component from a datetime column and return it as a ne
 | Minute | Minute component (0--59) | Extract the minute of submission for time-of-day analysis |
 | Hour | Hour component (0--23) | Extract submission hour to identify peak collection hours |
 | Day of Month | Day of the month (1--31) | Extract the calendar day from `submissiondate` |
-| Day of Week | Day of the week (0=Monday, 6=Sunday) | Identify which day of the week interviews were conducted |
+| Day of Week | Day of the week (0=Monday, 6=Sunday) | Identify which day of the week interviewers conducted interviews |
 | Day of Year | Day of the year (1--366) | Calculate cumulative collection day within a year |
 | Date | Extract the date portion only (removes time) | Strip the time component from a datetime column |
 | Week of Year | Week number within the year (1--53) | Group submissions by collection week |
@@ -359,7 +359,7 @@ Use **Add Column** to create a new column in your dataset. Select a method and c
 Use **Remove Column** to delete one or more columns from the dataset. Select the column or columns to remove from the list.
 
 ::: {.callout-warning}
-Removing a column is a preparation step that is applied before checks run. Removing a column that you later need for check configuration will require you to delete the step and re-add it.
+Removing a column is a preparation step that runs before checks. Removing a column that you later need for check configuration will require you to delete the step and re-add it.
 :::
 
 ---
@@ -389,9 +389,9 @@ Use **Remove Row** to filter out rows that match a condition. Select a column, a
 
 ### Reviewing and editing preparation steps
 
-All preparation steps you add are shown in a log below the dataset preview. Each step records the action type, the column affected, and the time it was applied. You can review this log to confirm that steps were applied correctly.
+DataSure shows all preparation steps you add in a log below the dataset preview. Each step records the action type, the affected column, and the time you applied it. You can review this log to confirm that DataSure applied each step correctly.
 
-Preparation steps are applied in order. If you need to remove a step, you can delete it from the log.
+DataSure applies preparation steps in order. If you need to remove a step, you can delete it from the log.
 
 ![The preparation log showing applied steps with action type, affected column, and timestamp.](images/datasure_prep_log.png){fig-alt="DataSure Prepare Data page showing the preparation log table with rows for each applied step, listing the action type, affected column, and timestamp." .lightbox}
 
@@ -415,21 +415,21 @@ DataSure validates your inputs when you submit. If any required fields are missi
 
 ### Survey columns
 
-Only the **Key Column** is required. All other columns are optional, but omitting them will disable the checks that depend on them. The table below describes each column field and which modules it affects.
+You must provide only the **Key Column**. All other columns are optional, but omitting them will disable the checks that depend on them. The table below describes each column field and which modules it affects.
 
 | Field | Required | What It Represents | Affected Checks | Example Values |
 | ----- | -------- | ------------------ | --------------- | -------------- |
 | **Key Column** | Yes | A column where every single row has a unique value. Used to identify specific records for corrections and to track flagged issues across check modules. | All modules | `KEY`, `uuid`, `_uuid` |
 | **ID Column** | No | The respondent identifier. May repeat if the same respondent appears in multiple rows. Without it, duplicate detection and back check matching are unavailable. | Duplicates, Back Checks, Survey Progress | `hhid`, `respondent_id`, `hh_id` |
 | **Enumerator Column** | No | Identifies the field staff member who collected each record. Without it, all enumerator-level breakdowns are unavailable. | Enumerator Stats, Missing Data (by enumerator), Outliers (by enumerator) | `enum_name`, `enumerator_id`, `interviewer` |
-| **Date Column** | No | The date and time the survey was submitted or the interview was conducted. Must be in datetime format. Without it, all time-based charts and trends are unavailable. | Summary, Survey Progress, Enumerator Stats, Missing Data (over time) | `submissiondate`, `starttime`, `date_collected` |
+| **Date Column** | No | The date and time when an enumerator submitted the survey or conducted the interview. Must be in datetime format. Without it, all time-based charts and trends are unavailable. | Summary, Survey Progress, Enumerator Stats, Missing Data (over time) | `submissiondate`, `starttime`, `date_collected` |
 | **Team Column** | No | Identifies the team or group the enumerator belongs to. When provided, Enumerator Stats adds team-level breakdowns alongside individual breakdowns. | Enumerator Stats | `team_id`, `supervisor_name`, `region_team` |
 | **Duration Column** | No | The interview duration, typically in seconds. SurveyCTO records this automatically in a column called `duration`. Without it, duration statistics are unavailable. | Enumerator Stats | `duration`, `interview_duration` |
 | **Form Version Column** | No | The survey form version used for each submission. SurveyCTO stores this as `formdef_version`. Without it, the Summary tab omits form version tracking. | Summary | `formdef_version`, `form_version` |
 | **Survey Target** | No | The expected total number of completed interviews. Without it, progress charts display submission trends but without a target reference line. | Summary, Survey Progress | `200`, `500`, `1500` |
 
 ::: {.callout-tip}
-The **Key Column** and **ID Column** serve different purposes. The Key Column must be unique for every row, like a UUID generated per submission. The ID Column identifies the respondent and may appear more than once if the same person was surveyed on multiple occasions.
+The **Key Column** and **ID Column** serve different purposes. The Key Column must be unique for every row, like a UUID generated per submission. The ID Column identifies the respondent and may appear more than once if the same person participated in multiple survey occasions.
 :::
 
 ### Backcheck dataset (optional)
@@ -466,7 +466,7 @@ Navigate to your DQA Report from the sidebar. Reports update automatically each 
 
 Each DQA Report page has nine tabs, one for each quality check module. Each tab has two sections:
 
-- **Settings**: Configure display options and thresholds for that specific check. Settings are saved and persist across sessions so you do not need to reconfigure them each time.
+- **Settings**: Configure display options and thresholds for that specific check. DataSure saves these settings and keeps them across sessions, so you do not need to reconfigure them each time.
 - **Results**: The actual check output, including summary statistics, charts, and tables of flagged records.
 
 Use the **Column Selector** within each tab to choose which columns to include in that check. This is useful for focusing on the variables most relevant to your project.
@@ -510,7 +510,7 @@ Configure the tab settings:
 
 The results show the total number of duplicates found, which columns have duplicates, and a table listing every duplicate record. You can filter the table to focus on specific columns.
 
-When you identify a duplicate that needs to be resolved, use the **Correct Data** page (Step 6) to either modify the incorrect ID or remove the duplicate record.
+When you identify a duplicate to resolve, use the **Correct Data** page (Step 6) to either modify the incorrect ID or remove the duplicate record.
 
 ### Missing Data tab
 
@@ -527,7 +527,7 @@ The tab then shows:
 - A breakdown by category (null, Don't Know, Refused, Not Applicable)
 - Missing rates grouped by enumerator or other categorical variable
 - Missingness over time (to detect when problems started)
-- A nullity matrix: a visual grid where each row is a record and each column is a variable, with missing values shown in red. This is useful for spotting systematic patterns, such as an entire block of questions being skipped.
+- A nullity matrix: a visual grid where each row is a record and each column is a variable, with missing values shown in red. This is useful for spotting systematic patterns, such as when respondents skip an entire block of questions.
 
 ![The Missing Data tab showing the nullity matrix and per-column missing rate table.](images/datasure_nullity_matrix.png){fig-alt="DataSure DQA Report Missing Data tab showing a nullity matrix grid with red blocks indicating missing values, alongside a per-column missing rate table sorted by highest missingness." .lightbox}
 
@@ -543,17 +543,17 @@ The tab requires additional setup before showing results. Click **Add Outlier Co
    - `startswith` / `endswith`: Match by prefix or suffix
    - `regex`: Use a regular expression pattern
 
-2. **Detection Method**: Choose how outliers are identified:
+2. **Detection Method**: Choose how the tool identifies outliers:
    - **IQR (Interquartile Range)**: The default method. Flags values more than 1.5 times the IQR above the 75th percentile or below the 25th percentile. Robust to extreme values and recommended for most survey data.
    - **Standard Deviation**: Flags values more than 3 standard deviations from the mean. More sensitive; suitable when the data is approximately normally distributed.
 
 3. **Multiplier**: Adjust the sensitivity threshold. Lower values (for example, IQR multiplier of 1.0) flag more records; higher values flag fewer. Start with the default and adjust based on domain knowledge.
 
-4. **Soft Minimum / Soft Maximum** (optional): Set known valid ranges for a variable. Any value below the soft minimum or above the soft maximum is flagged as an outlier regardless of the statistical threshold. For example, land area should always be greater than 0, and age should be between 15 and 95.
+4. **Soft Minimum / Soft Maximum** (optional): Set known valid ranges for a variable. The tool flags any value below the soft minimum or above the soft maximum as an outlier regardless of the statistical threshold. For example, land area should always be greater than 0, and age should be between 15 and 95.
 
 ![The Add Outlier Column dialog showing the column search field, detection method selector, multiplier input, and soft min/max fields.](images/datasure_outlier_config.png){fig-alt="DataSure Outliers tab Add Outlier Column dialog with a column search field, detection method dropdown showing IQR and Standard Deviation options, a multiplier input, and optional soft minimum and maximum fields." .lightbox}
 
-The results show a summary table with outlier counts and statistics per column, and a record-level table listing each flagged value with the reason it was flagged. Clicking on a column shows a box plot with outliers highlighted.
+The results show a summary table with outlier counts and statistics per column, and a record-level table listing each flagged value and why the tool flagged it. Clicking on a column shows a box plot with outliers highlighted.
 
 ### Enumerator Stats tab
 
@@ -574,7 +574,7 @@ The tab shows:
 
 The GPS Checks tab validates geographic coordinate data.
 
-Configure the tab to specify whether your GPS data is stored as separate latitude and longitude columns or as a single combined column. Optionally specify an accuracy column (SurveyCTO stores GPS accuracy in a separate column).
+Configure the tab to specify whether your GPS data uses separate latitude and longitude columns or a single combined column. Optionally specify an accuracy column (SurveyCTO stores GPS accuracy in a separate column).
 
 The results show:
 
@@ -628,18 +628,18 @@ Navigate to **Correct Data** from the sidebar.
 | ------ | ----------- | ------- |
 | **Modify Value** | Fix a specific value in a column | Correcting a typo in a household ID from `UP015-005` to `UP015-055` |
 | **Remove Row** | Delete an entire record | Removing a test submission or a fully duplicated record after investigation |
-| **Remove Value** | Set a specific value to missing | Removing an implausible income value that cannot be corrected |
+| **Remove Value** | Set a specific value to missing | Removing a value which should be missing if the skip pattern worked correctly |
 
-4. Select the **Column** to modify (not required for Remove Row).
-5. Enter the new value, or confirm the removal.
-6. Enter a **Reason** for the correction. This field is required and becomes part of the permanent audit trail. Write reasons that will be meaningful to a future reviewer who was not present during data collection.
+1. Select the **Column** to modify (not required for Remove Row).
+2. Enter the new value, or confirm the removal.
+3. Enter a **Reason** for the correction. You must complete this field, and the system adds it to the permanent audit trail. Write reasons that will be meaningful to a future reviewer who was not present during data collection.
 
    Good examples:
    - `"Duplicate record confirmed with supervisor -- original submission retained, duplicate removed"`
    - `"Household ID typo confirmed via field notes -- corrected from UP015-005 to UP015-055"`
    - `"Income value of 999999 is a data entry error confirmed by enumerator -- removed"`
 
-7. Click **Apply**.
+4. Click **Apply**.
 
 ![The Add Correction dialog showing the Key selector, Action dropdown, Column selector, Current Value, New Value, and Reason fields.](images/datasure_adding_correction.png){fig-alt="DataSure Correct Data page showing the Add Correction dialog with a Key selector, Action dropdown set to Modify Value, a Column selector, an auto populated Current Value field, a New Value input, and a required Reason field." .lightbox}
 
@@ -659,7 +659,7 @@ Corrections should always follow an investigation, not precede one. Before corre
 6. If the issue reflects a training or process problem, follow up with the enumerator to prevent recurrence.
 
 ::: {.callout-warning}
-Do not remove or modify records before investigating their root cause. A duplicate ID, for example, may be a data entry error in one record, or it may indicate that a respondent was surveyed twice. The correct action depends on the investigation outcome.
+Do not remove or modify records before investigating their root cause. A duplicate ID, for example, may be a data entry error in one record, or it may indicate that the team surveyed a respondent twice. The correct action depends on the investigation outcome.
 :::
 
 ![The Correct Data page showing the correction history table with logged corrections, reasons, and timestamps.](images/datasure_corrections_log.png){fig-alt="DataSure Correct Data page displaying the correction history table with multiple logged entries, each showing the action type, affected column, original value, new value, reason, and timestamp." .lightbox}
@@ -672,7 +672,7 @@ Navigate to **Replication Package** from the sidebar.
 
 ### What the replication package contains
 
-The zip file is organized into a structured folder layout:
+DataSure organizes the zip file into a structured folder layout:
 
 ```
 replication_[project]_[page]/
@@ -706,9 +706,9 @@ If you imported your data from SurveyCTO, DataSure will also attempt to download
 ### Building the package
 
 1. On the **Replication Package** page, select the **Page Name** corresponding to the check configuration you want to export.
-2. Review the configuration details that appear below the selector to confirm the correct dataset and key column are shown.
+2. Review the configuration details that appear below the selector to confirm that DataSure shows the correct dataset and key column.
 3. Expand **What is inside the zip?** to preview the full directory structure before building.
-4. Click **Build Replication Package**. DataSure assembles the package in the background and shows progress as each component is built.
+4. Click **Build Replication Package**. DataSure assembles the package in the background and shows progress as it builds each component.
 
 {{< video images/datasure_replication_export.mp4 title="The Replication Package page showing the page selector, configuration details, directory tree preview, and the Build Replication Package button." >}}
 
@@ -730,10 +730,10 @@ After the build is complete:
 
 ### Who should use the replication package
 
-The replication package is intended for:
+Use the replication package for:
 
 - **Archiving at project closure**: Submit the package alongside your final dataset so that future researchers or auditors can reproduce your data processing pipeline.
-- **Peer review and verification**: Share with a colleague or IPA's GRDS team to verify that corrections and prep steps were applied correctly.
+- **Peer review and verification**: Share with a colleague or IPA's GRDS team to verify that the team applied corrections and prep steps correctly.
 - **Handover**: If a project changes hands, the package provides a complete record of every decision made during data cleaning.
 
 ## Keeping DataSure Up to Date
