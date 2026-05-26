@@ -48,7 +48,7 @@ license:
 
 Before installing DataSure, confirm you have the following:
 
-- **uv**, a Python package manager used to install DataSure. When you install DataSure with `uv`, it automatically installs the correct version of Python and all required dependencies. You do not need to install Python separately. Installation steps are covered below.
+- **uv**, a Python package manager used to install DataSure. When you install DataSure with `uv`, it automatically installs the correct version of Python and all required dependencies. The sections below cover the installation steps.
 - At least **4 GB of RAM** and **1 GB of free storage**.
 
 ::: {.callout-note}
@@ -57,7 +57,7 @@ If you are not comfortable working in a terminal, ask your IT support team or a 
 
 ## Installing DataSure
 
-DataSure is installed as a command-line tool using `uv`.
+Install DataSure as a command-line tool using `uv`.
 
 ### Step 1: Install uv
 
@@ -79,7 +79,7 @@ uv tool update-shell
 brew install uv
 ```
 
-If you run into any issues installing `uv`, refer to the [uv installation documentation](https://docs.astral.sh/uv/getting-started/installation/) for additional installation methods and troubleshooting guidance. For more on using `uv` with Python projects, see [Python with uv](../../software/virtualenv/python-uv.qmd).
+If you run into any issues installing `uv`, see the [uv installation documentation](https://docs.astral.sh/uv/getting-started/installation/) for additional installation methods and troubleshooting guidance. For more on using `uv` with Python projects, see [Python with uv](../../software/virtualenv/python-uv.qmd).
 
 ### Step 2: Install DataSure
 
@@ -93,7 +93,7 @@ uv tool install datasure
 datasure --version
 ```
 
-You should see a version number, for example `datasure 1.0.0`. If you see an error, confirm that `uv` is installed correctly and that your system path was updated after installation.
+You should see a version number, for example `datasure 1.0.0`. If you see an error, confirm that you installed `uv` correctly and that your system path updated after installation.
 
 ## Launching DataSure
 
@@ -138,23 +138,23 @@ If this is your first time using DataSure, start with Demo Mode before working w
 Demo Mode uses two sample datasets based on a fictional household survey in rural India:
 
 - **demo_survey**: 132 household survey responses covering demographics, income, land ownership, education access, and living conditions
-- **demo_backcheck**: 30 re-interview validation records matched to the survey data by household ID (`hhid`)
+- **demo_backcheck**: 30 re-interview validation records matched to the survey data by household ID eg. `hhid`.
 
 Both datasets contain intentional data quality issues, including missing values, duplicate household IDs, and numeric outliers, so you can practice identifying and correcting real problems.
 
 ### Following demo guidance
 
-Throughout Demo Mode, look for the light blue **Learn More** boxes that appear on each page. These boxes explain what to do at each step and why, and they include specific instructions tailored to the demo data. They are expanded by default; click to collapse them once you have read them.
+Throughout Demo Mode, look for the light blue **Learn More** boxes that appear on each page. These boxes explain what to do at each step and why, and they include specific instructions tailored to the demo data. DataSure expands them by default; click to collapse them once you have read them.
 
 ![An expanded Learn More box on the Configure Checks page showing step-by-step demo instructions.](images/datasure_demo_configure_page_learn_more.png){fig-alt="Expanded Learn More information box on the Configure Checks page displaying step-by-step instructions for the demo configuration." .lightbox}
 
-The demo tracks your progress through a seven-step indicator at the top of each page. Steps you have completed are marked, and your current step is highlighted.
+The demo tracks your progress through a seven-step indicator at the top of each page. The indicator marks completed steps, and DataSure highlights your current step.
 
 After completing all seven steps, DataSure will confirm that the demo is complete and give you the option to restart the demo or end it. You can then create your own project from the **Start Here** page.
 
 ## Step 1: Create or Open a Project
 
-Each survey or data collection exercise in DataSure is organized as a **project**. A project stores your imported datasets, configuration settings, quality check outputs, correction history, and prep logs, all in a local cache on your computer.
+DataSure organizes each survey or data collection exercise as a **project**. A project stores your imported datasets, configuration settings, quality check outputs, correction history, and prep logs, all in a local cache on your computer.
 
 ### Creating a new project
 
@@ -172,7 +172,7 @@ Use one project per survey wave or data collection phase. A consistent naming co
 ### Opening an existing project
 
 1. On the **Start Here** page, select the project from the dropdown. DataSure automatically highlights the most recently used project.
-2. The project's creation date and last-used date are shown below the selector.
+2. DataSure shows the project's creation date and last-used date below the selector.
 3. Click **Load Project**.
 
 ### Deleting a project
@@ -183,7 +183,7 @@ To permanently delete a project and all its data, expand the **Delete Project** 
 
 ## Step 2: Import Data
 
-DataSure supports two ways to get data into a project: connecting directly to a SurveyCTO server, or uploading a local file. You can import multiple datasets per project, up to 10 in total. Navigate to the **Import Data** page from the sidebar.
+DataSure supports 2 ways to get data into a project: connecting directly to a SurveyCTO server, or uploading a local file. You can import multiple datasets per project, up to 10 in total. Navigate to the **Import Data** page from the sidebar.
 
 ### Option A: Import from SurveyCTO
 
@@ -193,7 +193,7 @@ To use SurveyCTO integration, you will need your SurveyCTO server name, username
 
 1. On the **Import Data** page, click the **SurveyCTO** tab.
 2. Enter your server credentials:
-   - **Server Name**: The prefix of your SurveyCTO server URL. For example, if your server is `yourserver.surveycto.com`, enter only `yourserver`.
+   - **Server Name**: The prefix of your SurveyCTO server address. For example, if your server is `yourserver.surveycto.com`, enter only `yourserver`.
    - **Username**: Your SurveyCTO account username
    - **Password**: Your SurveyCTO account password
 3. Click **Connect**. DataSure will retrieve the list of forms available on your server.
@@ -205,7 +205,7 @@ To use SurveyCTO integration, you will need your SurveyCTO server name, username
 
 ### Option B: Upload a local file
 
-DataSure accepts the following file formats: CSV (`.csv`), Excel (`.xlsx`, `.xls`), Stata (`.dta`), and JSON (`.json`).
+DataSure accepts the following file formats: CSV - `.csv`, Excel - `.xlsx`, `.xls`), Stata - `.dta`, and JSON - `.json`.
 
 1. On the **Import Data** page, click the **Local Files** tab.
 2. Drag and drop your file into the upload area, or click **Browse** to select it.
@@ -220,10 +220,10 @@ DataSure accepts the following file formats: CSV (`.csv`), Excel (`.xlsx`, `.xls
 
 ### Reviewing imported data
 
-After importing, DataSure shows a preview of your dataset with column names, data types, row and column counts, and the first 100 rows. Review this preview carefully before moving on:
+After importing, DataSure shows a preview of your dataset with column names, data types, row and column counts, and the first 100 rows. Review this preview before moving on:
 
 - Are column names what you expect?
-- Do data types look correct? (Dates often import as text and will need to be converted in the Prepare Data step.)
+- Do data types look correct? Dates often import as text, and you will need to convert them in the Prepare Data step.
 - Does the row count match what you expect from your server or file?
 
 You can return to the Import Data page at any time to refresh your data from SurveyCTO or re-upload an updated file. DataSure will replace the existing version of the dataset.
@@ -234,15 +234,15 @@ If you are running backchecks, import both your survey dataset and your backchec
 
 ## Step 3: Prepare Your Data
 
-The **Prepare Data** page lets you clean and transform imported datasets before running quality checks. All preparation steps are logged automatically and later used to generate Stata do-files in the Replication Package. Navigate to it from the sidebar.
+The **Prepare Data** page lets you clean and transform imported datasets before running quality checks. DataSure logs all preparation steps automatically and later uses them to generate Stata do-files in the Replication Package. Navigate to it from the sidebar.
 
 Most projects need at least one preparation step: converting date columns from text to datetime format. DataSure requires date columns to be in datetime format for several quality check modules to function correctly.
 
 ### Why data preparation matters
 
-SurveyCTO data is typically well-structured because column types are determined by the XLS form design. Most columns arrive in the correct format and do not require transformation. However, one common exception is **calculate fields**: these are fields where SurveyCTO computes a value automatically (for example, a calculated age or a score), but stores the result as a string rather than a number. If you need to use a calculate field in outlier detection or descriptive statistics, you will need to convert it to numeric using the Transform Column action.
+SurveyCTO data is typically well-structured because the XLS form design determines column types. Most columns arrive in the correct format and do not require transformation. However, one common exception is **calculate fields**: these are fields where SurveyCTO computes a value automatically - a calculated age or a score - but stores the result as a string rather than a number. If you need to use a calculate field in outlier detection or descriptive statistics, you will need to convert it to numeric using the Transform Column action.
 
-For data imported from CSV or other flat files, additional preparation may be needed, such as converting date strings to datetime format or standardizing inconsistent text casing in ID columns.
+For data imported from CSV or other flat files, you may need additional preparation, such as converting date strings to datetime format or standardizing inconsistent text casing in ID columns.
 
 ### Available transformation functions
 
@@ -252,7 +252,7 @@ The **Transform Column** action supports the following functions:
 | -------- | ------------ | ---------------- |
 | **string to datetime** | Converts a text column containing date or timestamp values into a proper datetime format | Convert `submissiondate` from `"2024-03-15 08:42:00"` to a datetime value so it works correctly in date-based checks |
 | **string to numeric** | Converts a text column containing numbers into a numeric type | Convert a SurveyCTO calculate field storing a computed score as text into a number for outlier detection |
-| **string to uppercase** | Converts all text in a column to uppercase | Standardize an ID column where some values were entered as `"hh001"` and others as `"HH001"` |
+| **string to uppercase** | Converts all text in a column to uppercase | Standardize an ID column where enumerators entered some values as `"hh001"` and others as `"HH001"` |
 | **string to lowercase** | Converts all text in a column to lowercase | Normalize enumerator name entries for consistent grouping |
 | **extract pattern** | Extracts a substring matching a regular expression from each value in a column | Extract a district code from a composite ID field |
 | **mathematical operation** | Applies an arithmetic operation (add, subtract, multiply, divide) to a numeric column | Divide a duration column from milliseconds to seconds |
@@ -264,7 +264,7 @@ The **Transform Column** action supports the following functions:
 | Action | What it Does | Example Use Case |
 | ------ | ------------ | ---------------- |
 | **Transform Column** | Convert or modify values in an existing column | Convert `submissiondate` from text to datetime; convert `enum_name` to uppercase |
-| **Add Column** | Create a new column, including unique identifiers | Add a UUID key column if the dataset does not have one |
+| **Add Column** | Create a column, including unique identifiers | Add a UUID key column if the dataset does not have one |
 | **Remove Column** | Delete a column from the dataset | Remove PII columns not needed for quality checks |
 | **Remove Row** | Filter out rows matching a condition | Remove test submissions or rows with a specific flag value |
 
@@ -299,7 +299,7 @@ Use **Transform Column** to modify values in an existing column. Select a column
 | Function | What it Does | Example |
 | -------- | ------------ | ------- |
 | Add | Add a constant value to every row | Add an offset to correct a systematic entry error |
-| Multiply | Multiply every value by a constant | Convert a distance column from kilometers to meters |
+| Multiply | Multiply every value by a constant | Convert a distance column from km to m |
 | Subtract | Subtract a constant value from every row | Subtract a baseline offset from a numeric response |
 | Divide | Divide every value by a constant | Convert `duration` from milliseconds to seconds |
 | Round | Round values to a specified number of decimal places | Round GPS accuracy to two decimal places |
@@ -441,7 +441,7 @@ If you have imported a backcheck dataset, you can link it to this configuration 
 
 | Field | What It Represents | Example Values |
 | ----- | ------------------ | -------------- |
-| **Backcheck Date Column** | The date of the re-interview visit | `submissiondate`, `bc_date` |
+| **Backcheck Date Column** | The date of the re-interview | `submissiondate`, `bc_date` |
 | **Backchecker Column** | The identifier of the person conducting the re-interview | `bcer_name`, `backchecker_id` |
 | **Backchecker Team Column** (optional) | The team the backchecker belongs to | `team_id`, `bc_team` |
 | **Target Percentage** (optional) | The target proportion of interviews to backcheck, as a percentage | `10` for 10% |
@@ -565,10 +565,10 @@ The tab shows:
 
 - **Overview metrics**: Total enumerators, active enumerators in the past 7 days, and submission range across enumerators
 - **Enumerator summary table**: Per-enumerator statistics including total submissions, active days, missing value rates, mean and median interview duration, and consent and completion rates
-- **Productivity heatmap**: A grid showing how many interviews each enumerator completed per day. This makes it easy to spot enumerators who stopped submitting or whose output dropped suddenly.
+- **Productivity heat map**: A grid showing how many interviews each enumerator completed per day. This makes it easy to spot enumerators who stopped submitting or whose output dropped suddenly.
 - **Statistics by enumerator**: Compare any numeric column across enumerators to detect systematic differences in how questions were answered
 
-![The Enumerator Stats tab showing the productivity heatmap with enumerators as rows and dates as columns.](images/datasure_enumerator_stats.png){fig-alt="DataSure DQA Report Enumerator Stats tab displaying a productivity heatmap grid with enumerators as rows and collection dates as columns, colored by submission count per day." .lightbox}
+![The Enumerator Stats tab showing the productivity heat map with enumerators as rows and dates as columns.](images/datasure_enumerator_stats.png){fig-alt="DataSure DQA Report Enumerator Stats tab displaying a productivity heat map grid with enumerators as rows and collection dates as columns, colored by submission count per day." .lightbox}
 
 ### GPS Checks tab
 
@@ -720,9 +720,9 @@ The replication package includes raw survey data, which may contain personally i
 See [IPA's Data Security Protocol](../../data-security/data-security-protocol.qmd) for guidance on approved storage.
 :::
 
-Once the build is complete:
+After the build is complete:
 
-1. Read the PII warning carefully.
+1. Read the PII warning.
 2. Check the confirmation box to confirm you are saving to an encrypted location.
 3. Click **Download replication package (.zip)**.
 
