@@ -38,9 +38,9 @@ license:
 
 - DataSure follows a seven-step workflow: create a project, import data, prepare data, configure checks, review DQA reports, correct data, and export a replication package.
 - First-time users should start with Demo Mode, which provides a guided walkthrough using sample household survey data.
-- Data can be imported directly from a SurveyCTO server or uploaded as a CSV, Excel, Stata, or JSON file.
+- You can import data directly from a SurveyCTO server or upload it as a CSV, Excel, Stata, or JSON file.
 - Quality check reports update automatically each time you import new data.
-- The Replication Package exports auto-generated Stata do-files and audit logs, allowing anyone to reproduce your corrected dataset from raw source data.
+- The Replication Package exports auto generated Stata do-files and audit logs, allowing anyone to reproduce your corrected dataset from raw source data.
 
 :::
 
@@ -372,17 +372,17 @@ Use **Remove Row** to filter out rows that match a condition. Select a column, a
 
 | Condition | What it Does | Example |
 | --------- | ------------ | ------- |
-| Missing | Keep only rows where the column value is null or empty | Remove rows with no submission date |
-| Not Missing | Keep only rows where the column value is not null | Remove rows missing the respondent ID |
+| Missing | Keep only rows where the column value is null or empty | Remove rows where submission date is empty |
+| Not Missing | Keep only rows where the column value is not null | Remove rows where respondent ID is missing |
 | Equal To | Keep only rows where the value equals a specified value | Remove rows where `is_test == 1` |
 | Not Equal To | Keep only rows where the value does not equal a specified value | Retain only consented interviews where `consent != 0` |
 | Greater Than | Keep only rows where the value is greater than a threshold | Remove rows where `duration > 7200` (more than 2 hours) |
 | Less Than | Keep only rows where the value is less than a threshold | Remove rows where `duration < 60` (less than one minute) |
 | Greater Than or Equal To | Keep only rows where the value is greater than or equal to a threshold | Retain rows where `age >= 18` |
 | Less Than or Equal To | Keep only rows where the value is less than or equal to a threshold | Remove rows where `progress_pct <= 0` |
-| Between | Keep only rows where the value falls within a specified range (inclusive) | Retain rows where `duration` is between 180 and 3600 seconds |
+| Between | Keep only rows where the value falls within a specified range (inclusive) | Retain rows where `duration` is between 180 and 3,600 seconds |
 | Not Between | Keep only rows where the value falls outside a specified range | Remove rows where `age` is not between 15 and 65 |
-| Like | Keep only rows where the string value matches a pattern (case-insensitive substring match) | Remove rows where `enum_name` contains `"test"` |
+| Like | Keep only rows where the string value matches a pattern ie. case-insensitive substring match | Remove rows where `enum_name` contains `"test"` |
 | Not Like | Keep only rows where the string value does not match a pattern | Retain rows where `status` does not contain `"draft"` |
 
 :::
@@ -606,7 +606,7 @@ Before reviewing results, configure the tab:
 3. Click **Add a back check column** for each variable to validate. For each column, set:
    - **Category**: A grouping number (1, 2, 3) used to organize columns in the results table
    - **OK Range**: For numeric variables, the maximum acceptable difference between the original and re-interview response. For example, an OK range of 5 for an age variable means differences of up to 5 years are not counted as errors.
-   - **Comparison Condition**: Whether to skip comparisons when a value is missing in either dataset (`ignore_missing_values`) or compare all records including those with missing values (`compare_all`)
+   - **Comparison Condition**: Whether to skip comparisons when a value is missing in either dataset, `ignore_missing_values`, or compare all records including those with missing values, `compare_all`
 
 The results show error rates by column, by enumerator, and by back-checker, along with a record-level table showing each comparison.
 
@@ -614,7 +614,7 @@ The results show error rates by column, by enumerator, and by back-checker, alon
 
 ## Step 6: Correct Data
 
-The **Correct Data** page provides a structured workflow for fixing data quality issues found in your DQA Reports. Every correction is logged with the original value, new value, reason, action type, and timestamp. This creates a full audit trail that is also used to auto-generate Stata do-files in the Replication Package.
+The **Correct Data** page provides a structured workflow for fixing data quality issues found in your DQA Reports. The system logs every correction with the original value, new value, reason, action type, and timestamp. This creates a full audit trail that is also used to auto generate Stata do-files in the Replication Package.
 
 Navigate to **Correct Data** from the sidebar.
 
@@ -641,7 +641,7 @@ Navigate to **Correct Data** from the sidebar.
 
 7. Click **Apply**.
 
-![The Add Correction dialog showing the Key selector, Action dropdown, Column selector, Current Value, New Value, and Reason fields.](images/datasure_adding_correction.png){fig-alt="DataSure Correct Data page showing the Add Correction dialog with a Key selector, Action dropdown set to Modify Value, a Column selector, an auto-populated Current Value field, a New Value input, and a required Reason field." .lightbox}
+![The Add Correction dialog showing the Key selector, Action dropdown, Column selector, Current Value, New Value, and Reason fields.](images/datasure_adding_correction.png){fig-alt="DataSure Correct Data page showing the Add Correction dialog with a Key selector, Action dropdown set to Modify Value, a Column selector, an auto populated Current Value field, a New Value input, and a required Reason field." .lightbox}
 
 ### Verifying a correction
 
@@ -699,15 +699,15 @@ replication_[project]_[page]/
         └── prep_log.csv
 ```
 
-The Stata do-files (`2_import_data.do`, `3_prepare_data.do`, `4_corrections.do`) are **auto-generated** by DataSure from the preparation steps and corrections you logged during your project. You do not need to write any Stata code yourself. Running `0_main.do` in Stata will reproduce the full corrected dataset from scratch.
+The Stata do-files `2_import_data.do`, `3_prepare_data.do`, and `4_corrections.do` are **auto generated** by DataSure from the preparation steps and corrections you logged during your project. You do not need to write any Stata code yourself. Running `0_main.do` in Stata will reproduce the full corrected dataset from scratch.
 
-If your data was imported from SurveyCTO, DataSure will also attempt to download the survey questionnaire (`.xlsx`) from the server and include it in the `1_docs/1_surveys/` folder.
+If you imported your data from SurveyCTO, DataSure will also attempt to download the survey questionnaire XLS file from the server and include it in the `1_docs/1_surveys/` folder.
 
 ### Building the package
 
 1. On the **Replication Package** page, select the **Page Name** corresponding to the check configuration you want to export.
 2. Review the configuration details that appear below the selector to confirm the correct dataset and key column are shown.
-3. Expand **What's inside the zip?** to preview the full directory structure before building.
+3. Expand **What is inside the zip?** to preview the full directory structure before building.
 4. Click **Build Replication Package**. DataSure assembles the package in the background and shows progress as each component is built.
 
 {{< video images/datasure_replication_export.mp4 title="The Replication Package page showing the page selector, configuration details, directory tree preview, and the Build Replication Package button." >}}
