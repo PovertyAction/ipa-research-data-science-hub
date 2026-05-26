@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-05-18">
 <meta name="keywords" content="data quality, high-frequency checks, data management system, SurveyCTO, survey monitoring, DataSure, how-to guide">
 
 <title>How to Use DataSure – Research and Data Science Hub</title>
@@ -88,6 +89,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-35c4bb6c53409ee33a003c94d67a4bc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-6dbe7ce2d847a4c2e319a01f0fb7f481.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-35c4bb6c53409ee33a003c94d67a4bc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -1559,35 +1565,63 @@ cookieconsent.run({
     <ul class="collapse">
     <li><a href="#command-line-options" id="toc-command-line-options" class="nav-link" data-scroll-target="#command-line-options">Command-line options</a></li>
     </ul></li>
-    <li><a href="#getting-familiar-try-demo-mode-first" id="toc-getting-familiar-try-demo-mode-first" class="nav-link" data-scroll-target="#getting-familiar-try-demo-mode-first">Getting Familiar: Try Demo Mode First</a></li>
-    <li><a href="#step-1-create-or-open-a-project" id="toc-step-1-create-or-open-a-project" class="nav-link" data-scroll-target="#step-1-create-or-open-a-project">Step 1: Create or Open a Project</a></li>
+    <li><a href="#getting-familiar-try-demo-mode-first" id="toc-getting-familiar-try-demo-mode-first" class="nav-link" data-scroll-target="#getting-familiar-try-demo-mode-first">Getting Familiar: Try Demo Mode First</a>
+    <ul class="collapse">
+    <li><a href="#starting-demo-mode" id="toc-starting-demo-mode" class="nav-link" data-scroll-target="#starting-demo-mode">Starting Demo Mode</a></li>
+    <li><a href="#what-the-demo-includes" id="toc-what-the-demo-includes" class="nav-link" data-scroll-target="#what-the-demo-includes">What the demo includes</a></li>
+    <li><a href="#following-demo-guidance" id="toc-following-demo-guidance" class="nav-link" data-scroll-target="#following-demo-guidance">Following demo guidance</a></li>
+    </ul></li>
+    <li><a href="#step-1-create-or-open-a-project" id="toc-step-1-create-or-open-a-project" class="nav-link" data-scroll-target="#step-1-create-or-open-a-project">Step 1: Create or Open a Project</a>
+    <ul class="collapse">
+    <li><a href="#creating-a-new-project" id="toc-creating-a-new-project" class="nav-link" data-scroll-target="#creating-a-new-project">Creating a new project</a></li>
+    <li><a href="#opening-an-existing-project" id="toc-opening-an-existing-project" class="nav-link" data-scroll-target="#opening-an-existing-project">Opening an existing project</a></li>
+    <li><a href="#deleting-a-project" id="toc-deleting-a-project" class="nav-link" data-scroll-target="#deleting-a-project">Deleting a project</a></li>
+    </ul></li>
     <li><a href="#step-2-import-data" id="toc-step-2-import-data" class="nav-link" data-scroll-target="#step-2-import-data">Step 2: Import Data</a>
     <ul class="collapse">
     <li><a href="#option-a-import-from-surveycto" id="toc-option-a-import-from-surveycto" class="nav-link" data-scroll-target="#option-a-import-from-surveycto">Option A: Import from SurveyCTO</a></li>
-    <li><a href="#option-b-upload-a-local-file" id="toc-option-b-upload-a-local-file" class="nav-link" data-scroll-target="#option-b-upload-a-local-file">Option B: Upload a Local File</a></li>
+    <li><a href="#option-b-upload-a-local-file" id="toc-option-b-upload-a-local-file" class="nav-link" data-scroll-target="#option-b-upload-a-local-file">Option B: Upload a local file</a></li>
     <li><a href="#reviewing-imported-data" id="toc-reviewing-imported-data" class="nav-link" data-scroll-target="#reviewing-imported-data">Reviewing imported data</a></li>
     </ul></li>
     <li><a href="#step-3-prepare-your-data" id="toc-step-3-prepare-your-data" class="nav-link" data-scroll-target="#step-3-prepare-your-data">Step 3: Prepare Your Data</a>
     <ul class="collapse">
-    <li><a href="#converting-a-date-column-to-datetime" id="toc-converting-a-date-column-to-datetime" class="nav-link" data-scroll-target="#converting-a-date-column-to-datetime">Converting a date column to datetime</a></li>
-    <li><a href="#other-preparation-actions" id="toc-other-preparation-actions" class="nav-link" data-scroll-target="#other-preparation-actions">Other preparation actions</a></li>
+    <li><a href="#why-data-preparation-matters" id="toc-why-data-preparation-matters" class="nav-link" data-scroll-target="#why-data-preparation-matters">Why data preparation matters</a></li>
+    <li><a href="#available-transformation-functions" id="toc-available-transformation-functions" class="nav-link" data-scroll-target="#available-transformation-functions">Available transformation functions</a></li>
+    <li><a href="#all-available-preparation-actions" id="toc-all-available-preparation-actions" class="nav-link" data-scroll-target="#all-available-preparation-actions">All available preparation actions</a></li>
+    <li><a href="#reviewing-and-editing-preparation-steps" id="toc-reviewing-and-editing-preparation-steps" class="nav-link" data-scroll-target="#reviewing-and-editing-preparation-steps">Reviewing and editing preparation steps</a></li>
     </ul></li>
     <li><a href="#step-4-configure-quality-checks" id="toc-step-4-configure-quality-checks" class="nav-link" data-scroll-target="#step-4-configure-quality-checks">Step 4: Configure Quality Checks</a>
     <ul class="collapse">
     <li><a href="#creating-a-check-configuration" id="toc-creating-a-check-configuration" class="nav-link" data-scroll-target="#creating-a-check-configuration">Creating a check configuration</a></li>
+    <li><a href="#survey-columns" id="toc-survey-columns" class="nav-link" data-scroll-target="#survey-columns">Survey columns</a></li>
+    <li><a href="#backcheck-dataset-optional" id="toc-backcheck-dataset-optional" class="nav-link" data-scroll-target="#backcheck-dataset-optional">Backcheck dataset (optional)</a></li>
+    <li><a href="#editing-and-removing-configurations" id="toc-editing-and-removing-configurations" class="nav-link" data-scroll-target="#editing-and-removing-configurations">Editing and removing configurations</a></li>
     </ul></li>
     <li><a href="#step-5-review-your-dqa-reports" id="toc-step-5-review-your-dqa-reports" class="nav-link" data-scroll-target="#step-5-review-your-dqa-reports">Step 5: Review Your DQA Reports</a>
     <ul class="collapse">
-    <li><a href="#using-report-tabs" id="toc-using-report-tabs" class="nav-link" data-scroll-target="#using-report-tabs">Using report tabs</a></li>
-    <li><a href="#summary-of-check-tabs" id="toc-summary-of-check-tabs" class="nav-link" data-scroll-target="#summary-of-check-tabs">Summary of check tabs</a></li>
-    <li><a href="#configuring-the-outliers-tab" id="toc-configuring-the-outliers-tab" class="nav-link" data-scroll-target="#configuring-the-outliers-tab">Configuring the Outliers tab</a></li>
-    <li><a href="#configuring-the-back-checks-tab" id="toc-configuring-the-back-checks-tab" class="nav-link" data-scroll-target="#configuring-the-back-checks-tab">Configuring the Back Checks tab</a></li>
+    <li><a href="#navigating-check-tabs" id="toc-navigating-check-tabs" class="nav-link" data-scroll-target="#navigating-check-tabs">Navigating check tabs</a></li>
+    <li><a href="#summary-tab" id="toc-summary-tab" class="nav-link" data-scroll-target="#summary-tab">Summary tab</a></li>
+    <li><a href="#survey-progress-tab" id="toc-survey-progress-tab" class="nav-link" data-scroll-target="#survey-progress-tab">Survey Progress tab</a></li>
+    <li><a href="#duplicates-tab" id="toc-duplicates-tab" class="nav-link" data-scroll-target="#duplicates-tab">Duplicates tab</a></li>
+    <li><a href="#missing-data-tab" id="toc-missing-data-tab" class="nav-link" data-scroll-target="#missing-data-tab">Missing Data tab</a></li>
+    <li><a href="#outliers-tab" id="toc-outliers-tab" class="nav-link" data-scroll-target="#outliers-tab">Outliers tab</a></li>
+    <li><a href="#enumerator-stats-tab" id="toc-enumerator-stats-tab" class="nav-link" data-scroll-target="#enumerator-stats-tab">Enumerator Stats tab</a></li>
+    <li><a href="#gps-checks-tab" id="toc-gps-checks-tab" class="nav-link" data-scroll-target="#gps-checks-tab">GPS Checks tab</a></li>
+    <li><a href="#descriptive-stats-tab" id="toc-descriptive-stats-tab" class="nav-link" data-scroll-target="#descriptive-stats-tab">Descriptive Stats tab</a></li>
+    <li><a href="#back-checks-tab" id="toc-back-checks-tab" class="nav-link" data-scroll-target="#back-checks-tab">Back Checks tab</a></li>
     </ul></li>
     <li><a href="#step-6-correct-data" id="toc-step-6-correct-data" class="nav-link" data-scroll-target="#step-6-correct-data">Step 6: Correct Data</a>
     <ul class="collapse">
     <li><a href="#adding-a-correction" id="toc-adding-a-correction" class="nav-link" data-scroll-target="#adding-a-correction">Adding a correction</a></li>
     <li><a href="#verifying-a-correction" id="toc-verifying-a-correction" class="nav-link" data-scroll-target="#verifying-a-correction">Verifying a correction</a></li>
     <li><a href="#recommended-correction-workflow" id="toc-recommended-correction-workflow" class="nav-link" data-scroll-target="#recommended-correction-workflow">Recommended correction workflow</a></li>
+    </ul></li>
+    <li><a href="#step-7-export-a-replication-package" id="toc-step-7-export-a-replication-package" class="nav-link" data-scroll-target="#step-7-export-a-replication-package">Step 7: Export a Replication Package</a>
+    <ul class="collapse">
+    <li><a href="#what-the-replication-package-contains" id="toc-what-the-replication-package-contains" class="nav-link" data-scroll-target="#what-the-replication-package-contains">What the replication package contains</a></li>
+    <li><a href="#building-the-package" id="toc-building-the-package" class="nav-link" data-scroll-target="#building-the-package">Building the package</a></li>
+    <li><a href="#downloading-the-package" id="toc-downloading-the-package" class="nav-link" data-scroll-target="#downloading-the-package">Downloading the package</a></li>
+    <li><a href="#who-should-use-the-replication-package" id="toc-who-should-use-the-replication-package" class="nav-link" data-scroll-target="#who-should-use-the-replication-package">Who should use the replication package</a></li>
     </ul></li>
     <li><a href="#keeping-datasure-up-to-date" id="toc-keeping-datasure-up-to-date" class="nav-link" data-scroll-target="#keeping-datasure-up-to-date">Keeping DataSure Up to Date</a></li>
     <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
@@ -1597,10 +1631,10 @@ cookieconsent.run({
   <ul>
         <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/ishmail-azindoo-baako" class="nav-link" data-scroll-target="https\://poverty-action.org/people/ishmail-azindoo-baako">Ishmail Azindoo Baako</a></li>
         <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/wesley-kirui" class="nav-link" data-scroll-target="https\://poverty-action.org/people/wesley-kirui">Wesley Kirui</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/niall-keleher" class="nav-link" data-scroll-target="https\://poverty-action.org/people/niall-keleher">Niall Keleher</a></li>
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
   <ul>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/niall-keleher" class="nav-link" data-scroll-target="https\://poverty-action.org/people/niall-keleher">Niall Keleher</a></li>
         <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/dania-ochoa" class="nav-link" data-scroll-target="https\://poverty-action.org/people/dania-ochoa">Dania Ochoa</a></li>
         <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/laura-lahoz" class="nav-link" data-scroll-target="https\://poverty-action.org/people/laura-lahoz">Laura Lahoz</a></li>
       </ul>
@@ -1620,7 +1654,7 @@ cookieconsent.run({
 
 <header id="title-block-header">
     
-        <p class="abstract"></p><p>A step-by-step guide to installing DataSure, setting up your first project, importing survey data, configuring quality checks, and reviewing your data quality reports. This guide is for data managers and survey coordinators implementing DataSure for field data collection.</p><p></p>
+        <p class="abstract"></p><p>A step-by-step guide to installing DataSure, setting up your first project, importing survey data, configuring quality checks, reviewing data quality reports, correcting data, and exporting a replication package. This guide is for data managers and survey coordinators implementing DataSure for field data collection.</p><p></p>
     
 </header>
 
@@ -1636,20 +1670,19 @@ cookieconsent.run({
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>DataSure follows a six-step workflow: create a project, import data, prepare data, configure checks, review DQA reports, and correct data.</li>
+<li>DataSure follows a seven-step workflow: create a project, import data, prepare data, configure checks, review DQA reports, correct data, and export a replication package.</li>
 <li>First-time users should start with Demo Mode, which provides a guided walkthrough using sample household survey data.</li>
-<li>Data can be imported directly from a SurveyCTO server or uploaded as a CSV, Excel, Stata, or JSON file.</li>
+<li>You can import data directly from a SurveyCTO server or upload it as a CSV, Excel, Stata, or JSON file.</li>
 <li>Quality check reports update automatically each time you import new data.</li>
+<li>The Replication Package exports auto generated Stata do-files and audit logs, allowing anyone to reproduce your corrected dataset from raw source data.</li>
 </ul>
 </div>
 </div>
 <section id="before-you-start" class="level2">
 <h2 class="anchored" data-anchor-id="before-you-start">Before You Start</h2>
-<p>Before installing DataSure, confirm you have:</p>
+<p>Before installing DataSure, confirm you have the following:</p>
 <ul>
-<li><strong>Python 3.11 or higher</strong> installed on your computer. To check, open a terminal and run <code>python --version</code> or <code>python3 --version</code>.</li>
-<li><strong>uv</strong>, a Python package manager. The installation steps below cover how to install it.</li>
-<li>A <strong>SurveyCTO account</strong> if you plan to connect directly to a SurveyCTO server. You will need your server URL, username, and password.</li>
+<li><strong>uv</strong>, a Python package manager used to install DataSure. When you install DataSure with <code>uv</code>, it automatically installs the correct version of Python and all required dependencies. The sections below cover the installation steps.</li>
 <li>At least <strong>4 GB of RAM</strong> and <strong>1 GB of free storage</strong>.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1662,22 +1695,22 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you are unsure whether Python is installed, or if you are not comfortable working in a terminal, ask your IT support team or a technically experienced colleague to help with the installation steps.</p>
+<p>If you are not comfortable working in a terminal, ask your IT support team or a technically experienced colleague to help with the installation steps.</p>
 </div>
 </div>
 </section>
 <section id="installing-datasure" class="level2">
 <h2 class="anchored" data-anchor-id="installing-datasure">Installing DataSure</h2>
-<p>DataSure is installed as a command-line tool using <code>uv</code>.</p>
+<p>Install DataSure as a command-line tool using <code>uv</code>.</p>
 <section id="step-1-install-uv" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-install-uv">Step 1: Install uv</h3>
 <p><strong>Windows:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install astral-sh.uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>After installing on Windows, run the following command to update your system path so that tools installed by <code>uv</code> are accessible from the terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool update-shell</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>macOS or Linux:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>After installation on Windows, run the following command to update your system path so that tools installed by <code>uv</code> are accessible:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool update-shell</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>For more on <code>uv</code>, see <a href="../../software/virtualenv/python-uv.html">Python with uv</a>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you run into any issues installing <code>uv</code>, see the <a href="https://docs.astral.sh/uv/getting-started/installation/">uv installation documentation</a> for additional installation methods and troubleshooting guidance. For more on using <code>uv</code> with Python projects, see <a href="../../software/virtualenv/python-uv.html">Python with uv</a>.</p>
 </section>
 <section id="step-2-install-datasure" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-install-datasure">Step 2: Install DataSure</h3>
@@ -1686,7 +1719,7 @@ Note
 <section id="step-3-verify-the-installation" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-verify-the-installation">Step 3: Verify the installation</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datasure</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You should see <code>datasure 0.8.0</code>. If you see an error, confirm that <code>uv</code> is installed correctly and that your system path was updated after installation.</p>
+<p>You should see a version number, for example <code>datasure 1.0.0</code>. If you see an error, confirm that you installed <code>uv</code> correctly and that your system path updated after installation.</p>
 </section>
 </section>
 <section id="launching-datasure" class="level2">
@@ -1694,7 +1727,13 @@ Note
 <p>To start DataSure, open a terminal and run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datasure</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>DataSure opens in your default web browser, typically at <code>http://localhost:8501</code>. Keep the terminal window open while you work; closing it will stop the application.</p>
-<p><em>[Screenshot: DataSure landing page showing the Start Here page with options to create a new project, open an existing project, or start Demo Mode.]</em></p>
+<p>You will land on the <strong>Start Here</strong> page, which is your home base for creating, selecting, and managing projects.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_start_page.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The DataSure Start Here page showing the welcome header, Learn More expandable section, and project selector."><img src="images/datasure_start_page.png" class="img-fluid figure-img" alt="DataSure Start Here page with welcome header, a collapsible Learn More section, and the project selector dropdown."></a></p>
+<figcaption>The DataSure Start Here page showing the welcome header, Learn More expandable section, and project selector.</figcaption>
+</figure>
+</div>
 <section id="command-line-options" class="level3">
 <h3 class="anchored" data-anchor-id="command-line-options">Command-line options</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch on a custom host and port</span></span>
@@ -1706,35 +1745,54 @@ Note
 </section>
 <section id="getting-familiar-try-demo-mode-first" class="level2">
 <h2 class="anchored" data-anchor-id="getting-familiar-try-demo-mode-first">Getting Familiar: Try Demo Mode First</h2>
-<p>If this is your first time using DataSure, work through Demo Mode before importing your own data. Demo Mode provides a complete guided walkthrough of all six steps using realistic sample household survey data, so you can explore the interface and understand the workflow without risk.</p>
-<p>To start Demo Mode:</p>
+<p>If this is your first time using DataSure, start with Demo Mode before working with your own data. Demo Mode loads a pre-built sample project and guides you through all seven steps of the DataSure workflow with realistic household survey data. It is the fastest way to understand how each part of the tool works without any risk to real project data.</p>
+<section id="starting-demo-mode" class="level3">
+<h3 class="anchored" data-anchor-id="starting-demo-mode">Starting Demo Mode</h3>
 <ol type="1">
-<li>Launch DataSure with <code>datasure</code>.</li>
-<li>On the <strong>Start Here</strong> page, click <strong>Start Demo</strong>.</li>
-<li>Follow the on-screen guidance at each step. Look for the yellow <strong>Learn More</strong> boxes, which explain what to do and what to expect.</li>
-</ol>
-<p>Demo Mode includes two sample datasets:</p>
+<li>On the <strong>Start Here</strong> page, select <strong>DataSure Demo</strong> from the project dropdown.</li>
+<li>If you have not run the demo before, click <strong>Start Demo</strong>. DataSure will automatically load the sample datasets.</li>
+<li>If you have run the demo previously, you will see two options:
 <ul>
-<li><strong>Survey data</strong>: 132 household survey responses covering demographics, income, land ownership, and living conditions</li>
-<li><strong>Backcheck data</strong>: 30 re-interview validation records matched to the survey data by household ID</li>
+<li><strong>Resume Demo</strong>: Continue from where you left off, including any prep steps, configurations, and corrections you made.</li>
+<li><strong>Restart Demo</strong>: Delete all demo progress and start fresh. DataSure will ask you to confirm before proceeding, since this cannot be undone.</li>
+</ul></li>
+</ol>
+<blockquote class="blockquote">
+<p><em>[GIF or short video: Selecting DataSure Demo from the dropdown and clicking Start Demo, showing the automatic data loading and navigation to the Import Data page.]</em></p>
+</blockquote>
+</section>
+<section id="what-the-demo-includes" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-demo-includes">What the demo includes</h3>
+<p>Demo Mode uses two sample datasets based on a fictional household survey in rural India:</p>
+<ul>
+<li><strong>demo_survey</strong>: 132 household survey responses covering demographics, income, land ownership, education access, and living conditions</li>
+<li><strong>demo_backcheck</strong>: 30 re-interview validation records matched to the survey data by household ID eg. <code>hhid</code>.</li>
 </ul>
-<p>Both datasets contain intentional data quality issues, including missing values, duplicate household IDs, and numeric outliers, so you can practice identifying and correcting them before working with real project data.</p>
-<p><em>[Screenshot: Demo Mode Learn More box on the Import Data page showing guided instructions.]</em></p>
-<p>After completing all six steps, DataSure will prompt you to restart the demo or create a real project.</p>
+<p>Both datasets contain intentional data quality issues, including missing values, duplicate household IDs, and numeric outliers, so you can practice identifying and correcting real problems.</p>
+</section>
+<section id="following-demo-guidance" class="level3">
+<h3 class="anchored" data-anchor-id="following-demo-guidance">Following demo guidance</h3>
+<p>Throughout Demo Mode, look for the light blue <strong>Learn More</strong> boxes that appear on each page. These boxes explain what to do at each step and why, and they include specific instructions tailored to the demo data. DataSure expands them by default; click to collapse them once you have read them.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_demo_configure_page_learn_more.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="An expanded Learn More box on the Configure Checks page showing step-by-step demo instructions."><img src="images/datasure_demo_configure_page_learn_more.png" class="img-fluid figure-img" alt="Expanded Learn More information box on the Configure Checks page displaying step-by-step instructions for the demo configuration."></a></p>
+<figcaption>An expanded Learn More box on the Configure Checks page showing step-by-step demo instructions.</figcaption>
+</figure>
+</div>
+<p>The demo tracks your progress through a seven-step indicator at the top of each page. The indicator marks completed steps, and DataSure highlights your current step.</p>
+<p>After completing all seven steps, DataSure will confirm that the demo is complete and give you the option to restart the demo or end it. You can then create your own project from the <strong>Start Here</strong> page.</p>
+</section>
 </section>
 <section id="step-1-create-or-open-a-project" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-create-or-open-a-project">Step 1: Create or Open a Project</h2>
-<p>Each survey or data collection exercise in DataSure is organized as a <strong>project</strong>. A project stores your imported datasets, configuration settings, quality check outputs, and correction history.</p>
-<p><strong>To create a new project:</strong></p>
+<p>DataSure organizes each survey or data collection exercise as a <strong>project</strong>. A project stores your imported datasets, configuration settings, quality check outputs, correction history, and prep logs, all in a local cache on your computer.</p>
+<section id="creating-a-new-project" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-new-project">Creating a new project</h3>
 <ol type="1">
-<li>On the <strong>Start Here</strong> page, click <strong>Create New Project</strong>.</li>
-<li>Enter a descriptive project name, for example: <code>baseline_2024</code> or <code>midline_ghana</code>.</li>
-<li>Click <strong>Create</strong>.</li>
-</ol>
-<p><strong>To open an existing project:</strong></p>
-<ol type="1">
-<li>On the <strong>Start Here</strong> page, select the project from the list.</li>
-<li>Click <strong>Open</strong>.</li>
+<li><p>On the <strong>Start Here</strong> page, select <strong>Create New Project</strong> from the project dropdown.</p></li>
+<li><p>Enter a descriptive project name. Project names can contain letters, numbers, spaces, dashes, and underscores, and must be at least three characters long.</p>
+<p>Good examples: <code>TCAI Baseline 2026</code>, <code>Kidigo DDEP Endline 2024</code>, <code>ORS-Zinc Midline 2020</code></p></li>
+<li><p>Click <strong>Create Project</strong>. DataSure generates a unique project ID from the name and sets up the local cache folder structure automatically.</p></li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1746,106 +1804,198 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use one project per survey wave or data collection phase. Consistent naming conventions, such as <code>[study]_[wave]_[year]</code>, make it easier to manage multiple projects over time.</p>
+<p>Use one project per survey wave or data collection phase. A consistent naming convention such as <code>[survey] [wave] [year]</code> makes it easy to manage multiple projects over time and to hand off projects to colleagues.</p>
 </div>
 </div>
-<p><em>[Screenshot: Start Here page showing the project creation form and a list of existing projects.]</em></p>
+</section>
+<section id="opening-an-existing-project" class="level3">
+<h3 class="anchored" data-anchor-id="opening-an-existing-project">Opening an existing project</h3>
+<ol type="1">
+<li>On the <strong>Start Here</strong> page, select the project from the dropdown. DataSure automatically highlights the most recently used project.</li>
+<li>DataSure shows the project’s creation date and last-used date below the selector.</li>
+<li>Click <strong>Load Project</strong>.</li>
+</ol>
+</section>
+<section id="deleting-a-project" class="level3">
+<h3 class="anchored" data-anchor-id="deleting-a-project">Deleting a project</h3>
+<p>To permanently delete a project and all its data, expand the <strong>Delete Project</strong> section under the project selector. DataSure will ask you to confirm before deleting. This action cannot be undone.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_project_selector.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The Start Here page with an existing project selected, showing creation and last-used dates and the Load Project button."><img src="images/datasure_project_selector.png" class="img-fluid figure-img" alt="DataSure Start Here page with an existing project selected in the dropdown, displaying the project creation date and last-used date, and the Load Project button."></a></p>
+<figcaption>The Start Here page with an existing project selected, showing creation and last-used dates and the Load Project button.</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="step-2-import-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-import-data">Step 2: Import Data</h2>
-<p>DataSure supports two ways to import data: directly from a SurveyCTO server, or by uploading a local file. Navigate to the <strong>Import Data</strong> page from the sidebar.</p>
+<p>DataSure supports 2 ways to get data into a project: connecting directly to a SurveyCTO server, or uploading a local file. You can import multiple datasets per project, up to 10 in total. Navigate to the <strong>Import Data</strong> page from the sidebar.</p>
 <section id="option-a-import-from-surveycto" class="level3">
 <h3 class="anchored" data-anchor-id="option-a-import-from-surveycto">Option A: Import from SurveyCTO</h3>
+<p>Connecting to SurveyCTO is the recommended approach for active data collection. DataSure downloads submissions incrementally, meaning it only fetches new submissions since the last import rather than re-downloading the full dataset each time. This saves significant time when refreshing data during active collection.</p>
+<p>To use SurveyCTO integration, you will need your SurveyCTO server name, username, and password.</p>
 <ol type="1">
-<li>Click the <strong>SurveyCTO</strong> tab.</li>
+<li>On the <strong>Import Data</strong> page, click the <strong>SurveyCTO</strong> tab.</li>
 <li>Enter your server credentials:
 <ul>
-<li><strong>Server Name</strong>: Your SurveyCTO server URL (for example, <code>yourserver.surveycto.com</code>)</li>
-<li><strong>Username</strong>: Your SurveyCTO username</li>
-<li><strong>Password</strong>: Your SurveyCTO password</li>
+<li><strong>Server Name</strong>: The prefix of your SurveyCTO server address. For example, if your server is <code>yourserver.surveycto.com</code>, enter only <code>yourserver</code>.</li>
+<li><strong>Username</strong>: Your SurveyCTO account username</li>
+<li><strong>Password</strong>: Your SurveyCTO account password</li>
 </ul></li>
-<li>Click <strong>Connect</strong>.</li>
+<li>Click <strong>Connect</strong>. DataSure will retrieve the list of forms available on your server.</li>
 <li>Select the form or forms you want to import.</li>
-<li>Configure any filters, such as a date range, then click <strong>Import Data</strong>.</li>
+<li>If your form uses encryption, provide the <strong>Private key</strong>.</li>
+<li>Click <strong>Import Data</strong>.</li>
 </ol>
-<p><em>[Screenshot: SurveyCTO import tab showing credential fields and form selection.]</em></p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_surveycto_login_page.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="The SurveyCTO import tab showing server credential fields, connected form list, and Import Data button."><img src="images/datasure_surveycto_login_page.png" class="img-fluid figure-img" alt="DataSure Import Data page with the SurveyCTO tab selected, showing server name, username, and password fields, a list of available forms to import, and the Import Data button."></a></p>
+<figcaption>The SurveyCTO import tab showing server credential fields, connected form list, and Import Data button.</figcaption>
+</figure>
+</div>
+</section>
+<section id="option-b-upload-a-local-file" class="level3">
+<h3 class="anchored" data-anchor-id="option-b-upload-a-local-file">Option B: Upload a local file</h3>
+<p>DataSure accepts the following file formats: CSV - <code>.csv</code>, Excel - <code>.xlsx</code>, <code>.xls</code>), Stata - <code>.dta</code>, and JSON - <code>.json</code>.</p>
+<ol type="1">
+<li><p>On the <strong>Import Data</strong> page, click the <strong>Local Files</strong> tab.</p></li>
+<li><p>Drag and drop your file into the upload area, or click <strong>Browse</strong> to select it.</p></li>
+<li><p>Enter a short, descriptive <strong>alias</strong> for the dataset. The alias is how DataSure refers to this dataset throughout the application, so it should be meaningful and consistent.</p>
+<p>Good examples: <code>survey</code>, <code>baseline_hh</code>, <code>backcheck_wave1</code></p></li>
+<li><p>For Excel files with multiple sheets, select the correct sheet from the dropdown.</p></li>
+<li><p>Click <strong>Load Data</strong>.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_local_file_upload.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="The Local Files import tab showing the upload area with a file loaded, the alias input field, and the Load Data button."><img src="images/datasure_local_file_upload.png" class="img-fluid figure-img" alt="DataSure Import Data page with the Local Files tab selected, showing a drag-and-drop upload area with a file loaded, an alias input field, and the Load Data button."></a></p>
+<figcaption>The Local Files import tab showing the upload area with a file loaded, the alias input field, and the Load Data button.</figcaption>
+</figure>
+</div>
+</section>
+<section id="reviewing-imported-data" class="level3">
+<h3 class="anchored" data-anchor-id="reviewing-imported-data">Reviewing imported data</h3>
+<p>After importing, DataSure shows a preview of your dataset with column names, data types, row and column counts, and the first 100 rows. Review this preview before moving on:</p>
+<ul>
+<li>Are column names what you expect?</li>
+<li>Do data types look correct? Dates often import as text, and you will need to convert them in the Prepare Data step.</li>
+<li>Does the row count match what you expect from your server or file?</li>
+</ul>
+<p>You can return to the Import Data page at any time to refresh your data from SurveyCTO or re-upload an updated file. DataSure will replace the existing version of the dataset.</p>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use date range filters when importing from large SurveyCTO forms. Filtering to recent submissions reduces processing time and keeps your project cache manageable during active data collection.</p>
+<p>If you are running backchecks, import both your survey dataset and your backcheck dataset before moving on. Give them distinct aliases, for example <code>survey</code> and <code>backcheck</code>, so they are easy to identify when configuring checks.</p>
 </div>
 </div>
-</section>
-<section id="option-b-upload-a-local-file" class="level3">
-<h3 class="anchored" data-anchor-id="option-b-upload-a-local-file">Option B: Upload a Local File</h3>
-<p>DataSure accepts CSV (<code>.csv</code>), Excel (<code>.xlsx</code> or <code>.xls</code>), Stata (<code>.dta</code>), and JSON (<code>.json</code>) files.</p>
-<ol type="1">
-<li>Click the <strong>Local Files</strong> tab.</li>
-<li>Drag and drop your file into the upload area, or click <strong>Browse</strong> to select it.</li>
-<li>Enter a short, descriptive <strong>alias</strong> for the dataset, for example: <code>survey</code> or <code>backcheck_wave1</code>. DataSure uses this alias to refer to the dataset throughout the application.</li>
-<li>For Excel files with multiple sheets, select the correct sheet.</li>
-<li>Click <strong>Load Data</strong>.</li>
-</ol>
-<p><em>[Screenshot: Local Files upload tab showing the file drop zone and alias field.]</em></p>
-</section>
-<section id="reviewing-imported-data" class="level3">
-<h3 class="anchored" data-anchor-id="reviewing-imported-data">Reviewing imported data</h3>
-<p>After importing, DataSure shows a preview of your dataset with column names, data types, row and column counts, and the first 100 rows. Review this preview to confirm the file loaded correctly before moving on.</p>
-<p>You can import up to 10 datasets per project. To add a backcheck dataset, repeat the import process and assign it a separate alias such as <code>backcheck</code>.</p>
 </section>
 </section>
 <section id="step-3-prepare-your-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-prepare-your-data">Step 3: Prepare Your Data</h2>
-<p>The <strong>Prepare Data</strong> page lets you clean and transform imported datasets before running quality checks. Navigate to it from the sidebar.</p>
-<p>Most projects need at least one preparation step: converting date columns from text to datetime format. DataSure requires date columns to be in datetime format for the Survey Progress and Enumerator Performance checks to work correctly.</p>
-<section id="converting-a-date-column-to-datetime" class="level3">
-<h3 class="anchored" data-anchor-id="converting-a-date-column-to-datetime">Converting a date column to datetime</h3>
-<ol type="1">
-<li>Select the dataset tab for your survey data.</li>
-<li>Click <strong>Add data prep step</strong>.</li>
-<li>Select <strong>Transform Column</strong>.</li>
-<li>Choose your date column, for example: <code>submissiondate</code> or <code>starttime</code>.</li>
-<li>Select <strong>string to datetime</strong>.</li>
-<li>Click <strong>Add</strong>.</li>
-<li>Repeat for your backcheck dataset if it has a separate date column.</li>
-</ol>
+<p>The <strong>Prepare Data</strong> page lets you clean and transform imported datasets before running quality checks. DataSure logs all preparation steps automatically and later uses them to generate Stata do-files in the Replication Package. Navigate to it from the sidebar.</p>
+<p>Most projects need at least one preparation step: converting date columns from text to datetime format. DataSure requires date columns to be in datetime format for several quality check modules to function correctly.</p>
+<section id="why-data-preparation-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-data-preparation-matters">Why data preparation matters</h3>
+<p>SurveyCTO data is typically well-structured because the XLS form design determines column types. Most columns arrive in the correct format and do not require transformation. However, one common exception is <strong>calculate fields</strong>: these are fields where SurveyCTO computes a value automatically - a calculated age or a score - but stores the result as a string rather than a number. If you need to use a calculate field in outlier detection or descriptive statistics, you will need to convert it to numeric using the Transform Column action.</p>
+<p>For data imported from CSV or other flat files, you may need additional preparation, such as converting date strings to datetime format or standardizing inconsistent text casing in ID columns.</p>
 </section>
-<section id="other-preparation-actions" class="level3">
-<h3 class="anchored" data-anchor-id="other-preparation-actions">Other preparation actions</h3>
+<section id="available-transformation-functions" class="level3">
+<h3 class="anchored" data-anchor-id="available-transformation-functions">Available transformation functions</h3>
+<p>The <strong>Transform Column</strong> action supports the following functions:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 35%">
-<col style="width: 64%">
+<col style="width: 22%">
+<col style="width: 33%">
+<col style="width: 44%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Action</th>
-<th>When to Use</th>
+<th>Function</th>
+<th>What it Does</th>
+<th>Example Use Case</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Transform Column</td>
-<td>Convert data types, standardize text casing, or extract patterns from a column</td>
+<td><strong>string to datetime</strong></td>
+<td>Converts a text column containing date or timestamp values into a proper datetime format</td>
+<td>Convert <code>submissiondate</code> from <code>"2024-03-15 08:42:00"</code> to a datetime value so it works correctly in date-based checks</td>
 </tr>
 <tr class="even">
-<td>Add Column</td>
-<td>Create a unique key column if one does not already exist in the dataset</td>
+<td><strong>string to numeric</strong></td>
+<td>Converts a text column containing numbers into a numeric type</td>
+<td>Convert a SurveyCTO calculate field storing a computed score as text into a number for outlier detection</td>
 </tr>
 <tr class="odd">
-<td>Remove Column</td>
-<td>Remove columns that are not needed for quality checks</td>
+<td><strong>string to uppercase</strong></td>
+<td>Converts all text in a column to uppercase</td>
+<td>Standardize an ID column where enumerators entered some values as <code>"hh001"</code> and others as <code>"HH001"</code></td>
 </tr>
 <tr class="even">
-<td>Remove Row</td>
-<td>Filter out test submissions or records that should not be analyzed</td>
+<td><strong>string to lowercase</strong></td>
+<td>Converts all text in a column to lowercase</td>
+<td>Normalize enumerator name entries for consistent grouping</td>
+</tr>
+<tr class="odd">
+<td><strong>extract pattern</strong></td>
+<td>Extracts a substring matching a regular expression from each value in a column</td>
+<td>Extract a district code from a composite ID field</td>
+</tr>
+<tr class="even">
+<td><strong>mathematical operation</strong></td>
+<td>Applies an arithmetic operation (add, subtract, multiply, divide) to a numeric column</td>
+<td>Divide a duration column from milliseconds to seconds</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_prep_actions_selector.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="The Transform Column dialog showing the column selector, function dropdown, and additional parameter fields."><img src="images/datasure_prep_actions_selector.png" class="img-fluid figure-img" alt="DataSure Prepare Data page showing the Transform Column dialog with a column selector dropdown, a function selector listing all available transformation options, and conditional parameter fields that appear based on the selected function."></a></p>
+<figcaption>The Transform Column dialog showing the column selector, function dropdown, and additional parameter fields.</figcaption>
+</figure>
+</div>
+</section>
+<section id="all-available-preparation-actions" class="level3">
+<h3 class="anchored" data-anchor-id="all-available-preparation-actions">All available preparation actions</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 35%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Action</th>
+<th>What it Does</th>
+<th>Example Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Transform Column</strong></td>
+<td>Convert or modify values in an existing column</td>
+<td>Convert <code>submissiondate</code> from text to datetime; convert <code>enum_name</code> to uppercase</td>
+</tr>
+<tr class="even">
+<td><strong>Add Column</strong></td>
+<td>Create a column, including unique identifiers</td>
+<td>Add a UUID key column if the dataset does not have one</td>
+</tr>
+<tr class="odd">
+<td><strong>Remove Column</strong></td>
+<td>Delete a column from the dataset</td>
+<td>Remove PII columns not needed for quality checks</td>
+</tr>
+<tr class="even">
+<td><strong>Remove Row</strong></td>
+<td>Filter out rows matching a condition</td>
+<td>Remove test submissions or rows with a specific flag value</td>
 </tr>
 </tbody>
 </table>
@@ -1859,65 +2009,554 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If your dataset does not have a column where every row has a unique value, use <strong>Add Column</strong> to create one before configuring checks. DataSure requires a unique key column for most quality check modules.</p>
+<p>If your dataset does not have a column where every row has a unique value, use <strong>Add Column</strong> to create one before configuring checks. DataSure requires a unique key column to track individual records across all quality check modules.</p>
 </div>
 </div>
-<p><em>[Screenshot: Prepare Data page showing a list of preparation steps applied to a dataset.]</em></p>
-</section>
-</section>
-<section id="step-4-configure-quality-checks" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-configure-quality-checks">Step 4: Configure Quality Checks</h2>
-<p>The <strong>Configure Checks</strong> page is where you tell DataSure which dataset to analyze and which columns correspond to key identifiers. Navigate to it from the sidebar.</p>
-<section id="creating-a-check-configuration" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-check-configuration">Creating a check configuration</h3>
-<ol type="1">
-<li>Click <strong>Add New Check Configuration</strong>.</li>
-<li>Enter a <strong>name</strong> for this configuration, for example: <code>Household Survey Checks</code>.</li>
-<li>Select your <strong>survey dataset</strong> from the dropdown.</li>
-<li>Configure the four key columns:</li>
-</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Reference: All preparation functions">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reference: All preparation functions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="transform-column" class="level4">
+<h4 class="anchored" data-anchor-id="transform-column">Transform Column</h4>
+<p>Use <strong>Transform Column</strong> to modify values in an existing column. Select a column and a function from the dropdown. Some functions require additional parameters that appear after you select the function.</p>
+<p><strong>String functions</strong></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 60%">
-<col style="width: 23%">
+<col style="width: 29%">
+<col style="width: 44%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Field</th>
-<th>What It Represents</th>
+<th>Function</th>
+<th>What it Does</th>
 <th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Key Column</td>
-<td>A column where every row has a unique value</td>
-<td><code>KEY</code> or <code>uuid</code></td>
+<td>Trim</td>
+<td>Remove leading and trailing whitespace from string values</td>
+<td>Clean up extra spaces in manually entered enumerator names</td>
 </tr>
 <tr class="even">
-<td>ID Column</td>
-<td>The respondent identifier, which may repeat across multiple visits</td>
-<td><code>hhid</code> or <code>respondent_id</code></td>
+<td>Substring</td>
+<td>Extract a portion of a string by start position and length</td>
+<td>Extract the first 3 characters of a district code</td>
 </tr>
 <tr class="odd">
-<td>Enumerator Column</td>
-<td>The field staff identifier</td>
-<td><code>enum_name</code> or <code>enumerator_id</code></td>
+<td>Replace</td>
+<td>Replace all occurrences of a target string with a new string</td>
+<td>Replace <code>"N/A"</code> with an empty string</td>
 </tr>
 <tr class="even">
-<td>Date Column</td>
-<td>The submission or interview date</td>
-<td><code>submissiondate</code> or <code>starttime</code></td>
+<td>Strip</td>
+<td>Remove all occurrences of a specified character from a string</td>
+<td>Strip hyphens from a formatted phone number</td>
+</tr>
+<tr class="odd">
+<td>To Lowercase</td>
+<td>Convert all string values to lowercase</td>
+<td>Normalize enumerator name entries</td>
+</tr>
+<tr class="even">
+<td>To Uppercase</td>
+<td>Convert all string values to uppercase</td>
+<td>Standardize ID column values for consistent matching</td>
+</tr>
+<tr class="odd">
+<td>String to Number</td>
+<td>Convert string values to numeric</td>
+<td>Convert a calculate field stored as text to an integer or float</td>
+</tr>
+<tr class="even">
+<td>String to Date</td>
+<td>Convert string values to date format</td>
+<td>Convert <code>"2024-01-15"</code> stored as text to a date column</td>
+</tr>
+<tr class="odd">
+<td>String to Datetime</td>
+<td>Convert string values to datetime format</td>
+<td>Convert <code>submissiondate</code> stored as text to a datetime column for trend analysis</td>
+</tr>
+<tr class="even">
+<td>Extract Pattern</td>
+<td>Extract substrings matching a regular expression pattern</td>
+<td>Pull a numeric code from a compound string like <code>"HH-042-K"</code></td>
+</tr>
+<tr class="odd">
+<td>Get Dummies</td>
+<td>One-hot encode categorical string values into binary indicator columns</td>
+<td>Expand a <code>region</code> column into separate <code>region_North</code>, <code>region_South</code> columns</td>
 </tr>
 </tbody>
 </table>
-<ol start="5" type="1">
-<li>To include backcheck data, select your backcheck dataset and specify its matching ID column.</li>
-<li>Click <strong>Add Check Configuration</strong>.</li>
+<p><strong>Numeric functions</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 44%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>What it Does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Add</td>
+<td>Add a constant value to every row</td>
+<td>Add an offset to correct a systematic entry error</td>
+</tr>
+<tr class="even">
+<td>Multiply</td>
+<td>Multiply every value by a constant</td>
+<td>Convert a distance column from km to m</td>
+</tr>
+<tr class="odd">
+<td>Subtract</td>
+<td>Subtract a constant value from every row</td>
+<td>Subtract a baseline offset from a numeric response</td>
+</tr>
+<tr class="even">
+<td>Divide</td>
+<td>Divide every value by a constant</td>
+<td>Convert <code>duration</code> from milliseconds to seconds</td>
+</tr>
+<tr class="odd">
+<td>Round</td>
+<td>Round values to a specified number of decimal places</td>
+<td>Round GPS accuracy to two decimal places</td>
+</tr>
+<tr class="even">
+<td>Floor</td>
+<td>Round values down to the nearest integer</td>
+<td>Truncate fractional ages to whole years</td>
+</tr>
+<tr class="odd">
+<td>Ceiling</td>
+<td>Round values up to the nearest integer</td>
+<td>Round up partial interview counts</td>
+</tr>
+<tr class="even">
+<td>Absolute Value</td>
+<td>Replace each value with its absolute value</td>
+<td>Remove negative signs from response differences</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Datetime functions</strong></p>
+<p>These functions extract a component from a datetime column and return it as a new numeric value in the same column.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 50%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>What it Returns</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Second</td>
+<td>Second component (0–59)</td>
+<td>Extract the seconds component from a timestamp</td>
+</tr>
+<tr class="even">
+<td>Minute</td>
+<td>Minute component (0–59)</td>
+<td>Extract the minute of submission for time-of-day analysis</td>
+</tr>
+<tr class="odd">
+<td>Hour</td>
+<td>Hour component (0–23)</td>
+<td>Extract submission hour to identify peak collection hours</td>
+</tr>
+<tr class="even">
+<td>Day of Month</td>
+<td>Day of the month (1–31)</td>
+<td>Extract the calendar day from <code>submissiondate</code></td>
+</tr>
+<tr class="odd">
+<td>Day of Week</td>
+<td>Day of the week (0=Monday, 6=Sunday)</td>
+<td>Identify which day of the week interviewers conducted interviews</td>
+</tr>
+<tr class="even">
+<td>Day of Year</td>
+<td>Day of the year (1–366)</td>
+<td>Calculate cumulative collection day within a year</td>
+</tr>
+<tr class="odd">
+<td>Date</td>
+<td>Extract the date portion only (removes time)</td>
+<td>Strip the time component from a datetime column</td>
+</tr>
+<tr class="even">
+<td>Week of Year</td>
+<td>Week number within the year (1–53)</td>
+<td>Group submissions by collection week</td>
+</tr>
+<tr class="odd">
+<td>Month of Year</td>
+<td>Month number (1–12)</td>
+<td>Extract the month of data collection</td>
+</tr>
+<tr class="even">
+<td>Quarter of Year</td>
+<td>Quarter (1–4)</td>
+<td>Group submissions by quarter</td>
+</tr>
+<tr class="odd">
+<td>Year</td>
+<td>Four-digit year</td>
+<td>Extract the year from a multi-year dataset</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="add-column" class="level4">
+<h4 class="anchored" data-anchor-id="add-column">Add Column</h4>
+<p>Use <strong>Add Column</strong> to create a new column in your dataset. Select a method and configure any required parameters.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 48%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>What it Does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Constant</td>
+<td>Add a column where every row has the same fixed value</td>
+<td>Add a <code>country</code> column with value <code>"Kenya"</code> for all rows</td>
+</tr>
+<tr class="even">
+<td>Sum</td>
+<td>Add a column with the row-wise sum of selected columns</td>
+<td>Sum multiple expenditure columns into a <code>total_expenditure</code> column</td>
+</tr>
+<tr class="odd">
+<td>Mean</td>
+<td>Add a column with the row-wise mean of selected columns</td>
+<td>Average multiple food security scores into a composite index</td>
+</tr>
+<tr class="even">
+<td>Median</td>
+<td>Add a column with the row-wise median of selected columns</td>
+<td>Compute the median of repeated measurement columns</td>
+</tr>
+<tr class="odd">
+<td>Min</td>
+<td>Add a column with the row-wise minimum of selected columns</td>
+<td>Record the lowest value across multiple numeric columns</td>
+</tr>
+<tr class="even">
+<td>Max</td>
+<td>Add a column with the row-wise maximum of selected columns</td>
+<td>Record the highest value across multiple numeric columns</td>
+</tr>
+<tr class="odd">
+<td>Standard Deviation</td>
+<td>Add a column with the row-wise standard deviation</td>
+<td>Measure variability across repeated responses</td>
+</tr>
+<tr class="even">
+<td>Variance</td>
+<td>Add a column with the row-wise variance</td>
+<td>Compute variance across repeated measurements</td>
+</tr>
+<tr class="odd">
+<td>First</td>
+<td>Add a column with the first non-null value across selected columns</td>
+<td>Retrieve the first available response from a set of fallback columns</td>
+</tr>
+<tr class="even">
+<td>Last</td>
+<td>Add a column with the last non-null value across selected columns</td>
+<td>Retrieve the most recent value from a set of columns</td>
+</tr>
+<tr class="odd">
+<td>Count</td>
+<td>Add a column with the count of non-null values across selected columns</td>
+<td>Count how many modules a respondent completed</td>
+</tr>
+<tr class="even">
+<td>Count Unique</td>
+<td>Add a column with the count of unique values across selected columns</td>
+<td>Count distinct responses across repeated-choice columns</td>
+</tr>
+<tr class="odd">
+<td>Product</td>
+<td>Add a column with the row-wise product of selected columns</td>
+<td>Multiply unit price and quantity to compute total value</td>
+</tr>
+<tr class="even">
+<td>Difference</td>
+<td>Add a column with the row-wise difference between two columns</td>
+<td>Compute the gap between endline and baseline scores</td>
+</tr>
+<tr class="odd">
+<td>Quotient</td>
+<td>Add a column with the row-wise quotient of two columns</td>
+<td>Divide a total score by maximum possible to compute a proportion</td>
+</tr>
+<tr class="even">
+<td>Index</td>
+<td>Add a column containing the row number (0-based integer index)</td>
+<td>Add a row number for reference when there is no existing unique identifier</td>
+</tr>
+<tr class="odd">
+<td>UUID</td>
+<td>Add a column of randomly generated universally unique identifiers</td>
+<td>Generate a key column when the dataset has no unique row identifier</td>
+</tr>
+<tr class="even">
+<td>Random</td>
+<td>Add a column of random numbers drawn from a uniform distribution</td>
+<td>Generate a random assignment or sampling variable</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="remove-column" class="level4">
+<h4 class="anchored" data-anchor-id="remove-column">Remove Column</h4>
+<p>Use <strong>Remove Column</strong> to delete one or more columns from the dataset. Select the column or columns to remove from the list.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Removing a column is a preparation step that runs before checks. Removing a column that you later need for check configuration will require you to delete the step and re-add it.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="remove-row" class="level4">
+<h4 class="anchored" data-anchor-id="remove-row">Remove Row</h4>
+<p>Use <strong>Remove Row</strong> to filter out rows that match a condition. Select a column, a condition, and any required values.</p>
+<p><strong>Conditions</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 42%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Condition</th>
+<th>What it Does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Missing</td>
+<td>Keep only rows where the column value is null or empty</td>
+<td>Remove rows where submission date is empty</td>
+</tr>
+<tr class="even">
+<td>Not Missing</td>
+<td>Keep only rows where the column value is not null</td>
+<td>Remove rows where respondent ID is missing</td>
+</tr>
+<tr class="odd">
+<td>Equal To</td>
+<td>Keep only rows where the value equals a specified value</td>
+<td>Remove rows where <code>is_test == 1</code></td>
+</tr>
+<tr class="even">
+<td>Not Equal To</td>
+<td>Keep only rows where the value does not equal a specified value</td>
+<td>Retain only consented interviews where <code>consent != 0</code></td>
+</tr>
+<tr class="odd">
+<td>Greater Than</td>
+<td>Keep only rows where the value is greater than a threshold</td>
+<td>Remove rows where <code>duration &gt; 7200</code> (more than 2 hours)</td>
+</tr>
+<tr class="even">
+<td>Less Than</td>
+<td>Keep only rows where the value is less than a threshold</td>
+<td>Remove rows where <code>duration &lt; 60</code> (less than one minute)</td>
+</tr>
+<tr class="odd">
+<td>Greater Than or Equal To</td>
+<td>Keep only rows where the value is greater than or equal to a threshold</td>
+<td>Retain rows where <code>age &gt;= 18</code></td>
+</tr>
+<tr class="even">
+<td>Less Than or Equal To</td>
+<td>Keep only rows where the value is less than or equal to a threshold</td>
+<td>Remove rows where <code>progress_pct &lt;= 0</code></td>
+</tr>
+<tr class="odd">
+<td>Between</td>
+<td>Keep only rows where the value falls within a specified range (inclusive)</td>
+<td>Retain rows where <code>duration</code> is between 180 and 3,600 seconds</td>
+</tr>
+<tr class="even">
+<td>Not Between</td>
+<td>Keep only rows where the value falls outside a specified range</td>
+<td>Remove rows where <code>age</code> is not between 15 and 65</td>
+</tr>
+<tr class="odd">
+<td>Like</td>
+<td>Keep only rows where the string value matches a pattern ie. case-insensitive substring match</td>
+<td>Remove rows where <code>enum_name</code> contains <code>"test"</code></td>
+</tr>
+<tr class="even">
+<td>Not Like</td>
+<td>Keep only rows where the string value does not match a pattern</td>
+<td>Retain rows where <code>status</code> does not contain <code>"draft"</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section id="reviewing-and-editing-preparation-steps" class="level3">
+<h3 class="anchored" data-anchor-id="reviewing-and-editing-preparation-steps">Reviewing and editing preparation steps</h3>
+<p>DataSure shows all preparation steps you add in a log below the dataset preview. Each step records the action type, the affected column, and the time you applied it. You can review this log to confirm that DataSure applied each step correctly.</p>
+<p>DataSure applies preparation steps in order. If you need to remove a step, you can delete it from the log.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_prep_log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="The preparation log showing applied steps with action type, affected column, and timestamp."><img src="images/datasure_prep_log.png" class="img-fluid figure-img" alt="DataSure Prepare Data page showing the preparation log table with rows for each applied step, listing the action type, affected column, and timestamp."></a></p>
+<figcaption>The preparation log showing applied steps with action type, affected column, and timestamp.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="step-4-configure-quality-checks" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-configure-quality-checks">Step 4: Configure Quality Checks</h2>
+<p>The <strong>Configure Checks</strong> page is where you tell DataSure which dataset to analyze and how the columns in your dataset map to the identifiers DataSure needs to run its checks. Each configuration you create becomes a separate <strong>DQA Report</strong> page in the sidebar.</p>
+<p>Navigate to Configure Checks from the sidebar.</p>
+<section id="creating-a-check-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-check-configuration">Creating a check configuration</h3>
+<ol type="1">
+<li>Click <strong>Add New Check Configuration</strong>.</li>
+<li>Enter a <strong>Page Name</strong> for this configuration. This becomes the label for the DQA Report page in the sidebar. Keep it descriptive but concise, for example: <code>Household HFCs</code> or <code>Midline Survey Checks</code>. The name must be between 1 and 20 characters.</li>
+<li>Select your <strong>Survey Dataset</strong> from the dropdown. This should be the main survey dataset you imported.</li>
+<li>Configure the column fields as described in the sections below.</li>
+<li>Click <strong>Submit</strong> to create the configuration.</li>
 </ol>
-<p>DataSure creates a new <strong>DQA Report</strong> page in the sidebar, named after the configuration you created. All nine quality check modules are available as tabs on this page.</p>
-<p><em>[Screenshot: Configure Checks page showing the configuration form with key column fields populated.]</em></p>
+<p>DataSure validates your inputs when you submit. If any required fields are missing or column selections are invalid, it will show a specific error message.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_config_page_prefilled.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="The Add New Check Configuration dialog fully filled out with example values for all fields."><img src="images/datasure_config_page_prefilled.png" class="img-fluid figure-img" alt="DataSure Configure Checks page showing the Add New Check Configuration dialog with all fields completed, including page name, survey dataset, key column, ID column, enumerator column, date column, and other optional settings."></a></p>
+<figcaption>The Add New Check Configuration dialog fully filled out with example values for all fields.</figcaption>
+</figure>
+</div>
+</section>
+<section id="survey-columns" class="level3">
+<h3 class="anchored" data-anchor-id="survey-columns">Survey columns</h3>
+<p>You must provide only the <strong>Key Column</strong>. All other columns are optional, but omitting them will disable the checks that depend on them. The table below describes each column field and which modules it affects.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 13%">
+<col style="width: 30%">
+<col style="width: 25%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Required</th>
+<th>What It Represents</th>
+<th>Affected Checks</th>
+<th>Example Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Key Column</strong></td>
+<td>Yes</td>
+<td>A column where every single row has a unique value. Used to identify specific records for corrections and to track flagged issues across check modules.</td>
+<td>All modules</td>
+<td><code>KEY</code>, <code>uuid</code>, <code>_uuid</code></td>
+</tr>
+<tr class="even">
+<td><strong>ID Column</strong></td>
+<td>No</td>
+<td>The respondent identifier. May repeat if the same respondent appears in multiple rows. Without it, duplicate detection and back check matching are unavailable.</td>
+<td>Duplicates, Back Checks, Survey Progress</td>
+<td><code>hhid</code>, <code>respondent_id</code>, <code>hh_id</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Enumerator Column</strong></td>
+<td>No</td>
+<td>Identifies the field staff member who collected each record. Without it, all enumerator-level breakdowns are unavailable.</td>
+<td>Enumerator Stats, Missing Data (by enumerator), Outliers (by enumerator)</td>
+<td><code>enum_name</code>, <code>enumerator_id</code>, <code>interviewer</code></td>
+</tr>
+<tr class="even">
+<td><strong>Date Column</strong></td>
+<td>No</td>
+<td>The date and time when an enumerator submitted the survey or conducted the interview. Must be in datetime format. Without it, all time-based charts and trends are unavailable.</td>
+<td>Summary, Survey Progress, Enumerator Stats, Missing Data (over time)</td>
+<td><code>submissiondate</code>, <code>starttime</code>, <code>date_collected</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Team Column</strong></td>
+<td>No</td>
+<td>Identifies the team or group the enumerator belongs to. When provided, Enumerator Stats adds team-level breakdowns alongside individual breakdowns.</td>
+<td>Enumerator Stats</td>
+<td><code>team_id</code>, <code>supervisor_name</code>, <code>region_team</code></td>
+</tr>
+<tr class="even">
+<td><strong>Duration Column</strong></td>
+<td>No</td>
+<td>The interview duration, typically in seconds. SurveyCTO records this automatically in a column called <code>duration</code>. Without it, duration statistics are unavailable.</td>
+<td>Enumerator Stats</td>
+<td><code>duration</code>, <code>interview_duration</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Form Version Column</strong></td>
+<td>No</td>
+<td>The survey form version used for each submission. SurveyCTO stores this as <code>formdef_version</code>. Without it, the Summary tab omits form version tracking.</td>
+<td>Summary</td>
+<td><code>formdef_version</code>, <code>form_version</code></td>
+</tr>
+<tr class="even">
+<td><strong>Survey Target</strong></td>
+<td>No</td>
+<td>The expected total number of completed interviews. Without it, progress charts display submission trends but without a target reference line.</td>
+<td>Summary, Survey Progress</td>
+<td><code>200</code>, <code>500</code>, <code>1500</code></td>
+</tr>
+</tbody>
+</table>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1928,187 +2567,437 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <strong>Key Column</strong> and <strong>ID Column</strong> serve different purposes. The Key Column must be unique for every single row, like a UUID generated per submission. The ID Column identifies the respondent and may appear more than once if the same person was surveyed multiple times.</p>
+<p>The <strong>Key Column</strong> and <strong>ID Column</strong> serve different purposes. The Key Column must be unique for every row, like a UUID generated per submission. The ID Column identifies the respondent and may appear more than once if the same person participated in multiple survey occasions.</p>
 </div>
+</div>
+</section>
+<section id="backcheck-dataset-optional" class="level3">
+<h3 class="anchored" data-anchor-id="backcheck-dataset-optional">Backcheck dataset (optional)</h3>
+<p>If you have imported a backcheck dataset, you can link it to this configuration to enable the Back Checks module.</p>
+<ol type="1">
+<li>Select your <strong>Backcheck Dataset</strong> from the dropdown.</li>
+<li>Configure the backcheck columns:</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 48%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>What It Represents</th>
+<th>Example Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Backcheck Date Column</strong></td>
+<td>The date of the re-interview</td>
+<td><code>submissiondate</code>, <code>bc_date</code></td>
+</tr>
+<tr class="even">
+<td><strong>Backchecker Column</strong></td>
+<td>The identifier of the person conducting the re-interview</td>
+<td><code>bcer_name</code>, <code>backchecker_id</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Backchecker Team Column</strong> (optional)</td>
+<td>The team the backchecker belongs to</td>
+<td><code>team_id</code>, <code>bc_team</code></td>
+</tr>
+<tr class="even">
+<td><strong>Target Percentage</strong> (optional)</td>
+<td>The target proportion of interviews to backcheck, as a percentage</td>
+<td><code>10</code> for 10%</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The backcheck dataset must share the same ID column as the main survey dataset so that DataSure can match survey records to their corresponding re-interview records.</p>
+</div>
+</div>
+</section>
+<section id="editing-and-removing-configurations" class="level3">
+<h3 class="anchored" data-anchor-id="editing-and-removing-configurations">Editing and removing configurations</h3>
+<p>To edit an existing configuration, click <strong>Edit Check Configuration</strong> and select the configuration to modify. To delete a configuration, click <strong>Remove Check Configuration</strong>. Removing a configuration also removes its DQA Report page from the sidebar, but does not delete the underlying data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_config_logs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="The Configure Checks page showing a saved configuration in the configuration table with Edit and Remove buttons."><img src="images/datasure_config_logs.png" class="img-fluid figure-img" alt="DataSure Configure Checks page displaying the configuration table with a saved check configuration entry and visible Edit and Remove action buttons."></a></p>
+<figcaption>The Configure Checks page showing a saved configuration in the configuration table with Edit and Remove buttons.</figcaption>
+</figure>
 </div>
 </section>
 </section>
 <section id="step-5-review-your-dqa-reports" class="level2">
 <h2 class="anchored" data-anchor-id="step-5-review-your-dqa-reports">Step 5: Review Your DQA Reports</h2>
-<p>Your DQA Report pages appear in the sidebar after you save a check configuration. Each report contains tabs for all nine quality check modules. Navigate between tabs to review different aspects of your data.</p>
-<p>Reports update automatically when you import new data. During active data collection, review them daily.</p>
-<section id="using-report-tabs" class="level3">
-<h3 class="anchored" data-anchor-id="using-report-tabs">Using report tabs</h3>
-<p>Each tab has a <strong>Settings</strong> section at the top where you configure display options and thresholds for that specific check. Settings persist across sessions once saved.</p>
-<p>Below the settings, each tab displays:</p>
+<p>After saving a check configuration, a <strong>DQA Report</strong> page appears in the sidebar with the name you gave the configuration. This is where you review the results of all nine quality check modules.</p>
+<p>Navigate to your DQA Report from the sidebar. Reports update automatically each time you import new data. During active data collection, review them at least once per day.</p>
+<section id="navigating-check-tabs" class="level3">
+<h3 class="anchored" data-anchor-id="navigating-check-tabs">Navigating check tabs</h3>
+<p>Each DQA Report page has nine tabs, one for each quality check module. Each tab has two sections:</p>
 <ul>
-<li>Summary statistics for that check</li>
-<li>Visualizations such as charts, heatmaps, or maps</li>
-<li>Detailed tables listing flagged records</li>
+<li><strong>Settings</strong>: Configure display options and thresholds for that specific check. DataSure saves these settings and keeps them across sessions, so you do not need to reconfigure them each time.</li>
+<li><strong>Results</strong>: The actual check output, including summary statistics, charts, and tables of flagged records.</li>
 </ul>
-<p>Use the <strong>Column Selector</strong> within each tab to choose which columns to include in the analysis.</p>
+<p>Use the <strong>Column Selector</strong> within each tab to choose which columns to include in that check. This is useful for focusing on the variables most relevant to your project.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_summary_tab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="A DQA Report page with the Summary tab open, showing the submission trend chart and quality metric cards."><img src="images/datasure_summary_tab.png" class="img-fluid figure-img" alt="DataSure DQA Report page with the Summary tab selected, displaying a submission trend line chart and quality metric cards for duplicate rate, missing data rate, outlier rate, and backcheck error rate."></a></p>
+<figcaption>A DQA Report page with the Summary tab open, showing the submission trend chart and quality metric cards.</figcaption>
+</figure>
+</div>
 </section>
-<section id="summary-of-check-tabs" class="level3">
-<h3 class="anchored" data-anchor-id="summary-of-check-tabs">Summary of check tabs</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 84%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Tab</th>
-<th>What to Look For</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Summary</strong></td>
-<td>Overall quality score, submission trend, and progress toward target sample</td>
-</tr>
-<tr class="even">
-<td><strong>Survey Progress</strong></td>
-<td>Daily and weekly submission pace, consent and completion rates</td>
-</tr>
-<tr class="odd">
-<td><strong>Duplicates</strong></td>
-<td>Records sharing the same respondent ID or other identifiers</td>
-</tr>
-<tr class="even">
-<td><strong>Missing Data</strong></td>
-<td>Columns with high rates of missing or “Don’t Know” responses</td>
-</tr>
-<tr class="odd">
-<td><strong>Outliers</strong></td>
-<td>Flagged numeric values outside expected ranges</td>
-</tr>
-<tr class="even">
-<td><strong>Enumerator Stats</strong></td>
-<td>Submission productivity, interview duration, and response patterns by enumerator</td>
-</tr>
-<tr class="odd">
-<td><strong>GPS Checks</strong></td>
-<td>Missing or implausible coordinates, and a map of interview locations</td>
-</tr>
-<tr class="even">
-<td><strong>Descriptive Stats</strong></td>
-<td>Value distributions and frequency tables for selected variables</td>
-</tr>
-<tr class="odd">
-<td><strong>Back Checks</strong></td>
-<td>Discrepancy rates between original survey and re-interview data</td>
-</tr>
-</tbody>
-</table>
-<p><em>[Screenshot: DQA Report page showing the Summary tab with a submission trend chart and key quality metrics.]</em></p>
-</section>
-<section id="configuring-the-outliers-tab" class="level3">
-<h3 class="anchored" data-anchor-id="configuring-the-outliers-tab">Configuring the Outliers tab</h3>
-<p>The Outliers tab requires additional setup before showing results:</p>
-<ol type="1">
-<li>Go to the <strong>Outliers</strong> tab and click <strong>Add Outlier Column</strong>.</li>
-<li>Select the numeric columns to check. You can search by exact name or use pattern matching, for example “contains: <code>income</code>” to find all income-related columns.</li>
-<li>Choose a detection method:
+<section id="summary-tab" class="level3">
+<h3 class="anchored" data-anchor-id="summary-tab">Summary tab</h3>
+<p>The Summary tab is the starting point for each monitoring session. It gives a high-level picture of your data collection at a glance.</p>
+<p>Key metrics shown:</p>
 <ul>
-<li><strong>IQR</strong> (default): Robust to extreme values; recommended for most survey data</li>
-<li><strong>Standard Deviation</strong>: More sensitive; suitable when data is approximately normally distributed</li>
-</ul></li>
-<li>Set the multiplier. The default is 1.5 for IQR and 3.0 for standard deviation. Lower values flag more records as outliers; higher values flag fewer.</li>
-<li>Optionally, set a <strong>Soft Minimum</strong> or <strong>Soft Maximum</strong> for variables with known valid ranges, for example: land area must be greater than 0.</li>
-<li>Click <strong>Save</strong>.</li>
-</ol>
+<li><strong>Submission totals</strong>: Total interviews today, this week, this month, and all time</li>
+<li><strong>Submission trend</strong>: A line chart showing submissions over time, so you can spot slowdowns or unusual spikes</li>
+<li><strong>Progress bar</strong>: Percentage toward your Survey Target (if configured), with average daily submission rate</li>
+<li><strong>Data quality overview</strong>: At-a-glance percentages for duplicate rate, outlier rate, missing data rate, and backcheck error rate</li>
+<li><strong>Subgroup progress</strong>: Progress broken down by a grouping variable you choose, such as region or enumerator team</li>
+</ul>
 </section>
-<section id="configuring-the-back-checks-tab" class="level3">
-<h3 class="anchored" data-anchor-id="configuring-the-back-checks-tab">Configuring the Back Checks tab</h3>
-<p>The Back Checks tab requires you to specify which columns to compare between your survey and backcheck datasets:</p>
+<section id="survey-progress-tab" class="level3">
+<h3 class="anchored" data-anchor-id="survey-progress-tab">Survey Progress tab</h3>
+<p>The Survey Progress tab provides a more detailed view of collection pacing. It is most useful for project managers who need to monitor whether the team is on track to meet the target sample size by the end of the data collection period.</p>
+<p>Configure the tab settings before reviewing results:</p>
+<ul>
+<li>Select the <strong>Survey ID</strong>, <strong>Date</strong>, and <strong>Enumerator</strong> columns</li>
+<li>Enter the <strong>Target Number of Interviews</strong></li>
+<li>Optionally, specify <strong>Consent</strong> and <strong>Completion</strong> columns and their expected values (for example, <code>consent = "yes"</code> and <code>completion_status = "complete"</code>)</li>
+</ul>
+<p>The tab then shows submission trends, attempt rates per respondent, and consent and completion rates over time.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_progress_tracking.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="The Survey Progress tab showing a cumulative submissions chart with a target reference line and completion rate summary."><img src="images/datasure_progress_tracking.png" class="img-fluid figure-img" alt="DataSure DQA Report Survey Progress tab displaying a cumulative submissions chart with a target reference line and a completion rate summary panel."></a></p>
+<figcaption>The Survey Progress tab showing a cumulative submissions chart with a target reference line and completion rate summary.</figcaption>
+</figure>
+</div>
+</section>
+<section id="duplicates-tab" class="level3">
+<h3 class="anchored" data-anchor-id="duplicates-tab">Duplicates tab</h3>
+<p>The Duplicates tab identifies records that share the same value in columns that should be unique.</p>
+<p>Configure the tab settings:</p>
+<ul>
+<li>Select the <strong>Survey ID</strong> column (the respondent identifier to check for duplicates)</li>
+<li>Optionally add other columns to check, such as phone numbers or national ID numbers</li>
+</ul>
+<p>The results show the total number of duplicates found, which columns have duplicates, and a table listing every duplicate record. You can filter the table to focus on specific columns.</p>
+<p>When you identify a duplicate to resolve, use the <strong>Correct Data</strong> page (Step 6) to either modify the incorrect ID or remove the duplicate record.</p>
+</section>
+<section id="missing-data-tab" class="level3">
+<h3 class="anchored" data-anchor-id="missing-data-tab">Missing Data tab</h3>
+<p>The Missing Data tab shows the extent and patterns of incomplete responses across your dataset.</p>
+<p>Before reviewing results, configure your missing value codes:</p>
+<ul>
+<li><strong>Missing Labels</strong>: Names for categories of missing responses, such as <code>Don't Know</code>, <code>Refused</code>, <code>Not Applicable</code></li>
+<li><strong>Missing Codes</strong>: The numeric codes used in the dataset to represent these categories, such as <code>-99</code>, <code>-88</code>, <code>-77</code>. Separate multiple codes with commas.</li>
+</ul>
+<p>The tab then shows:</p>
+<ul>
+<li>Overall and per-column missing rates</li>
+<li>A breakdown by category (null, Don’t Know, Refused, Not Applicable)</li>
+<li>Missing rates grouped by enumerator or other categorical variable</li>
+<li>Missingness over time (to detect when problems started)</li>
+<li>A nullity matrix: a visual grid where each row is a record and each column is a variable, with missing values shown in red. This is useful for spotting systematic patterns, such as when respondents skip an entire block of questions.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_nullity_matrix.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="The Missing Data tab showing the nullity matrix and per-column missing rate table."><img src="images/datasure_nullity_matrix.png" class="img-fluid figure-img" alt="DataSure DQA Report Missing Data tab showing a nullity matrix grid with red blocks indicating missing values, alongside a per-column missing rate table sorted by highest missingness."></a></p>
+<figcaption>The Missing Data tab showing the nullity matrix and per-column missing rate table.</figcaption>
+</figure>
+</div>
+</section>
+<section id="outliers-tab" class="level3">
+<h3 class="anchored" data-anchor-id="outliers-tab">Outliers tab</h3>
+<p>The Outliers tab flags numeric values that are statistically unusual and may indicate data entry errors or implausible responses.</p>
+<p>The tab requires additional setup before showing results. Click <strong>Add Outlier Column</strong> for each numeric variable you want to check:</p>
 <ol type="1">
-<li>Go to the <strong>Back Checks</strong> tab settings.</li>
-<li>Specify the survey ID, key, enumerator, and date columns.</li>
-<li>Set your target backcheck rate, for example: <code>10</code> for 10%.</li>
-<li>Click <strong>Add a back check column</strong> for each variable you want to validate.</li>
-<li>For each column, assign a category for grouping, an acceptable error range for numeric variables, and a comparison condition.</li>
-<li>Click <strong>Save</strong>.</li>
+<li><p><strong>Select Columns</strong>: Choose the column or columns to check. You can search by exact name or by pattern:</p>
+<ul>
+<li><code>exact</code>: Match specific column names, for example <code>land_acre</code></li>
+<li><code>contains</code>: Match any column containing a substring, for example <code>income</code> will match <code>hh_income</code>, <code>farm_income</code>, <code>total_income</code></li>
+<li><code>startswith</code> / <code>endswith</code>: Match by prefix or suffix</li>
+<li><code>regex</code>: Use a regular expression pattern</li>
+</ul></li>
+<li><p><strong>Detection Method</strong>: Choose how the tool identifies outliers:</p>
+<ul>
+<li><strong>IQR (Interquartile Range)</strong>: The default method. Flags values more than 1.5 times the IQR above the 75th percentile or below the 25th percentile. Robust to extreme values and recommended for most survey data.</li>
+<li><strong>Standard Deviation</strong>: Flags values more than 3 standard deviations from the mean. More sensitive; suitable when the data is approximately normally distributed.</li>
+</ul></li>
+<li><p><strong>Multiplier</strong>: Adjust the sensitivity threshold. Lower values (for example, IQR multiplier of 1.0) flag more records; higher values flag fewer. Start with the default and adjust based on domain knowledge.</p></li>
+<li><p><strong>Soft Minimum / Soft Maximum</strong> (optional): Set known valid ranges for a variable. The tool flags any value below the soft minimum or above the soft maximum as an outlier regardless of the statistical threshold. For example, land area should always be greater than 0, and age should be between 15 and 95.</p></li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_outlier_config.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="The Add Outlier Column dialog showing the column search field, detection method selector, multiplier input, and soft min/max fields."><img src="images/datasure_outlier_config.png" class="img-fluid figure-img" alt="DataSure Outliers tab Add Outlier Column dialog with a column search field, detection method dropdown showing IQR and Standard Deviation options, a multiplier input, and optional soft minimum and maximum fields."></a></p>
+<figcaption>The Add Outlier Column dialog showing the column search field, detection method selector, multiplier input, and soft min/max fields.</figcaption>
+</figure>
+</div>
+<p>The results show a summary table with outlier counts and statistics per column, and a record-level table listing each flagged value and why the tool flagged it. Clicking on a column shows a box plot with outliers highlighted.</p>
+</section>
+<section id="enumerator-stats-tab" class="level3">
+<h3 class="anchored" data-anchor-id="enumerator-stats-tab">Enumerator Stats tab</h3>
+<p>The Enumerator Stats tab monitors the productivity and data quality of individual field staff. It is one of the most actionable tabs during active data collection because it helps you identify which enumerators need follow-up.</p>
+<p>Configure the tab settings to map your dataset’s columns to the expected fields (Enumerator, Date, Duration, Team, etc.).</p>
+<p>The tab shows:</p>
+<ul>
+<li><strong>Overview metrics</strong>: Total enumerators, active enumerators in the past 7 days, and submission range across enumerators</li>
+<li><strong>Enumerator summary table</strong>: Per-enumerator statistics including total submissions, active days, missing value rates, mean and median interview duration, and consent and completion rates</li>
+<li><strong>Productivity heat map</strong>: A grid showing how many interviews each enumerator completed per day. This makes it easy to spot enumerators who stopped submitting or whose output dropped suddenly.</li>
+<li><strong>Statistics by enumerator</strong>: Compare any numeric column across enumerators to detect systematic differences in how questions were answered</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_enumerator_stats.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="The Enumerator Stats tab showing the productivity heat map with enumerators as rows and dates as columns."><img src="images/datasure_enumerator_stats.png" class="img-fluid figure-img" alt="DataSure DQA Report Enumerator Stats tab displaying a productivity heat map grid with enumerators as rows and collection dates as columns, colored by submission count per day."></a></p>
+<figcaption>The Enumerator Stats tab showing the productivity heat map with enumerators as rows and dates as columns.</figcaption>
+</figure>
+</div>
+</section>
+<section id="gps-checks-tab" class="level3">
+<h3 class="anchored" data-anchor-id="gps-checks-tab">GPS Checks tab</h3>
+<p>The GPS Checks tab validates geographic coordinate data.</p>
+<p>Configure the tab to specify whether your GPS data uses separate latitude and longitude columns or a single combined column. Optionally specify an accuracy column (SurveyCTO stores GPS accuracy in a separate column).</p>
+<p>The results show:</p>
+<ul>
+<li>Total GPS records, valid coordinates, and invalid coordinates</li>
+<li>Accuracy statistics</li>
+<li>An interactive map with all interview locations plotted as markers</li>
+<li>A table of flagged records: missing coordinates, out-of-range values (latitude outside -90 to 90, longitude outside -180 to 180), and low-accuracy readings</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_gps_outlier_check.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="The GPS Checks tab showing the interactive map with interview location markers and the flagged records table."><img src="images/datasure_gps_outlier_check.png" class="img-fluid figure-img" alt="DataSure DQA Report GPS Checks tab displaying an interactive map with colored markers for all interview locations and outlier locations highlighted, alongside a table of flagged GPS records."></a></p>
+<figcaption>The GPS Checks tab showing the interactive map with interview location markers and the flagged records table.</figcaption>
+</figure>
+</div>
+</section>
+<section id="descriptive-stats-tab" class="level3">
+<h3 class="anchored" data-anchor-id="descriptive-stats-tab">Descriptive Stats tab</h3>
+<p>The Descriptive Stats tab shows distribution summaries for selected variables. It is useful for reviewing the composition of your data and detecting unusual distributions that might indicate collection problems, such as all respondents reporting the same income value.</p>
+<p>Select up to 10 columns to analyze. For each column, you can choose between:</p>
+<ul>
+<li><strong>One-Way Table</strong>: Frequency distribution for a single variable</li>
+<li><strong>Two-Way Table</strong>: Cross-tabulation with another variable</li>
+<li><strong>Summary Statistics</strong>: Count, mean, standard deviation, min, max, and percentiles</li>
+</ul>
+</section>
+<section id="back-checks-tab" class="level3">
+<h3 class="anchored" data-anchor-id="back-checks-tab">Back Checks tab</h3>
+<p>The Back Checks tab compares original survey responses against re-interview validation data to measure enumerator reliability.</p>
+<p>Before reviewing results, configure the tab:</p>
+<ol type="1">
+<li>Map the survey ID, key, enumerator, and date columns.</li>
+<li>Set your target backcheck rate.</li>
+<li>Click <strong>Add a back check column</strong> for each variable to validate. For each column, set:
+<ul>
+<li><strong>Category</strong>: A grouping number (1, 2, 3) used to organize columns in the results table</li>
+<li><strong>OK Range</strong>: For numeric variables, the maximum acceptable difference between the original and re-interview response. For example, an OK range of 5 for an age variable means differences of up to 5 years are not counted as errors.</li>
+<li><strong>Comparison Condition</strong>: Whether to skip comparisons when a value is missing in either dataset, <code>ignore_missing_values</code>, or compare all records including those with missing values, <code>compare_all</code></li>
+</ul></li>
+</ol>
+<p>The results show error rates by column, by enumerator, and by back-checker, along with a record-level table showing each comparison.</p>
+<blockquote class="blockquote">
+<p><em>[Screenshot: The Back Checks tab showing the error rate by enumerator table, sorted by highest error rate, and the record-level comparison table.]</em></p>
+</blockquote>
 </section>
 </section>
 <section id="step-6-correct-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-6-correct-data">Step 6: Correct Data</h2>
-<p>The <strong>Correct Data</strong> page provides a structured workflow for fixing data quality issues identified in your reports. All corrections are logged with the original value, new value, reason, and timestamp, creating a full audit trail.</p>
+<p>The <strong>Correct Data</strong> page provides a structured workflow for fixing data quality issues found in your DQA Reports. The system logs every correction with the original value, new value, reason, action type, and timestamp. This creates a full audit trail that is also used to auto generate Stata do-files in the Replication Package.</p>
 <p>Navigate to <strong>Correct Data</strong> from the sidebar.</p>
 <section id="adding-a-correction" class="level3">
 <h3 class="anchored" data-anchor-id="adding-a-correction">Adding a correction</h3>
 <ol type="1">
 <li>Click <strong>Add correction</strong>.</li>
-<li>Select the <strong>Key</strong> of the record you want to modify. This is the unique row identifier set in your check configuration.</li>
+<li>Select the <strong>Key</strong> of the record you want to modify. This is the unique row identifier from the Key Column you specified in your check configuration.</li>
 <li>Select the <strong>Action</strong>:</li>
 </ol>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 35%">
-<col style="width: 64%">
+<col style="width: 25%">
+<col style="width: 45%">
+<col style="width: 29%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Action</th>
 <th>When to Use</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Modify Value</td>
-<td>Fix a specific value in a column, for example correcting a typo in a respondent ID</td>
+<td><strong>Modify Value</strong></td>
+<td>Fix a specific value in a column</td>
+<td>Correcting a typo in a household ID from <code>UP015-005</code> to <code>UP015-055</code></td>
 </tr>
 <tr class="even">
-<td>Remove Row</td>
-<td>Delete an entire record, for example removing a test submission</td>
+<td><strong>Remove Row</strong></td>
+<td>Delete an entire record</td>
+<td>Removing a test submission or a fully duplicated record after investigation</td>
 </tr>
 <tr class="odd">
-<td>Remove Value</td>
-<td>Set a specific value to missing, for example removing a response that is out of range</td>
+<td><strong>Remove Value</strong></td>
+<td>Set a specific value to missing</td>
+<td>Removing a value which should be missing if the skip pattern worked correctly</td>
 </tr>
 </tbody>
 </table>
-<ol start="4" type="1">
-<li>Select the <strong>Column</strong> to modify (not required for Remove Row).</li>
-<li>Enter the new value, or confirm the removal.</li>
-<li>Enter a <strong>Reason</strong> for the correction. This is required.</li>
-<li>Click <strong>Apply</strong>.</li>
+<ol type="1">
+<li><p>Select the <strong>Column</strong> to modify (not required for Remove Row).</p></li>
+<li><p>Enter the new value, or confirm the removal.</p></li>
+<li><p>Enter a <strong>Reason</strong> for the correction. You must complete this field, and the system adds it to the permanent audit trail. Write reasons that will be meaningful to a future reviewer who was not present during data collection.</p>
+<p>Good examples:</p>
+<ul>
+<li><code>"Duplicate record confirmed with supervisor -- original submission retained, duplicate removed"</code></li>
+<li><code>"Household ID typo confirmed via field notes -- corrected from UP015-005 to UP015-055"</code></li>
+<li><code>"Income value of 999999 is a data entry error confirmed by enumerator -- removed"</code></li>
+</ul></li>
+<li><p>Click <strong>Apply</strong>.</p></li>
 </ol>
-<p><em>[Screenshot: Correct Data page showing the correction form and the correction history table.]</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_adding_correction.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="The Add Correction dialog showing the Key selector, Action dropdown, Column selector, Current Value, New Value, and Reason fields."><img src="images/datasure_adding_correction.png" class="img-fluid figure-img" alt="DataSure Correct Data page showing the Add Correction dialog with a Key selector, Action dropdown set to Modify Value, a Column selector, an auto populated Current Value field, a New Value input, and a required Reason field."></a></p>
+<figcaption>The Add Correction dialog showing the Key selector, Action dropdown, Column selector, Current Value, New Value, and Reason fields.</figcaption>
+</figure>
+</div>
 </section>
 <section id="verifying-a-correction" class="level3">
 <h3 class="anchored" data-anchor-id="verifying-a-correction">Verifying a correction</h3>
-<p>After applying a correction, navigate back to the relevant report tab and confirm that the flagged issue no longer appears. If it persists, check that you selected the correct key and column.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>After applying a correction, navigate back to the relevant DQA Report tab and confirm the flagged issue no longer appears. If it persists, check that you selected the correct key and column.</p>
+</section>
+<section id="recommended-correction-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="recommended-correction-workflow">Recommended correction workflow</h3>
+<p>Corrections should always follow an investigation, not precede one. Before correcting a record, confirm the root cause.</p>
+<ol type="1">
+<li>Identify the issue in a DQA Report tab.</li>
+<li>Investigate: is it a data entry error, a survey programming bug, or a legitimate extreme value?</li>
+<li>Consult field notes, supervisor reports, or the enumerator directly if needed.</li>
+<li>Apply the correction with a specific documented reason.</li>
+<li>Verify the resolution in the DQA Report.</li>
+<li>If the issue reflects a training or process problem, follow up with the enumerator to prevent recurrence.</li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Write clear, specific reasons for each correction. Audit trails are important for research transparency and for responding to questions from reviewers or collaborators.</p>
+<p>Do not remove or modify records before investigating their root cause. A duplicate ID, for example, may be a data entry error in one record, or it may indicate that the team surveyed a respondent twice. The correct action depends on the investigation outcome.</p>
 </div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_corrections_log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="The Correct Data page showing the correction history table with logged corrections, reasons, and timestamps."><img src="images/datasure_corrections_log.png" class="img-fluid figure-img" alt="DataSure Correct Data page displaying the correction history table with multiple logged entries, each showing the action type, affected column, original value, new value, reason, and timestamp."></a></p>
+<figcaption>The Correct Data page showing the correction history table with logged corrections, reasons, and timestamps.</figcaption>
+</figure>
 </div>
 </section>
-<section id="recommended-correction-workflow" class="level3">
-<h3 class="anchored" data-anchor-id="recommended-correction-workflow">Recommended correction workflow</h3>
+</section>
+<section id="step-7-export-a-replication-package" class="level2">
+<h2 class="anchored" data-anchor-id="step-7-export-a-replication-package">Step 7: Export a Replication Package</h2>
+<p>The <strong>Replication Package</strong> page is the final step of the DataSure workflow. It exports a self-contained zip file that allows anyone with Stata to reproduce your corrected dataset exactly from the original raw source data. This supports IPA’s research transparency and data management standards.</p>
+<p>Navigate to <strong>Replication Package</strong> from the sidebar.</p>
+<section id="what-the-replication-package-contains" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-replication-package-contains">What the replication package contains</h3>
+<p>DataSure organizes the zip file into a structured folder layout:</p>
+<pre><code>replication_[project]_[page]/
+├── 0_README.txt
+├── 1_docs/
+│   ├── 1_surveys/          ← SurveyCTO questionnaire (.xlsx), if applicable
+│   ├── 2_codebooks/
+│   └── 3_notes/
+├── 2_scripts/
+│   ├── 0_main.do           ← Master script that runs all others in order
+│   ├── 1_install_packages.do
+│   ├── 2_import_data.do    ← Imports the raw CSV into Stata
+│   ├── 3_prepare_data.do   ← Applies all prep steps from the Prepare Data log
+│   └── 4_corrections.do    ← Applies all corrections from the Correct Data log
+├── 3_data/
+│   ├── 1_raw/              ← Raw survey data as CSV
+│   ├── 2_intermediate/     ← Generated when scripts are run
+│   └── 3_final/            ← Generated when scripts are run
+└── 4_output/
+    ├── 1_tables/
+    ├── 2_figures/
+    └── 3_logs/
+        ├── correction_log.csv
+        └── prep_log.csv</code></pre>
+<p>The Stata do-files <code>2_import_data.do</code>, <code>3_prepare_data.do</code>, and <code>4_corrections.do</code> are <strong>auto generated</strong> by DataSure from the preparation steps and corrections you logged during your project. You do not need to write any Stata code yourself. Running <code>0_main.do</code> in Stata will reproduce the full corrected dataset from scratch.</p>
+<p>If you imported your data from SurveyCTO, DataSure will also attempt to download the survey questionnaire XLS file from the server and include it in the <code>1_docs/1_surveys/</code> folder.</p>
+</section>
+<section id="building-the-package" class="level3">
+<h3 class="anchored" data-anchor-id="building-the-package">Building the package</h3>
 <ol type="1">
-<li>Identify an issue in a DQA report tab.</li>
-<li>Investigate the root cause before correcting. Check whether the issue is a data entry error, a survey programming error, or a legitimate value.</li>
-<li>Apply the correction with a documented reason.</li>
-<li>Verify the resolution by reviewing the relevant report tab.</li>
-<li>Follow up with the enumerator if the issue reflects a training or process problem.</li>
+<li>On the <strong>Replication Package</strong> page, select the <strong>Page Name</strong> corresponding to the check configuration you want to export.</li>
+<li>Review the configuration details that appear below the selector to confirm that DataSure shows the correct dataset and key column.</li>
+<li>Expand <strong>What is inside the zip?</strong> to preview the full directory structure before building.</li>
+<li>Click <strong>Build Replication Package</strong>. DataSure assembles the package in the background and shows progress as it builds each component.</li>
 </ol>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title="The Replication Package page showing the page selector, configuration details, directory tree preview, and the Build Replication Package button."><source src="images/datasure_replication_export.mp4"></video></div>
+</section>
+<section id="downloading-the-package" class="level3">
+<h3 class="anchored" data-anchor-id="downloading-the-package">Downloading the package</h3>
+<div class="callout callout-style-default callout-warning callout-titled" title="This package contains PII">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>This package contains PII
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The replication package includes raw survey data, which may contain personally identifiable information (PII) such as respondent names, locations, or contact details. You must download it only to an <strong>encrypted, access-controlled storage location</strong> in compliance with IPA data security and confidentiality policies. Do not store the package on unencrypted drives, shared folders, or cloud services not approved for confidential data.</p>
+<p>See <a href="../../data-security/data-security-protocol.html">IPA’s Data Security Protocol</a> for guidance on approved storage.</p>
+</div>
+</div>
+<p>After the build is complete:</p>
+<ol type="1">
+<li>Read the PII warning.</li>
+<li>Check the confirmation box to confirm you are saving to an encrypted location.</li>
+<li>Click <strong>Download replication package (.zip)</strong>.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_replication_download.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="The download section showing the PII confirmation checkbox checked and the Download button."><img src="images/datasure_replication_download.png" class="img-fluid figure-img" alt="DataSure Replication Package page download section with the PII confirmation checkbox checked and the Download replication package zip button visible."></a></p>
+<figcaption>The download section showing the PII confirmation checkbox checked and the Download button.</figcaption>
+</figure>
+</div>
+</section>
+<section id="who-should-use-the-replication-package" class="level3">
+<h3 class="anchored" data-anchor-id="who-should-use-the-replication-package">Who should use the replication package</h3>
+<p>Use the replication package for:</p>
+<ul>
+<li><strong>Archiving at project closure</strong>: Submit the package alongside your final dataset so that future researchers or auditors can reproduce your data processing pipeline.</li>
+<li><strong>Peer review and verification</strong>: Share with a colleague or IPA’s GRDS team to verify that the team applied corrections and prep steps correctly.</li>
+<li><strong>Handover</strong>: If a project changes hands, the package provides a complete record of every decision made during data cleaning.</li>
+</ul>
 </section>
 </section>
 <section id="keeping-datasure-up-to-date" class="level2">
 <h2 class="anchored" data-anchor-id="keeping-datasure-up-to-date">Keeping DataSure Up to Date</h2>
 <p>To upgrade DataSure to the latest version, run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool upgrade datasure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Check the <a href="https://github.com/PovertyAction/datasure/blob/main/RELEASENOTES.md">DataSure release notes</a> for a summary of what has changed in each version.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool upgrade datasure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Check the <a href="https://github.com/PovertyAction/datasure/blob/main/RELEASENOTES.md">DataSure release notes</a> for a summary of what changed in each version before upgrading.</p>
 </section>
 <section id="getting-help" class="level2">
 <h2 class="anchored" data-anchor-id="getting-help">Getting Help</h2>
@@ -2573,6 +3462,39 @@ Tip
     </div>
   </div>
 </footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
