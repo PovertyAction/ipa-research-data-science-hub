@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="research design, theory of change, impact evaluation, randomized controlled trials, experimental design, causal inference, explanation">
+<meta name="keywords" content="research design, impact evaluation, counterfactual, randomized controlled trials, quasi-experimental methods, causal inference, explanation">
 
-<title>Research Design – Research and Data Science Hub</title>
+<title>About Research Design – Research and Data Science Hub</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../research-design/survey-translation.html" rel="next">
+<link href="../research-design/research-methods.html" rel="next">
 <link href="../assets/logos/ipa-favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -456,8 +456,8 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/survey-translation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Survey Translation</span></a>
+  <a href="../research-design/research-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Methods</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -468,14 +468,20 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../research-design/sample-size-power.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample and Power Calculations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../research-design/measurement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Measurement</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/sample-size-power.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sample and Power Calculations</span></a>
+  <a href="../research-design/survey-translation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Translation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1512,12 +1518,10 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#core-research-design-elements" id="toc-core-research-design-elements" class="nav-link active" data-scroll-target="#core-research-design-elements">Core Research Design Elements</a>
-    <ul class="collapse">
-    <li><a href="#statistical-power-and-sample-size" id="toc-statistical-power-and-sample-size" class="nav-link" data-scroll-target="#statistical-power-and-sample-size">Statistical Power and Sample Size</a></li>
-    <li><a href="#randomization-strategy" id="toc-randomization-strategy" class="nav-link" data-scroll-target="#randomization-strategy">Randomization Strategy</a></li>
-    <li><a href="#measurement-strategy" id="toc-measurement-strategy" class="nav-link" data-scroll-target="#measurement-strategy">Measurement Strategy</a></li>
-    </ul></li>
+    <li><a href="#what-is-impact-evaluation" id="toc-what-is-impact-evaluation" class="nav-link active" data-scroll-target="#what-is-impact-evaluation">What is impact evaluation?</a></li>
+    <li><a href="#methods-for-estimating-impact" id="toc-methods-for-estimating-impact" class="nav-link" data-scroll-target="#methods-for-estimating-impact">Methods for estimating impact</a></li>
+    <li><a href="#pages-in-this-section" id="toc-pages-in-this-section" class="nav-link" data-scroll-target="#pages-in-this-section">Pages in this section</a></li>
+    <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
     <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
     </ul>
     <hr>
@@ -1529,10 +1533,11 @@ cookieconsent.run({
   <ul>
         <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
         <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/cristhian-pulido" class="nav-link" data-scroll-target="https\://poverty-action.org/people/cristhian-pulido">Cristhian Pulido</a></li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/kelly-montano" class="nav-link" data-scroll-target="https\://poverty-action.org/people/kelly-montano">Kelly Montaño</a></li>
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">June 2, 2026</li>
+    <li class="last-modified" style="font-size: 0.86rem;">June 10, 2026</li>
   </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
   <ul>
@@ -1541,58 +1546,80 @@ cookieconsent.run({
   <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/index.html">About Research Design</a></li></ol></nav><h1 class="title display-7">Research Design</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/index.html">About Research Design</a></li></ol></nav><h1 class="title display-7">About Research Design</h1></header>
 
 
 <header id="title-block-header">
     
-        <p class="abstract">Essential considerations for designing rigorous impact evaluations, from theoretical foundations to practical implementation strategies for randomized controlled trials and quasi-experimental studies.</p>
     
 </header>
 
 
-<p>Research design is a key ingredient for reliable, policy-relevant research and data science projects. It determines whether you can credibly measure and attribute observed changes to your intervention, rather than to other factors. This page provides an overview of key research design considerations and links to detailed guidance on specific topics.</p>
-<section id="core-research-design-elements" class="level2">
-<h2 class="anchored" data-anchor-id="core-research-design-elements">Core Research Design Elements</h2>
-<p>Every research and data science project must address several fundamental questions that determine the strength and credibility of your findings:</p>
-<section id="statistical-power-and-sample-size" class="level3">
-<h3 class="anchored" data-anchor-id="statistical-power-and-sample-size">Statistical Power and Sample Size</h3>
-<p>Your study must be adequately powered to detect meaningful effects. This requires careful consideration of the minimum effect size worth detecting, expected variability in outcomes, and practical constraints.</p>
-<p><strong>Key considerations:</strong></p>
-<ul>
-<li>What is the minimum detectable effect that would be policy-relevant?</li>
-<li>What sample size do you need to achieve adequate statistical power?</li>
-<li>How will attrition and non-compliance affect your power?</li>
-</ul>
-<p>👉 <strong>Learn more:</strong> <a href="../research-design/sample-size-power.html">Sample and Power Calculations</a> | <a href="../research-design/how-to-power-calculation.html">How-to Guide to Power Calculations</a></p>
+<p>Research design is a key ingredient for reliable, policy-relevant research and data science projects. It determines whether you can credibly measure and attribute observed changes to your intervention, rather than to other factors. When design is weak, no amount of analysis can recover the lost credibility, and the consequences are real: resources directed toward ineffective programs, better alternatives crowded out, and policies built on unreliable evidence. This page provides an overview of key research design considerations and links to detailed guidance on specific topics.</p>
+<section id="what-is-impact-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-impact-evaluation">What is impact evaluation?</h2>
+<p>Impact evaluation asks a deceptively simple question: did this program work? A program’s impact is defined as the difference between the outcomes observed among participants and the outcomes those same participants <em>would have experienced</em> had the program never existed, the <strong>counterfactual</strong>. Because the counterfactual is never directly observable, every evaluation method is a strategy for constructing a credible substitute from available data.</p>
+<p>To estimate the counterfactual, researchers select a <strong>comparison group</strong> whose outcomes proxy what would have happened to participants. When that group differs systematically from participants -in observable characteristics like income or education, or in unobservable ones like motivation- any difference in outcomes may reflect those pre-existing differences rather than the program itself. This is <strong>selection bias</strong>, and it is the central methodological problem that research design must solve.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The Balsakhi Program: How the same data yields four different answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The Balsakhi tutoring program in Vadodara, India, provided remedial instruction to at-risk primary school students. Because the same dataset was analyzed using different evaluation methods, it illustrates clearly how the choice of comparison group shapes results.</p>
+<p>A <strong>before-versus-after</strong> design estimated an impact of 26.42 test-score points, but this ignores natural academic progress over the school year. A <strong>simple difference</strong> between participants and non-participants produced -5.05 points, almost certainly misleading because children receiving the Balsakhi were selected for being lower-performing. A <strong>difference-in-differences</strong> design estimated 6.82 points. A <strong>randomized evaluation</strong> of a similar program produced 0.28 standard deviations: a credible result grounded in a defensible comparison.</p>
+<p>Every method rests on assumptions that should be stated, examined, and defended, not taken for granted.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="randomization-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="randomization-strategy">Randomization Strategy</h3>
-<p>The method of assigning participants to treatment and control groups is crucial for causal identification. The right approach depends on your intervention, context, and implementation constraints.</p>
-<p><strong>Key considerations:</strong></p>
-<ul>
-<li>Should you randomize at the individual or cluster level?</li>
-<li>Do you need stratification to ensure balance on key characteristics?</li>
-<li>How will you handle spillovers between treatment and control groups?</li>
-</ul>
-<p>👉 <strong>Learn more:</strong> <a href="../research-design/randomization.html">Randomization</a> | <a href="../research-design/how-to-randomization.html">How-to Guide to Randomization</a></p>
+<section id="methods-for-estimating-impact" class="level2">
+<h2 class="anchored" data-anchor-id="methods-for-estimating-impact">Methods for estimating impact</h2>
+<p><strong>Quasi-experimental methods</strong> -such as difference-in-differences, regression discontinuity, and instrumental variables- do not involve random assignment. They rely on statistical techniques and specific features of program design to construct a credible comparison group, and each makes assumptions that cannot be directly tested. For descriptions of each approach, see the DIME Wiki’s <a href="https://dimewiki.worldbank.org/Experimental_Methods">Experimental Methods</a> and the DIME Wiki’s <a href="https://dimewiki.worldbank.org/Quasi-Experimental_Methods">Quasi-Experimental Methods</a>.</p>
+<p><strong>Randomized controlled trials (RCTs)</strong> assign candidates to treatment or control through a lottery, making both groups statistically equivalent at baseline on observed and unobserved characteristics. This is the only method that eliminates selection bias without assumptions about unobservable factors. For a discussion of common concerns about RCTs -including ethics, external validity, and cost- see <a href="../research-design/addressing-rct-criticisms.html">Addressing Common Criticisms of Randomized Controlled Trials</a>.</p>
+<p>Impact evaluations are not the only tool in the research toolkit. IPA’s work spans a range of study types depending on what a given question requires: pilot studies and A/B tests to develop and iterate on program designs; descriptive and process studies to understand context and diagnose gaps; long-term panel surveys and administrative datasets to track outcomes over time; and evidence synthesis to consolidate what is already known. Good research design means choosing the right approach for the question, not defaulting to any single method.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What makes a good evaluation?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A good evaluation asks questions that are policy relevant, answers them in an unbiased and definitive way, and shares the results regardless of the findings. Studies that find no impact can be just as useful as those that do. The point is to learn and improve, not to validate.</p>
+<p>A related question is whether findings from one context can inform decisions in another. Rigorous impact evaluations are designed not to replace local knowledge but to complement it: underlying human behaviors tend to generalize more than specific programs do, and a focus on mechanisms -<em>why</em> something worked- is usually more useful than asking whether an identical program produced identical results elsewhere. For a practical framework for thinking through generalizability, see Bates and Glennerster (2017) in the Additional Resources below.</p>
+</div>
+</div>
 </section>
-<section id="measurement-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="measurement-strategy">Measurement Strategy</h3>
-<p>Valid and reliable measurement of outcomes is essential for credible impact evaluation. This involves both technical considerations about instruments and practical considerations about data collection.</p>
-<p><strong>Key considerations:</strong></p>
-<ul>
-<li>Which outcomes should you measure and when?</li>
-<li>How will you ensure measurement validity and reliability?</li>
-<li>What baseline data do you need for analysis and balance checks?</li>
-</ul>
-<p>👉 <strong>Learn more:</strong> <a href="../research-design/measurement.html">Measurement</a></p>
-<p>We recommend starting with a clear Theory of Change and then iteratively refining your design as you consider these elements. Each project is unique, so adapt these principles to fit your specific context and research questions.</p>
+<section id="pages-in-this-section" class="level2">
+<h2 class="anchored" data-anchor-id="pages-in-this-section">Pages in this section</h2>
+<p>Good research design requires working through several interconnected decisions before data collection begins. The pages below cover the key elements, from choosing a research method to powering your study, designing randomization, and developing valid measures.</p>
+<p><strong><a href="../research-design/research-methods.html">Research Methods in Impact Evaluation</a></strong>. An overview of quantitative, qualitative, and mixed methods approaches: what each does, what questions it answers, and how they work together to generate rigorous, policy-relevant evidence.</p>
+<p><strong><a href="../research-design/sample-size-power.html">Sample Size and Power Calculations</a></strong>. A study must be adequately powered to detect effects worth detecting. Key decisions include the minimum policy-relevant effect size, expected outcome variance, and how clustering, attrition, and non-compliance affect the required sample. See also the <a href="../research-design/how-to-power-calculation.html">How-to Guide to Power Calculations</a>.</p>
+<p><strong><a href="../research-design/randomization.html">Randomization</a></strong>. The level and method of random assignment shape statistical power, spillover risk, and implementation feasibility. Key decisions include whether to randomize at the individual or cluster level, whether to stratify, and how to handle design variations such as phased rollout or encouragement designs. See also the <a href="../research-design/how-to-randomization.html">How-to Guide to Randomization</a>.</p>
+<p><strong><a href="../research-design/measurement.html">Measurement and Survey Design</a></strong>. Valid and reliable measurement of outcomes is essential for credible evaluation. This covers indicator selection, instrument design, sources of measurement error, and how to connect measurement choices to a theory of change.</p>
+<p><strong><a href="../research-design/addressing-rct-criticisms.html">Addressing Common Criticisms of Randomized Controlled Trials</a></strong>. A discussion of the most frequently raised concerns about RCTs in development research, with context for how thoughtful design addresses them.</p>
 </section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Banerjee, Abhijit, Shawn Cole, Esther Duflo, and Leigh Linden. 2007. “Remedying Education: Evidence from Two Randomized Experiments in India.” <em>Quarterly Journal of Economics</em> 122, no. 3: 1235–1264. <a href="https://doi.org/10.1162/qjec.122.3.1235">https://doi.org/10.1162/qjec.122.3.1235</a></p>
+<p>Bates, Mary Ann, and Rachel Glennerster. 2017. “The Generalizability Puzzle.” <em>Stanford Social Innovation Review</em>, Summer 2017. <a href="https://ssir.org/articles/entry/the_generalizability_puzzle">https://ssir.org/articles/entry/the_generalizability_puzzle</a></p>
+<p>Gertler, Paul J., Sebastian Martinez, Patrick Premand, Laura B. Rawlings, and Christel M.J. Vermeersch. 2016. <em>Impact Evaluation in Practice</em>. 2nd ed.&nbsp;Washington, DC: World Bank and Inter-American Development Bank. <a href="https://www.worldbank.org/en/programs/sief-trust-fund/publication/impact-evaluation-in-practice">https://www.worldbank.org/en/programs/sief-trust-fund/publication/impact-evaluation-in-practice</a></p>
 </section>
 <section id="additional-resources" class="level2">
 <h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<p><strong><a href="https://www.povertyactionlab.org/resource/elements-randomized-evaluation">The Elements of a Randomized Evaluation</a></strong> - A comprehensive guide to designing and implementing randomized controlled trials, covering the fundamental principles and practical considerations for rigorous impact evaluation.</p>
+<p>Abdul Latif Jameel Poverty Action Lab (J-PAL). “Introduction to Randomized Evaluations.” J-PAL Research Resources. <a href="https://www.povertyactionlab.org/resource/introduction-randomized-evaluations">https://www.povertyactionlab.org/resource/introduction-randomized-evaluations</a></p>
+<p>Bates, Mary Ann, and Rachel Glennerster. 2017. “The Generalizability Puzzle.” <em>Stanford Social Innovation Review</em>, Summer 2017. <a href="https://ssir.org/articles/entry/the_generalizability_puzzle">https://ssir.org/articles/entry/the_generalizability_puzzle</a></p>
+<p>World Bank Development Impact Evaluation (DIME). “Experimental Methods.” DIME Wiki. <a href="https://dimewiki.worldbank.org/Experimental_Methods">https://dimewiki.worldbank.org/Experimental_Methods</a></p>
+<p>World Bank Development Impact Evaluation (DIME). “Quasi-Experimental Methods.” DIME Wiki. <a href="https://dimewiki.worldbank.org/Quasi-Experimental_Methods">https://dimewiki.worldbank.org/Quasi-Experimental_Methods</a></p>
 
 
 </section>
@@ -2015,8 +2042,8 @@ cookieconsent.run({
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../research-design/survey-translation.html" class="pagination-link" aria-label="Survey Translation">
-        <span class="nav-page-text">Survey Translation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../research-design/research-methods.html" class="pagination-link" aria-label="Research Methods">
+        <span class="nav-page-text">Research Methods</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
