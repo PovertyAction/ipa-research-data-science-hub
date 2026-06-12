@@ -1,0 +1,126 @@
+---
+title: "Getting Started with Claude AI"
+abstract: |
+  An orientation to Claude, an AI assistant developed by Anthropic, and Claude Code, the version of Claude that works directly with the files on your computer. This page explains what these tools can and cannot do, how access works at IPA, and how to choose between the setup path for data analysts and the setup path for project managers.
+keywords:
+  - "AI"
+  - "Claude"
+  - "Claude Code"
+  - "large language models"
+  - "productivity"
+  - "explanation"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+authors-ipa:
+  - "[Juan Felipe García Rodríguez](https://poverty-action.org/people/juan-felipe-garcia-rodriguez)"
+  - "[Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)"
+contributors:
+  - "[Daniel Martinez](https://poverty-action.org/people/daniel-enriquez)"
+---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted and translated from the [Claude Code guide for IPA Colombia](https://github.com/juanfegarIPA/claude-code-ipa-colombia) by Juan Felipe García Rodríguez and Diego Quintero Mogollón (IPA Colombia). The original material is licensed under the [MIT License](https://github.com/juanfegarIPA/claude-code-ipa-colombia/blob/main/LICENSE).
+
+**Changes made:** Content has been translated to English, condensed, and updated by Innovations for Poverty Action (IPA) to align with current Anthropic documentation and the conventions of this site.
+
+:::
+
+:::{.callout-tip appearance="simple"}
+
+## Key Takeaways
+
+- Claude is an AI assistant developed by Anthropic. Claude Code extends it to read and edit files on your computer, generate documents, and remember your working context between sessions.
+- IPA staff have access to Claude, including Claude Code, through the organization's Enterprise license.
+- Never share confidential data, including personally identifiable information about research participants, with AI tools. At IPA, the [IPA AI Usage Guidelines](https://ipastorage.box.com/s/mvr67ygvz1y3v8qmgjey67lk7msmyeks) define what is allowed.
+- Two setup paths are available: one for data analysts working with code, and one for project managers and other staff who do not code.
+
+:::
+
+## Overview
+
+Claude is an AI assistant developed by [Anthropic](https://www.anthropic.com). Like other large language model assistants, it can draft and revise text, explain and write code, summarize documents, and answer questions. It comes in three forms:
+
+- **Chats**: the conversation interface at [claude.ai](https://claude.ai) and in the desktop app. No access to your files.
+- **Cowork**: a mode that completes multi-step knowledge work on your behalf, such as research synthesis and document preparation, and delivers finished work. See [Anthropic's Cowork page](https://claude.com/product/cowork).
+- **Claude Code**: an interactive assistant that works directly with the files on your computer, where you review each change as it happens.
+
+These guides focus on **Claude Code**. The two modes suit different workflows: Claude Code works inside a workspace or repository whose files carry persistent context between sessions, while Cowork runs each task in its own session without that context. Use Cowork for self-contained deliverables; use Claude Code for the ongoing, context-heavy work these guides cover.
+
+Using Claude requires a paid plan or an organizational license. At IPA, staff have access through the organization's Enterprise license, which covers both the chat interface and Claude Code. If you work at another organization, check what coverage and AI policy apply to you; the guidance on these pages still works the same way.
+
+This guide helps you set up Claude Code for research and operations work. It adapts material that IPA Colombia developed and tested over several months of real use, and it serves two audiences:
+
+- **Data analysts** who write code, manage Stata or Python projects, and work in version-controlled repositories.
+- **Project managers and other staff** who work with documents, spreadsheets, presentations, and email, and who do not need to write code.
+
+## What is Claude Code?
+
+Claude Code is a way to converse with Claude directly from your computer. It is available in the Claude desktop app (the **Code** tab), as a command line tool, and in a web version. Unlike Chats, Claude Code can:
+
+- **Read and edit files** on your computer, such as documents, spreadsheets, and folders.
+- **Generate documents** in formats like Word, PowerPoint, and Excel that are ready to share.
+- **Automate repetitive tasks** such as reports, follow-ups, and formatting.
+- **Remember who you are and how you work** between sessions, through `CLAUDE.md` context files and a memory of its own that it builds as you work together.
+
+::: {.callout-tip}
+
+## Do you need to know how to code?
+
+No. The desktop application has a visual interface where you converse with Claude as you would in a chat. The difference is that Claude can access your local files and produce documents. If you have used Claude or another AI chat in the browser, Claude Code is the next step.
+
+:::
+
+::: {.callout-important}
+
+## What Claude is not
+
+Claude does not replace your judgment, and it should never make decisions for you. It can gather inputs, draft options, and flag tradeoffs, but the decision and the responsibility for it stay with you. It is also not file storage and not a search engine. Always review what it produces before you use or share it.
+
+:::
+
+## Use AI safely with research data
+
+Research organizations handle data whose disclosure can harm study participants, staff, and partners. Before you use any AI tool for work, know your organization's AI policy and your data's classification.
+
+At IPA, the [IPA AI Usage Guidelines](https://ipastorage.box.com/s/mvr67ygvz1y3v8qmgjey67lk7msmyeks) set the rules. The core rule: IPA's use of Claude is approved for **Public** and **Internal** data only. Do not share **Confidential** or **Highly Confidential** data, which includes any personally identifiable information about research participants, staff, or partners.
+
+For guidance on AI and qualitative research data, see [AI-Assisted Qualitative Coding](../../data-collection/qualitative-methods/ai-assisted-coding.qmd). IPA staff who are unsure about a data classification can contact [support@poverty-action.org](mailto:support@poverty-action.org).
+
+## Choose your path
+
+Everyone starts with the same setup: [Installing Claude Code](install.qmd) covers checking your access, installing Git, and installing the app or the command line tool.
+
+After that, the main question is where you are comfortable working:
+
+::: {.callout-tip appearance="simple"}
+
+## In the terminal and VS Code
+
+For anyone comfortable in a terminal or editor; most data analysts work here. Claude integrates with Git, Stata, and IPA's standard project structure.
+
+- [Claude in the Terminal and VS Code](claude-terminal-vscode.qmd)
+
+:::
+
+::: {.callout-tip appearance="simple"}
+
+## In the Claude desktop app
+
+For anyone who prefers an app with a visual interface; most project managers work here. A personal workspace folder, no coding required.
+
+- [Getting Started with Claude for Project Managers](claude-desktop-setup.qmd)
+
+:::
+
+## Resources and support
+
+- [Claude Code documentation](https://code.claude.com/docs/) provides the official Anthropic reference.
+- [`PovertyAction/ipa-stata-template`](https://github.com/PovertyAction/ipa-stata-template) is IPA's open source Stata project template, designed to work well with Claude Code.
+- [IPA AI Usage Guidelines](https://ipastorage.box.com/s/mvr67ygvz1y3v8qmgjey67lk7msmyeks) set the institutional policy for IPA staff. Reading them is required before using AI tools for IPA work.
+
+IPA staff can get support through these channels:
+
+- Technical questions about Claude Code: [support@poverty-action.org](mailto:support@poverty-action.org).
+- Questions about confidential data, Azure OpenAI, or local LLMs: [researchsupport@poverty-action.org](mailto:researchsupport@poverty-action.org).

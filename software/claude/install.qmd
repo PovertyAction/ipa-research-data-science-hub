@@ -1,0 +1,118 @@
+---
+title: "Installing Claude Code"
+abstract: |
+  The setup steps shared by every Claude Code user: checking your access, installing Git, and installing either the desktop application or the command line tool. Complete this page first, then continue with the guide for your role.
+keywords:
+  - "AI"
+  - "Claude Code"
+  - "installation"
+  - "how-to guide"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+authors-ipa:
+  - "[Juan Felipe García Rodríguez](https://poverty-action.org/people/juan-felipe-garcia-rodriguez)"
+  - "[Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)"
+contributors:
+  - "[Daniel Martinez](https://poverty-action.org/people/daniel-enriquez)"
+---
+
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This page is adapted and translated from the [Claude Code guide for IPA Colombia](https://github.com/juanfegarIPA/claude-code-ipa-colombia) by Juan Felipe García Rodríguez and Diego Quintero Mogollón (IPA Colombia). The original material is licensed under the [MIT License](https://github.com/juanfegarIPA/claude-code-ipa-colombia/blob/main/LICENSE).
+
+**Changes made:** Content has been translated to English, condensed, and updated by Innovations for Poverty Action (IPA). Installation instructions follow the current [official Claude Code documentation](https://code.claude.com/docs/), which differs from the original guide.
+
+:::
+
+These steps are the same for everyone. Complete them once, then continue based on where you are comfortable working: in [the terminal and VS Code](claude-terminal-vscode.qmd), or in [the Claude desktop app](claude-desktop-setup.qmd).
+
+## Step 1: Check your access
+
+Claude Code requires a paid Claude plan, such as Pro, Max, Team, or Enterprise. The free claude.ai plan does not include it.
+
+At IPA, staff are covered by the organization's Enterprise license:
+
+1. Go to [claude.ai](https://claude.ai) and sign in with your IPA email.
+2. If you see the IPA logo or an "Enterprise" label, you are covered.
+3. If not, contact [support@poverty-action.org](mailto:support@poverty-action.org) to request a seat.
+
+::: {.callout-note}
+
+## Why an organizational license matters
+
+An enterprise contract typically includes a data processing agreement and retention policies that protect the organization's information. IPA's Enterprise contract with Anthropic does this for IPA. Personal accounts and personal API keys work technically, but they fall outside institutional coverage. Use the seat your organization provides.
+
+:::
+
+## Step 2: Install Git
+
+Claude Code uses Git to run commands behind the scenes, so install it even if you never use it yourself. You do not need a GitHub account.
+
+::: {.panel-tabset group="OS"}
+
+## Windows
+
+Download the installer from [git-scm.com](https://git-scm.com/downloads/win), run it, and accept all the default options.
+
+## Mac
+
+Open the Terminal app and run `git --version`. If Git is missing, macOS offers to install it; accept the prompt.
+
+:::
+
+## Step 3: Install Claude Code
+
+The main question is where you are comfortable working: a terminal inside VS Code, or an app with a visual interface. Both forms are covered by the same license, do the same work, and can be installed side by side.
+
+::: {.panel-tabset}
+
+## Desktop application
+
+If you prefer an app with a visual interface. Most project managers start here.
+
+1. Download the app from [claude.ai/download](https://claude.ai/download), available for Windows and Mac.
+2. Install it with the default options.
+3. Open it and sign in with the same account you checked in Step 1.
+
+## Terminal (CLI)
+
+If you are comfortable in a terminal or VS Code. Most data analysts start here. Install with the native installer, which keeps itself up to date automatically.
+
+On Windows, open PowerShell and run:
+
+```bash
+irm https://claude.ai/install.ps1 | iex
+```
+
+On Mac or Linux, open a terminal and run:
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+Verify the installation by opening a new terminal and running:
+
+```bash
+claude --version
+```
+
+The first time you run `claude`, it asks you to authenticate. Sign in with the same account you checked in Step 1. You do not need an API key. For a more detailed check of your setup, run `claude doctor`.
+
+:::
+
+## Troubleshooting
+
+| Problem | Solution |
+| --- | --- |
+| `claude: command not found` | Close and reopen the terminal. If it persists, run the installer again. |
+| Authentication error | Check that you are signing in with the right account and that your plan or seat is active. |
+| The app asks for Git, or cannot run commands | Install Git; see Step 2. |
+| Anything else | Run `claude doctor` in the terminal or check the [official documentation](https://code.claude.com/docs/). IPA staff can write to [support@poverty-action.org](mailto:support@poverty-action.org). |
+
+## Next steps
+
+Continue with the guide for the form you installed:
+
+- Terminal and VS Code: [Claude in the Terminal and VS Code](claude-terminal-vscode.qmd)
+- Desktop app: [Getting Started with Claude for Project Managers](claude-desktop-setup.qmd)
