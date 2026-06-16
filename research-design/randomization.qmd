@@ -10,21 +10,21 @@ abstract: "Introduction to randomization in impact evaluations, covering theoret
 # including writing and editing.
 #------------------------------------------------------------------
 authors-ipa:
-- "[Rosemarie Sandino]()"
-- "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
-
-#------------------------------------------------------------------
-# Contributors
-#------------------------------------------------------------------
-# Contributors provide support, such as feedback or supplementary
-# materials for the site. They can also be responsible for
-# updating/maintaining the site.
-#------------------------------------------------------------------
+  - "[Rosemarie Sandino]()"
+  - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
+  
+  #------------------------------------------------------------------
+  # Contributors
+  #------------------------------------------------------------------
+  # Contributors provide support, such as feedback or supplementary
+  # materials for the site. They can also be responsible for
+  # updating/maintaining the site.
+  #------------------------------------------------------------------
 contributors:
   - "[Radhika Jain]()"
   - "[Devika Lakhote]()"
   - "[Laura Feeney]()"
-
+  
 keywords:
   - randomization
   - impact evaluation
@@ -33,32 +33,35 @@ keywords:
   - cluster randomization
   - stratified randomization
   - explanation
-
+  
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
-
 ---
 
 ![IPA survey in Burkina Faso in 2022, credit: IPA](/assets/images/Burkina-Faso_Health_2022.jpg){width=75%}
 
-:::{.callout-tip appearance="simple"}
-
+::: {.callout-tip appearance="simple"}
 ## Key Takeaways
 
-- **Randomization** creates comparable treatment and control groups by ensuring each unit has an equal chance of assignment
-- **Unit of randomization** (individual vs. cluster) affects statistical power, spillovers, and implementation feasibility
-- **Different randomization methods** address specific evaluation contexts and program constraints
+- **Randomization** creates comparable treatment and control groups by ensuring
+  each unit has an equal chance of assignment
+- **Unit of randomization** (individual vs. cluster) affects statistical power,
+  spillovers, and implementation feasibility
+- **Different randomization methods** address specific evaluation contexts and
+  program constraints
 :::
 
 ## What is Randomization?
 
-Randomization is the cornerstone of rigorous impact evaluation. This process assigns units -- individuals, households, schools, and other entities -- to treatment and control groups, ensuring that assignment relies purely on chance rather than systematic factors.
+Randomization is the cornerstone of rigorous impact evaluation. This process
+assigns units -- individuals, households, schools, and other entities -- to
+treatment and control groups, ensuring that assignment relies purely on chance
+rather than systematic factors.
 
 ::: {.callout-note}
-
-For a practical introductory guide to randomization, see [Guide to Randomization](how-to-randomization.qmd).
-
+For a practical introductory guide to randomization, see [Guide to
+Randomization](how-to-randomization.qmd).
 :::
 
 ### Random Sampling vs. Random Assignment
@@ -66,36 +69,40 @@ For a practical introductory guide to randomization, see [Guide to Randomization
 It is crucial to distinguish between two related but distinct concepts:
 
 ::: {.callout-tip collapse="true"}
-
 ## Random Sampling
 
-The process of selecting a subset of units from a larger population where each unit has a known probability of being selected. This ensures the sample is representative of the population.
+The process of selecting a subset of units from a larger population where each
+unit has a known probability of being selected. This ensures the sample is
+representative of the population.
 
 ![Random sampling from population](/assets/images/random-sampling.png){width=70%}
-
 :::
 
 ::: {.callout-tip collapse="true"}
-
 ## Random Assignment
 
-The process of allocating sampled units to treatment and control groups using a random mechanism. This ensures groups are comparable on both observable and unobservable characteristics.
+The process of allocating sampled units to treatment and control groups using a
+random mechanism. This ensures groups are comparable on both observable and
+unobservable characteristics.
 
 ![Random assignment to groups](/assets/images/random-assignment.jpeg){width=70%}
 :::
 
 ::: {.callout-warning}
-
 ## Common Misconception
 
-Geographic or systematic assignment -- such as "northern half gets treatment, southern half gets control" -- is not random assignment, even if the sample was selected through random sampling.
+Geographic or systematic assignment -- such as "northern half gets treatment,
+southern half gets control" -- is not random assignment, even if the sample was
+selected through random sampling.
 :::
 
 ## Basic Randomization Procedures
 
 ### Complete Randomization: Fixed Proportion
 
-This method assigns a predetermined number of units to treatment and control groups. For example, if you have 1000 participants and want exactly 400 in treatment:
+This method assigns a predetermined number of units to treatment and control
+groups. For example, if you have 1000 participants and want exactly 400 in
+treatment:
 
 1. You would randomly order all 1000 participants
 2. Assign the first 400 to treatment
@@ -107,10 +114,10 @@ This ensures precise control over group sizes, which proves important when:
 - Balanced groups are needed for statistical power
 - Implementation requires exact numbers, such as classroom capacity
 
-Unlike randomization with fixed probability, this method guarantees your desired treatment/control ratio.
+Unlike randomization with fixed probability, this method guarantees your desired
+treatment/control ratio.
 
 ::: {.callout-tip collapse="true"}
-
 ## Steps for Complete Randomization
 
 1. **Compile a list** of all subjects in your sample
@@ -129,21 +136,25 @@ Unlike randomization with fixed probability, this method guarantees your desired
 
 ### Simple Randomization: Fixed Probability
 
-Each unit has a fixed probability, for example 50%, of assignment to treatment, regardless of other units' assignments. This resembles flipping a coin for each participant:
+Each unit has a fixed probability, for example 50%, of assignment to treatment,
+regardless of other units' assignments. This resembles flipping a coin for each
+participant:
 
 - Heads: 50% probability, assigned to treatment
 - Tails: 50% probability, assigned to control
 
 For example:
 
-- A student program might assign each applicant to treatment with 40% probability
+- A student program might assign each applicant to treatment with 40%
+  probability
 - A health intervention might use 30% probability for intensive treatment
 - A pilot study might start with 20% in treatment to test implementation
 
-Unlike fixed proportion, the final group sizes may vary due to chance, but the law of large numbers means they'll approach the target ratio with larger samples.
+Unlike fixed proportion, the final group sizes may vary due to chance, but the
+law of large numbers means they'll approach the target ratio with larger
+samples.
 
 ::: {.callout-tip collapse="true"}
-
 ## When to Use Simple Randomization
 
 - **Walk-in situations** where you can't create a list in advance
@@ -155,16 +166,19 @@ Unlike fixed proportion, the final group sizes may vary due to chance, but the l
 
 ## Choosing the Unit of Randomization
 
-The level at which you randomize is one of the most critical decisions in evaluation design.
+The level at which you randomize is one of the most critical decisions in
+evaluation design.
 
 ### Individual-Level Randomization
 
-Individual-level treatment assignment means each participant has an independent probability of selection for treatment or control. This offers maximal statistical power since each individual is an independent observation.
+Individual-level treatment assignment means each participant has an independent
+probability of selection for treatment or control. This offers maximal
+statistical power since each individual is an independent observation.
 
-For example, in a microfinance study, individual entrepreneurs might be randomly selected to receive business loans, while others serve as controls.
+For example, in a microfinance study, individual entrepreneurs might be randomly
+selected to receive business loans, while others serve as controls.
 
 ::: {.callout-tip collapse="true"}
-
 ## When to Randomize at Individual Level
 
 **Appropriate when:**
@@ -182,20 +196,25 @@ For example, in a microfinance study, individual entrepreneurs might be randomly
 
 ### Cluster-Level Randomization
 
-Cluster randomization assigns entire groups, such as schools, villages, or health clinics, to treatment or control conditions. Instead of randomizing individual participants, all units within a cluster receive the same treatment status.
+Cluster randomization assigns entire groups, such as schools, villages, or
+health clinics, to treatment or control conditions. Instead of randomizing
+individual participants, all units within a cluster receive the same treatment
+status.
 
-For example, in a teacher training program, entire schools might be randomized rather than individual teachers. This means:
+For example, in a teacher training program, entire schools might be randomized
+rather than individual teachers. This means:
 
-- If School A is assigned to treatment, all teachers in School A receive training
+- If School A is assigned to treatment, all teachers in School A receive
+  training
 - If School B is assigned to control, no teachers in School B receive training
 
 ::: {.callout-tip collapse="true"}
-
 ## When to Randomize at Cluster Level
 
 **Necessary when:**
 
-- Treatment affects entire groups, such as teacher training affecting whole classrooms
+- Treatment affects entire groups, such as teacher training affecting whole
+  classrooms
 - High risk of spillovers within clusters
 - Implementation constraints require treating entire groups
 
@@ -228,8 +247,8 @@ When choosing your randomization level, consider these key factors:
 
 **Best when:**
 
-- Outcomes measured at individual level—test scores, health metrics, income
-- Intervention targets individuals—personal tutoring, cash transfers
+- Outcomes measured at individual level---test scores, health metrics, income
+- Intervention targets individuals---personal tutoring, cash transfers
 - Low spillover risk from personal interventions with minimal interaction
 - Maximum statistical power needed
 - Simple interventions with good tracking systems
@@ -238,8 +257,8 @@ When choosing your randomization level, consider these key factors:
 
 **Best when:**
 
-- Outcomes measured at group level—school performance, village outcomes
-- Intervention targets groups—teacher training, community programs
+- Outcomes measured at group level---school performance, village outcomes
+- Intervention targets groups---teacher training, community programs
 - High spillover potential from social programs and shared resources
 - Coordination with group leaders required
 - Willing to accept lower statistical power for practical benefits
@@ -248,11 +267,13 @@ When choosing your randomization level, consider these key factors:
 
 ### Noncompliance
 
-Noncompliance occurs when units don't follow their assigned treatment status. This can happen in two ways:
+Noncompliance occurs when units don't follow their assigned treatment status.
+This can happen in two ways:
 
 1. **One-Sided Noncompliance:** Only treatment group members can deviate
 
-- Treatment group members do not participate, know as "no-shows", "dropouts", or "refusers"
+- Treatment group members do not participate, know as "no-shows", "dropouts", or
+  "refusers"
 - Control group cannot access treatment
 
 2. **Two-Sided Noncompliance:** Both groups can deviate
@@ -284,11 +305,13 @@ Noncompliance occurs when units don't follow their assigned treatment status. Th
 
 ### Spillovers
 
-Spillovers occur when the treatment affects units beyond those directly treated, potentially contaminating the control group and biasing treatment estimates.
+Spillovers occur when the treatment affects units beyond those directly treated,
+potentially contaminating the control group and biasing treatment estimates.
 
 **Types of spillovers:**
 
-- **Environmental:** Treatment changes shared conditions,such as reduced disease transmission
+- **Environmental:** Treatment changes shared conditions,such as reduced disease
+  transmission
 - **Behavioral:** Control group imitates treatment behaviors
 - **Informational:** Knowledge spreads between groups
 
@@ -302,12 +325,12 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 
 - Can lead to underestimated treatment effects if control group benefits
 - May require additional buffer zones between treatment and control
-- Sometimes spillovers themselves are of research interest, such as vaccine studies
+- Sometimes spillovers themselves are of research interest, such as vaccine
+  studies
 
 ## Alternative Randomization Methods
 
 ::: {.callout-tip collapse="true"}
-
 ### Cross-Cutting Treatments
 
 **Purpose:** Test multiple treatment variations simultaneously and efficiently
@@ -333,20 +356,19 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 
 #### Teacher Training and Materials Example
 
-| Group | Training | Materials | Sample Size |
-|:------|:---------|:----------|:------------|
-| Control | No | No | 25% |
-| T1 | Yes | No | 25% |
-| T2 | No | Yes | 25% |
-| T3 | Yes | Yes | 25% |
-
+  | Group   | Training | Materials | Sample Size |
+  | :------ | :------- | :-------- | :---------- |
+  | Control | No       | No        | 25%         |
+  | T1      | Yes      | No        | 25%         |
+  | T2      | No       | Yes       | 25%         |
+  | T3      | Yes      | Yes       | 25%         |
 :::
 
 ::: {.callout-tip collapse="true"}
-
 ### Phase-In Design
 
-**Purpose:** Ensure all units eventually receive treatment while maintaining a valid control group
+**Purpose:** Ensure all units eventually receive treatment while maintaining a
+valid control group
 
 **Design Types:**
 
@@ -371,20 +393,19 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 
 #### Community Program Rollout Example
 
-| Phase | Treatment Group | Control Group | Timeline |
-|:------|:---------------|:--------------|:---------|
-| 1 | 25% | 75% | Months 1-3 |
-| 2 | 50% | 50% | Months 4-6 |
-| 3 | 75% | 25% | Months 7-9 |
-| 4 | 100% | 0% | Months 10-12 |
-
+  | Phase | Treatment Group | Control Group | Timeline     |
+  | :---- | :-------------- | :------------ | :----------- |
+  | 1     | 25%             | 75%           | Months 1-3   |
+  | 2     | 50%             | 50%           | Months 4-6   |
+  | 3     | 75%             | 25%           | Months 7-9   |
+  | 4     | 100%            | 0%            | Months 10-12 |
 :::
 
 ::: {.callout-tip collapse="true"}
-
 ### Encouragement Design
 
-**Purpose:** Evaluate impact when treatment cannot be denied but participation can be influenced
+**Purpose:** Evaluate impact when treatment cannot be denied but participation
+can be influenced
 
 **Design Types:**
 
@@ -410,19 +431,18 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 
 #### Health Insurance Program Example
 
-| Group | Encouragement | Access | Expected Take-up |
-|:------|:--------------|:-------|:----------------|
-| Treatment | Active outreach | Yes | 60% |
-| Control | No outreach | Yes | 30% |
-| Difference | Information + reminders | None | 30% |
-
+  | Group      | Encouragement           | Access | Expected Take-up |
+  | :--------- | :---------------------- | :----- | :--------------- |
+  | Treatment  | Active outreach         | Yes    | 60%              |
+  | Control    | No outreach             | Yes    | 30%              |
+  | Difference | Information + reminders | None   | 30%              |
 :::
 
 ::: {.callout-tip collapse="true"}
-
 ### Stratified Randomization
 
-**Purpose:** Ensure balance on key characteristics across treatment groups, especially important with small samples or critical covariates
+**Purpose:** Ensure balance on key characteristics across treatment groups,
+especially important with small samples or critical covariates
 
 **Design Types:**
 
@@ -449,51 +469,74 @@ Spillovers occur when the treatment affects units beyond those directly treated,
 
 #### Education Program Example
 
-| Stratum | Baseline Score | Gender | Treatment Share |
-|:--------|:--------------|:--------|:----------------|
-| Low-Male | Below median | Male | 50% |
-| Low-Female | Below median | Female | 50% |
-| High-Male | Above median | Male | 50% |
-| High-Female | Above median | Female | 50% |
-
+  | Stratum     | Baseline Score | Gender | Treatment Share |
+  | :---------- | :------------- | :----- | :-------------- |
+  | Low-Male    | Below median   | Male   | 50%             |
+  | Low-Female  | Below median   | Female | 50%             |
+  | High-Male   | Above median   | Male   | 50%             |
+  | High-Female | Above median   | Female | 50%             |
 :::
 
 ::: {.callout-tip collapse="true"}
-
 ### Example: Balsakhi Tutoring Program
 
-The Balsakhi program in India is a classic example of rigorous randomization in education research (Banerjee et al., 2007; Duflo, Glennerster, and Kremer, 2007):
+The Balsakhi program in India is a classic example of rigorous randomization in
+education research (Banerjee et al., 2007; Duflo, Glennerster, and Kremer,
+2007):
 
 **Context:**
 
-Implemented by Pratham, the Balsakhi program provided remedial tutoring to academically weaker primary school students in Mumbai and Vadodara. The goal was to help students who were falling behind catch up with their peers.
+Implemented by Pratham, the Balsakhi program provided remedial tutoring to
+academically weaker primary school students in Mumbai and Vadodara. The goal was
+to help students who were falling behind catch up with their peers.
 
 **Randomization:**
 
-- **Unit:** 122 schools were randomized to either receive the Balsakhi intervention or serve as controls.
-- **Stratification:** Randomization was stratified by language of instruction (Marathi, Gujarati, Hindi, English) and by gender composition (boys', girls', and co-ed schools) to ensure balance across key characteristics.
+- **Unit:** 122 schools were randomized to either receive the Balsakhi
+  intervention or serve as controls.
+- **Stratification:** Randomization was stratified by language of instruction
+  (Marathi, Gujarati, Hindi, English) and by gender composition (boys', girls',
+  and co-ed schools) to ensure balance across key characteristics.
 
 **Implementation:**
 
-- Within treatment schools, Balsakhis (local young women trained as tutors) worked with the lowest-performing students, identified using baseline test scores.
-- Strict protocols were followed to prevent contamination between treatment and control schools, including separate training and monitoring teams.
-- Detailed documentation and monitoring ensured fidelity to the randomization plan.
+- Within treatment schools, Balsakhis (local young women trained as tutors)
+  worked with the lowest-performing students, identified using baseline test
+  scores.
+- Strict protocols were followed to prevent contamination between treatment and
+  control schools, including separate training and monitoring teams.
+- Detailed documentation and monitoring ensured fidelity to the randomization
+  plan.
 
 **Results:**
 
-- The program led to a significant improvement of 0.14 standard deviations in test scores for all students, and even larger gains for the weakest students.
-- The study demonstrated the power of cluster-level randomization and the importance of stratification for balance.
+- The program led to a significant improvement of 0.14 standard deviations in
+  test scores for all students, and even larger gains for the weakest students.
+- The study demonstrated the power of cluster-level randomization and the
+  importance of stratification for balance.
 
 **References:**
 
-- Banerjee, A., Cole, S., Duflo, E., and Linden, L. (2007). "Remedying Education: Evidence from Two Randomized Experiments in India." *Quarterly Journal of Economics*, 122(3), 1235-1264. [DOI: 10.1162/qjec.122.3.1235](https://doi.org/10.1162/qjec.122.3.1235) [^1]
-- Duflo, E., Glennerster, R., and Kremer, M. (2007). "Using Randomization in Development Economics Research: A Toolkit." *Handbook of Development Economics*, 4, 3895-3962. [^2]
-
+- Banerjee, A., Cole, S., Duflo, E., and Linden, L. (2007). "Remedying
+  Education: Evidence from Two Randomized Experiments in India." *Quarterly
+  Journal of Economics*, 122(3), 1235-1264. [DOI:
+  10.1162/qjec.122.3.1235](https://doi.org/10.1162/qjec.122.3.1235) [^1]
+- Duflo, E., Glennerster, R., and Kremer, M. (2007). "Using Randomization in
+  Development Economics Research: A Toolkit." *Handbook of Development
+  Economics*, 4, 3895-3962. [^2]
 :::
 
-[^1]: Banerjee, A., Cole, S., Duflo, E., and Linden, L. (2007). Remedying education: Evidence from two randomized experiments in India. *The Quarterly Journal of Economics, 122*(3), 1235-1264. https://doi.org/10.1162/qjec.122.3.1235
-[^2]: Duflo, E., Glennerster, R., and Kremer, M. (2007). Using randomization in development economics research: A toolkit. In T. P. Schultz and J. A. Strauss (Eds.), *Handbook of Development Economics* (Vol. 4, pp. 3895-3962). Elsevier.
+[^1]: Banerjee, A., Cole, S., Duflo, E., and Linden, L. (2007). Remedying
+    education: Evidence from two randomized experiments in India. *The Quarterly
+    Journal of Economics, 122*(3), 1235-1264.
+    https://doi.org/10.1162/qjec.122.3.1235
+
+[^2]: Duflo, E., Glennerster, R., and Kremer, M. (2007). Using randomization in
+    development economics research: A toolkit. In T. P. Schultz and J. A.
+    Strauss (Eds.), *Handbook of Development Economics* (Vol. 4, pp. 3895-3962).
+    Elsevier.
 
 ## Additional Resources
 
-Abdul Latif Jameel Poverty Action Lab (J-PAL). "Randomization." Accessed October 31, 2025. https://www.povertyactionlab.org/resource/randomization.
+Abdul Latif Jameel Poverty Action Lab (J-PAL). "Randomization." Accessed October
+31, 2025. https://www.povertyactionlab.org/resource/randomization.

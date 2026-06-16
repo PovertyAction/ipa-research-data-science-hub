@@ -1,22 +1,28 @@
 # Quarto Document Generation Skill
 
-You are assisting with creating Quarto markdown (.qmd) files for analysis and reporting. This skill provides templates, references, and workflows for generating professional documents with HTML or Typst output formats.
+You are assisting with creating Quarto markdown (.qmd) files for analysis and
+reporting. This skill provides templates, references, and workflows for
+generating professional documents with HTML or Typst output formats.
 
 ## Core Capabilities
 
 When this skill is active, you should:
 
-1. **Generate Quarto Documents**: Create .qmd files from templates with appropriate YAML front matter
-2. **Configure Output Formats**: Set up HTML or Typst output with proper formatting options
-3. **Integrate Analysis Code**: Embed Python, R, or other code chunks appropriately
+1. **Generate Quarto Documents**: Create .qmd files from templates with
+   appropriate YAML front matter
+2. **Configure Output Formats**: Set up HTML or Typst output with proper
+   formatting options
+3. **Integrate Analysis Code**: Embed Python, R, or other code chunks
+   appropriately
 4. **Render Documents**: Execute quarto render commands to produce final outputs
-5. **Troubleshoot Issues**: Debug YAML syntax, code execution, or rendering errors
+5. **Troubleshoot Issues**: Debug YAML syntax, code execution, or rendering
+   errors
 
 ## Quarto Document Structure
 
 ### Basic .qmd File Layout
 
-```markdown
+````markdown
 ---
 title: "Document Title"
 author: "Author Name"
@@ -40,7 +46,7 @@ import pandas as pd
 
 More content...
 
-```
+````
 
 ## Output Format Configuration
 
@@ -99,7 +105,7 @@ format:
 
 ### Python Chunks
 
-```markdown
+````markdown
 ```{python}
 #| label: fig-plot
 #| fig-cap: "My Figure Caption"
@@ -113,11 +119,11 @@ plt.plot(x, np.sin(x))
 plt.show()
 ```text
 
-```
+````
 
 ### R Chunks
 
-```markdown
+````markdown
 ```{r}
 #| label: tbl-summary
 #| tbl-cap: "Summary Statistics"
@@ -128,11 +134,11 @@ mtcars %>%
   knitr::kable()
 ```text
 
-```
+````
 
 ### Stata Chunks (if using stata kernel)
 
-```markdown
+````markdown
 ```{stata}
 #| label: regression
 #| echo: true
@@ -141,7 +147,7 @@ sysuse auto, clear
 regress price mpg weight
 ```text
 
-```
+````
 
 ### Cell Options
 
@@ -237,7 +243,7 @@ format:
 
 Add parameters for reusable reports:
 
-```yaml
+````yaml
 ---
 title: "Analysis Report"
 params:
@@ -251,7 +257,7 @@ data = pd.read_csv(params['dataset'])
 year = params['year']
 ```text
 
-```
+````
 
 Render with parameters:
 
@@ -263,7 +269,7 @@ quarto render report.qmd -P dataset:other.csv -P year:2025
 
 Reference figures, tables, and sections:
 
-```markdown
+````markdown
 See @fig-plot for the visualization.
 Results are shown in @tbl-results.
 Details in @sec-methods.
@@ -280,11 +286,11 @@ Details in @sec-methods.
 #| tbl-cap: "Results table"
 ```text
 
-```
+````
 
 ### Including External Content
 
-```markdown
+````markdown
 Include other files:
 {{< include _content.qmd >}}
 
@@ -296,7 +302,7 @@ Include code from file:
 Include images:
 ![Caption](path/to/image.png){#fig-img}
 
-```
+````
 
 ## File Organization
 
@@ -397,7 +403,7 @@ quarto render document.qmd --help
 4. **Separate Concerns**: Keep data processing separate from presentation
 5. **Test Incrementally**: Render frequently during development
 6. **Document Dependencies**: List required packages in setup chunk
-7. **Use Project Config**: Set common options in _quarto.yml
+7. **Use Project Config**: Set common options in \_quarto.yml
 8. **Cross-Reference Smartly**: Use meaningful labels for figures/tables
 
 ## References
@@ -438,7 +444,8 @@ Invoke this skill when you need to:
 
 When helping users:
 
-1. **Ask About Requirements**: Clarify output format (HTML/Typst), content type, and audience
+1. **Ask About Requirements**: Clarify output format (HTML/Typst), content type,
+   and audience
 2. **Suggest Appropriate Templates**: Recommend templates based on use case
 3. **Explain Options**: Help users understand YAML configuration choices
 4. **Show Examples**: Provide concrete code chunk examples

@@ -1,36 +1,40 @@
 ---
 title: "Looping Over Data Sets"
-abstract: |
-  Be able to read and write globbing expressions that match sets of files. Use glob to create lists of files. Write for loops to perform operations on files given their names in a list.
+abstract: "Be able to read and write globbing expressions that match sets of files. Use glob to create lists of files. Write for loops to perform operations on files given their names in a list."
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
-
+  
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This page is adapted from the [Software Carpentry Python Gapminder
+lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c)
+[The Carpentries](https://carpentries.org/). The original material is licensed
+under the [Creative Commons Attribution 4.0 International License (CC BY
+4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+**Changes made:** Content has been modified and expanded by Innovations for
+Poverty Action (IPA) to include IPA-specific examples and context relevant to
+research data analysis.
 
-**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
-
-**Original citation:**
-Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+**Original citation:** Achterberg, et al. (2024).
+swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and
+Programming in Python (v2024.6.27.1). Zenodo.
+<https://doi.org/10.5281/zenodo.12167686>
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Be able to read and write globbing expressions that match sets of files.
 - Use glob to create lists of files.
 - Write for loops to perform operations on files given their names in a list.
-
 :::
 
 ## Use a `for` loop to process files given a list of their names
@@ -70,12 +74,15 @@ dtype: float64
 
 - In Unix, the term "globbing" means "matching a set of files with a pattern".
 - The most common patterns are:
-    - `*` meaning "match zero or more characters"
-    - `?` meaning "match exactly one character"
-- Python's standard library contains the [`glob`](https://docs.python.org/3/library/glob.html) module to provide pattern matching functionality
-- The [`glob`](https://docs.python.org/3/library/glob.html) module contains a function also called `glob` to match file patterns
-- E.g., `glob.glob('*.txt')` matches all files in the current directory
-  whose names end with `.txt`.
+  - `*` meaning "match zero or more characters"
+  - `?` meaning "match exactly one character"
+- Python's standard library contains the
+  [`glob`](https://docs.python.org/3/library/glob.html) module to provide
+  pattern matching functionality
+- The [`glob`](https://docs.python.org/3/library/glob.html) module contains a
+  function also called `glob` to match file patterns
+- E.g., `glob.glob('*.txt')` matches all files in the current directory whose
+  names end with `.txt`.
 - Result is a (possibly empty) list of character strings.
 
 ```python
@@ -119,34 +126,31 @@ data/gapminder_gdp_oceania.csv 10039.59564
 
 - This includes all data, as well as per-region data.
 - Use a more specific pattern in the exercises to exclude the whole data set.
-- But note that the minimum of the entire data set is also the minimum of one of the data sets,
-  which is a nice check on correctness.
+- But note that the minimum of the entire data set is also the minimum of one of
+  the data sets, which is a nice check on correctness.
 
 ::: {.callout-note}
-
 ## Exercise: Determining Matches
 
-Which of these files is *not* matched by the expression `glob.glob('data/*as*.csv')`?
+Which of these files is *not* matched by the expression
+`glob.glob('data/*as*.csv')`?
 
 1. `data/gapminder_gdp_africa.csv`
 2. `data/gapminder_gdp_americas.csv`
 3. `data/gapminder_gdp_asia.csv`
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution
 
 1 is not matched by the glob.
-
-:::
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise: Minimum File Size
 
-Modify this program so that it prints the number of records in
-the file that has the fewest records.
+Modify this program so that it prints the number of records in the file that has
+the fewest records.
 
 ```python
 import glob
@@ -158,11 +162,10 @@ for filename in glob.glob('data/*.csv'):
 print('smallest file has', fewest, 'records')
 ```
 
-Note that the [`DataFrame.shape()` method][shape-method]
-returns a tuple with the number of rows and columns of the data frame.
+Note that the [`DataFrame.shape()` method][shape-method] returns a tuple with
+the number of rows and columns of the data frame.
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution
 
 ```python
@@ -175,30 +178,28 @@ for filename in glob.glob('data/*.csv'):
 print('smallest file has', fewest, 'records')
 ```
 
-You might have chosen to initialize the `fewest` variable with a number greater than the numbers
-you're dealing with, but that could lead to trouble if you reuse the code with bigger numbers.
-Python permits you to use positive infinity, which will work no matter how big your numbers are.
-What other special strings does the [`float` function][float-function] recognize?
-
-:::
+You might have chosen to initialize the `fewest` variable with a number greater
+than the numbers you're dealing with, but that could lead to trouble if you
+reuse the code with bigger numbers. Python permits you to use positive infinity,
+which will work no matter how big your numbers are. What other special strings
+does the [`float` function][float-function] recognize?
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise: Comparing Data
 
-Write a program that reads in the regional data sets
-and plots the average GDP per capita for each region over time
-in a single chart. Pandas will raise an error if it encounters
-non-numeric columns in a dataframe computation so you may need
-to either filter out those columns or tell pandas to ignore them.
+Write a program that reads in the regional data sets and plots the average GDP
+per capita for each region over time in a single chart. Pandas will raise an
+error if it encounters non-numeric columns in a dataframe computation so you may
+need to either filter out those columns or tell pandas to ignore them.
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution
 
-This solution builds a useful legend by using the [string `split` method][split-method] to
-extract the `region` from the path 'data/gapminder\_gdp\_a\_specific\_region.csv'.
+This solution builds a useful legend by using the [string `split`
+method][split-method] to extract the `region` from the path
+'data/gapminder\_gdp\_a\_specific\_region.csv'.
 
 ```python
 import glob
@@ -233,15 +234,15 @@ plt.tight_layout()
 plt.legend()
 plt.show()
 ```
-
-:::
+:::::
 :::
 
 ## Dealing with File Paths
 
-The [`pathlib` module][pathlib-module] provides useful abstractions for file and path manipulation like
-returning the name of a file without the file extension. This is very useful when looping over files and
-directories. In the example below, we create a `Path` object and inspect its attributes.
+The [`pathlib` module][pathlib-module] provides useful abstractions for file and
+path manipulation like returning the name of a file without the file extension.
+This is very useful when looping over files and directories. In the example
+below, we create a `Path` object and inspect its attributes.
 
 ```python
 from pathlib import Path
@@ -258,8 +259,8 @@ gapminder_gdp_africa
 .csv
 ```
 
-**Hint:** Check all available attributes and methods on the `Path` object with the `dir()`
-function.
+**Hint:** Check all available attributes and methods on the `Path` object with
+the `dir()` function.
 
 [shape-method]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.shape.html
 [float-function]: https://docs.python.org/3/library/functions.html#float
@@ -267,11 +268,9 @@ function.
 [pathlib-module]: https://docs.python.org/3/library/pathlib.html
 
 ::: {.callout-important}
-
 ## Key Points
 
 - Use a `for` loop to process files given a list of their names.
 - Use `glob.glob` to find sets of files whose names match a pattern.
 - Use `glob` and `for` to process batches of files.
-
 :::

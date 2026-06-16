@@ -1,21 +1,24 @@
 ---
 title: "Labels, Scales, and Customization"
-abstract: |
-  Learn how to customize plots with clear labels and titles. Control scales and
-  axes. Format plots for professional presentations and publications.
+abstract: "Learn how to customize plots with clear labels and titles. Control scales and axes. Format plots for professional presentations and publications."
 authors-ipa:
   - "[Ishmail Baako](https://poverty-action.org/people/ishmail-baako)"
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
-keywords: ["Python", "Data Visualization", "Seaborn", "Customization", "Tutorial"]
+keywords: [
+  "Python",
+  "Data Visualization",
+  "Seaborn",
+  "Customization",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Add clear, informative labels to plots
@@ -24,13 +27,12 @@ license:
 - Format tick labels and numbers
 - Create publication-ready visualizations
 - Apply accessibility best practices
-
 :::
 
 ## The Importance of Clear Labels
 
-A visualization without proper labels is like a research paper without citations - the
-data might be there, but the message is unclear. Consider your audience:
+A visualization without proper labels is like a research paper without citations
+- the data might be there, but the message is unclear. Consider your audience:
 
 - **Policymakers** need context and clear units
 - **Community members** need plain language
@@ -166,7 +168,6 @@ Control the range of your axes:
 ```
 
 ::: {.callout-warning}
-
 ## Be Careful with Axis Limits
 
 Cutting off parts of your data range can be misleading! Always:
@@ -174,7 +175,6 @@ Cutting off parts of your data range can be misleading! Always:
 - Indicate if you've zoomed in
 - Ensure you're not hiding important patterns
 - Consider starting axes at zero for bar charts
-
 :::
 
 ### Color Scales
@@ -311,21 +311,19 @@ This plot is ready for:
 
 ### 1. Be Specific with Units
 
-❌ Bad: `x="Income"`
-✅ Good: `x="Monthly Income (KSh)"`
+❌ Bad: `x="Income"` ✅ Good: `x="Monthly Income (KSh)"`
 
-❌ Bad: `y="Distance"`
-✅ Good: `y="Distance to Health Facility (km)"`
+❌ Bad: `y="Distance"` ✅ Good: `y="Distance to Health Facility (km)"`
 
 ### 2. Use Plain Language
 
-❌ Bad: `title="DV regressed on IV controlling for confounds"`
-✅ Good: `title="Relationship Between Education and Income, Controlling for Age"`
+❌ Bad: `title="DV regressed on IV controlling for confounds"` ✅ Good:
+`title="Relationship Between Education and Income, Controlling for Age"`
 
 ### 3. Provide Context
 
-❌ Bad: `title="Survey Results"`
-✅ Good: `title="Household Food Security Survey Results: Kisumu County, 2023"`
+❌ Bad: `title="Survey Results"` ✅ Good:
+`title="Household Food Security Survey Results: Kisumu County, 2023"`
 
 ### 4. Capitalize Appropriately
 
@@ -378,7 +376,6 @@ Use multiple aesthetics for critical distinctions:
 ## Exercises
 
 ::: {.callout-note}
-
 ## Exercise 1: Label a Complex Plot
 
 Create a plot with the penguins data that:
@@ -392,8 +389,7 @@ Create a plot with the penguins data that:
 # Your code here
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 1
 
 ```python
@@ -415,16 +411,14 @@ Create a plot with the penguins data that:
     )
 )
 ```
-
-:::
-
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise 2: Scale Transformation
 
-Create sample data for household income (which often follows a log-normal distribution):
+Create sample data for household income (which often follows a log-normal
+distribution):
 
 ```python
 income_data = pd.DataFrame({
@@ -440,8 +434,7 @@ Create two plots:
 
 Which is more effective for showing the distribution?
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 2
 
 ```python
@@ -474,13 +467,10 @@ The log scale is often more effective for income data because it:
 - Shows relative differences more clearly
 - Prevents a few high values from compressing the rest
 - Makes the distribution easier to interpret
-
-:::
-
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise 3: Publication-Ready Plot
 
 Imagine you're preparing a plot for a policy brief on education outcomes. Create
@@ -492,8 +482,7 @@ a plot that shows test scores across different schools with these requirements:
 4. Add an informative title that includes location and year
 5. Make sure legend labels are clear
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 3
 
 ```python
@@ -528,22 +517,19 @@ test_data = pd.DataFrame({
     )
 )
 ```
-
-:::
-
+:::::
 :::
 
 ## Quick Reference: Customization Methods
 
-| Method | Purpose | Example |
-| -------- | --------- | --------- |
-| `.label()` | Add titles and labels | `.label(title="My Title", x="X Label")` |
-| `.scale()` | Control scales | `.scale(y="log", color="colorblind")` |
-| `.scale(x=(min, max))` | Set axis limits | `.scale(x=(0, 100))` |
-| `.scale(color=palette)` | Set color palette | `.scale(color="viridis")` |
+  | Method                  | Purpose               | Example                                 |
+  | ----------------------- | --------------------- | --------------------------------------- |
+  | `.label()`              | Add titles and labels | `.label(title="My Title", x="X Label")` |
+  | `.scale()`              | Control scales        | `.scale(y="log", color="colorblind")`   |
+  | `.scale(x=(min, max))`  | Set axis limits       | `.scale(x=(0, 100))`                    |
+  | `.scale(color=palette)` | Set color palette     | `.scale(color="viridis")`               |
 
 ::: {.callout-important}
-
 ## Key Points
 
 - Always label your plots with title, axis labels, and legend titles
@@ -555,15 +541,12 @@ test_data = pd.DataFrame({
 - Combine multiple visual cues (color + shape) for critical distinctions
 - Write labels for your audience - use plain language
 - A good plot should be understandable without additional explanation
-
 :::
 
 ::: {.callout-tip}
-
 ## Looking Ahead
 
 In the next lesson, we'll learn about faceting - creating multiple subplots to
 compare across categories. We'll also explore how to layer multiple marks and
 create complex multi-panel figures for comprehensive data stories.
-
 :::

@@ -1,27 +1,37 @@
 ---
 title: "Making HTTP Requests and Getting Data"
-abstract: |
-  Learnthe fundamentals of HTTP requests using gazpacho.get(). Learn to fetch web pages, handle different response types, implement error handling, and work with various websites effectively.
+abstract: "Learnthe fundamentals of HTTP requests using gazpacho.get(). Learn to fetch web pages, handle different response types, implement error handling, and work with various websites effectively."
 authors:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
-
-# # Contributors
-# contributors:
-#   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
-
-keywords: ["Python", "Web Scraping", "Gazpacho", "HTTP Requests", "Error Handling", "Data Fetching", "Tutorial"]
+  
+  # # Contributors
+  # contributors:
+  #   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+  
+keywords: [
+  "Python",
+  "Web Scraping",
+  "Gazpacho",
+  "HTTP Requests",
+  "Error Handling",
+  "Data Fetching",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
-
-This content is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from [calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which are licensed under CC BY 4.0. The gazpacho library is used under the MIT License.
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This content is based on the [gazpacho
+library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and
+incorporates concepts from
+[calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which
+are licensed under CC BY 4.0. The gazpacho library is used under the MIT
+License.
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Learn the gazpacho.get() function for HTTP requests
@@ -34,7 +44,8 @@ This content is based on the [gazpacho library](https://github.com/maxhumber/gaz
 
 ## Understanding HTTP Requests
 
-When you scrape a website, you're making HTTP (HyperText Transfer Protocol) requests. Understanding these requests helps you build more effective scrapers.
+When you scrape a website, you're making HTTP (HyperText Transfer Protocol)
+requests. Understanding these requests helps you build more effective scrapers.
 
 ### HTTP Request Process
 
@@ -138,7 +149,6 @@ print(text)
 ```
 
 ::: {.callout-note}
-
 ## Try This: Content Type Detection
 
 Create a function to detect different content types:
@@ -185,7 +195,6 @@ for url in test_urls:
     content_type = detect_content_type(url)
     print(f"{url}: {content_type}")
 ```
-
 :::
 
 ## Error Handling and Debugging
@@ -349,7 +358,6 @@ html = get_with_encoding("https://example.com")
 ```
 
 ::: {.callout-note}
-
 ## Try This: Build a URL Checker
 
 Create a tool to check if multiple URLs are accessible:
@@ -412,7 +420,6 @@ for result in results:
     else:
         print(f"✗ {result['url']}: {result.get('error', 'Unknown error')}")
 ```
-
 :::
 
 ## Real-World Example: Scraping PyPI
@@ -559,7 +566,6 @@ else:
 ```
 
 ::: {.callout-note}
-
 ## Exercise: Build a Robust Web Scraper
 
 Create a comprehensive web scraper that combines all the techniques learned:
@@ -677,7 +683,6 @@ print(f"Total requests: {stats['total_requests']}")
 print(f"Successful requests: {stats['successful_requests']}")
 print(f"Success rate: {stats['success_rate']:.1%}")
 ```
-
 :::
 
 ## Best Practices Summary
@@ -704,7 +709,6 @@ print(f"Success rate: {stats['success_rate']:.1%}")
 - Handle different content types appropriately
 
 ::: {.callout-important}
-
 ## Key Points
 
 - The `get()` function is your primary tool for HTTP requests
@@ -715,5 +719,4 @@ print(f"Success rate: {stats['success_rate']:.1%}")
 - Log requests for debugging and monitoring
 - Handle different content types (HTML, JSON, text) appropriately
 - Test with various URLs to ensure robustness
-
 :::

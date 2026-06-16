@@ -1,6 +1,7 @@
 # Quarto Document Generation Skill
 
-This skill enables Claude to create professional Quarto markdown documents for analysis and reporting with HTML or Typst output formats.
+This skill enables Claude to create professional Quarto markdown documents for
+analysis and reporting with HTML or Typst output formats.
 
 ## What This Skill Does
 
@@ -48,7 +49,7 @@ Four ready-to-use templates:
 
 Also includes:
 
-- **_quarto.yml**: Example project configuration file
+- **\_quarto.yml**: Example project configuration file
 
 ### Scripts (`scripts/`)
 
@@ -60,7 +61,8 @@ Three utility scripts:
 
 ### References (`references/`)
 
-- **quarto_quick_reference.md**: Comprehensive quick reference for Quarto syntax, commands, and features
+- **quarto_quick_reference.md**: Comprehensive quick reference for Quarto
+  syntax, commands, and features
 
 ## Installation
 
@@ -87,7 +89,8 @@ To activate the skill, type:
 /quarto
 ```
 
-Or mention Quarto-related tasks in your conversation, and Claude may automatically activate the skill when appropriate.
+Or mention Quarto-related tasks in your conversation, and Claude may
+automatically activate the skill when appropriate.
 
 ### Creating Documents
 
@@ -344,7 +347,8 @@ quarto preview document.qmd --port 8080
 ## Resources
 
 - **Quarto Documentation**: <https://quarto.org/docs/>
-- **HTML Format Guide**: <https://quarto.org/docs/output-formats/html-basics.html>
+- **HTML Format Guide**:
+  <https://quarto.org/docs/output-formats/html-basics.html>
 - **Typst Format Guide**: <https://quarto.org/docs/output-formats/typst.html>
 - **Authoring Guide**: <https://quarto.org/docs/authoring/>
 - **Gallery**: <https://quarto.org/docs/gallery/>
@@ -361,4 +365,5 @@ To improve this skill:
 
 ## Version History
 
-- v1.0 (2025-11-05): Initial creation with HTML and Typst templates, utility scripts, and comprehensive documentation
+- v1.0 (2025-11-05): Initial creation with HTML and Typst templates, utility
+  scripts, and comprehensive documentation

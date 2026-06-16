@@ -1,36 +1,40 @@
 # Quarto and Markdown Style Guide
 
-This document explains the markdown linting rules used in this repository and provides guidance on writing well-formatted Quarto documents.
+This document explains the Markdown formatting and linting conventions used in
+this repository and provides guidance on writing well-formatted Quarto
+documents. Formatting and linting are handled by [Panache](https://panache.bz).
 
 ## Table of Contents
 
 - [Quarto and Markdown Style Guide](#quarto-and-markdown-style-guide)
-    - [Table of Contents](#table-of-contents)
-    - [Introduction](#introduction)
-    - [Basic Markdown Rules](#basic-markdown-rules)
-        - [Headings](#headings)
-        - [Lists](#lists)
-        - [Code Blocks](#code-blocks)
-    - [Quarto-Specific Rules](#quarto-specific-rules)
-        - [Callout Blocks](#callout-blocks)
-        - [Div and Span Elements](#div-and-span-elements)
-        - [Diagrams](#diagrams)
-        - [Cross-References](#cross-references)
-    - [Accessibility Requirements](#accessibility-requirements)
-        - [Image Alt Text](#image-alt-text)
-        - [Footnotes](#footnotes)
-    - [Common Issues and Solutions](#common-issues-and-solutions)
-        - [Unordered List Style](#unordered-list-style)
-        - [Multiple Consecutive Blank Lines](#multiple-consecutive-blank-lines)
-        - [Inline HTML](#inline-html)
-    - [Using the Linter](#using-the-linter)
-        - [Command Line](#command-line)
-        - [VS Code Integration](#vs-code-integration)
-        - [Pre-commit Hook](#pre-commit-hook)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Basic Markdown Rules](#basic-markdown-rules)
+    - [Headings](#headings)
+    - [Lists](#lists)
+    - [Code Blocks](#code-blocks)
+  - [Quarto-Specific Rules](#quarto-specific-rules)
+    - [Callout Blocks](#callout-blocks)
+    - [Div and Span Elements](#div-and-span-elements)
+    - [Diagrams](#diagrams)
+    - [Cross-References](#cross-references)
+  - [Accessibility Requirements](#accessibility-requirements)
+    - [Image Alt Text](#image-alt-text)
+    - [Footnotes](#footnotes)
+  - [Common Issues and Solutions](#common-issues-and-solutions)
+    - [Unordered List Style](#unordered-list-style)
+    - [Multiple Consecutive Blank Lines](#multiple-consecutive-blank-lines)
+    - [Inline HTML](#inline-html)
+  - [Using the Linter](#using-the-linter)
+    - [Command Line](#command-line)
+    - [VS Code Integration](#vs-code-integration)
+    - [Pre-commit Hook](#pre-commit-hook)
 
 ## Introduction
 
-We use markdownlint with custom rules to ensure consistent formatting across all Quarto and Markdown files. This helps maintain readability, accessibility, and a professional appearance throughout the documentation.
+We use [Panache](https://panache.bz) to ensure consistent formatting across all
+Quarto and Markdown files. This helps maintain readability, accessibility, and a
+professional appearance throughout the documentation.
 
 ## Basic Markdown Rules
 
@@ -67,16 +71,17 @@ More text here.
 
 ### Code Blocks
 
-- Use fenced code blocks with backticks (```)
+- Use fenced code blocks with backticks (\`\`\`)
 - Specify a language for syntax highlighting
-- Allowed languages include: bash, r, python, ojs, julia, yaml, json, html, css, javascript, markdown, sql, text, mermaid, dot, graphviz, stata
+- Allowed languages include: bash, r, python, ojs, julia, yaml, json, html, css,
+  javascript, markdown, sql, text, mermaid, dot, graphviz, stata
 
-```markdown
+````markdown
     ```{python}
     def example_function():
         return "Hello, world!"
     ```
-```
+````
 
 ## Quarto-Specific Rules
 
@@ -100,11 +105,13 @@ This warning is collapsible.
 
 Rules enforced:
 
-- Callout blocks must have proper opening and closing syntax (`::: {...}` and `:::`)
+- Callout blocks must have proper opening and closing syntax (`::: {...}` and
+  `:::`)
 - Valid callout types: note, tip, warning, caution, important
 - Collapsible callouts must use `collapse="true"` or `collapse="false"`
 - Callout appearance must be one of: default, simple, minimal
-- Callout blocks should have a title (either in the attributes or as the first heading)
+- Callout blocks should have a title (either in the attributes or as the first
+  heading)
 
 ### Div and Span Elements
 
@@ -126,14 +133,14 @@ This is [special content]{.special-class #special-id key="value"}.
 
 Quarto supports Mermaid and Graphviz diagrams:
 
-```markdown
+````markdown
     ```{mermaid}
     flowchart LR
     A[Start] --> B{Decision}
     B -->|Yes| C[Result 1]
     B -->|No| D[Result 2]
     ```
-```
+````
 
 ### Cross-References
 
@@ -145,13 +152,15 @@ See @fig-example for an illustration.
 ![Example figure](image.png){#fig-example}
 ```
 
-Supported reference types: fig, tbl, sec, eq, thm, lem, cor, prp, cnj, def, exm, exr, rem, lst
+Supported reference types: fig, tbl, sec, eq, thm, lem, cor, prp, cnj, def, exm,
+exr, rem, lst
 
 ## Accessibility Requirements
 
 ### Image Alt Text
 
-All images must include alternative text for accessibility. You can provide alt text in two ways:
+All images must include alternative text for accessibility. You can provide alt
+text in two ways:
 
 ```markdown
 ![Descriptive alt text](image.png)
@@ -208,9 +217,10 @@ This is incorrect.
 
 Inline HTML is allowed when necessary, but prefer Markdown syntax when possible.
 
-## Using the Linter
+## Using Panache
 
-We use [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) to lint and format Markdown files.
+We use [Panache](https://panache.bz) to format and lint Markdown and Quarto
+files.
 
 ### Command Line
 
@@ -221,21 +231,32 @@ just fmt-markdown
 # Format a specific file
 just fmt-md path/to/file.qmd
 
-# Check format without fixing
+# Check formatting without writing changes
 just fmt-check-markdown
+
+# Lint all markdown files for semantic issues
+just lint-markdown
+
+# Lint a specific file
+just lint-md path/to/file.qmd
 ```
 
 ### VS Code Integration
 
-VS Code will automatically lint markdown files if you install the recommended extensions. You'll see warnings and errors highlighted in your editor.
+VS Code will automatically format Markdown files on save if you install the
+recommended extensions.
 
-To set up VS Code with markdownlint:
+To set up VS Code with Panache:
 
-1. Install the [markdownlint extension](https://marketplace.visualstudio.com/items?itemName=davidanson.vscode-markdownlint)
-2. The extension will automatically use the repository's `.markdownlint.yaml` configuration
+1. Install the [Panache
+   extension](https://marketplace.visualstudio.com/items?itemName=jolars.panache)
+2. The extension will automatically use the repository's `panache.toml`
+   configuration
 
 ### Pre-commit Hook
 
-A pre-commit hook will run markdownlint-cli automatically when you commit changes, ensuring all files are properly formatted.
+Pre-commit hooks run `panache format` and `panache lint` automatically when you
+commit changes, ensuring all files are properly formatted.
 
-The pre-commit hook is configured in `.pre-commit-config.yaml` and uses the configuration from `.markdownlint.yaml`.
+The hooks are configured in `.pre-commit-config.yaml` and use the configuration
+from `panache.toml`.

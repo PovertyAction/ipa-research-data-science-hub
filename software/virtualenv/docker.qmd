@@ -1,47 +1,63 @@
 ---
 title: "Docker Containers for Research Environments"
 abstract: "Guide to using Docker containers for creating reproducible, portable research environments that can be deployed locally or to cloud services."
-keywords: ["Docker", "containers", "reproducibility", "deployment", "cloud computing", "tutorial", "how-to"]
+keywords: [
+  "Docker",
+  "containers",
+  "reproducibility",
+  "deployment",
+  "cloud computing",
+  "tutorial",
+  "how-to",
+]
 
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
-
-# contributors:
+  
+  # contributors:
   # - "[]()"
-
+  
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.custom-summary-block}
-Docker is a containerization platform that packages applications and their dependencies into portable, isolated containers. This guide covers Docker fundamentals, creating research environments, managing data in containers, and deploying to cloud services for reproducible research workflows.
+::: {.custom-summary-block}
+Docker is a containerization platform that packages applications and their
+dependencies into portable, isolated containers. This guide covers Docker
+fundamentals, creating research environments, managing data in containers, and
+deploying to cloud services for reproducible research workflows.
 :::
 
 ## What is Docker?
 
-[Docker](https://www.docker.com/) is a platform that uses containerization technology to package applications and their dependencies into standardized units called containers. Containers include everything needed to run an application: code, runtime, system tools, libraries, and settings.
+[Docker](https://www.docker.com/) is a platform that uses containerization
+technology to package applications and their dependencies into standardized
+units called containers. Containers include everything needed to run an
+application: code, runtime, system tools, libraries, and settings.
 
 ### Why Use Docker for Research?
 
 - **Reproducibility**: Package exact software versions and dependencies
-- **Portability**: Run the same environment on any system (Windows, macOS, Linux, cloud)
+- **Portability**: Run the same environment on any system (Windows, macOS,
+  Linux, cloud)
 - **Isolation**: Separate project environments without conflicts
 - **Collaboration**: Share complete working environments with collaborators
 - **Deployment**: Easily move from local development to cloud computing
-- **Complex dependencies**: Handle system-level dependencies that virtual environments cannot manage
+- **Complex dependencies**: Handle system-level dependencies that virtual
+  environments cannot manage
 
 ### Docker vs Virtual Environments
 
-| Aspect | Docker | Python venv/uv | R renv |
-| ------ | ------ | -------------- | ------ |
-| **Scope** | System-level isolation | Python packages only | R packages only |
-| **Portability** | Complete environment | Python dependencies | R dependencies |
-| **System dependencies** | Yes | No | No |
-| **Multi-language** | Yes | Python only | R only |
-| **Learning curve** | Steeper | Gentle | Gentle |
-| **Overhead** | Higher | Minimal | Minimal |
-| **Best for** | Complex multi-tool workflows, cloud deployment | Python-only projects | R-only projects |
+  | Aspect                  | Docker                                         | Python venv/uv       | R renv          |
+  | ----------------------- | ---------------------------------------------- | -------------------- | --------------- |
+  | **Scope**               | System-level isolation                         | Python packages only | R packages only |
+  | **Portability**         | Complete environment                           | Python dependencies  | R dependencies  |
+  | **System dependencies** | Yes                                            | No                   | No              |
+  | **Multi-language**      | Yes                                            | Python only          | R only          |
+  | **Learning curve**      | Steeper                                        | Gentle               | Gentle          |
+  | **Overhead**            | Higher                                         | Minimal              | Minimal         |
+  | **Best for**            | Complex multi-tool workflows, cloud deployment | Python-only projects | R-only projects |
 
 **Use Docker when**:
 
@@ -62,21 +78,21 @@ Docker is a containerization platform that packages applications and their depen
 
 ### Docker Desktop vs Docker Engine
 
-- **Docker Desktop**: Graphical interface, easier for beginners, includes Docker Engine
-    - Recommended for Windows and macOS users
-    - Includes Docker Compose and Kubernetes
-    - Easier environment management
+- **Docker Desktop**: Graphical interface, easier for beginners, includes Docker
+  Engine
+  - Recommended for Windows and macOS users
+  - Includes Docker Compose and Kubernetes
+  - Easier environment management
 
 - **Docker Engine**: Command-line only, lighter weight
-    - Common on Linux servers
-    - Better for production environments
+  - Common on Linux servers
+  - Better for production environments
 
 For research workflows, Docker Desktop is recommended for local development.
 
 ### Installation by Platform
 
 ::: {.panel-tabset group="OS"}
-
 # Windows
 
 1. **System Requirements**:
@@ -85,7 +101,8 @@ For research workflows, Docker Desktop is recommended for local development.
    - Virtualization enabled in BIOS
 
 2. **Download and Install**:
-   - Download [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+   - Download [Docker Desktop for
+     Windows](https://www.docker.com/products/docker-desktop/)
    - Run the installer
    - Follow the installation wizard
    - Restart your computer when prompted
@@ -112,7 +129,8 @@ docker run hello-world
    - Apple Silicon (M1/M2) or Intel processor
 
 2. **Download and Install**:
-   - Download [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
+   - Download [Docker Desktop for
+     Mac](https://www.docker.com/products/docker-desktop/)
    - Open the `.dmg` file
    - Drag Docker to Applications folder
    - Launch Docker Desktop from Applications
@@ -164,8 +182,8 @@ docker --version
 docker run hello-world
 ```
 
-For other Linux distributions, see [Docker's official installation guide](https://docs.docker.com/engine/install/).
-
+For other Linux distributions, see [Docker's official installation
+guide](https://docs.docker.com/engine/install/).
 :::
 
 ## Verify Installation
@@ -187,13 +205,14 @@ docker compose version
 
 ### Images vs Containers
 
-- **Image**: Read-only template containing application code, dependencies, and configuration
-    - Like a recipe or blueprint
-    - Shared and versioned (e.g., on Docker Hub)
+- **Image**: Read-only template containing application code, dependencies, and
+  configuration
+  - Like a recipe or blueprint
+  - Shared and versioned (e.g., on Docker Hub)
 
 - **Container**: Running instance of an image
-    - Like a dish made from a recipe
-    - Isolated, writable, ephemeral
+  - Like a dish made from a recipe
+  - Isolated, writable, ephemeral
 
 ### Basic Docker Commands
 
@@ -394,7 +413,8 @@ docker run -p 8787:8787 \
   my-r-env
 ```
 
-Access RStudio at `http://localhost:8787` (username: rstudio, password: mypassword)
+Access RStudio at `http://localhost:8787` (username: rstudio, password:
+mypassword)
 
 ### Multi-Language Environment
 
@@ -599,11 +619,11 @@ services:
 
 ### Overview of Cloud Container Services
 
-| Service | Provider | Best For |
-| ------- | -------- | -------- |
-| **Azure Container Instances** | Microsoft Azure | Windows containers, Azure integration |
-| **AWS ECS/Fargate** | Amazon Web Services | Enterprise, integration with AWS services |
-| **Google Cloud Run** | Google Cloud | Simple deployments, autoscaling |
+  | Service                       | Provider            | Best For                                  |
+  | ----------------------------- | ------------------- | ----------------------------------------- |
+  | **Azure Container Instances** | Microsoft Azure     | Windows containers, Azure integration     |
+  | **AWS ECS/Fargate**           | Amazon Web Services | Enterprise, integration with AWS services |
+  | **Google Cloud Run**          | Google Cloud        | Simple deployments, autoscaling           |
 
 ### Basic Deployment Workflow
 
@@ -668,7 +688,8 @@ az container create \
 
 ### Secrets and Credentials
 
-Never include credentials in Docker images. Use cloud provider secrets management:
+Never include credentials in Docker images. Use cloud provider secrets
+management:
 
 ```bash
 # AWS: Use environment variables from Secrets Manager
@@ -899,21 +920,29 @@ docker compose logs database
 
 - [Docker Documentation](https://docs.docker.com/) - Comprehensive Docker guide
 - [Docker Hub](https://hub.docker.com/) - Public container registry
-- [Docker Compose Documentation](https://docs.docker.com/compose/) - Multi-container applications
+- [Docker Compose Documentation](https://docs.docker.com/compose/) -
+  Multi-container applications
 
 ### Docker for Research
 
 - [Rocker Project](https://rocker-project.org/) - Docker images for R
-- [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/) - Ready-to-run Jupyter environments
-- [The Turing Way: Reproducible Environments](https://the-turing-way.netlify.app/reproducible-research/renv.html) - Research reproducibility guide
+- [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/) -
+  Ready-to-run Jupyter environments
+- [The Turing Way: Reproducible
+  Environments](https://the-turing-way.netlify.app/reproducible-research/renv.html) -
+  Research reproducibility guide
 
 ### Tutorials
 
-- [Docker Getting Started](https://docs.docker.com/get-started/) - Official beginner tutorial
-- [Docker Curriculum](https://docker-curriculum.com/) - Comprehensive Docker tutorial
-- [Play with Docker](https://labs.play-with-docker.com/) - Browser-based Docker playground
+- [Docker Getting Started](https://docs.docker.com/get-started/) - Official
+  beginner tutorial
+- [Docker Curriculum](https://docker-curriculum.com/) - Comprehensive Docker
+  tutorial
+- [Play with Docker](https://labs.play-with-docker.com/) - Browser-based Docker
+  playground
 
 ### Related Guides
 
-- [Virtual Environments Overview](index.qmd) - Comparison of environment management tools
+- [Virtual Environments Overview](index.qmd) - Comparison of environment
+  management tools
 - [Python with uv](python-uv.qmd) - Python-specific virtual environments

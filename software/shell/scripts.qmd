@@ -1,92 +1,105 @@
 ---
 title: "Shell Scripts"
-abstract: |
-  Learn to create reusable shell scripts that automate complex workflows. Discover how to write, execute, and debug shell scripts, making your computational tasks reproducible and shareable. Apply the fundamentals of shell scripting for research automation.
+abstract: "Learn to create reusable shell scripts that automate complex workflows. Discover how to write, execute, and debug shell scripts, making your computational tasks reproducible and shareable. Apply the fundamentals of shell scripting for research automation."
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
-keywords: ["Shell", "Scripts", "Automation", "Reproducible Research", "Command Line", "Tutorial"]
+keywords: [
+  "Shell",
+  "Scripts",
+  "Automation",
+  "Reproducible Research",
+  "Command Line",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This page is adapted from the [Software Carpentry Shell Novice
+lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The
+Carpentries](https://carpentries.org/). The original material is licensed under
+the [Creative Commons Attribution 4.0 International License (CC BY
+4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+**Changes made:** Content has been modified and expanded by Innovations for
+Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash,
+PowerShell, NuShell), and context relevant to research data management.
 
-**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
-
-**Original citation:**
-Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+**Original citation:** Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin
+Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A.
+Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July).
+swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version
+v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
-- Write a shell script that runs a command or series of commands for a fixed set of files.
+- Write a shell script that runs a command or series of commands for a fixed set
+  of files.
 - Run a shell script from the command line.
-- Write a shell script that operates on a set of files defined by the user on the command line.
+- Write a shell script that operates on a set of files defined by the user on
+  the command line.
 - Create pipelines that include shell scripts you, and others, have written.
 :::
 
-We are finally ready to see what makes the shell such a powerful programming environment.
-We are going to take the commands we repeat frequently and save them in files
-so that we can re-run all those operations again later by typing a single command.
-For historical reasons, a bunch of commands saved in a file is usually called a **shell script**,
-but make no mistake: these are actually small programs.
+We are finally ready to see what makes the shell such a powerful programming
+environment. We are going to take the commands we repeat frequently and save
+them in files so that we can re-run all those operations again later by typing a
+single command. For historical reasons, a bunch of commands saved in a file is
+usually called a **shell script**, but make no mistake: these are actually small
+programs.
 
-Not only will writing shell scripts make your work faster (you won't have to retype the same
-commands over and over again), it will also make your work more accurate
-(fewer chances for typos) and more reproducible.
-If you come back to your work later (or if someone else finds your work and wants to build on it)
+Not only will writing shell scripts make your work faster (you won't have to
+retype the same commands over and over again), it will also make your work more
+accurate (fewer chances for typos) and more reproducible. If you come back to
+your work later (or if someone else finds your work and wants to build on it)
 you will be able to reproduce the same results simply by running your script,
 rather than having to remember or retype a long list of commands.
 
 ::: {.callout-note title="Why not use a programming language?"}
+You might wonder why we are using shell scripts instead of a more traditional
+programming language like Python, Stata, or R.
 
-You might wonder why we are using shell scripts
-instead of a more traditional programming language like Python, Stata, or R.
-
-The shell is particularly well suited to automating workflows, in other
-sections of this website we explore programming languages for data analysis. However, to
+The shell is particularly well suited to automating workflows, in other sections
+of this website we explore programming languages for data analysis. However, to
 get the most out of those languages, you will often need to use the shell to
-manage files, run programs, and automate tasks. Learning to write and understand shell scripts
-is a valuable skill that complements your programming knowledge. Plus, we don't
-want to get bogged down in programming language syntax when our goal is to
-learn to use the shell rather than a full programming language.
-
+manage files, run programs, and automate tasks. Learning to write and understand
+shell scripts is a valuable skill that complements your programming knowledge.
+Plus, we don't want to get bogged down in programming language syntax when our
+goal is to learn to use the shell rather than a full programming language.
 :::
 
 ### Script File Conventions
 
 Each shell has different conventions for scripts:
 
-| Shell | File Extension | Run Command | Shebang (optional) |
-| ------- | ---------------- | ------------- | --------------------- |
-| Bash | `.sh` | `bash script.sh` | `#!/bin/bash` |
-| PowerShell | `.ps1` | `.\script.ps1` | (not used) |
-| NuShell | `.nu` | `nu script.nu` or `source script.nu` | `#!/usr/bin/env nu` |
+  | Shell      | File Extension | Run Command                          | Shebang (optional)  |
+  | ---------- | -------------- | ------------------------------------ | ------------------- |
+  | Bash       | `.sh`          | `bash script.sh`                     | `#!/bin/bash`       |
+  | PowerShell | `.ps1`         | `.\script.ps1`                       | (not used)          |
+  | NuShell    | `.nu`          | `nu script.nu` or `source script.nu` | `#!/usr/bin/env nu` |
 
 ::: {.callout-note}
-
 ## PowerShell Execution Policy
 
-On Windows, you may need to adjust your execution policy to run PowerShell scripts.
-If you get an error about scripts being disabled, run this command once:
+On Windows, you may need to adjust your execution policy to run PowerShell
+scripts. If you get an error about scripts being disabled, run this command
+once:
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```
-
 :::
 
 ### Building Validation Script
 
-Now let's help Amara create a validation script for her survey data. We'll build it step by step,
-starting simple and adding features as we go.
+Now let's help Amara create a validation script for her survey data. We'll build
+it step by step, starting simple and adding features as we go.
 
 #### Step 1: A Simple Script to Count Records
 
@@ -94,7 +107,6 @@ Let's start by creating a script that counts records in a CSV file. Navigate to
 the survey-data directory:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 Create a file called `count_records.sh`:
@@ -173,15 +185,14 @@ nu count_records.nu
 ```output
 20
 ```
-
 :::
 
 ### Step 2: Adding Command-Line Arguments
 
-Our script only works with one file. Let's make it flexible by accepting the filename as an argument:
+Our script only works with one file. Let's make it flexible by accepting the
+filename as an argument:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 Update `count_records.sh`:
@@ -260,7 +271,6 @@ nu count_records.nu hh_baseline_005.csv
 20
 10
 ```
-
 :::
 
 ### Step 3: Building the Full Validation Script
@@ -272,7 +282,6 @@ Now let's build a complete validation script that checks for:
 3. Missing required fields (hhid, consent)
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 Create `validate_survey.sh`:
@@ -472,7 +481,6 @@ def main [file: string] {
     }
 }
 ```
-
 :::
 
 ### Running the Validation Script
@@ -480,7 +488,6 @@ def main [file: string] {
 Let's test our scripts on different files:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -582,7 +589,6 @@ Validating: hh_baseline_009.csv
 ----------------------------------------
 RESULT: FAIL
 ```
-
 :::
 
 ### Running Scripts in a Loop
@@ -590,7 +596,6 @@ RESULT: FAIL
 Now Amara can validate all her files at once by combining scripts with loops:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -617,30 +622,32 @@ ls hh_baseline_*.csv | each { |file|
     print ""
 }
 ```
-
 :::
 
 ### Reference Scripts
 
-The complete validation scripts are included in the `survey-data` directory for reference:
+The complete validation scripts are included in the `survey-data` directory for
+reference:
 
 - `validate_survey.sh` - Bash version
 - `validate_survey.ps1` - PowerShell version
 - `validate_survey.nu` - NuShell version
 
-You can examine these scripts to see the complete implementation, including additional error handling.
+You can examine these scripts to see the complete implementation, including
+additional error handling.
 
 ## Key Points
 
 - Save commands in files (shell scripts) for reuse:
-    - **Bash**: `.sh` files, run with `bash script.sh`
-    - **PowerShell**: `.ps1` files, run with `.\script.ps1`
-    - **NuShell**: `.nu` files, run with `nu script.nu` or `source script.nu`
+  - **Bash**: `.sh` files, run with `bash script.sh`
+  - **PowerShell**: `.ps1` files, run with `.\script.ps1`
+  - **NuShell**: `.nu` files, run with `nu script.nu` or `source script.nu`
 - Command-line arguments differ by shell:
-    - **Bash**: `$1`, `$2`, `$@` (all arguments)
-    - **PowerShell**: Use `param()` block with named parameters
-    - **NuShell**: Use `def main [arg: type]` with typed parameters
-- Scripts make your work reproducible—you can run the same validation on new data.
+  - **Bash**: `$1`, `$2`, `$@` (all arguments)
+  - **PowerShell**: Use `param()` block with named parameters
+  - **NuShell**: Use `def main [arg: type]` with typed parameters
+- Scripts make your work reproducible---you can run the same validation on new
+  data.
 - Combine scripts with loops to process multiple files automatically.
 - Place variables in quotes if the values might have spaces in them.
 - PowerShell requires appropriate execution policy settings to run scripts.

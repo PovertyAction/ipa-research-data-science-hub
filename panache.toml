@@ -1,0 +1,95 @@
+#:schema https://panache.bz/panache.schema.json
+# Panache configuration for the IPA Research and Data Science Hub
+# https://panache.bz/guide/configuration
+#
+# Values below are set to Panache's documented defaults unless a comment notes
+# otherwise, so the project's choices stay explicit and survive upstream default
+# changes. Keys whose default is dynamic (OS-specific, document-driven, or
+# flavor-derived) are documented as commented blocks rather than hardcoded, to
+# avoid silently overriding that behavior.
+
+# -----------------------------------------------------------------------------
+# Top-level
+# -----------------------------------------------------------------------------
+flavor = "quarto"        # default: "pandoc". Project standard is Quarto.
+line-width = 80          # default: 80
+pandoc-compat = "3.9"    # default: "3.9". Allowed: "3.9", "3.7", "latest".
+
+# cache-dir: default is an OS-specific global location. Left unset so each
+# machine uses its own cache path.
+# cache-dir = "/absolute/path/to/cache"
+
+# File selection. Panache's built-in `exclude` already drops build/cache dirs
+# and **/LICENSE.md; `extend-exclude` appends to it (use this instead of
+# `exclude`, which REPLACES the built-in defaults). `include`/`extend-include`
+# default to the standard Markdown extensions.
+extend-exclude = [".venv/", "_freeze/", "_site/", "_extensions/"]
+extend-include = []      # default: empty (no extra includes beyond built-ins)
+# exclude = [...]        # WARNING: replaces the built-in default excludes
+# include = [...]        # WARNING: replaces the built-in default includes
+
+# -----------------------------------------------------------------------------
+# Formatting
+# -----------------------------------------------------------------------------
+[format]
+wrap = "reflow"                  # default: "reflow". Reflow prose to line-width.
+math-delimiter-style = "preserve" # default: "preserve". Alt: "dollars", "backslash".
+math-indent = 0                  # default: 0
+tab-stops = "normalize"          # default: "normalize". Alt: "preserve".
+tab-width = 4                    # default: 4
+
+# lang: default follows each document's YAML `lang:` field (falling back to a
+# built-in list). Left unset so per-document language is respected.
+# lang = "en"
+
+# no-break-abbreviations: default is a language-specific built-in list. Left
+# unset so those built-ins apply.
+# no-break-abbreviations = ["e.g.", "i.e."]
+
+# -----------------------------------------------------------------------------
+# Markdown extensions
+# -----------------------------------------------------------------------------
+# All extension flags default to flavor-specific values (here, Quarto's). They
+# are intentionally not enumerated: Panache derives them from `flavor`, there is
+# no command to dump the effective per-flag defaults, and hardcoding guessed
+# values would silently change parsing. Override individual flags only as needed:
+# [extensions]
+# task-lists = true
+# [extensions.gfm]
+# task-lists = true
+
+# -----------------------------------------------------------------------------
+# External formatters (run on embedded code blocks)
+# -----------------------------------------------------------------------------
+# Default: none enabled. These match the project's existing toolchain.
+[formatters]
+r = "air"
+python = "ruff"
+javascript = "prettier"
+typescript = "prettier"
+
+# -----------------------------------------------------------------------------
+# External linters (run on embedded code blocks)
+# -----------------------------------------------------------------------------
+# Default: none enabled. Left disabled to keep `panache lint` focused on
+# Markdown/Quarto structure rather than running language linters on code blocks.
+# [linters]
+# python = "ruff"
+# r = "jarl"
+# sh = "shellcheck"
+
+# -----------------------------------------------------------------------------
+# Per-file flavor overrides
+# -----------------------------------------------------------------------------
+# Default: none. Every file uses the top-level `flavor` (quarto). GFM was tried
+# for GitHub-rendered docs, but gfm's bare-URI autolinking corrupts CLI-heavy
+# content (e.g. `file:` text becomes a broken link) and is non-idempotent, so
+# all files are formatted as Quarto instead.
+# [flavor-overrides]
+# "README.md" = "gfm"
+
+# -----------------------------------------------------------------------------
+# Experimental
+# -----------------------------------------------------------------------------
+[experimental]
+format-math = false      # default: false

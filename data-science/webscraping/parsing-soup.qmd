@@ -1,27 +1,37 @@
 ---
 title: "Parsing HTML with Soup Objects"
-abstract: |
-  Learn to parse HTML content using gazpacho's Soup class. Find elements by tags, classes, and attributes, navigating HTML structure, and extracting text and data from web pages.
+abstract: "Learn to parse HTML content using gazpacho's Soup class. Find elements by tags, classes, and attributes, navigating HTML structure, and extracting text and data from web pages."
 authors:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
-
-# # Contributors
-# contributors:
-#   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
-
-keywords: ["Python", "Web Scraping", "Gazpacho", "HTML Parsing", "Soup", "Element Selection", "Tutorial"]
+  
+  # # Contributors
+  # contributors:
+  #   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+  
+keywords: [
+  "Python",
+  "Web Scraping",
+  "Gazpacho",
+  "HTML Parsing",
+  "Soup",
+  "Element Selection",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
-
-This content is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from [calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which are licensed under CC BY 4.0. The gazpacho library is used under the MIT License.
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This content is based on the [gazpacho
+library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and
+incorporates concepts from
+[calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which
+are licensed under CC BY 4.0. The gazpacho library is used under the MIT
+License.
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Create and work with gazpacho Soup objects
@@ -34,7 +44,9 @@ This content is based on the [gazpacho library](https://github.com/maxhumber/gaz
 
 ## Introduction to Soup Objects
 
-After fetching HTML with `gazpacho.get()`, you need to parse it to extract specific data. The `Soup` class transforms raw HTML into a searchable, navigable object.
+After fetching HTML with `gazpacho.get()`, you need to parse it to extract
+specific data. The `Soup` class transforms raw HTML into a searchable, navigable
+object.
 
 ### Creating a Soup Object
 
@@ -162,7 +174,6 @@ print(f"Submit button: {submit_button}")
 ```
 
 ::: {.callout-note}
-
 ## Try This: Element Selection Practice
 
 Practice finding elements with different selectors:
@@ -197,7 +208,6 @@ print(f"Author: {author.text}")
 print(f"Date: {date.text}")
 print(f"Highlight: {highlight.text}")
 ```
-
 :::
 
 ## Working with Multiple Elements
@@ -374,7 +384,6 @@ print(f"First row: {first_name.text}, {first_age.text}, {first_city.text}")
 ```
 
 ::: {.callout-note}
-
 ## Try This: Real Website Parsing
 
 Let's parse a real website structure:
@@ -406,7 +415,6 @@ def parse_example_com():
 # Run the parser
 parse_example_com()
 ```
-
 :::
 
 ## Real-World Example: PyPI Project Parsing
@@ -566,7 +574,6 @@ for key, value in result.items():
 ```
 
 ::: {.callout-note}
-
 ## Exercise: Build a News Article Parser
 
 Create a parser for extracting structured data from news articles:
@@ -685,7 +692,6 @@ print(f"Date: {article_data['date']}")
 print(f"Content: {len(article_data['content'])} paragraphs")
 print(f"Word count: {article_data['word_count']}")
 ```
-
 :::
 
 ## Common Parsing Patterns
@@ -771,7 +777,6 @@ if table:
 - Consider using more specific selectors to reduce search time
 
 ::: {.callout-important}
-
 ## Key Points
 
 - Create Soup objects from HTML using `Soup(html)`

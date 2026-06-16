@@ -1,28 +1,43 @@
 ---
 title: "Clone a GitHub Repository"
-abstract: |
-  Learn how to clone an existing GitHub repository to your local computer using VS Code. This tutorial uses the IPA Stata template as a practical example, demonstrating how to work with template repositories that provide standardized starting points for projects.
+abstract: "Learn how to clone an existing GitHub repository to your local computer using VS Code. This tutorial uses the IPA Stata template as a practical example, demonstrating how to work with template repositories that provide standardized starting points for projects."
 date: last-modified
 format:
   html: default
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
-keywords: ["Git", "GitHub", "Repository", "Clone", "Template Repository", "VS Code", "Tutorial"]
+keywords: [
+  "Git",
+  "GitHub",
+  "Repository",
+  "Clone",
+  "Template Repository",
+  "VS Code",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This tutorial modifies content from [Jenna Jordan's Intro to Git & GitHub
+(Speedrun edition)](https://jennajordan.me/git-novice-speedrun/), which draws
+from the [Software Carpentry Version Control with Git
+lesson](https://swcarpentry.github.io/git-novice/), the [Carpentries Incubator
+Version Control with Git
+lesson](https://carpentries-incubator.github.io/git-novice-branch-pr/), and the
+[Library Carpentry Introduction to Git
+lesson](https://librarycarpentry.github.io/lc-git/). Copyright (c) [The
+Carpentries](https://carpentries.org/). The original material is licensed under
+the [Creative Commons Attribution 4.0 International License (CC BY
+4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-This tutorial modifies content from [Jenna Jordan's Intro to Git & GitHub (Speedrun edition)](https://jennajordan.me/git-novice-speedrun/), which draws from the [Software Carpentry Version Control with Git lesson](https://swcarpentry.github.io/git-novice/), the [Carpentries Incubator Version Control with Git lesson](https://carpentries-incubator.github.io/git-novice-branch-pr/), and the [Library Carpentry Introduction to Git lesson](https://librarycarpentry.github.io/lc-git/). Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
-
-**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples.
-
+**Changes made:** Content has been modified and expanded by Innovations for
+Poverty Action (IPA) to include IPA-specific examples.
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Understand when to clone a repository vs. create a new one
@@ -33,12 +48,13 @@ This tutorial modifies content from [Jenna Jordan's Intro to Git & GitHub (Speed
 
 ## What is Repository Cloning?
 
-**Cloning** creates a local copy of a remote repository on your computer. This is
-different from creating a new repository, which you will learn in the next tutorial.
+**Cloning** creates a local copy of a remote repository on your computer. This
+is different from creating a new repository, which you will learn in the next
+tutorial.
 
-When you clone a repository, you download all its files, folders, and Git history
-to your local machine. This allows you to work with the code, make changes, and
-sync those changes back to the remote repository on GitHub.
+When you clone a repository, you download all its files, folders, and Git
+history to your local machine. This allows you to work with the code, make
+changes, and sync those changes back to the remote repository on GitHub.
 
 ### When to Clone vs. Create
 
@@ -55,41 +71,48 @@ sync those changes back to the remote repository on GitHub.
 
 ## About Template Repositories
 
-Template repositories are special GitHub repositories designed to provide standardized
-starting points for new projects. Instead of starting with an empty repository,
-templates include pre-configured files, folder structures, and documentation that follow best practices.
+Template repositories are special GitHub repositories designed to provide
+standardized starting points for new projects. Instead of starting with an empty
+repository, templates include pre-configured files, folder structures, and
+documentation that follow best practices.
 
 The **`ipa-stata-template`** is IPA's standard template for Stata-based research
 projects. When you clone this template, you get:
 
 - **Folder structure**: Organized directories for data, code, and output files
 - **Stata do-file templates**: Starter code files following IPA best practices
-- **README and documentation templates**: Pre-formatted files you can customize for your project
-- **Configuration files**: Pre-configured `.gitignore` and other project settings
+- **README and documentation templates**: Pre-formatted files you can customize
+  for your project
+- **Configuration files**: Pre-configured `.gitignore` and other project
+  settings
 
-Using templates ensures consistency across projects and saves time by providing a proven structure.
+Using templates ensures consistency across projects and saves time by providing
+a proven structure.
 
 ## Finding the Repository on GitHub
 
 Before cloning a repository, find it on GitHub.
 
-The PovertyAction organization on GitHub maintains the `ipa-stata-template` repository. You can access it at:
+The PovertyAction organization on GitHub maintains the `ipa-stata-template`
+repository. You can access it at:
 
 **<https://github.com/PovertyAction/ipa-stata-template>**
 
 ::: {.callout-tip}
-
 ## GitHub Documentation
 
-For more information about cloning repositories, see the [GitHub cloning guide](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+For more information about cloning repositories, see the [GitHub cloning
+guide](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
-To learn more about template repositories, see [GitHub's template repository documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository).
+To learn more about template repositories, see [GitHub's template repository
+documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository).
 :::
 
-If you navigate to this address in your web browser, you see the repository's main page.
-Take a moment to explore:
+If you navigate to this address in your web browser, you see the repository's
+main page. Take a moment to explore:
 
-- The **README** file displays automatically, explaining what the template contains
+- The **README** file displays automatically, explaining what the template
+  contains
 - The **folder structure** is visible in the file browser
 - Two green buttons appear: **"Use this template"** and **"Code"** for cloning
 
@@ -97,90 +120,122 @@ Take a moment to explore:
 
 When working with templates, you have two options:
 
-- **"Use this template"**: Creates a new repository in your GitHub account based on this template. This is what you would do when starting a real project.
+- **"Use this template"**: Creates a new repository in your GitHub account based
+  on this template. This is what you would do when starting a real project.
 
-- **"Clone"**: Creates a local copy on your computer. This is what this tutorial demonstrates for learning purposes.
+- **"Clone"**: Creates a local copy on your computer. This is what this tutorial
+  demonstrates for learning purposes.
 
 For this tutorial, clone the template directly to practice the cloning process.
-In a real workflow, you would typically use the template to create your own repository
-first, then clone that.
+In a real workflow, you would typically use the template to create your own
+repository first, then clone that.
 
 ## Clone the Repository Using VS Code
 
 Clone the `ipa-stata-template` repository to your local computer using VS Code.
 This same process works for cloning any public GitHub repository.
 
-Make sure you have a new VS Code window open. If you already have a repository or
-folder open in VS Code, go to the "File" menu and click "New window".
+Make sure you have a new VS Code window open. If you already have a repository
+or folder open in VS Code, go to the "File" menu and click "New window".
 
-In your new VS Code window, go to the "Source Control" pane (the third one down). Click "Clone Repository", and then click "Clone from GitHub".
+In your new VS Code window, go to the "Source Control" pane (the third one
+down). Click "Clone Repository", and then click "Clone from GitHub".
 
-In the search box that appears, type "PovertyAction/ipa-Stata-template" to find the repository. When you see the `PovertyAction/ipa-Stata-template` repository in the results, click it.
+In the search box that appears, type "PovertyAction/ipa-Stata-template" to find
+the repository. When you see the `PovertyAction/ipa-Stata-template` repository
+in the results, click it.
 
 ::: {.callout-note}
-
 ## Cloning Any Repository
 
-This same process works for cloning any public GitHub repository. Just search for the organization or username followed by the repository name, such as "username/repo-name".
+This same process works for cloning any public GitHub repository. Just search
+for the organization or username followed by the repository name, such as
+"username/repo-name".
 :::
 
-You will now need to choose where on your local computer the `ipa-stata-template` repository will be saved. You can choose any accessible location, such as the "Desktop" folder. Standard practice is to save all local repositories in a folder named "code" or "github" in your "Home" or "Documents" folder.
+You will now need to choose where on your local computer the
+`ipa-stata-template` repository will be saved. You can choose any accessible
+location, such as the "Desktop" folder. Standard practice is to save all local
+repositories in a folder named "code" or "github" in your "Home" or "Documents"
+folder.
 
 ::: {.callout-tip}
-
 ## For Real Projects
 
 When starting an actual research project, you would typically:
 
-1. Use the "Use this template" button on GitHub to create your own repository based on the template
-2. Clone your copy of the template, which will have your username or organization name
+1. Use the "Use this template" button on GitHub to create your own repository
+   based on the template
+2. Clone your copy of the template, which will have your username or
+   organization name
 
-For this tutorial, clone the original template directly to practice the cloning process.
+For this tutorial, clone the original template directly to practice the cloning
+process.
 :::
 
-Click "Open" when prompted to open the newly cloned `ipa-Stata-template` repository.
+Click "Open" when prompted to open the newly cloned `ipa-Stata-template`
+repository.
 
 ## Verify Your Clone and Open Terminal
 
-Now that you have cloned and opened the `ipa-stata-template` repository in VS Code, take a moment to explore what you downloaded.
+Now that you have cloned and opened the `ipa-stata-template` repository in VS
+Code, take a moment to explore what you downloaded.
 
-Look at the File Explorer pane on the left side of VS Code. Unlike the empty `multiverse` repository from the previous tutorial, this template already contains files and folders:
+Look at the File Explorer pane on the left side of VS Code. Unlike the empty
+`multiverse` repository from the previous tutorial, this template already
+contains files and folders:
 
 - Organized folder structure: data, code, and output directories
 - Starter Stata do-files
 - README and documentation files
 - Configuration files like `.gitignore`
 
-This is the benefit of using a template: you start with a proven structure rather than building everything from scratch.
+This is the benefit of using a template: you start with a proven structure
+rather than building everything from scratch.
 
 ### Open a Bash Terminal
 
-The last step is to open a bash terminal so you can use Git commands with this repository.
+The last step is to open a bash terminal so you can use Git commands with this
+repository.
 
 To see the terminal pane, go to the "Terminal" menu, and click "New terminal".
 
-If you are on a Windows computer, you will need to specifically open a GitBash terminal. Find the "+" icon in the terminal pane, and click the carrot dropdown icon next to it. Click "GitBash".
+If you are on a Windows computer, you will need to specifically open a GitBash
+terminal. Find the "+" icon in the terminal pane, and click the carrot dropdown
+icon next to it. Click "GitBash".
 
-If you are on a Mac or Linux computer, your default terminal should be sufficient. You can also choose to open a Bash terminal by following the same instructions.
+If you are on a Mac or Linux computer, your default terminal should be
+sufficient. You can also choose to open a Bash terminal by following the same
+instructions.
 
-You should now have the `ipa-stata-template` repository open with a Bash terminal ready for Git commands.
+You should now have the `ipa-stata-template` repository open with a Bash
+terminal ready for Git commands.
 
 ::: {.callout-tip}
-
 ## Next Steps
 
 Now that you have cloned a repository, you can:
 
-- **Continue the Git tutorial series**: Work through [Configure Git](configuration.qmd), [Track Changes](track-changes.qmd), and other tutorials using this cloned repository
-- **Explore the template**: Open the files in the template to see IPA's recommended structure and documentation practices
-- **Learn about Stata workflows**: See the [Stata documentation](../stata/index.qmd) to learn how to use Stata for research projects
-- **Start a real project**: When ready, see the [ipa-stata-template on GitHub](https://github.com/PovertyAction/ipa-stata-template), click "Use this template" to create your own repository, then clone it to begin your work
+- **Continue the Git tutorial series**: Work through [Configure
+  Git](configuration.qmd), [Track Changes](track-changes.qmd), and other
+  tutorials using this cloned repository
+- **Explore the template**: Open the files in the template to see IPA's
+  recommended structure and documentation practices
+- **Learn about Stata workflows**: See the [Stata
+  documentation](../stata/index.qmd) to learn how to use Stata for research
+  projects
+- **Start a real project**: When ready, see the [ipa-stata-template on
+  GitHub](https://github.com/PovertyAction/ipa-stata-template), click "Use this
+  template" to create your own repository, then clone it to begin your work
 :::
 
 ## Key Points
 
 - Cloning creates a local copy of an existing remote repository on your computer
 - Use VS Code's GitHub integration to clone any public repository
-- Template repositories provide standardized project starting points with pre-configured structure and files
-- The `ipa-stata-template` includes folder organization, Stata do-files, documentation templates, and configuration files
-- For real projects, use "Use this template" to create your own repository first, then clone it
+- Template repositories provide standardized project starting points with
+  pre-configured structure and files
+- The `ipa-stata-template` includes folder organization, Stata do-files,
+  documentation templates, and configuration files
+- For real projects, use "Use this template" to create your own repository
+  first, then clone it

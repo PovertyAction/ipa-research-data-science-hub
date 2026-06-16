@@ -1,20 +1,25 @@
 ---
 title: "Faceting and Layering"
-abstract: |
-  Create small multiples (faceted plots) to compare across categories. Layer multiple marks to build rich visualizations. Combine techniques for comprehensive data stories.
+abstract: "Create small multiples (faceted plots) to compare across categories. Layer multiple marks to build rich visualizations. Combine techniques for comprehensive data stories."
 authors-ipa:
   - "[Ishmail Baako](https://poverty-action.org/people/ishmail-baako)"
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
-keywords: ["Python", "Data Visualization", "Seaborn", "Faceting", "Small Multiples", "Tutorial"]
+keywords: [
+  "Python",
+  "Data Visualization",
+  "Seaborn",
+  "Faceting",
+  "Small Multiples",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Create faceted plots (small multiples) with `.facet()`
@@ -22,19 +27,20 @@ license:
 - Layer multiple marks to create rich visualizations
 - Combine faceting and layering for complex displays
 - Design effective multi-panel figures for research
-
 :::
 
 ## The Power of Small Multiples
 
-**Small multiples** (also called faceting or trellis plots) show the same visualization
-repeated across different subsets of data. Edward Tufte, the data visualization expert,
-called them "the best design solution" for comparing categories.
+**Small multiples** (also called faceting or trellis plots) show the same
+visualization repeated across different subsets of data. Edward Tufte, the data
+visualization expert, called them "the best design solution" for comparing
+categories.
 
 Why are they so effective?
 
 - **Same scale**: Easy to compare across panels
-- **Reduced clutter**: Each panel is simpler than cramming everything into one plot
+- **Reduced clutter**: Each panel is simpler than cramming everything into one
+  plot
 - **Pattern detection**: Similarities and differences become obvious
 - **Scalability**: Works with many categories
 
@@ -109,7 +115,8 @@ This creates a 2×3 grid showing all combinations of sex and species.
 
 ## Faceting vs. Color: When to Use Each
 
-You can encode a variable either with **color** or with **facets**. How do you choose?
+You can encode a variable either with **color** or with **facets**. How do you
+choose?
 
 ### Use Color When
 
@@ -205,7 +212,8 @@ site_data = pd.DataFrame({
 )
 ```
 
-Each panel shows one site, making it easy to compare program effectiveness across locations.
+Each panel shows one site, making it easy to compare program effectiveness
+across locations.
 
 ## Layering Multiple Marks
 
@@ -404,7 +412,6 @@ Perfect for a research paper or policy brief!
 ## Exercises
 
 ::: {.callout-note}
-
 ## Exercise 1: Facet or Color?
 
 For each scenario, decide whether to use faceting or color (or both):
@@ -416,21 +423,20 @@ For each scenario, decide whether to use faceting or color (or both):
 
 Discuss your reasoning.
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 1
 
 1. **Color** - Only 3 schools, easy to compare on one plot
-2. **Faceting** - 12 counties would be too cluttered with color; facets let you see each distribution clearly
-3. **Either works, or both** - 4 cities could work with color (4 lines), or facet for clarity. Or facet by city and color by year!
-4. **Faceting** - 20 questions need separate panels to avoid overwhelming the viewer
-
-:::
-
+2. **Faceting** - 12 counties would be too cluttered with color; facets let you
+   see each distribution clearly
+3. **Either works, or both** - 4 cities could work with color (4 lines), or
+   facet for clarity. Or facet by city and color by year!
+4. **Faceting** - 20 questions need separate panels to avoid overwhelming the
+   viewer
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise 2: Create a Layered Plot
 
 Using the penguins dataset, create a plot that:
@@ -444,8 +450,7 @@ Using the penguins dataset, create a plot that:
 # Your code here
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 2
 
 ```python
@@ -462,13 +467,10 @@ Using the penguins dataset, create a plot that:
     )
 )
 ```
-
-:::
-
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise 3: Design an Impact Evaluation Figure
 
 Create a figure for an educational intervention:
@@ -488,8 +490,7 @@ Create a figure for an educational intervention:
 # Your code here
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 3
 
 ```python
@@ -535,16 +536,15 @@ edu_df = pd.DataFrame(education_data)
     )
 )
 ```
-
-:::
-
+:::::
 :::
 
 ## Design Principles for Multi-Panel Figures
 
 ### 1. Keep Scales Consistent
 
-Unless there's a good reason, use the same scales across panels for easy comparison.
+Unless there's a good reason, use the same scales across panels for easy
+comparison.
 
 ### 2. Limit Complexity
 
@@ -574,7 +574,6 @@ Arrange facets logically:
 - **Reports**: Balance detail with readability
 
 ::: {.callout-important}
-
 ## Key Points
 
 - Small multiples (faceting) create separate panels for each category
@@ -587,14 +586,12 @@ Arrange facets logically:
 - Combining faceting and layering creates comprehensive research figures
 - Keep faceted plots simple - don't overwhelm with too much in each panel
 - Consistent scales across panels enable easy comparison
-
 :::
 
 ::: {.callout-tip}
-
 ## Looking Ahead
 
-In the next lesson, we'll explore statistical transformations - how to add regression lines,
-confidence intervals, aggregations, and other statistical summaries directly to our visualizations.
-
+In the next lesson, we'll explore statistical transformations - how to add
+regression lines, confidence intervals, aggregations, and other statistical
+summaries directly to our visualizations.
 :::

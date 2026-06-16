@@ -1,27 +1,37 @@
 ---
 title: "Advanced Selection and Attributes"
-abstract: |
-  Learn advanced HTML element selection techniques using gazpacho's partial matching and attribute extraction. Learn to work with complex selectors, handle dynamic content, and extract precise data from HTML attributes.
+abstract: "Learn advanced HTML element selection techniques using gazpacho's partial matching and attribute extraction. Learn to work with complex selectors, handle dynamic content, and extract precise data from HTML attributes."
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
-
-# # Contributors
-# contributors:
-#   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
-
-keywords: ["Python", "Web Scraping", "Gazpacho", "HTML Attributes", "CSS Selectors", "Partial Matching", "Tutorial"]
+  
+  # # Contributors
+  # contributors:
+  #   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+  
+keywords: [
+  "Python",
+  "Web Scraping",
+  "Gazpacho",
+  "HTML Attributes",
+  "CSS Selectors",
+  "Partial Matching",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
-
-This content is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from [calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which are licensed under CC BY 4.0. The gazpacho library is used under the MIT License.
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This content is based on the [gazpacho
+library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and
+incorporates concepts from
+[calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which
+are licensed under CC BY 4.0. The gazpacho library is used under the MIT
+License.
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Understand the difference between strict and partial matching
@@ -34,7 +44,9 @@ This content is based on the [gazpacho library](https://github.com/maxhumber/gaz
 
 ## Understanding Partial Matching
 
-Gazpacho's `find()` method supports a `partial` parameter that controls how class name matching works. This is crucial for working with modern websites that use complex CSS frameworks.
+Gazpacho's `find()` method supports a `partial` parameter that controls how
+class name matching works. This is crucial for working with modern websites that
+use complex CSS frameworks.
 
 ### Strict Matching (partial=False)
 
@@ -107,7 +119,6 @@ print(f"Text (partial): {text.text if text else 'Not found'}")
 - You need flexible, maintainable selectors
 
 ::: {.callout-note}
-
 ## Try This: Compare Matching Modes
 
 Experiment with both matching modes on complex HTML:
@@ -154,12 +165,12 @@ print(f"Title: {title_partial.text if title_partial else 'Not found'}")
 print(f"Button: {button_partial.text if button_partial else 'Not found'}")
 print(f"Author: {author_partial.text if author_partial else 'Not found'}")
 ```
-
 :::
 
 ## Working with HTML Attributes
 
-HTML attributes contain valuable structured data - IDs, URLs, timestamps, data attributes, and more.
+HTML attributes contain valuable structured data - IDs, URLs, timestamps, data
+attributes, and more.
 
 ### Accessing Element Attributes
 
@@ -320,7 +331,6 @@ if product:
 ```
 
 ::: {.callout-note}
-
 ## Try This: URL and Media Attribute Extraction
 
 Practice extracting different types of attributes:
@@ -417,12 +427,12 @@ def get_link_type(href):
 
 analyze_media_attributes()
 ```
-
 :::
 
 ## Real-World Example: Enhanced PyPI Parsing
 
-Let's extend the PyPI parsing example to extract more detailed information using attributes:
+Let's extend the PyPI parsing example to extract more detailed information using
+attributes:
 
 ```python
 from gazpacho import get, Soup
@@ -653,7 +663,6 @@ print(json.dumps(structured_data, indent=2))
 ```
 
 ::: {.callout-note}
-
 ## Exercise: Build an Attribute-Rich Data Extractor
 
 Create a comprehensive data extractor that handles various attribute patterns:
@@ -814,7 +823,6 @@ results = extractor.extract_from_html(test_html)
 print("=== Extraction Results ===")
 print(json.dumps(results, indent=2))
 ```
-
 :::
 
 ## Best Practices for Attribute Extraction
@@ -881,7 +889,6 @@ title = flexible_find(soup, title_selectors)
 ```
 
 ::: {.callout-important}
-
 ## Key Points
 
 - Use `partial=True` for flexible class matching with CSS frameworks

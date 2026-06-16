@@ -1,9 +1,6 @@
 ---
 title: "Processing Data in Python"
-abstract: |
-    Learn to load, explore, visualize, and clean data using pandas and matplotlib.
-    This tutorial covers loading tabular data into DataFrames, exploratory data
-    analysis, creating visualizations, and handling missing values.
+abstract: "Learn to load, explore, visualize, and clean data using pandas and matplotlib. This tutorial covers loading tabular data into DataFrames, exploratory data analysis, creating visualizations, and handling missing values."
 keywords: ["Python", "pandas", "data processing", "visualization", "tutorial"]
 
 execute:
@@ -13,41 +10,46 @@ jupyter:
     text_representation:
       extension: .qmd
       format_name: quarto
-      format_version: '1.0'
+      format_version: "1.0"
       jupytext_version: 1.16.2
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
-
-# Authors
-# Authors are the main creators of the site's content, credited for their work and responsible for its core development, including writing and editing.
+    
+    # Authors
+    # Authors are the main creators of the site's content, credited for their work and responsible for its core development, including writing and editing.
 authors-ipa:
   - "[Kwadwo Agyapon-Ntra](https://poverty-action.org/people/kwadwo-agyapon-ntra)"
-
-# Contributors
-# Contributors provide support, such as feedback or supplementary materials for the site. They can also be responsible for updating/maintaining the site.
-# contributors:
-#   - "[Contributor 1](https://poverty-action.org/people/contributor1_name)"
-
+  
+  # Contributors
+  # Contributors provide support, such as feedback or supplementary materials for the site. They can also be responsible for updating/maintaining the site.
+  # contributors:
+  #   - "[Contributor 1](https://poverty-action.org/people/contributor1_name)"
+  
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true"}
-
+::: {.callout-note collapse="true"}
 ## Recognition and Attribution
 
-This page modifies content from the [Software Carpentry Python Novice Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), specifically Episodes 7 (Reading Tabular Data into DataFrames), 8 (Pandas DataFrames), and 9 (Plotting).
+This page modifies content from the [Software Carpentry Python Novice Gapminder
+lesson](https://swcarpentry.github.io/python-novice-gapminder/), specifically
+Episodes 7 (Reading Tabular Data into DataFrames), 8 (Pandas DataFrames), and 9
+(Plotting).
 :::
 
-In this tutorial, you will learn the fundamentals of data processing in Python. We'll cover how to load data using pandas, explore it through exploratory data analysis, create visualizations, and handle missing values.
+In this tutorial, you will learn the fundamentals of data processing in Python.
+We'll cover how to load data using pandas, explore it through exploratory data
+analysis, create visualizations, and handle missing values.
 
 ::: {.callout-tip title="Pro Tip"}
-When you see a piece of code you don't understand, it's okay to Google it or ask an LLM to explain it to you.
-Pros do this all the time. There is only so much information you can keep in your head at once.
-Of course, when using AI, be sure to verify.
+When you see a piece of code you don't understand, it's okay to Google it or ask
+an LLM to explain it to you. Pros do this all the time. There is only so much
+information you can keep in your head at once. Of course, when using AI, be sure
+to verify.
 :::
 
 ## Learning Objectives
@@ -62,15 +64,22 @@ By the end of this tutorial, you will be able to:
 
 ## Introduction
 
-Data processing is a fundamental skill for data analysis and research. Python's pandas library provides powerful tools for working with tabular data, similar to spreadsheets but with much more flexibility and power. In this tutorial, we'll use real-world data from [Gapminder](https://www.gapminder.org/), which contains economic and health indicators for countries around the world.
+Data processing is a fundamental skill for data analysis and research. Python's
+pandas library provides powerful tools for working with tabular data, similar to
+spreadsheets but with much more flexibility and power. In this tutorial, we'll
+use real-world data from [Gapminder](https://www.gapminder.org/), which contains
+economic and health indicators for countries around the world.
 
 ::: {.callout-tip}
-This tutorial assumes you've completed the [Coding in Python](coding-python.qmd) tutorial and are familiar with Python basics like variables, data types, and functions.
+This tutorial assumes you've completed the [Coding in Python](coding-python.qmd)
+tutorial and are familiar with Python basics like variables, data types, and
+functions.
 :::
 
 ## Loading Data into DataFrames
 
-The first step in data processing is loading your data into a format you can work with. In Python, we use the pandas library to work with tabular data.
+The first step in data processing is loading your data into a format you can
+work with. In Python, we use the pandas library to work with tabular data.
 
 ### Importing Libraries
 
@@ -81,7 +90,12 @@ import pandas as pd
 from causaldata import gapminder
 ```
 
-The `pandas` library (abbreviated as `pd` by convention) is the primary tool for data manipulation in Python. The `causaldata` package provides easy access to several datasets commonly used in statistics and research, including Gapminder. If you do not have these libraries installed in your [python virtual environment](../virtualenv/index.qmd), you can add them by running `uv add pandas causaldata` from your terminal.
+The `pandas` library (abbreviated as `pd` by convention) is the primary tool for
+data manipulation in Python. The `causaldata` package provides easy access to
+several datasets commonly used in statistics and research, including Gapminder.
+If you do not have these libraries installed in your [python virtual
+environment](../virtualenv/index.qmd), you can add them by running
+`uv add pandas causaldata` from your terminal.
 
 ### Loading the Gapminder Dataset
 
@@ -92,10 +106,15 @@ Now let's load the Gapminder data:
 df = gapminder.load_pandas().data
 ```
 
-Here, we've created a variable called `df` (short for "DataFrame") that contains our data. A DataFrame is pandas' primary data structure for storing tabular data.
+Here, we've created a variable called `df` (short for "DataFrame") that contains
+our data. A DataFrame is pandas' primary data structure for storing tabular
+data.
 
 ::: {.callout-note}
-If you have data in a CSV file instead, you can load it using `pd.read_csv('filename.csv')`. You can also specify which column should be used as the index using the `index_col` parameter, like this: `pd.read_csv('filename.csv', index_col='country')`.
+If you have data in a CSV file instead, you can load it using
+`pd.read_csv('filename.csv')`. You can also specify which column should be used
+as the index using the `index_col` parameter, like this:
+`pd.read_csv('filename.csv', index_col='country')`.
 :::
 
 ### First Look at the Data
@@ -106,7 +125,8 @@ Let's explore what we've loaded. The `.head()` method shows the first few rows:
 df.head()
 ```
 
-We can see that our DataFrame contains information about countries, including their continent, year, life expectancy, population, and GDP per capita.
+We can see that our DataFrame contains information about countries, including
+their continent, year, life expectancy, population, and GDP per capita.
 
 To see the last few rows instead, use `.tail()`:
 
@@ -126,7 +146,8 @@ This tells us:
 
 - The number of rows (entries) and columns
 - The names of each column
-- The data type of each column (e.g., object for text, int64 for integers, float64 for decimals)
+- The data type of each column (e.g., object for text, int64 for integers,
+  float64 for decimals)
 - Whether there are any missing values
 - How much memory the DataFrame uses
 
@@ -146,11 +167,15 @@ print(df.dtypes)
 
 ## Exploratory Data Analysis
 
-Now that we've loaded our data, let's explore it more deeply. Exploratory Data Analysis (EDA) helps us understand what's in our data and identify patterns, outliers, or issues.
+Now that we've loaded our data, let's explore it more deeply. Exploratory Data
+Analysis (EDA) helps us understand what's in our data and identify patterns,
+outliers, or issues.
 
 ### DataFrame Anatomy
 
-A DataFrame is a 2-dimensional table with rows and columns. Each column is actually a Series (pandas' 1-dimensional data structure). Think of it like a spreadsheet where each column can contain different types of data.
+A DataFrame is a 2-dimensional table with rows and columns. Each column is
+actually a Series (pandas' 1-dimensional data structure). Think of it like a
+spreadsheet where each column can contain different types of data.
 
 ### Summary Statistics
 
@@ -160,7 +185,8 @@ The `.describe()` method provides summary statistics for numerical columns:
 df.describe()
 ```
 
-This gives us the count, mean, standard deviation, minimum, quartiles, and maximum for each numeric column.
+This gives us the count, mean, standard deviation, minimum, quartiles, and
+maximum for each numeric column.
 
 For individual columns, we can calculate specific statistics:
 
@@ -213,7 +239,9 @@ df.loc[0:5]
 ```
 
 ::: {.callout-important}
-**Important difference**: `.loc[]` slices are **inclusive** on both ends (includes index 5), while `.iloc[]` follows Python convention and **excludes** the end (stops before index 5).
+**Important difference**: `.loc[]` slices are **inclusive** on both ends
+(includes index 5), while `.iloc[]` follows Python convention and **excludes**
+the end (stops before index 5).
 :::
 
 #### Selecting Specific Values
@@ -228,7 +256,8 @@ print(f"First life expectancy value: {first_life_exp}")
 
 ### Boolean Filtering
 
-One of the most powerful features of pandas is the ability to filter data using Boolean conditions. This is sometimes called "Boolean masking."
+One of the most powerful features of pandas is the ability to filter data using
+Boolean conditions. This is sometimes called "Boolean masking."
 
 ```{python}
 # Create a Boolean mask for data from 2007
@@ -250,12 +279,14 @@ print(high_gdp_2007[['country', 'gdpPercap']])
 ```
 
 ::: {.callout-tip}
-When combining conditions, use `&` for "and" and `|` for "or". Make sure to put parentheses around each condition!
+When combining conditions, use `&` for "and" and `|` for "or". Make sure to put
+parentheses around each condition!
 :::
 
 ### Grouping and Aggregation
 
-Often, we want to compute statistics for different groups in our data. The `.groupby()` method is perfect for this:
+Often, we want to compute statistics for different groups in our data. The
+`.groupby()` method is perfect for this:
 
 ```{python}
 # Average life expectancy by continent
@@ -263,7 +294,10 @@ continent_life_exp = df.groupby('continent')['lifeExp'].mean()
 print(continent_life_exp)
 ```
 
-In the example above, we grouped the dataframe rows by the values in the `continent` column, and then for each group, the `lifeExp` column was selected and the mean of that column determined for each group... All in one line of code!
+In the example above, we grouped the dataframe rows by the values in the
+`continent` column, and then for each group, the `lifeExp` column was selected
+and the mean of that column determined for each group... All in one line of
+code!
 
 You can group by multiple columns and calculate multiple statistics:
 
@@ -279,7 +313,10 @@ print(continent_stats)
 
 ## Data Visualization
 
-A picture is worth a thousand words. Visualizations help us understand patterns and relationships in data that might not be obvious from tables of numbers. Python provides several libraries for creating visualizations, with matplotlib and seaborn being the most popular.
+A picture is worth a thousand words. Visualizations help us understand patterns
+and relationships in data that might not be obvious from tables of numbers.
+Python provides several libraries for creating visualizations, with matplotlib
+and seaborn being the most popular.
 
 ### Setting Up
 
@@ -294,12 +331,15 @@ sns.set_style("whitegrid")
 ```
 
 ::: {.callout-note}
-From our imports, `plt` is now our reference (a handle, if you will) to the tools contained in `matplotlib.pyplot`. The same is true for `sns` and `seaborn`.
+From our imports, `plt` is now our reference (a handle, if you will) to the
+tools contained in `matplotlib.pyplot`. The same is true for `sns` and
+`seaborn`.
 :::
 
 ### Line Plots
 
-Line plots are great for showing trends over time. Let's look at how life expectancy has changed for a specific country:
+Line plots are great for showing trends over time. Let's look at how life
+expectancy has changed for a specific country:
 
 ```{python}
 # | out-width: 100%
@@ -339,13 +379,20 @@ plt.show()
 ```
 
 ::: {.callout-note}
-The code above uses a **for-loop** to repeat the same action multiple times. The `for country in countries_to_compare:` line tells Python to go through each country name in our list, one at a time. For each country, Python executes the indented code below it: first filtering the data to get only that country's rows, then plotting a line for that country.
-This is much more efficient than writing the same filtering and plotting code four separate times—once for each country. The loop automatically stops after processing the last country in the list.
+The code above uses a **for-loop** to repeat the same action multiple times. The
+`for country in countries_to_compare:` line tells Python to go through each
+country name in our list, one at a time. For each country, Python executes the
+indented code below it: first filtering the data to get only that country's
+rows, then plotting a line for that country. This is much more efficient than
+writing the same filtering and plotting code four separate times---once for each
+country. The loop automatically stops after processing the last country in the
+list.
 :::
 
 ### Scatter Plots
 
-Scatter plots help us see relationships between two variables. Let's explore the relationship between GDP per capita and life expectancy:
+Scatter plots help us see relationships between two variables. Let's explore the
+relationship between GDP per capita and life expectancy:
 
 ```{python}
 # | out-width: 100%
@@ -442,11 +489,13 @@ plt.savefig("us_life_expectancy.png", dpi=300, bbox_inches="tight")
 plt.show()
 ```
 
-Running this code will save the plot as a PNG file on your computer called `us_life_expectancy.png`.
+Running this code will save the plot as a PNG file on your computer called
+`us_life_expectancy.png`.
 
 ## Dealing with Missingness
 
-Missing data is a common challenge in data analysis. Understanding how to identify and handle missing values is crucial for producing reliable results.
+Missing data is a common challenge in data analysis. Understanding how to
+identify and handle missing values is crucial for producing reliable results.
 
 ### Why Missing Data Matters
 
@@ -458,7 +507,8 @@ Missing data can:
 
 ### Identifying Missing Values
 
-In pandas, missing values are typically represented as `NaN` (Not a Number). Let's check if our Gapminder data has any missing values:
+In pandas, missing values are typically represented as `NaN` (Not a Number).
+Let's check if our Gapminder data has any missing values:
 
 ```{python}
 # Check for missing values in each column
@@ -466,7 +516,8 @@ print("Missing values per column:")
 print(df.isnull().sum())
 ```
 
-Good news! The Gapminder dataset we're using has no missing values. However, let's create a sample dataset with missing values to learn how to handle them:
+Good news! The Gapminder dataset we're using has no missing values. However,
+let's create a sample dataset with missing values to learn how to handle them:
 
 ```{python}
 # Create a sample dataset with missing values
@@ -490,6 +541,7 @@ print(
     sample_data[sample_data.isnull().any(axis=1)][
         ["country", "year", "lifeExp", "gdpPercap", "pop"]
     ]
+)
 ```
 
 Rows 2, 5, and 8, as expected!
@@ -517,7 +569,8 @@ print(f"After dropping rows with missing lifeExp: {len(cleaned_life)}")
 ```
 
 ::: {.callout-warning}
-Be careful when dropping data! If you have many missing values, you might lose a lot of information. Always check how much data you're removing.
+Be careful when dropping data! If you have many missing values, you might lose a
+lot of information. Always check how much data you're removing.
 :::
 
 #### 2. Filling Missing Values
@@ -539,7 +592,9 @@ print("After filling with mean:")
 print(
     sample_filled[sample_data.isnull().any(axis=1)][
         ["country", "year", "lifeExp", "gdpPercap", "pop"]
-    ]```
+    ]
+)
+```
 
 Other filling strategies include:
 
@@ -558,7 +613,10 @@ sample_data["lifeExp"].bfill()
 
 #### 3. Interpolation
 
-For time series data (data where we can view changes in a variable over time), interpolation can provide more reasonable estimates. The sample we have chosen to illustrate missingness is too small to demonstrate this adequately, but the code would look like this:
+For time series data (data where we can view changes in a variable over time),
+interpolation can provide more reasonable estimates. The sample we have chosen
+to illustrate missingness is too small to demonstrate this adequately, but the
+code would look like this:
 
 ```{python}
 # | eval: false
@@ -573,7 +631,9 @@ print("After interpolation:")
 print(
     sample_interpolated[sample_data.isnull().any(axis=1)][
         ["country", "year", "lifeExp", "gdpPercap", "pop"]
-    ]```
+    ]
+)
+```
 
 ### Choosing the Right Strategy
 
@@ -585,7 +645,9 @@ Which strategy to use depends on:
 - **Your analysis goals**: Some methods may introduce less bias than others
 
 ::: {.callout-tip}
-**Important note**: Many pandas statistical functions automatically ignore NaN values. For example, `df['lifeExp'].mean()` will calculate the mean of only the non-missing values.
+**Important note**: Many pandas statistical functions automatically ignore NaN
+values. For example, `df['lifeExp'].mean()` will calculate the mean of only the
+non-missing values.
 :::
 
 ## Practice Exercises
@@ -663,9 +725,12 @@ print(f"Countries with life expectancy > 50: {count_above_50} out of {total_coun
 
 ### Exercise 3: Visualization
 
-1. Create a line plot showing how the average global GDP per capita changed over time
-2. Create a scatter plot comparing population and life expectancy for the year 2007
-3. Create a bar chart showing the average life expectancy for each continent in 2007
+1. Create a line plot showing how the average global GDP per capita changed over
+   time
+2. Create a scatter plot comparing population and life expectancy for the year
+   2007
+3. Create a bar chart showing the average life expectancy for each continent in
+   2007
 
 ```{python}
 # | code-fold: true
@@ -754,7 +819,8 @@ print(f"\nMean value used for filling: {mean_life:.2f}")
 
 - Use `pandas` to load and manipulate tabular data in Python
 - DataFrames are the primary structure for working with data tables
-- Use `.head()`, `.info()`, and `.describe()` to explore data structure and content
+- Use `.head()`, `.info()`, and `.describe()` to explore data structure and
+  content
 - Select data using `.loc[]` (label-based) or `.iloc[]` (position-based)
 - Filter data using Boolean conditions for targeted analysis
 - Use `.groupby()` for calculating statistics across groups
@@ -773,13 +839,17 @@ Now that you understand data processing fundamentals, you can explore:
 - Working with time series data
 - Data cleaning and preprocessing techniques
 
-Continue practicing these fundamentals as they form the foundation for all data analysis work in Python!
+Continue practicing these fundamentals as they form the foundation for all data
+analysis work in Python!
 
 ## Learning Resources
 
-- [Software Carpentry: Plotting and Programming in Python](https://swcarpentry.github.io/python-novice-gapminder/)
+- [Software Carpentry: Plotting and Programming in
+  Python](https://swcarpentry.github.io/python-novice-gapminder/)
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
-- [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
+- [Python Data Science
+  Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 - [Matplotlib Documentation](https://matplotlib.org/stable/contents.html)
 - [Seaborn Documentation](https://seaborn.pydata.org/)
-- [Efficient Python for Data Scientists](https://khuyentran1401.github.io/Efficient_Python_tricks_and_tools_for_data_scientists/README.html)
+- [Efficient Python for Data
+  Scientists](https://khuyentran1401.github.io/Efficient_Python_tricks_and_tools_for_data_scientists/README.html)
