@@ -8,7 +8,7 @@
 
 <meta name="keywords" content="statistical power, sample size calculation, randomized controlled trials, minimum detectable effect, research design, explanation">
 
-<title>Sample and Power Calculations – Research and Data Science Hub</title>
+<title>Sample Size and Power Calculations – Research and Data Science Hub</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -1548,23 +1583,19 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#what-is-statistical-power" id="toc-what-is-statistical-power" class="nav-link active" data-scroll-target="#what-is-statistical-power">What is Statistical Power?</a>
+    <li><a href="#what-is-statistical-power" id="toc-what-is-statistical-power" class="nav-link active" data-scroll-target="#what-is-statistical-power">What Is Statistical Power?</a>
     <ul class="collapse">
-    <li><a href="#why-statistical-power-matters" id="toc-why-statistical-power-matters" class="nav-link" data-scroll-target="#why-statistical-power-matters">Why Statistical Power Matters?</a></li>
-    <li><a href="#real-world-example-improving-academic-achievement-in-india" id="toc-real-world-example-improving-academic-achievement-in-india" class="nav-link" data-scroll-target="#real-world-example-improving-academic-achievement-in-india">Real-World Example: Improving Academic Achievement in India</a></li>
+    <li><a href="#ipa-example-balsakhi-tutoring-program-india" id="toc-ipa-example-balsakhi-tutoring-program-india" class="nav-link" data-scroll-target="#ipa-example-balsakhi-tutoring-program-india">IPA Example: Balsakhi Tutoring Program, India</a></li>
     </ul></li>
-    <li><a href="#sample-size-precision-and-reliability" id="toc-sample-size-precision-and-reliability" class="nav-link" data-scroll-target="#sample-size-precision-and-reliability"><strong>Sample Size: Precision and Reliability</strong></a>
+    <li><a href="#how-sample-size-determines-precision" id="toc-how-sample-size-determines-precision" class="nav-link" data-scroll-target="#how-sample-size-determines-precision">How Sample Size Determines Precision</a></li>
+    <li><a href="#statistical-inference-errors-and-thresholds" id="toc-statistical-inference-errors-and-thresholds" class="nav-link" data-scroll-target="#statistical-inference-errors-and-thresholds">Statistical Inference: Errors and Thresholds</a>
     <ul class="collapse">
-    <li><a href="#sample-size" id="toc-sample-size" class="nav-link" data-scroll-target="#sample-size">Sample Size</a></li>
-    <li><a href="#why-does-sample-size-matter" id="toc-why-does-sample-size-matter" class="nav-link" data-scroll-target="#why-does-sample-size-matter">Why Does Sample Size Matter?</a></li>
-    <li><a href="#how-to-determine-sample-size" id="toc-how-to-determine-sample-size" class="nav-link" data-scroll-target="#how-to-determine-sample-size">How to Determine Sample Size?</a></li>
-    <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
-    <li><a href="#practical-considerations" id="toc-practical-considerations" class="nav-link" data-scroll-target="#practical-considerations">Practical Considerations</a></li>
+    <li><a href="#the-hypothesis-testing-framework" id="toc-the-hypothesis-testing-framework" class="nav-link" data-scroll-target="#the-hypothesis-testing-framework">The Hypothesis Testing Framework</a></li>
     </ul></li>
-    <li><a href="#understanding-statistical-concepts" id="toc-understanding-statistical-concepts" class="nav-link" data-scroll-target="#understanding-statistical-concepts"><strong>Understanding Statistical Concepts</strong></a></li>
-    <li><a href="#statistical-power-in-practice" id="toc-statistical-power-in-practice" class="nav-link" data-scroll-target="#statistical-power-in-practice">Statistical Power in Practice</a></li>
-    <li><a href="#determinants-of-power-estimation" id="toc-determinants-of-power-estimation" class="nav-link" data-scroll-target="#determinants-of-power-estimation">Determinants of Power Estimation</a></li>
-    <li><a href="#common-pitfalls-and-solutions" id="toc-common-pitfalls-and-solutions" class="nav-link" data-scroll-target="#common-pitfalls-and-solutions">Common Pitfalls and Solutions</a></li>
+    <li><a href="#determinants-of-power" id="toc-determinants-of-power" class="nav-link" data-scroll-target="#determinants-of-power">Determinants of Power</a></li>
+    <li><a href="#applying-power-calculations-in-stata" id="toc-applying-power-calculations-in-stata" class="nav-link" data-scroll-target="#applying-power-calculations-in-stata">Applying Power Calculations in Stata</a></li>
+    <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+    <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
     </ul>
     <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Authors</h2>
@@ -1577,7 +1608,7 @@ window.Quarto = {
       </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">June 22, 2026</li>
+    <li class="last-modified" style="font-size: 0.86rem;">June 24, 2026</li>
   </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
   <ul>
@@ -1586,12 +1617,12 @@ window.Quarto = {
   <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/sample-size-power.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/sample-size-power.html">Sample and Power Calculations</a></li></ol></nav><h1 class="title display-7">Sample and Power Calculations</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">Research Design</a></li><li class="breadcrumb-item"><a href="../research-design/sample-size-power.html">Sample and Power Calculations</a></li></ol></nav><h1 class="title display-7">Sample Size and Power Calculations</h1></header>
 
 
 <header id="title-block-header">
     
-        <p class="abstract">Essential concepts of statistical power and sample size calculations for randomized evaluations.</p>
+        <p class="abstract">This resource covers essential concepts of statistical power and sample size for randomized evaluations, including hands-on applications using Stata.</p>
     
 </header>
 
@@ -1608,20 +1639,21 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Key Takeaways
+<span class="screen-reader-only">Tip</span>Key takeaways
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Statistical power</strong> determines the ability to detect true effects in research studies.</li>
 <li><strong>Sample size</strong> directly affects the precision and reliability of estimates.</li>
-<li><strong>Statistical concepts</strong> like significance levels, confidence intervals, and effect sizes are crucial for interpreting results.</li>
+<li><strong>Key design decisions</strong> - effect size, variance, clustering, and compliance- all interact to determine whether a study is adequately powered.</li>
 </ul>
 </div>
 </div>
 <section id="what-is-statistical-power" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-statistical-power">What is Statistical Power?</h2>
-<p><strong>Statistical power</strong> is the probability that a study will detect a true effect when one actually exists. Think of it as your study’s ability to avoid missing something important - like having a metal detector sensitive enough to find buried treasure.</p>
+<h2 class="anchored" data-anchor-id="what-is-statistical-power">What Is Statistical Power?</h2>
+<p><strong>Statistical power</strong> is the probability that a study detects a true effect when one exists. A study with low power risks a Type II error: failing to detect an effect that is real. The conventional minimum threshold is 80% power, meaning a study should correctly identify the target effect at least 80% of the time.</p>
+<p>Power matters for three interconnected reasons. Underpowered studies produce inconclusive results even when a program works, wasting resources and potentially leading to poor policy decisions. Well-powered studies justify the ethical cost of exposing participants to an intervention or control condition, since the evidence produced must be reliable enough to be worth it. Power calculations performed before data collection also force researchers to state their assumptions clearly: expected effect size, outcome variance, and study design.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1632,492 +1664,147 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For a practical introductory guide to power calculations, see <a href="../research-design/how-to-power-calculation.html">Guide to Power Calculations</a>.</p>
+<p>For a practical step-by-step guide to running power calculations, see <a href="../research-design/how-to-power-calculation.html">Guide to Power Calculations</a>.</p>
 </div>
 </div>
-<section id="why-statistical-power-matters" class="level3">
-<h3 class="anchored" data-anchor-id="why-statistical-power-matters">Why Statistical Power Matters?</h3>
+<section id="ipa-example-balsakhi-tutoring-program-india" class="level3">
+<h3 class="anchored" data-anchor-id="ipa-example-balsakhi-tutoring-program-india">IPA Example: Balsakhi Tutoring Program, India</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>1. Research Quality and Reliability
+Tip
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Ensures studies can detect meaningful effects</li>
-<li>Reduces risk of false conclusions</li>
-<li>Strengthens confidence in research findings</li>
-</ul>
+<p><strong>Balsakhi Tutoring Program, India (Banerjee et al., 2007)</strong></p>
+<p>A randomized controlled trial (RCT) of the Balsakhi tutoring program enrolled 23,000 students in India. The program provided two hours of daily remedial instruction in small groups to children age 7 to 12. Test scores improved by 0.28 standard deviations (SDs) for students who received tutoring. The large sample gave the study sufficient power to detect this modest effect with confidence. If the sample had been smaller, the study might have found no statistically significant impact, not because the program failed, but because the study lacked the sensitivity to measure it.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_3.png" class="img-fluid figure-img" style="width:85.0%"></p>
+<figcaption>Estimated treatment effect of 0.28 SD (Banerjee et al.&nbsp;2007)</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="how-sample-size-determines-precision" class="level2">
+<h2 class="anchored" data-anchor-id="how-sample-size-determines-precision">How Sample Size Determines Precision</h2>
+<p>Sample size directly controls the width of the sampling distribution around any estimated treatment effect (<span class="math inline">\(\hat{\beta}\)</span>). As <span class="math inline">\(N\)</span> increases, estimates cluster more tightly around the true effect, reducing the risk of both false positives and false negatives. The estimated treatment effect follows a normal distribution:</p>
+<p><span class="math display">\[
+\hat{\beta} \sim \mathcal{N}\left(\beta,\; \frac{\sigma^2}{N p(1-p)}\right)
+\]</span></p>
+<p>where <span class="math inline">\(\beta\)</span> is the true effect, <span class="math inline">\(\sigma^2\)</span> is the outcome variance, <span class="math inline">\(N\)</span> is the total sample size, and <span class="math inline">\(p\)</span> is the proportion assigned to treatment. Power increases when <span class="math inline">\(N\)</span> grows, <span class="math inline">\(\sigma^2\)</span> shrinks, or <span class="math inline">\(p\)</span> approaches 0.5.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_1.png" class="img-fluid figure-img"></p>
+<figcaption>N = 200: Wide estimate range</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_2.png" class="img-fluid figure-img"></p>
+<figcaption>N = 2,000: Narrow estimate range</figcaption>
+</figure>
 </div>
 </div>
 </div>
+</div>
+<p>Larger samples improve power, but each additional observation has a cost in time, money, and personnel. The goal is to find the smallest sample that reliably detects an effect worth detecting.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Effect on required sample size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Smaller expected effect size</td>
+<td>Larger sample needed</td>
+</tr>
+<tr class="even">
+<td>Higher outcome variance</td>
+<td>Larger sample needed</td>
+</tr>
+<tr class="odd">
+<td>Lower significance level (<span class="math inline">\(\alpha\)</span>)</td>
+<td>Larger sample needed</td>
+</tr>
+<tr class="even">
+<td>Higher desired power (<span class="math inline">\(1 - \kappa\)</span>)</td>
+<td>Larger sample needed</td>
+</tr>
+<tr class="odd">
+<td>Clustered or stratified design</td>
+<td>Larger sample needed</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="statistical-inference-errors-and-thresholds" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-inference-errors-and-thresholds">Statistical Inference: Errors and Thresholds</h2>
+<p>Every hypothesis test produces two possible errors. A <strong>Type I error</strong> (<span class="math inline">\(\alpha\)</span>) occurs when a study concludes an effect exists when none does: a false positive. A <strong>Type II error</strong> (<span class="math inline">\(\kappa\)</span>) occurs when a study misses a real effect: a false negative. Power is defined as <span class="math inline">\(1 - \kappa\)</span>.</p>
+<p>Reducing <span class="math inline">\(\alpha\)</span> tightens the rejection threshold, which increases <span class="math inline">\(\kappa\)</span> and reduces power. Researchers must choose a significance level that balances these risks. The standard choice is <span class="math inline">\(\alpha = 0.05\)</span>, though values between 0.01 and 0.10 appear in the literature.</p>
+<section id="the-hypothesis-testing-framework" class="level3">
+<h3 class="anchored" data-anchor-id="the-hypothesis-testing-framework">The Hypothesis Testing Framework</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>2. Resource Optimization
+<span class="screen-reader-only">Tip</span>Steps in a standard hypothesis test
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Prevents wastage of research resources</li>
-<li>Avoids underpowered studies that may be inconclusive</li>
-<li>Guides efficient allocation of study participants</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>3. Policy Impact
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>Enables evidence-based policy decisions</li>
-<li>Reduces risk of dismissing effective interventions</li>
-<li>Helps identify truly impactful programs</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>4. Ethical Considerations
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>Respects participants’ time and effort</li>
-<li>Justifies the use of research resources</li>
-<li>Promotes responsible funding and implementation</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="real-world-example-improving-academic-achievement-in-india" class="level3">
-<h3 class="anchored" data-anchor-id="real-world-example-improving-academic-achievement-in-india">Real-World Example: Improving Academic Achievement in India</h3>
-<div style="background-color: #f7f7f7; padding: 1em; border-radius: 8px; margin-bottom: 1em;">
-<p>In India, a significant proportion of children age <strong>7 to 12</strong> were struggling with basic academic skills; <strong>44%</strong> could not read a simple paragraph and <strong>50%</strong> could not solve a basic subtraction problem—highlighting an urgent need for targeted support.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>The <strong>Balsakhi tutoring program</strong> addressed this gap by providing <strong>two hours of daily remedial instruction</strong> in <strong>small groups</strong> of 15 to 20 students. To rigorously evaluate its impact, researchers conducted a <strong>large-scale randomized controlled trial</strong> involving <strong>23,000 students</strong>. They assigned students to either a <strong>treatment group</strong> – receiving Balsakhi tutoring – or a <strong>control group</strong> – continuing with the regular curriculum.</p>
-<section id="the-results" class="level3">
-<h3 class="anchored" data-anchor-id="the-results">📊 The Results</h3>
-<ul>
-<li><strong>Test scores improved</strong> by <strong>0.28 standard deviations</strong> for students who received tutoring</li>
-<li>The <strong>large sample size</strong> gave the study <strong>high statistical power</strong>, which allowed researchers to <strong>confidently detect</strong> this meaningful effect</li>
-</ul>
+<p><strong>Step 1: State hypotheses.</strong> The null hypothesis (<span class="math inline">\(H_0\)</span>) assumes no effect (<span class="math inline">\(\beta = 0\)</span>). The alternative hypothesis (<span class="math inline">\(H_1\)</span>) proposes an effect exists (<span class="math inline">\(\beta \neq 0\)</span>, or directional if one-sided).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/power_3.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption>Estimated Treatment Effect of 0.28 SD</figcaption>
+<p><img src="../assets/images/power_ht1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Null and alternative distributions</figcaption>
 </figure>
 </div>
-</section>
-<section id="why-this-matters-understanding-statistical-power" class="level3">
-<h3 class="anchored" data-anchor-id="why-this-matters-understanding-statistical-power">🔍 Why This Matters: Understanding Statistical Power</h3>
-<p>This example shows <strong>why statistical power is critical</strong> in research.</p>
-<p>Even if a program has a real, positive effect, as Balsakhi did, <strong>a study without enough power might miss it</strong>. Small or underpowered samples are more likely to produce <strong>inconclusive or misleading results</strong>.</p>
-<p>Because this study was <strong>well-powered</strong>, it gave strong evidence that the tutoring program worked. If the sample had been smaller, the study might have wrongly concluded that there was no impact.</p>
-<blockquote class="blockquote">
-<p>💡 <strong>Bottom line:</strong> <strong>Statistical power</strong> helps researchers avoid false negatives and ensures that policy decisions are based on <strong>real, reliable evidence</strong> – not just chance.</p>
-</blockquote>
-<p>This case shows how careful study design and sufficient power can lead to <strong>actionable insights</strong>, helping shape smarter education policies in low-resource settings.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-</section>
+<p><strong>Step 2: Estimate the treatment effect.</strong> Calculate <span class="math inline">\(\hat{\beta}\)</span> from the data and place it on the sampling distribution.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_ht2.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Estimating the treatment effect</figcaption>
+</figure>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><strong>Step 3: Set critical values.</strong> At <span class="math inline">\(\alpha = 0.05\)</span> (two-sided), the rejection regions begin at approximately ±1.96 standard errors from zero.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_ht3.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Critical values at 5% significance</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Concept 1
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The larger the study sample, the more likely researchers are to estimate the true treatment effect of the program.</p>
+<p><strong>Step 4: Make a decision.</strong> If <span class="math inline">\(\hat{\beta}\)</span> falls in the rejection region, reject <span class="math inline">\(H_0\)</span> and conclude the effect is statistically significant. If <span class="math inline">\(\hat{\beta}\)</span> falls within the bounds, fail to reject <span class="math inline">\(H_0\)</span>.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/power_1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Sample Size N=200: Wide estimate range</figcaption>
+<p><img src="../assets/images/power_ht4_1.png" class="img-fluid figure-img"></p>
+<figcaption>Fail to reject <span class="math inline">\(H_0\)</span></figcaption>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/power_2.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Sample Size N=2000: Narrow estimate range</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="sample-size-precision-and-reliability" class="level2">
-<h2 class="anchored" data-anchor-id="sample-size-precision-and-reliability"><strong>Sample Size: Precision and Reliability</strong></h2>
-<section id="sample-size" class="level3">
-<h3 class="anchored" data-anchor-id="sample-size">Sample Size</h3>
-<p>Sample size directly influences the ability to estimate the <strong>true treatment effect</strong> with precision and reliability:</p>
-<ul>
-<li><strong>Smaller N:</strong> High variability, less precise and reliable estimates</li>
-<li><strong>Larger N:</strong> Lower variability, more precise and reliable estimates</li>
-</ul>
-</section>
-<section id="why-does-sample-size-matter" class="level3">
-<h3 class="anchored" data-anchor-id="why-does-sample-size-matter">Why Does Sample Size Matter?</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 77%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Reason</strong></th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Statistical Power</strong></td>
-<td>Larger samples increase the probability of detecting true effects (higher power).</td>
-</tr>
-<tr class="even">
-<td><strong>Confidence Intervals</strong></td>
-<td>Bigger samples yield narrower confidence intervals, making estimates more informative.</td>
-</tr>
-<tr class="odd">
-<td><strong>Generalizability</strong></td>
-<td>Adequate sample size ensures findings are more representative of the target population.</td>
-</tr>
-<tr class="even">
-<td><strong>Minimizing Errors</strong></td>
-<td>Small samples are more prone to random error and outliers, which can distort results.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="how-to-determine-sample-size" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-determine-sample-size">How to Determine Sample Size?</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 74%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Factor</strong></th>
-<th>Impact on Sample Size</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Expected Effect Size</strong></td>
-<td>Smaller effects require larger samples to detect.</td>
-</tr>
-<tr class="even">
-<td><strong>Outcome Variance</strong></td>
-<td>More variable outcomes need larger samples for the same precision.</td>
-</tr>
-<tr class="odd">
-<td><strong>Significance Level (<span class="math inline">\(\alpha\)</span>)</strong></td>
-<td>Lower <span class="math inline">\(\alpha\)</span> (e.g., 1%) requires a larger sample than higher <span class="math inline">\(\alpha\)</span> (e.g., 10%).</td>
-</tr>
-<tr class="even">
-<td><strong>Desired Power (<span class="math inline">\(1-\kappa\)</span>)</strong></td>
-<td>Higher power (e.g., 90%) means a larger sample than lower power (e.g., 80%).</td>
-</tr>
-<tr class="odd">
-<td><strong>Study Design</strong></td>
-<td>Clustered or stratified designs often require larger samples due to intra-group correlation.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="trade-offs" class="level3">
-<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
-<p>While larger samples improve precision, they require more resources:</p>
-<ul>
-<li><strong>Financial:</strong> Survey costs, transport, devices</li>
-<li><strong>Time:</strong> Recruitment, training, fieldwork</li>
-<li><strong>Labor:</strong> Enumerators, field staff</li>
-</ul>
-</section>
-<section id="practical-considerations" class="level3">
-<h3 class="anchored" data-anchor-id="practical-considerations">Practical Considerations</h3>
-<ul>
-<li><strong>Minimum Detectable Effect (MDE):</strong> Decide what is the smallest effect worth detecting—this drives sample size.</li>
-<li><strong>Attrition:</strong> Anticipate and adjust for expected loss of participants over time.</li>
-<li><strong>Non-compliance:</strong> Plan for imperfect adherence to treatment assignment, which can reduce effective sample size.</li>
-<li><strong>Ethical Balance:</strong> Avoid exposing more participants than necessary to interventions or control conditions.</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Concept 2
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Sample size/power calculations help balance statistical precision with resource constraints:</p>
-<ul>
-<li><strong>Too small:</strong> Risk missing true treatment effects</li>
-<li><strong>Too large:</strong> Waste resources unnecessarily</li>
-<li><strong>Goal:</strong> Find optimal sample to detect meaningful effects reliably</li>
-</ul>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="understanding-statistical-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="understanding-statistical-concepts"><strong>Understanding Statistical Concepts</strong></h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Probability Density Functions (PDFs)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>PDFs help visualize the uncertainty around the estimated treatment effect (<span class="math inline">\(\hat{\beta}\)</span>) in a study. They show how likely different values of <span class="math inline">\(\hat{\beta}\)</span> are, assuming a true treatment effect <span class="math inline">\(\beta\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_4.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Two overlapping normal distributions representing possible treatment effects</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Concept 3
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A narrower distribution of estimates (<span class="math inline">\(\hat{\beta}\)</span>) increases the chances of detecting true effects. You can achieve this by:</p>
-<ul>
-<li>Increasing the sample size (<strong><span class="math inline">\(N\)</span></strong>)</li>
-<li>Assigning roughly equal numbers to treatment and control (<strong><span class="math inline">\(p \approx 0.5\)</span></strong>)</li>
-<li>Reducing outcome variance (<strong><span class="math inline">\(\sigma^2\)</span></strong>)</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Treatment Effects Distribution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>If researchers repeated the same RCT many times, they wouldn’t get the exact same estimate every time. Instead, the estimated treatment effects (<span class="math inline">\(\beta\)</span>) would follow a normal distribution:</p>
-<p><span class="math display">\[
-\hat{\beta} \sim \text{Normal}(\beta, \sigma^2 / [Np(1-p)])
-\]</span></p>
-<ul>
-<li><strong><span class="math inline">\(\beta\)</span></strong>: True treatment effect</li>
-<li><strong><span class="math inline">\(\sigma^2\)</span></strong>: Variance of the outcome</li>
-<li><strong><span class="math inline">\(N\)</span></strong>: Sample size</li>
-<li><strong><span class="math inline">\(p\)</span></strong>: Proportion assigned to treatment (e.g., 0.5)</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Concept 4
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Type I Error (<span class="math inline">\(\alpha\)</span>):</strong> Risk of a false positive</p>
-<ul>
-<li>Usually set at <strong>5% (<span class="math inline">\(\alpha = 0.05\)</span>)</strong></li>
-<li>This means there’s a 5% chance of incorrectly detecting an effect when there is none</li>
-<li>A lower <span class="math inline">\(\alpha\)</span> reduces false positives—but increases the risk of missing real effects</li>
-<li>Its complement (1−<span class="math inline">\(\alpha\)</span>) is known as the confidence level – how likely studies are to avoid a false positive</li>
-<li>While 5% is standard, it can range from 1%-10% in research literature</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Hypothesis Testing Framework
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>To determine whether an effect is statistically significant, researchers use a hypothesis test. This is important because it helps control the risk of making a <strong>Type I error</strong> – incorrectly concluding that an effect exists when it actually does not, a “false positive.” By setting a significance level (<span class="math inline">\(\alpha\)</span>), researchers limit the probability of making this error and ensure findings are not due to random chance.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><strong>1. Null Hypothesis, <span class="math inline">\(H_0\)</span></strong>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Assumes no effect exists, <span class="math inline">\(\beta = 0\)</span>. This is the starting point for statistical testing and represents the default position that the intervention has no impact.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_ht1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Statistical hypothesis testing showing null and alternative distributions</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><strong>2. Alternative Hypothesis, <span class="math inline">\(H_1\)</span></strong>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Proposes existence of an effect, <span class="math inline">\(\beta \neq 0\)</span>. Can be one-sided, <span class="math inline">\(\beta &gt; 0\)</span> or <span class="math inline">\(\beta &lt; 0\)</span>, or two-sided, <span class="math inline">\(\beta \neq 0\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_ht2.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Estimate the treatment effect (<span class="math inline">\(\hat{\beta}\)</span>)</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><strong>3. Critical Values Computation</strong>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Based on chosen significance level <span class="math inline">\(\alpha\)</span>, typically uses <span class="math inline">\(\alpha = 0.05\)</span>. Forms rejection regions in the distribution and uses t-distribution or z-distribution.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_ht3.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Critical Values</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_ht3_2.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Critical Values - Fail To reject</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_ht3_3.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Critical Values - Reject</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><strong>4. Effect Estimation and Comparison</strong>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Calculate estimated effect size <span class="math inline">\(\hat{\beta}\)</span> and compare to critical values. Consider confidence intervals and assess statistical significance.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><strong>5. Statistical Decision</strong>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{\beta}\)</span> exceeds critical values. Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{\beta}\)</span> falls within critical bounds. Consider practical significance and report p-values and confidence intervals.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_ht4_1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>No rejection of Ho</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_ht4_2.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Rejection of Ho</figcaption>
+<p><img src="../assets/images/power_ht4_2.png" class="img-fluid figure-img"></p>
+<figcaption>Reject <span class="math inline">\(H_0\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2126,121 +1813,31 @@ Note
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Concept 5
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Type II Error (<span class="math inline">\(\kappa\)</span>):</strong> Risk of a false negative</p>
-<ul>
-<li><strong><span class="math inline">\(\kappa\)</span></strong>: Probability of missing a real effect</li>
-<li><strong>Power (<span class="math inline">\(1-\kappa\)</span>):</strong> Probability of detecting a true effect (aim for ≥80%)</li>
-<li>Lower <span class="math inline">\(\alpha\)</span> (false positive rate) increases <span class="math inline">\(\kappa\)</span> (false negative rate)</li>
-<li>Power and sample size are directly related: higher power needs a larger sample</li>
-</ul>
-</div>
-</div>
-<hr>
-</section>
-<section id="statistical-power-in-practice" class="level2">
-<h2 class="anchored" data-anchor-id="statistical-power-in-practice">Statistical Power in Practice</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>1. Power Depends on Study Design
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Statistical power is influenced by:</p>
-<ul>
-<li><strong>Sample size (N)</strong></li>
-<li><strong>Effect size (<span class="math inline">\(\beta\)</span>):</strong> how big the true impact is</li>
-<li><strong>Outcome variance (<span class="math inline">\(\sigma²\)</span>):</strong> how much outcomes naturally vary</li>
-</ul>
-<p>Larger samples and bigger effects increase the chance of detecting something real.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_5.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption>Low Power: Hard to distinguish effect</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_6.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption>High Power: Clear effect distinction</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>2. Power Can Be Visualized
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Power is often shown as the overlap between two distributions:</p>
-<ul>
-<li><strong><span class="math inline">\(H_0\)</span> (Null):</strong> No effect</li>
-<li><strong><span class="math inline">\(H_1\)</span> (Alternative):</strong> A true effect exists</li>
-<li><strong>Critical value:</strong> The cutoff for statistical significance</li>
-</ul>
-<p>The <strong>less overlap</strong> between the two distributions, the <strong>higher the power</strong>.</p>
+<p>Power equals the proportion of the alternative distribution (<span class="math inline">\(H_1\)</span>) that falls beyond the critical value. The less the two distributions overlap, the higher the power.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../assets/images/power_7.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption>Three scenarios showing different power levels based on effect size and sample size</figcaption>
+<figcaption>Low, medium, and high power scenarios</figcaption>
 </figure>
 </div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>3. Underpowered vs.&nbsp;Well-Powered Studies
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 40%">
-<col style="width: 39%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Scenario</th>
-<th>Underpowered Study (&lt;80%)</th>
-<th>Well-Powered Study (≥80%)</th>
+<th>Underpowered study (&lt;80%)</th>
+<th>Well-powered study (≥80%)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Detection Ability</strong></td>
-<td>Low: true effects may be missed</td>
-<td>High: true effects are likely to be found</td>
+<td><strong>Detection ability</strong></td>
+<td>True effects may be missed</td>
+<td>True effects are likely found</td>
 </tr>
 <tr class="even">
 <td><strong>Conclusions</strong></td>
@@ -2248,278 +1845,193 @@ Note
 <td>Clear and reliable</td>
 </tr>
 <tr class="odd">
-<td><strong>Resource Use</strong></td>
-<td>Wasteful: may require redoing the study</td>
-<td>Efficient: leads to actionable findings</td>
+<td><strong>Resource use</strong></td>
+<td>May require repeating the study</td>
+<td>Leads to actionable findings</td>
 </tr>
 </tbody>
 </table>
+</section>
+</section>
+<section id="determinants-of-power" class="level2">
+<h2 class="anchored" data-anchor-id="determinants-of-power">Determinants of Power</h2>
+<p>Six factors directly determine the statistical power of a study. The first four are set as visible definitions because researchers encounter them in every power calculation. Clustering and non-compliance are expanded below because they require additional context specific to field evaluations.</p>
+<p><strong>Minimum detectable effect (MDE).</strong> The MDE is the smallest treatment effect the study is designed to detect. Researchers should set it based on the smallest effect that would be policy-relevant or cost-effective to implement, not on convenience. Smaller MDEs require larger samples to achieve the same power.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_8.png" class="img-fluid figure-img" style="width:65.0%"></p>
+<figcaption>MDE: smaller effects require larger samples</figcaption>
+</figure>
+</div>
+<p><strong>Sample size (<span class="math inline">\(N\)</span>).</strong> More observations narrow the sampling distribution and increase the probability of detecting the true effect. This is the most direct lever researchers control.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_9.png" class="img-fluid figure-img" style="width:65.0%"></p>
+<figcaption>Sample size: small vs.&nbsp;large sample distributions</figcaption>
+</figure>
+</div>
+<p><strong>Outcome variance (<span class="math inline">\(\sigma^2\)</span>).</strong> Higher variance in the outcome measure makes it harder to isolate the treatment signal. The most effective way to reduce residual variance is to collect a baseline measurement of the primary outcome variable. Controlling for additional covariates beyond the baseline offers only marginal gains and should not substitute for adequate sample size.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_10.png" class="img-fluid figure-img" style="width:65.0%"></p>
+<figcaption>Outcome variance: narrow vs.&nbsp;wide distributions</figcaption>
+</figure>
+</div>
+<p><strong>Sample allocation.</strong> Power is maximized when treatment and control groups are equal in size (<span class="math inline">\(p = 0.5\)</span>). Unequal splits reduce power even when total <span class="math inline">\(N\)</span> is held constant.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_11.png" class="img-fluid figure-img" style="width:65.0%"></p>
+<figcaption>Equal vs.&nbsp;unequal allocation</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Clustering and intra-cluster correlation (ICC)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Many field evaluations randomize at the group level -schools, communities, or health facilities- rather than at the individual level. Individuals within the same cluster tend to be more similar to each other than to individuals in other clusters. This similarity reduces the effective information each additional observation provides and must be accounted for in power calculations.</p>
+<p>The degree of within-cluster similarity is captured by the <strong>intra-cluster correlation coefficient (ICC)</strong>, denoted <span class="math inline">\(\rho\)</span>. The <strong>design effect (DEFF)</strong> quantifies the cost of the clustered design relative to simple random assignment:</p>
+<p><span class="math display">\[
+DEFF = 1 + (m - 1)\rho
+\]</span></p>
+<p>where <span class="math inline">\(m\)</span> is the average cluster size. The required sample size under a clustered design equals the simple-random-sample size multiplied by DEFF. Typical ICC values in development economics evaluations range from 0.05 to 0.30. When ICC is high, adding more clusters increases power more efficiently than adding more individuals within existing clusters.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>⚠️ Why This Matters
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>An underpowered study might miss real program effects—leading to <strong>wrong conclusions</strong> and <strong>poor policy decisions</strong>.</p>
+<p>Ignoring clustering in power calculations when randomization occurs at the cluster level is one of the most common causes of underpowered studies. The unit of analysis in the power calculation must match the unit of randomization.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Concept 6
+<span class="screen-reader-only">Tip</span>Non-compliance and attrition
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>When power is high (≥80%), studies are more likely to detect true effects and avoid false negatives.</p>
+<p><strong>Non-compliance</strong> occurs when participants do not adhere to their assigned condition. It reduces power by compressing the estimated treatment effect toward zero, effectively shrinking the MDE. Increasing compliance is one of the strongest levers available to improve power after the study design is set.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_12.png" class="img-fluid figure-img" style="width:65.0%"></p>
+<figcaption>Non-compliance reduces the effective effect size</figcaption>
+</figure>
+</div>
+<p><strong>Attrition</strong> is the loss of participants during the study. It reduces power by shrinking the effective sample size. If attrition is correlated with treatment assignment -for example, more participants in the control group drop out- the estimated effect is also no longer unbiased.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/power_13.png" class="img-fluid figure-img" style="width:65.0%"></p>
+<figcaption>Attrition reduces effective sample size</figcaption>
+</figure>
+</div>
+<p>Both problems are best addressed through study design: strong rapport with participants, appropriate incentives, and respondent tracking protocols established before data collection begins.</p>
+</div>
 </div>
 </div>
 </section>
-<section id="determinants-of-power-estimation" class="level2">
-<h2 class="anchored" data-anchor-id="determinants-of-power-estimation">Determinants of Power Estimation</h2>
-<p>Several key factors determine the statistical power of a study. Understanding and adjusting these determinants is crucial for effective research design:</p>
+<section id="applying-power-calculations-in-stata" class="level2">
+<h2 class="anchored" data-anchor-id="applying-power-calculations-in-stata">Applying Power Calculations in Stata</h2>
+<p>Stata’s <code>power</code> command performs sample size and power calculations and generates sensitivity tables and graphs (StataCorp 2023). The three cases below use the Balsakhi study to illustrate the main use cases.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>1. Minimum Detectable Effect (MDE)
+<span class="screen-reader-only">Tip</span>Case 1: Estimate required sample size
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The smallest treatment effect you aim to detect. Smaller MDEs require larger sample sizes to achieve the same power.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_8.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Illustration of MDE: Smaller effects require larger samples to detect</figcaption>
-</figure>
-</div>
+<p><strong>Goal:</strong> determine how many participants are needed to detect an expected effect.</p>
+<p><strong>Assumptions:</strong> MDE of 0.2 SD, 80% power, outcome SD of 1, individual-level randomization, perfect compliance, no attrition, no covariates.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 0.2 , power(0.8) <span class="fu">sd</span>(1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A power of 80% requires 788 students total: 394 in the treatment group and 394 in the control group.</p>
+<p>With a larger expected effect of 0.4 SD:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 0.4 , power(0.8) <span class="fu">sd</span>(1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Raising the power target to 90% at 0.2 SD increases the required sample to 1,054 students:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 0.2 , power(0.9) <span class="fu">sd</span>(1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Additional exercises: <a href="../assets/files/sample-size-power.do">Download power.do</a></p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>2. Sample Size (N)
+<span class="screen-reader-only">Tip</span>Case 2: Estimate the minimum detectable effect (MDE)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The total number of study participants. Larger samples increase statistical power and precision.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_9.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Sample size comparison: Small vs.&nbsp;large sample distributions</figcaption>
-</figure>
-</div>
+<p><strong>Goal:</strong> find the smallest effect detectable given a fixed sample size.</p>
+<p><strong>Assumptions:</strong> 1,000 students (500 per group), 80% power, outcome SD of 1.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 , n(1000) power(0.9) <span class="fu">sd</span>(1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The graph below shows how the MDE shrinks as sample size increases from 500 to 1,500 students:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 , n(500(250)1500) power(0.8) <span class="fu">sd</span>(1) <span class="kw">graph</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Additional exercises: <a href="../assets/files/sample-size-power.do">Download power.do</a></p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>3. Outcome Variance
+<span class="screen-reader-only">Tip</span>Case 3: Estimate power for a given sample and effect
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The variability in the outcome measure. Lower variance makes it easier to detect effects.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_10.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Outcome variance: Narrow vs.&nbsp;wide outcome distributions</figcaption>
-</figure>
+<p><strong>Goal:</strong> determine the statistical power for a specific design.</p>
+<p><strong>Assumptions:</strong> 1,000 students, effect size of 0.2 SD, outcome SD of 1.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 0.2 , n(1000) <span class="fu">sd</span>(1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Estimated power: 0.88. The graph below traces how power increases with sample size:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 0.2 , n(100(100)1000) <span class="fu">sd</span>(1) <span class="kw">graph</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Additional exercises: <a href="../assets/files/sample-size-power.do">Download power.do</a></p>
 </div>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>4. Sample Allocation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The proportion assigned to treatment and control groups. Power is maximized when groups are of equal size.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_11.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Sample allocation: Balanced vs.&nbsp;unbalanced groups</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>5. Non-compliance
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-29" class="callout-29-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>When participants do not adhere to their assigned group.</li>
-<li>Non-compliance reduces the effective sample size and power.</li>
-<li>Non-compliance reduces power via a smaller effect size, or MDE (under no compliance, the estimated treatment effect collapses to zero).</li>
-<li>As we saw before, a smaller effect (MDE) is harder to detect (so less power).</li>
-<li>Increasing compliance is one of your strongest levers to increase power!</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_12.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Non-compliance: Some participants do not follow assignment</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>6. Attrition
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-30" class="callout-30-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>Loss of participants during the study. Attrition reduces sample size and can bias results if not random.</li>
-<li>Attrition reduces power via a smaller study sample size.</li>
-<li>If attrition is correlated with the treatment (e.g., more likely in the control group), the estimated effect is no longer unbiased!</li>
-<li>You must try hard to keep your study sample! (rapport, incentives, tracking respondents, etc.)</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/power_13.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Attrition: Participants lost over time</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<hr>
 </section>
-<section id="common-pitfalls-and-solutions" class="level2">
-<h2 class="anchored" data-anchor-id="common-pitfalls-and-solutions">Common Pitfalls and Solutions</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Pitfall 1: Ignoring Design Effects
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-31" class="callout-31-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Problem:</strong> Using simple formulas for complex designs</li>
-<li><strong>Solution:</strong> Account for clustering, stratification in calculations</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Pitfall 2: Optimistic Assumptions
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-32" class="callout-32-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Problem:</strong> Assuming perfect compliance, no attrition</li>
-<li><strong>Solution:</strong> Build in realistic buffers (typically 20-30%)</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Pitfall 3: Post-Hoc Power
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-33" class="callout-33-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Problem:</strong> Calculating power after finding null results</li>
-<li><strong>Solution:</strong> Focus on confidence intervals, not post-hoc power</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Pitfall 4: Fixating on 80%
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-34" class="callout-34-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Problem:</strong> Treating 80% power as sacred threshold</li>
-<li><strong>Solution:</strong> Consider context—sometimes 70% or 90% is appropriate</li>
-</ul>
-</div>
-</div>
-</div>
-<hr>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Banerjee, Abhijit, Shawn Cole, Esther Duflo, and Leigh Linden. 2007. “Remedying Education: Evidence from Two Randomized Experiments in India.” <em>Quarterly Journal of Economics</em> 122, no. 3: 1235–1264. <a href="https://doi.org/10.1162/qjec.122.3.1235">https://doi.org/10.1162/qjec.122.3.1235</a></p>
+<p>Banerjee, Abhijit, Shawn Cole, Esther Duflo, and Leigh Linden. 2017. “Balsakhi” [dataset]. Harvard Dataverse. <a href="https://doi.org/10.7910/DVN/LIXVTF">https://doi.org/10.7910/DVN/LIXVTF</a></p>
+<p>StataCorp. 2023. <em>Stata Power and Sample Size Reference Manual: Release 18</em>. College Station, TX: Stata Press. <a href="https://www.stata.com/manuals/power.pdf">https://www.stata.com/manuals/power.pdf</a></p>
+</section>
+<section id="additional-resources" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
+<p>Abdul Latif Jameel Poverty Action Lab (J-PAL). “Statistical Power and Sample Size.” J-PAL Research Resources. <a href="https://www.povertyactionlab.org/resource/statistical-power-and-sample-size">https://www.povertyactionlab.org/resource/statistical-power-and-sample-size</a></p>
+<p>Duflo, Esther, Rachel Glennerster, and Michael Kremer. 2007. “Using Randomization in Development Economics Research: A Toolkit.” In <em>Handbook of Development Economics</em>, vol.&nbsp;4, edited by T. Paul Schultz and John A. Strauss, 3895–3962. Amsterdam: Elsevier. <a href="https://doi.org/10.1016/S1573-4471(07)04061-2">https://doi.org/10.1016/S1573-4471(07)04061-2</a></p>
 
 
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Banerjee, A., Cole, S., Duflo, E., &amp; Linden, L. (2007). Remedying Education: Evidence from Two Randomized Experiments in India. The Quarterly Journal of Economics, 122(3), 1235-1264.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Banerjee, A., Cole, S., Duflo, E., &amp; Linden, L. (2017). Balsakhi [Dataset]. Harvard Dataverse.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
