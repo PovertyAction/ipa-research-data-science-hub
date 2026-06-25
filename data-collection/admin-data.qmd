@@ -48,6 +48,25 @@ license:
 
 Administrative data is typically collected by government agencies and organizations for registration, transaction, and record-keeping purposes. Examples of administrative data can include credit card transactions, electronic medical records, insurance claims, educational records, arrest records, and mortality records.
 
+### Administrative Data vs. Survey Data
+
+Some challenges are common to both survey and administrative data. However, administrative data also comes with its own strengths and limitations. The table below compares the two approaches across key dimensions.
+
+| Dimension | Survey data | Administrative data |
+|-----------|------------|-------------------|
+| Recall and social desirability bias | High risk | Low risk |
+| Attrition | Higher risk | Lower risk |
+| Costs | Higher cost | Lower cost |
+| Logistics | Easier to manage | More complex |
+| Time to access | Faster access | Slower access |
+| Documentation quality | Usually better documented | Often less documented |
+| Control over study population | High control | Limited control |
+| Control over data processing | High control | Limited control |
+| Treatment affects measurement | Lower risk | Higher risk |
+| Incentives to misreport | Lower risk | Higher risk |
+
+: {tbl-colwidths="[40,30,30]"}
+
 ### Real-World Example: IPA's Experience with Administrative Data
 
 IPA's research on using administrative data for Monitoring and Evaluation (2016) highlights several key advantages:
@@ -126,6 +145,21 @@ The structure of a data flow determines who has access to personally identifiabl
 Exact matching virtually eliminates false positives but increases false negatives, which attenuates impact estimates and reduces statistical power. Probabilistic matching reduces false negatives but introduces the risk of false positives, which can be especially harmful if match quality correlates with treatment or control status. Researchers should document their matching strategy and assess whether matching errors are likely to be unrelated to treatment assignment. 
 :::
 
+### Match rates in practice
+
+Match rates vary considerably across studies depending on the quality of identifiers available, the data source, and the matching strategy used. The table below summarizes match rates from published studies that used administrative data linkage.
+
+| Study | Records being matched | Match rate |
+|-------|-----------------------|------------|
+| Health Care Hotspotting | Hospital discharge records for enrolled participants | ~95% |
+| Oregon Health Insurance Experiment (Finkelstein et al., 2012) | Credit reports for lottery participants | 68.5% |
+| Effect of pre-trial detention on conviction (Dobbie, Goldin & Yang, 2018) | Tax data for defendants | 73–81% |
+| Impact of kindergarten class on life outcomes (Chetty et al., 2011) | Parents' tax records for kindergarten students | 86% |
+
+: {tbl-colwidths="[40,35,25]"}
+
+These benchmarks illustrate that even well-resourced studies rarely achieve perfect linkage. Researchers should account for expected match rates when designing studies and assessing statistical power.
+
 ## Data Use Agreements
 
 A Data Use Agreement (DUA) is a legal document that outlines the terms under which a data provider shares data with a research institution. DUAs are also referred to as Data Sharing Agreements (DSAs), Memoranda of Understanding (MOUs), or Non-Disclosure Agreements (NDAs), depending on the context and the parties involved.
@@ -192,6 +226,12 @@ For further clarification on IRB-related issues, any project with concerns shoul
 ## Data Validation
 
 Data validation is the process of verifying that administrative data received from a provider has the expected characteristics before it enters a project's analysis pipeline. Unlike data cleaning, which modifies records to correct errors, data validation checks whether the data as delivered matches what was agreed upon and what the analysis assumes and needs.
+
+It is equally important to be clear about what data validation is *not*:
+
+* **Not data cleaning**: Validation identifies problems; cleaning modifies data to correct them. These are separate workflows.
+* **Not a guarantee of data quality**: Validation checks whether the received data matches the agreed-upon specifications, but it does not confirm that the underlying records accurately reflect reality.
+* **Not statistical validity testing**: Validation focuses on individual records and variables, not at the level of estimates or inferential claims.
 
 Administrative data validation focuses on two dimensions:
 
@@ -262,3 +302,11 @@ Administrative datasets vary in cost, depending on:
 ## Conclusion
 
 Administrative data is a valuable tool for randomized evaluations, offering cost-effective, accurate, and comprehensive insights. Researchers must navigate ethical, legal, and logistical challenges to ensure data quality and validity. By following standardized processes for information gathering, implementing appropriate data flow structures, executing well-designed data use agreements, and validating data at each delivery, research teams can produce reliable evidence from administrative sources.
+
+## References
+
+Chetty, R., Friedman, J. N., Hilger, N., Saez, E., Schanzenbach, D. W., & Yagan, D. (2011). How does your kindergarten classroom affect your earnings? Evidence from Project STAR. *The Quarterly Journal of Economics*, 126(4), 1593–1660. https://doi.org/10.1093/qje/qjr041
+
+Dobbie, W., Goldin, J., & Yang, C. S. (2018). The effects of pretrial detention on conviction, future crime, and employment: Evidence from randomly assigned judges. *American Economic Review*, 108(2), 201–240. https://doi.org/10.1257/aer.20161503
+
+Finkelstein, A., Taubman, S., Wright, B., Bernstein, M., Gruber, J., Newhouse, J. P., Allen, H., & Baicker, K. (2012). The Oregon Health Insurance Experiment: Evidence from the first year. *The Quarterly Journal of Economics*, 127(3), 1057–1106. https://doi.org/10.1093/qje/qjs020
