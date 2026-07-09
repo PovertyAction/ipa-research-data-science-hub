@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="Python, Data Visualization, Seaborn, Data Science, Research, Tutorial">
+<meta name="keywords" content="data visualization, data communication, seaborn, grammar of graphics, decision-making">
 
-<title>Introduction to Data Visualization with Python – Research and Data Science Hub</title>
+<title>Data Visualization – Research and Data Science Hub</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,41 +24,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -69,7 +34,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../data-science/data-visualization/intro-seaborn-objects.html" rel="next">
+<link href="../../data-science/data-visualization/communicating/communicating-with-data.html" rel="next">
 <link href="../../data-science/webscraping/strict-attributes.html" rel="prev">
 <link href="../../assets/logos/ipa-favicon.ico" rel="icon">
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
@@ -457,7 +422,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-science/index.html">Data Science</a></li><li class="breadcrumb-item"><a href="../../data-science/data-visualization/index.html">Data Visualization</a></li><li class="breadcrumb-item"><a href="../../data-science/data-visualization/index.html">Introduction to Visualization</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-science/index.html">Data Science</a></li><li class="breadcrumb-item"><a href="../../data-science/data-visualization/index.html">Data Visualization</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -1178,58 +1143,108 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true">
+            <a href="../../data-science/data-visualization/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data Visualization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false">
+ <span class="menu-text">Communicating and Using Data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-science/data-visualization/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Introduction to Visualization</span></a>
+  <a href="../../data-science/data-visualization/communicating/communicating-with-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Communicating with Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-science/data-visualization/intro-seaborn-objects.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/communicating/data-visualization-principles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Visualization Principles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-science/data-visualization/communicating/choosing-the-right-chart.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Choosing the Right Chart</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-science/data-visualization/communicating/turning-data-into-impact.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Turning Data into Impact</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-science/data-visualization/communicating/monitoring-dashboards.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dashboards for Decisions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="false">
+ <span class="menu-text">Creating Visualizations with Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-science/data-visualization/python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Visualization with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-science/data-visualization/python/intro-seaborn-objects.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Seaborn</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-science/data-visualization/grammar-of-graphics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/grammar-of-graphics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Grammar of Graphics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-science/data-visualization/marks-geometric-objects.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/marks-geometric-objects.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Marks and Geometric Objects</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-science/data-visualization/faceting-layering.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/faceting-layering.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Faceting and Layering</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-science/data-visualization/labels-scales-customization.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/labels-scales-customization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Labels and Customization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-science/data-visualization/statistical-transformations.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/statistical-transformations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistical Transformations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-science/data-visualization/themes-final-polish.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/themes-final-polish.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Themes and Final Polish</span></a>
   </div>
 </li>
@@ -1237,15 +1252,17 @@ cookieconsent.run({
   </li>
       </ul>
   </li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="false">
  <span class="menu-text">Research Transparency</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-21" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../research-transparency/understanding-transparency.html" class="sidebar-item-text sidebar-link">
@@ -1268,13 +1285,13 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="false">
  <span class="menu-text">Software Guides</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-22" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../software/index.html" class="sidebar-item-text sidebar-link">
@@ -1283,13 +1300,13 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" role="navigation" aria-expanded="false">
  <span class="menu-text">The Shell</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-21" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-23" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../software/shell/index.html" class="sidebar-item-text sidebar-link">
@@ -1336,13 +1353,13 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" role="navigation" aria-expanded="false">
  <span class="menu-text">Virtual Environments</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-22" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-24" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../software/virtualenv/index.html" class="sidebar-item-text sidebar-link">
@@ -1365,13 +1382,13 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" role="navigation" aria-expanded="false">
  <span class="menu-text">Version Control</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-23" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-25" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../software/git/index.html" class="sidebar-item-text sidebar-link">
@@ -1442,13 +1459,13 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" role="navigation" aria-expanded="false">
  <span class="menu-text">Code Environments</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-24" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-26" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../software/vscode/index.html" class="sidebar-item-text sidebar-link">
@@ -1459,13 +1476,13 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" role="navigation" aria-expanded="false">
  <span class="menu-text">Stata</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-25" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-27" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../software/stata/index.html" class="sidebar-item-text sidebar-link">
@@ -1488,13 +1505,13 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" role="navigation" aria-expanded="false">
  <span class="menu-text">Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-26" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-28" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../software/python/index.html" class="sidebar-item-text sidebar-link">
@@ -1517,13 +1534,13 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-29" role="navigation" aria-expanded="false">
  <span class="menu-text">Quarto</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-29" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-27" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-29" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../software/quarto/index.html" class="sidebar-item-text sidebar-link">
@@ -1542,13 +1559,13 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="false">
  <span class="menu-text">Teams</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-28" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-30" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../teams/grds.html" class="sidebar-item-text sidebar-link">
@@ -1572,57 +1589,19 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#workshop-overview" id="toc-workshop-overview" class="nav-link active" data-scroll-target="#workshop-overview">Workshop Overview</a>
-    <ul class="collapse">
-    <li><a href="#why-seaborn.objects" id="toc-why-seaborn.objects" class="nav-link" data-scroll-target="#why-seaborn.objects">Why Seaborn.Objects?</a></li>
-    <li><a href="#who-this-workshop-is-for" id="toc-who-this-workshop-is-for" class="nav-link" data-scroll-target="#who-this-workshop-is-for">Who This Workshop Is For</a></li>
-    <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-    </ul></li>
-    <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-    <li><a href="#workshop-structure" id="toc-workshop-structure" class="nav-link" data-scroll-target="#workshop-structure">Workshop Structure</a>
-    <ul class="collapse">
-    <li><a href="#lesson-1-introduction-to-seaborn" id="toc-lesson-1-introduction-to-seaborn" class="nav-link" data-scroll-target="#lesson-1-introduction-to-seaborn">Lesson 1: Introduction to Seaborn</a></li>
-    <li><a href="#lesson-2-the-grammar-of-graphics" id="toc-lesson-2-the-grammar-of-graphics" class="nav-link" data-scroll-target="#lesson-2-the-grammar-of-graphics">Lesson 2: The Grammar of Graphics</a></li>
-    <li><a href="#lesson-3-marks-and-geometric-objects" id="toc-lesson-3-marks-and-geometric-objects" class="nav-link" data-scroll-target="#lesson-3-marks-and-geometric-objects">Lesson 3: Marks and Geometric Objects</a></li>
-    <li><a href="#lesson-4-labels-scales-and-customization" id="toc-lesson-4-labels-scales-and-customization" class="nav-link" data-scroll-target="#lesson-4-labels-scales-and-customization">Lesson 4: Labels, Scales, and Customization</a></li>
-    <li><a href="#lesson-5-faceting-and-layering" id="toc-lesson-5-faceting-and-layering" class="nav-link" data-scroll-target="#lesson-5-faceting-and-layering">Lesson 5: Faceting and Layering</a></li>
-    <li><a href="#lesson-6-statistical-transformations" id="toc-lesson-6-statistical-transformations" class="nav-link" data-scroll-target="#lesson-6-statistical-transformations">Lesson 6: Statistical Transformations</a></li>
-    <li><a href="#lesson-7-themes-and-final-polish" id="toc-lesson-7-themes-and-final-polish" class="nav-link" data-scroll-target="#lesson-7-themes-and-final-polish">Lesson 7: Themes and Final Polish</a></li>
-    </ul></li>
-    <li><a href="#total-workshop-duration" id="toc-total-workshop-duration" class="nav-link" data-scroll-target="#total-workshop-duration">Total Workshop Duration</a></li>
-    <li><a href="#workshop-philosophy" id="toc-workshop-philosophy" class="nav-link" data-scroll-target="#workshop-philosophy">Workshop Philosophy</a>
-    <ul class="collapse">
-    <li><a href="#learn-by-doing" id="toc-learn-by-doing" class="nav-link" data-scroll-target="#learn-by-doing">Learn by Doing</a></li>
-    <li><a href="#research-focused-examples" id="toc-research-focused-examples" class="nav-link" data-scroll-target="#research-focused-examples">Research-Focused Examples</a></li>
-    <li><a href="#progressive-complexity" id="toc-progressive-complexity" class="nav-link" data-scroll-target="#progressive-complexity">Progressive Complexity</a></li>
-    <li><a href="#best-practices-throughout" id="toc-best-practices-throughout" class="nav-link" data-scroll-target="#best-practices-throughout">Best Practices Throughout</a></li>
-    </ul></li>
-    <li><a href="#what-youll-create" id="toc-what-youll-create" class="nav-link" data-scroll-target="#what-youll-create">What You’ll Create</a></li>
-    <li><a href="#beyond-this-workshop" id="toc-beyond-this-workshop" class="nav-link" data-scroll-target="#beyond-this-workshop">Beyond This Workshop</a>
-    <ul class="collapse">
-    <li><a href="#continue-learning" id="toc-continue-learning" class="nav-link" data-scroll-target="#continue-learning">Continue Learning</a></li>
-    <li><a href="#practice-with-your-data" id="toc-practice-with-your-data" class="nav-link" data-scroll-target="#practice-with-your-data">Practice with Your Data</a></li>
-    <li><a href="#share-and-get-feedback" id="toc-share-and-get-feedback" class="nav-link" data-scroll-target="#share-and-get-feedback">Share and Get Feedback</a></li>
-    </ul></li>
-    <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
-    <li><a href="#data-sources-for-practice" id="toc-data-sources-for-practice" class="nav-link" data-scroll-target="#data-sources-for-practice">Data Sources for Practice</a></li>
-    <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
-    <li><a href="#lets-begin" id="toc-lets-begin" class="nav-link" data-scroll-target="#lets-begin">Let’s Begin</a></li>
-    <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
+    <li><a href="#communicating-and-using-data" id="toc-communicating-and-using-data" class="nav-link active" data-scroll-target="#communicating-and-using-data">Communicating and using data</a></li>
+    <li><a href="#creating-visualizations-with-python" id="toc-creating-visualizations-with-python" class="nav-link" data-scroll-target="#creating-visualizations-with-python">Creating visualizations with Python</a></li>
     </ul>
     <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Authors</h2>
   <ul>
         <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/ishmail-baako" class="nav-link" data-scroll-target="https\://poverty-action.org/people/ishmail-baako">Ishmail Baako</a></li>
         <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/niall-keleher" class="nav-link" data-scroll-target="https\://poverty-action.org/people/niall-keleher">Niall Keleher</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/kelly-montano" class="nav-link" data-scroll-target="https\://poverty-action.org/people/kelly-montano">Kelly Montaño</a></li>
       </ul>
-      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
+        <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://carpentries.org/" class="nav-link" data-scroll-target="https\://carpentries.org/">The Carpentries</a></li>
-      </ul>
-      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
-  <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">June 24, 2026</li>
+    <li class="last-modified" style="font-size: 0.86rem;">July 8, 2026</li>
   </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
   <ul>
@@ -1631,273 +1610,40 @@ cookieconsent.run({
   <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/data-science/data-visualization/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-science/index.html">Data Science</a></li><li class="breadcrumb-item"><a href="../../data-science/data-visualization/index.html">Data Visualization</a></li><li class="breadcrumb-item"><a href="../../data-science/data-visualization/index.html">Introduction to Visualization</a></li></ol></nav><h1 class="title display-7">Introduction to Data Visualization with Python</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-science/index.html">Data Science</a></li><li class="breadcrumb-item"><a href="../../data-science/data-visualization/index.html">Data Visualization</a></li></ol></nav><h1 class="title display-7">Data Visualization</h1></header>
 
 
 <header id="title-block-header">
     
-        <p class="abstract"></p><p>Learn to create compelling visualizations for research using Python’s seaborn library. Use the modern seaborn.objects interface through practical examples relevant to policy and development research. Perfect for research associates and managers working with data.</p><p></p>
+        <p class="abstract">This section covers both sides of data visualization: how to communicate and use data for decisions -why, for whom, and with what message-, and how to build the visualizations in Python. Start with the concepts, then move to the tools.</p>
     
 </header>
 
 
-<section id="workshop-overview" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-overview">Workshop Overview</h2>
-<p>This workshop introduces data visualization using Python’s seaborn library, focusing on the modern <code>seaborn.objects</code> interface. Designed for research associates and managers working on policy and development projects, the course emphasizes practical skills for creating clear, compelling visualizations that communicate research findings effectively.</p>
-<section id="why-seaborn.objects" class="level3">
-<h3 class="anchored" data-anchor-id="why-seaborn.objects">Why Seaborn.Objects?</h3>
-<p>The <code>seaborn.objects</code> interface represents a modern approach to data visualization based on the <strong>grammar of graphics</strong> - the same principled framework behind R’s popular ggplot2. This approach:</p>
+<p>Strong analysis only creates value once someone understands it and makes a better decision because of it. These pages cover reading your audience, choosing a clear form, and designing honest visuals, along with the relationships and tools that let evidence inform real decisions, and then how to produce those visuals in code.</p>
+<section id="communicating-and-using-data" class="level2">
+<h2 class="anchored" data-anchor-id="communicating-and-using-data">Communicating and using data</h2>
+<p>The conceptual, tool-agnostic layer, useful whether or not you write code. Start here.</p>
 <ul>
-<li>Makes complex visualizations easier to build step-by-step</li>
-<li>Provides intuitive, declarative syntax</li>
-<li>Encourages thinking about visualization components rather than chart types</li>
-<li>Integrates seamlessly with pandas DataFrames</li>
+<li><strong><a href="../../data-science/data-visualization/communicating/communicating-with-data.html">Communicating with Data</a></strong>. Why communication is part of the analysis, reading your audience, and the <em>who</em>, <em>what</em>, <em>how</em> framework.</li>
+<li><strong><a href="../../data-science/data-visualization/communicating/data-visualization-principles.html">Data Visualization Principles</a></strong>. Decluttering, human perception, Tufte’s data-ink rule, and responsible color.</li>
+<li><strong><a href="../../data-science/data-visualization/communicating/choosing-the-right-chart.html">Choosing the Right Chart</a></strong>. Table versus graph, which chart fits which message, and when to use a map.</li>
+<li><strong><a href="../../data-science/data-visualization/communicating/turning-data-into-impact.html">Turning Data into Impact</a></strong>. Why evidence goes unused, and how audience mapping, tailoring, and timing close the gap.</li>
+<li><strong><a href="../../data-science/data-visualization/communicating/monitoring-dashboards.html">Dashboards for Decisions</a></strong>. Design monitoring dashboards that help decision-makers choose what to do next.</li>
 </ul>
 </section>
-<section id="who-this-workshop-is-for" class="level3">
-<h3 class="anchored" data-anchor-id="who-this-workshop-is-for">Who This Workshop Is For</h3>
+<section id="creating-visualizations-with-python" class="level2">
+<h2 class="anchored" data-anchor-id="creating-visualizations-with-python">Creating visualizations with Python</h2>
+<p>The hands-on layer, a workshop for producing publication-quality figures with <code>seaborn.objects</code> and the grammar of graphics. Best read after the concepts above.</p>
 <ul>
-<li><strong>Research Associates</strong> collecting and analyzing data</li>
-<li><strong>Research Managers</strong> overseeing projects and reviewing findings</li>
-<li><strong>Anyone</strong> who wants to create better visualizations for:
-<ul>
-<li>Research reports</li>
-<li>Policy briefs</li>
-<li>Stakeholder presentations</li>
-<li>Academic papers</li>
-<li>Data exploration</li>
-</ul></li>
+<li><strong><a href="../../data-science/data-visualization/python/intro-seaborn-objects.html">Introduction to Seaborn</a></strong>. Why visualization matters in research, and your first plot with the <code>seaborn.objects</code> interface.</li>
+<li><strong><a href="../../data-science/data-visualization/python/grammar-of-graphics.html">The Grammar of Graphics</a></strong>. Map data variables to visual properties like color, size, and shape.</li>
+<li><strong><a href="../../data-science/data-visualization/python/marks-geometric-objects.html">Marks and Geometric Objects</a></strong>. Dots, lines, bars, areas, and bands, and how to combine them in layers.</li>
+<li><strong><a href="../../data-science/data-visualization/python/labels-scales-customization.html">Labels, Scales, and Customization</a></strong>. Titles, legends, axis limits, palettes, and accessibility.</li>
+<li><strong><a href="../../data-science/data-visualization/python/faceting-layering.html">Faceting and Layering</a></strong>. Small multiples and combining plot types into rich displays.</li>
+<li><strong><a href="../../data-science/data-visualization/python/statistical-transformations.html">Statistical Transformations</a></strong>. Aggregations, confidence intervals, regression lines, and histograms.</li>
+<li><strong><a href="../../data-science/data-visualization/python/themes-final-polish.html">Themes and Final Polish</a></strong>. Professional themes and saving publication-quality figures.</li>
 </ul>
-</section>
-<section id="prerequisites" class="level3">
-<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
-<ol type="1">
-<li><p><strong>Basic Python knowledge</strong>: Variables, functions, importing libraries</p></li>
-<li><p><strong>Familiarity with pandas</strong>: Reading data, DataFrames (helpful but not required)</p></li>
-<li><p><strong>Python environment</strong> with these packages installed:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install pandas seaborn matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ol>
-</section>
-</section>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<p>By the end of this workshop, you will be able to:</p>
-<ul>
-<li>Understand and apply the grammar of graphics framework</li>
-<li>Create a variety of visualizations using seaborn.objects</li>
-<li>Map data variables to visual properties (position, color, size, shape)</li>
-<li>Choose appropriate visualization types for different research questions</li>
-<li>Customize plots with labels, scales, and themes</li>
-<li>Create multi-panel figures with faceting</li>
-<li>Add statistical summaries and regression lines</li>
-<li>Produce publication-ready figures for reports and presentations</li>
-</ul>
-</section>
-<section id="workshop-structure" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-structure">Workshop Structure</h2>
-<p>This workshop consists of seven hands-on lessons:</p>
-<section id="lesson-1-introduction-to-seaborn" class="level3">
-<h3 class="anchored" data-anchor-id="lesson-1-introduction-to-seaborn"><a href="../../data-science/data-visualization/intro-seaborn-objects.html">Lesson 1: Introduction to Seaborn</a></h3>
-<p><strong>Duration</strong>: 45-60 minutes</p>
-<p>Learn why data visualization matters in research, get introduced to seaborn and its objects interface, and create your first visualization. You’ll understand the basic structure of a seaborn.objects plot and practice with the Palmer Penguins dataset.</p>
-<p><strong>Key concepts</strong>: seaborn.objects, <code>so.Plot()</code>, <code>.add()</code>, basic scatter plots</p>
-</section>
-<section id="lesson-2-the-grammar-of-graphics" class="level3">
-<h3 class="anchored" data-anchor-id="lesson-2-the-grammar-of-graphics"><a href="../../data-science/data-visualization/grammar-of-graphics.html">Lesson 2: The Grammar of Graphics</a></h3>
-<p><strong>Duration</strong>: 60-75 minutes</p>
-<p>Dive deep into the grammar of graphics framework. Learn how to map data variables to different visual properties like color, size, and shape. Create multi-dimensional visualizations that show multiple variables simultaneously.</p>
-<p><strong>Key concepts</strong>: Aesthetic mappings, color scales, size, shape, transparency, choosing appropriate mappings</p>
-</section>
-<section id="lesson-3-marks-and-geometric-objects" class="level3">
-<h3 class="anchored" data-anchor-id="lesson-3-marks-and-geometric-objects"><a href="../../data-science/data-visualization/marks-geometric-objects.html">Lesson 3: Marks and Geometric Objects</a></h3>
-<p><strong>Duration</strong>: 60-75 minutes</p>
-<p>Explore different types of marks (geometric objects) including dots, lines, bars, areas, and bands. Learn when to use each type and how to combine multiple marks in layered visualizations.</p>
-<p><strong>Key concepts</strong>: <code>so.Dot()</code>, <code>so.Line()</code>, <code>so.Bar()</code>, <code>so.Area()</code>, <code>so.Band()</code>, layering marks</p>
-</section>
-<section id="lesson-4-labels-scales-and-customization" class="level3">
-<h3 class="anchored" data-anchor-id="lesson-4-labels-scales-and-customization"><a href="../../data-science/data-visualization/labels-scales-customization.html">Lesson 4: Labels, Scales, and Customization</a></h3>
-<p><strong>Duration</strong>: 45-60 minutes</p>
-<p>Make your plots clear and professional with proper labels, titles, and legends. Control scales, axes limits, and color palettes. Learn accessibility best practices including colorblind-friendly design.</p>
-<p><strong>Key concepts</strong>: <code>.label()</code>, <code>.scale()</code>, axis limits, color palettes, accessibility</p>
-</section>
-<section id="lesson-5-faceting-and-layering" class="level3">
-<h3 class="anchored" data-anchor-id="lesson-5-faceting-and-layering"><a href="../../data-science/data-visualization/faceting-layering.html">Lesson 5: Faceting and Layering</a></h3>
-<p><strong>Duration</strong>: 60-75 minutes</p>
-<p>Create small multiples (faceted plots) to compare across categories. Learn how to layering multiple visualization types to build rich, comprehensive displays. Learn when to use faceting versus color encoding.</p>
-<p><strong>Key concepts</strong>: <code>.facet()</code>, small multiples, combining faceting and layering, multi-panel figures</p>
-</section>
-<section id="lesson-6-statistical-transformations" class="level3">
-<h3 class="anchored" data-anchor-id="lesson-6-statistical-transformations"><a href="../../data-science/data-visualization/statistical-transformations.html">Lesson 6: Statistical Transformations</a></h3>
-<p><strong>Duration</strong>: 60-75 minutes</p>
-<p>Add statistical summaries directly to your visualizations. Create aggregations, confidence intervals, regression lines, and histograms. Learn how to combine raw data with statistical summaries for complete data stories.</p>
-<p><strong>Key concepts</strong>: <code>so.Agg()</code>, <code>so.Est()</code>, <code>so.PolyFit()</code>, <code>so.Hist()</code>, confidence intervals, regression</p>
-</section>
-<section id="lesson-7-themes-and-final-polish" class="level3">
-<h3 class="anchored" data-anchor-id="lesson-7-themes-and-final-polish"><a href="../../data-science/data-visualization/themes-final-polish.html">Lesson 7: Themes and Final Polish</a></h3>
-<p><strong>Duration</strong>: 45-60 minutes</p>
-<p>Apply professional themes and fine-tune every aspect of your visualizations. Learn how to save publication-quality figures at appropriate resolutions. Follow best practices for different output formats (papers, presentations, posters).</p>
-<p><strong>Key concepts</strong>: <code>sns.set_theme()</code>, <code>.theme()</code>, saving figures, DPI, best practices</p>
-</section>
-</section>
-<section id="total-workshop-duration" class="level2">
-<h2 class="anchored" data-anchor-id="total-workshop-duration">Total Workshop Duration</h2>
-<ul>
-<li><strong>Minimum</strong>: 6 hours (core content only)</li>
-<li><strong>Recommended</strong>: 8-10 hours (with exercises and discussions)</li>
-<li><strong>Format suggestions</strong>:
-<ul>
-<li><strong>2-day intensive</strong>: 4-5 hours per day</li>
-<li><strong>Weekly series</strong>: 1.5-2 hours per week for 5-7 weeks</li>
-<li><strong>Self-paced</strong>: Work through at your own speed</li>
-</ul></li>
-</ul>
-</section>
-<section id="workshop-philosophy" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-philosophy">Workshop Philosophy</h2>
-<section id="learn-by-doing" class="level3">
-<h3 class="anchored" data-anchor-id="learn-by-doing">Learn by Doing</h3>
-<p>Each lesson includes:</p>
-<ul>
-<li>Hands-on code examples you can run immediately</li>
-<li>Exercises with solutions to test your understanding</li>
-<li>Real research scenarios relevant to policy and development work</li>
-</ul>
-</section>
-<section id="research-focused-examples" class="level3">
-<h3 class="anchored" data-anchor-id="research-focused-examples">Research-Focused Examples</h3>
-<p>While we introduce concepts with standard datasets (like Palmer Penguins), we emphasize examples relevant to research and policy work:</p>
-<ul>
-<li>Program impact evaluations</li>
-<li>Household surveys</li>
-<li>Multi-site comparisons</li>
-<li>Time series of development indicators</li>
-<li>Educational interventions</li>
-</ul>
-</section>
-<section id="progressive-complexity" class="level3">
-<h3 class="anchored" data-anchor-id="progressive-complexity">Progressive Complexity</h3>
-<p>Lessons build on each other:</p>
-<ul>
-<li>Start with simple scatter plots</li>
-<li>Gradually add layers of complexity</li>
-<li>End with publication-ready multi-panel figures</li>
-<li>Each step adds one new concept</li>
-</ul>
-</section>
-<section id="best-practices-throughout" class="level3">
-<h3 class="anchored" data-anchor-id="best-practices-throughout">Best Practices Throughout</h3>
-<p>Learn not just how to create visualizations, but how to create <strong>good</strong> visualizations:</p>
-<ul>
-<li>Accessibility (colorblind-friendly palettes)</li>
-<li>Clear labeling and documentation</li>
-<li>Appropriate statistical summaries</li>
-<li>Professional styling</li>
-<li>Honest, ethical representation of data</li>
-</ul>
-</section>
-</section>
-<section id="what-youll-create" class="level2">
-<h2 class="anchored" data-anchor-id="what-youll-create">What You’ll Create</h2>
-<p>By the end of this workshop, you’ll be able to create visualizations like:</p>
-<ol type="1">
-<li><p><strong>Exploratory scatter plots</strong> showing relationships between variables with color and size encoding additional dimensions</p></li>
-<li><p><strong>Impact evaluation figures</strong> with treatment and control groups, confidence intervals, and multiple time points</p></li>
-<li><p><strong>Multi-panel comparisons</strong> showing outcomes across different sites, regions, or demographic groups</p></li>
-<li><p><strong>Distribution analyses</strong> with histograms and density plots comparing multiple categories</p></li>
-<li><p><strong>Regression visualizations</strong> showing relationships with fitted lines and confidence bands</p></li>
-<li><p><strong>Publication-ready figures</strong> with professional styling suitable for academic papers, policy briefs, or presentations</p></li>
-</ol>
-</section>
-<section id="beyond-this-workshop" class="level2">
-<h2 class="anchored" data-anchor-id="beyond-this-workshop">Beyond This Workshop</h2>
-<section id="continue-learning" class="level3">
-<h3 class="anchored" data-anchor-id="continue-learning">Continue Learning</h3>
-<ul>
-<li><strong>Seaborn Documentation</strong>: <a href="https://seaborn.pydata.org/">seaborn.pydata.org</a></li>
-<li><strong>Seaborn Objects Guide</strong>: <a href="https://seaborn.pydata.org/tutorial/objects_interface.html">seaborn.pydata.org/tutorial/objects_interface.html</a></li>
-<li><strong>Python Graph Gallery</strong>: <a href="https://python-graph-gallery.com/">python-graph-gallery.com</a></li>
-<li><strong>Data Visualization Books</strong>:
-<ul>
-<li>“Fundamentals of Data Visualization” by Claus O. Wilke</li>
-<li>“The Visual Display of Quantitative Information” by Edward Tufte</li>
-</ul></li>
-</ul>
-</section>
-<section id="practice-with-your-data" class="level3">
-<h3 class="anchored" data-anchor-id="practice-with-your-data">Practice with Your Data</h3>
-<p>The best way to learn and practice data visualization is to:</p>
-<ol type="1">
-<li>Apply these techniques to your own research data</li>
-<li>Recreate visualizations you see in papers you admire</li>
-<li>Get feedback from colleagues and stakeholders</li>
-<li>Iterate and refine based on what communicates best</li>
-</ol>
-</section>
-<section id="share-and-get-feedback" class="level3">
-<h3 class="anchored" data-anchor-id="share-and-get-feedback">Share and Get Feedback</h3>
-<ul>
-<li>Present your visualizations to colleagues</li>
-<li>Ask for feedback: “Is the message clear?”</li>
-<li>Iterate based on audience response</li>
-<li>Build a portfolio of your best work</li>
-</ul>
-</section>
-</section>
-<section id="getting-help" class="level2">
-<h2 class="anchored" data-anchor-id="getting-help">Getting Help</h2>
-<p>If you encounter issues:</p>
-<ol type="1">
-<li><strong>Check the documentation</strong>: Seaborn has excellent documentation with many examples</li>
-<li><strong>Read error messages carefully</strong>: They often point to the solution</li>
-<li><strong>Search online</strong>: Stack Overflow has many seaborn questions answered</li>
-<li><strong>Ask colleagues</strong>: Learning together is more effective and fun</li>
-</ol>
-</section>
-<section id="data-sources-for-practice" class="level2">
-<h2 class="anchored" data-anchor-id="data-sources-for-practice">Data Sources for Practice</h2>
-<p>Throughout this workshop, we use:</p>
-<ul>
-<li><strong>Palmer Penguins</strong>: Built into seaborn, great for learning</li>
-<li><strong>Tips</strong>: Built into seaborn, good for categorical analysis</li>
-<li><strong>Simulated research data</strong>: Created to mirror real research scenarios</li>
-</ul>
-<p>For your own practice, consider:</p>
-<ul>
-<li>Your current research project data</li>
-<li>Publicly available datasets (World Bank, Gapminder, etc.)</li>
-<li>Government statistics from Kenya National Bureau of Statistics</li>
-<li>International development indicators</li>
-</ul>
-</section>
-<section id="acknowledgments" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
-<p>This workshop draws inspiration from:</p>
-<ul>
-<li>The Carpentries workshops on Python and data visualization</li>
-<li>Hadley Wickham’s work on the grammar of graphics</li>
-<li>The seaborn development team for creating an excellent library</li>
-<li>Research teams worldwide doing important policy and development work</li>
-</ul>
-</section>
-<section id="lets-begin" class="level2">
-<h2 class="anchored" data-anchor-id="lets-begin">Let’s Begin</h2>
-<p>Ready to start creating beautiful, informative visualizations?</p>
-<p><strong><a href="../../data-science/data-visualization/intro-seaborn-objects.html">Begin with Lesson 1: Introduction to Seaborn</a></strong></p>
-<hr>
-</section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">License</h2>
-<p>This workshop is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. You are free to:</p>
-<ul>
-<li>Share — copy and redistribute the material</li>
-<li>Adapt — remix, transform, and build upon the material</li>
-</ul>
-<p>Under the following terms:</p>
-<ul>
-<li>Attribution — You must give appropriate credit</li>
-</ul>
-<hr>
-<p><em>Good luck with your data visualization journey! Remember: every expert was once a beginner. Take your time, practice regularly, and don’t be afraid to experiment.</em></p>
 
 
 </section>
@@ -2323,8 +2069,8 @@ cookieconsent.run({
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../data-science/data-visualization/intro-seaborn-objects.html" class="pagination-link" aria-label="Introduction to Seaborn">
-        <span class="nav-page-text">Introduction to Seaborn</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../data-science/data-visualization/communicating/communicating-with-data.html" class="pagination-link" aria-label="Communicating with Data">
+        <span class="nav-page-text">Communicating with Data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
