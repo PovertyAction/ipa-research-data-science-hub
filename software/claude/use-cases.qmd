@@ -1,0 +1,153 @@
+---
+title: "Claude Code for Research and Project Management"
+draft: true # SCAFFOLD: remove when content is complete (see fill-in notes below)
+abstract: "How research and project-management staff put Claude Code to work: concrete use cases across data analysis and operations, the few prompt patterns that matter most for this work, and how to have Claude remember your preferences over time."
+keywords:
+  - "AI"
+  - "Claude"
+  - "Claude Code"
+  - "research workflows"
+  - "project management"
+  - "prompt patterns"
+  - "how-to guide"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+authors-ipa:
+  - "[Juan Felipe García Rodríguez](https://poverty-action.org/people/juan-felipe-garcia-rodriguez)"
+  - "[Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)"
+---
+
+<!--
+============================================================================
+SCAFFOLD — content fill-in planned for next week. `draft: true` keeps it from
+publishing until complete. When finishing:
+  1. Write each section (each carries an HTML comment saying what goes there).
+  2. Remove `draft: true`.
+  3. Add to _quarto.yml sidebar after "Setting Up Claude Code":
+       - text: "Claude Code for Research and Project Management"
+         href: ./software/claude/use-cases.qmd
+  4. Cross-link from software/claude/index.qmd (next steps / choose your path).
+  5. QC: markdownlint-cli2 --config .markdownlint.yaml <file>; vale <file>;
+     codespell <file>; quarto render <file>.
+
+EDITORIAL DIRECTION (why this page exists):
+There are already hundreds of generic "how to use Claude" pages. This page must
+NOT be one of them. Its whole value-add is being tailored to research and project
+management at IPA: real analyst and operations workflows, not generic prompting
+tips. Lead with the use cases. Keep generic prompting light and point out to
+existing guides (Blattman) instead of reproducing them. Daniel flagged "getting
+Claude Code to run your Stata code" as the single most important use case.
+
+Source material (source-docs/, by Juan Felipe & Diego) — ADAPT, do not copy:
+translate to English, keep public-audience-first, strip IPA-Colombia specifics.
+Per-section sources are noted in each section's comment below.
+
+Strip-list (never in the public page): Sanar para Crecer, ICBF, internal Box
+paths, procurement thresholds, real staff names, the IPA Colombia strategic plan,
+and project-specific variable names from the source examples.
+
+Verify against current Anthropic docs before publishing (do not trust the source):
+  - how Claude Code runs Stata in batch mode from the terminal
+  - plan-mode invocation (mode toggle vs a slash command)
+  - the slash-command table (/clear, /compact, /cost, /doctor, ...)
+  - Skills and Projects: current names and which live in Chat (organization skills,
+    Projects) vs Claude Code (personalized/project skills)
+  - the Blattman prompting guide address (source cited claudeblattman.com/essentials/prompting)
+============================================================================
+-->
+
+:::{.custom-summary-block}
+Claude Code is most useful when it handles the tedious parts of real work. This page shows how research and project-management staff at IPA apply it, the prompt patterns that matter most for that work, and how to have it learn your preferences over time.[^source]
+:::
+
+[^source]: Adapted from the [Claude Code guide for IPA Colombia](https://github.com/juanfegarIPA/claude-code-ipa-colombia) by Juan Felipe García Rodríguez and Diego Quintero Mogollón, used under the [MIT License](https://github.com/juanfegarIPA/claude-code-ipa-colombia/blob/main/LICENSE).
+
+:::{.callout-tip appearance="simple"}
+
+## Key Takeaways
+
+- Claude Code earns its place on research and operations work: writing and running analysis code, drafting and structuring communications, and keeping project context in one place.
+- Describe the outcome you want and let Claude do the tedious part; you keep control of the data and the decisions.
+- Have Claude remember your corrections so it works closer to your style over time.
+
+:::
+
+## What this page is for
+
+<!-- Fill: one short paragraph. This page applies Claude Code to research and
+project-management work at IPA; it is not a general prompting tutorial. Send
+readers who want generic prompting depth to Additional Resources. -->
+
+## Use cases in research work
+
+<!-- Fill: the value-add. Lead with the flagship Stata workflow below, then the
+broader set. Structure and code, never raw data (link to "Prompt safely").
+Source: analyst/stata-workflow.qmd, analyst/examples.qmd. -->
+
+### Have Claude Code run your Stata code
+
+<!-- Fill (FLAGSHIP — Daniel: single most important use case): the write, run,
+read loop. Claude Code does not just write a do-file; from the terminal it runs
+Stata in batch mode, reads the resulting log, and debugs and iterates until the
+code works. Walk it end to end with a generic example (a regression or a merge).
+How it detects failure: Claude scans the .log for a Stata return code of the form
+r(###) (for example r(111) variable not found, r(198) syntax error) — that code
+means the run errored, so Claude fixes the do-file and re-runs. Show that cycle.
+Terminal track (Stata command-line executable on PATH). Structure and code only,
+never raw data. VERIFY the batch-run command against current docs.
+Source: analyst/stata-workflow.qmd. -->
+
+### Writing and debugging analysis code
+
+<!-- Fill: do-files and scripts, error diagnosis from a log, refactoring. -->
+
+### Documenting and reproducing a pipeline
+
+<!-- Fill: documentation, reproducibility, interpreting published results,
+literature synthesis. -->
+
+## Use cases in project management
+
+<!-- Fill: the other value-add. Drafting and improving communications, briefings
+and agendas, task tracking, a project knowledge base, presentations, and weekly
+reporting. IPA-specific detail goes in a callout-note.
+Source: manager/modulos/* (comunicaciones, gestion-de-tareas, knowledge-base,
+presentaciones, revision-semanal). -->
+
+## Prompt patterns that matter for this work
+
+<!-- Fill: keep light. Cover only the handful of patterns that change results most
+for research and PM (describe the outcome, reference project conventions, give
+context on errors, iterate rather than restart), each with a research or PM
+example. For deeper general technique, point to the Blattman guide in Additional
+Resources rather than reproducing it. Source: shared/prompting.qmd. -->
+
+## Tailor Claude to your work
+
+<!-- Fill: the "get a tailored tool" theme, with the Chat vs Claude Code split:
+  - In Chat (claude.ai): a Project is a reusable space with its own instructions
+    and reference documents (IPA's Knowledge Hub Generator is a Project); and
+    organization skills are packaged capabilities an org publishes for everyone
+    in Chat to use.
+  - In Claude Code: personalized and project skills package reusable instructions
+    for recurring tasks (this Hub ships a knowledge-hub-generator skill in
+    .claude/skills/); plus CLAUDE.md and built-in memory, so Claude remembers your
+    corrections instead of you repeating them.
+  ADAPT the source's manual feedback.md practice to Claude Code's built-in memory,
+  which replaces it. Source: shared/feedback-loops.qmd (the memory practice). -->
+
+## Prompt safely
+
+<!-- Fill: brief safe-vs-not-safe guidance, linking to the data-safety rule on the
+orientation page. Source: shared/safety.qmd (scenarios, generic). -->
+
+Before sending a prompt, keep the data-safety rules on [Getting Started with Claude AI](index.qmd) in view.
+
+## Additional Resources
+
+<!-- Fill: Chicago author-date; cross-links to the orientation and setup pages.
+Feature the Blattman prompting guide as the "go deeper on prompting" pointer
+(verify the address). Include ONE brief "explore next" pointer to MCP / connectors
+(connecting Claude to other tools and data sources) with a link to the Anthropic
+docs — keep it to a single line, do not expand it into a section. -->
