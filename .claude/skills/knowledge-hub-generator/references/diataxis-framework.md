@@ -1,3 +1,8 @@
+> **Attribution.** The Diátaxis material reproduced below is from the Diátaxis
+> documentation framework by Daniele Procida (<https://diataxis.fr/>), used under
+> the Creative Commons Attribution-ShareAlike 4.0 International License
+> (CC BY-SA 4.0). To cite Diátaxis, refer to the website: <https://diataxis.fr/>.
+
 diataxis-documentation-framework/index.rst
 
 ```text

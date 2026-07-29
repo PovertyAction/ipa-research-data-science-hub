@@ -35,7 +35,9 @@ These shape every drafting and review decision. Detail lives in
    name, e.g. `How-to guides`, to jump to its section). The four canonical
    sources: tutorials <https://diataxis.fr/tutorials/>, how-to
    <https://diataxis.fr/how-to-guides/>, reference <https://diataxis.fr/reference/>,
-   explanation <https://diataxis.fr/explanation/>.
+   explanation <https://diataxis.fr/explanation/>. Diátaxis is the work of
+   Daniele Procida (<https://diataxis.fr/>), used under CC BY-SA 4.0; cite the
+   website when you reproduce it.
 
 2. **Public audience first.** Write for a competent reader at any research
    organization. Keep IPA-specific content — the Enterprise license, internal
