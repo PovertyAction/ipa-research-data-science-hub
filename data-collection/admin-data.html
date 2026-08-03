@@ -2,21 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="administrative data, data collection, research ethics, IRB approval, data linkage, explanation">
+<meta name="keywords" content="administrative data, data collection, research ethics, IRB approval, data validation, data use agreements, data linkage, explanation">
 
 <title>Administrative Data – Research and Data Science Hub</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -45,14 +48,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e7c471939560e2f6eb964f999844d0dd.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4cfc34e312f9f08d57bccdd6002e4d2a.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e7c471939560e2f6eb964f999844d0dd.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-1926c31d272dcbca5fec92b55d7bc517.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-fd156be7b6f53c71f7e3f5492cea21f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f9d73ce73f09335ac26cc53c78c2b1e6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-fd156be7b6f53c71f7e3f5492cea21f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c9154edc84625672c7acb60c8eb2d96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-ad7db480b3983cd92687612735878948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c9154edc84625672c7acb60c8eb2d96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -1591,14 +1594,25 @@ cookieconsent.run({
     <ul>
     <li><a href="#what-is-administrative-data" id="toc-what-is-administrative-data" class="nav-link active" data-scroll-target="#what-is-administrative-data">What is Administrative Data?</a>
     <ul class="collapse">
+    <li><a href="#administrative-data-vs.-survey-data" id="toc-administrative-data-vs.-survey-data" class="nav-link" data-scroll-target="#administrative-data-vs.-survey-data">Administrative Data vs.&nbsp;Survey Data</a></li>
     <li><a href="#real-world-example-ipas-experience-with-administrative-data" id="toc-real-world-example-ipas-experience-with-administrative-data" class="nav-link" data-scroll-target="#real-world-example-ipas-experience-with-administrative-data">Real-World Example: IPA’s Experience with Administrative Data</a></li>
     </ul></li>
     <li><a href="#standard-processes-for-accessing-administrative-data" id="toc-standard-processes-for-accessing-administrative-data" class="nav-link" data-scroll-target="#standard-processes-for-accessing-administrative-data">Standard Processes for Accessing Administrative Data</a></li>
+    <li><a href="#data-flow-options" id="toc-data-flow-options" class="nav-link" data-scroll-target="#data-flow-options">Data Flow Options</a>
+    <ul class="collapse">
+    <li><a href="#match-rates-in-practice" id="toc-match-rates-in-practice" class="nav-link" data-scroll-target="#match-rates-in-practice">Match rates in practice</a></li>
+    </ul></li>
+    <li><a href="#data-use-agreements" id="toc-data-use-agreements" class="nav-link" data-scroll-target="#data-use-agreements">Data Use Agreements</a></li>
     <li><a href="#ethical-considerations-for-using-administrative-data-in-rcts" id="toc-ethical-considerations-for-using-administrative-data-in-rcts" class="nav-link" data-scroll-target="#ethical-considerations-for-using-administrative-data-in-rcts">Ethical Considerations for Using Administrative Data in RCTs</a>
     <ul class="collapse">
     <li><a href="#institutional-review-board-irb-approval" id="toc-institutional-review-board-irb-approval" class="nav-link" data-scroll-target="#institutional-review-board-irb-approval">Institutional Review Board (IRB) Approval</a></li>
     <li><a href="#informed-consent" id="toc-informed-consent" class="nav-link" data-scroll-target="#informed-consent">Informed Consent</a></li>
     <li><a href="#data-security-and-compliance" id="toc-data-security-and-compliance" class="nav-link" data-scroll-target="#data-security-and-compliance">Data Security and Compliance</a></li>
+    </ul></li>
+    <li><a href="#data-validation" id="toc-data-validation" class="nav-link" data-scroll-target="#data-validation">Data Validation</a>
+    <ul class="collapse">
+    <li><a href="#when-to-validate" id="toc-when-to-validate" class="nav-link" data-scroll-target="#when-to-validate">When to validate</a></li>
+    <li><a href="#common-sources-of-error-in-administrative-data" id="toc-common-sources-of-error-in-administrative-data" class="nav-link" data-scroll-target="#common-sources-of-error-in-administrative-data">Common sources of error in administrative data</a></li>
     </ul></li>
     <li><a href="#challenges-when-using-administrative-data" id="toc-challenges-when-using-administrative-data" class="nav-link" data-scroll-target="#challenges-when-using-administrative-data">Challenges When Using Administrative Data</a>
     <ul class="collapse">
@@ -1607,15 +1621,20 @@ cookieconsent.run({
     <li><a href="#cost-of-administrative-data" id="toc-cost-of-administrative-data" class="nav-link" data-scroll-target="#cost-of-administrative-data">Cost of Administrative Data</a></li>
     </ul></li>
     <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+    <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
     </ul>
     <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Authors</h2>
   <ul>
         <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
       </ul>
-        <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
+      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">July 22, 2026</li>
+        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-barona-grajales" class="nav-link" data-scroll-target="https\://poverty-action.org/people/david-barona-grajales">David Alejandro Barona Grajales</a></li>
+      </ul>
+      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
+  <ul>
+    <li class="last-modified" style="font-size: 0.86rem;">August 3, 2026</li>
   </ul>
       <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">License</h2>
   <ul>
@@ -1629,7 +1648,7 @@ cookieconsent.run({
 
 <header id="title-block-header">
     
-        <p class="abstract">A guide to obtaining, using, and managing administrative data for research, covering access processes, ethical considerations, and common challenges.</p>
+        <p class="abstract">A guide to obtaining, using, and managing administrative data for research, covering access processes, data flow options, data use agreements, ethical considerations, data validation, and common challenges.</p>
     
 </header>
 
@@ -1647,12 +1666,83 @@ cookieconsent.run({
 <ul>
 <li>Administrative data refers to information collected, used, and stored primarily for operational purposes rather than research.</li>
 <li>While IPA projects usually rely on primary data, administrative data can also be a valuable input resource for research and impact evaluation.</li>
+<li>Accessing and using Administrative Data requires careful planning across four stages: information gathering, implementation, legal compliance, and data validation.</li>
 </ul>
 </div>
 </div>
 <section id="what-is-administrative-data" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-administrative-data">What is Administrative Data?</h2>
 <p>Administrative data is typically collected by government agencies and organizations for registration, transaction, and record-keeping purposes. Examples of administrative data can include credit card transactions, electronic medical records, insurance claims, educational records, arrest records, and mortality records.</p>
+<section id="administrative-data-vs.-survey-data" class="level3">
+<h3 class="anchored" data-anchor-id="administrative-data-vs.-survey-data">Administrative Data vs.&nbsp;Survey Data</h3>
+<p>Some challenges are common to both survey and administrative data. However, administrative data also comes with its own strengths and limitations. The table below compares the two approaches across key dimensions.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimension</th>
+<th>Survey data</th>
+<th>Administrative data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Recall and social desirability bias</td>
+<td>High risk</td>
+<td>Low risk</td>
+</tr>
+<tr class="even">
+<td>Attrition</td>
+<td>Higher risk</td>
+<td>Lower risk</td>
+</tr>
+<tr class="odd">
+<td>Costs</td>
+<td>Higher cost</td>
+<td>Lower cost</td>
+</tr>
+<tr class="even">
+<td>Logistics</td>
+<td>Easier to manage</td>
+<td>More complex</td>
+</tr>
+<tr class="odd">
+<td>Time to access</td>
+<td>Faster access</td>
+<td>Slower access</td>
+</tr>
+<tr class="even">
+<td>Documentation quality</td>
+<td>Usually better documented</td>
+<td>Often less documented</td>
+</tr>
+<tr class="odd">
+<td>Control over study population</td>
+<td>High control</td>
+<td>Limited control</td>
+</tr>
+<tr class="even">
+<td>Control over data processing</td>
+<td>High control</td>
+<td>Limited control</td>
+</tr>
+<tr class="odd">
+<td>Treatment affects measurement</td>
+<td>Lower risk</td>
+<td>Higher risk</td>
+</tr>
+<tr class="even">
+<td>Incentives to misreport</td>
+<td>Lower risk</td>
+<td>Higher risk</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="real-world-example-ipas-experience-with-administrative-data" class="level3">
 <h3 class="anchored" data-anchor-id="real-world-example-ipas-experience-with-administrative-data">Real-World Example: IPA’s Experience with Administrative Data</h3>
 <p>IPA’s research on using administrative data for Monitoring and Evaluation (2016) highlights several key advantages:</p>
@@ -1722,7 +1812,7 @@ Unable to display PDF file. <a href="../assets/files/Goldilocks-Deep-Dive-Using-
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Data Flow Strategies
+<span class="screen-reader-only">Tip</span>Implementing Data Flow Strategies
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1739,6 +1829,160 @@ Unable to display PDF file. <a href="../assets/files/Goldilocks-Deep-Dive-Using-
 </ul></li>
 <li><strong>Determine Who Performs the Link</strong>: Clarify whether the data provider, researcher, or a third party will conduct the linkage and deindentification to maintain data security and privacy</li>
 </ol>
+</div>
+</div>
+</div>
+</section>
+<section id="data-flow-options" class="level2">
+<h2 class="anchored" data-anchor-id="data-flow-options">Data Flow Options</h2>
+<p>The structure of a data flow determines who has access to personally identifiable information (PII) and who conducts the match between study records and administrative data. Choosing the right option depends on the sensitivity of the data, the data provider’s legal constraints, and the research team’s security infrastructure. The table below summarizes the most common configurations.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 35%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Who conducts the match</th>
+<th>Who has access to identified data</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Researcher</td>
+<td>Researcher receives identified data from agency</td>
+<td>Simplest, but requires strong data security on the researcher’s end</td>
+</tr>
+<tr class="even">
+<td>Researcher, on-site at the agency</td>
+<td>Researcher brings encrypted finder file; leaves with de-identified file</td>
+<td>Useful when the agency restricts data from leaving its premises</td>
+</tr>
+<tr class="odd">
+<td>Researcher, on agency device</td>
+<td>Researcher conducts match and analysis on an agency-monitored computer</td>
+<td>Agency retains oversight of the process</td>
+</tr>
+<tr class="even">
+<td>Data agency</td>
+<td>Researcher never receives identified data; agency strips identifiers before transfer</td>
+<td>Researcher agrees never to re-link the finder file with the analysis file</td>
+</tr>
+<tr class="odd">
+<td>Data agency, with third-party intermediary</td>
+<td>No single party has access to both identifiers and outcomes</td>
+<td>Research partner assigns study IDs; agency conducts match; researcher receives only de-identified results</td>
+</tr>
+<tr class="even">
+<td>Data agency runs researcher-written code</td>
+<td>Researcher never accesses raw data</td>
+<td>Researcher writes and tests code, sends it to agency, and receives only analytic results</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Matching errors affect statistical power
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Exact matching virtually eliminates false positives but increases false negatives, which attenuates impact estimates and reduces statistical power. Probabilistic matching reduces false negatives but introduces the risk of false positives, which can be especially harmful if match quality correlates with treatment or control status. Researchers should document their matching strategy and assess whether matching errors are likely to be unrelated to treatment assignment.</p>
+</div>
+</div>
+<section id="match-rates-in-practice" class="level3">
+<h3 class="anchored" data-anchor-id="match-rates-in-practice">Match rates in practice</h3>
+<p>Match rates vary considerably across studies depending on the quality of identifiers available, the data source, and the matching strategy used. The table below summarizes match rates from published studies that used administrative data linkage.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 35%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Study</th>
+<th>Records being matched</th>
+<th>Match rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Health Care Hotspotting</td>
+<td>Hospital discharge records for enrolled participants</td>
+<td>~95%</td>
+</tr>
+<tr class="even">
+<td>Oregon Health Insurance Experiment (Finkelstein et al., 2012)</td>
+<td>Credit reports for lottery participants</td>
+<td>68.5%</td>
+</tr>
+<tr class="odd">
+<td>Effect of pre-trial detention on conviction (Dobbie, Goldin &amp; Yang, 2018)</td>
+<td>Tax data for defendants</td>
+<td>73–81%</td>
+</tr>
+<tr class="even">
+<td>Impact of kindergarten class on life outcomes (Chetty et al., 2011)</td>
+<td>Parents’ tax records for kindergarten students</td>
+<td>86%</td>
+</tr>
+</tbody>
+</table>
+<p>These benchmarks illustrate that even well-resourced studies rarely achieve perfect linkage. Researchers should account for expected match rates when designing studies and assessing statistical power.</p>
+</section>
+</section>
+<section id="data-use-agreements" class="level2">
+<h2 class="anchored" data-anchor-id="data-use-agreements">Data Use Agreements</h2>
+<p>A Data Use Agreement (DUA) is a legal document that outlines the terms under which a data provider shares data with a research institution. DUAs are also referred to as Data Sharing Agreements (DSAs), Memoranda of Understanding (MOUs), or Non-Disclosure Agreements (NDAs), depending on the context and the parties involved.</p>
+<p>A well-structured DUA protects both the data provider and the research team by clarifying responsibilities, limiting liability, and ensuring that data are used only for agreed-upon purposes. The table below describes the elements that a DUA should include.</p>
+<ul>
+<li><strong>Project description</strong>: Summary of the research purpose and scope</li>
+<li><strong>Authorized users and analysts</strong>: Names or roles of individuals permitted to access the data</li>
+<li><strong>Data security procedures</strong>: Encryption, storage, and access control requirements</li>
+<li><strong>Data to be shared</strong>: Variables, time range, and format of the dataset</li>
+<li><strong>Timeframe</strong>: Duration of the agreement and data access period</li>
+<li><strong>Data destruction</strong>: Procedures for deleting or returning data at the end of the project</li>
+<li><strong>Publication review</strong>: Whether the data provider has the right to review outputs before publication</li>
+<li><strong>Data publication</strong>: Conditions under which derived data or results may be made public</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>DUAs must be signed by an institutional representative
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A DUA should be executed by an authorized institutional representative, not by an individual researcher or staff member. This protects the researcher from personal liability and ensures that the institution assumes responsibility for compliance.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Tips for negotiating a DUA
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Negotiating a DUA can be a lengthy process. The following practices help move negotiations forward:</p>
+<ul>
+<li><strong>Understand legal constraints from the start</strong>: Some provisions that appear as “requirements” from the data provider may be preferences that can be modified. Understanding what is legally mandated versus negotiable saves time.</li>
+<li><strong>Build the relationship early</strong>: Establishing trust with the data provider before formal negotiations often makes the process smoother.</li>
+<li><strong>Frame the research in terms of the provider’s mission</strong>: If the research is relevant to the agency’s own goals, emphasize that relevance to increase their willingness to share.</li>
+<li><strong>Consider using an intermediary</strong>: In complex or sensitive cases, a trusted third party can facilitate negotiations between the research team and the data provider.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1775,6 +2019,110 @@ Unable to display PDF file. <a href="../assets/files/Goldilocks-Deep-Dive-Using-
 <p>For further clarification on IRB-related issues, any project with concerns should email <a href="mailto:humansubjects@poverty-action.org">humansubjects@poverty-action.org</a>.</p>
 </section>
 </section>
+<section id="data-validation" class="level2">
+<h2 class="anchored" data-anchor-id="data-validation">Data Validation</h2>
+<p>Data validation is the process of verifying that administrative data received from a provider has the expected characteristics before it enters a project’s analysis pipeline. Unlike data cleaning, which modifies records to correct errors, data validation checks whether the data as delivered matches what was agreed upon and what the analysis assumes and needs.</p>
+<p>It is equally important to be clear about what data validation is <em>not</em>:</p>
+<ul>
+<li><strong>Not data cleaning</strong>: Validation identifies problems; cleaning modifies data to correct them. These are separate workflows.</li>
+<li><strong>Not a guarantee of data quality</strong>: Validation checks whether the received data matches the agreed-upon specifications, but it does not confirm that the underlying records accurately reflect reality.</li>
+<li><strong>Not statistical validity testing</strong>: Validation focuses on individual records and variables, not at the level of estimates or inferential claims.</li>
+</ul>
+<p>Administrative data validation focuses on two dimensions:</p>
+<ul>
+<li><strong>Correctness</strong>: The reported value reflects the true observed value, accounting for allowable measurement error.</li>
+<li><strong>Consistency</strong>: Each record captures the same underlying construct across deliveries and across rows.</li>
+</ul>
+<p>Data validation is different from data cleaning and from high-frequency checks used in survey data collection. The goal is to identify and triage errors in the data as received, not to alter the raw data.</p>
+<section id="when-to-validate" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-validate">When to validate</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Validate as soon as data arrive
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The first validation should occur immediately upon receiving a new data delivery. Running checks promptly allows the research team to identify problems while there is still time to contact the data provider for corrections. Automating validation scripts reduces processing time and ensures checks are applied consistently across multiple deliveries.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Validate each new delivery on the raw file
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Validation scripts should run on the most recent file as received, using the variable names and formats the provider uses. This approach ensures that any errors identified are attributable to the source data, not to transformations the research team has applied. Validate before converting files to project-specific formats (e.g., .dta, .RData, or a relational database).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Keep validation and cleaning as separate workflows
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Validation and cleaning serve different purposes and should be maintained as distinct scripts or processes. Validation documents what errors exist in the raw data. Cleaning modifies the data for analysis. Mixing the two makes it harder to trace the origin of any given value in the final analysis file and complicates future deliveries.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="common-sources-of-error-in-administrative-data" class="level3">
+<h3 class="anchored" data-anchor-id="common-sources-of-error-in-administrative-data">Common sources of error in administrative data</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Poorly designed forms or systems</td>
+<td>No input constraints on data type or format; ambiguous questions that respondents interpret differently</td>
+</tr>
+<tr class="even">
+<td>Data entry errors</td>
+<td>Misspellings, keystroke errors, misunderstanding of field definitions (e.g., annual income entered as monthly)</td>
+</tr>
+<tr class="odd">
+<td>Misreporting or reporting bias</td>
+<td>Incentives to over- or under-report; outcomes reported by program staff who have an interest in results</td>
+</tr>
+<tr class="even">
+<td>Data extraction errors</td>
+<td>Incorrect queries, truncated exports, or format changes introduced during extraction</td>
+</tr>
+<tr class="odd">
+<td>Data pre-preparation by the provider</td>
+<td>Aggregations, recodes, or transformations applied before delivery that are not documented</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="challenges-when-using-administrative-data" class="level2">
 <h2 class="anchored" data-anchor-id="challenges-when-using-administrative-data">Challenges When Using Administrative Data</h2>
 <p>While administrative data offers many advantages, researchers often face challenges such as:</p>
@@ -1806,7 +2154,13 @@ Unable to display PDF file. <a href="../assets/files/Goldilocks-Deep-Dive-Using-
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Administrative data is a powerful tool for randomized evaluations, offering cost-effective, accurate, and comprehensive insights. However, researchers must navigate ethical, legal, and logistical challenges to ensure data quality and validity. By following standardized processes, addressing ethical concerns, and mitigating common challenges, researchers can leverage administrative data for impactful research.</p>
+<p>Administrative data is a valuable tool for randomized evaluations, offering cost-effective, accurate, and comprehensive insights. Researchers must navigate ethical, legal, and logistical challenges to ensure data quality and validity. By following standardized processes for information gathering, implementing appropriate data flow structures, executing well-designed data use agreements, and validating data at each delivery, research teams can produce reliable evidence from administrative sources.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Chetty, R., Friedman, J. N., Hilger, N., Saez, E., Schanzenbach, D. W., &amp; Yagan, D. (2011). How does your kindergarten classroom affect your earnings? Evidence from Project STAR. <em>The Quarterly Journal of Economics</em>, 126(4), 1593–1660. https://doi.org/10.1093/qje/qjr041</p>
+<p>Dobbie, W., Goldin, J., &amp; Yang, C. S. (2018). The effects of pretrial detention on conviction, future crime, and employment: Evidence from randomly assigned judges. <em>American Economic Review</em>, 108(2), 201–240. https://doi.org/10.1257/aer.20161503 # codespell:ignore aer</p>
+<p>Finkelstein, A., Taubman, S., Wright, B., Bernstein, M., Gruber, J., Newhouse, J. P., Allen, H., &amp; Baicker, K. (2012). The Oregon Health Insurance Experiment: Evidence from the first year. <em>The Quarterly Journal of Economics</em>, 127(3), 1057–1106. https://doi.org/10.1093/qje/qjs020</p>
 
 
 </section>
