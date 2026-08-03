@@ -1,0 +1,124 @@
+---
+title: "Revive and understand inherited code"
+abstract: |
+  A workflow for code you didn't write and can't run: give Claude Code the code and its context, have it explain what the code does, iterate until it runs, and report what it had to change. It works on a plain folder of scripts; with version control, the changes become an interactive, reviewable walkthrough.
+keywords:
+  - "AI"
+  - "Claude"
+  - "Claude Code"
+  - "reproducibility"
+  - "code comprehension"
+  - "how-to guide"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+authors-ipa:
+  - "[Daniel Martinez](https://poverty-action.org/people/daniel-enriquez)"
+contributors:
+  - "[Juan Felipe García Rodríguez](https://poverty-action.org/people/juan-felipe-garcia-rodriguez)"
+  - "[Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)"
+---
+
+:::{.callout-tip appearance="simple"}
+
+## Key Takeaways
+
+- Give Claude the code *and* its context; it explains what the code does, gets it running, and reports every change it made.
+- The blocker is rarely the code alone; hand over how the code is run, the software environment, and a safe stand-in for the data.
+- Never share raw participant data. Run the loop on a de-identified or synthetic sample and keep the real-data run on your own machine.
+- Put the code under version control first and the changes become an interactive, quiz-backed walkthrough you can keep and pass on.
+
+:::
+
+## The situation
+
+You have inherited a folder of do-files from an analyst who has left, or you have reopened your own project from a year ago. The code is supposed to produce a set of tables, but it does not run: a path points somewhere that no longer exists, a package is missing, the software has moved on a version or two. Reading it line by line to work out what it does and why it breaks is slow going.
+
+This is work Claude Code is unusually good at. It reads the whole project, runs it, and fixes what breaks. Because it can run the code, it tells you not only what the code *does* but what it took to make it run again.
+
+## When you reach for this
+
+- You inherited code from a colleague and need to understand and run it.
+- You are returning to your own analysis after months away.
+- You want to know what a repository does, and what a change would break, before you touch it.
+
+## Give Claude the code and its context
+
+Handing over a single script rarely works, because the thing that stops it running is usually somewhere else. Give Claude the context you would give a new research assistant on their first day:
+
+- **The whole project, not one file.** The master or run file, any configuration template, and the folder layout. How the code is run is the most-forgotten input, and the one that unblocks everything.
+- **The software environment.** Your operating system, the version of Stata, R, or Python, the installed packages, and your path conventions.
+- **A safe stand-in for the data.** See the callout below.
+- **Intent, not just syntax.** The data dictionary, the pre-analysis plan, or a previous output, so Claude's fixes match what the code is *for* rather than just silencing an error.
+- **The current failure.** The log or error message, if the code already breaks.
+
+:::{.callout-warning}
+
+## Never run on raw data
+
+To run, code needs data, but Claude must never see raw participant data. Give it a de-identified or synthetic sample that matches your variables, or give it the data dictionary and let it generate a small fixture. Keep any run against the real data on your own machine. See [Prompt safely](../use-cases.qmd#prompt-safely).
+
+:::
+
+## Understand before you change
+
+Ask Claude to explain what the code does from start to finish before it changes anything. Starting in plan mode keeps it from editing half the project in the wrong direction: it reads everything, lays out what the code does and what is stopping it, and waits for you to approve the approach. Use `/plan`, or press Shift+Tab to enter planning mode.
+
+## Iterate until it runs
+
+Now let it close the loop. Claude runs the code, reads the output, finds the blocker, and fixes it: installing a missing package, repointing a path, or updating a command the newer version renamed. It runs again until the run completes cleanly. You react to the result, not to each step.
+
+## See what it changed
+
+When the code runs, ask for two things:
+
+1. **A plain-language summary of what it does**, so you understand the analysis without reading every line.
+2. **A numbered log of every change it made to get it running, and why**: installed `estout`, repointed the data path, moved `version 15` to `17`, renamed a file whose name used an accented character.
+
+That log is the record of how the code drifted from the environment it was written in. It is also what you hand to anyone who asks why the numbers moved.
+
+## Go further: Review the changes as a diff
+
+Once the base workflow is second nature, version control turns "what Claude changed" into something you review and learn from, not just a list.
+
+1. **Commit the original, untouched.** The starting point is fixed before Claude changes anything.
+2. **Let Claude make its fixes.** Every change is now a tracked edit.
+3. **Turn the diff into a walkthrough.** Ask Claude to read the diff and produce a single self-contained HTML page that explains the change and quizzes you on it. A good one has four parts: the background you need to follow the change, the intuition behind it, a walkthrough of the code, and a short quiz that checks you understood it.
+4. **Keep it as onboarding.** That page is what you hand the next person who inherits the project.
+
+This pattern comes from Geoffrey Litt's [Explain Diff](https://gist.github.com/geoffreylitt/a29df1b5f9865506e8952488eac3d524) prompt. New to version control? See [Git](../../git/index.qmd).
+
+```text
+The original is committed. Read the diff of your fixes and produce one
+self-contained HTML page that explains the change: the background I need,
+the intuition behind it, a walkthrough of the code, and a five-question
+quiz that checks I understood it.
+```
+
+## A prompt to start from
+
+Adapt this to your project. It gives Claude the goal, the safe-data boundary, and the two outputs you want:
+
+```text
+Here is a project I inherited in ./analysis. It is supposed to produce
+the attendance tables in ./outputs, but it does not run. First, in plan
+mode, tell me what it does end to end and what is stopping it from
+running. Then get it running against the sample data in ./data/sample.
+Never read anything in ./data/raw. Install packages and repoint paths as
+needed. When it runs cleanly, give me (1) a plain-language summary of what
+it does and (2) a numbered list of every change you made and why.
+```
+
+:::{.callout-note}
+
+## At IPA
+
+On projects built from `ipa-stata-template`, Claude runs Stata through `just` and reads the log from `logs/`; treat any `r(###);` line as an error. Never let Claude reach an encrypted drive such as a Cryptomator vault directly; run those steps yourself. Claude is approved for **Public** and **Internal** data only; follow the [IPA AI Usage Guidelines](https://ipastorage.box.com/s/mvr67ygvz1y3v8qmgjey67lk7msmyeks), and contact [support@poverty-action.org](mailto:support@poverty-action.org) when a data classification is unclear.
+
+:::
+
+## Additional Resources
+
+Anthropic. "Claude Code Documentation." [https://code.claude.com/docs](https://code.claude.com/docs).
+
+Litt, Geoffrey. "Explain Diff." GitHub Gist. [https://gist.github.com/geoffreylitt/a29df1b5f9865506e8952488eac3d524](https://gist.github.com/geoffreylitt/a29df1b5f9865506e8952488eac3d524).
