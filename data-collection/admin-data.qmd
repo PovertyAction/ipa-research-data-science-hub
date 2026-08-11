@@ -38,9 +38,9 @@ license:
 
 ## What is Administrative Data?
 
-Administrative data refers to data collected for the administration of programs. It should be systematically collected, stored and used for program operation and management decisions. 
+Administrative data refers to data collected for the administration of programs. It should be systematically collected, stored and used for program operation and management decisions.
 
-Administrative data is typically collected by government agencies and organizations for registration, transaction, and record-keeping purposes and it is designed to track a program’s implementation -primarily the project’s activities and expenses- it can also include indicators on program outcomes. Examples of administrative data can include credit card transactions, client information from financial institutions, electronic medical records, insurance claims, hospital records of patient visits educational records, arrest records, and mortality records. 
+Administrative data is typically collected by government agencies and organizations for registration, transaction, and record-keeping purposes and it is designed to track a program's implementation -primarily the project's activities and expenses- it can also include indicators on program outcomes. Examples of administrative data can include call detail records (CDR), app usage logs, credit card transactions, client information from financial institutions, electronic medical records, insurance claims, hospital records of patient visits, educational records, arrest records, and mortality records.
 
 :::{.callout-tip appearance="simple"}
 
@@ -51,12 +51,9 @@ Administrative data is typically collected by government agencies and organizati
 * Accessing and using administrative data requires careful planning across four stages: information gathering, implementation, legal compliance, and data validation.
 :::
 
-
 ## Standard Processes for Accessing Administrative Data
 
 Accessing administrative data involves four main steps:
-
-
 
 ### 1. Finding Administrative Data
 
@@ -66,7 +63,7 @@ Implementing partners and government agencies are valuable sources of administra
 * **Financial Data**: Banks, credit unions, credit reporting agencies
 * **Education Data**: Schools, ministries of education, standardized testing agencies
 
-### 2. Formulating a Data Request
+### 2. Preparing a Data Request
 
 When requesting administrative data, researchers should:
 
@@ -76,7 +73,8 @@ When requesting administrative data, researchers should:
 * **Avoid broad requests**: Instead of "all student data," specify exact variables, time frames needed, and frequency of updates
 
 ::: {.callout-tip collapse="true"}
-## Data Use Agreements
+
+#### Data Use Agreements
 
 A Data Use Agreement (DUA) is a legal document that outlines the terms under which a data provider shares data with a research institution. DUAs are also referred to as Data Sharing Agreements (DSAs), Memoranda of Understanding (MOUs), or Non-Disclosure Agreements (NDAs), depending on the context and the parties involved.
 
@@ -91,14 +89,11 @@ A well-structured DUA protects both the data provider and the research team by c
 * **Publication review**: Whether the data provider has the right to review outputs before publication
 * **Data publication**: Conditions under which derived data or results may be made public
 
+##### DUAs must be signed by an institutional representative
 
-#### DUAs must be signed by an institutional representative
+A DUA should be executed by an authorized institutional representative, not by an individual researcher or staff member. This protects the researcher from personal liability and ensures that the institution assumes responsibility for compliance.
 
-A DUA should be executed by an authorized institutional representative, not by an individual researcher or staff member. This protects the researcher from personal liability and ensures that the institution assumes responsibility for compliance. 
-
-
-
-#### Tips for negotiating a DUA
+##### Tips for negotiating a DUA
 
 Negotiating a DUA can be a lengthy process. The following practices help move negotiations forward:
 
@@ -108,16 +103,16 @@ Negotiating a DUA can be a lengthy process. The following practices help move ne
 * **Consider using an intermediary**: In complex or sensitive cases, a trusted third party can facilitate negotiations between the research team and the data provider.
 :::
 
-
 ### 3. Implementing Data Flow Strategies
 
 #### What is Data Flow?
+
 A data flow describes the path that data travels from the administrative source to the research team, specifying who collects identifying information, who conducts the match between study records and administrative records, and who receives the final de-identified dataset. The structure of the data flow determines which parties have access to personally identifiable information at each stage of the process.
 
 The structure of a data flow determines who has access to personally identifiable information (PII) and who conducts the match between study records and administrative data. Choosing the right option depends on the sensitivity of the data, the data provider's legal constraints, and the research team's security infrastructure. The table below summarizes the most common configurations.
 
 | Who conducts the match | Who has access to identified data | Notes |
-|----------------------|----------------------------------|-------|
+| ---------------------- | ---------------------------------- | ------- |
 | Researcher | Researcher receives identified data from agency | Simplest, but requires strong data security on the researcher's end |
 | Researcher, on-site at the agency | Researcher brings encrypted finder file; leaves with de-identified file | Useful when the agency restricts data from leaving its premises |
 | Researcher, on agency device | Researcher conducts match and analysis on an agency-monitored computer | Agency retains oversight of the process |
@@ -128,12 +123,14 @@ The structure of a data flow determines who has access to personally identifiabl
 : {tbl-colwidths="[25,35,40]"}
 
 ::: {.callout-warning}
-## Matching errors affect statistical power
 
-Exact matching virtually eliminates false positives but increases false negatives, which attenuates impact estimates and reduces statistical power. Probabilistic matching reduces false negatives but introduces the risk of false positives, which can be especially harmful if match quality correlates with treatment or control status. Researchers should document their matching strategy and assess whether matching errors are likely to be unrelated to treatment assignment. 
+##### Matching errors affect statistical power
+
+Exact matching virtually eliminates false positives but increases false negatives, which attenuates impact estimates and reduces statistical power. Probabilistic matching reduces false negatives but introduces the risk of false positives, which can be especially harmful if match quality correlates with treatment or control status. Researchers should document their matching strategy and assess whether matching errors are likely to be unrelated to treatment assignment.
 :::
 
 #### How to implement a Data Flow process?
+
 A well-planned data flow strategy ensures smooth integration of administrative data:
 
 1. **Gather Identifying Information**: Determine what identifiers are available in the study sample such as national ID numbers, phone numbers, email addresses
@@ -157,19 +154,22 @@ Data validation is different from data cleaning and from high-frequency checks u
 #### When to validate
 
 :::{.callout-tip appearance="simple"}
-## Validate as soon as data arrive
+
+##### Validate as soon as data arrive
 
 The first validation should occur immediately upon receiving a new data delivery. Running checks promptly allows the research team to identify problems while there is still time to contact the data provider for corrections. Automating validation scripts reduces processing time and ensures checks are applied consistently across multiple deliveries.
 :::
 
 :::{.callout-tip appearance="simple"}
-## Validate each new delivery on the raw file
+
+##### Validate each new delivery on the raw file
 
 Validation scripts should run on the most recent file as received, using the variable names and formats the provider uses. This approach ensures that any errors identified are attributable to the source data, not to transformations the research team has applied. Validate before converting files to project-specific formats (e.g., .dta, .RData, or a relational database).
 :::
 
 :::{.callout-tip appearance="simple"}
-## Keep validation and cleaning as separate workflows
+
+##### Keep validation and cleaning as separate workflows
 
 Validation and cleaning serve different purposes and should be maintained as distinct scripts or processes. Validation documents what errors exist in the raw data. Cleaning modifies the data for analysis. Mixing the two makes it harder to trace the origin of any given value in the final analysis file and complicates future deliveries.
 :::
@@ -177,7 +177,7 @@ Validation and cleaning serve different purposes and should be maintained as dis
 #### Common sources of error in administrative data
 
 | Source | Examples |
-|--------|---------|
+| -------- | --------- |
 | Poorly designed forms or systems | No input constraints on data type or format; ambiguous questions that respondents interpret differently |
 | Data entry errors | Misspellings, keystroke errors, misunderstanding of field definitions (e.g., annual income entered as monthly) |
 | Misreporting or reporting bias | Incentives to over- or under-report; outcomes reported by program staff who have an interest in results |
@@ -185,11 +185,6 @@ Validation and cleaning serve different purposes and should be maintained as dis
 | Data pre-preparation by the provider | Aggregations, recodes, or transformations applied before delivery that are not documented |
 
 : {tbl-colwidths="[30,70]"}
-
-
-
-
-
 
 ## Ethical Considerations for Using Administrative Data in RCTs
 
@@ -221,8 +216,6 @@ Researchers must implement robust security measures, including:
 
 For further clarification on IRB-related issues, any project with concerns should email [humansubjects@poverty-action.org](mailto:humansubjects@poverty-action.org).
 
-
-
 ## Challenges When Using Administrative Data
 
 While administrative data offers many advantages, researchers often face challenges such as:
@@ -249,16 +242,15 @@ Administrative datasets vary in cost, depending on:
 * File-years needed
 * Data preparation time required by the provider
 
-
-
 ## Conclusion
 
 Administrative data is a valuable tool for randomized evaluations, offering cost-effective, accurate, and comprehensive insights. Researchers must navigate ethical, legal, and logistical challenges to ensure data quality and validity. By following standardized processes for information gathering, implementing appropriate data flow structures, executing well-designed data use agreements, and validating data at each delivery, research teams can produce reliable evidence from administrative sources.
 
-::: {.callout-tip collapse="simple"}
+::: {.callout-tip collapse="true"}
+
 ### Real-World Example: IPA's Experience with Administrative Data
 
-IPA's research on using administrative data for Monitoring and Evaluation (2016) highlights several key advantages:
+IPA's guide to Using Administrative Data for Monitoring and Evaluation (2016) highlights several key advantages:
 
 * **Cost-Effectiveness**: Administrative data reduces or eliminates the need for additional monitoring activities or surveys.
 * **Timely Response**: Regular updates in management information systems enable faster analysis of key indicators.
@@ -267,7 +259,5 @@ IPA's research on using administrative data for Monitoring and Evaluation (2016)
 
 This research emphasizes that data accuracy and reliability should take precedence over cost savings. Organizations must balance data quality, actionability, and resource allocation when incorporating administrative data into their research design.
 
-<object data="/assets/files/Goldilocks-Deep-Dive-Using-Administrative-Data-for-Monitoring-and-Evaluation.pdf" type="application/pdf" width="100%" height="600px">
-    <p>Unable to display PDF file. <a href="/assets/files/Goldilocks-Deep-Dive-Using-Administrative-Data-for-Monitoring-and-Evaluation.pdf">Download</a> instead.</p>
-</object>
+[Download: Goldilocks Deep Dive - Using Administrative Data for Monitoring and Evaluation](/assets/files/Goldilocks-Deep-Dive-Using-Administrative-Data-for-Monitoring-and-Evaluation.pdf)
 :::
