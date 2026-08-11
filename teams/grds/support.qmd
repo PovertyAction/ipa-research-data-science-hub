@@ -17,6 +17,7 @@ license:
 ---
 
 ::: {.callout-tip appearance="simple"}
+
 ## Key Takeaways
 
 - Submit requests to `researchsupport@` at least two to four weeks before you
@@ -25,6 +26,9 @@ license:
   timelines, budget confirmation, preferences, and requirements.
 - After submission, expect acknowledgment within two to three business days and
   a confirmed assignment within five to ten business days.
+- GRDS work has two entry points --- a support request or an awarded funding
+  proposal. GRDS tracks both in Asana and delivers both through peer-reviewed
+  pull requests on GitHub.
 :::
 
 ## Before You Start
@@ -32,6 +36,62 @@ license:
 This guide walks through the process of requesting and managing GRDS support.
 For a description of what GRDS offers --- the five service areas and the three
 engagement types --- see [GRDS Services Reference](services.qmd).
+
+## GRDS Requests and Project Support Lifecycle
+
+GRDS work starts from one of two entry points: a support request from a research
+team, or an awarded funding proposal. Both converge on the same Asana work
+board, and from that point onward every project follows the same delivery path.
+
+```{mermaid}
+%%| label: fig-grds-lifecycle
+%%| fig-cap: "How a request or an awarded proposal becomes GRDS work."
+
+flowchart TD
+    A["Support request<br/>researchsupport@"] ---> B["Ticket logged and classified<br/>in Freshdesk"]
+    P["Funding proposal"] --> Q["Proposal development logged in Salesforce"]
+    Q --> S{"Grant<br/>awarded?"}
+    S -->|"No"| T["Proposal closed"]
+    B --> E["Project logged and sized on<br/>the Asana active work board"]
+    S -->|"Yes"| E
+    E --> G["Team assigned:<br/>GRDS lead plus supporting members"]
+    G --> H{"Project<br/>size?"}
+    H -->|"Medium or large"| I["Modular components, each<br/>with a design document"]
+    I --> K["Pull requests<br/>on GitHub"]
+    H -->|"Small"| K
+    K --> L{"Peer code review<br/>approved?"}
+    L -->|"Changes requested"| K
+    L -->|"Approved"| M{"Project manager or<br/>partner sign-off?"}
+    M -->|"Changes requested"| K
+    M -->|"Signed off; next component"| I
+    M -->|"Signed off; all components done"| Z["Deliverables shared<br/>and close-out"]
+```
+
+GRDS logs every support request that arrives at `researchsupport@` as a ticket
+in Freshdesk, the system of record for intake. Classification determines which
+service area the request belongs to and which staff member picks it up.
+
+Funding proposals follow a different route. They go through OneIPA proposal
+development, which is joint work with the Sectors, Right-Fit Evidence, Policy,
+and Country Programs teams. GRDS tracks these proposals on a proposals board in
+Asana and moves a project to the active work board only after the donor awards
+the grant.
+
+Asana tracks project status for the whole delivery period. GRDS version controls
+all its code on GitHub, and a peer must review every change before it merges.
+Small and medium projects have a lead team member plus supporting members who
+handle implementation and code review.
+
+Medium and large projects run on an agile method. GRDS splits the work into
+modular components, and each component gets its own design document. The GRDS
+data science lead writes that document with the project manager to settle the
+scope of the component before anyone writes code. The team then builds each
+component through small, well-documented pull requests. Peer review alone does
+not close out a component; the project manager or the external partner must
+also sign off before GRDS considers it complete.
+
+For the engagement types these paths map onto, see [GRDS Services
+Reference](services.qmd).
 
 ## When to Engage GRDS
 
@@ -57,23 +117,21 @@ flexibility in assigning staff and confirming a realistic timeline.
    Once the preliminary scope is confirmed, submit a complete request to the
    same address. A complete request includes:
 
-   | Element                    | What to Include                                                                                          |
-   | -------------------------- | -------------------------------------------------------------------------------------------------------- |
-   | **Project overview**       | What the research is about, and its objectives and goals                                                 |
+   | Element                    | What to Include                                                                                     |
+   | -------------------------- | --------------------------------------------------------------------------------------------------- |
+   | **Project overview**       | What the research is about, and its objectives and goals                                            |
    | **Support type requested** | The nature of the support needed (see the service areas in [GRDS Services Reference](services.qmd)) |
-   | **Desired outputs**        | The outputs or deliverables the request should produce                                                   |
-   | **Timelines**              | When support should start, when outputs are due, and any deadlines GRDS should know about                |
-   | **Budget confirmation**    | Whether a grant or allocation already funds the work, or whether a new one is needed                     |
-   | **Preferences**            | Geographic, time-zone, or language preferences for the assigned staff                                    |
-   | **Requirements**           | Data platforms or software the project requires                                                          |
+   | **Desired outputs**        | The outputs or deliverables the request should produce                                              |
+   | **Timelines**              | When support should start, when outputs are due, and any deadlines GRDS should know about           |
+   | **Budget confirmation**    | Whether a grant or allocation already funds the work, or whether a new one is needed                |
+   | **Preferences**            | Geographic, time-zone, or language preferences for the assigned staff                               |
+   | **Requirements**           | Data platforms or software the project requires                                                     |
 
    If the request involves a data platform such as SurveyCTO, or software such
    as Stata, Python, or R, state this up front. It affects who GRDS assigns to
    the request.
 
-   ::: {.callout-warning}
-## Data Classification
-
+   ::: {.callout-warning title="Data Classification"}
    Do not include confidential or highly confidential data --- such as personally
    identifiable respondent information --- in the initial request email. Describe
    the data at a general level; GRDS will confirm secure channels for sharing
