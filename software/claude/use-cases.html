@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="how-to, data curation, dataverse, replication package, data sharing, research transparency, data publication, reproducibility">
+<meta name="keywords" content="AI, Claude, Claude Code, research workflows, project management, prompt patterns, how-to guide">
 
-<title>How to Publish a Replication Package to Dataverse – Research and Data Science Hub</title>
+<title>Claude Code for Research and Project Management – Research and Data Science Hub</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,70 +27,35 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../software/index.html" rel="next">
-<link href="../research-transparency/publication-preparation.html" rel="prev">
-<link href="../assets/logos/ipa-favicon.ico" rel="icon">
-<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-1926c31d272dcbca5fec92b55d7bc517.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6c9154edc84625672c7acb60c8eb2d96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-ad7db480b3983cd92687612735878948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-6c9154edc84625672c7acb60c8eb2d96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../teams/grds.html" rel="next">
+<link href="../../software/claude/setup.html" rel="prev">
+<link href="../../assets/logos/ipa-favicon.ico" rel="icon">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-1926c31d272dcbca5fec92b55d7bc517.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6c9154edc84625672c7acb60c8eb2d96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ad7db480b3983cd92687612735878948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6c9154edc84625672c7acb60c8eb2d96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -147,7 +112,7 @@ cookieconsent.run({
   
 
 
-<link rel="stylesheet" href="../assets/design-styles/styles.css">
+<link rel="stylesheet" href="../../assets/design-styles/styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -328,9 +293,9 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../assets/logos/IPA-primary-color-RGB.png" alt="" class="navbar-logo light-content">
-    <img src="../assets/logos/IPA-primary-color-RGB-inverted.png" alt="" class="navbar-logo dark-content">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logos/IPA-primary-color-RGB.png" alt="" class="navbar-logo light-content">
+    <img src="../../assets/logos/IPA-primary-color-RGB-inverted.png" alt="" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -345,39 +310,39 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-topics">    
         <li>
-    <a class="dropdown-item" href="../research-design/index.html">
+    <a class="dropdown-item" href="../../research-design/index.html">
  <span class="dropdown-text">Research Design</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../monitoring-evaluation-learning/ab-testing/index.html">
+    <a class="dropdown-item" href="../../monitoring-evaluation-learning/ab-testing/index.html">
  <span class="dropdown-text">MEL</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../research-ethics/index.html">
+    <a class="dropdown-item" href="../../research-ethics/index.html">
  <span class="dropdown-text">Research Ethics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-quality/index.html">
+    <a class="dropdown-item" href="../../data-quality/index.html">
  <span class="dropdown-text">Data Quality</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-security/index.html">
+    <a class="dropdown-item" href="../../data-security/index.html">
  <span class="dropdown-text">Data Security</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-collection/index.html">
+    <a class="dropdown-item" href="../../data-collection/index.html">
  <span class="dropdown-text">Data Collection</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-cleaning/index.html">
+    <a class="dropdown-item" href="../../data-cleaning/index.html">
  <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-science/index.html">
+    <a class="dropdown-item" href="../../data-science/index.html">
  <span class="dropdown-text">Data Science</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../research-transparency/understanding-transparency.html">
+    <a class="dropdown-item" href="../../research-transparency/understanding-transparency.html">
  <span class="dropdown-text">Research Transparency</span></a>
   </li>  
     </ul>
@@ -388,23 +353,23 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-how-to-guides">    
         <li>
-    <a class="dropdown-item" href="../data-security/how-to-data-security.html">
+    <a class="dropdown-item" href="../../data-security/how-to-data-security.html">
  <span class="dropdown-text">Data Security</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-quality/how-to-dms-stata.html">
+    <a class="dropdown-item" href="../../data-quality/how-to-dms-stata.html">
  <span class="dropdown-text">Stata DMS</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../research-design/how-to-randomization.html">
+    <a class="dropdown-item" href="../../research-design/how-to-randomization.html">
  <span class="dropdown-text">Randomization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../research-design/how-to-power-calculation.html">
+    <a class="dropdown-item" href="../../research-design/how-to-power-calculation.html">
  <span class="dropdown-text">Power Calculations</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../research-transparency/how-to-publish-dataverse.html">
+    <a class="dropdown-item" href="../../research-transparency/how-to-publish-dataverse.html">
  <span class="dropdown-text">Publish to Dataverse</span></a>
   </li>  
     </ul>
@@ -415,41 +380,41 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-software-guides">    
         <li>
-    <a class="dropdown-item" href="../software/shell/index.html">
+    <a class="dropdown-item" href="../../software/shell/index.html">
  <span class="dropdown-text">The Shell</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/git/index.html">
+    <a class="dropdown-item" href="../../software/git/index.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/github/index.html">
+    <a class="dropdown-item" href="../../software/github/index.html">
  <span class="dropdown-text">GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/vscode/index.html">
+    <a class="dropdown-item" href="../../software/vscode/index.html">
  <span class="dropdown-text">VS Code</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/stata/index.html">
+    <a class="dropdown-item" href="../../software/stata/index.html">
  <span class="dropdown-text">Stata</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/python/index.html">
+    <a class="dropdown-item" href="../../software/python/index.html">
  <span class="dropdown-text">Python</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/quarto/index.html">
+    <a class="dropdown-item" href="../../software/quarto/index.html">
  <span class="dropdown-text">Quarto</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/claude/index.html">
+    <a class="dropdown-item" href="../../software/claude/index.html">
  <span class="dropdown-text">Claude AI</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../CONTRIBUTING.html"> 
+    <a class="nav-link" href="../../CONTRIBUTING.html"> 
 <span class="menu-text">Contributing</span></a>
   </li>  
 </ul>
@@ -464,7 +429,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-transparency/understanding-transparency.html">Research Transparency</a></li><li class="breadcrumb-item"><a href="../research-transparency/how-to-publish-dataverse.html">How to Publish to Dataverse</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../software/index.html">Software Guides</a></li><li class="breadcrumb-item"><a href="../../software/claude/index.html">Claude AI</a></li><li class="breadcrumb-item"><a href="../../software/claude/use-cases.html">Claude Code for Research and Project Management</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -475,9 +440,9 @@ cookieconsent.run({
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/logos/IPA-primary-color-RGB.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../assets/logos/IPA-primary-color-RGB-inverted.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../assets/logos/IPA-primary-color-RGB.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../assets/logos/IPA-primary-color-RGB-inverted.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
@@ -493,43 +458,43 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-design/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Research Design</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/research-methods.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-design/research-methods.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Research Methods</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/randomization.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-design/randomization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Randomization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/sample-size-power.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-design/sample-size-power.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sample and Power Calculations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/measurement.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-design/measurement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Measurement</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/survey-translation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-design/survey-translation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Survey Translation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-design/addressing-rct-criticisms.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-design/addressing-rct-criticisms.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Addressing Common Criticisms of RCTs</span></a>
   </div>
 </li>
@@ -546,7 +511,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../monitoring-evaluation-learning/theory-of-change.html" class="sidebar-item-text sidebar-link">
+  <a href="../../monitoring-evaluation-learning/theory-of-change.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Theory of Change</span></a>
   </div>
 </li>
@@ -561,25 +526,25 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../monitoring-evaluation-learning/ab-testing/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../monitoring-evaluation-learning/ab-testing/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About A/B Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../monitoring-evaluation-learning/ab-testing/when-ab-tests-works.html" class="sidebar-item-text sidebar-link">
+  <a href="../../monitoring-evaluation-learning/ab-testing/when-ab-tests-works.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">When A/B Testing Works</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../monitoring-evaluation-learning/ab-testing/implementing-ab-tests.html" class="sidebar-item-text sidebar-link">
+  <a href="../../monitoring-evaluation-learning/ab-testing/implementing-ab-tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Implementing A/B Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../monitoring-evaluation-learning/ab-testing/practical-guidance-ab-testing.html" class="sidebar-item-text sidebar-link">
+  <a href="../../monitoring-evaluation-learning/ab-testing/practical-guidance-ab-testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practical Guidance A/B Testing</span></a>
   </div>
 </li>
@@ -598,31 +563,31 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-ethics/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-ethics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About IPA IRB</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-ethics/irb-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-ethics/irb-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IRB review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-ethics/irb-lifecycle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-ethics/irb-lifecycle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The IRB Lifecycle</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-ethics/irb-key-topics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-ethics/irb-key-topics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Key Topics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-ethics/irb-reliance-agreements.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-ethics/irb-reliance-agreements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reliance Agreements</span></a>
   </div>
 </li>
@@ -639,7 +604,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Data Quality</span></a>
   </div>
 </li>
@@ -654,61 +619,61 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/survey-plan.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/survey-plan.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Survey Planning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/action-plan.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/action-plan.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Quality Action Plan</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/bench-testing.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/bench-testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bench Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/pilot-survey.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/pilot-survey.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pilot Survey</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/accompany-surveyors.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/accompany-surveyors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Accompany Surveyors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/high-frequency-checks.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/high-frequency-checks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">High-Frequency Checks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/backchecks.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/backchecks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Backchecks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/data-anonymization.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/data-anonymization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Anonymization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/aea-registry.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/aea-registry.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AEA Registry</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/data-integrity.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/data-integrity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Integrity</span></a>
   </div>
 </li>
@@ -716,7 +681,7 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/data-management-system.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/data-management-system.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IPA’s Data Management System</span></a>
   </div>
 </li>
@@ -731,13 +696,13 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/datasure/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/datasure/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About DataSure</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-quality/datasure/how-to-datasure.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-quality/datasure/how-to-datasure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How to Use DataSure</span></a>
   </div>
 </li>
@@ -756,13 +721,13 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-security/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-security/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Data Security</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-security/data-security-protocol.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-security/data-security-protocol.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Security Protocol</span></a>
   </div>
 </li>
@@ -779,19 +744,19 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Data Collection</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/in-person-surveys.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/in-person-surveys.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">In-Person Surveys</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/phone-surveys.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/phone-surveys.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Phone Surveys</span></a>
   </div>
 </li>
@@ -806,31 +771,31 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/whatsapp/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/whatsapp/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About WhatsApp Surveys</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/whatsapp/whatsapp-surveys-twilio.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/whatsapp/whatsapp-surveys-twilio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Twilio Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/whatsapp/whatsapp-design.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/whatsapp/whatsapp-design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Designing a WhatsApp Survey</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/whatsapp/whatsapp-deploy.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/whatsapp/whatsapp-deploy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deploying a WhatsApp Survey</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/whatsapp/whatsapp-data-security.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/whatsapp/whatsapp-data-security.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">WhatsApp and Data Security</span></a>
   </div>
 </li>
@@ -847,37 +812,37 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/qualitative-methods/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/qualitative-methods/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Qualitative Methods</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/qualitative-methods/focus-groups.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/qualitative-methods/focus-groups.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Focus Groups</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/qualitative-methods/interviews.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/qualitative-methods/interviews.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interviews</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/qualitative-methods/ethnographies.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/qualitative-methods/ethnographies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Rapid Ethnographic Assessments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/qualitative-methods/observations.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/qualitative-methods/observations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Observations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/qualitative-methods/ai-assisted-coding.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/qualitative-methods/ai-assisted-coding.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AI-Assisted Qualitative Coding</span></a>
   </div>
 </li>
@@ -885,7 +850,7 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/admin-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/admin-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Administrative Data</span></a>
   </div>
 </li>
@@ -900,25 +865,25 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/field-staff-training.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/field-staff-training.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Field Staff Training</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/community-entry-local-leaders.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/community-entry-local-leaders.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Community Entry and Local Leader Engagement</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/managing-surveyor-performance.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/managing-surveyor-performance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Managing Surveyor Performance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/paper-survey-data-entry.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/paper-survey-data-entry.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Paper Survey Data Entry</span></a>
   </div>
 </li>
@@ -933,37 +898,37 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/tracking/why-tracking.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/tracking/why-tracking.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why Tracking Matters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/tracking/survey-tracking.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/tracking/survey-tracking.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Survey Tracking</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/tracking/respondent-tracking.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/tracking/respondent-tracking.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Respondent Tracking</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/tracking/longitudinal-tracking.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/tracking/longitudinal-tracking.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Longitudinal Tracking Strategies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/tracking/replacements.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/tracking/replacements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Replacement Procedures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/fieldwork-management/tracking/mop-up.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-collection/fieldwork-management/tracking/mop-up.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Mop-Up Operations</span></a>
   </div>
 </li>
@@ -984,31 +949,31 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-cleaning/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-cleaning/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Data Cleaning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-cleaning/raw-data-management.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-cleaning/raw-data-management.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Raw Data Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-cleaning/variable-management.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-cleaning/variable-management.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variable Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-cleaning/dataset-documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-cleaning/dataset-documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataset Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-cleaning/data-aggregation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-cleaning/data-aggregation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Aggregation</span></a>
   </div>
 </li>
@@ -1025,7 +990,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Data Science</span></a>
   </div>
 </li>
@@ -1040,97 +1005,97 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/run-quit.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/run-quit.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Running and Quitting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/variables.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variables and Assignment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/types-conversion.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/types-conversion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Types and Conversion</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/built-in.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/built-in.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Built-in Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/libraries.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/libraries.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Libraries</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/lists.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/lists.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lists</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/for-loops.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/for-loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">For Loops</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/conditionals.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/conditionals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conditionals</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/looping-data-sets.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/looping-data-sets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Looping Over Data Sets</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/writing-functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/writing-functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writing Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/scope.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/scope.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variable Scope</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/style.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/style.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Programming Style</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/reading-tabular.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/reading-tabular.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading Tabular Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/data-frames.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/data-frames.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pandas DataFrames</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-analysis/plotting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-analysis/plotting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plotting</span></a>
   </div>
 </li>
@@ -1147,37 +1112,37 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/webscraping/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/webscraping/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Web Scraping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/webscraping/gazpacho-basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/webscraping/gazpacho-basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started with Gazpacho</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/webscraping/getting-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/webscraping/getting-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Making HTTP Requests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/webscraping/parsing-soup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/webscraping/parsing-soup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Parsing HTML with Soup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/webscraping/pandas-integration.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/webscraping/pandas-integration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Integration with Pandas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/webscraping/strict-attributes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/webscraping/strict-attributes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Advanced Selection</span></a>
   </div>
 </li>
@@ -1185,7 +1150,7 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../data-science/data-visualization/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../data-science/data-visualization/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Visualization</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -1203,31 +1168,31 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/communicating/communicating-with-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/communicating/communicating-with-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communicating with Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/communicating/data-visualization-principles.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/communicating/data-visualization-principles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Visualization Principles</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/communicating/choosing-the-right-chart.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/communicating/choosing-the-right-chart.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Choosing the Right Chart</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/communicating/turning-data-into-impact.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/communicating/turning-data-into-impact.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Turning Data into Impact</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/communicating/monitoring-dashboards.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/communicating/monitoring-dashboards.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dashboards for Decisions</span></a>
   </div>
 </li>
@@ -1244,49 +1209,49 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/python/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Visualization with Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/python/intro-seaborn-objects.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/intro-seaborn-objects.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Seaborn</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/python/grammar-of-graphics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/grammar-of-graphics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Grammar of Graphics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/python/marks-geometric-objects.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/marks-geometric-objects.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Marks and Geometric Objects</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/python/faceting-layering.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/faceting-layering.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Faceting and Layering</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/python/labels-scales-customization.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/labels-scales-customization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Labels and Customization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/python/statistical-transformations.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/statistical-transformations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistical Transformations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-science/data-visualization/python/themes-final-polish.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-science/data-visualization/python/themes-final-polish.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Themes and Final Polish</span></a>
   </div>
 </li>
@@ -1298,28 +1263,28 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="false">
  <span class="menu-text">Research Transparency</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-21" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-21" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-transparency/understanding-transparency.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-transparency/understanding-transparency.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Understanding Research Transparency</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-transparency/publication-preparation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../research-transparency/publication-preparation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Publication Preparation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-transparency/how-to-publish-dataverse.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../research-transparency/how-to-publish-dataverse.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How to Publish to Dataverse</span></a>
   </div>
 </li>
@@ -1327,16 +1292,16 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="true">
  <span class="menu-text">Software Guides</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-22" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-22" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Software Overview</span></a>
   </div>
 </li>
@@ -1351,43 +1316,43 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-23" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/shell/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/shell/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introducing the Shell</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/shell/filedir.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/shell/filedir.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">File Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/shell/create.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/shell/create.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Working With Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/shell/pipefilter.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/shell/pipefilter.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pipes and Filters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/shell/loops.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/shell/loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loops</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/shell/scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/shell/scripts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Scripts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/shell/find.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/shell/find.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Finding Things</span></a>
   </div>
 </li>
@@ -1404,19 +1369,19 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-24" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/virtualenv/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/virtualenv/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virtual Environments Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/virtualenv/python-uv.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/virtualenv/python-uv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Virtual Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/virtualenv/docker.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/virtualenv/docker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Docker</span></a>
   </div>
 </li>
@@ -1433,67 +1398,67 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-25" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/getting-started.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/getting-started.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started with Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/create-repo.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/create-repo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating a Repository</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/clone-repo.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/clone-repo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cloning a Repository</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/configuration.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/configuration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Configuration</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/track-changes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/track-changes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tracking Changes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/push-changes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/push-changes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Push and Pull Changes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/branches.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/branches.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Working with Branches</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/pull-request.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/pull-request.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating Pull Requests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/git/conflicts.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/git/conflicts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Handling Merge Conflicts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/github/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/github/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GitHub</span></a>
   </div>
 </li>
@@ -1510,7 +1475,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-26" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/vscode/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/vscode/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">VS Code</span></a>
   </div>
 </li>
@@ -1527,19 +1492,19 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-27" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/stata/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/stata/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started with Stata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/stata/coding-stata.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/stata/coding-stata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coding in Stata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/stata/data-processing-stata.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/stata/data-processing-stata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Processing in Stata</span></a>
   </div>
 </li>
@@ -1556,19 +1521,19 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-28" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/python/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started with Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/python/coding-python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/python/coding-python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coding in Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/python/data-processing-python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/python/data-processing-python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Processing Data in Python</span></a>
   </div>
 </li>
@@ -1585,13 +1550,13 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-29" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/quarto/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/quarto/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting started with Quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/quarto/basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/quarto/basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writing in Quarto</span></a>
   </div>
 </li>
@@ -1599,28 +1564,28 @@ cookieconsent.run({
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="true">
  <span class="menu-text">Claude AI</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-30" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-30" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/claude/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/claude/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started with Claude AI</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/claude/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/claude/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setting Up Claude Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../software/claude/use-cases.html" class="sidebar-item-text sidebar-link">
+  <a href="../../software/claude/use-cases.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Claude Code for Research and Project Management</span></a>
   </div>
 </li>
@@ -1639,13 +1604,13 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-31" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../teams/grds.html" class="sidebar-item-text sidebar-link">
+  <a href="../../teams/grds.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Research and Data Science</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../teams/rfe.html" class="sidebar-item-text sidebar-link">
+  <a href="../../teams/rfe.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Right-Fit Evidence</span></a>
   </div>
 </li>
@@ -1660,63 +1625,33 @@ cookieconsent.run({
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#before-you-begin" id="toc-before-you-begin" class="nav-link active" data-scroll-target="#before-you-begin">Before You Begin</a></li>
-    <li><a href="#step-1-set-up-your-curation-workspace" id="toc-step-1-set-up-your-curation-workspace" class="nav-link" data-scroll-target="#step-1-set-up-your-curation-workspace">Step 1: Set Up Your Curation Workspace</a>
+    <li><a href="#what-this-page-is-for" id="toc-what-this-page-is-for" class="nav-link active" data-scroll-target="#what-this-page-is-for">What this page is for</a></li>
+    <li><a href="#use-cases-in-research-work" id="toc-use-cases-in-research-work" class="nav-link" data-scroll-target="#use-cases-in-research-work">Use cases in research work</a>
     <ul class="collapse">
-    <li><a href="#create-the-folder-structure" id="toc-create-the-folder-structure" class="nav-link" data-scroll-target="#create-the-folder-structure">Create the Folder Structure</a></li>
-    <li><a href="#curation-checklist-overview" id="toc-curation-checklist-overview" class="nav-link" data-scroll-target="#curation-checklist-overview">Curation Checklist Overview</a></li>
+    <li><a href="#have-claude-code-run-your-stata-code" id="toc-have-claude-code-run-your-stata-code" class="nav-link" data-scroll-target="#have-claude-code-run-your-stata-code">Have Claude Code run your Stata code</a></li>
+    <li><a href="#write-and-debug-with-the-right-context" id="toc-write-and-debug-with-the-right-context" class="nav-link" data-scroll-target="#write-and-debug-with-the-right-context">Write and debug with the right context</a></li>
     </ul></li>
-    <li><a href="#step-2-remove-personally-identifiable-information" id="toc-step-2-remove-personally-identifiable-information" class="nav-link" data-scroll-target="#step-2-remove-personally-identifiable-information">Step 2: Remove Personally Identifiable Information</a>
+    <li><a href="#use-cases-in-project-management" id="toc-use-cases-in-project-management" class="nav-link" data-scroll-target="#use-cases-in-project-management">Use cases in project management</a>
     <ul class="collapse">
-    <li><a href="#run-pii-detection" id="toc-run-pii-detection" class="nav-link" data-scroll-target="#run-pii-detection">Run PII Detection</a></li>
-    <li><a href="#document-your-decisions" id="toc-document-your-decisions" class="nav-link" data-scroll-target="#document-your-decisions">Document Your Decisions</a></li>
-    <li><a href="#apply-pii-removal" id="toc-apply-pii-removal" class="nav-link" data-scroll-target="#apply-pii-removal">Apply PII Removal</a></li>
-    <li><a href="#check-other-materials" id="toc-check-other-materials" class="nav-link" data-scroll-target="#check-other-materials">Check Other Materials</a></li>
+    <li><a href="#keep-a-project-knowledge-base" id="toc-keep-a-project-knowledge-base" class="nav-link" data-scroll-target="#keep-a-project-knowledge-base">Keep a project knowledge base</a></li>
+    <li><a href="#draft-a-weekly-status-report" id="toc-draft-a-weekly-status-report" class="nav-link" data-scroll-target="#draft-a-weekly-status-report">Draft a weekly status report</a></li>
     </ul></li>
-    <li><a href="#step-3-verify-code-runs-without-errors" id="toc-step-3-verify-code-runs-without-errors" class="nav-link" data-scroll-target="#step-3-verify-code-runs-without-errors">Step 3: Verify Code Runs Without Errors</a>
+    <li><a href="#prompt-patterns-that-matter-for-this-work" id="toc-prompt-patterns-that-matter-for-this-work" class="nav-link" data-scroll-target="#prompt-patterns-that-matter-for-this-work">Prompt patterns that matter for this work</a></li>
+    <li><a href="#tailor-claude-to-your-work" id="toc-tailor-claude-to-your-work" class="nav-link" data-scroll-target="#tailor-claude-to-your-work">Tailor Claude to your work</a>
     <ul class="collapse">
-    <li><a href="#set-up-the-master-do-file" id="toc-set-up-the-master-do-file" class="nav-link" data-scroll-target="#set-up-the-master-do-file">Set Up the Master Do-File</a></li>
-    <li><a href="#run-and-fix-code" id="toc-run-and-fix-code" class="nav-link" data-scroll-target="#run-and-fix-code">Run and Fix Code</a></li>
-    <li><a href="#document-changes" id="toc-document-changes" class="nav-link" data-scroll-target="#document-changes">Document Changes</a></li>
+    <li><a href="#in-claude-code" id="toc-in-claude-code" class="nav-link" data-scroll-target="#in-claude-code">In Claude Code</a></li>
+    <li><a href="#in-a-claude-project-claude.ai" id="toc-in-a-claude-project-claude.ai" class="nav-link" data-scroll-target="#in-a-claude-project-claude.ai">In a Claude Project (claude.ai)</a></li>
     </ul></li>
-    <li><a href="#step-4-check-for-discrepancies" id="toc-step-4-check-for-discrepancies" class="nav-link" data-scroll-target="#step-4-check-for-discrepancies">Step 4: Check for Discrepancies</a>
-    <ul class="collapse">
-    <li><a href="#compare-results" id="toc-compare-results" class="nav-link" data-scroll-target="#compare-results">Compare Results</a></li>
-    <li><a href="#define-discrepancies" id="toc-define-discrepancies" class="nav-link" data-scroll-target="#define-discrepancies">Define Discrepancies</a></li>
-    <li><a href="#document-and-resolve" id="toc-document-and-resolve" class="nav-link" data-scroll-target="#document-and-resolve">Document and Resolve</a></li>
-    </ul></li>
-    <li><a href="#step-5-prepare-the-final-package" id="toc-step-5-prepare-the-final-package" class="nav-link" data-scroll-target="#step-5-prepare-the-final-package">Step 5: Prepare the Final Package</a>
-    <ul class="collapse">
-    <li><a href="#verify-readme-file" id="toc-verify-readme-file" class="nav-link" data-scroll-target="#verify-readme-file">Verify ReadMe File</a></li>
-    <li><a href="#peer-review" id="toc-peer-review" class="nav-link" data-scroll-target="#peer-review">Peer Review</a></li>
-    <li><a href="#secondary-pii-check" id="toc-secondary-pii-check" class="nav-link" data-scroll-target="#secondary-pii-check">Secondary PII Check</a></li>
-    <li><a href="#prepare-files-for-upload" id="toc-prepare-files-for-upload" class="nav-link" data-scroll-target="#prepare-files-for-upload">Prepare Files for Upload</a></li>
-    </ul></li>
-    <li><a href="#step-6-upload-to-dataverse" id="toc-step-6-upload-to-dataverse" class="nav-link" data-scroll-target="#step-6-upload-to-dataverse">Step 6: Upload to Dataverse</a>
-    <ul class="collapse">
-    <li><a href="#create-new-dataset" id="toc-create-new-dataset" class="nav-link" data-scroll-target="#create-new-dataset">Create New Dataset</a></li>
-    <li><a href="#enter-initial-metadata" id="toc-enter-initial-metadata" class="nav-link" data-scroll-target="#enter-initial-metadata">Enter Initial Metadata</a></li>
-    <li><a href="#upload-files" id="toc-upload-files" class="nav-link" data-scroll-target="#upload-files">Upload Files</a></li>
-    <li><a href="#save-and-add-remaining-metadata" id="toc-save-and-add-remaining-metadata" class="nav-link" data-scroll-target="#save-and-add-remaining-metadata">Save and Add Remaining Metadata</a></li>
-    <li><a href="#enable-guestbook" id="toc-enable-guestbook" class="nav-link" data-scroll-target="#enable-guestbook">Enable Guestbook</a></li>
-    <li><a href="#final-review-and-publish" id="toc-final-review-and-publish" class="nav-link" data-scroll-target="#final-review-and-publish">Final Review and Publish</a></li>
-    </ul></li>
-    <li><a href="#step-7-post-publication-tasks" id="toc-step-7-post-publication-tasks" class="nav-link" data-scroll-target="#step-7-post-publication-tasks">Step 7: Post-Publication Tasks</a>
-    <ul class="collapse">
-    <li><a href="#share-the-link" id="toc-share-the-link" class="nav-link" data-scroll-target="#share-the-link">Share the Link</a></li>
-    <li><a href="#related-documentation" id="toc-related-documentation" class="nav-link" data-scroll-target="#related-documentation">Related Documentation</a></li>
-    </ul></li>
+    <li><a href="#prompt-safely" id="toc-prompt-safely" class="nav-link" data-scroll-target="#prompt-safely">Prompt safely</a></li>
+    <li><a href="#go-further" id="toc-go-further" class="nav-link" data-scroll-target="#go-further">Go further</a></li>
     </ul>
     <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Authors</h2>
   <ul>
-        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/niall-keleher" class="nav-link" data-scroll-target="https\://poverty-action.org/people/niall-keleher">Niall Keleher</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/juan-felipe-garcia-rodriguez" class="nav-link" data-scroll-target="https\://poverty-action.org/people/juan-felipe-garcia-rodriguez">Juan Felipe García Rodríguez</a></li>
+        <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/diego-quintero-mogollon" class="nav-link" data-scroll-target="https\://poverty-action.org/people/diego-quintero-mogollon">Diego Quintero Mogollón</a></li>
       </ul>
-      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
-  <ul>
-        <li class="contributors" style="font-size: 0.86rem;">Angie Ibrahim</li>
-      </ul>
-      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
+        <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
     <li class="last-modified" style="font-size: 0.86rem;">August 11, 2026</li>
   </ul>
@@ -1724,19 +1659,35 @@ cookieconsent.run({
   <ul>
     <li class="license" style="font-size: 0.86rem;"><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="nav-link" data-scroll-target="https\://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></li>
   </ul>
-  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-transparency/how-to-publish-dataverse.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/software/claude/use-cases.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-transparency/understanding-transparency.html">Research Transparency</a></li><li class="breadcrumb-item"><a href="../research-transparency/how-to-publish-dataverse.html">How to Publish to Dataverse</a></li></ol></nav><h1 class="title display-7">How to Publish a Replication Package to Dataverse</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../software/index.html">Software Guides</a></li><li class="breadcrumb-item"><a href="../../software/claude/index.html">Claude AI</a></li><li class="breadcrumb-item"><a href="../../software/claude/use-cases.html">Claude Code for Research and Project Management</a></li></ol></nav><h1 class="title display-7">Claude Code for Research and Project Management</h1></header>
 
 
 <header id="title-block-header">
     
-        <p class="abstract">This how-to guide provides step-by-step instructions for curating research materials and publishing a replication package to IPA’s Dataverse.</p>
+        <p class="abstract">How research and project-management staff put Claude Code to work: concrete use cases across data analysis and operations, the few prompt patterns that matter most for this work, and how to have Claude remember your preferences over time.</p>
     
 </header>
 
 
+<div class="callout callout-style-default callout-note callout-titled" title="Recognition and Attribution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Recognition and Attribution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This content is adapted from the <a href="https://github.com/juanfegarIPA/claude-code-ipa-colombia">Claude Code guide for IPA Colombia</a> by Juan Felipe García Rodríguez and Diego Quintero Mogollón, used under the <a href="https://github.com/juanfegarIPA/claude-code-ipa-colombia/blob/main/LICENSE">MIT License</a>.</p>
+</div>
+</div>
+</div>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1748,21 +1699,103 @@ cookieconsent.run({
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Set up a curation workspace with separate folders for original files, working files, and final Dataverse files.</li>
-<li>Remove all personally identifiable information using IPA’s PII detection tools and document your decisions.</li>
-<li>Verify that all code runs without errors and produces outputs matching published results.</li>
-<li>Complete a peer review and secondary PII check before uploading to Dataverse.</li>
+<li>Claude Code earns its place on real research and operations work: writing and running your analysis code, and keeping project knowledge in one place.</li>
+<li>Describe the outcome you want and give Claude the context to reach it: code and structure, never participant data. The decisions stay yours.</li>
+<li>Have Claude remember your conventions and corrections so it fits the way you work over time.</li>
 </ul>
 </div>
 </div>
-<section id="before-you-begin" class="level2">
-<h2 class="anchored" data-anchor-id="before-you-begin">Before You Begin</h2>
-<p>This guide walks you through the data curation workflow for publishing a replication package to <a href="https://dataverse.harvard.edu/dataverse/ipa">IPA’s Dataverse</a>. Before starting, ensure you have:</p>
+<section id="what-this-page-is-for" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-page-is-for">What this page is for</h2>
+<p>This page is about the research and project-management work Claude Code is genuinely good at: the tasks analysts and operations staff do every week. It is not a general prompting tutorial, and it assumes you have already <a href="../../software/claude/setup.html">set up Claude Code</a>.</p>
+</section>
+<section id="use-cases-in-research-work" class="level2">
+<h2 class="anchored" data-anchor-id="use-cases-in-research-work">Use cases in research work</h2>
+<p>For research staff, the clearest win is a closed loop. Because Claude Code runs tools on your computer, it does not stop at writing a script. It runs the script, reads the result, and fixes what broke, so you react to the result and not to every step.</p>
+<p>Throughout this work, share <strong>structure and code, never raw data</strong>. Describe the shape of your dataset and paste the code or the error, but do not paste records or point Claude at a file of participant data. See <a href="#prompt-safely">Prompt safely</a> below.</p>
+<section id="have-claude-code-run-your-stata-code" class="level3">
+<h3 class="anchored" data-anchor-id="have-claude-code-run-your-stata-code">Have Claude Code run your Stata code</h3>
+<p>This is the pattern that saves analysts the most time: Claude writes a do-file, runs it, reads the log, and fixes what broke, all without you leaving the session. It works once Claude knows how your Stata runs, so tell it once and save that instruction to your project’s <code>CLAUDE.md</code>, or ask Claude to remember it. Something like:</p>
+<pre class="text"><code>When you run my Stata code, use the executable at
+"C:/Program Files/Stata19/StataMP-64.exe" in batch mode. Use the flags
+-e -q from a Unix shell such as Git Bash, or /e /q from PowerShell.
+Change into the do-file's folder first. Stata writes a log in that folder
+with the same name as the do-file, so read that log to check the run, and
+treat any line matching r(###); as an error. Only run do-files clearly
+marked as temporary.</code></pre>
+<p>With that saved, the loop runs on its own. Claude writes the do-file, runs it, and watches the log fill as Stata works. A clean run ends with <code>end of do-file</code> and no return code; an error shows up as a line like <code>r(111);</code> (a variable not found) or <code>r(198);</code> (a syntax error). Claude reads the lines just above it, fixes the do-file, and runs again until the log is clean.</p>
+<p>Share the do-file and the log with Claude, never the data itself.</p>
+</section>
+<section id="write-and-debug-with-the-right-context" class="level3">
+<h3 class="anchored" data-anchor-id="write-and-debug-with-the-right-context">Write and debug with the right context</h3>
+<p>Claude writes good analysis code when it has the context you would give a new research assistant. Before you ask for a do-file, point it at what defines the work: the data dictionary, the pre-analysis plan, and a previous do-file with data it can run. It picks up your variable names, conventions, and house style from those and matches them. When something breaks, give it the error and a few lines of log around it, and it diagnoses the cause instead of guessing. Ask it to document what it builds, a README or commented do-files, so the analysis reproduces later.</p>
+<p>Claude Code also works across languages. It can drive Stata for the analysis, Python or R for better-looking plots, and Quarto for the write-up, scaffolding the wiring between them.</p>
+</section>
+</section>
+<section id="use-cases-in-project-management" class="level2">
+<h2 class="anchored" data-anchor-id="use-cases-in-project-management">Use cases in project management</h2>
+<p>Project-management work is less about code than about context: what a project is, where it stands, and what happens next. Claude Code helps when that context lives in files it can read. Two things shape how it helps. Claude starts each session with no memory of your project beyond what you give it, and it will not keep your files current on its own. The useful pattern is therefore a <strong>trigger</strong>: a <a href="#tailor-claude-to-your-work">skill</a> you invoke to update a knowledge base or produce a report on demand. Nothing here maintains itself.</p>
+<section id="keep-a-project-knowledge-base" class="level3">
+<h3 class="anchored" data-anchor-id="keep-a-project-knowledge-base">Keep a project knowledge base</h3>
+<p>Keep your project’s durable knowledge as files Claude Code can read, in whatever format you already work in: decisions, meeting outcomes, open questions, reference documents. When the knowledge base is current, you ask it questions in plain language:</p>
+<pre class="text"><code>What did the team decide about the follow-up survey, and when?</code></pre>
+<p>Claude answers from the files. The catch is the word <em>current</em>. A knowledge base is only as good as its last update, and Claude will not compile one in the background. Make updating it a trigger you run: after a meeting, invoke a skill that reads your raw notes and folds the decisions into the knowledge base. Raw notes go in, a clean and current set of files comes out, and it stays useful only because the trigger keeps compiling it.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>At IPA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This material usually lives in a shared drive such as Box. Keep the knowledge base to Public and Internal content only, never participant data or anything Confidential.</p>
+</div>
+</div>
+</section>
+<section id="draft-a-weekly-status-report" class="level3">
+<h3 class="anchored" data-anchor-id="draft-a-weekly-status-report">Draft a weekly status report</h3>
+<p>Keep even a rough list of what you worked on, and Claude Code turns it into a weekly update. This is worth saving as a <a href="#tailor-claude-to-your-work">skill</a> you run each week, so the report is one trigger rather than a prompt you rewrite:</p>
+<pre class="text"><code>Turn these notes into a weekly update with five parts: what I finished,
+what is in progress and its next step, what is blocked and why, how my
+week split across priorities, and the decisions waiting for next week.</code></pre>
+<p>Then edit the draft it gives you instead of starting from a blank page.</p>
+<p>When your notes mention people or specific figures, keep the report at the level of projects and tasks, not individuals. Remove names and any sensitive detail before you share the notes with Claude.</p>
+</section>
+</section>
+<section id="prompt-patterns-that-matter-for-this-work" class="level2">
+<h2 class="anchored" data-anchor-id="prompt-patterns-that-matter-for-this-work">Prompt patterns that matter for this work</h2>
+<p>Good results come from giving Claude the context it needs. It is fluent in Stata and in writing; what it lacks is the specifics of your project. A handful of patterns carry most of the difference.</p>
+<p><strong>Start in plan mode.</strong> Have Claude read everything and lay out an approach before it changes anything. Use <code>/plan</code> to request planning mode, or press Shift+Tab to enter it.</p>
+<p><strong>Describe the outcome, not the steps.</strong> Say what you want to end up with and let Claude choose the commands.</p>
+<pre class="text"><code>Make a table of take-up rates by treatment arm and export it to Word.</code></pre>
+<p><strong>Point at your conventions.</strong> Instead of describing your file layout or coding style, point Claude at a file that already shows it.</p>
+<pre class="text"><code>Write this following the structure in 01_clean.do.</code></pre>
+<p><strong>Give context on an error.</strong> An error code alone is not much to go on. Paste the log lines around the failure and say what you were doing.</p>
+<pre class="text"><code>This do-file stops with r(198). Here are the ten log lines around it: ...
+What is wrong?</code></pre>
+<p><strong>Iterate, do not restart.</strong> Claude remembers the conversation, so refine instead of re-explaining.</p>
+<pre class="text"><code>Keep that, but cluster the standard errors by school.</code></pre>
+<p>What ties these patterns together is context, and that is exactly where data safety matters. <strong>Give Claude the code, the structure, and the errors, but never personal or identifying data.</strong> The next section makes the line concrete.</p>
+</section>
+<section id="tailor-claude-to-your-work" class="level2">
+<h2 class="anchored" data-anchor-id="tailor-claude-to-your-work">Tailor Claude to your work</h2>
+<p>You should not have to re-explain your project every session. Claude can carry your context and conventions for you, and the mechanism differs between Claude Code and the chat, so keep the two separate.</p>
+<section id="in-claude-code" class="level3">
+<h3 class="anchored" data-anchor-id="in-claude-code">In Claude Code</h3>
 <ul>
-<li>Access to the complete research materials (datasets, code, survey instruments)</li>
-<li>Access to the final publication or manuscript for comparison</li>
-<li>Stata installed (or the relevant statistical software used in analysis)</li>
-<li>A Dataverse account with permissions to upload to IPA’s repository</li>
+<li><strong><code>CLAUDE.md</code></strong> is a file in your project where you write the things Claude should always know: how the project is laid out, how to run it, and the conventions to follow. Claude reads it at the start of every session.</li>
+<li><strong>Built-in memory</strong> lets Claude remember across sessions. When you correct it, say “remember this,” and it saves the rule and applies it next time, so you stop repeating the same corrections.</li>
+<li><strong>Skills</strong> package reusable instructions for a recurring task. You trigger one by name, like a slash command, or Claude runs it on its own when it fits the work. This Hub ships a <code>knowledge-hub-generator</code> skill that captures its own house style.</li>
+</ul>
+</section>
+<section id="in-a-claude-project-claude.ai" class="level3">
+<h3 class="anchored" data-anchor-id="in-a-claude-project-claude.ai">In a Claude Project (claude.ai)</h3>
+<p>In the chat, the equivalent is a <strong>Project</strong>: a reusable space with its own instructions and reference documents that tailors Claude to a recurring task. There are two kinds:</p>
+<ul>
+<li><strong>Personal</strong>, one you create for your own recurring work.</li>
+<li><strong>Company-provided</strong>, one your organization publishes for everyone to use.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1770,550 +1803,49 @@ cookieconsent.run({
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Background Resources
+<span class="screen-reader-only">Note</span>At IPA
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For background on why data sharing matters, see <a href="../research-transparency/understanding-transparency.html">Understanding Research Transparency</a>. For detailed requirements on what materials to include, see <a href="../research-transparency/publication-preparation.html">Data Publication Preparation</a>.</p>
+<p>IPA’s Knowledge Hub Generator, the assistant used to draft pages for this Hub, is a company-provided Project.</p>
 </div>
 </div>
 </section>
-<section id="step-1-set-up-your-curation-workspace" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-set-up-your-curation-workspace">Step 1: Set Up Your Curation Workspace</h2>
-<p>Create a folder structure that preserves original files while allowing you to work on modifications.</p>
-<section id="create-the-folder-structure" class="level3">
-<h3 class="anchored" data-anchor-id="create-the-folder-structure">Create the Folder Structure</h3>
-<p>Within your replication folder (named with the study title and primary PI), create three subfolders:</p>
-<pre class="text"><code>[Study Name - PI Name]/
-├── Original Files/     # Preserve unmodified copies of all received files
-├── Working Files/      # Make all modifications here
-└── Dataverse Files/    # Final package for publication</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/dataverse/dataverse_folders.png" class="img-fluid figure-img"></p>
-<figcaption>Folder Structure</figcaption>
-</figure>
-</div>
-<p>The “Working Files” and “Dataverse Files” folders should use the following structure:</p>
-<pre class="text"><code>Working Files/
-├── data/
-│   ├── raw/
-│   ├── intermediate/
-│   └── final/
-├── code/
-│   ├── cleaning/
-│   ├── analysis/
-│   └── figures-tables/
-├── documentation/
-│   ├── surveys/
-│   ├── codebooks/
-│   └── readme/
-├── output/
-│   ├── tables/
-│   ├── figures/
-│   └── logs/
-└── user-commands/</code></pre>
 </section>
-<section id="curation-checklist-overview" class="level3">
-<h3 class="anchored" data-anchor-id="curation-checklist-overview">Curation Checklist Overview</h3>
-<p>Use this checklist to track your progress through the curation workflow:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 73%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Task</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Set up project folder</td>
-<td>Create original files, working files, and Dataverse files folders using the structure above</td>
-</tr>
-<tr class="even">
-<td>Initial PII checks</td>
-<td>Run PII detection tools and document flagged variables</td>
-</tr>
-<tr class="odd">
-<td>Code runs and checks</td>
-<td>Verify all code runs without errors</td>
-</tr>
-<tr class="even">
-<td>Output checks</td>
-<td>Compare code outputs against the academic paper or manuscript</td>
-</tr>
-<tr class="odd">
-<td>Secondary PII checks</td>
-<td>Run a second PII check after code modifications</td>
-</tr>
-<tr class="even">
-<td>Status update with PI</td>
-<td>Share findings from PII checks and code runs with the research team</td>
-</tr>
-<tr class="odd">
-<td>Write ReadMe</td>
-<td>Document the replication package contents and instructions</td>
-</tr>
-<tr class="even">
-<td>Fill in metadata</td>
-<td>Complete the metadata template for Dataverse</td>
-</tr>
-<tr class="odd">
-<td>Create Dataverse entry</td>
-<td>Set up the dataset entry with metadata and guestbook</td>
-</tr>
-<tr class="even">
-<td>Final replication test</td>
-<td>Verify successful push-button replication</td>
-</tr>
-<tr class="odd">
-<td>Upload to Dataverse</td>
-<td>Double-compress files and upload to the Dataverse entry</td>
-</tr>
-<tr class="even">
-<td>Update project records</td>
-<td>Add Dataverse link to project page and notify communications team</td>
-</tr>
-</tbody>
-</table>
-<p>The following sections walk through each of these tasks in detail.</p>
-</section>
-</section>
-<section id="step-2-remove-personally-identifiable-information" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-remove-personally-identifiable-information">Step 2: Remove Personally Identifiable Information</h2>
-<p>All datasets must be checked for and stripped of personally identifiable information before publication.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Comprehensive PII Guidance
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For detailed information on identifying PII, including HIPAA guidelines, detection strategies, and anonymization techniques, see <a href="../data-security/data-security-protocol.html#personally-identifiable-information-pii">Data Security Protocol: Personally Identifiable Information</a>.</p>
-</div>
-</div>
-<section id="run-pii-detection" class="level3">
-<h3 class="anchored" data-anchor-id="run-pii-detection">Run PII Detection</h3>
-<p>IPA provides two options for detecting PII:</p>
-<ol type="1">
-<li><p><strong>PII Detection Tool</strong>: A web-based tool that checks datasets one at a time. Upload each dataset and review the flagged variables. See <a href="https://github.com/PovertyAction/PII_detection">PII Detection Tool</a> on GitHub for instructions.</p></li>
-<li><p><strong>PII Flagging Code</strong>: A Stata do-file that outputs flagged variables to a log file. You can process multiple datasets by listing them in the local macro. See <a href="https://github.com/PovertyAction/split_pii">split_pii</a> on GitHub for instructions.</p></li>
-</ol>
-</section>
-<section id="document-your-decisions" class="level3">
-<h3 class="anchored" data-anchor-id="document-your-decisions">Document Your Decisions</h3>
-<p>For each flagged variable, record in the curation checklist (PII Checks tab):</p>
+<section id="prompt-safely" class="level2">
+<h2 class="anchored" data-anchor-id="prompt-safely">Prompt safely</h2>
+<p>Before you share anything with Claude, ask one question: does this require Claude to see individual data or personal details? If it does, reframe the request toward code and structure instead.</p>
 <ul>
-<li>The variable name</li>
-<li>Why it was flagged</li>
-<li>Your decision: keep, drop, or encode</li>
-<li>Justification for your decision</li>
+<li><strong>Safe:</strong> “Write a do-file that cleans a survey with these variables.” “Here is the log; why does this merge fail?” “Draft an update on this project’s progress for a partner.”</li>
+<li><strong>Not safe:</strong> pasting raw data or individual records, sharing a file of participant data, or naming a specific person and their details.</li>
 </ul>
-</section>
-<section id="apply-pii-removal" class="level3">
-<h3 class="anchored" data-anchor-id="apply-pii-removal">Apply PII Removal</h3>
-<p>Based on your decisions:</p>
-<ul>
-<li><strong>Drop</strong> variables containing PII that are not used in analysis</li>
-<li><strong>Encode</strong> variables used in analysis that contain identifiable information (anonymize variable and value labels too)</li>
-<li><strong>Modify specific entries</strong> in free-text fields (<code>_spec</code> and <code>_oth</code> variables) rather than dropping the entire variable when only some responses contain PII</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Handling Free-Text Responses
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Variables with <code>_spec</code> and <code>_oth</code> suffixes often contain free-form responses. Review these with care—they may contain PII within participant responses such as names, locations, and contact details. Modify only the entries containing PII rather than dropping the entire variable, as these responses are often informative.</p>
-</div>
-</div>
-</section>
-<section id="check-other-materials" class="level3">
-<h3 class="anchored" data-anchor-id="check-other-materials">Check Other Materials</h3>
-<p>Review all other materials for PII:</p>
-<ul>
-<li>Survey instruments and documentation</li>
-<li>Code comments and file paths</li>
-<li>Variable labels and value labels</li>
-<li>Analysis plans and reports</li>
-</ul>
-</section>
-</section>
-<section id="step-3-verify-code-runs-without-errors" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-verify-code-runs-without-errors">Step 3: Verify Code Runs Without Errors</h2>
-<p>After anonymizing datasets, verify that all analysis code runs through without breaking.</p>
-<section id="set-up-the-master-do-file" class="level3">
-<h3 class="anchored" data-anchor-id="set-up-the-master-do-file">Set Up the Master Do-File</h3>
-<p>If one does not exist, create a master do-file that:</p>
-<ol type="1">
-<li>Sets relevant globals pointing to appropriate folders</li>
-<li>Creates a master log file saved to the logs folder</li>
-<li>Documents inputs and outputs for each do-file</li>
-<li>Runs all cleaning, shaping, and analysis code in sequence</li>
-</ol>
-<p>Example structure:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*******************************************************************************</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">* Master do-file for [Study Name]</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">* Runs all code to reproduce paper results</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">*******************************************************************************/</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span> <span class="ot">all</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="kw">more</span> <span class="kw">off</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">version</span> 17 <span class="co">// Specify Stata version used</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>* Set working directory - USER MUST UPDATE THIS PATH</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> main <span class="st">"INSERT WORKING DIRECTORY HERE"</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>* Define folder paths</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> <span class="kw">data</span>     <span class="st">"$main/data"</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> code     <span class="st">"$main/code"</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> output   <span class="st">"$main/output"</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>* Start master <span class="fu">log</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">using</span> <span class="st">"$output/logs/master_log.smcl"</span>, <span class="kw">replace</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>* Data preparation</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/01_clean_data.do"</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/02_construct_variables.do"</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>* Analysis</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/03_main_analysis.do"</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/04_robustness_checks.do"</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>* Output</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/05_tables.do"</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"$code/06_figures.do"</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span> <span class="kw">close</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="run-and-fix-code" class="level3">
-<h3 class="anchored" data-anchor-id="run-and-fix-code">Run and Fix Code</h3>
-<p>Run each do-file sequentially, fixing breakage as you encounter it. Common sources of code breakage include:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 38%">
-<col style="width: 61%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Issue</th>
-<th>Solution</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Typos in variable or filenames</td>
-<td>Correct the typo</td>
-</tr>
-<tr class="even">
-<td>User-specific file paths</td>
-<td>Replace with globals from master do-file</td>
-</tr>
-<tr class="odd">
-<td>Missing user-written commands</td>
-<td>Install required commands (<code>ssc install [command]</code>)</td>
-</tr>
-<tr class="even">
-<td>Variables dropped during anonymization</td>
-<td>Remove references or use alternative variables</td>
-</tr>
-<tr class="odd">
-<td>Assert violations from changed variable counts</td>
-<td>Update assertions to match anonymized data</td>
-</tr>
-<tr class="even">
-<td>Version incompatibility</td>
-<td>Update syntax for current Stata version</td>
-</tr>
-<tr class="odd">
-<td>Incorrect filenames</td>
-<td>Correct the filename references</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="document-changes" class="level3">
-<h3 class="anchored" data-anchor-id="document-changes">Document Changes</h3>
-<p>Record all modifications in the curation checklist (Code Runs tab):</p>
-<ul>
-<li>Which do-file required changes</li>
-<li>What the original code was</li>
-<li>What you changed it to</li>
-<li>Why the change was necessary</li>
-</ul>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Be cautious with modifications. Ensure changes do not alter result outputs in ways that create discrepancies between code output and reported results.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="step-4-check-for-discrepancies" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-check-for-discrepancies">Step 4: Check for Discrepancies</h2>
-<p>When code runs completely, compare outputs to the published manuscript.</p>
-<section id="compare-results" class="level3">
-<h3 class="anchored" data-anchor-id="compare-results">Compare Results</h3>
-<p>Check that:</p>
-<ul>
-<li>All tables can be reproduced from the code</li>
-<li>All figures can be reproduced from the code</li>
-<li>Statistical results match what is reported in the paper</li>
-</ul>
-</section>
-<section id="define-discrepancies" class="level3">
-<h3 class="anchored" data-anchor-id="define-discrepancies">Define Discrepancies</h3>
-<p>IPA defines a discrepancy as any difference greater than 0.001 between code output and published results.</p>
-</section>
-<section id="document-and-resolve" class="level3">
-<h3 class="anchored" data-anchor-id="document-and-resolve">Document and Resolve</h3>
-<p>For each discrepancy:</p>
-<ol type="1">
-<li>Record it in the curation checklist (Discrepancy Checks tab)</li>
-<li>Flag the discrepancy to the research team</li>
-<li>Work with the team to resolve discrepancies where possible</li>
-<li>List any unresolved discrepancies in the ReadMe file</li>
-</ol>
-</section>
-</section>
-<section id="step-5-prepare-the-final-package" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-prepare-the-final-package">Step 5: Prepare the Final Package</h2>
-<p>Before uploading, complete final preparation steps.</p>
-<section id="verify-readme-file" class="level3">
-<h3 class="anchored" data-anchor-id="verify-readme-file">Verify ReadMe File</h3>
-<p>Ensure the ReadMe includes:</p>
-<ul>
-<li>Title and authors</li>
-<li>Citation information</li>
-<li>Software requirements and version numbers</li>
-<li>List of user-written commands</li>
-<li>File structure of the replication package</li>
-<li>Description of each dataset</li>
-<li>Description of each do-file with inputs and outputs</li>
-<li>Any unresolved discrepancies</li>
-</ul>
-<p>See <a href="../research-transparency/publication-preparation.html#readme-file-structure">Data Publication Preparation</a> for a complete ReadMe template.</p>
-</section>
-<section id="peer-review" class="level3">
-<h3 class="anchored" data-anchor-id="peer-review">Peer Review</h3>
-<p>Have a second person who did not work on the curation:</p>
-<ol type="1">
-<li>Run the complete replication package on their machine</li>
-<li>Verify that code runs without errors after updating only the main path</li>
-<li>Confirm outputs match the publication</li>
-</ol>
-</section>
-<section id="secondary-pii-check" class="level3">
-<h3 class="anchored" data-anchor-id="secondary-pii-check">Secondary PII Check</h3>
-<p>The peer reviewer should also conduct a secondary PII check to ensure no identifiable information remains in the datasets.</p>
-</section>
-<section id="prepare-files-for-upload" class="level3">
-<h3 class="anchored" data-anchor-id="prepare-files-for-upload">Prepare Files for Upload</h3>
-<ol type="1">
-<li>Copy all finalized files from “Working Files” to “Dataverse Files”</li>
-<li>Rename the “Dataverse Files” folder to the study title</li>
-<li>Compress the folder in ZIP format</li>
-<li>Remove the “(2)” from the final filename; filenames should be brief, descriptive, without unnecessary suffixes, and avoid spaces (use underscores, hyphens)</li>
-</ol>
+<p>The rule is the same one on the <a href="../../software/claude/index.html#use-ai-safely-with-research-data">orientation page</a>: keep participant and other confidential data out of anything an AI tool can read.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Why Double Compression?
+<span class="screen-reader-only">Note</span>At IPA
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Double compression ensures the folder structure remains intact when users download and unzip the files from Dataverse.</p>
+<p>Follow the <a href="https://ipastorage.box.com/s/mvr67ygvz1y3v8qmgjey67lk7msmyeks">IPA AI Usage Guidelines</a>: Claude is approved for <strong>Public</strong> and <strong>Internal</strong> data only. When unsure how data is classified, contact <a href="mailto:support@poverty-action.org">support@poverty-action.org</a>.</p>
 </div>
 </div>
 </section>
-</section>
-<section id="step-6-upload-to-dataverse" class="level2">
-<h2 class="anchored" data-anchor-id="step-6-upload-to-dataverse">Step 6: Upload to Dataverse</h2>
-<p>With your package prepared, upload to IPA’s Dataverse repository.</p>
-<section id="create-new-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="create-new-dataset">Create New Dataset</h3>
-<ol type="1">
-<li>Log in to <a href="https://dataverse.harvard.edu/dataverse/ipa">IPA’s Dataverse</a></li>
-<li>Click the “+ Add Data” button on the right side</li>
-<li>Select “New Dataset”</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/dataverse/dataverse_new_dataset.png" class="img-fluid figure-img"></p>
-<figcaption>Add New Dataset</figcaption>
-</figure>
-</div>
-</section>
-<section id="enter-initial-metadata" class="level3">
-<h3 class="anchored" data-anchor-id="enter-initial-metadata">Enter Initial Metadata</h3>
-<p>Fill in the metadata fields using information from the project page and publication:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 31%">
-<col style="width: 68%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Title</td>
-<td>Publication title, or study name if no publication</td>
-</tr>
-<tr class="even">
-<td>Authors</td>
-<td>All authors with institutional affiliations</td>
-</tr>
-<tr class="odd">
-<td>Description</td>
-<td>Paper abstract or summary of intervention, methods, outcomes, and results</td>
-</tr>
-<tr class="even">
-<td>Keywords</td>
-<td>Relevant topic keywords</td>
-</tr>
-<tr class="odd">
-<td>Related Materials</td>
-<td>Link to open-access PDF or preprint if available</td>
-</tr>
-<tr class="even">
-<td>Date of Collection</td>
-<td>Data collection period (Start Date - End Date, <code>YYYY - YYYY</code> or <code>YYYY-MM - YYYY-MM</code>)</td>
-</tr>
-<tr class="odd">
-<td>Country/Location</td>
-<td>Countries where data was collected</td>
-</tr>
-<tr class="even">
-<td>Geographic Coverage</td>
-<td>Specific regions, cities, or areas</td>
-</tr>
-<tr class="odd">
-<td>Unit of Analysis</td>
-<td>Individual, household, firm, etc.</td>
-</tr>
-<tr class="even">
-<td>Universe</td>
-<td>Population from which participants were drawn</td>
-</tr>
-<tr class="odd">
-<td>Kind of Data</td>
-<td>Survey data, administrative data, etc.</td>
-</tr>
-<tr class="even">
-<td>Data Collection Methodology</td>
-<td>How data was collected</td>
-</tr>
-<tr class="odd">
-<td>Data Collector</td>
-<td>Organization that collected data</td>
-</tr>
-<tr class="even">
-<td>Sampling Procedure</td>
-<td>How participants were selected</td>
-</tr>
-<tr class="odd">
-<td>Collection Mode</td>
-<td>In-person, phone, online, etc.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="upload-files" class="level3">
-<h3 class="anchored" data-anchor-id="upload-files">Upload Files</h3>
-<p>Upload the double-compressed folder when prompted to add files.</p>
-</section>
-<section id="save-and-add-remaining-metadata" class="level3">
-<h3 class="anchored" data-anchor-id="save-and-add-remaining-metadata">Save and Add Remaining Metadata</h3>
-<ol type="1">
-<li>Click “Save Dataset” to create the entry</li>
-<li>From the entry page, click “Edit Dataset” &gt; “Metadata”</li>
-<li>Complete any remaining metadata fields</li>
-<li>Save changes</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/dataverse/dataverse_save_dataset.png" class="img-fluid figure-img"></p>
-<figcaption>Save Dataset</figcaption>
-</figure>
-</div>
-</section>
-<section id="enable-guestbook" class="level3">
-<h3 class="anchored" data-anchor-id="enable-guestbook">Enable Guestbook</h3>
-<ol type="1">
-<li>From the entry page, click “Terms”</li>
-<li>Select “Edit Terms Requirements”</li>
-<li>Scroll to “Guestbook” and select “IPA Dataverse”</li>
-<li>Save changes</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/dataverse/dataverse_edit_terms.png" class="img-fluid figure-img"></p>
-<figcaption>Edit Terms</figcaption>
-</figure>
-</div>
-</section>
-<section id="final-review-and-publish" class="level3">
-<h3 class="anchored" data-anchor-id="final-review-and-publish">Final Review and Publish</h3>
-<ol type="1">
-<li>Review all metadata for accuracy</li>
-<li>Confirm the guestbook is enabled</li>
-<li>Click “Publish Dataset”</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/images/dataverse/dataverse_publish_dataset.png" class="img-fluid figure-img"></p>
-<figcaption>Publish Dataset</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="step-7-post-publication-tasks" class="level2">
-<h2 class="anchored" data-anchor-id="step-7-post-publication-tasks">Step 7: Post-Publication Tasks</h2>
-<p>After publishing, complete these follow-up tasks.</p>
-<section id="share-the-link" class="level3">
-<h3 class="anchored" data-anchor-id="share-the-link">Share the Link</h3>
-<p>Share the Dataverse entry link with:</p>
+<section id="go-further" class="level2">
+<h2 class="anchored" data-anchor-id="go-further">Go further</h2>
+<p>As Claude Code becomes part of your routine, a few of its more advanced capabilities are worth exploring:</p>
 <ul>
-<li>Research team members you corresponded with</li>
-<li>Principal investigators</li>
-<li>IPA Communications team (for potential social media sharing)</li>
-</ul>
-</section>
-<section id="related-documentation" class="level3">
-<h3 class="anchored" data-anchor-id="related-documentation">Related Documentation</h3>
-<ul>
-<li><a href="../research-transparency/understanding-transparency.html">Understanding Research Transparency</a></li>
-<li><a href="../research-transparency/publication-preparation.html">Data Publication Preparation</a></li>
-<li><a href="https://data.poverty-action.org/data-security/data-security-protocol.html">Data Security Protocol</a></li>
-<li><a href="https://dataverse.harvard.edu/dataverse/ipa">IPA’s Dataverse Repository</a></li>
+<li><strong>Control how much Claude does on its own.</strong> Permission <em>modes</em> set how often Claude pauses for approval: <em>Manual</em> asks before each action, <em>Plan</em> has it propose a plan before it changes anything, and <em>Auto</em> lets it work through routine steps while a safety check blocks risky ones. Press Shift+Tab to switch. See <a href="https://code.claude.com/docs/en/permission-modes">Choose a permission mode</a>.</li>
+<li><strong>Watch the context window.</strong> The context window is Claude’s working memory for a session, and it is finite. A custom <a href="https://code.claude.com/docs/en/statusline">status line</a> keeps its usage, your running cost, and the git branch in view, and <code>/compact</code> summarizes a long conversation to free room, keeping what you tell it to. See <a href="https://code.claude.com/docs/en/context-window">the context window</a>.</li>
+<li><strong>Run Claude Code in a cloud session.</strong> <a href="https://code.claude.com/docs/en/claude-code-on-the-web">Claude Code on the web</a> runs on Anthropic’s servers from your browser at <a href="https://claude.ai/code">claude.ai/code</a>, so a long task keeps going without tying up your own machine.</li>
+<li><strong>Connect Claude to your tools and data.</strong> The Model Context Protocol (MCP) lets Claude reach other tools, databases, and services. See <a href="https://code.claude.com/docs/en/mcp">Connect Claude Code to tools with MCP</a>.</li>
+<li><strong>Delegate parts of a task.</strong> Claude Code can hand focused subtasks to subagents that work in parallel, each with its own instructions. See <a href="https://code.claude.com/docs/en/sub-agents">Subagents</a>.</li>
 </ul>
 
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -2732,13 +2264,13 @@ Warning
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../research-transparency/publication-preparation.html" class="pagination-link" aria-label="Data Publication Preparation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Publication Preparation</span>
+      <a href="../../software/claude/setup.html" class="pagination-link" aria-label="Setting Up Claude Code">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setting Up Claude Code</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../software/index.html" class="pagination-link" aria-label="Software Overview">
-        <span class="nav-page-text">Software Overview</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../teams/grds.html" class="pagination-link" aria-label="Research and Data Science">
+        <span class="nav-page-text">Research and Data Science</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -2750,7 +2282,7 @@ Warning
     </div>   
     <div class="nav-footer-center">
 
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-transparency/how-to-publish-dataverse.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/software/claude/use-cases.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
