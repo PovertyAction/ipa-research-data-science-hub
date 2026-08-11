@@ -24,7 +24,8 @@ get-started: pre-install venv
 
 # Update project software versions in requirements
 update-reqs:
-    uv lock
+    uv lock --upgrade
+    uv sync
     uv run pre-commit autoupdate
 
 # create virtual environment

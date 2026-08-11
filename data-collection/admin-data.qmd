@@ -216,6 +216,56 @@ Researchers must implement robust security measures, including:
 
 For further clarification on IRB-related issues, any project with concerns should email [humansubjects@poverty-action.org](mailto:humansubjects@poverty-action.org).
 
+## Data Validation
+
+Data validation is the process of verifying that administrative data received from a provider has the expected characteristics before it enters a project's analysis pipeline. Unlike data cleaning, which modifies records to correct errors, data validation checks whether the data as delivered matches what was agreed upon and what the analysis assumes and needs.
+
+It is equally important to be clear about what data validation is *not*:
+
+* **Not data cleaning**: Validation identifies problems; cleaning modifies data to correct them. These are separate workflows.
+* **Not a guarantee of data quality**: Validation checks whether the received data matches the agreed-upon specifications, but it does not confirm that the underlying records accurately reflect reality.
+* **Not statistical validity testing**: Validation focuses on individual records and variables, not at the level of estimates or inferential claims.
+
+Administrative data validation focuses on two dimensions:
+
+* **Correctness**: The reported value reflects the true observed value, accounting for allowable measurement error.
+* **Consistency**: Each record captures the same underlying construct across deliveries and across rows.
+
+Data validation is different from data cleaning and from high-frequency checks used in survey data collection. The goal is to identify and triage errors in the data as received, not to alter the raw data.
+
+### When to validate
+
+::: {.callout-tip collapse="true"}
+## Validate as soon as data arrive
+
+The first validation should occur immediately upon receiving a new data delivery. Running checks promptly allows the research team to identify problems while there is still time to contact the data provider for corrections. Automating validation scripts reduces processing time and ensures checks are applied consistently across multiple deliveries.
+:::
+
+::: {.callout-tip collapse="true"}
+## Validate each new delivery on the raw file
+
+Validation scripts should run on the most recent file as received, using the variable names and formats the provider uses. This approach ensures that any errors identified are attributable to the source data, not to transformations the research team has applied. Validate before converting files to project-specific formats (e.g., .dta, .RData, or a relational database).
+:::
+
+::: {.callout-tip collapse="true"}
+## Keep validation and cleaning as separate workflows
+
+Validation and cleaning serve different purposes and should be maintained as distinct scripts or processes. Validation documents what errors exist in the raw data. Cleaning modifies the data for analysis. Mixing the two makes it harder to trace the origin of any given value in the final analysis file and complicates future deliveries.
+:::
+
+### Common sources of error in administrative data
+
+| Source | Examples |
+|--------|---------|
+| Poorly designed forms or systems | No input constraints on data type or format; ambiguous questions that respondents interpret differently |
+| Data entry errors | Misspellings, keystroke errors, misunderstanding of field definitions (e.g., annual income entered as monthly) |
+| Misreporting or reporting bias | Incentives to over- or under-report; outcomes reported by program staff who have an interest in results |
+| Data extraction errors | Incorrect queries, truncated exports, or format changes introduced during extraction |
+| Data pre-preparation by the provider | Aggregations, recodes, or transformations applied before delivery that are not documented |
+
+: {tbl-colwidths="[30,70]"}
+
+
 ## Challenges When Using Administrative Data
 
 While administrative data offers many advantages, researchers often face challenges such as:
