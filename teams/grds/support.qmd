@@ -1,0 +1,221 @@
+---
+title: "How to Request Support from GRDS"
+abstract: >-
+  This guide shows research teams how to scope, submit, and manage a request for
+  support from the Global Research & Data Science (GRDS) team, from initial
+  planning through delivery.
+keywords:
+  - "research design"
+  - "data science"
+  - "research support"
+  - "data management"
+  - "research ethics"
+  - "reference"
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+  - "[Dennis Kembero](https://poverty-action.org/people/dennis-ongwae)"
+  - "[Kelly Montaño](https://poverty-action.org/people/kelly-montano)"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+---
+
+::: {.callout-tip appearance="simple"}
+## Key Takeaways
+
+- Submit requests to `researchsupport@` at least two to four weeks before you
+  need the work to start.
+- A complete request states the project overview, support type, desired outputs,
+  timelines, budget confirmation, preferences, and requirements.
+- After submission, expect acknowledgment within two to three business days and
+  a confirmed assignment within five to seven business days.
+- GRDS work has two entry points --- a support request or an awarded funding
+  proposal. GRDS tracks every project in Asana and delivers it through
+  peer-reviewed pull requests on GitHub.
+- Medium and large projects default to an Agile approach: iterative, modular
+  delivery with the project manager and any external partner.
+:::
+
+## Before You Start
+
+This guide walks through the process of requesting and managing GRDS support.
+For a description of what GRDS offers --- the five service areas and the three
+engagement types --- see [GRDS Services Reference](services.qmd).
+
+## GRDS Requests and Project Support Lifecycle
+
+GRDS work starts from one of two entry points: a support request from a research
+team, or an awarded funding proposal. Both converge on the same Asana work
+board, and from that point onward every project follows the same delivery path.
+
+```{mermaid}
+%%| label: fig-grds-lifecycle
+%%| fig-cap: "How a request or an awarded proposal becomes GRDS work."
+
+flowchart TD
+    A["Support request<br/>researchsupport@"] ---> B["Ticket logged and classified<br/>in Freshdesk"]
+    P["Funding proposal"] --> Q["Proposal development logged in Salesforce"]
+    Q --> S{"Grant<br/>awarded?"}
+    S -->|"No"| T["Proposal closed"]
+    B --> E["Project logged and sized on<br/>the Asana active work board"]
+    S -->|"Yes"| E
+    E --> G["Team assigned:<br/>GRDS lead plus supporting members"]
+    G --> H{"Project<br/>size?"}
+    H -->|"Medium or large"| I["Modular components, each<br/>with a design document"]
+    I --> K["Pull requests<br/>on GitHub"]
+    H -->|"Small"| K
+    K --> L{"Peer code review<br/>approved?"}
+    L -->|"Changes requested"| K
+    L -->|"Approved"| M{"Project manager or<br/>partner sign-off?"}
+    M -->|"Changes requested"| K
+    M -->|"Signed off; next component"| I
+    M -->|"Signed off; all components done"| Z["Deliverables shared<br/>and close-out"]
+```
+
+GRDS logs every support request that arrives at `researchsupport@` as a ticket
+in Freshdesk, the system of record for intake. Classification determines which
+service area the request belongs to and which staff member picks it up.
+
+Funding proposals follow a different route. They go through OneIPA proposal
+development, which is joint work with the Sectors, Right-Fit Evidence, Policy,
+and Country Programs teams. IPA logs proposal and opportunity information in
+Salesforce, our customer-relationship-management database. Salesforce is not a
+project-management tool, so GRDS waits until the donor awards the grant before
+moving the project into Asana.
+
+Asana tracks project status for the whole delivery period. GRDS version controls
+all its code on GitHub, and a peer must review every change before it merges.
+Small and medium projects have a lead team member plus supporting members who
+handle implementation and code review.
+
+GRDS defaults to an Agile approach for medium and large projects rather than
+planning the whole engagement up front, as a Waterfall approach would. GRDS
+splits the work into modular components and iterates one at a time, working with
+the Programs project manager and any external partner on each one. Each
+component gets its own design document. The GRDS data science lead writes that
+document with the project manager to settle the scope of the component before
+anyone writes code. The team then builds each component through small,
+well-documented pull requests. After a peer approves the code, the project
+manager or the external partner signs off before GRDS marks the component
+complete and moves to the next one.
+
+For background on Agile, Waterfall, and related methods, see Atlassian's
+[introduction to project management
+approaches](https://www.atlassian.com/agile/project-management/project-management-intro)
+and Asana's [comparison of Waterfall, Agile, Kanban, and
+Scrum](https://asana.com/resources/waterfall-agile-kanban-scrum).
+
+For the engagement types these paths map onto, see [GRDS Services
+Reference](services.qmd).
+
+## When to Engage GRDS
+
+Engage GRDS when a project has a technical need that goes beyond the existing
+team's own capacity, or when an upcoming deliverable overlaps with a GRDS
+service area. Submit the request at least two to four weeks before the
+deliverable deadline. Ideally, the request is submitted during the
+project-planning stage to help our team anticipate any support needs and align
+multiple requests with staff availability. Earlier requests give GRDS more
+flexibility in assigning staff and confirming a realistic timeline.
+
+## Scoping and Submitting a Request
+
+1. **Confirm interest and outline a preliminary scope**
+
+   Email a short expression of interest to `researchsupport@`, two to four weeks
+   ahead of when support is needed. Include a preliminary sense of the project
+   and the kind of support sought. A GRDS Technical Program Manager reviews the
+   message and clarifies details before drafting a scope of work.
+
+2. **Submit the full request**
+
+   Once the preliminary scope is confirmed, submit a complete request to the
+   same address. A complete request includes:
+
+   | Element                    | What to Include                                                                                     |
+   | -------------------------- | --------------------------------------------------------------------------------------------------- |
+   | **Project overview**       | What the research is about, and its objectives and goals                                            |
+   | **Support type requested** | The nature of the support needed (see the service areas in [GRDS Services Reference](services.qmd)) |
+   | **Desired outputs**        | The outputs or deliverables the request should produce                                              |
+   | **Timelines**              | When support should start, when outputs are due, and any deadlines GRDS should know about           |
+   | **Budget confirmation**    | Whether a grant or allocation already funds the work, or whether a new one is needed                |
+   | **Preferences**            | Geographic, time-zone, or language preferences for the assigned staff                               |
+   | **Requirements**           | Data platforms or software the project requires                                                     |
+
+   If the request involves a data platform such as SurveyCTO, or software such
+   as Stata, Python, or R, state this up front. It affects who GRDS assigns to
+   the request.
+
+   ::: {.callout-warning title="Data Classification"}
+   Do not include confidential or highly confidential data --- such as personally
+   identifiable respondent information --- in the initial request email. Describe
+   the data at a general level; GRDS will confirm secure channels for sharing
+   datasets once the scope of work is set.
+   :::
+
+3. **Confirm assignment**
+
+   GRDS reviews the request, schedules a kickoff call to refine the scope of
+   work and answer follow-up questions, and confirms the assignment by email
+   with a final scope of work, an estimated level of effort, and a timeline.
+   Sign off on the scope of work and confirm the grant code that will fund the
+   request.
+
+4. **Support execution**
+
+   Once work begins, GRDS schedules routine check-ins --- weekly, biweekly, or
+   monthly, depending on the engagement. Provide any additional inputs the team
+   requests promptly, since delays on the research team's side extend the
+   timeline. Review progress and share feedback as work proceeds; avoid
+   introducing major scope changes mid-engagement, since this resets the
+   delivery timeline.
+
+5. **Close out**
+
+   At the end of the engagement, GRDS shares final deliverables by email and
+   requests feedback on the support provided through a short survey. Confirm
+   receipt of the deliverables and complete the feedback survey; this feedback
+   shapes how GRDS scopes future requests.
+
+## What to Expect at Each Stage
+
+  | Stage                 | Typical Duration                    | What Happens                                                                    |
+  | --------------------- | ----------------------------------- | ------------------------------------------------------------------------------- |
+  | Pre-submission        | 2-4 weeks                           | The research team expresses interest and outlines a preliminary scope.          |
+  | Submission and review | 1-2 days                            | The team submits the full request; GRDS reviews and drafts a scope of work.     |
+  | Assignment            | 5-10 days                           | GRDS assigns staff, holds a kickoff call, and confirms the final scope of work. |
+  | Execution             | Minimum 2 weeks, depending on scope | GRDS delivers outputs, with routine check-ins.                                  |
+  | Close-out             | 1-2 days                            | GRDS shares deliverables; the research team completes a feedback survey.        |
+
+## Collaboration Commitments
+
+Clear communication in both directions keeps a request on schedule.
+
+  | GRDS Commits To                                                                       | The Research Team Commits To                                                                                          |
+  | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+  | Acknowledging new requests within two to three business days                          | Submitting requests two to four weeks in advance, with complete scope information                                     |
+  | Assigning technical staff and confirming ownership within five to seven business days | Sharing project dependencies, such as IRB status, funding codes, and deliverable dates, and flagging changes promptly |
+  | Providing consistent progress updates throughout the engagement                       | Providing timely feedback and clarifications to avoid delays                                                          |
+
+## Worked Example
+
+A research team preparing a follow-up survey wants to add PPI questions for
+cross-site poverty comparisons and needs the scorecard built into their
+SurveyCTO form before the pilot begins in six weeks. The team emails
+`researchsupport@` with:
+
+- **Project overview:** a follow-up survey comparing outcomes across three
+  program sites
+- **Support type:** Direct Technical Support, PPI integration (Data Products &
+  Infrastructure)
+- **Desired outputs:** a PPI-integrated SurveyCTO form and a short enumerator
+  guide for scoring
+- **Timelines:** support to start in two weeks, outputs needed one week before
+  the pilot
+- **Budget confirmation:** an existing grant code covers the request
+- **Preferences:** none
+- **Requirements:** SurveyCTO, with forms deployed in English and the local
+  language
+
+GRDS confirms the assignment within about a week, integrates the scorecard, and
+delivers the form and guide with time for the team to test it before the pilot.

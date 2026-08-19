@@ -64,7 +64,30 @@ $text-muted: lighten(#6a737b, 20%);
 // brand base font instead
 $font-family-serif: Arimo, Arial, sans-serif;
 
+// Mermaid diagrams: explicit colors because the values Quarto derives from
+// the brand palette give green text on gray fills (unreadable)
+$mermaid-bg-color: $gray-900;
+$mermaid-fg-color: $gray-100;
+$mermaid-fg-color--lighter: $gray-300;
+$mermaid-fg-color--lightest: $gray-700;
+$mermaid-edge-color: $gray-300;
+$mermaid-node-bg-color: #17303c;
+$mermaid-node-fg-color: $gray-100;
+$mermaid-label-bg-color: $gray-900;
+$mermaid-label-fg-color: $gray-100;
+
 /*-- scss:rules --*/
+
+// Mermaid edge-label chips: mermaid injects a hard-coded light background
+// (rgba(232,232,232,.5)) that makes white label text unreadable in dark mode
+svg[id$="-mermaid"] .edgeLabel,
+svg[id$="-mermaid"] .edgeLabel p {
+  background-color: rgba(21, 21, 21, 0.85) !important;
+}
+
+svg[id$="-mermaid"] .labelBkg {
+  fill: rgba(21, 21, 21, 0.85) !important;
+}
 
 /*Homepage custom css overrides */
 
