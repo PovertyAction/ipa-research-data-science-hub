@@ -11,7 +11,7 @@ abstract: "Learn how to perform power calculations for randomized controlled tri
 #------------------------------------------------------------------
 authors-ipa:
   - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
-  
+
   #------------------------------------------------------------------
   # Contributors
   #------------------------------------------------------------------
@@ -21,7 +21,7 @@ authors-ipa:
   #------------------------------------------------------------------
 contributors:
   - "[David Torres](https://poverty-action.org/people/david-francisco-torres-leon)"
-  
+
 categories:
   - how-to
   - Research Design
@@ -32,7 +32,7 @@ keywords:
   - "minimum detectable effect"
   - "research design"
   - "how-to guide"
-  
+
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
@@ -42,21 +42,26 @@ license:
 #| echo: false
 #| output: false
 
-import stata_setup
+import glob
 import platform
 
-# set configuration to the path where Stata is installed and the flavor of Stata
-# in the case below, we're using Stata 18 SE
-stata_version = "18"
-stata_flavor = "se"  # SE for Special Edition, MP for Multiprocessor,
+import stata_setup
 
-if platform.system() == 'Linux':
-  stata_path=f"/usr/local/stata{stata_version}"
+# find a Stata installation that has a usable pystata package
+stata_flavor = "se"  # SE for Special Edition, MP for Multiprocessor
+
+if platform.system() == "Linux":
+  candidates = glob.glob("/usr/local/stata*")
 elif platform.system() == "Windows":
-  stata_path=f"C:/Program Files/Stata{stata_version}/"
+  candidates = glob.glob("C:/Program Files/Stata*")
 else:
   raise ValueError("Unsupported operating system")
 
+valid = [p for p in candidates if glob.glob(f"{p}/utilities/pystata/config.py")]
+if not valid:
+  raise FileNotFoundError("No Stata installation with pystata found")
+
+stata_path = sorted(valid)[-1]
 print(f"Setting up Stata with path: {stata_path} and flavor: {stata_flavor}")
 stata_setup.config(stata_path, stata_flavor)
 ```
