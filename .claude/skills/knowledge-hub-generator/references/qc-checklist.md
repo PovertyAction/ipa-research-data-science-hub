@@ -29,7 +29,7 @@ Both are required by `CLAUDE.md` on every page created or modified:
 - [ ] `abstract` is self-contained prose and carries the page summary. If the
       source had a `custom-summary-block`, its text was moved into `abstract`.
 - [ ] `keywords` ends with the accurate Diátaxis type (`tutorial` /
-      `how-to       guide` / `reference` / `explanation`).
+      `how-to guide` / `reference` / `explanation`).
 - [ ] `license` is `CC BY-SA` (object form) unless the human specified
       otherwise.
 - [ ] No inherited fields added by hand: `format`, `format-links`,
@@ -71,7 +71,7 @@ Both are required by `CLAUDE.md` on every page created or modified:
       carry a caption with a photo credit and year using the `©` glyph (not
       `®`).
 - [ ] Tables are pipe tables with **bold** header cells and a
-      `: caption       {.striped}` line beneath.
+      `: caption {.striped}` line beneath.
 - [ ] **(tutorial)** Code uses static fenced blocks with the input/output idiom
       (a command block followed by a companion ```` ```output ```` block). Live
       ```` ```{python} ```` chunks appear only where the page renders computed
@@ -89,8 +89,8 @@ Both are required by `CLAUDE.md` on every page created or modified:
 
 - [ ] References only if the page has real sources (many tutorial pages have
       none). When present, `## References` (cited works) and/or
-      `## Additional       Resources` (further reading) in **Chicago
-      author-date** format.
+      `## Additional Resources` (further reading) in **Chicago author-date**
+      format.
 - [ ] **No fabricated references** --- every entry appears in the supplied
       material or has a real, verifiable URL. Flag any unsourced claim to the
       human.
