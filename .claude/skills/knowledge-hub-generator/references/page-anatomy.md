@@ -45,6 +45,8 @@ authors-ipa:
   - "[Author One](https://poverty-action.org/people/author-one)"
 contributors:
   - "[Contributor Name](https://poverty-action.org/people/contributor-name)"
+categories:
+  - explanation    # Diátaxis type first; optional topical categories after
 keywords:
   - topical term
   - another term
@@ -71,6 +73,13 @@ Field notes:
   links too (`- "[The Carpentries](https://carpentries.org/)"`).
 - **`contributors`** — support/feedback/maintenance, not main authors. Include
   only when there are real contributors; do not pad it.
+- **`categories`** — required on every content page. The **first** entry is the
+  page's Diátaxis type, exactly one of `tutorial | how-to | reference |
+  explanation` (lowercase). The `_extensions/diataxis-badge` Lua filter and
+  `assets/design-styles/title-block.html` render it as a badge above the title,
+  and `how-to-guides.qmd` auto-lists every page categorized `how-to` — so the
+  value must be accurate. Optional topical categories (e.g. `Data Collection`)
+  may follow the type.
 - **`keywords`** — topical terms plus the Diátaxis type as the **last** keyword.
   Prose pages use a lowercase block list; tutorial pages often use an inline
   Title-cased array (`keywords: ["Python", "Tutorial", "Data Science"]`). Types
@@ -240,17 +249,45 @@ These apply to both archetypes.
 
 ## Index landing pages
 
-A directory's `index.qmd` is a **link hub**, not a prose page: a short intro, then
-one `::: {.callout-tip appearance="simple"}` "card" per child page — each with a
-`###` title, a bullet link to the child `.qmd`, and a one-paragraph blurb.
+A directory's `index.qmd` is a **link hub**, not a prose page. Since the 2026
+navigation overhaul, section landing pages follow a shared shape (worked
+examples: `research-transparency/index.qmd`, `data-quality/index.qmd`):
+
+1. A short prose intro (one or two paragraphs).
+2. **`## What You Will Find Here`** — one `::: {.callout-tip
+   appearance="simple"}` "card" per child page or theme, each with a `##` title,
+   bullet links to the child `.qmd` files (a `-` dash and a one-line description
+   after each link, or a blurb paragraph below the list).
+3. **`## Getting Started`** — a short pointer telling the reader which page to
+   read first and in what order.
+4. **`## Related Resources`** — bullet links to relevant pages in other
+   sections (relative paths, e.g. `../data-quality/data-anonymization.qmd`).
 
 ```markdown
-## Section Methods
+## What You Will Find Here
 
 ::: {.callout-tip appearance="simple"}
-### In-Person Surveys
-- [In-Person Survey Guidelines](in-person-surveys.qmd)
 
-One-paragraph description of what the child page covers.
+## In-Person Surveys
+
+- [In-Person Survey Guidelines](in-person-surveys.qmd) - One-line description
+  of what the child page covers
+
 :::
+
+## Getting Started
+
+**New to the topic?** Read [Page A](page-a.qmd) first, then follow
+[Page B](page-b.qmd) when you are ready to act.
+
+## Related Resources
+
+- [Data Anonymization](../data-quality/data-anonymization.qmd) - Removing
+  identifying information before sharing data
 ```
+
+## Placeholder (under-construction) pages
+
+Even a stub page needs minimal frontmatter — at least `title` and `abstract`
+(`abstract: "This page is under construction."`) above the placeholder image —
+so listings and navigation render it correctly.

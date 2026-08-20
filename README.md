@@ -142,10 +142,11 @@ We welcome contributions from all IPA staff members! Please read [Contributing G
 2. Set up your environment with `just get-started`
 3. Create a new branch following our [branching strategy](#branching-strategy)
 4. Make your changes
-5. Preview locally with `just preview-docs`
-6. Format content with `just fmt-all`
-7. Commit your changes and push to your branch
-8. Open a Pull Request
+5. For a new page: add it to its section's sidebar in `_quarto.yml` and set its Diátaxis type (`tutorial`, `how-to`, `reference`, or `explanation`) in the page's `categories:` frontmatter—it renders as a badge above the title, and `how-to` pages are listed automatically in the How-to Guides hub. See the [Contributing Guide](CONTRIBUTING.md) for details.
+6. Preview locally with `just preview-docs`
+7. Format content with `just fmt-all`
+8. Commit your changes and push to your branch
+9. Open a Pull Request
 
 ### Resources for Contributors
 

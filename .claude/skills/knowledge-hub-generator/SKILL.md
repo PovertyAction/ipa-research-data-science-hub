@@ -30,7 +30,11 @@ These shape every drafting and review decision. Detail lives in
 1. **Pick the Diátaxis type first.** The type determines the whole structure, so
    settle it before drafting. Ask the human whether the page is a **tutorial**,
    **how-to guide**, **reference**, or **explanation**; if the material makes the
-   type obvious, propose one and confirm. Read `references/diataxis-framework.md`
+   type obvious, propose one and confirm. The type is machine-read, not just
+   editorial: it goes in the page's `categories:` frontmatter, where the
+   `_extensions/diataxis-badge` filter renders it as a badge above the title and
+   the How-to Guides hub (`how-to-guides.qmd`) auto-lists every page categorized
+   `how-to`. Read `references/diataxis-framework.md`
    for what each type is for and how it should read (grep the file for the type
    name, e.g. `How-to guides`, to jump to its section). The four canonical
    sources: tutorials <https://diataxis.fr/tutorials/>, how-to
@@ -84,7 +88,11 @@ These shape every drafting and review decision. Detail lives in
    from `page-template.qmd`.
 
 4. **Place the file and wire it up.** Use lowercase-hyphenated names; each
-   directory has an `index.qmd`; add the new page to the `_quarto.yml` navigation.
+   directory has an `index.qmd`. `_quarto.yml` uses one sidebar per topic
+   section (hybrid navigation): find the sidebar with the matching `id:`
+   (e.g. `data-quality`) and add a `text:`/`href:` pair in the right place.
+   Pages listed in no sidebar show none. Also add the page to its section's
+   `index.qmd` link cards.
 
 5. **Quality-check before handing back.** Run the checklist in
    `references/qc-checklist.md`. At minimum, run `just vale-file <file>` (writing
