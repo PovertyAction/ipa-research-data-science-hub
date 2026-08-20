@@ -12,8 +12,6 @@
 # Top-level
 # -----------------------------------------------------------------------------
 flavor = "quarto"        # default: "pandoc". Project standard is Quarto.
-line-width = 80          # default: 80
-pandoc-compat = "3.9"    # default: "3.9". Allowed: "3.9", "3.7", "latest".
 
 # cache-dir: default is an OS-specific global location. Left unset so each
 # machine uses its own cache path.
@@ -29,9 +27,16 @@ extend-include = []      # default: empty (no extra includes beyond built-ins)
 # include = [...]        # WARNING: replaces the built-in default includes
 
 # -----------------------------------------------------------------------------
+# Compatibility
+# -----------------------------------------------------------------------------
+[compat]
+pandoc = "3.9"    # default: "3.9". Allowed: "3.9", "3.7", "latest".
+
+# -----------------------------------------------------------------------------
 # Formatting
 # -----------------------------------------------------------------------------
 [format]
+line-width = 80          # default: 80
 wrap = "reflow"                  # default: "reflow". Reflow prose to line-width.
 math-delimiter-style = "preserve" # default: "preserve". Alt: "dollars", "backslash".
 math-indent = 0                  # default: 0
@@ -77,6 +82,15 @@ typescript = "prettier"
 # python = "ruff"
 # r = "jarl"
 # sh = "shellcheck"
+
+# -----------------------------------------------------------------------------
+# Lint rules
+# -----------------------------------------------------------------------------
+# yaml-parse-error: disabled. False positive on valid `>-`/`|` block scalars in
+# frontmatter (e.g. `abstract:`) when the file has CRLF line endings — panache's
+# parser doesn't treat `\r\n` as EOL after the block scalar header.
+[lint.rules]
+yaml-parse-error = false
 
 # -----------------------------------------------------------------------------
 # Per-file flavor overrides

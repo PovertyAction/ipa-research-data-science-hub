@@ -33,7 +33,7 @@ venv:
     uv sync
     uv tool install pre-commit
     uv run pre-commit install
-    uv tool install panache-cli
+    uv tool install panache-cli==3.5.0
 
 # sync R environment, requires that R, RScript are in PATH
 renv:

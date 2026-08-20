@@ -195,8 +195,8 @@ none. **Never fabricate a reference** (see `SKILL.md`). Two possible sections:
 - **`## Additional Resources`** --- further reading not directly cited.
 
 Use **Chicago author-date** as the house standard (matching
-`research-design/research-methods.qmd`), even though some older pages use APA
---- prefer Chicago for new and revised pages:
+`research-design/research-methods.qmd`), even though some older pages use APA ---
+prefer Chicago for new and revised pages:
 
 ```markdown
 ## References

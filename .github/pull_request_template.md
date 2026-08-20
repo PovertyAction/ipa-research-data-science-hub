@@ -24,7 +24,7 @@
 
 - [ ] I have run and tested my changes locally
 - [ ] I have limited this PR to less than 1000 lines of code change (if not,
-      explain why)
+  explain why)
 - [ ] I have run linting and formatting on any code changes (if applicable)
 - [ ] I have updated the documentation (README, etc.) accordingly
 - [ ] I have reviewed and resolved any merge conflicts
