@@ -32,7 +32,9 @@ function Meta(meta)
     return meta
   end
 
-  if categories.t ~= "List" then
+  -- MetaList unmarshals to a plain pandoc.List (no .t field), so test with
+  -- pandoc.utils.type; a bare scalar gets wrapped for uniform iteration
+  if pandoc.utils.type(categories) ~= "List" then
     categories = { categories }
   end
 
