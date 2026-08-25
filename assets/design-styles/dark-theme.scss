@@ -40,7 +40,9 @@ $popover-bg: #242424;
 
 // Bootstrap inputs
 $input-bg: #242424;
-$dropdown-bg: $gray-900;
+// Lifted above body bg ($gray-900) so the open menu stands out
+$dropdown-bg: $gray-800;
+$dropdown-border-color: $gray-600;
 $dropdown-color: $gray-100;
 $dropdown-link-color: $gray-100;
 $dropdown-link-hover-bg: $gray-600;
@@ -77,6 +79,10 @@ $mermaid-label-bg-color: $gray-900;
 $mermaid-label-fg-color: $gray-100;
 
 /*-- scss:rules --*/
+
+.navbar .dropdown-menu {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
 
 // Mermaid edge-label chips: mermaid injects a hard-coded light background
 // (rgba(232,232,232,.5)) that makes white label text unreadable in dark mode
