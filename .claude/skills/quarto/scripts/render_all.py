@@ -86,19 +86,19 @@ def main():
         epilog="""
 Examples:
   # Render all .qmd files in current directory
-  python render_all.py --pattern "*.qmd"
+  uv python render_all.py --pattern "*.qmd"
 
   # Render all files in a specific directory
-  python render_all.py --pattern "reports/*.qmd"
+  uv python render_all.py --pattern "reports/*.qmd"
 
   # Render specific files
-  python render_all.py --files doc1.qmd doc2.qmd doc3.qmd
+  uv python render_all.py --files doc1.qmd doc2.qmd doc3.qmd
 
   # Render to specific format
-  python render_all.py --pattern "*.qmd" --format html
+  uv python render_all.py --pattern "*.qmd" --format html
 
   # Verbose output
-  python render_all.py --pattern "*.qmd" --verbose
+  uv python render_all.py --pattern "*.qmd" --verbose
         """,
     )
 
