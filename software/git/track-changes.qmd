@@ -1,28 +1,47 @@
 ---
 title: "Tracking Changes"
-abstract: |
-  Learn the essential Git workflow of making changes, staging files, and creating commits. Use the modify-add-commit cycle and understand how Git manages file states through the staging area.
+abstract: >-
+  Learn the essential Git workflow of making changes, staging files, and
+  creating commits. Use the modify-add-commit cycle and understand how Git
+  manages file states through the staging area.
 date: last-modified
 format:
   html: default
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
-keywords: ["Git", "Commit", "Staging", "Workflow", "Tutorial", "Version Control"]
+categories:
+  - tutorial
+keywords: [
+  "Git",
+  "Commit",
+  "Staging",
+  "Workflow",
+  "Tutorial",
+  "Version Control",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This tutorial modifies content from [Jenna Jordan's Intro to Git & GitHub
+(Speedrun edition)](https://jennajordan.me/git-novice-speedrun/), which draws
+from the [Software Carpentry Version Control with Git
+lesson](https://swcarpentry.github.io/git-novice/), the [Carpentries Incubator
+Version Control with Git
+lesson](https://carpentries-incubator.github.io/git-novice-branch-pr/), and the
+[Library Carpentry Introduction to Git
+lesson](https://librarycarpentry.github.io/lc-git/). Copyright (c) [The
+Carpentries](https://carpentries.org/). The original material is licensed under
+the [Creative Commons Attribution 4.0 International License (CC BY
+4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-This tutorial modifies content from [Jenna Jordan's Intro to Git & GitHub (Speedrun edition)](https://jennajordan.me/git-novice-speedrun/), which draws from the [Software Carpentry Version Control with Git lesson](https://swcarpentry.github.io/git-novice/), the [Carpentries Incubator Version Control with Git lesson](https://carpentries-incubator.github.io/git-novice-branch-pr/), and the [Library Carpentry Introduction to Git lesson](https://librarycarpentry.github.io/lc-git/). Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
-
-**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples.
-
+**Changes made:** Content has been modified and expanded by Innovations for
+Poverty Action (IPA) to include IPA-specific examples.
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Go through the modify-add-commit cycle for one or more files
@@ -32,20 +51,29 @@ This tutorial modifies content from [Jenna Jordan's Intro to Git & GitHub (Speed
 
 ## Simon Bolivar documents the liberation campaigns
 
-Simon Bolivar, historian and documenter of South American independence movements, needs to track the many events across the liberation campaigns. Even for a dedicated historian, keeping accurate records of campaigns across multiple territories presents challenges. Fortunately, there is a tool that can help track these historical records across different interpretations and sources: git! Simon has decided to start logging events in a git repository named `multiverse`. Each major campaign will have its own file. Simon starts recording the liberation campaigns, beginning with the campaign to free Caracas.
+Simon Bolivar, historian and documenter of South American independence
+movements, needs to track the many events across the liberation campaigns. Even
+for a dedicated historian, keeping accurate records of campaigns across multiple
+territories presents challenges. Fortunately, there is a tool that can help
+track these historical records across different interpretations and sources:
+git! Simon has decided to start logging events in a git repository named
+`multiverse`. Each major campaign will have its own file. Simon starts recording
+the liberation campaigns, beginning with the campaign to free Caracas.
 
 ## Create a file
 
-First let's make sure we're in the right directory.
-You should be in the `multiverse` directory.
+First let's make sure we're in the right directory. You should be in the
+`multiverse` directory.
 
 ```bash
 pwd
 ```
 
-Let's create a file called `campaigns.txt` to start recording the liberation campaigns.
+Let's create a file called `campaigns.txt` to start recording the liberation
+campaigns.
 
-Make sure you have the Explorer pane open in VS Code, and **click the "New File" button**. Name the file `campaigns.txt`.
+Make sure you have the Explorer pane open in VS Code, and **click the "New File"
+button**. Name the file `campaigns.txt`.
 
 Type the text below into the `campaigns.txt` file:
 
@@ -60,7 +88,8 @@ Save the file.
 
 ## Track Changes to the File
 
-If we check the status of our project again, Git tells us that it's noticed the new file:
+If we check the status of our project again, Git tells us that it's noticed the
+new file:
 
 ```bash
 git status
@@ -77,9 +106,8 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-The "untracked files" message means that there's a file in the directory
-that Git isn't keeping track of.
-We can tell Git to track a file using `git add`:
+The "untracked files" message means that there's a file in the directory that
+Git isn't keeping track of. We can tell Git to track a file using `git add`:
 
 ```bash
 git add campaigns.txt
@@ -100,10 +128,9 @@ Changes to be committed:
         new file:   campaigns.txt
 ```
 
-Git now knows that it's supposed to keep track of `campaigns.txt`,
-but it hasn't recorded these changes as a commit yet.
-To get it to do that,
-we need to run one more command:
+Git now knows that it's supposed to keep track of `campaigns.txt`, but it hasn't
+recorded these changes as a commit yet. To get it to do that, we need to run one
+more command:
 
 ```bash
 git commit -m "Document liberation of Caracas"
@@ -115,22 +142,21 @@ git commit -m "Document liberation of Caracas"
  create mode 100644 campaigns.txt
 ```
 
-When we run `git commit`,
-Git takes everything we have told it to save by using `git add`
-and stores a copy permanently inside the special `.git` directory.
-This permanent copy is called a commit
-(or revision) and its short identifier is `9b26458`
-(Your commit will have another identifier.)
+When we run `git commit`, Git takes everything we have told it to save by using
+`git add` and stores a copy permanently inside the special `.git` directory.
+This permanent copy is called a commit (or revision) and its short identifier is
+`9b26458` (Your commit will have another identifier.)
 
-We use the `-m` flag (for "message")
-to record a short, descriptive, and specific comment that will help us remember later on what we did and why.
-If we just run `git commit` without the `-m` option,
-Git will launch a VS Code window (or whatever other editor we configured as `core.editor`)
-so that we can write a longer message.
+We use the `-m` flag (for "message") to record a short, descriptive, and
+specific comment that will help us remember later on what we did and why. If we
+just run `git commit` without the `-m` option, Git will launch a VS Code window
+(or whatever other editor we configured as `core.editor`) so that we can write a
+longer message.
 
-[Good commit messages](https://chris.beams.io/posts/git-commit/) start with a brief (<50 characters) summary of
-changes made in the commit. If you want to go into more detail, add
-a blank line between the summary line and your additional notes.
+[Good commit messages](https://chris.beams.io/posts/git-commit/) start with a
+brief (<50 characters) summary of changes made in the commit. If you want to go
+into more detail, add a blank line between the summary line and your additional
+notes.
 
 If we run `git status` now:
 
@@ -146,9 +172,8 @@ Your branch is ahead of 'origin/main' by 1 commit.
 nothing to commit, working tree clean
 ```
 
-It tells us everything is up to date.
-If we want to know what we've done recently,
-we can ask Git to show us the project's history using `git log`:
+It tells us everything is up to date. If we want to know what we've done
+recently, we can ask Git to show us the project's history using `git log`:
 
 ```bash
 git log
@@ -169,13 +194,10 @@ Date:   Sat May 17 18:34:45 2025 -0400
 ```
 
 `git log` lists all commits made to a repository in reverse chronological order.
-The listing for each commit includes
-the commit's full identifier
-(which starts with the same characters as
-the short identifier printed by the `git commit` command earlier),
-the commit's author,
-when it was created,
-and the log message Git was given when the commit was created
+The listing for each commit includes the commit's full identifier (which starts
+with the same characters as the short identifier printed by the `git commit`
+command earlier), the commit's author, when it was created, and the log message
+Git was given when the commit was created
 
 ## Make more changes to the file
 
@@ -191,8 +213,8 @@ Bolivar and Sucre coordinate the liberation of Quito.
 
 Save the file (make sure to have a newline at the end!).
 
-When we run `git status` now,
-it tells us that a file it already knows about has been modified:
+When we run `git status` now, it tells us that a file it already knows about has
+been modified:
 
 ```bash
 git status
@@ -211,16 +233,12 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-The last line is the key phrase:
-"no changes added to commit".
-We have changed this file,
-but we haven't told Git we will want to save those changes
-(which we do with `git add`)
-nor have we saved them (which we do with `git commit`).
-Let's do that now. It is good practice to always review
-our changes before saving them. We do this using `git diff`.
-This shows us the differences between the current state
-of the file and the most recently saved version:
+The last line is the key phrase: "no changes added to commit". We have changed
+this file, but we haven't told Git we will want to save those changes (which we
+do with `git add`) nor have we saved them (which we do with `git commit`). Let's
+do that now. It is good practice to always review our changes before saving
+them. We do this using `git diff`. This shows us the differences between the
+current state of the file and the most recently saved version:
 
 ```bash
 git diff
@@ -236,21 +254,20 @@ index 0b592c6..d27fc77 100644
 +Bolivar and Sucre coordinate the liberation of Quito.
 ```
 
-The output is cryptic because
-it is actually a series of commands for tools like editors and `patch`
-telling them how to reconstruct one file given the other.
-If we break it down into pieces:
+The output is cryptic because it is actually a series of commands for tools like
+editors and `patch` telling them how to reconstruct one file given the other. If
+we break it down into pieces:
 
-1. The first line tells us that Git is producing output similar to the Unix `diff` command
-    comparing the old and new versions of the file.
-2. The second line tells exactly which versions of the file
-    Git is comparing;
-    `0b592c6` and `d27fc77` are unique computer-generated labels for those versions.
-3. The third and fourth lines once again show the name of the file being changed.
-4. The remaining lines are the most interesting, they show us the actual differences
-    and the lines on which they occur.
-    In particular,
-    the `+` marker in the first column shows where we added a line.
+1. The first line tells us that Git is producing output similar to the Unix
+   `diff` command comparing the old and new versions of the file.
+2. The second line tells exactly which versions of the file Git is comparing;
+   `0b592c6` and `d27fc77` are unique computer-generated labels for those
+   versions.
+3. The third and fourth lines once again show the name of the file being
+   changed.
+4. The remaining lines are the most interesting, they show us the actual
+   differences and the lines on which they occur. In particular, the `+` marker
+   in the first column shows where we added a line.
 
 After reviewing our change, it's time to commit it:
 
@@ -271,9 +288,7 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-Whoops:
-Git won't commit because we didn't use `git add` first.
-Let's fix that:
+Whoops: Git won't commit because we didn't use `git add` first. Let's fix that:
 
 ```bash
 git add campaigns.txt
@@ -285,43 +300,33 @@ git commit -m "Add Sucre's coordination in Quito campaign"
  1 file changed, 1 insertion(+)
 ```
 
-Git insists that we add files to the set we want to commit
-before actually committing anything. This allows us to commit our
-changes in stages and capture changes in logical portions rather than
-only large batches.
+Git insists that we add files to the set we want to commit before actually
+committing anything. This allows us to commit our changes in stages and capture
+changes in logical portions rather than only large batches.
 
-To allow for this,
-Git has a special *staging area*
-where it keeps track of things that have been added to
-the current changeset
-but not yet committed.
+To allow for this, Git has a special *staging area* where it keeps track of
+things that have been added to the current changeset but not yet committed.
 
 ::: {.callout-tip}
 If you think of Git as taking snapshots of changes over the life of a project,
-`git add` specifies *what* will go in a snapshot
-(putting things in the staging area),
-and `git commit` then *actually takes* the snapshot, and
-makes a permanent record of it (as a commit).
-If you don't have anything staged when you type `git commit`,
-Git will prompt you to use `git commit -a` or `git commit --all`,
-which is kind of like gathering *everyone* for the picture!
-However, it's almost always better to
-explicitly add things to the staging area, because you might
-commit changes you forgot you made. (Going back to snapshots,
-you might get the extra with incomplete makeup walking on
-the stage for the snapshot because you used `-a`!)
-Try to stage things manually,
-or you might find yourself searching for "git undo commit" more
-than you would like!
+`git add` specifies *what* will go in a snapshot (putting things in the staging
+area), and `git commit` then *actually takes* the snapshot, and makes a
+permanent record of it (as a commit). If you don't have anything staged when you
+type `git commit`, Git will prompt you to use `git commit -a` or
+`git commit --all`, which is kind of like gathering *everyone* for the picture!
+However, it's almost always better to explicitly add things to the staging area,
+because you might commit changes you forgot you made. (Going back to snapshots,
+you might get the extra with incomplete makeup walking on the stage for the
+snapshot because you used `-a`!) Try to stage things manually, or you might find
+yourself searching for "git undo commit" more than you would like!
 :::
 
 ![The Git Staging Area](/assets/images/git/git-staging-area.svg)
 
 ## Using the Source Control pane in VS Code
 
-Let's watch as our changes to a file move from our editor
-to the staging area and into long-term storage.
-First, we'll add another line to the file:
+Let's watch as our changes to a file move from our editor to the staging area
+and into long-term storage. First, we'll add another line to the file:
 
 ```output
 Bolivar leads forces to liberate Caracas from Spanish control.
@@ -353,13 +358,15 @@ index d27fc77..8938f14 100644
 +Bolivar establishes Gran Colombia after successful campaign.
 ```
 
-The `git diff` command is accomplishing the same thing as clicking on the file under "Changes": that we've added one line to the end of the file
-(shown with a `+` in the first column).
+The `git diff` command is accomplishing the same thing as clicking on the file
+under "Changes": that we've added one line to the end of the file (shown with a
+`+` in the first column).
 
 In the Source Control pane, click the `+` icon next to the `campaigns.txt` file.
 The `campaigns.txt` file gets moved to the "Saved Changes" section.
 
-Clicking the `+` icon accomplished the same thing as typing `git add campaigns.txt` in the terminal.
+Clicking the `+` icon accomplished the same thing as typing
+`git add campaigns.txt` in the terminal.
 
 Now, let's save our changes. We could use the Terminal to commit our changes:
 
@@ -372,7 +379,8 @@ git commit -m "Record formation of Gran Colombia"
  1 file changed, 1 insertion(+)
 ```
 
-Or, we can type the commit message "Record formation of Gran Colombia" in the "Message" box and click "Commit".
+Or, we can type the commit message "Record formation of Gran Colombia" in the
+"Message" box and click "Commit".
 
 Let's check our status:
 
@@ -421,20 +429,20 @@ Date:   Sat May 17 18:34:45 2025 -0400
 ```
 
 ::: {.callout-note}
-
 ## Challenge
 
-Look back at the Source Control pane. Where can you see a GUI representation of this log?
+Look back at the Source Control pane. Where can you see a GUI representation of
+this log?
 :::
 
 ::: {.callout-important}
-
 ## Key Points
 
 - `git status` shows the status of a repository
-- Files can be stored in a project's working directory (which users see), the staging area (where the next commit is being built up) and the local repository (where commits are permanently recorded)
+- Files can be stored in a project's working directory (which users see), the
+  staging area (where the next commit is being built up) and the local
+  repository (where commits are permanently recorded)
 - `git add` puts files in the staging area
 - `git commit` saves the staged content as a new commit in the local repository
 - Always write a log message when committing changes
-
 :::

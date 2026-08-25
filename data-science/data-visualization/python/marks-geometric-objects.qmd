@@ -11,6 +11,8 @@ authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
+categories:
+  - tutorial
 keywords: ["Python", "Data Visualization", "Seaborn", "Plot Types", "Tutorial"]
 license:
   text: "CC BY-SA"
@@ -18,22 +20,21 @@ license:
 ---
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
-- Understand different types of marks (geometric objects) available in seaborn.objects
+- Understand different types of marks (geometric objects) available in
+  seaborn.objects
 - Create visualizations using Dot, Line, Bar, Area, and Band marks
 - Choose appropriate marks for different data types and research questions
 - Combine multiple marks in a single plot
 - Understand when to use each type of visualization
-
 :::
 
 ## Understanding Marks
 
 In the grammar of graphics, **marks** (also called geometric objects or "geoms")
-are the visual elements that represent data points. Each mark type is designed to
-show different aspects of data:
+are the visual elements that represent data points. Each mark type is designed
+to show different aspects of data:
 
 - **Dots** (`so.Dot`) - Individual data points
 - **Lines** (`so.Line`) - Connections and trends over continuous data
@@ -112,7 +113,8 @@ enrollment_data = pd.DataFrame({
 
 ### Lines with Markers
 
-You can combine lines with dots to show both the trend and individual data points:
+You can combine lines with dots to show both the trend and individual data
+points:
 
 ```python
 (
@@ -145,7 +147,6 @@ multi_program_data = pd.DataFrame({
 ```
 
 ::: {.callout-note}
-
 ## When to Use Lines
 
 - **Time series**: Data collected over time (days, months, years)
@@ -158,7 +159,6 @@ multi_program_data = pd.DataFrame({
 - Data points aren't ordered (use dots instead)
 - You have many overlapping lines (consider faceting)
 - The relationship isn't continuous
-
 :::
 
 ## Bars: Comparing Categories
@@ -215,7 +215,6 @@ survey_data = pd.DataFrame({
 ```
 
 ::: {.callout-note}
-
 ## When to Use Bars
 
 - **Categorical comparisons**: Comparing values across categories
@@ -228,7 +227,6 @@ survey_data = pd.DataFrame({
 - Showing precise individual values (use dots)
 - You have many categories (>10) - hard to read
 - Showing distributions (use histograms or density plots)
-
 :::
 
 ## Area: Filled Regions
@@ -269,7 +267,6 @@ budget_data = pd.DataFrame({
 ```
 
 ::: {.callout-note}
-
 ## When to Use Area
 
 - **Cumulative values**: Showing accumulation over time
@@ -280,7 +277,6 @@ budget_data = pd.DataFrame({
 
 - You need to compare exact values (use lines or bars)
 - You have many overlapping areas (hard to read)
-
 :::
 
 ## Band: Showing Ranges
@@ -307,13 +303,11 @@ income_data = pd.DataFrame({
 This shows the mean income as a line with a confidence band around it.
 
 ::: {.callout-note}
-
 ## When to Use Band
 
 - **Uncertainty**: Showing confidence intervals or standard errors
 - **Ranges**: Min-max ranges over time
 - **Predictions**: Forecast intervals
-
 :::
 
 ## Combining Multiple Marks
@@ -345,7 +339,8 @@ This creates a rich visualization showing:
 
 ## Real Research Example: Impact Evaluation
 
-Let's create a more complete research visualization showing program impact over time:
+Let's create a more complete research visualization showing program impact over
+time:
 
 ```python
 # Simulate treatment and control group outcomes
@@ -373,7 +368,6 @@ impact_data = pd.DataFrame({
 ## Exercises
 
 ::: {.callout-note}
-
 ## Exercise 1: Choosing the Right Mark
 
 For each scenario, identify which mark type would be most appropriate:
@@ -384,8 +378,7 @@ For each scenario, identify which mark type would be most appropriate:
 4. Showing budget allocation across departments for a single year
 5. Tracking population growth with uncertainty bounds
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 1
 
 1. **Line** - time series data showing trend over time
@@ -393,13 +386,10 @@ For each scenario, identify which mark type would be most appropriate:
 3. **Dot** - relationship between two continuous variables
 4. **Bar** - comparing categories (departments) at one time point
 5. **Line + Band** - trend over time with uncertainty
-
-:::
-
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise 2: Create a Multi-Layer Plot
 
 Using the penguins dataset, create a plot that shows:
@@ -411,8 +401,7 @@ Using the penguins dataset, create a plot that shows:
 # Your code here
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 2
 
 ```python
@@ -423,15 +412,12 @@ Using the penguins dataset, create a plot that shows:
 )
 ```
 
-The combination of bars (showing the average) and dots (showing individual values)
-gives viewers both the summary and the underlying data distribution.
-
-:::
-
+The combination of bars (showing the average) and dots (showing individual
+values) gives viewers both the summary and the underlying data distribution.
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise 3: Time Series Practice
 
 Create sample data for a research scenario:
@@ -448,8 +434,7 @@ Create sample data for a research scenario:
 # Your code here
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 3
 
 ```python
@@ -471,9 +456,7 @@ savings_data = pd.DataFrame({
     .add(so.Dot(pointsize=6))
 )
 ```
-
-:::
-
+:::::
 :::
 
 ## Decision Guide: Choosing Your Mark
@@ -494,15 +477,14 @@ Is your data categorical?
 
 Some mark combinations work particularly well together:
 
-| Combination | Use Case | Example |
-| ------------- | ---------- | --------- |
-| Line + Dot | Time series with data points | Monthly metrics |
-| Band + Line | Trends with uncertainty | Predictions with CI |
-| Bar + Dot | Summary + individual data | Group comparisons |
-| Area + Line | Cumulative with rate | Total enrollment + monthly change |
+  | Combination | Use Case                     | Example                           |
+  | ----------- | ---------------------------- | --------------------------------- |
+  | Line + Dot  | Time series with data points | Monthly metrics                   |
+  | Band + Line | Trends with uncertainty      | Predictions with CI               |
+  | Bar + Dot   | Summary + individual data    | Group comparisons                 |
+  | Area + Line | Cumulative with rate         | Total enrollment + monthly change |
 
 ::: {.callout-important}
-
 ## Key Points
 
 - Different marks (geometric objects) serve different purposes
@@ -514,15 +496,12 @@ Some mark combinations work particularly well together:
 - Combine multiple marks in layers for richer visualizations
 - Choose marks based on your data type and research question
 - Always consider what story you're trying to tell
-
 :::
 
 ::: {.callout-tip}
-
 ## Looking Ahead
 
 In the next lesson, we'll learn how to customize our plots with labels, titles,
 scales, and themes to create publication-ready visualizations that effectively
 communicate our findings to stakeholders.
-
 :::

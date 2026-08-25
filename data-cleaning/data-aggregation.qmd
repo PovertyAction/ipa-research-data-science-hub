@@ -1,7 +1,14 @@
 ---
 title: "Data Aggregation"
-abstract: "This guide explains two primary methods for combining datasets: appending datasets with the same variables but different observations, and merging datasets with the same observations but different variables. Learn best practices for exact matching and alternatives for fuzzy matching when precise identifiers are unavailable."
+abstract: >-
+  This guide explains two primary methods for combining datasets: appending
+  datasets with the same variables but different observations, and merging
+  datasets with the same observations but different variables. Learn best
+  practices for exact matching and alternatives for fuzzy matching when precise
+  identifiers are unavailable.
 
+categories:
+  - explanation
 keywords:
   - "data cleaning"
   - "data merging"
@@ -12,141 +19,202 @@ license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 
-#------------------------------------------------------------------
-# Authors
-#------------------------------------------------------------------
-# Authors are the main creators of the site's content, credited
-# for their work and responsible for its core development,
-# including writing and editing.
-#------------------------------------------------------------------
+  #------------------------------------------------------------------
+  # Authors
+  #------------------------------------------------------------------
+  # Authors are the main creators of the site's content, credited
+  # for their work and responsible for its core development,
+  # including writing and editing.
+  #------------------------------------------------------------------
 authors-ipa:
   - "[Kayla Wilding](https://github.com/wildingka)"
   - "[Michael Rosenbaum](https://github.com/mfrosenbaum)"
   - "[Rosemarie Sandino](https://github.com/rsandino)"
 
-#------------------------------------------------------------------
-# Contributors
-#------------------------------------------------------------------
-# Contributors provide support, such as feedback or supplementary
-# materials for the site. They can also be responsible for
-# updating/maintaining the site.
-#------------------------------------------------------------------
+  #------------------------------------------------------------------
+  # Contributors
+  #------------------------------------------------------------------
+  # Contributors provide support, such as feedback or supplementary
+  # materials for the site. They can also be responsible for
+  # updating/maintaining the site.
+  #------------------------------------------------------------------
 contributors:
   - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
   - "[Wesley Kirui](https://poverty-action.org/people/wesley-kirui)"
 ---
 
-:::{.callout-tip appearance="simple"}
-
+::: {.callout-tip appearance="simple"}
 ## Key Takeaways
 
-* There are two main approaches for data aggregation: Appending—for datasets with same variables but different observations—and Merging—for datasets with same observations but different variables
-* When exact matching is impossible, there are imperfect fuzzy matching alternatives.
+- There are two main approaches for data aggregation: Appending---for datasets
+  with same variables but different observations---and Merging---for datasets
+  with same observations but different variables
+- When exact matching is impossible, there are imperfect fuzzy matching
+  alternatives.
 :::
 
 ## When to Use Each Method
 
-**Use appending when:** You have datasets with the same variables but different observations. Examples include combining adult and child survey data, or merging male and female participant files.
+**Use appending when:** You have datasets with the same variables but different
+observations. Examples include combining adult and child survey data, or merging
+male and female participant files.
 
-**Use merging when:** You have datasets with the same observations but different variables. Examples include combining survey responses split across multiple files by the survey program.
+**Use merging when:** You have datasets with the same observations but different
+variables. Examples include combining survey responses split across multiple
+files by the survey program.
 
 ## Appending Data
 
-Appending combines files that contain the same variables but different observations to create a complete dataset. When appending datasets, pay attention to variable names and types.
+Appending combines files that contain the same variables but different
+observations to create a complete dataset. When appending datasets, pay
+attention to variable names and types.
 
 ### Key Considerations for Appending
 
-1. **Variable names must match exactly**: only variables with identical names will combine successfully.
+1. **Variable names must match exactly**: only variables with identical names
+   will combine successfully.
 
-2. **Missing variables create gaps**: if one dataset contains a variable that another lacks, the joint dataset will include that variable but observations from datasets without it will show as missing.
+2. **Missing variables create gaps**: if one dataset contains a variable that
+   another lacks, the joint dataset will include that variable but observations
+   from datasets without it will show as missing.
 
-3. **Variable types must be compatible**: variables should be the same general type, either numeric or string:
-   * Mismatched types will generate errors and prompt you to use the `force` option
-   * The `force` option is not recommended as it keeps the master data type and marks using observations as missing
-   * Resolve type conflicts before appending
+3. **Variable types must be compatible**: variables should be the same general
+   type, either numeric or string:
+   - Mismatched types will generate errors and prompt you to use the `force`
+     option
+   - The `force` option is not recommended as it keeps the master data type and
+     marks using observations as missing
+   - Resolve type conflicts before appending
 
-4. **String length handling**: combining string variables of different lengths results in a string of the longer length.
+4. **String length handling**: combining string variables of different lengths
+   results in a string of the longer length.
 
-5. **Numeric precision**: when combining different numeric types, Stata keeps the more precise type and converts lower precision variables to higher precision.
+5. **Numeric precision**: when combining different numeric types, Stata keeps
+   the more precise type and converts lower precision variables to higher
+   precision.
 
 ## Merging Data
 
-Merging combines two or more datasets that contain the same observations but different variables. This situation often occurs when survey programs split variables across multiple datasets.
+Merging combines two or more datasets that contain the same observations but
+different variables. This situation often occurs when survey programs split
+variables across multiple datasets.
 
 ### Prerequisites for Merging
 
-* Ensure both datasets have a unique ID
-* Specify the correct merge type: one-to-one or one-to-many
-* Check that datasets do not share variable names, except for ID variables
+- Ensure both datasets have a unique ID
+- Specify the correct merge type: one-to-one or one-to-many
+- Check that datasets do not share variable names, except for ID variables
 
 ### Handling Variable Name Conflicts
 
-When datasets contain variables with identical names, Stata defaults to keeping the master data values. You can modify this behavior using `update` or `replace` options, but renaming one variable and keeping both is often preferable.
+When datasets contain variables with identical names, Stata defaults to keeping
+the master data values. You can modify this behavior using `update` or `replace`
+options, but renaming one variable and keeping both is often preferable.
 
 ### Many-to-Many Merge Warning
 
-Avoid many-to-many merges as they represent poor practice. Many users expect this merge type to create all pair-wise combinations of matching observations, but it actually pairs datasets based on observation order within each ID. Use `joinby` if you need all pair-wise combinations.
+Avoid many-to-many merges as they represent poor practice. Many users expect
+this merge type to create all pair-wise combinations of matching observations,
+but it actually pairs datasets based on observation order within each ID. Use
+`joinby` if you need all pair-wise combinations.
 
 ### Post-Merge Validation
 
-After merging, validate results by checking the `_merge` variable. Each match type receives a numeric code. Use `tab _merge` to verify that results match expectations: number of matches, master-only observations, using-only observations, updated missing values, and conflicting nonmissing values.
+After merging, validate results by checking the `_merge` variable. Each match
+type receives a numeric code. Use `tab _merge` to verify that results match
+expectations: number of matches, master-only observations, using-only
+observations, updated missing values, and conflicting nonmissing values.
 
-Consider adding assertions after merging to ensure correct execution. Alternative merge commands like `safemerge` and `mmerge` provide additional safety features.
+Consider adding assertions after merging to ensure correct execution.
+Alternative merge commands like `safemerge` and `mmerge` provide additional
+safety features.
 
 ### Useful Merge Options
 
-Helpful options include `assert`, `keep`, `keepusing`, `generate`, and `nogen`. Consult `help merge` for detailed explanations.
+Helpful options include `assert`, `keep`, `keepusing`, `generate`, and `nogen`.
+Consult `help merge` for detailed explanations.
 
 ### Additional Resources
 
-The IPA Stata beginner's training manual provides step-by-step merge guidance. The IPA high intermediate Stata training includes a module on merging with common pitfall discussions.
+The IPA Stata beginner's training manual provides step-by-step merge guidance.
+The IPA high intermediate Stata training includes a module on merging with
+common pitfall discussions.
 
 ## Fuzzy Matching
 
-When datasets lack unique IDs, you must find alternative linking methods. String matching on names or other variables is common but often inaccurate due to misspellings. For machine-entered data, removing common mismatch sources like spaces and inconsistent capitalization may help. Manual matching works for small datasets, but large datasets often require fuzzy matching solutions.
+When datasets lack unique IDs, you must find alternative linking methods. String
+matching on names or other variables is common but often inaccurate due to
+misspellings. For machine-entered data, removing common mismatch sources like
+spaces and inconsistent capitalization may help. Manual matching works for small
+datasets, but large datasets often require fuzzy matching solutions.
 
-Fuzzy matching finds approximately similar strings rather than exact matches. These algorithms provide match probabilities and only apply when exact matching is impossible. Consult with your manager before using fuzzy matching, as its match rate is typically lower than exact matching. Exact matching remains preferable when possible.
+Fuzzy matching finds approximately similar strings rather than exact matches.
+These algorithms provide match probabilities and only apply when exact matching
+is impossible. Consult with your manager before using fuzzy matching, as its
+match rate is typically lower than exact matching. Exact matching remains
+preferable when possible.
 
 ### Fuzzy Matching Process
 
 Fuzzy matching typically involves three steps:
 
-1. **String cleaning**: standardize spaces, capitalization, and remove special characters. This may include removing common phrases like titles in names.
+1. **String cleaning**: standardize spaces, capitalization, and remove special
+   characters. This may include removing common phrases like titles in names.
 
-2. **Probabilistic matching**: algorithms estimate match probabilities between observations in different datasets.
+2. **Probabilistic matching**: algorithms estimate match probabilities between
+   observations in different datasets.
 
-3. **Match review**: review matches to determine the success threshold, then manually verify remaining matches.
+3. **Match review**: review matches to determine the success threshold, then
+   manually verify remaining matches.
 
 ### Stata Commands for Fuzzy Matching
 
-Several user-written commands support fuzzy matching in Stata. Install them using `ssc install [command]`:
+Several user-written commands support fuzzy matching in Stata. Install them
+using `ssc install [command]`:
 
 #### `reclink`
 
-Specify one or more variables for similarity assessment instead of a single unique ID. Numeric ages of twenty-five and twenty-six match more than thirty-five and sixty-five. String matching works even with imperfectly clean variables.
+Specify one or more variables for similarity assessment instead of a single
+unique ID. Numeric ages of twenty-five and twenty-six match more than
+thirty-five and sixty-five. String matching works even with imperfectly clean
+variables.
 
 **Known issues:**
 
-* The `idusing()` variable should never exist in the master dataset
-* `reclink` does not merge shared variable values from the using dataset without warning
-* Datasets should not share variable names except for matching variables
-* When `idusing()` and `idmaster()` use identical variable names, matches may fail
-* Consider using temporary files when changing variable names for matching
+- The `idusing()` variable should never exist in the master dataset
+- `reclink` does not merge shared variable values from the using dataset without
+  warning
+- Datasets should not share variable names except for matching variables
+- When `idusing()` and `idmaster()` use identical variable names, matches may
+  fail
+- Consider using temporary files when changing variable names for matching
 
-**Alternative:** `reclink2` improves on `reclink` and adds many-to-one matching. Install with `net install dm0082`.
+**Alternative:** `reclink2` improves on `reclink` and adds many-to-one matching.
+Install with `net install dm0082`.
 
 #### `matchit`
 
-Matches single variables to generate probability scores. Match multiple columns sequentially and average or weight probabilities for multi-column matching.
+Matches single variables to generate probability scores. Match multiple columns
+sequentially and average or weight probabilities for multi-column matching.
 
-Features multiple matching algorithms explained in the help file. All algorithms provide multiple likely matches for second-best guesses. Merge results using `joinby` or `merge`, but `matchit` does not function as a merge command.
+Features multiple matching algorithms explained in the help file. All algorithms
+provide multiple likely matches for second-best guesses. Merge results using
+`joinby` or `merge`, but `matchit` does not function as a merge command.
 
 #### `strgroup`
 
-Install with `net install strgroup`. Calculates string differences and uses user-specified thresholds to create groups and matches.
+Install with `net install strgroup`. Calculates string differences and uses
+user-specified thresholds to create groups and matches.
 
-Works within a single dataset. Data preparation typically involves joining a master variable to ID variables in the using dataset.
+Works within a single dataset. Data preparation typically involves joining a
+master variable to ID variables in the using dataset.
 
 ### Additional Resources
 
-Numerous other commands and approaches exist for this problem. The economics literature has evaluated these methods for historical record linkage. [Abramitzky et al.](https://ranabr.people.stanford.edu/sites/g/files/sbiybj5391/f/linking_may2019.pdf) test multiple matching protocols and find that automated comparison techniques compare favorably to human matching in various circumstances. Stata resources accompany the linked paper.
+Numerous other commands and approaches exist for this problem. The economics
+literature has evaluated these methods for historical record linkage.
+[Abramitzky et
+al.](https://ranabr.people.stanford.edu/sites/g/files/sbiybj5391/f/linking_may2019.pdf)
+test multiple matching protocols and find that automated comparison techniques
+compare favorably to human matching in various circumstances. Stata resources
+accompany the linked paper.

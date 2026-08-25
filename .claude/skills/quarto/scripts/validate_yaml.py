@@ -167,16 +167,16 @@ def main():
         epilog="""
 Examples:
   # Validate a single file
-  python validate_yaml.py document.qmd
+  uv python validate_yaml.py document.qmd
 
   # Validate all .qmd files in current directory
-  python validate_yaml.py --pattern "*.qmd"
+  uv python validate_yaml.py --pattern "*.qmd"
 
   # Validate with detailed output
-  python validate_yaml.py document.qmd --verbose
+  uv python validate_yaml.py document.qmd --verbose
 
   # Validate all files in a directory
-  python validate_yaml.py --pattern "reports/*.qmd"
+  uv python validate_yaml.py --pattern "reports/*.qmd"
         """,
     )
 

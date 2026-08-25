@@ -33,6 +33,7 @@ venv:
     uv sync
     uv tool install pre-commit
     uv run pre-commit install
+    uv tool install panache-cli==3.5.0
 
 # sync R environment, requires that R, RScript are in PATH
 renv:
@@ -70,10 +71,6 @@ fmt-python:
 fmt-py f:
     uv run ruff format {{ f }}
 
-# Lint sql scripts
-lint-sql:
-    uv run sqlmesh format
-
 # Report vale errors for a file
 vale-errors f:
     vale --filter=".Level in ['error']" {{ f }}
@@ -100,17 +97,26 @@ vale-warnings-all:
 
 # Format all markdown and config files
 fmt-markdown:
-    markdownlint-cli2 --config .markdownlint.yaml "**/*.qmd" "**/*.md" "#.venv" "#LICENSE.md" --fix
+    panache format .
 
 # Format a single markdown file, "f"
 fmt-md f:
-    markdownlint-cli2 --config .markdownlint.yaml {{ f }} --fix
+    panache format {{ f }}
 
 # Check format of all markdown files
 fmt-check-markdown:
-    markdownlint-cli2 --config .markdownlint.yaml "**/*.qmd" "**/*.md" "#.venv" "#LICENSE.md"
+    panache format --check .
 
-fmt-all: lint-py fmt-python lint-sql fmt-markdown
+# Lint all markdown files for semantic issues
+lint-markdown:
+    panache lint .
+
+# Lint a single markdown file, "f"
+lint-md f:
+    panache lint {{ f }}
+
+#Format all code and markdown files
+fmt-all: lint-py fmt-python fmt-markdown
 
 # Create a new page from template (Linux and MacOS)
 new-page dest:
@@ -128,16 +134,13 @@ pre-commit-run:
 
 [windows]
 pre-install:
-    winget install Casey.Just astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale OpenJS.NodeJS
-    winget install --id=RProject.R -e
-    npm install -g markdownlint-cli2
+    winget install astral-sh.uv GitHub.cli Posit.Quarto errata-ai.Vale RProject.R
 
 [linux]
 pre-install:
     brew install just uv gh vale r --force-bottle
-    sudo apt update && sudo apt upgrade && sudo apt install -y nodejs npm install -g markdownlint-cli2
 
 [macos]
 pre-install:
-    brew install just uv gh vale r markdownlint-cli2
+    brew install just uv gh vale r
     brew install --cask quarto

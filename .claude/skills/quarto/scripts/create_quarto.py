@@ -117,16 +117,16 @@ def main():
         epilog="""
 Examples:
   # Create HTML analysis document
-  python create_quarto.py --output analysis.qmd --title "My Analysis" --format html
+  uv python create_quarto.py --output analysis.qmd --title "My Analysis" --format html
 
   # Create Typst report
-  python create_quarto.py --output report.qmd --title "Annual Report" --format typst --author "John Doe"
+  uv python create_quarto.py --output report.qmd --title "Annual Report" --format typst --author "John Doe"
 
   # Create dual-format document
-  python create_quarto.py --output doc.qmd --title "Research Paper" --format dual
+  uv python create_quarto.py --output doc.qmd --title "Research Paper" --format dual
 
   # Create formal report
-  python create_quarto.py --output formal.qmd --title "Project Report" --format report
+  uv python create_quarto.py --output formal.qmd --title "Project Report" --format report
         """,
     )
 

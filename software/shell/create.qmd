@@ -1,52 +1,71 @@
 ---
 title: "Working With Files and Directories"
-abstract: |
-  Learn essential file and directory operations in the shell. Learn to create, copy, move, and delete files and directories. Discover text editors for the command line and understand how to organize your filesystem efficiently.
+abstract: >-
+  Learn essential file and directory operations in the shell. Learn to create,
+  copy, move, and delete files and directories. Discover text editors for the
+  command line and understand how to organize your filesystem efficiently.
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
-keywords: ["Shell", "File Operations", "Text Editors", "Directory Creation", "Command Line", "Tutorial"]
+categories:
+  - tutorial
+keywords: [
+  "Shell",
+  "File Operations",
+  "Text Editors",
+  "Directory Creation",
+  "Command Line",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true"}
-
+::: {.callout-note collapse="true"}
 ## Recognition and Attribution
 
-This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+This page is adapted from the [Software Carpentry Shell Novice
+lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The
+Carpentries](https://carpentries.org/). The original material is licensed under
+the [Creative Commons Attribution 4.0 International License (CC BY
+4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
+**Changes made:** Content has been modified and expanded by Innovations for
+Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash,
+PowerShell, NuShell), and context relevant to research data management.
 
-**Original citation:**
-Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+**Original citation:** Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin
+Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A.
+Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July).
+swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version
+v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Delete, copy and move specified files and/or directories.
-- Create files in that hierarchy using an editor or by copying and renaming existing files.
+- Create files in that hierarchy using an editor or by copying and renaming
+  existing files.
 - Create a directory hierarchy that matches a given diagram.
 :::
 
 ## Creating directories
 
-We now know how to explore files and directories, but how do we create them in the first place?
+We now know how to explore files and directories, but how do we create them in
+the first place?
 
 In this episode we will learn about creating and moving files and directories,
 using the `exercise-data/survey-data` directory as an example.
 
 ### Step one: See where we are and what we already have
 
-We should still be in the `shell-lesson-data` directory on the Desktop,
-which we can check using:
+We should still be in the `shell-lesson-data` directory on the Desktop, which we
+can check using:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -78,13 +97,12 @@ pwd
 ```output
 C:\Users\amara\Desktop\shell-lesson-data
 ```
-
 :::
 
-Next, we'll move to the `exercise-data/survey-data` directory and see what it contains:
+Next, we'll move to the `exercise-data/survey-data` directory and see what it
+contains:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -135,7 +153,6 @@ ls
 │ ...│ ...                  │ ...  │   ...   │ ...          │
 ╰────┴──────────────────────┴──────┴─────────┴──────────────╯
 ```
-
 :::
 
 ### Create a directory
@@ -144,7 +161,6 @@ Let's create a new directory called `report` using the command `mkdir report`
 (which has no output):
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -168,15 +184,14 @@ New-Item -ItemType Directory -Name report
 ```bash
 mkdir report
 ```
-
 :::
 
-As you might guess from its name, `mkdir` means 'make directory'.
-Since `report` is a relative path (i.e., it doesn't have a leading slash,
-like `/what/ever/report`), the new directory is created in the current working directory:
+As you might guess from its name, `mkdir` means 'make directory'. Since `report`
+is a relative path (i.e., it doesn't have a leading slash, like
+`/what/ever/report`), the new directory is created in the current working
+directory:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -224,18 +239,28 @@ ls
 │ ...│ ...                  │ ...  │   ...   │ ...          │
 ╰────┴──────────────────────┴──────┴─────────┴──────────────╯
 ```
-
 :::
 
 ## Key Points
 
 - `cp [old] [new]` (Bash/NuShell) or `Copy-Item` (PowerShell) copies a file.
-- `mkdir [path]` (all shells) or `New-Item -ItemType Directory` (PowerShell) creates a new directory.
-- `mv [old] [new]` (Bash/NuShell) or `Move-Item` (PowerShell) moves or renames a file or directory.
-- `rm [path]` (Bash/NuShell) or `Remove-Item` (PowerShell) removes (deletes) a file.
-- `*` matches zero or more characters in a filename, so `*.txt` matches all files ending in `.txt`.
-- `?` matches any single character in a filename, so `?.txt` matches `a.txt` but not `any.txt`.
-- Use of the Control key may be described in many ways, including `Ctrl-X`, `Control-X`, and `^X`.
-- The shell does not have a trash bin: once something is deleted, it's really gone.
-- Most files' names are `something.extension`. The extension isn't required, and doesn't guarantee anything, but is normally used to indicate the type of data in the file.
-- Text editors vary by platform: `nano` on Unix/macOS, `edit` on Windows (https://github.com/microsoft/edit), or cross-platform editors like VS Code (`code`).
+- `mkdir [path]` (all shells) or `New-Item -ItemType Directory` (PowerShell)
+  creates a new directory.
+- `mv [old] [new]` (Bash/NuShell) or `Move-Item` (PowerShell) moves or renames a
+  file or directory.
+- `rm [path]` (Bash/NuShell) or `Remove-Item` (PowerShell) removes (deletes) a
+  file.
+- `*` matches zero or more characters in a filename, so `*.txt` matches all
+  files ending in `.txt`.
+- `?` matches any single character in a filename, so `?.txt` matches `a.txt` but
+  not `any.txt`.
+- Use of the Control key may be described in many ways, including `Ctrl-X`,
+  `Control-X`, and `^X`.
+- The shell does not have a trash bin: once something is deleted, it's really
+  gone.
+- Most files' names are `something.extension`. The extension isn't required, and
+  doesn't guarantee anything, but is normally used to indicate the type of data
+  in the file.
+- Text editors vary by platform: `nano` on Unix/macOS, `edit` on Windows
+  (https://github.com/microsoft/edit), or cross-platform editors like VS Code
+  (`code`).

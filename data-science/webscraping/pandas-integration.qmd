@@ -1,26 +1,43 @@
 ---
 title: "Integration with Pandas"
-abstract: |
-  Learn to convert scraped web data into pandas DataFrames for analysis. Apply techniques for cleaning, transforming, and structuring web data, and build automated data collection workflows that integrate seamlessly with data science pipelines.
+abstract: >-
+  Learn to convert scraped web data into pandas DataFrames for analysis. Apply
+  techniques for cleaning, transforming, and structuring web data, and build
+  automated data collection workflows that integrate seamlessly with data
+  science pipelines.
 authors:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
-# # Contributors
-# contributors:
-#   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
+  # # Contributors
+  # contributors:
+  #   - "[Contributor Name](https://poverty-action.org/people/contributor_name)"
 
-keywords: ["Python", "Web Scraping", "Gazpacho", "Pandas", "Data Analysis", "DataFrames", "Data Cleaning", "Tutorial"]
+categories:
+  - tutorial
+keywords: [
+  "Python",
+  "Web Scraping",
+  "Gazpacho",
+  "Pandas",
+  "Data Analysis",
+  "DataFrames",
+  "Data Cleaning",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
-
-This content is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from [calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which are licensed under CC BY 4.0. The gazpacho library is used under the MIT License.
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This content is based on the [gazpacho
+library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and
+incorporates concepts from
+[calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which
+are licensed under CC BY 4.0. The gazpacho library is used under the MIT
+License.
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Convert scraped data into pandas DataFrames
@@ -33,7 +50,9 @@ This content is based on the [gazpacho library](https://github.com/maxhumber/gaz
 
 ## From Web Data to DataFrames
 
-The ultimate goal of web scraping is often to get data into a format suitable for analysis. Pandas DataFrames provide the perfect structure for working with tabular web data.
+The ultimate goal of web scraping is often to get data into a format suitable
+for analysis. Pandas DataFrames provide the perfect structure for working with
+tabular web data.
 
 ### Basic Conversion Workflow
 
@@ -116,7 +135,6 @@ quotes_df = scrape_quotes_to_dataframe()
 ```
 
 ::: {.callout-note}
-
 ## Exercise: Multiple Pages to DataFrame
 
 Practice scraping multiple data points and combining them:
@@ -175,7 +193,6 @@ def scrape_multiple_pages():
 # Test multiple page scraping
 multi_df = scrape_multiple_pages()
 ```
-
 :::
 
 ## PyPI Example: Complete Implementation
@@ -369,7 +386,6 @@ cleaned_df = cleaning_example()
 ```
 
 ::: {.callout-note}
-
 ## Exercise: Product Data Pipeline
 
 Build a complete pipeline from scraping to analysis:
@@ -477,7 +493,6 @@ if not df.empty:
     # Save results
     pipeline.save_data('scraped_products.csv')
 ```
-
 :::
 
 ## Advanced DataFrame Operations
@@ -673,7 +688,6 @@ if not quotes_df.empty:
 ```
 
 ::: {.callout-note}
-
 ## Exercise: Complete Scraping-to-Analysis Pipeline
 
 Build a comprehensive pipeline that scrapes, processes, and analyzes web data:
@@ -852,7 +866,6 @@ pipeline.save_results("web_scraping_results")
 
 print("\nPipeline completed successfully!")
 ```
-
 :::
 
 ## Best Practices for Pandas Integration
@@ -876,7 +889,6 @@ print("\nPipeline completed successfully!")
 - Use version control for scraping scripts
 
 ::: {.callout-important}
-
 ## Key Points
 
 - Convert scraped data to DataFrames for analysis

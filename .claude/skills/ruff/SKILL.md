@@ -1,19 +1,29 @@
 ---
 name: ruff
-description: This skill should be used when users need to lint, format, or validate Python code using the Ruff command-line tool. Use this skill for tasks involving Python code quality checks, automatic code formatting, enforcing style rules (PEP 8), identifying bugs and security issues, or modernizing Python code. This skill should be invoked PROACTIVELY whenever Python code is written or modified to ensure code quality.
+description: This skill should be used when users need to lint, format, or
+  validate Python code using the Ruff command-line tool. Use this skill for
+  tasks involving Python code quality checks, automatic code formatting,
+  enforcing style rules (PEP 8), identifying bugs and security issues, or
+  modernizing Python code. This skill should be invoked PROACTIVELY whenever
+  Python code is written or modified to ensure code quality.
 ---
 
 # Ruff Skill
 
-This skill provides expertise in using Ruff, an extremely fast Python linter and code formatter written in Rust. Ruff combines the functionality of multiple tools (Flake8, isort, Black, and more) into a single, high-performance package.
+This skill provides expertise in using Ruff, an extremely fast Python linter and
+code formatter written in Rust. Ruff combines the functionality of multiple
+tools (Flake8, isort, Black, and more) into a single, high-performance package.
 
 ## IMPORTANT: Proactive Usage
 
 **You MUST use this skill proactively in the following scenarios:**
 
-1. **After writing or modifying Python code** - Always run ruff format and ruff check --fix after creating or editing Python files
-2. **Before committing code** - Ensure all Python code passes linting and formatting checks
-3. **When encountering linting errors** - Immediately fix them using this skill's guidance
+1. **After writing or modifying Python code** - Always run ruff format and ruff
+   check --fix after creating or editing Python files
+2. **Before committing code** - Ensure all Python code passes linting and
+   formatting checks
+3. **When encountering linting errors** - Immediately fix them using this
+   skill's guidance
 4. **During code reviews** - Check code quality before finalizing changes
 
 **Default workflow when writing Python code:**
@@ -41,7 +51,9 @@ just lint-python
 
 ## About Ruff
 
-Ruff is designed to replace multiple Python development tools with a single, fast, and comprehensive solution. It's 10-100x faster than traditional Python linters while providing comparable or better functionality.
+Ruff is designed to replace multiple Python development tools with a single,
+fast, and comprehensive solution. It's 10-100x faster than traditional Python
+linters while providing comparable or better functionality.
 
 ### Key Capabilities
 
@@ -113,7 +125,8 @@ The `--fix` option will modify files in place to resolve fixable issues.
 
 #### Unsafe Fixes
 
-Some fixes are considered "unsafe" because they may change code behavior. To apply these:
+Some fixes are considered "unsafe" because they may change code behavior. To
+apply these:
 
 ```bash
 ruff check --fix --unsafe-fixes script.py
@@ -445,7 +458,8 @@ Use `--add-noqa` to add `# noqa` comments for existing violations:
 ruff check --add-noqa src/
 ```
 
-This allows you to enforce rules for new code while temporarily allowing existing violations.
+This allows you to enforce rules for new code while temporarily allowing
+existing violations.
 
 #### Fix Specific Issue Types
 
@@ -601,15 +615,20 @@ Ruff is typically very fast, but if experiencing slowness:
 ### Best Practices
 
 1. **Start Simple**: Begin with basic rules (F, E, I) and expand gradually
-2. **Format First**: Run `ruff format` before `ruff check` to avoid style conflicts
+2. **Format First**: Run `ruff format` before `ruff check` to avoid style
+   conflicts
 3. **Use --fix Liberally**: Most auto-fixes are safe and save time
-4. **Review Unsafe Fixes**: Always review `--unsafe-fixes` changes before committing
+4. **Review Unsafe Fixes**: Always review `--unsafe-fixes` changes before
+   committing
 5. **Configure Line Length**: Set `line-length` to match your team's preference
 6. **Enable in CI/CD**: Enforce checks in CI to maintain code quality
-7. **Per-file Ignores**: Use per-file configuration for test files, scripts, etc.
-8. **Commit Configuration**: Keep `ruff.toml` or `pyproject.toml` in version control
+7. **Per-file Ignores**: Use per-file configuration for test files, scripts,
+   etc.
+8. **Commit Configuration**: Keep `ruff.toml` or `pyproject.toml` in version
+   control
 9. **Document Exceptions**: Comment why specific rules are disabled
-10. **Keep Updated**: Ruff evolves quickly; update regularly for new rules and fixes
+10. **Keep Updated**: Ruff evolves quickly; update regularly for new rules and
+    fixes
 
 ### Integration with IDEs
 
@@ -689,4 +708,5 @@ ruff format --help
 - Formatter docs: <https://docs.astral.sh/ruff/formatter/>
 - GitHub repository: <https://github.com/astral-sh/ruff>
 - Configuration options: <https://docs.astral.sh/ruff/configuration/>
-- Migration guides: <https://docs.astral.sh/ruff/faq/#how-does-ruff-compare-to-flake8>
+- Migration guides:
+  <https://docs.astral.sh/ruff/faq/#how-does-ruff-compare-to-flake8>

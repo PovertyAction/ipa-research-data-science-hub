@@ -10,6 +10,8 @@ authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
+categories:
+  - tutorial
 keywords: ["Python", "Data Visualization", "Seaborn", "Statistics", "Tutorial"]
 license:
   text: "CC BY-SA"
@@ -17,7 +19,6 @@ license:
 ---
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Add statistical transformations to plots with `.add(mark, stat)`
@@ -26,11 +27,9 @@ license:
 - Fit regression lines with `so.PolyFit()`
 - Create histograms and density plots
 - Understand when and how to use statistical visualizations
-
 :::
 
 ::: {.callout-tip}
-
 ## Key Questions
 
 - How do I add statistical summaries to my plots?
@@ -38,20 +37,20 @@ license:
 - How do I show confidence intervals?
 - How do I visualize distributions?
 - When should I use statistical transformations?
-
 :::
 
 ## Understanding Statistical Transformations
 
-Thus far, we've been plotting **raw data** directly. But often we want to show **summaries** of the data:
+Thus far, we've been plotting **raw data** directly. But often we want to show
+**summaries** of the data:
 
 - Means or medians
 - Regression lines
 - Confidence intervals
 - Distributions
 
-In seaborn.objects, we do this by combining **marks** (what to draw) with **stats**
-(how to transform the data first).
+In seaborn.objects, we do this by combining **marks** (what to draw) with
+**stats** (how to transform the data first).
 
 The pattern is:
 
@@ -220,13 +219,11 @@ curve_data = pd.DataFrame({'x': x, 'y': y})
 ```
 
 ::: {.callout-warning}
-
 ## Don't Overfit
 
 Higher order polynomials (order > 3) can overfit your data, creating misleading
-patterns. Use them cautiously and only when you have theoretical reasons to expect
-complex curves.
-
+patterns. Use them cautiously and only when you have theoretical reasons to
+expect complex curves.
 :::
 
 ### Regression by Groups
@@ -441,7 +438,6 @@ Create rich analytical visualizations:
 ## Exercises
 
 ::: {.callout-note}
-
 ## Exercise 1: Compare Summary Statistics
 
 Using the tips dataset, create a plot showing:
@@ -454,8 +450,7 @@ Using the tips dataset, create a plot showing:
 # Your code here
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 1
 
 ```python
@@ -471,25 +466,21 @@ Using the tips dataset, create a plot showing:
     )
 )
 ```
-
-:::
-
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise 2: Distribution Analysis
 
-Create a histogram showing the distribution of total bill amounts in the tips dataset.
-Experiment with different numbers of bins (10, 20, 30). Which gives the clearest
-picture of the data?
+Create a histogram showing the distribution of total bill amounts in the tips
+dataset. Experiment with different numbers of bins (10, 20, 30). Which gives the
+clearest picture of the data?
 
 ```python
 # Your code here
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 2
 
 ```python
@@ -506,15 +497,12 @@ for n_bins in [10, 20, 30]:
     )
 ```
 
-The optimal number depends on your sample size and data distribution. For this dataset,
-20 bins probably provides good detail without being too noisy.
-
-:::
-
+The optimal number depends on your sample size and data distribution. For this
+dataset, 20 bins probably provides good detail without being too noisy.
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise 3: Regression Analysis
 
 Using the penguins dataset:
@@ -528,8 +516,7 @@ Using the penguins dataset:
 # Your code here
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution 3
 
 ```python
@@ -548,11 +535,10 @@ Using the penguins dataset:
 ```
 
 **Observation**: Interestingly, while each species shows a positive relationship
-between bill length and depth, overall (ignoring species) the relationship appears
-negative! This is Simpson's Paradox - a reminder to always consider grouping variables.
-
-:::
-
+between bill length and depth, overall (ignoring species) the relationship
+appears negative! This is Simpson's Paradox - a reminder to always consider
+grouping variables.
+:::::
 :::
 
 ## When to Use Statistical Transformations
@@ -587,32 +573,30 @@ negative! This is Simpson's Paradox - a reminder to always consider grouping var
 2. **Report Sample Size**: Larger samples give narrower confidence intervals
 3. **Check Assumptions**: Linear regression assumes linearity; check if it fits
 4. **Don't Hide Outliers**: They often tell important stories
-5. **Label Statistical Elements**: Make clear what the bands, lines, or bars represent
+5. **Label Statistical Elements**: Make clear what the bands, lines, or bars
+   represent
 
 ::: {.callout-important}
-
 ## Key Points
 
 - Statistical transformations add summaries to visualizations
 - Use `.add(mark, stat)` to combine marks with statistics
 - `so.Agg()` computes means or other aggregations
 - `so.Est()` adds confidence intervals
-- `so.PolyFit()` fits regression lines (order=1 for linear, order=2 for quadratic)
+- `so.PolyFit()` fits regression lines (order=1 for linear, order=2 for
+  quadratic)
 - `so.Hist()` creates histograms for distributions
 - `so.Count()` counts occurrences in categories
 - Combine raw data with statistical summaries for complete stories
 - Layer multiple statistical elements (lines + bands, means + CIs)
 - Choose appropriate transformations based on research questions
 - Always show uncertainty when making statistical inferences
-
 :::
 
 ::: {.callout-tip}
-
 ## Looking Ahead
 
 In the final lesson, we'll bring everything together - learning about themes,
 final polish, and creating a complete, publication-ready figure for a research
 report or presentation.
-
 :::

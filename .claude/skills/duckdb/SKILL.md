@@ -1,31 +1,42 @@
 ---
 name: duckdb
-description: This skill should be used when users need to work with the DuckDB CLI for querying, analyzing, or transforming data. Use this skill for executing SQL queries, importing/exporting data, configuring DuckDB settings, or performing database operations at the command line.
+description: This skill should be used when users need to work with the DuckDB
+  CLI for querying, analyzing, or transforming data. Use this skill for
+  executing SQL queries, importing/exporting data, configuring DuckDB settings,
+  or performing database operations at the command line.
 ---
 
 # DuckDB CLI Skill
 
-This skill provides comprehensive guidance for using DuckDB's command-line interface, a fast, in-process SQL OLAP database management system designed for analytical workloads.
+This skill provides comprehensive guidance for using DuckDB's command-line
+interface, a fast, in-process SQL OLAP database management system designed for
+analytical workloads.
 
 ## About DuckDB CLI
 
-DuckDB CLI is a single, dependency-free executable that provides a full-featured SQL interface for data analysis. It excels at analytical queries on structured data formats (CSV, Parquet, JSON) and can handle datasets ranging from in-memory operations to out-of-core processing of files larger than available RAM.
+DuckDB CLI is a single, dependency-free executable that provides a full-featured
+SQL interface for data analysis. It excels at analytical queries on structured
+data formats (CSV, Parquet, JSON) and can handle datasets ranging from in-memory
+operations to out-of-core processing of files larger than available RAM.
 
 ### Key Capabilities
 
 - **SQL Analytics**: Full SQL support with PostgreSQL-compatible syntax
 - **File Format Support**: Native reading of CSV, Parquet, JSON, Excel, and more
-- **In-Memory & Persistent**: Work with temporary in-memory databases or persistent files
+- **In-Memory & Persistent**: Work with temporary in-memory databases or
+  persistent files
 - **Zero-Copy Integration**: Direct querying of files without importing
 - **Advanced Features**: Window functions, CTEs, PIVOT/UNPIVOT, aggregations
 - **Data Import/Export**: Seamless conversion between formats
-- **Performance**: Columnar storage, vectorized execution, and intelligent query optimization
+- **Performance**: Columnar storage, vectorized execution, and intelligent query
+  optimization
 
 ### Version Information
 
 Current stable version: 1.4.1 (Ossivalis)
 
-Available for Windows, macOS, and Linux as a single executable with no dependencies.
+Available for Windows, macOS, and Linux as a single executable with no
+dependencies.
 
 ## When to Use This Skill
 
@@ -44,7 +55,8 @@ Use this skill when users:
 
 ### Download and Setup
 
-1. Download DuckDB CLI from the [installation page](https://duckdb.org/docs/installation) under the CLI tab
+1. Download DuckDB CLI from the [installation
+   page](https://duckdb.org/docs/installation) under the CLI tab
 2. Available as pre-built binaries for:
    - Windows (x64, ARM64)
    - macOS (x64, ARM64/M1)
@@ -75,7 +87,8 @@ scoop install duckdb
 duckdb
 ```
 
-Creates a temporary database that won't persist after closing. Ideal for quick analysis.
+Creates a temporary database that won't persist after closing. Ideal for quick
+analysis.
 
 **Persistent Database:**
 
@@ -630,7 +643,8 @@ ORDER BY frequency DESC;
 
 ## Integration with Python and R
 
-While this skill focuses on the CLI, DuckDB integrates seamlessly with programming languages:
+While this skill focuses on the CLI, DuckDB integrates seamlessly with
+programming languages:
 
 **Python:**
 
@@ -679,7 +693,8 @@ result <- dbGetQuery(con, "SELECT * FROM users")
 ## Best Practices
 
 1. **Start with exploration**: Use `LIMIT` and sampling for initial analysis
-2. **Use appropriate formats**: Parquet for large datasets, CSV for small/human-readable
+2. **Use appropriate formats**: Parquet for large datasets, CSV for
+   small/human-readable
 3. **Leverage partitioning**: Organize large datasets by date, category, etc.
 4. **Test queries incrementally**: Build complex queries step-by-step
 5. **Save intermediate results**: Create tables/views for multi-step analysis
@@ -700,7 +715,8 @@ result <- dbGetQuery(con, "SELECT * FROM users")
 
 ### Additional Learning
 
-- [Grant McDermott's DuckDB Guide](https://grantmcdermott.com/duckdb-polars/duckdb-sql.html)
+- [Grant McDermott's DuckDB
+  Guide](https://grantmcdermott.com/duckdb-polars/duckdb-sql.html)
 - DuckDB Blog for latest features and use cases
 - Community examples on GitHub
 

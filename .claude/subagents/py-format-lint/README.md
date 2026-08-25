@@ -1,6 +1,7 @@
 # Python Format & Lint Subagent
 
-Automatically format and lint Python code using ruff through the project's just commands.
+Automatically format and lint Python code using ruff through the project's just
+commands.
 
 ## Purpose
 
@@ -13,7 +14,8 @@ This subagent ensures Python code quality by:
 
 ## Usage
 
-This subagent is designed to be invoked proactively by Claude Code whenever Python code is written or modified.
+This subagent is designed to be invoked proactively by Claude Code whenever
+Python code is written or modified.
 
 ### Automatic Invocation
 

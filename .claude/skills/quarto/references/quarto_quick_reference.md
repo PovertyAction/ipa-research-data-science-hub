@@ -4,7 +4,7 @@
 
 ### Basic .qmd File
 
-```markdown
+````markdown
 ---
 title: "Document Title"
 format: html
@@ -22,7 +22,7 @@ Content here...
 
 More content...
 
-```
+````
 
 ## YAML Front Matter
 
@@ -83,7 +83,7 @@ format:
 
 ### Python
 
-```markdown
+````markdown
 ```{python}
 #| label: fig-plot
 #| fig-cap: "My figure"
@@ -94,11 +94,11 @@ plt.plot([1, 2, 3], [1, 4, 9])
 plt.show()
 ```text
 
-```
+````
 
 ### R
 
-```markdown
+````markdown
 ```{r}
 #| label: tbl-summary
 #| tbl-cap: "Summary table"
@@ -106,24 +106,24 @@ plt.show()
 summary(mtcars)
 ```text
 
-```
+````
 
 ### Bash
 
-```markdown
+````markdown
 ```{bash}
 #| echo: true
 
 ls -la
 ```text
 
-```
+````
 
 ## Cell Options
 
 Common options (use `#|` prefix):
 
-```markdown
+````markdown
 ```{python}
 #| label: my-code
 #| echo: false          # Hide code, show output
@@ -141,7 +141,7 @@ Common options (use `#|` prefix):
 # code here
 ```text
 
-```
+````
 
 ## Markdown Syntax
 
@@ -220,7 +220,7 @@ $$
 
 ### Creating References
 
-```markdown
+````markdown
 See @fig-plot for the figure.
 Results in @tbl-results.
 Methods described in @sec-methods.
@@ -237,7 +237,7 @@ Methods described in @sec-methods.
 #| tbl-cap: "Results"
 ```text
 
-```
+````
 
 ### Reference Types
 
@@ -313,12 +313,12 @@ Right column content
 
 ### Include Code from File
 
-```markdown
+````markdown
 ```{python}
 #| file: analysis.py
 ```text
 
-```
+````
 
 ## Parameters
 
@@ -336,7 +336,7 @@ params:
 
 ### Use Parameters
 
-```markdown
+````markdown
 ```{python}
 import pandas as pd
 
@@ -345,7 +345,7 @@ year = params['year']
 alpha = params['alpha']
 ```text
 
-```
+````
 
 ### Render with Parameters
 
@@ -461,13 +461,13 @@ execute:
 
 ### Cell-Level
 
-```markdown
+````markdown
 ```{python}
 #| echo: false
 #| cache: true
 ```text
 
-```
+````
 
 ## Themes (HTML)
 

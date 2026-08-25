@@ -21,21 +21,10 @@ $gray-700: #333333;
 $gray-800: #242426;
 $gray-900: #151515;
 $default: $gray-900;
-$primary: $green;
-$secondary: #707073;
-$success: #155240;
-$info: $yellow;
-$warning: $orange;
-$danger: $red;
 
-
-
-// Base document colors
-$body-bg: $gray-900;
-$body-color: $gray-100;
-$link-color: #f26529;
-
-$light: rgb(32.4, 32.4, 34.2);
+// Base document colors ($body-bg, $body-color, $link-color, $primary,
+// $secondary, $success, $info, $warning, $danger, $light, $dark are
+// supplied by dark-brand.yml)
 
 // Navigation element colors
 $footer-bg: $gray-900;
@@ -51,9 +40,11 @@ $popover-bg: #242424;
 
 // Bootstrap inputs
 $input-bg: #242424;
-$dropdown-bg: $body-bg;
-$dropdown-color: $body-color;
-$dropdown-link-color: $body-color;
+// Lifted above body bg ($gray-900) so the open menu stands out
+$dropdown-bg: $gray-800;
+$dropdown-border-color: $gray-600;
+$dropdown-color: $gray-100;
+$dropdown-link-color: $gray-100;
 $dropdown-link-hover-bg: $gray-600;
 $dropdown-link-hover-color: #eee;
 $nav-tabs-link-hover-border-color: rgb(80, 80, 80);
@@ -62,14 +53,18 @@ $border-color: rgba($gray-800, 0.5);
 
 $mono-background-color: rgba(0, 0, 0, 0);
 $code-color: #be9ffa;
-$nav-tabs-link-active-color: $body-color;
+$nav-tabs-link-active-color: $gray-100;
 $toc-inactive-border: rgba($gray-200, 0.5);
 $input-text-background-color: $gray-200;
 $input-group-addon-bg: $gray-200;
-$carousel-dark-caption-color: $body-color;
+$carousel-dark-caption-color: $gray-100;
 $pagination-disabled-bg: rgb(24, 24, 24);
 
 $text-muted: lighten(#6a737b, 20%);
+
+// litera styles p with $font-family-serif (Georgia); keep body text on the
+// brand base font instead
+$font-family-serif: Arimo, Arial, sans-serif;
 
 // Mermaid diagrams: explicit colors because the values Quarto derives from
 // the brand palette give green text on gray fills (unreadable)
@@ -84,6 +79,10 @@ $mermaid-label-bg-color: $gray-900;
 $mermaid-label-fg-color: $gray-100;
 
 /*-- scss:rules --*/
+
+.navbar .dropdown-menu {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
 
 // Mermaid edge-label chips: mermaid injects a hard-coded light background
 // (rgba(232,232,232,.5)) that makes white label text unreadable in dark mode
@@ -104,58 +103,6 @@ svg[id$="-mermaid"] .labelBkg {
   /*color: tint-color($cyan, 2%);*/
   color: #D1DBE5;
 }
-
-// .hero-banner .btn-action-primary,
-// .get-started .btn-action-primary {
-//   background-color: #f8f8f8;
-//   border: 1px solid #f8f8f8;
-//   color: $dark;
-// }
-
-// .hero-banner .btn-action-primary:hover,
-// .get-started .btn-action-primary:hover {
-//   background-color: #D1DBE5;
-//   border: 1px solid #f8f8f8;
-//   color: $dark;
-// }
-
-// .hero-banner .btn-secondary {
-//   background-color: #C2C2C4;
-//   border: 1px solid #f8f8f8;
-//   color: $dark;
-// }
-
-// .hero-banner .btn-secondary:hover {
-//   background-color: #707073;
-// }
-
-.hello-quarto-banner .nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
-  border: none;
-  border-bottom: 2px solid #ffffff !important;
-  color: #ffffff !important;
-  background-color: transparent;
-}
-
-.hello-quarto-banner .nav-link {
-  color: #ffffff !important;
-}
-
-.bg-color {
-  background-color: $body-bg;
-}
-
-.hello-output {
-  border: 1px solid $gray-700;
-}
-
-
-body.quarto-light .alt-background {
-  background-color: #17212B;
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
-}
-
 
 .layout-example {
   background: $gray-700;

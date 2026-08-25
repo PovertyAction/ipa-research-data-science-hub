@@ -1,54 +1,73 @@
 ---
 title: "Python Virtual Environments with uv"
-abstract: "Comprehensive guide to creating and managing Python virtual environments using uv, a fast and modern Python package manager."
-keywords: ["Python", "virtual environments", "uv", "package management", "tutorial", "how-to"]
+abstract: >-
+  Comprehensive guide to creating and managing Python virtual environments using
+  uv, a fast and modern Python package manager.
+categories:
+  - how-to
+  - Data Science
+keywords: [
+  "Python",
+  "virtual environments",
+  "uv",
+  "package management",
+  "tutorial",
+  "how-to",
+]
 
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 
-# contributors:
-#   - "[]()"
+  # contributors:
+  #   - "[]()"
 
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.custom-summary-block}
-uv is a fast, modern Python package and project manager that simplifies virtual environment creation and dependency management. This guide covers installation, environment setup, package management, and integration with common development workflows for research and data science projects.
+::: {.custom-summary-block}
+uv is a fast, modern Python package and project manager that simplifies virtual
+environment creation and dependency management. This guide covers installation,
+environment setup, package management, and integration with common development
+workflows for research and data science projects.
 :::
 
 ## What is uv?
 
-[uv](https://docs.astral.sh/uv) is a fast Python package installer and resolver written in Rust. It serves as a drop-in replacement for pip and pip-tools, while also providing unified project management capabilities.
+[uv](https://docs.astral.sh/uv) is a fast Python package installer and resolver
+written in Rust. It serves as a drop-in replacement for pip and pip-tools, while
+also providing unified project management capabilities.
 
 ### Why use uv?
 
 - **Speed**: Fast package installation and resolution
-- **Simplicity**: Single tool for managing Python versions, virtual environments, and packages
-- **Modern workflow**: Built-in support for `pyproject.toml` and modern Python packaging standards
+- **Simplicity**: Single tool for managing Python versions, virtual
+  environments, and packages
+- **Modern workflow**: Built-in support for `pyproject.toml` and modern Python
+  packaging standards
 - **Reliability**: Deterministic dependency resolution and lockfiles
 - **Compatibility**: Works with existing pip and requirements.txt workflows
 
 ### uv vs Other Tools
 
-| Feature | uv | pip | conda |
-| ------- | --- | --- | ----- |
-| **Speed** | Extremely fast (Rust-based) | Moderate | Slow to moderate |
-| **Virtual environments** | Built-in (`uv venv`) | Requires separate venv module | Built-in |
-| **Dependency resolution** | Advanced, deterministic | Basic | Advanced |
-| **Python version management** | Yes | No | Yes |
-| **Non-Python packages** | No | No | Yes |
-| **Best for** | Python-only projects, modern workflows | Simple projects, compatibility | Multi-language scientific computing |
+  | Feature                       | uv                                     | pip                            | conda                               |
+  | ----------------------------- | -------------------------------------- | ------------------------------ | ----------------------------------- |
+  | **Speed**                     | Extremely fast (Rust-based)            | Moderate                       | Slow to moderate                    |
+  | **Virtual environments**      | Built-in (`uv venv`)                   | Requires separate venv module  | Built-in                            |
+  | **Dependency resolution**     | Advanced, deterministic                | Basic                          | Advanced                            |
+  | **Python version management** | Yes                                    | No                             | Yes                                 |
+  | **Non-Python packages**       | No                                     | No                             | Yes                                 |
+  | **Best for**                  | Python-only projects, modern workflows | Simple projects, compatibility | Multi-language scientific computing |
 
-For Python-only or Python-plus-Stata research and data science projects, uv provides the best balance of speed, simplicity, and modern features.
+For Python-only or Python-plus-Stata research and data science projects, uv
+provides the best balance of speed, simplicity, and modern features.
 
 ## Installing uv
 
 ### Installation by Platform
 
 ::: {.panel-tabset group="OS"}
-
 # Windows
 
 ```bash
@@ -76,7 +95,6 @@ Or use the standalone installer:
 # Install using the official installer script
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
-
 :::
 
 ## Verify Installation
@@ -124,7 +142,8 @@ uv venv --python 3.12
 uv venv --python 3.12.5
 ```
 
-If the specified Python version is not installed, uv will automatically download and install it.
+If the specified Python version is not installed, uv will automatically download
+and install it.
 
 ### Activating Virtual Environments
 
@@ -150,7 +169,8 @@ source .venv/bin/activate
 overlay using .venv/Scripts/activate.nu
 ```
 
-When activated, your command prompt will show the environment name, typically as `(.venv)` or `(myproject-env)`.
+When activated, your command prompt will show the environment name, typically as
+`(.venv)` or `(myproject-env)`.
 
 ### Deactivating Environments
 
@@ -244,7 +264,8 @@ uv pip uninstall pandas numpy
 
 ## Working with pyproject.toml
 
-`pyproject.toml` is the modern standard for Python project configuration. uv integrates seamlessly with it.
+`pyproject.toml` is the modern standard for Python project configuration. uv
+integrates seamlessly with it.
 
 ### Basic Project Structure
 
@@ -318,7 +339,8 @@ uv lock
 uv sync
 ```
 
-Commit `uv.lock` to version control to ensure everyone uses identical package versions.
+Commit `uv.lock` to version control to ensure everyone uses identical package
+versions.
 
 ## Common Workflows
 
@@ -523,8 +545,8 @@ python -m ipykernel install --user --name=myproject --display-name="Python (mypr
 uv run jupyter lab
 ```
 
-4. **Select Kernel**: In JupyterLab, choose "Python (myproject)" from the kernel menu.
-
+4. **Select Kernel**: In JupyterLab, choose "Python (myproject)" from the kernel
+   menu.
 
 ## Best Practices
 
@@ -558,8 +580,10 @@ Use consistent naming:
 
 - **Pin major versions**: `pandas>=2.0,<3.0` for stability
 - **Use lockfiles**: Commit `uv.lock` for reproducibility
-- **Separate dev dependencies**: Keep development tools separate from runtime dependencies
-- **Document unusual dependencies**: Add comments in `pyproject.toml` explaining non-obvious packages
+- **Separate dev dependencies**: Keep development tools separate from runtime
+  dependencies
+- **Document unusual dependencies**: Add comments in `pyproject.toml` explaining
+  non-obvious packages
 
 ### Regular Maintenance
 
@@ -569,12 +593,19 @@ Use consistent naming:
 
 ## Learning Resources
 
-- [Official uv Documentation](https://docs.astral.sh/uv/) - Comprehensive reference
-- [uv GitHub Repository](https://github.com/astral-sh/uv) - Source code and issue tracker
-- [Python Packaging User Guide](https://packaging.python.org/) - Python packaging standards
-- [pyproject.toml Specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/) - Project configuration format
+- [Official uv Documentation](https://docs.astral.sh/uv/) - Comprehensive
+  reference
+- [uv GitHub Repository](https://github.com/astral-sh/uv) - Source code and
+  issue tracker
+- [Python Packaging User Guide](https://packaging.python.org/) - Python
+  packaging standards
+- [pyproject.toml
+  Specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/) -
+  Project configuration format
 
 For general Python setup and data science workflows, see:
 
-- [Getting Started with Python](../python/index.qmd) - Broader Python introduction
-- [Virtual Environments Overview](index.qmd) - Comparison of virtual environment tools
+- [Getting Started with Python](../python/index.qmd) - Broader Python
+  introduction
+- [Virtual Environments Overview](index.qmd) - Comparison of virtual environment
+  tools
