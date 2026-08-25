@@ -1,0 +1,110 @@
+Tutorial
+
+# Setup Instructions
+
+Learn how to install and configure the essential software needed for Git and GitHub workflows, including VS Code, Git, and GitHub account setup.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Niall Keleher](https://poverty-action.org/people/niall-keleher)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This tutorial modifies content from [Jenna Jordan’s Intro to Git & GitHub (Speedrun edition)](https://jennajordan.me/git-novice-speedrun/), which draws from the [Software Carpentry Version Control with Git lesson](https://swcarpentry.github.io/git-novice/), the [Carpentries Incubator Version Control with Git lesson](https://carpentries-incubator.github.io/git-novice-branch-pr/), and the [Library Carpentry Introduction to Git lesson](https://librarycarpentry.github.io/lc-git/). Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+>
+> **Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples.
+
+> **NOTE:**
+>
+> - Install VS Code and other needed software
+> - Connect VS Code to GitHub
+
+## Create a GitHub account
+
+If you do not already have a GitHub account, visit [github.com](https://github.com) to create one.
+
+You can refer to [this doc page](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) for further instructions about creating a GitHub account.
+
+If you already have a GitHub account, please verify that you can sign in, and take note of the emails associated with the account.
+
+It is strongly recommended that you set up 2FA for your GitHub account, and to use a password manager.
+
+## Software Installations
+
+### Visual Studio Code
+
+[Download and install VS Code](https://code.visualstudio.com/download).
+
+``` bash
+# On Windows, you can also install VS Code using
+winget install --id Microsoft.VisualStudioCode
+
+# On Mac, you can also install VS Code using Homebrew
+brew install --cask visual-studio-code
+```
+
+If you are new to using VS Code, you can review this [Getting Started](https://code.visualstudio.com/docs/getstarted/getting-started) guide.
+
+### Positron
+
+Alternatively, you can use [Positron](https://positron.posit.co), which is a version of VS Code that comes pre-configured for data science and research workflows.
+
+[Download and install Positron](https://positron.posit.co/download).
+
+``` bash
+# On Windows, you can also install Positron using
+winget install --id Positron.Positron
+
+# On Mac, you can also install Positron using Homebrew
+brew install --cask positron
+```
+
+### Git
+
+You must have Git installed on your local computer. Typically, Mac and Linux computers come pre-installed with git, while Windows users must install [GitBash](https://gitforwindows.org) (Git for Windows). However, you should verify that Git is installed on your computer.
+
+You can verify git is installed by opening a command line application (e.g. Terminal) and typing:
+
+``` bash
+git version
+```
+
+If you see an error message stating git is an unknown command, you will need to install git.
+
+If you do not already have git installed, you can refer to [this GitHub guide](https://github.com/git-guides/install-git) on installing git for any OS.
+
+``` bash
+# On Windows, you can also install Git using
+winget install --id Git.Git
+
+# On Mac, you can also install Git using Homebrew
+brew install git
+```
+
+### Bash
+
+You should have a Bash terminal. If you are on a Windows, you will have a Bash terminal by virtue of installing Git for Windows (GitBash). If you are on a Mac or Linux, you will already have a Bash terminal.
+
+Rather than using a separate command line application, you will be using the Terminal in VS Code. To learn more about using the Terminal in VS Code, refer to [these docs](https://code.visualstudio.com/docs/terminal/basics).
+
+## Connect VS Code/Positron to GitHub
+
+Please refer to [these instructions](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git#_set-up-git-in-vs-code) to sign in to GitHub from VS Code.
+
+Optionally, you can install the GitHub extension, and follow [these instructions](https://code.visualstudio.com/docs/sourcecontrol/github) to sign into GitHub.
+
+## Key Points
+
+- GitHub, VS Code/Positron, bash, and git are needed for this lesson
+
+Back to top

@@ -1,0 +1,109 @@
+Explanation
+
+# Data Integrity
+
+This guide covers procedures for ensuring data integrity in research, including double data entry methods, data backup strategies, and secure file storage using Box.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
+
+## Contributors
+
+- [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
+- [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - **Double Entry:** A method to ensure data accuracy by independently entering data twice and comparing for discrepancies.
+> - **Maintaining Data Backups:** Protects against data loss by storing multiple copies in different locations with version control.
+> - **Storing Files on Box:** Ensures secure access, collaboration, and compliance with data protection policies.
+
+## What is Data Integrity?
+
+Ensuring data integrity and security is crucial for high-quality research. This involves verifying data accuracy through **Double Entry**, protecting against loss by **Maintaining Data Backups**, and ensuring secure access by **Storing Files on Box**. Adopting these best practices minimizes errors, preserves data, and promotes reliability.
+
+## Double Entry
+
+**Definition:** Double entry is a method where researchers enter data twice independently and then compare the entries to detect discrepancies.
+
+**Steps:**
+
+1.  **Initial Data Entry:** Enumerators or data clerks enter data from source documents into the database.
+2.  **Second Independent Entry:** A different person re-enters the same data into a separate database.
+3.  **Comparison and Validation:** Researchers compare the two datasets to identify inconsistencies.
+4.  **Error Resolution:** Staff review discrepancies and correct them using the original source.
+
+**Why it Matters:**
+
+- Reduces human error in manual data entry.
+- Ensures higher accuracy and reliability of data.
+- Essential for sensitive data where precision is critical.
+
+**Best Practices:**
+
+- Use automated comparison tools to speed up validation.
+- Train staff on accurate data entry techniques.
+- Implement a tracking system to monitor common errors.
+
+## Maintaining Data Backups
+
+**Definition:** A backup is a copy of data stored to protect against accidental loss, corruption, or hardware failure.
+
+**Steps:**
+
+1.  **Automated Backups:** Schedule automatic backups at regular intervals.
+2.  **Multiple Storage Locations:** Store backups in at least two locations, such as cloud storage or an external drive.
+3.  **Version Control:** Maintain different versions of files to recover previous states.
+4.  **Regular Testing:** Periodically restore files to ensure backups are functional.
+
+**Why it Matters:**
+
+- Prevents loss of critical research data.
+- Ensures continuity in case of system failure.
+- Protects against accidental deletions and cyber threats.
+
+**Best Practices:**
+
+- Use encrypted backups to secure sensitive data.
+- Follow the 3-2-1 rule: Keep three copies of data, on two different media, with one copy offsite.
+- Document backup procedures for easy recovery.
+
+## Storing Files on Box
+
+**Definition:** Box is a secure cloud storage platform that allows teams to store, access, and share files efficiently.
+
+**Steps:**
+
+1.  **Upload Files to Box:** Organize files into appropriate folders.
+2.  **Set Access Permissions:** Restrict access based on roles, such as view-only, edit, or admin.
+3.  **Enable File Versioning:** Maintain previous versions to track changes.
+4.  **Use Encryption and Two-Factor Authentication:** Enhance data security with two-factor authentication (2FA).
+
+**Why it Matters:**
+
+- Provides secure storage with controlled access.
+- Facilitates team collaboration with real-time file sharing.
+- Ensures compliance with data protection policies.
+
+**Best Practices:**
+
+- Audit file permissions and access logs.
+- Use Box Sync or Box Drive for seamless integration with local storage.
+- Set up automated alerts for unauthorized access attempts.
+
+## Additional Resources
+
+Abdul Latif Jameel Poverty Action Lab (J-PAL). “Data Security Procedures for Researchers.” Accessed October 31, 2025. https://www.povertyactionlab.org/resource/data-security-procedures-researchers.
+
+Back to top

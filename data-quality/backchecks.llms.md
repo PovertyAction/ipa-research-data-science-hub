@@ -1,0 +1,440 @@
+Explanation
+
+# Backchecks
+
+This page is the overall guide to backchecks. All IPA projects are required to perform backchecks for their surveys. The following sections contain IPA protocols and accumulated wisdom on how to implement a backcheck, design questionnaires, and analyze the data to take appropriate actions based on results.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Rosemarie Santino Torres](https://github.com/rsandino)
+
+## Contributors
+
+- [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
+- [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
+- [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
+## Introduction: The Possibilities of the Backcheck
+
+### Why Surveyors Cut Corners
+
+Surveying can be challenging and demanding work. To escape difficult field conditions and return to the office, surveyors are often tempted to take shortcuts. **The most common problematic behaviors include:**
+
+- **Skipping sections** or entire surveys
+- **Failing to prompt properly** during interviews
+- **Modifying examples** or informed consent scripts
+- **Prematurely classifying** respondents as missing or away
+
+### The Dual Purpose of Backchecks
+
+In your mission to collect high-quality data, you need a systematic approach to both **detect poor surveying practices** and **incentivize high-quality fieldwork**. Backchecks serve two critical functions:
+
+> **NOTE:**
+>
+> Develop a systematic way to detect poor surveying and create disincentives for surveyors to take shortcuts and falsify data.
+
+> **NOTE:**
+>
+> Monitor how well your questionnaire performs in the field by determining:
+>
+> - Are respondents changing their answers to questions that shouldn’t change?
+> - Do key outcomes vary significantly between interviews?
+
+### What is a Backcheck?
+
+**A backcheck—also known as a field audit or reinterview—is when a highly qualified surveyor visits a respondent a second time** to administer a mini-survey composed of selected questions from the original questionnaire. The team then compares the backcheck responses with the respondent’s original answers.
+
+**Key benefits of backchecks:**
+
+- Hold surveyors directly accountable by comparing their question-asking techniques with team experts
+- Reveal the robustness of the survey instrument
+- Enable monitoring of both survey team performance and questionnaire effectiveness in the field
+
+> **IMPORTANT:**
+>
+> Backchecks are **just as critical** to producing high-quality data as double entry is to ensuring data entry accuracy. **All IPA projects are required to perform backchecks** for their surveys.
+
+**Well-implemented backchecks can lead to:**
+
+- Questionnaire revisions
+- Improved training programs
+- Additional rounds of surveying
+- Changes to the survey team
+
+This page provides a comprehensive guide to implementing backchecks. The following sections contain IPA’s protocols and accumulated wisdom on how to implement backchecks, design questionnaires, and analyze data to take appropriate actions based on results.
+
+## Recommended Best Practices
+
+The following guidelines are recommended as best practices by IPA:
+
+### Key Metrics and Timing
+
+| **Aspect** | **Requirement** | **Notes** |
+|----|----|----|
+| **Sample Size** | **≥10% of surveys** or **40 surveys/week** (whichever is higher) | Larger surveys may use \<10%; smaller surveys may need 15-20% |
+| **CATI Surveys** | **\>10%** | Higher percentage required for phone surveys |
+| **Timing** | **Within 3 days** of original survey | Daily analysis preferred; weekly minimum |
+| **Frequency** | **At least once per week** per enumerator | Throughout entire survey period |
+| **Duration** | **≤10 minutes** for phone backchecks | Keep significantly shorter than main survey |
+
+### Sampling and Coverage Requirements
+
+> **TIP:**
+>
+> - **Proportional coverage** across enumerators and geographic areas
+> - **Early intensive checking**: Aggressive backchecking in first few weeks, then reduce to 10%
+> - **Priority targets**: Enumerators with unusual survey durations or data quality flags
+> - **Ongoing accountability**: Regular checks even for high performers throughout survey period
+
+### Sample Selection Protocols
+
+#### Random Selection
+
+- Household selection must be **random** to prevent pattern recognition
+- Stratification allowed when appropriate
+- Surveyors should know backchecks occur but not know which respondents or questions
+
+#### Missing and Replacement Respondents
+
+- Include **proportional number** of missing and replacement respondents
+- Verify missing respondents were truly absent
+- Ensure all replacements were necessary
+- **Special consideration**: Be sensitive when following up on respondents reported as deceased
+
+### Questionnaire Design Requirements
+
+#### Multiple Versions
+
+- **Multiple versions** covering the entire survey
+- Prevents enumerators from gaming the system
+- **Minimum**: 10 questions or 10% of total survey per version
+
+#### Length and Respondent Experience
+
+- **Significantly shorter** than main survey
+- Respect respondent time and avoid survey fatigue
+- **Phone backchecks**: Maximum 10 minutes
+
+### Implementation Best Practices
+
+#### Team Structure
+
+- Use **separate staff** for backchecks (not regular enumerators checking each other)
+- Backcheckers should receive same training as survey team
+- Maintain independence from main survey team
+
+#### Timing Strategy
+
+- Check **every team and surveyor** as soon as possible (ideally first week)
+- **Never** have backcheck and survey teams in same village simultaneously
+- Exception: Logistical constraints with significant budget/safety implications
+
+## Designing the Backcheck Survey
+
+Making a backcheck happen may seem like another complicated task in a field plan that keeps getting thrown out the window when your programmer calls you with another bug or the government decreases fuel subsidies, skyrocketing transport costs. Indeed, poor planning, budget constraints and logistical complications often hamstring teams as they strive to implement a backcheck. This section is a how-to of backcheck planning, aiming to provide you with the tools to tackle these challenges.
+
+### Develop your plan before you start surveying
+
+**Planning is critical for quality backchecks.** IPA analyses show that *time elapsed since the original survey* is the strongest predictor of backcheck errors across projects. Your backcheck team must be ready from day one of surveying.
+
+> **WARNING:**
+>
+> Plan backchecks **simultaneously** with your survey work plan and maintain as a living document. This ensures you detect genuine surveyor errors rather than errors caused by delayed backchecks.
+
+When developing your plan, address the following questions:
+
+> **TIP:**
+>
+> - How will you conduct your backchecks? Can you do them in person?
+> - How many surveys will you backcheck? 10% or more? Will you change the percentage during the survey period?
+> - How will you spread them across your enumeration areas, surveyors and survey period? Aim to check surveyors evenly across the survey period, with extra checks in the first weeks.
+> - How many questionnaires will you use? Multiple questionnaires are optimal, especially for longer more complex surveys.
+
+> **TIP:**
+>
+> - How much money do I have for my backcheck? Note, backchecks should be budgeted during the project development stage.
+> - If our budget is tight, can we implement phone backchecks? Other low-cost strategies?
+> - Try creating an easily modified budget template with different scenarios to understand what strategies may work within your budget
+
+> **TIP:**
+>
+> - When will the backchecks be done? Ideally, within 1-2 days. One week is the maximum.
+> - How big will your backchecking team be and how you will train them? Consider integrating them into your management structure, while maintaining their independence from the full survey team.
+> - It is important to use a totally separate set of staff to perform backchecks. Enumerators should not be back-checking each other. You should make sure the backcheckers receive the same training with the survey team, or at least in the same way the enumerators received the training.
+> - Are there enough back-checkers to check all enumerators each week? Do you need to hire more back-checkers during the first few weeks of surveying?
+> - When will you select households for backchecks and how will the backcheck team be given lists of which surveys to backcheck? Try and make it happen in Stata/Excel, if possible. Otherwise brainstorm with your PI’s.
+> - How many times will your backcheck team visit a hard to find respondent? Ideally the same number of revisits as the survey team. If it’s a big challenge, consider phone backchecking.
+> - How will the team get to the field? If you conduct backchecks by phone, do you have enough phones? How will you keep the original and backcheck team separate?
+
+> **TIP:**
+>
+> - How will you define and calculate errors? Set ranges for all questions beforehand. For example, IPA’s user-written command bcstats uses a default error rate of 10%.
+> - How will you deal with discrepancies? It’s important to keep in mind that the surveyor isn’t always to blame if a discrepancy is found. Perhaps the question is not written well, or the backchecker did not explain the question properly. These points are important to think through when responding to backcheck analysis results. Create a plan with your field management team
+> - How will you log backcheck errors? Aim to integrate this into your master tracking system to keep all field statistics in the same place
+
+### How to Select Your Backcheck Questions
+
+When designing your backcheck questionnaire, think critically about your project and work with your field team to select questions that will best reveal what’s happening on the field. The questions that you select will depend very much on your specific study and key outcomes of interest. The goal is for your instrument to assess survey and question performance.
+
+#### Basic Structure: Rules of Thumb for Design
+
+- The survey should look like a mini questionnaire. If comparing on paper, provide space for recording if there’s a discrepancy with the original questionnaire.
+- Keep the backcheck to 10-20 minutes to avoid respondent fatigue and, frankly, annoyance.
+- Use a variety of questions from Type 1, Type 2 and Type 3 (see below) relatively evenly distributed throughout the survey.
+- Strive for multiple versions, especially on big surveys. Make a list of ~50 questions to be approved by your PI, then create individual questionnaires of 10-20 questions.
+- Consider whether the question order will affect the response. If so, aim to mimic the structure of the original questionnaire.
+
+#### Identifying Respondent and Interview Information
+
+Always include the following questions to **confirm the interview occurred** and provide details that may help explain discrepancies:
+
+[TABLE]
+
+#### Question Selection: Type 1, 2 & 3
+
+There are three types of questions to include when designing your backcheck. Depending on the content of your original questionnaire and the goals of your study, you may want to select questions more heavily from one category than another. When developing the backcheck instrument, collaborate with your field team, in-country management and PI’s to select questions that will paint the best picture of data collection.
+
+> **TIP:**
+>
+> These are questions that should **never change**, regardless of interviewer, location or time of day. A discrepancy on this type of question is a **major red flag** that indicates the interview may not have occurred.
+>
+> **Examples include:**
+>
+> - Gender
+> - Household Structure
+> - Age (within a certain range)
+> - Past Events (marriage, school attendance in the last year)
+> - Sample Frame (bank customer, school student)
+
+> **TIP:**
+>
+> These questions assess how well the surveyors are following survey protocols. The responses to these questions are unlikely to change, but they are questions where the team will be tempted to cut corners. These may have been difficult for surveyors to understand or to administer due to complexity or sensitivity.
+>
+> **Examples include:**
+>
+> - Categorization questions (i.e. the surveyor categorizes the respondent’s answer)
+> - Questions with a lot of examples
+> - Skip Questions
+>
+> **Note:** Since these are often difficult for respondents to understand, it is an art form to definitively determine whether these are respondent or surveyor errors.
+
+> **TIP:**
+>
+> These are questions where you want to understand the stability of the measure, where you’re concerned about whether you’re asking the question in the right way. Or you may be concerned that respondents change their answers because they don’t know. They are likely to be key outcomes, interaction or stratification variables that are integral to understanding the intervention. These may or may not change over time. **These questions aim to understand survey, not surveyor, performance.**
+>
+> **Examples include:**
+>
+> - Income or consumption
+> - Profits, revenues or costs
+> - Quantities of inputs or goods
+> - Labor supply or plot size
+> - Scales, preferences, or opinions
+
+While many questions in your survey can fall into this category, you should talk with your PIs to choose the key outcome variables in the survey to include in the backcheck. You will want to share the results of this with your PIs. For example, in one project in Ghana, one of the main outcomes changed in 10% of the backchecks, so the PIs conducted a second survey to retest this measure so they could be more confident in the results.
+
+> **WARNING:**
+>
+> - **Subjective questions**, such as preferences, rankings, or hypothetical judgments, and time sensitive questions, are generally not covered in audits because respondents could feasibly change their responses based on a range of undetectable factors.
+> - **Low variation questions**: Don’t pick questions that will show little variation in the sample as they will show little variation on the backcheck, decreasing the probability of detecting an error. For example, if all the houses in the village are not electrified, it doesn’t make sense to have a question on electrification source in the backcheck questionnaire.
+> - **Time-sensitive questions** or questions that use time ranges. These can change between the survey and backcheck without indicating an error.
+> - **Questions in repeat groups** may change if the backcheckers follow different orders. Therefore, if it is not possible to enforce a certain order for both the backcheck team and survey team, these should be excluded.
+> - **Sensitive questions**: If your survey has highly sensitive sections, such as whether or not a respondent has felt suicidal in the last week or if they have experienced sexual abuse, think carefully about whether or not you need to include these questions in your backcheck survey. If sensitive sections make up a key outcome measure, you can ask the respondent whether or not they were asked about X, or include some questions from the section that are less sensitive than others, to determine whether or not that section was administered.
+
+## Selecting and Managing the Backcheck Team
+
+Irrespective of whether you hire a survey company or your own surveyors, you should have a separate backcheck team that works autonomously from the rest of the survey staff. This backcheck team focuses on doing backchecks and should definitely not be doing any of the regular surveying of households.
+
+### Selecting the right team
+
+A backcheck team member should be more qualified than your regular surveyors, do not make a backcheck team comprising people who you realized would not make good surveyors from your training! In detail, a member of the backcheck team should be:
+
+- **Experienced**: One good idea is to retain the team of surveyors you used during the pilot as the backcheck team as they tend to be highly qualified and are already intimately familiar with the questionnaire. Also, consider recruiting team leaders from other projects or selecting great surveyors with leadership potential.
+- **Trustworthy**: It’s preferable to select someone you’ve worked with before. You need to have confidence in their ability to put in the effort to track down the respondent and ask questions with the required care.
+- **Independent and enterprising**: Members of the backcheck team may have to travel to villages separately and alone to re-administer parts of the survey. Sometimes logistical demands like being able to ride a motorcycle might also be important if there is no reliable public transportation available.
+
+If you’re working with a survey team: Make sure you stipulate in the contract that you receive results of the backchecks throughout the surveying period, and that you include requirements for re-surveying, if deemed necessary.
+
+### Training
+
+The backcheck team should attend the main training with the entire team to make sure that everyone understands the questions in the same way. This is especially the case when the nuances in the questionnaire are important and possible misinterpretations by the backcheck team could bias responses.
+
+You should aim to identify the backcheck team in advance alongside your other supervisors and give them the same level of responsibility as other leaders on the team. Consider using them as leaders at the training of the main survey team. The advantage of using them as training leaders is it sends the right message about the backcheck team. Their status as a separate team in a position of slightly more authority helps prevent collusion between the survey and backcheck team and reinforces their loyalty to the project.
+
+## Executing the Backcheck
+
+Key decisions about how to execute the backcheck should be made as part of your survey plan before you start surveying. As mentioned above, you need to minimize the time between your original survey and the backcheck survey. Your goal is to set up a system where your backcheck team enters the enumeration area 1-2 days after the original survey, administers the backcheck quickly, the comparison follows the next day and you generate results 3-4 days after the first interview.
+
+### Timing & Revisits
+
+**Timing Requirements:**
+
+- Conduct backchecks **within 1-7 days** of the original survey
+- **Never** have backcheck and survey teams in the same village simultaneously
+- **Exception**: Extreme logistical constraints (e.g., remote areas requiring guides, safety concerns)
+
+**Revisit Protocol:**
+
+- Use **same number of revisits** and protocol as original survey team
+- Consider phone calls for unreachable respondents, but **minimize phone backchecks** due to method bias
+- **Oversample** if necessary to reach 10% target when revisits are limited
+
+### Selecting Respondents
+
+**Key Principles:**
+
+- **Never** let backcheck team select households (removes bias, maintains surveyor comfort)
+- Use **random selection** stratified by surveyor and enumeration period
+- **Do not** assign samples before surveys are completed
+
+**Randomization Methods:**
+
+- **Stata .do files** (preferred for replicable randomization)
+- **SurveyCTO randomization** (suitable when stratification not required)
+- **Daily randomization** (requires immediate field dissemination)
+
+**Implementation:**
+
+- Mark selected respondents for audit after field corrections
+- Include relevant context (e.g., missing status, special circumstances)
+- Separately add missing/replacement respondents to lists
+
+### CATI: Audio Audits vs. Backchecks
+
+**CATI Considerations:**
+
+- Larger respondent pools (especially Random Digit Dialing)
+- Priority: Verify respondent contact and phone number status
+
+**Audio Audits:**
+
+- Monitor enumerator performance and survey accuracy
+- Cannot test response reliability or question stability
+- Complement but **do not replace** backchecks
+
+**CATI Backcheck Requirements:**
+
+- Include **high ratio of Type 1 questions** (same respondent verification)
+- Still required for question stability assessment
+- Account for shared phone number usage
+
+### Field Materials
+
+**Required Materials:**
+
+- Respondent lists with location information
+- Multiple backcheck questionnaire versions (if applicable)
+- Research authorizations and IRB approvals
+
+**Information Protocol:**
+
+- **Do not provide** original responses to backcheckers
+- **Do not include** missing/replacement status from original survey
+- Use case management for secure respondent information access
+
+### Community Entry
+
+**Introduction Requirements:**
+
+- Explain data quality follow-up purpose
+- Provide amended consent form with confidentiality information
+- Emphasize shorter duration (10-15 minutes)
+- Gifts optional based on budget constraints
+
+**Key Message:** “Following up on previous visit to confirm we recorded answers accurately”
+
+## Producing & Acting on Results
+
+Backcheck analysis involves subjective interpretation due to multiple error sources (respondent changes, backchecker errors, original surveyor mistakes). **Key principle:** Establish analysis framework early and track patterns consistently.
+
+### Analysis Framework
+
+**Setup Requirements:**
+
+- Define error criteria during questionnaire design
+- Record discrepancies and maintain error logs
+- Weekly error review (especially first few weeks)
+- **Start early** - catch problems before they spread
+
+**IPA’s `bcstats` Command:**
+
+- Calculates error rates by enumerator, question, and backchecker
+- Provides stability tests and statistical comparisons
+- Allows customizable error rate thresholds
+- Integrated with IPA’s Data Management System
+
+### Acceptable Range of Deviation
+
+**Establish clear rules** for each question type to avoid case-by-case decisions:
+
+- **Example:** Age ±5 years, gender (no tolerance)
+- Collaborate with field team based on experience
+- Use distribution analysis and standard deviation if no prior intuition
+
+### Analysis for Type 1, Type 2, Type 3
+
+**Type 1 (Interview Verification):** \>10% error rate = **major red flag**
+
+- Focus on worst performing surveyors and questions
+- Crosstab patterns by team/location
+- May require surveyor dismissal or questionnaire modification
+
+**Type 2 (Protocol Adherence):** \>10% error rate triggers leadership discussions
+
+- Assess if errors are surveyor vs. respondent issues
+- Consider re-training, protocol review, or questionnaire edits
+
+**Type 3 (Question Stability):** Statistical testing for measurement error
+
+- Discuss high error rates with PIs
+- May require survey modifications or additional rounds
+
+### When & How to Take Action on Results
+
+**Decision Framework:**
+
+- Discuss results with field leadership team first
+- Address individual surveyors only for monitoring/retraining/firing
+- Set clear standards for firing, follow-ups, and re-surveying
+- **Consult PIs** before major decisions (re-surveying, data changes)
+
+**Key Principle:** Generally don’t change datasets based on backcheck results unless errors are numerous enough to significantly affect analysis.
+
+> **IMPORTANT:**
+>
+> ### Example 1
+>
+> **Type 1 Questions:**
+>
+> - If there are \>10% discrepancies, give the surveyor a warning.
+> - If there are 20-30% discrepancies, revisit the household with the surveyor and the back-checker, and correct the errors. If the errors were on the part of the surveyor, audit 3 additional surveys done by that surveyor in the same week. If any of these have 20% or more errors, audit all surveys by this surveyor in this batch, and redo any with 20% or more errors. Put the surveyor on Probation, and explain that, if this happens again, they will be fired.
+> - If there are 40% or more discrepancies, revisit the household to determine who made the errors. If the surveyor made the errors, resurvey the entire household, audit all surveys done by the surveyor in this batch. If one more survey has 40% discrepancies, fire the surveyor immediately and redo all surveys with 20% or more discrepancies.
+> - If a surveyor said a household has moved away permanently but that is false, they should be fired.
+>
+> **Type 2 Questions:**
+>
+> - If there are \>10% discrepancies, meet with the leadership team to discuss the source of the discrepancies. Discuss particularly problematic questions, attempting to discern if these are surveyor or respondent errors. Consider re-training, reviewing protocols or editing the questionnaire.
+> - If a particular surveyor is responsible for more than 30% of the errors in a single question, follow the steps for Type 1.
+>
+> **Type 3 Questions:**
+>
+> - Discuss \>10% with your survey team and pass the wisdom onto your PI’s. They may decide to edit the survey or add additional rounds of surveying.
+>
+> ### Example 2
+>
+> A simpler approach would be to give an enumerator a “flag” whenever a backcheck response is outside the acceptable range of deviation. If an enumerator gets three flags in a day, they will be sent for retraining. If they do it again, they are given a warning. A third time they will be fired. This is particularly useful if you are using only “Type 1” questions to identify data falsification.
+
+## Digital Backchecks
+
+As discussed in the CATI section above, digital surveys present unique opportunities and challenges for backchecks. Audio audits can complement traditional backchecks by providing additional quality control, but they cannot replace the fundamental purpose of backchecks in testing question reliability and respondent consistency.
+
+Back to top

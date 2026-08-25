@@ -1,0 +1,341 @@
+Explanation
+
+# Measurement and Survey Design
+
+This guide explores the fundamental principles of measurement and survey design in development research, explaining why accurate measurement matters and how different design choices affect data quality and research outcomes.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
+- [Niall Keleher](https://poverty-action.org/people/niall-keleher)
+
+## Contributors
+
+- [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
+- [Karisha Anne Cruz](https://poverty-action.org/people/karisha-anne-cruz)
+- Yuna Liang
+- Cristhian Pulido
+- Andreas Tiemann
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - **Measurement quality** directly affects the validity and reliability of research findings and policy recommendations.
+> - **Theory of Change** serves as the roadmap that guides indicator selection and measurement strategy.
+> - **Understanding error and bias** helps researchers make design choices that improve data quality from the start.
+
+## Why Measurement Matters
+
+Every policy recommendation, every claim about program effectiveness, and every insight about poverty reduction depends on how well researchers measure the phenomena under study. As Howard Wainer noted, “Gathering data, like making love, is one of those activities that almost everyone thinks can be done without instructions. The results are usually disastrous.”
+
+The stakes are particularly high in development research. A poorly designed question about household income can lead to misallocated resources. An invalid measure of learning outcomes can result in ineffective education policies. Measurement serves four practical functions beyond the primary outcome:
+
+- Understanding the sample: testing whether randomization was successful and characterizing the study population
+- Reducing variance: controlling for baseline variables to improve statistical precision
+- Testing alternative hypotheses: enabling analysis of heterogeneous effects and spillovers
+- Solving the black box problem: measuring intermediate steps to understand mechanisms
+
+## Core Concepts
+
+Development research organizes measurement around four building blocks. Understanding how these relate to each other is the first step to designing a sound measurement strategy.
+
+| Concept | Definition | Example |
+|:---|:---|:---|
+| **Construct** | The abstract concept being studied | School attendance |
+| **Indicator** | The specific way the construct is operationalized | Percentage of school days attended in the past month |
+| **Instrument** | The data collection tool | Teacher attendance sheets |
+| **Variable/Data** | The values collected | 85% attendance rate |
+
+A key principle: the construct and its measurement are not the same thing. Intelligence is not an IQ score. Empowerment is not a decision-making index. Indicators approximate constructs; they do not replace them. Concepts should therefore never be defined by their relationship to other concepts, since those relationships are what the research is designed to test.
+
+## Types of Measurement
+
+Before designing an instrument, researchers should consider which data source best fits the construct, the study context, and available resources. Each approach involves trade-offs between cost, validity, and feasibility.
+
+| Type | Examples | Typical strengths |
+|:---|:---|:---|
+| **Surveys** | Household questionnaires, anthropometric measures | Flexible; captures respondent perspectives |
+| **Administrative data** | School enrollment, health facility records, government registries | Low respondent burden; broad coverage |
+| **Logs and diaries** | Daily spending records, food consumption diaries | High accuracy for frequent behaviors |
+| **Qualitative methods** | Focus groups, participatory rural appraisal | Rich context; captures meaning |
+| **Behavioral measures** | Economic games, choice tasks | Reveals revealed preferences, not stated ones |
+| **Observation** | Classroom snapshots, direct observation protocols | Avoids recall and desirability bias |
+| **Objective assessments** | Learning tests, health diagnostics | High criterion validity |
+| **Digital data** | Mobile phone data, social network data | Large scale; low collection cost |
+
+Each type also has characteristic limitations: surveys are subject to recall and desirability bias; administrative data reflects the incentives of whoever collected it; logs depend on respondent compliance; qualitative methods do not support causal inference; behavioral measures use artificial settings; observation is resource-intensive; objective assessments carry coverage and administration costs; and digital data raises privacy concerns and has coverage gaps among low-income populations.
+
+Researchers commonly combine sources. A study measuring school attendance might use administrative records as the primary source, cross-validated with spot-check observations and a parent survey capturing barriers to attendance.
+
+## Theory of Change as the Foundation
+
+Before selecting indicators, researchers should map every concept in their Theory of Change and specify where it sits in the causal chain. This prevents collecting data that has no analytical home and ensures that each measurement decision connects to a specific research question.
+
+For a full treatment of how to build and use a Theory of Change, see the [Theory of Change](../monitoring-evaluation-learning/theory-of-change.llms.md) page. The key measurement implication is that the causal chain from intervention to outcome defines the minimum set of things that need to be measured, including intermediate outcomes that reveal whether the mechanism is working.
+
+## Validity, Reliability, and Error
+
+The quality of any measurement rests on two properties: validity and reliability. These are related but distinct, and understanding their relationship is essential for diagnosing problems and improving instruments.
+
+**Validity** (also called accuracy or unbiasedness) refers to how well an indicator maps to the construct it is meant to capture. A valid measure is measuring the right thing.
+
+**Reliability** (also called precision) refers to how consistently a measure produces similar results under the same conditions. A reliable measure produces stable results across repeated administrations, different enumerators, and different phrasings of the same underlying question.
+
+The critical insight is that a measure can be reliable without being valid: it can consistently measure the wrong thing. A scale that always reads 2 kilograms too heavy is reliable but not valid. Validity without reliability is also impossible: a measure that gives different results each time cannot be said to capture anything accurately.
+
+> **NOTE:**
+>
+> Validity and reliability are both necessary. Neither alone is sufficient.
+
+### Random and systematic error
+
+Measurement error, the difference between a respondent’s answer and the true value, takes two forms that have different implications for research design.
+
+**Random error** is caused by unpredictable factors that vary across the sample: respondent fatigue, a noisy interview environment, or momentary distraction. Random error reduces precision. It increases variance in the data and makes it harder to detect true effects, but it does not systematically bias estimates in one direction.
+
+**Systematic error** (bias) is an inaccuracy inherent across the entire sample. It consistently pushes estimates in the same direction. A question that causes respondents to underreport income in all cases produces systematic error. Unlike random error, systematic error cannot be resolved by increasing sample size.
+
+> **NOTE:**
+>
+> Random error can be partially offset by increasing sample size. Systematic error cannot.
+
+### Threats to validity
+
+The most common threats to validity arise at the conceptual level, before a single question is written:
+
+- **Construct validity:** the indicator does not fully capture the concept (for example, using test scores alone to measure learning when the test covers only memorization)
+- **Content validity:** the instrument omits important dimensions of the construct (for example, a math test that skips geometry)
+- **Criterion validity:** the measure does not correlate with established measures of the same concept
+
+Practical threats during data collection include social desirability bias (respondents give answers they perceive as acceptable), acquiescence bias (respondents agree with statements regardless of content), reporting bias (respondents misrepresent because of perceived consequences), and framing effects (question wording systematically pushes answers in one direction).
+
+Validity also requires attention to how indicators are combined. Measuring financial well-being using only monthly income has poor construct validity because it omits savings, debt, and asset holdings. Combining income, savings, and debt measures captures more of the construct, though it introduces questions about how to weight each component.
+
+### Threats to reliability
+
+Reliability has three dimensions that can each break down independently:
+
+| Type | What it tests | Example |
+|:---|:---|:---|
+| **Test-retest reliability** | Same measure at different times produces consistent results | Asking about income in two successive weeks |
+| **Inter-rater reliability** | Different enumerators produce consistent results | Multiple surveyors recording the same household observation |
+| **Internal consistency** | Multiple items measuring the same construct produce correlated results | Several food security questions pointing in the same direction |
+
+Common sources of reliability failure include ambiguous question wording that different respondents interpret differently, inappropriate recall periods (asking about annual food spending based on one week’s memory), enumerator variation in how questions are delivered, and survey fatigue as respondents’ attention decreases over a long instrument.
+
+**The recall period trade-off** deserves particular attention. Longer recall periods (12 months) capture seasonal variation but introduce recall bias and telescoping, where events feel more recent than they are. Shorter recall periods (7 days) improve accuracy but may not represent typical behavior. The right choice depends on the frequency of the behavior and whether accuracy or representativeness matters more for the research question.
+
+> **NOTE:**
+>
+> Match the recall period to the frequency of the behavior. For daily behaviors, 7 days. For occasional events, up to 3 months. Beyond that, recall bias typically outweighs the benefit of longer coverage.
+
+## The Response Process
+
+Respondents do not simply retrieve pre-formed answers. Each response involves a four-stage cognitive process, and each stage introduces distinct opportunities for error. Understanding this sequence explains why well-intentioned questions can still produce poor data.
+
+### Stage 1: Comprehension
+
+The respondent must understand what the question is asking. Errors here are among the most common and the easiest to prevent.
+
+**Ambiguous questions** occur when words carry multiple meanings the researcher did not intend. Consider: “How many times did you consume rice this month?” Every word is ambiguous. “Times” could mean meals, servings, or occasions. “Consume” could include cooking or only eating. “Rice” may or may not include rice noodles or rice milk. “This month” could mean the calendar month or the past 30 days.
+
+Revised: “In the past 7 days, how many days have you eaten a bowl of rice? (0 to 7)”
+
+**Jargon and technical terms** create the same problem. “How empowered are you feeling today?” and “What is the depreciation rate of your vehicle?” assume knowledge most respondents do not have. Solutions include providing definitions, using plain language, or using **vignettes** for complex abstract concepts. A vignette presents a concrete scenario that anchors the concept: “Imagine a person who decides on their own which vegetables to buy at the market without asking their partner. How much say would you say they have in household decisions?” This technique is particularly useful for concepts like empowerment, trust, or security that are inherently abstract.
+
+**Negatives** create comprehension errors even for attentive respondents. “Has there been no severe allergic reaction after the first dose?” forces the respondent to work through a double inversion. Avoid negatives wherever possible.
+
+**Double-barreled questions** conflate two separate issues. “Do you feel the school provides adequate resources and has supportive teachers?” Any answer covers both simultaneously and can mean nothing. Separate into two questions.
+
+**Presuming questions** assume something the respondent may not share. “Which university did you attend?” presumes university attendance. Use filters and skip patterns instead:
+
+> **NOTE:**
+>
+> Q1.1 Did you attend university? Yes (proceed to Q1.2) / No (proceed to Q2)
+>
+> Q1.2 Which university did you attend?
+
+> **NOTE:**
+>
+> Every comprehension error produces noise that cannot be recovered at analysis. Fix it in the questionnaire, not in the data.
+
+### Stage 2: Retrieval
+
+The respondent searches memory for relevant information. Recall is not a neutral process: memorable or recent events are retrieved more easily than routine ones, and long reference periods introduce systematic distortions.
+
+Key design responses: shorten the recall period when accuracy matters most, use diaries or logs for behaviors that occur frequently, and use administrative records when available.
+
+### Stage 3: Judgment and estimation
+
+The respondent evaluates whether the retrieved information is complete, estimates when exact recall is impossible, and formulates a response. Anchoring effects can occur at this stage: if a question or its response options suggest what is “normal,” respondents adjust their answers accordingly.
+
+**Anchoring example:** “In the US, Hurricane Harvey left some passengers stranded at airports for up to three days. How long was your last flight delayed?” The reference to three days makes respondents more likely to report longer delays. Neutral framing: “How long was your last flight delayed?” without the contextual anchor.
+
+Response option design affects this stage directly. Options must be mutually exclusive (no overlap between categories), collectively exhaustive (covering all possible answers), and not implicitly suggest normal ranges through their structure. Overlapping categories are a common design failure:
+
+| Problem | Better design |
+|:---|:---|
+| Age categories: 0-1 years / 1-2 years / 2+ years (where does a 1-year-old go?) | 0-11 months / 12-23 months / 24+ months |
+| Income categories anchored to high ranges suggest those ranges are typical | Use local income distribution data to set ranges; consider open-ended for continuous variables |
+
+Consider randomizing the order of response options when list position may influence selection.
+
+### Stage 4: Reporting
+
+The respondent selects and communicates an answer, which may be edited based on social considerations or perceived consequences.
+
+**Social desirability bias** leads respondents to give answers that seem favorable. Sensitive questions about illegal behavior, stigmatized practices, or politically contentious topics are most affected. Mitigation strategies include emphasizing confidentiality, using anonymous data collection, and using indirect questioning techniques.
+
+**Reporting bias** occurs when respondents have incentives to misrepresent. If school attendance is required to qualify for a scholarship, parents may overreport their child’s attendance. Use proxy measures, direct observation, or administrative records to cross-check self-reported data when incentives to misrepresent are strong.
+
+> **NOTE:**
+>
+> *Before fielding a sensitive question, ask: what does the respondent gain or lose by answering honestly?* Design accordingly.
+
+## Designing Quality Instruments
+
+### The SMURF criteria
+
+Every survey question should meet five standards before it is included in an instrument:
+
+| Criterion | What it means | Common violation |
+|:---|:---|:---|
+| **Specific** | Asks one thing at a time | Double-barreled questions |
+| **Measurable** | Produces accurate, unbiased data | Vague constructs with no clear operationalization |
+| **Understandable** | Uses clear language with defined terms | Jargon, double negatives, ambiguous words |
+| **Relevant** | Connects to the Theory of Change | Questions collected “just in case” |
+| **Framed** | Has defined boundaries: time period, unit, context | “How much do you earn?” with no time period |
+
+> **WARNING:**
+>
+> *“How satisfied are you with the quality and price of education?”* Violates Specific (double-barreled) and Framed (no time period or context specified).
+
+> **TIP:**
+>
+> *“How satisfied are you with the quality of education your child received this school year?”* Specific to quality only, framed to the school year and the respondent’s child.
+
+> **NOTE:**
+>
+> If a question fails any SMURF criterion, do not include it. There is no analysis that rescues a badly designed question.
+
+### Before finalizing any instrument
+
+> **WARNING:**
+>
+> - Does the question have an explicit rationale and a plan for how responses will be used?
+> - Can respondents answer from memory with the specified recall period?
+> - Will all respondents interpret the key terms the same way?
+> - Does the wording or question order suggest the desired answer?
+> - Are response options mutually exclusive and collectively exhaustive?
+> - Does the question assume something the respondent may not share (filter needed)?
+
+> **TIP:**
+>
+> No instrument should be used without piloting. Pilot first outside the target population, revise, then pilot again within the target population. Piloting is the only reliable way to discover which questions fail in practice.
+
+## Challenges with Administrative Data
+
+Administrative data (school records, health facility data, government registries) reduces respondent burden and can offer near-universal coverage over long time periods. However, it introduces specific challenges that require careful evaluation before use.
+
+| Challenge | Example | Response |
+|:---|:---|:---|
+| **Access restrictions** | Regulations limiting access to identified data | Negotiate an MOU specifying data security requirements |
+| **Unusable format** | Handwritten records, scanned images, PDFs | Digitize records before the study begins |
+| **Matching to other datasets** | Linking survey responses to national exam data | Incorporate unique IDs; use personal identifiers (name, date of birth, address) as fallback |
+| **Reporting bias** | Schools overreporting attendance to meet policy requirements | Identify collection context and incentives to misreport |
+| **Selection bias** | Using only digitized school records, excluding schools that maintain paper records | Map the data universe; document which units are included and excluded and why |
+| **Differential response** | Video cameras installed in treatment classrooms increase recorded tardiness, not actual tardiness | Verify that the ability to measure an outcome is not correlated with treatment assignment |
+
+The differential response challenge deserves particular attention in impact evaluations. If the intervention itself changes how outcomes are recorded (not just whether outcomes occur), estimates will be biased. This is distinct from ordinary measurement error and requires checking whether treatment and control groups have equivalent observation conditions.
+
+Two diagnostic questions apply to any administrative dataset: Why were these data collected, and were there incentives to misreport? The answers shape how much weight to place on the data and whether cross-validation with other sources is necessary.
+
+> **NOTE:**
+>
+> Administrative data is not inherently more objective than survey data. It reflects the incentives and constraints of whoever collected it.
+
+## From Theory to Practice
+
+The following example shows how the principles covered in this page apply to a concrete research scenario. Each design decision traces back to the validity, reliability, and SMURF criteria discussed above.
+
+> **NOTE:**
+>
+> An evaluation of a microfinance program providing small loans to women entrepreneurs.
+>
+> **Theory of Change:** microfinance access → business investment → increased income → women’s empowerment
+
+**Measuring business investment (intermediate outcome)**
+
+> **WARNING:**
+>
+> “Did the loan help your business?” Conflates the loan with other factors, has no time frame, and produces a yes/no answer that cannot be analyzed quantitatively.
+
+> **TIP:**
+>
+> “In the past 3 months, how much money did you invest in your business from each of the following sources?
+>
+> - Personal savings: \_\_\_
+> - Microfinance loan: \_\_\_
+> - Other loans: \_\_\_
+> - Family or friends: \_\_\_”
+>
+> This version is specific (one question per source), framed (past 3 months), and measurable (monetary amount). It separates the loan contribution from other investment sources so the mechanism can be tested.
+
+**Measuring women’s empowerment (final outcome)**
+
+> **WARNING:**
+>
+> “Do you feel empowered?” Abstract, relies on self-assessment of a concept the respondent may not interpret consistently, and produces results that cannot be compared across respondents.
+
+> **TIP:**
+>
+> “Who in your household makes decisions about each of the following?
+>
+> - Daily food purchases: \[Me alone / Spouse alone / Together / Other\]
+> - Children’s education: \[Me alone / Spouse alone / Together / Other\]
+> - Large purchases: \[Me alone / Spouse alone / Together / Other\]”
+>
+> This version operationalizes empowerment as decision-making power across multiple domains, producing comparable, analyzable responses. It reflects IPA’s multi-dimensional approach, which also captures freedom of movement (market access, health facility access, family visits) and control over economic resources (earnings, credit, asset ownership). Single-item measures of empowerment consistently underperform multi-dimensional indices in both validity and reliability.
+
+## Common Mistakes to Avoid
+
+- **Measuring what is easy, not what matters:** Include only indicators that connect directly to the Theory of Change and the analysis plan.
+- **Surveys that are too long:** Most surveys collect more than is needed. Ruthlessly prioritize.
+- **Defining concepts functionally:** Do not define empowerment as “something that leads to better health outcomes.” That relationship is what the research tests.
+- **Ignoring cultural context:** Terms like “household income” or “food security” carry different meanings across contexts. Pilot with the target population.
+- **Skipping the pilot:** No instrument is ready without testing. Piloting is not optional.
+
+## References
+
+Ambler, Kate, Diego Aycinena, and Dean Yang. 2021. “Channeling Remittances to Education: A Field Experiment among Migrants from El Salvador.” *American Economic Journal: Applied Economics* 13, no. 2: 207–235. https://doi.org/10.1257/app.20190396
+
+Bradburn, Norman M., Seymour Sudman, and Brian Wansink. 2004. *Asking Questions: The Definitive Guide to Questionnaire Design*. San Francisco: Jossey-Bass.
+
+Deaton, Angus, and Salman Zaidi. 2002. *Guidelines for Constructing Consumption Aggregates for Welfare Analysis*. Washington, DC: World Bank.
+
+Fowler, Floyd J. 1995. *Improving Survey Questions: Design and Evaluation*. Thousand Oaks, CA: Sage.
+
+Glennerster, Rachel, and Kudzai Takavarasha. 2013. *Running Randomized Evaluations: A Practical Guide*. Princeton: Princeton University Press.
+
+Glewwe, Paul, and Margaret E. Grosh, eds. 2000. *Designing Household Survey Questionnaires for Developing Countries*. Washington, DC: World Bank.
+
+Jensen, Robert. 2010. “The (Perceived) Returns to Education and the Demand for Schooling.” *Quarterly Journal of Economics* 125, no. 2: 515–548. https://doi.org/10.1093/qje/qjq008
+
+Tourangeau, Roger, Lance J. Rips, and Kenneth Rasinski. 2000. *The Psychology of Survey Response*. Cambridge: Cambridge University Press.
+
+## Additional Resources
+
+Abdul Latif Jameel Poverty Action Lab (J-PAL). “Introduction to Measurement and Indicators.” J-PAL Research Resources. <https://www.povertyactionlab.org/resource/introduction-measurement-and-indicators>
+
+Innovations for Poverty Action (IPA). “Research Methods Initiative.” <https://www.poverty-action.org/researchers/working-with-ipa/research-methods-initiative>
+
+Back to top

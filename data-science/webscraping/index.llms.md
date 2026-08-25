@@ -1,0 +1,221 @@
+Tutorial
+
+# Introduction to Web Scraping with Gazpacho
+
+Learn the fundamentals of web scraping using gazpacho, a lightweight Python library that simplifies extracting data from websites. Apply essential techniques for collecting data from web pages for research and analysis.
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This content is based on the [gazpacho library](https://github.com/maxhumber/gazpacho) by Max Humber (MIT License) and incorporates concepts from [calmcode.io](https://calmcode.io/course/gazpacho/introduction) tutorials, which are licensed under CC BY 4.0. The gazpacho library is used under the MIT License.
+
+> **NOTE:**
+>
+> - Understand the fundamentals of web scraping and when it’s appropriate
+> - Install and set up the gazpacho library for web scraping projects
+> - Extract data from HTML elements using gazpacho’s simple API
+> - Navigate website structures to locate target data
+> - Integrate scraped data with pandas for analysis
+> - Apply ethical web scraping practices and respect robots.txt
+
+## What is Web Scraping?
+
+Web scraping is the process of automatically extracting data from websites by parsing HTML content. It’s a powerful technique for collecting structured data from web pages that don’t provide APIs or downloadable datasets.
+
+### When to Use Web Scraping
+
+**Appropriate use cases**:
+
+- Public data collection for research
+- Market research and competitive analysis
+- Academic research requiring web-based data
+- News monitoring and content aggregation
+- Price monitoring and comparison
+
+**When to avoid web scraping**:
+
+- When APIs are available (use APIs instead)
+- For copyrighted or proprietary content
+- When explicitly prohibited by terms of service
+- For personal or private information
+
+### Introduction to Gazpacho
+
+Gazpacho is a lightweight Python library that simplifies web scraping by providing an intuitive interface for HTML parsing. It’s designed to be easier than traditional tools like requests + BeautifulSoup while maintaining essential functionality.
+
+**Why choose gazpacho?**
+
+- Simplified syntax for common scraping tasks
+- Built-in HTTP handling
+- Lightweight and fast
+- Pythonic API design
+- Good documentation and community
+
+## Tutorial Series Overview
+
+This tutorial series will guide you through web scraping fundamentals using gazpacho:
+
+### [1. Getting Started with Gazpacho](../../data-science/webscraping/gazpacho-basics.llms.md)
+
+- Installation and setup
+- Basic concepts and terminology
+- Your first web scraping script
+- Understanding HTML structure
+
+### [2. Making HTTP Requests and Getting Data](../../data-science/webscraping/getting-data.llms.md)
+
+- Using gazpacho.get() for HTTP requests
+- Handling different response types
+- Error handling and debugging
+- Working with different websites
+
+### [3. Parsing HTML with Soup Objects](../../data-science/webscraping/parsing-soup.llms.md)
+
+- Creating and working with Soup objects
+- Finding elements by tag, class, and attributes
+- Navigating HTML structure
+- Extracting text and content
+
+### [4. Advanced Selection and Strict Mode](../../data-science/webscraping/strict-attributes.llms.md)
+
+- Using strict mode for precise selection
+- Working with HTML attributes
+- Advanced CSS selectors
+- Handling dynamic content
+
+### [5. Integration with Pandas](../../data-science/webscraping/pandas-integration.llms.md)
+
+- Converting scraped data to DataFrames
+- Data cleaning and preprocessing
+- Handling structured data extraction
+- Exporting results for analysis
+
+## Prerequisites
+
+### Python Knowledge
+
+This tutorial assumes basic familiarity with:
+
+- Python syntax and data types
+- Lists, dictionaries, and iteration
+- Basic pandas operations (helpful but not required)
+
+### Technical Setup
+
+- Python 3.7 or higher
+- Internet connection for web requests
+- Text editor or IDE (VS Code recommended)
+
+### Installation
+
+Install gazpacho using pip:
+
+``` bash
+uv pip install gazpacho
+```
+
+For data analysis integration:
+
+``` bash
+uv pip install gazpacho pandas
+```
+
+## Ethical Web Scraping Guidelines
+
+### Legal Considerations
+
+- **Check robots.txt**: Always review `website.com/robots.txt`
+- **Respect terms of service**: Read and follow website ToS
+- **Public data only**: Focus on publicly available information
+- **Attribution**: Credit data sources appropriately
+
+### Technical Best Practices
+
+- **Rate limiting**: Don’t overwhelm servers with requests
+- **User agents**: Identify your scraper appropriately
+- **Error handling**: Gracefully handle failed requests
+- **Caching**: Store results to minimize repeat requests
+
+### Research Ethics
+
+- **Data minimization**: Only collect data you need
+- **Privacy protection**: Avoid personal information
+- **Transparency**: Document your scraping methodology
+- **Data security**: Protect collected data appropriately
+
+## Common Use Cases in Research
+
+### Academic Research
+
+- Literature review data collection
+- Citation analysis and bibliometrics
+- Social media research (public posts)
+- News and media analysis
+
+### Policy Research
+
+- Government data collection
+- Legislative tracking
+- Public opinion monitoring
+- Regulatory analysis
+
+### Economic Research
+
+- Price data collection
+- Market analysis
+- Company information gathering
+- Economic indicator tracking
+
+## Getting Help and Resources
+
+### Documentation and References
+
+- [Gazpacho GitHub Repository](https://github.com/maxhumber/gazpacho)
+- [Calmcode Gazpacho Course](https://calmcode.io/course/gazpacho/introduction)
+- [Python requests documentation](https://docs.python-requests.org/)
+- [HTML and CSS fundamentals](https://developer.mozilla.org/en-US/docs/Learn/HTML)
+
+### Troubleshooting
+
+- **Installation issues**: Check Python version compatibility
+- **Connection errors**: Verify internet connection and URL
+- **Parsing problems**: Inspect HTML structure with browser dev tools
+- **Rate limiting**: Implement delays between requests
+
+### Community Support
+
+- Stack Overflow for technical questions
+- GitHub issues for library-specific problems
+- Python community forums for general guidance
+
+## What You’ll Build
+
+By the end of this tutorial series, you’ll be able to:
+
+1.  **Scrape tabular data** from websites like government statistics pages
+2.  **Extract news articles** and content from media websites
+3.  **Collect product information** for market research
+4.  **Build datasets** from multiple web sources
+5.  **Create automated data collection** workflows
+
+## Next Steps
+
+Ready to start? Begin with [Getting Started with Gazpacho](../../data-science/webscraping/gazpacho-basics.llms.md) to install the library and write your first web scraping script.
+
+> **IMPORTANT:**
+>
+> - Web scraping should be used ethically and legally
+> - Gazpacho simplifies common web scraping tasks
+> - Always check robots.txt and terms of service
+> - Focus on publicly available data for research
+> - Rate limiting and error handling are essential
+> - Integration with pandas enables powerful data analysis
+
+Back to top

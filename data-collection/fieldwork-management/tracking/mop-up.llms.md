@@ -1,0 +1,252 @@
+How-to guide
+
+# Mop-Up Operations
+
+Mop-up operations are critical for achieving target response rates and minimizing differential attrition. This guide covers systematic identification of difficult-to-reach respondents, specialized team deployment, intensive field strategies, and cost-effectiveness monitoring.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
+
+## Contributors
+
+- Yuna Liang
+- Laura McCargo
+- Anna Mysliwiec
+- [Eric Ochieng](https://poverty-action.org/people/eric-ochieng)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - **Mop-up operations protect research validity** by achieving target response rates and minimizing differential attrition between study groups.
+> - **Budget proactively**: Allocate 15-25% of field budget before initial fieldwork ends—studies without planning achieve lower response rates.
+> - **Systematically identify and assign cases** by difficulty level to maximize completion rates with specialized enumerators.
+> - **Monitor cost-effectiveness** to determine when to continue or conclude operations.
+
+## Purpose and Timing
+
+Mop-up operations serve as a critical final phase of data collection, targeting respondents who were not successfully interviewed during the initial fieldwork period. These operations apply to both single-round and multi-round studies.
+
+### Purpose
+
+Mop-up operations achieve multiple critical objectives that protect data quality and research validity:
+
+- Interview difficult-to-reach respondents identified during initial tracking
+- Recover temporarily unavailable respondents\
+- Meet target sample size and response rate goals
+- Minimize differential attrition between study groups
+- Maximize return on research investment
+
+### When to Conduct Mop-Up?
+
+- After completing first round of survey visits in each area
+- When response rate falls below target threshold
+- Before final deadline for data collection
+- When substantial number of cases remain after initial attempts
+- When budget allows for additional field time
+
+### Budget Requirements
+
+Successful mop-up operations require substantial upfront planning and dedicated financial resources that differ from regular fieldwork costs:
+
+- **Allocate 15-25% of field budget** specifically for mop-up
+- Higher transportation costs (longer distances to scattered respondents)
+- Specialized tracking team with high skill level
+- Consider incentive or informant compensation costs
+- Plan for extended timeline beyond initial field period
+
+> **WARNING:**
+>
+> - Do not treat mop-up as an afterthought.
+> - Budget money and schedule time for mop-up BEFORE initial fieldwork ends.
+> - Enumerators need dedicated time to find respondents after unsuccessful initial attempts.
+> - Studies that don’t plan for mop-up typically achieve lower response rates and higher attrition.
+
+## Systematic Approach
+
+Successful mop-up begins with systematic identification and prioritization of remaining respondents using tracking data collected throughout initial fieldwork.
+
+### Identification Process
+
+- Cross-referencing the master sample list with completed surveys to generate a dataset of non-completed cases
+- Categorizing cases by tracking difficulty based on the number and outcomes of previous contact attempts
+- Dividing cases into easy (few attempts), medium (several attempts), and hard (many attempts or complex situations)
+- Using real-time data platforms, scripted summaries, and interactive dashboards to provide immediate visibility into case status and tracking patterns
+
+### Strategic Assignment
+
+After categorizing cases by difficulty, assign them strategically to maximize completion rates:
+
+- Assign the most experienced enumerators to the most challenging cases while ensuring simpler cases receive attention first
+- Balance workload distribution by giving each enumerator a mix of easy, medium, and hard cases to maintain productivity
+- Prioritize cases that address differential attrition between study groups
+- Consider geographic clustering to minimize travel costs for scattered respondents
+- Monitor progress and reassign cases if new information changes difficulty assessment
+
+> **NOTE:**
+>
+> This approach uses IPA’s Data Management System to identify non-completed cases and categorize them by tracking difficulty.
+>
+> ``` stata
+> * Generate dataset of respondents not yet interviewed
+> progreport using "${data}/master_sample.dta", ///
+>     id(respondent_id) ///
+>     masterid(respondent_id) ///
+>     surveydata("${data}/completed_surveys.dta") ///
+>     notfound /// Option outputs only non-completed cases
+>     save("${data}/mopup_list.dta")
+>
+> * Categorize by tracking difficulty
+> use "${data}/mopup_list.dta", clear
+> merge 1:m respondent_id using "${data}/tracking_attempts.dta"
+>
+> * Count attempts per respondent
+> bysort respondent_id: gen attempts = _N
+>
+> * Categorize difficulty
+> gen difficulty = "Easy" if attempts <= 2
+> replace difficulty = "Medium" if attempts > 2 & attempts <= 5  
+> replace difficulty = "Hard" if attempts > 5 & !missing(attempts)
+> replace difficulty = "No attempts" if missing(attempts)
+>
+> * Save prioritized list
+> save "${data}/mopup_prioritized.dta", replace
+> ```
+>
+> See more in [IPA’s Data Management System](../../../data-quality/data-management-system.llms.md)
+
+> **NOTE:**
+>
+> This approach leverages SurveyCTO’s built-in case management features for real-time tracking and automatic updates.
+>
+> 1.  Filter cases by status (not started, in progress, specific outcome codes)
+> 2.  Export case list with current information
+> 3.  Assign cases to specialized mop-up enumerators
+> 4.  Track progress in real-time as cases are completed
+> 5.  Automatic updates when surveys uploaded (requires internet)
+>
+> **Advantages of Case Management:**
+>
+> - Real-time updates eliminate manual list management
+> - Prevents duplicates (completed cases auto removed)
+> - Efficient reallocation between enumerators
+> - Transparent progress for all team members
+>
+> See more in [SurveyCTO guide to case management](https://support.surveycto.com/hc/en-us/articles/1500000326382-Guide-to-case-management-part-1-Introduction)
+
+## Specialized Mop-Up Teams
+
+Mop-up operations often benefit from dedicated enumerators with specific skills.
+
+[TABLE]
+
+#### Team Support
+
+- Dedicated field coordinator for mop-up phase
+- Higher daily compensation reflecting difficulty
+- Adequate transportation budget
+- Communication allowance
+- Flexibility in schedule and approach
+
+> **TIP:**
+>
+> “Tracking requires patience, a great deal of energy for back and forth movements, respondent’s information management, etc. Enumerator has to be detail-oriented about the pieces of information coming in on a particular respondent, and must exercise good skill of rapport building.”
+
+## Mop-Up Strategies and Tactics
+
+### Intensive Effort Examples
+
+- Travel to distant locations (other regions, countries if applicable)
+- Overnight stays near respondent’s location for early morning contact
+- Persistent monitoring of expected return dates
+- Coordination with field teams across multiple locations
+- Use of all information, even vague or uncertain leads
+
+### Timing Optimization
+
+- Early morning visits before respondents leave for work
+- Consideration of respondent’s economic activities (market days, business hours)
+- Scheduling around local events (religious services, community meetings)
+- Multiple visits at different times of day/week
+
+### Information Utilization
+
+- Follow up on all leads, however incomplete
+- Chain together partial information from multiple sources
+- Ask new questions based on previous responses
+- Use even vague information (“sometimes seen near…”)
+
+> **NOTE:**
+>
+> Many strategies described in [Longitudinal Tracking](../../../data-collection/fieldwork-management/tracking/longitudinal-tracking.llms.md) are valuable during mop-up:
+>
+> - **Snowballing**: Show photobook to successful respondents to locate difficult cases
+> - **Community contacts**: Revisit key informants with specific difficult cases
+> - **Phone banking**: Intensive calling for specific hard-to-reach respondents
+> - **Project visibility**: Community members may remember seeing difficult cases
+>
+> *The difference: In longitudinal tracking, these are proactive strategies applied to entire sample. In mop-up, they are intensive tactics focused on specific difficult cases.*
+
+### Incentives During Mop-Up
+
+- Consider offering incentives for hard-to-reach respondents
+- May introduce new incentive structures during mop-up phase
+- Balance incentive level with budget constraints
+- Document any differential incentives for bias assessment
+
+## Monitoring and Decision-Making
+
+Successful mop-up operations require continuous monitoring of progress and cost-effectiveness to determine when to continue efforts or conclude the operation.
+
+### Key Metrics During Mop-Up
+
+| Metric | Target | Action if Below Target |
+|----|----|----|
+| **Daily completions** | 2-5 per enumerator | Reassess difficulty of assigned cases |
+| **Attempt-to-completion ratio** | \< 4:1 | Improve information quality or targeting |
+| **Cost per completed survey** | Budget-dependent | Consider phone interviews for distant respondents |
+| **New information per attempt** | \> 50% | Train team on probing and information gathering |
+| **Weekly response rate gain** | +2-5% | Evaluate if continuing is cost-effective |
+
+### Decision Points
+
+#### When to Continue Mop-Up
+
+- Steady progress toward response rate goals
+- New information being gathered on difficult cases
+- Budget remains available
+- Differential attrition between groups remains acceptable
+- Team morale and effectiveness maintained
+
+#### When to Conclude Mop-Up
+
+- Diminishing returns (no new completions despite attempts)
+- Budget exhausted
+- Timeline constraints reached
+- Acceptable response rate achieved
+- Further efforts unlikely to change key results
+- Systematic barriers prevent access to remaining cases
+
+## Documentation Requirements
+
+For field reports and methodological transparency, record:
+
+- **Dates of mop-up operations**: Start and end dates
+- **Team composition**: Number and names of mop-up enumerators
+- **Respondents targeted**: Total number and characteristics
+- **Successful interviews**: Number completed during mop-up phase
+- **Strategies employed**: Methods that proved most/least effective
+- **Costs incurred**: Budget spent on mop-up activities\
+- **Remaining non-response**: Final count and reasons for non-completion
+- **Differential patterns**: Whether mop-up success differed by study group
+
+Back to top

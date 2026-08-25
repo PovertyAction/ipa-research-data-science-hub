@@ -1,0 +1,49 @@
+Explanation
+
+# Why tracking matters?
+
+Effective tracking systems are fundamental to research quality, preventing sample loss, minimizing attrition, and ensuring representative data. This guide provides comprehensive technical specifications and procedures for tracking survey progress, managing respondent contact information, maintaining panel samples across multiple rounds, and conducting mop-up operations to achieve target response rates.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - **Survey tracking** monitors fieldwork progress and data quality in real-time using standard metrics and reporting systems.
+> - **Respondent tracking** maintains accurate contact information and prevents sample loss, with strict protocols that differ between baseline and follow-up rounds.
+> - **Longitudinal tracking** requires proactive strategies to maintain contact across survey rounds, particularly in panel studies where replacement is never allowed after baseline.
+
+## Overview
+
+Tracking systems are essential for maintaining data quality, achieving target response rates, and minimizing attrition in research studies. This reference covers three interconnected tracking domains:
+
+1.  **Survey Tracking** monitors the overall progress of fieldwork: how many surveys are completed, data quality indicators, and team productivity. It answers questions like “How many surveys have been completed in each region?” and “What is our current response rate?”
+
+2.  **Respondent Tracking** manages individual-level information: contact details, interview attempts, outcome codes, and location updates. It ensures enumerators can locate and interview assigned respondents while preventing duplicate interviews.
+
+3.  **Mop-Up Operations** systematically recover hard-to-reach respondents after initial fieldwork, using specialized teams and intensive tracking efforts to meet response rate targets.
+
+## Key Distinctions
+
+Survey tracking and respondent tracking serve different purposes and operate at different levels:
+
+| Aspect | Survey Tracking | Respondent Tracking |
+|----|----|----|
+| **Unit of analysis** | Aggregate (team, region, project) | Individual respondent |
+| **Primary purpose** | Monitor fieldwork progress | Locate and interview respondents |
+| **Key metrics** | Completion rate, productivity | Contact attempts, outcome codes |
+| **Users** | Field managers, PIs | Enumerators, field coordinators |
+| **Frequency** | Daily summaries | Updated with each contact attempt |
+
+Back to top

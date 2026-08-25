@@ -1,0 +1,479 @@
+Tutorial
+
+# Marks and Geometric Objects
+
+Learn about different types of marks (geometric objects) in seaborn.objects. Create scatter plots, line plots, bar plots, and more. Choose appropriate marks for different data types and research questions.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Ishmail Baako](https://poverty-action.org/people/ishmail-baako)
+- [Niall Keleher](https://poverty-action.org/people/niall-keleher)
+
+## Contributors
+
+- [The Carpentries](https://carpentries.org/)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> - Understand different types of marks (geometric objects) available in seaborn.objects
+> - Create visualizations using Dot, Line, Bar, Area, and Band marks
+> - Choose appropriate marks for different data types and research questions
+> - Combine multiple marks in a single plot
+> - Understand when to use each type of visualization
+
+## Understanding Marks
+
+In the grammar of graphics, **marks** (also called geometric objects or “geoms”) are the visual elements that represent data points. Each mark type is designed to show different aspects of data:
+
+- **Dots** (`so.Dot`) - Individual data points
+- **Lines** (`so.Line`) - Connections and trends over continuous data
+- **Bars** (`so.Bar`) - Comparisons between categories or distributions
+- **Area** (`so.Area`) - Cumulative values or filled regions
+- **Band** (`so.Band`) - Ranges or confidence intervals
+- **Dash** (`so.Dash`) - Range plots or error bars
+- **Paths** (`so.Path`) - Connected points in order of appearance
+
+Let’s explore each of these!
+
+## Setting Up
+
+``` python
+import seaborn as sns
+import seaborn.objects as so
+import pandas as pd
+import numpy as np
+
+# Load datasets
+penguins = sns.load_dataset("penguins").dropna()
+tips = sns.load_dataset("tips")
+```
+
+## Dots: Scatter Plots
+
+We’ve already seen `so.Dot()` - it’s perfect for showing:
+
+- Relationships between two continuous variables
+- Individual observations
+- Distributions of data points
+
+``` python
+# Basic scatter plot
+(
+    so.Plot(
+        penguins,
+        x="flipper_length_mm",
+        y="body_mass_g",
+        color="species"
+    )
+    .add(so.Dot())
+)
+```
+
+### When to Use Dots
+
+- **Exploring relationships** between continuous variables
+- **Showing individual data points** when sample size is moderate (\< 1000)
+- **Comparing groups** when you want to see all the data
+- **Checking for outliers** or unusual patterns
+
+## Lines: Showing Trends
+
+`so.Line()` connects data points with lines. This is ideal for:
+
+- Time series data
+- Continuous functions
+- Trends over ordered categories
+
+``` python
+# First, let's create some time series data
+# Imagine tracking monthly program enrollment
+months = pd.date_range('2023-01-01', periods=12, freq='M')
+enrollment_data = pd.DataFrame({
+    'month': months,
+    'enrolled': [120, 145, 162, 180, 195, 210, 235, 248, 265, 282, 295, 310],
+    'program': 'Microfinance Training'
+})
+
+(
+    so.Plot(enrollment_data, x="month", y="enrolled")
+    .add(so.Line())
+)
+```
+
+### Lines with Markers
+
+You can combine lines with dots to show both the trend and individual data points:
+
+``` python
+(
+    so.Plot(enrollment_data, x="month", y="enrolled")
+    .add(so.Line())
+    .add(so.Dot())
+)
+```
+
+### Multiple Lines
+
+Comparing trends across groups:
+
+``` python
+# Create data for multiple programs
+months_extended = pd.date_range('2023-01-01', periods=12, freq='M')
+multi_program_data = pd.DataFrame({
+    'month': list(months_extended) * 3,
+    'enrolled':
+        [120, 145, 162, 180, 195, 210, 235, 248, 265, 282, 295, 310] +  # Program A
+        [80, 95, 102, 118, 135, 155, 168, 185, 198, 215, 228, 242] +      # Program B
+        [200, 198, 205, 210, 218, 222, 235, 242, 255, 265, 278, 290],     # Program C
+    'program': ['Microfinance'] * 12 + ['Agriculture'] * 12 + ['Education'] * 12
+})
+
+(
+    so.Plot(multi_program_data, x="month", y="enrolled", color="program")
+    .add(so.Line())
+)
+```
+
+> **NOTE:**
+>
+> - **Time series**: Data collected over time (days, months, years)
+> - **Continuous trends**: Showing how one variable changes with another
+> - **Tracking change**: Growth rates, cumulative totals, trajectories
+> - **Comparing trends**: Multiple lines for different groups
+>
+> **Avoid lines when**:
+>
+> - Data points aren’t ordered (use dots instead)
+> - You have many overlapping lines (consider faceting)
+> - The relationship isn’t continuous
+
+## Bars: Comparing Categories
+
+`so.Bar()` creates bar plots, excellent for:
+
+- Comparing categories
+- Showing counts or frequencies
+- Displaying aggregated values
+
+``` python
+# Average body mass by species
+(
+    so.Plot(penguins, x="species", y="body_mass_g", color="species")
+    .add(so.Bar())
+)
+```
+
+Note: By default, `so.Bar()` aggregates data (usually by taking the mean).
+
+### Grouped Bar Charts
+
+``` python
+# Compare by both species and sex
+penguins_complete = penguins.dropna(subset=['sex'])
+
+(
+    so.Plot(penguins_complete, x="species", y="body_mass_g", color="sex")
+    .add(so.Bar())
+)
+```
+
+### Horizontal Bars
+
+Sometimes horizontal bars are clearer, especially with long category names:
+
+``` python
+# Create survey response data
+survey_data = pd.DataFrame({
+    'response': [
+        'Strongly Agree',
+        'Agree',
+        'Neutral',
+        'Disagree',
+        'Strongly Disagree'
+    ],
+    'count': [45, 78, 23, 12, 5]
+})
+
+(
+    so.Plot(survey_data, x="count", y="response")
+    .add(so.Bar())
+)
+```
+
+> **NOTE:**
+>
+> - **Categorical comparisons**: Comparing values across categories
+> - **Survey responses**: Showing frequency or percentages
+> - **Rankings**: Displaying ordered categories
+> - **Part-to-whole**: When values sum to a meaningful total
+>
+> **Avoid bars when**:
+>
+> - Showing precise individual values (use dots)
+> - You have many categories (\>10) - hard to read
+> - Showing distributions (use histograms or density plots)
+
+## Area: Filled Regions
+
+`so.Area()` creates filled areas under a line:
+
+``` python
+# Cumulative enrollment over time
+cumulative_data = enrollment_data.copy()
+cumulative_data['cumulative_enrolled'] = cumulative_data['enrolled'].cumsum()
+
+(
+    so.Plot(cumulative_data, x="month", y="cumulative_enrolled")
+    .add(so.Area())
+)
+```
+
+### Stacked Areas
+
+Great for showing composition over time:
+
+``` python
+# Budget allocation over time
+budget_data = pd.DataFrame({
+    'year': list(range(2018, 2024)) * 3,
+    'amount': [
+        30, 32, 35, 38, 40, 42,  # Research
+        20, 22, 25, 28, 30, 33,  # Training
+        15, 18, 20, 22, 25, 28   # Admin
+    ],
+    'category': ['Research'] * 6 + ['Training'] * 6 + ['Admin'] * 6
+})
+
+(
+    so.Plot(budget_data, x="year", y="amount", color="category")
+    .add(so.Area())
+)
+```
+
+> **NOTE:**
+>
+> - **Cumulative values**: Showing accumulation over time
+> - **Composition**: Parts of a whole over time (stacked areas)
+> - **Emphasis**: Drawing attention to the magnitude of change
+>
+> **Avoid area when**:
+>
+> - You need to compare exact values (use lines or bars)
+> - You have many overlapping areas (hard to read)
+
+## Band: Showing Ranges
+
+`so.Band()` shows ranges or confidence intervals:
+
+``` python
+# Create data with error ranges
+# Imagine tracking income with confidence intervals
+income_data = pd.DataFrame({
+    'year': range(2018, 2024),
+    'mean_income': [450, 480, 520, 550, 590, 630],
+    'lower_ci': [420, 445, 485, 510, 545, 580],
+    'upper_ci': [480, 515, 555, 590, 635, 680]
+})
+
+(
+    so.Plot(income_data, x="year")
+    .add(so.Band(alpha=0.3), ymin="lower_ci", ymax="upper_ci")
+    .add(so.Line(), y="mean_income")
+)
+```
+
+This shows the mean income as a line with a confidence band around it.
+
+> **NOTE:**
+>
+> - **Uncertainty**: Showing confidence intervals or standard errors
+> - **Ranges**: Min-max ranges over time
+> - **Predictions**: Forecast intervals
+
+## Combining Multiple Marks
+
+One of the most powerful features is combining marks in layers:
+
+``` python
+# Research example: Survey responses over time with confidence
+survey_trend = pd.DataFrame({
+    'round': [1, 2, 3, 4, 5],
+    'satisfaction': [3.2, 3.5, 3.8, 4.1, 4.3],
+    'lower': [2.9, 3.2, 3.5, 3.8, 4.0],
+    'upper': [3.5, 3.8, 4.1, 4.4, 4.6]
+})
+
+(
+    so.Plot(survey_trend, x="round")
+    .add(so.Band(alpha=0.2), ymin="lower", ymax="upper")
+    .add(so.Line(linewidth=2), y="satisfaction")
+    .add(so.Dot(pointsize=8), y="satisfaction")
+)
+```
+
+This creates a rich visualization showing:
+
+- The confidence range (band)
+- The trend line
+- The actual data points
+
+## Real Research Example: Impact Evaluation
+
+Let’s create a more complete research visualization showing program impact over time:
+
+``` python
+# Simulate treatment and control group outcomes
+np.random.seed(42)
+periods = 6
+treatment_effect = np.array([0, 0, 5, 8, 12, 15])  # Effect starts after period 2
+
+impact_data = pd.DataFrame({
+    'period': list(range(periods)) * 2,
+    'outcome': (
+        [50, 52, 55, 58, 62, 65] +  # Control group
+        [50, 52, 60, 66, 74, 80]    # Treatment group (with effect)
+    ),
+    'group': ['Control'] * periods + ['Treatment'] * periods
+})
+
+# Create visualization
+(
+    so.Plot(impact_data, x="period", y="outcome", color="group")
+    .add(so.Line(linewidth=2))
+    .add(so.Dot(pointsize=8))
+)
+```
+
+## Exercises
+
+> **NOTE:**
+>
+> For each scenario, identify which mark type would be most appropriate:
+>
+> 1.  Showing monthly rainfall data for 12 months
+> 2.  Comparing average test scores across 5 schools
+> 3.  Displaying the relationship between age and income for 200 individuals
+> 4.  Showing budget allocation across departments for a single year
+> 5.  Tracking population growth with uncertainty bounds
+>
+> > **TIP:**
+> >
+> > 1.  **Line** - time series data showing trend over time
+> > 2.  **Bar** - comparing categories (schools)
+> > 3.  **Dot** - relationship between two continuous variables
+> > 4.  **Bar** - comparing categories (departments) at one time point
+> > 5.  **Line + Band** - trend over time with uncertainty
+
+> **NOTE:**
+>
+> Using the penguins dataset, create a plot that shows:
+>
+> - The average flipper length by species (use bars)
+> - Individual data points overlaid (use dots with low alpha)
+>
+> ``` python
+> # Your code here
+> ```
+>
+> > **TIP:**
+> >
+> > ``` python
+> > (
+> >     so.Plot(penguins, x="species", y="flipper_length_mm", color="species")
+> >     .add(so.Bar(alpha=0.6))
+> >     .add(so.Dot(alpha=0.2), so.Jitter(0.2))  # Jitter spreads dots horizontally
+> > )
+> > ```
+> >
+> > The combination of bars (showing the average) and dots (showing individual values) gives viewers both the summary and the underlying data distribution.
+
+> **NOTE:**
+>
+> Create sample data for a research scenario:
+>
+> - Track household savings for 12 months
+> - Include data for 2 villages
+> - Create a visualization that clearly shows the comparison
+>
+> ``` python
+> # Create the data structure
+> # Your code here
+>
+> # Create the visualization
+> # Your code here
+> ```
+>
+> > **TIP:**
+> >
+> > ``` python
+> > # Create data
+> > months = pd.date_range('2023-01-01', periods=12, freq='M')
+> > savings_data = pd.DataFrame({
+> >     'month': list(months) * 2,
+> >     'savings': (
+> >         [5000, 5200, 5500, 5800, 6100, 6500, 6900, 7200, 7600, 8000, 8300, 8700] +  # Village A
+> >         [4500, 4600, 4800, 5100, 5400, 5800, 6100, 6500, 6800, 7200, 7500, 7900]     # Village B
+> >     ),
+> >     'village': ['Village A'] * 12 + ['Village B'] * 12
+> > })
+> >
+> > # Visualize
+> > (
+> >     so.Plot(savings_data, x="month", y="savings", color="village")
+> >     .add(so.Line(linewidth=2))
+> >     .add(so.Dot(pointsize=6))
+> > )
+> > ```
+
+## Decision Guide: Choosing Your Mark
+
+``` text
+Is your data categorical?
+├─ Yes → Use Bar (for comparisons) or Dot (for individual values)
+└─ No → Is it ordered/sequential?
+    ├─ Yes (time series, ordered categories)
+    │   ├─ Showing trend? → Use Line
+    │   ├─ Showing accumulation? → Use Area
+    │   └─ Showing range/uncertainty? → Use Band
+    └─ No (unordered continuous data)
+        └─ Use Dot (scatter plot)
+```
+
+## Common Combinations
+
+Some mark combinations work particularly well together:
+
+| Combination | Use Case                     | Example                           |
+|-------------|------------------------------|-----------------------------------|
+| Line + Dot  | Time series with data points | Monthly metrics                   |
+| Band + Line | Trends with uncertainty      | Predictions with CI               |
+| Bar + Dot   | Summary + individual data    | Group comparisons                 |
+| Area + Line | Cumulative with rate         | Total enrollment + monthly change |
+
+> **IMPORTANT:**
+>
+> - Different marks (geometric objects) serve different purposes
+> - **Dots** show individual observations and relationships
+> - **Lines** show trends and connections over ordered data
+> - **Bars** compare categories and show aggregated values
+> - **Area** shows filled regions and accumulation
+> - **Band** displays ranges and uncertainty
+> - Combine multiple marks in layers for richer visualizations
+> - Choose marks based on your data type and research question
+> - Always consider what story you’re trying to tell
+
+> **TIP:**
+>
+> In the next lesson, we’ll learn how to customize our plots with labels, titles, scales, and themes to create publication-ready visualizations that effectively communicate our findings to stakeholders.
+
+Back to top

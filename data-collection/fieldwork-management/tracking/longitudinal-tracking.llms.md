@@ -1,0 +1,329 @@
+How-to guide
+
+# Longitudinal Tracking Strategies
+
+Advanced tracking strategies for multi-round studies. Building on fundamental survey and respondent tracking systems, these proactive techniques maintain contact across survey rounds to minimize attrition in panel studies.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
+
+## Contributors
+
+- Yuna Liang
+- Laura McCargo
+- Anna Mysliwiec
+- [Eric Ochieng](https://poverty-action.org/people/eric-ochieng)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - **Proactive engagement** before and between survey rounds prevents attrition more effectively than intensive tracking during fieldwork alone.
+> - **Multiple complementary strategies** (phone banking, snowballing, community relationships, digital engagement) work together to maintain contact as circumstances change.
+> - **Centralized data management** across rounds provides the foundation that makes all other longitudinal strategies possible.
+
+## Overview
+
+Multi-round studies face distinct tracking challenges: respondents move between rounds, contact information becomes outdated, long gaps occur with no maintained contact, and life events affect locatability. This guide describes proactive techniques that enable high retention rates in panel studies, organized by when they are applied: before fieldwork begins (pre-fieldwork strategies) and during fieldwork (fieldwork strategies).
+
+> **NOTE:**
+>
+> **Applicability:** These strategies apply to ANY study with 2+ rounds: - 2-round studies (baseline + endline) - 3-round studies (baseline + midline + endline) - Long-term panels (4+ rounds over years)
+>
+> **Foundation required:** The strategies in this guide build on fundamental tracking systems covered in [Survey Tracking](../../../data-collection/fieldwork-management/tracking/survey-tracking.llms.md) and [Respondent Tracking](../../../data-collection/fieldwork-management/tracking/respondent-tracking.llms.md). Establish outcome codes, contact information collection, and tracking surveys before implementing these advanced techniques.
+>
+> **Core principle:** Invest heavily in baseline contact information and maintain engagement to minimize attrition in all subsequent rounds.
+
+## Challenges in Multi-Round Studies
+
+Multi-round studies face distinct tracking challenges:
+
+- **Migration:** Respondents move between rounds
+- **Outdated information:** Contact details become obsolete over time
+- **Long gaps:** Months or years with no maintained contact
+- **Community changes:** Demolition, development alter landscapes
+- **Life events:** Marriage, employment changes affect locatability
+
+## Key Principles
+
+Five principles guide effective longitudinal tracking:
+
+1.  **Frontload baseline collection:** Spend 15-20 minutes collecting comprehensive tracking information at baseline—you cannot go back later
+2.  **Maintain engagement:** Keep minimal contact between rounds (holiday greetings, project updates) when possible
+3.  **Budget for tracking:** Allocate 15-25% additional field costs for intensive tracking in follow-up rounds
+4.  **Monitor differential attrition:** Track whether attrition differs between study groups—this threatens internal validity
+5.  **Use complementary strategies:** No single method works for all respondents; combine multiple approaches
+
+> **TIP:**
+>
+> | Strategy | Timing | Purpose |
+> |----|----|----|
+> | **Baseline contact collection** | During first survey round | Build comprehensive tracking database |
+> | **Phone banking** | 2-4 weeks before follow-up | Update information, confirm locations |
+> | **Community engagement** | Throughout study period | Maintain project presence and relationships |
+> | **Digital engagement** | Between rounds (if applicable) | Stay connected with respondents |
+> | **Data management** | Ongoing across all rounds | Centralize updates and maintain history |
+
+## Pre-Fieldwork Strategies
+
+These strategies are deployed before follow-up fieldwork begins, preparing for successful respondent location.
+
+### Phone Banking Before Follow-Up Rounds
+
+Systematically call respondents 2-4 weeks before fieldwork to update information and confirm locations.
+
+**Setup:**
+
+- Hire dedicated phone team (2-4 callers)
+- Create call list from most recent contact information
+- Develop standardized call script
+- Set up system for recording updates
+
+**Call Protocol:**
+
+- Attempt each number at different times of day
+- Minimum 3 attempts at varied times
+- Leave messages when possible
+- Document all attempts and outcomes
+
+**Data Management:**
+
+- Record updated information immediately
+- Preload updates into tracking surveys
+- Create difficulty categories (easy/medium/difficult)
+- Generate priority lists for field teams
+
+**Expected Outcomes:**
+
+- Directly reach ~25% of respondents
+- Learn location information for ~33% of sample
+- Initiate snowball contacts
+- Reduce field time by pre-identifying difficult cases
+
+### Centralized Data Management
+
+Systematic data management across rounds is the foundation for all other longitudinal strategies.
+
+**Centralization Requirements:**
+
+- Single coordinator maintains master tracking database
+- All updates flow through this person
+- Real-time information sharing across field teams
+- Version control with clear protocols
+- Cross-team coordination when respondents relocate
+
+> **TIP:**
+>
+>     Master Tracking Database:
+>     ├── Respondent identifiers
+>     │   ├── Unique ID (constant across all rounds)
+>     │   ├── Name and nicknames
+>     │   └── Baseline demographic information
+>     ├── Contact information (versioned by round)
+>     │   ├── Phone numbers with date collected
+>     │   ├── Addresses (current and historical)
+>     │   ├── Alternate contacts (with dates)
+>     │   └── GPS coordinates if available
+>     ├── Round-specific tracking history
+>     │   ├── Round 1: attempts, outcome, date
+>     │   ├── Round 2: attempts, outcome, date
+>     │   ├── Round 3: attempts, outcome, date
+>     │   └── [additional rounds as applicable]
+>     └── Current status
+>         ├── Most recent known location
+>         ├── Last successful contact date
+>         ├── Tracking difficulty category
+>         └── Notes on location patterns
+
+**Best Practices:**
+
+- Date all contact information updates
+- Maintain complete history (don’t overwrite old information)
+- Document information source and reliability
+- Regular backups with version numbers
+- Clear protocols for who can update database
+
+## Fieldwork Strategies
+
+These strategies are applied during follow-up fieldwork to locate respondents whose information may have changed.
+
+### Snowballing Through Social Networks
+
+Ask surveyed respondents if they know other study participants and where they can be found.
+
+**Effectiveness:**
+
+- Crucial in tracking 50%+ of respondents in some studies
+- Particularly effective in close-knit communities
+- Works well with transient populations
+
+**Photobook Implementation:**
+
+A photobook is a compilation of respondent photos from baseline, shown to completed respondents to trigger recognition.
+
+**Procedure:**
+
+1.  After completing survey, show photobook to respondent
+2.  Ask: “Do you recognize anyone in these photos?”
+3.  For recognized individuals: “Where does this person live/work now?”
+4.  Record any information, even if vague or uncertain
+5.  Leave project contact card for future updates
+
+**Privacy Considerations:**
+
+- Protect photobook from public view
+- Only show to trustworthy individuals
+- Do not display randomly in public
+- Train enumerators on PII handling
+- Obtain consent for photo use in tracking at baseline
+
+> **NOTE:**
+>
+> “Most respondents move from one point to another and no matter what, their friends in most cases know where you can find them even if they have changed location.” - IPA Field enumerator
+
+### Maintaining Project Visibility
+
+Create recognizable project identity to help respondents and community remember the study across rounds.
+
+**Business Cards:**
+
+- Include project name, logo, and field coordinator contact
+- Distribute to community members who recognize photos
+- Enable informants to call when they see respondents
+- Crucial in tracking 35% of respondents in some studies
+
+**Branded Materials:**
+
+- T-shirts/uniforms with project branding
+- Respondents recognize project from previous rounds
+- Word spreads: “People in green shirts are looking for you”
+- Improves enumerator safety and professional appearance
+
+**Social Media Presence:**
+
+- Facebook pages for community engagement
+- Updates about study progress
+- Announcements (e.g., raffle winners if using incentives)
+- Platform for respondents to ask questions
+- Effective with tech-savvy populations (e.g., international migrants)
+
+**Best Practices:**
+
+- Establish project identity at baseline
+- Maintain consistent branding across all rounds
+- Balance visibility with respondent privacy
+- Provide all team members with materials to distribute
+
+### Community Relationships and Entry
+
+Build relationships with community members to facilitate respondent location across rounds.
+
+**Key Community Contacts:**
+
+| Contact Type | Value for Tracking | How to Identify |
+|----|----|----|
+| **Village chiefs/elders** | Know all residents, authorize access | Formal introduction at community entry |
+| **Market leaders** | Know traders and workers | Visit market, ask vendors |
+| **Motorbike/taxi drivers** | Travel throughout area daily | Station areas, transport hubs |
+| **Youth center staff** | Know young people | Youth facilities, sports areas |
+| **Religious leaders** | Know congregation members | Churches, mosques, temples |
+| **Shop owners** | Know regular customers | Main commercial areas |
+
+**Community Entry Protocol:**
+
+1.  Meet with local leaders before tracking begins (each round)
+2.  Explain study purpose and previous rounds
+3.  Request assistance in locating specific individuals
+4.  Offer small compensation for informants (if approved)
+5.  Maintain communication throughout fieldwork
+
+**Building Trust Over Time:**
+
+- Return to same contacts across rounds
+- Follow through on commitments made
+- Explain how study benefits community
+- Respect local customs and hierarchies
+- Be transparent about what you need
+
+> **NOTE:**
+>
+> “You’ll reach a point where people will identify a respondent and the respondent will be right where you are but they won’t allow you to see the person \[due to lack of trust\].” - IPA Field enumerator
+
+### Digital and Mobile Engagement
+
+Technology-based methods maintain connection between rounds and facilitate location.
+
+**Between-Round Contact (When Appropriate):**
+
+- SMS reminders about study continuation
+- WhatsApp contact for questions
+- Mobile app engagement (if intervention involves app)
+- Social media connections (with appropriate boundaries)
+
+**Effectiveness Considerations:**
+
+- Works best with tech-savvy, connected populations
+- Response rates vary; often low for cold digital contact
+- More effective when relationship established at baseline
+- Privacy concerns limit some respondents’ participation
+
+**During Follow-Up Fieldwork:**
+
+- Social media searches (Facebook, WhatsApp, Viber, LinkedIn)
+- Contacting through digital platforms using baseline information
+- GPS coordinates (limited practical value; written directions often better)
+
+**Mobile App Example:**
+
+For studies with app-based interventions:
+
+- Weekly check-ins maintain engagement
+- Push notifications about surveys
+- In-app rewards and incentive systems
+- Tracking data from app usage provides contact confirmation
+
+## Best Practices
+
+Success factors vary by study duration and context. These practices emerge from IPA’s longitudinal study experience.
+
+### Universal Principles
+
+1.  **Frontload investment:** Spend 15-20 minutes at baseline collecting comprehensive tracking information—you cannot go back
+2.  **Start early:** Begin phone banking and community re-engagement 4-6 weeks before fieldwork
+3.  **Maintain continuity:** Use same field managers and key staff across rounds for institutional knowledge
+4.  **Budget realistically:** Allocate 15-25% additional costs for tracking in follow-up rounds
+5.  **Document everything:** Keep detailed notes on all tracking efforts to inform future rounds
+
+> **TIP:**
+>
+> | Study Duration | Critical Success Factors |
+> |----|----|
+> | **Short-term (6-18 months)** | Comprehensive baseline contact info • Phone banking before follow-up • Active case management |
+> | **Medium-term (2-5 years)** | Add: Periodic between-round contact • Community relationship maintenance • Digital engagement where applicable |
+> | **Long-term (5+ years)** | Add: Stable field staff • Multiple intervention touchpoints • Ongoing project visibility • Flexible survey methods (phone, in-person) |
+
+### Common Pitfalls in Panel Studies
+
+| Pitfall | Consequence | Solution |
+|----|----|----|
+| **Insufficient baseline tracking module** | Cannot locate 30-50% of sample in follow-up | Invest 15-20 minutes at baseline in comprehensive contact collection |
+| **No between-round engagement** | Respondents forget project, difficult to locate | Maintain minimal contact (annual holiday greetings, project updates) |
+| **Staff turnover** | Loss of institutional knowledge and community relationships | Pay premium for key staff retention; document processes thoroughly |
+| **Treating all rounds the same** | Later rounds require different strategies than baseline | Adapt tracking intensity to attrition risk in each round |
+
+## References
+
+- Baird, S., Hamory, J., & Miguel, E. (2008). Tracking, attrition and data quality in the Kenyan Life Panel Survey Round 1 (KLPS-1). *Center for International and Development Economics Research Working Paper Series*.
+- Blattman, C., Jamison, J. C., & Sheridan, M. (2017). Reducing crime and violence: Experimental evidence from cognitive behavioral therapy in Liberia. *American Economic Review*, 107(4), 1165-1206.
+- Thomas, D., Witoelar, F., Frankenberg, E., Sikoki, B., Strauss, J., Sumantri, C., & Suriastini, W. (2012). Cutting the costs of attrition: Results from the Indonesia Family Life Survey. *Journal of Development Economics*, 98(1), 108-123.
+
+Back to top

@@ -1,0 +1,151 @@
+How-to guide
+
+# Deploying a WhatsApp Survey
+
+Learn how to prepare, configure, and deploy WhatsApp surveys using Twilio integration with Google Sheets for data collection. This guide covers essential steps to configure your computer and tools, create a cases file, manage data collection, and launch surveys.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
+
+## Contributors
+
+- [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - Learn the essential steps to configure your computer and tools for a seamless WhatsApp survey launch.
+> - Understand how to create and manage a cases file and integrate it with Twilio and Google Sheets for effective data collection.
+
+## Step 1: Setting Up Your Computer
+
+Before deploying WhatsApp surveys, ensure you have:
+
+- WhatsApp Business API access and approval
+- Twilio account with active phone number
+- Google account for Google Sheets integration
+- Basic familiarity with command-line interface
+- Statistical software such as Stata, Python, R, or similar for data preparation
+
+Download and install the essential programs required for WhatsApp survey deployment. The IPA GitHub user guide provides detailed instructions for streamlining your computer setup with the necessary tools.
+
+\
+[IPA GitHub user guide](https://github.com/PovertyAction/requests_to_twilio)
+
+\
+
+After completing the installation, proceed to create your cases file.
+
+## Step Two: Creating a Cases File
+
+After you complete the console setup and obtain the necessary approvals from WhatsApp, you are ready to deploy a survey. This method involves initiating communication from your profile, prompting user engagement. This method is different from waiting for user-initiated communication, where you will have an open chat and you don’t have a specific target sample.
+
+The first step to start the process is creating a “cases file.” This file is a dataset with participants’ phone numbers and any additional information relevant to your survey. If you consider including personalized messages or details to populate survey fields, you should include this information as dataset variables. Another recommendation is to incorporate an identifier to keep track of submissions without using any PII for effective tracking.
+
+Follow these steps to construct your cases file:
+
+- The file should be in xlsx format. Use Stata, Python, R, or your preferred statistical software to create this document to reduce manual input errors.
+- Ensure the Excel file includes a column or variable named “Number,” with a capital N, structured as “whatsapp:+” followed by the phone number and country identifier, as depicted in the image.
+- Name other variables according to your preference. If numeric values are present, store them as text to prevent Excel from altering them.
+- Store the “cases” dataset in a secure and encrypted folder on your computer to ensure data security.
+
+Your cases file should look like this:
+
+![](../../assets/images/twilio/twilio-deploy-1.png)
+
+Cases file example
+
+## Step Three: Managing Data with Google Sheets
+
+A final step before launching a WhatsApp survey is to configure the Google Sheet, where you’ll collect data from your surveys and WhatsApp interactions. Follow these steps to ensure a smooth data collection setup:
+
+1.  **Create a Google Sheet**: Initiate the process by creating a Google Sheet to serve as the repository for collected data.
+
+2.  **Configure Twilio Functions**:
+
+    - Access the Twilio console’s submenu labeled “Functions and Assets.”
+    - Navigate to “Functions (Classic)” and select “Configure.”
+    - In the “Dependencies” section, complete the specified fields, as illustrated in the provided image.
+
+![](../../assets/images/twilio/twilio-deploy-2.png)
+
+Dependencies configuration snapshot
+
+3.  **Create two environment variables**:
+    - `client_email`: *twilio-data-connector-to-gsuit@twilio-gsuite-connection.iam.gserviceaccount.com*
+    - `sheetId`: Retrieve this from the link of your Google Sheet. It is the alphanumeric group in the link after “/d/” and before the next “/.”
+
+![](../../assets/images/twilio/twilio-deploy-4.png)
+
+Environment variables configuration snapshot
+
+4.  **Create a New Function**:
+    - Proceed to the “List” submenu and generate a new function from a blank interface named “function_gsheets.”
+    - Copy the provided function code into the code section.
+
+\
+[publish gsheet code](https://github.com/PovertyAction/requests_to_twilio/blob/master/publish_gsheets)
+
+\
+
+5.  **Save and Deploy**: Save the function, and deployment will occur automatically.
+
+6.  **Share Google Sheet**: Share your Google Sheet with the email from the `client_email` environment variable.
+
+7.  **Integrate the Function into Your Flow**:
+
+    - Add the newly created function within your flow at the end, as it will compile answers from the entire flow.
+    - The arguments from the function have a key—the name of the variable and value the way Twilio recognizes the answer inputted by a participant:
+      - If you want to publish the answer to a question widget you have on your flow, you need to use the following value in the function: `{widgets.name_of_the_widgets_variable.inbound.body}`
+      - If you want to publish data from your “cases” file, use the following value in the function: `{flow.data.name_of_the_variable}`, remember that you need to include this variable in the cases and the launch code
+      - If you want to publish variables you created inside the Twilio flow, you need to use the following value in the function: `{flow.variables.name_of_the_variable}`
+
+8.  **Header Alignment in Google Sheet**: Align the variable names defined in step 7 with the headers of your Google Sheet columns to let Twilio know how to populate the data in the document.
+
+![](../../assets/images/twilio/twilio-deploy-3.png)
+
+Google Sheet example
+
+With these steps completed, you can deploy your survey.
+
+## Step Four: Launching Your Survey
+
+To launch your survey, you will use the following Python code. Follow these next steps:
+
+1.  **Open a Shell Prompt**: Open a command prompt – Bash, PowerShell, or other – on your computer to start the process.
+
+2.  **Run the Python Script**:
+
+``` bash
+cd requests_to_twilio
+
+python twilio_launcher.py --account_sid your_account_sid --account_token your_account_token --twilio_number your_twilio_number --flow_id flow_id --input_file full_path_to_input_file --batch_size batch_size --sec_between_batches sec_between_batches --columns_with_info_to_send caseid,name,city,gender,age
+```
+
+Ensure you replace the placeholders; here is where you can find the information needed:
+
+- `your_account_sid`: In your Twilio’s console main page
+- `your_account_token`: In your Twilio’s console main page
+- `your_twilio_number`: In your Twilio’s console main page
+- `flow_id`: In the flow menu in the console
+- `full_path_to_input_file`: The computer directory where your “cases” file exists
+- `batch_size`: You must define how many surveys you will send. Set it at 20 per batch as recommended. You will need to replace it with just the number. This is a recommendation based on infield experience when deploying WhatsApp surveys. This number of messages prevents the API from overloading and won’t crash.
+- `sec_between_batches`: You must define how many seconds you will wait between batches. The recommended interval is 10 seconds. You will need to replace it with just the number.
+- Include Additional Information: If your file contains extra columns with pertinent information, specify them in the `columns_with_info_to_send` argument, separating column names by commas.
+
+> **TIP:**
+>
+> If you encounter trouble running this code, email:\
+> *researchsupport@poverty-action.org*\
+
+Back to top

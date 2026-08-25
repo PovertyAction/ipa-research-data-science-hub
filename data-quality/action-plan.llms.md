@@ -1,0 +1,143 @@
+Explanation
+
+# Data Quality Action Plan
+
+This guide outlines the Data Quality Action Plan, a tool designed to help IPA research staff systematically manage data quality throughout the data lifecycle.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Camilo Rodríguez Meléndez](https://poverty-action.org/people/camilo-rodriguez-melendez)
+- [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
+
+## Contributors
+
+- [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
+- [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - The DQAP provides a framework for planning, implementing, and acting on data quality checks, ensuring the effective use of the Data Management System (DMS four-point-zero) and other quality assurance measures.
+> - The DQAP enhances team collaboration by clearly defining roles and responsibilities for data quality management.
+
+## What is the Data Quality Action Plan?
+
+Preparing for data collection often involves juggling multiple tasks, which can limit the ability of research staff to fully use tools like the DMS four-point-zero. The Data Quality Action Plan (DQAP) addresses this challenge by offering a structured framework for planning and executing data quality activities. It helps teams:
+
+- Identify and resolve data quality issues.
+- Maximize the use of the DMS four-point-zero.
+- Enhance the actionability of data quality checks.
+
+The DQAP focuses on eight core data quality tasks, each designed to address specific issues during data collection. This template serves as a centralized repository for planning and tracking these activities, ensuring a comprehensive approach to data quality management.
+
+![](../assets/images/dqap_intro.png)
+
+Main data quality activities
+
+## Purpose of the DQAP
+
+The DQAP aims to establish a systematic approach to data quality management, with the following objectives:
+
+- **Facilitate Training and Tool Adoption**: Provide clear guidelines for research staff to plan, program, and act on data quality checks.
+- **Enhance Actionability**: Offer actionable insights and recommendations for addressing data quality issues.
+- **Boost Accountability**: Clearly define roles and responsibilities for Principal Investigators (PIs), Research Managers, Research Associates, and Field Managers in data quality activities.
+- **Promote DMS Four-Point-Zero Use**: Ensure teams leverage the full potential of the DMS four-point-zero in all IPA data collection initiatives.
+
+## The DQAP Tool
+
+The DQAP tool is a spreadsheet template with five sheets, three of which require input: DataQuality_Tasks, DMS, and Issues and Actions.
+
+![](../assets/images/dqap-main-page.png)
+
+Main Page of the Data Quality Action Plan
+
+You can download the DQAP template as an Excel file below. The template includes dropdown selections on the DataQuality_Tasks sheet that automatically reflect your active checks in the Summary sheet.
+
+[Download the DQAP Template](../assets/files/DataQuality_ActionPlan.xlsx)
+
+If you have questions about the template, contact Research Support at <researchsupport@poverty-action.org>.
+
+### Below is an overview of each sheet
+
+> **TIP:**
+>
+> This sheet provides step-by-step instructions for filling out the DQAP. It uses color-coding for clarity:
+>
+> - **Green**: Fields that require editing.
+> - **Blue**: Fields that you should not modify.
+
+> **TIP:**
+>
+> This sheet summarizes the finalized DQAP for sharing with PIs, Research Managers, and Field Coordinators. It highlights the active tasks and checks, ensuring alignment and accountability across the team.
+
+> **TIP:**
+>
+> This sheet outlines the eight core data quality tasks shown in the figure above. It includes:
+>
+> - **Blue Columns (Pre-filled)**:
+>   - **Description**: Explains each task.
+>   - **How Can This Activity Help?**: Describes how the task identifies issues.
+>   - **What Does This Activity Require?**: Lists prerequisites for implementation.
+> - **Green Columns (Research staff complete these)**:
+>   - **Activity Active in This Project?**: Checkbox to indicate if the task is in use.
+>   - **What Will the Project Check?**: A brief description of the task’s purpose for the project.
+>   - **Resources**: Links to manuals and guides for implementing each task.
+
+> **TIP:**
+>
+> This sheet details the checks available in the DMS four-point-zero. It includes:
+>
+> - **Pre-filled Columns**:
+>   - **Global do-file section**: Identifies the section of the do-file to modify.
+>   - **Input File/Sheet**: Specifies the input files and sheets required.
+>   - **Output File/Sheet**: Names the output files and sheets.
+>   - **Description**: Explains the purpose of each check.
+>   - **How Can This Information Be Used?**: Suggests potential uses for the output.
+>   - **Recommended Resources**: Links to IPA resources.
+> - **Green Columns (Research staff complete these)**:
+>   - **Check Active?**: Checkbox to indicate if the check is in use.
+>   - **Survey Variables and Information for Checks**: Lists variables or parameters needed for the check.
+
+> **TIP:**
+>
+> This sheet serves as a reference for identifying and resolving common data quality issues. It includes:
+>
+> - **Issues**:
+>   - **Issue Descriptions**: Describes potential data quality issues.
+> - **Checks**:
+>   - Identifies the data quality activity or DMS output that can detect the issue.
+> - **Actions**:
+>   - **Programming Actions**: Solutions for issues related to data management and cleaning.
+>   - **Field Protocol Actions**: Recommendations for improving enumerator performance or field logistics.
+>   - **Person Responsible**: Specifies the team member responsible for each action (editable).
+
+## How to Design a DQAP for Your Project
+
+Follow these steps to create a tailored DQAP for your data collection initiative:
+
+| **Step** | **Description** |
+|----|----|
+| 1 | **Download the DQAP template** and save a copy in your project’s folder. Keep it as an Excel file to preserve dropdown selections and summary formatting. |
+| 2 | **Review and fill out the DataQuality_Tasks sheet.** Mark the tasks you plan to use and describe what to check. |
+| 3 | **Review and fill out the DMS sheet.** Activate relevant checks and specify the required variables. |
+| 4 | **Review the Issues and Actions sheet.** Filter active checks and add or modify issues and actions as needed. |
+| 5 | **Assign responsibilities for each action** in the Issues and Actions sheet based on your team’s structure. |
+| 6 | **Share the finalized DQAP with your team** using the Summary sheet. Gather feedback to ensure alignment and accountability. |
+| 7 | **Begin programming your DMS** based on the finalized plan. |
+
+Steps for DQAP {.table-striped .caption-top .table}
+
+## Conclusion
+
+The Data Quality Action Plan is a powerful tool for ensuring high-quality data collection. By following this structured approach, research teams can proactively address data quality issues, maximize the use of the DMS four-point-zero, and ensure accountability across all stages of the data lifecycle.
+
+Back to top

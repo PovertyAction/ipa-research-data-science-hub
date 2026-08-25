@@ -1,0 +1,173 @@
+# Claude Code for Research and Project Management
+
+How research and project-management staff put Claude Code to work: concrete use cases across data analysis and operations, the few prompt patterns that matter most for this work, and how to have Claude remember your preferences over time.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Juan Felipe García Rodríguez](https://poverty-action.org/people/juan-felipe-garcia-rodriguez)
+- [Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This content is adapted from the [Claude Code guide for IPA Colombia](https://github.com/juanfegarIPA/claude-code-ipa-colombia) by Juan Felipe García Rodríguez and Diego Quintero Mogollón, used under the [MIT License](https://github.com/juanfegarIPA/claude-code-ipa-colombia/blob/main/LICENSE).
+
+> **TIP:**
+>
+> - Claude Code earns its place on real research and operations work: writing and running your analysis code, and keeping project knowledge in one place.
+> - Describe the outcome you want and give Claude the context to reach it: code and structure, never participant data. The decisions stay yours.
+> - Have Claude remember your conventions and corrections so it fits the way you work over time.
+
+## What this page is for
+
+This page is about the research and project-management work Claude Code is genuinely good at: the tasks analysts and operations staff do every week. It is not a general prompting tutorial, and it assumes you have already [set up Claude Code](../../software/claude/setup.llms.md).
+
+## Use cases in research work
+
+For research staff, the clearest win is a closed loop. Because Claude Code runs tools on your computer, it does not stop at writing a script. It runs the script, reads the result, and fixes what broke, so you react to the result and not to every step.
+
+Throughout this work, share **structure and code, never raw data**. Describe the shape of your dataset and paste the code or the error, but do not paste records or point Claude at a file of participant data. See [Prompt safely](#prompt-safely) below.
+
+### Have Claude Code run your Stata code
+
+This is the pattern that saves analysts the most time: Claude writes a do-file, runs it, reads the log, and fixes what broke, all without you leaving the session. It works once Claude knows how your Stata runs, so tell it once and save that instruction to your project’s `CLAUDE.md`, or ask Claude to remember it. Something like:
+
+``` text
+When you run my Stata code, use the executable at
+"C:/Program Files/Stata19/StataMP-64.exe" in batch mode. Use the flags
+-e -q from a Unix shell such as Git Bash, or /e /q from PowerShell.
+Change into the do-file's folder first. Stata writes a log in that folder
+with the same name as the do-file, so read that log to check the run, and
+treat any line matching r(###); as an error. Only run do-files clearly
+marked as temporary.
+```
+
+With that saved, the loop runs on its own. Claude writes the do-file, runs it, and watches the log fill as Stata works. A clean run ends with `end of do-file` and no return code; an error shows up as a line like `r(111);` (a variable not found) or `r(198);` (a syntax error). Claude reads the lines just above it, fixes the do-file, and runs again until the log is clean.
+
+Share the do-file and the log with Claude, never the data itself.
+
+### Write and debug with the right context
+
+Claude writes good analysis code when it has the context you would give a new research assistant. Before you ask for a do-file, point it at what defines the work: the data dictionary, the pre-analysis plan, and a previous do-file with data it can run. It picks up your variable names, conventions, and house style from those and matches them. When something breaks, give it the error and a few lines of log around it, and it diagnoses the cause instead of guessing. Ask it to document what it builds, a README or commented do-files, so the analysis reproduces later.
+
+Claude Code also works across languages. It can drive Stata for the analysis, Python or R for better-looking plots, and Quarto for the write-up, scaffolding the wiring between them.
+
+## Use cases in project management
+
+Project-management work is less about code than about context: what a project is, where it stands, and what happens next. Claude Code helps when that context lives in files it can read. Two things shape how it helps. Claude starts each session with no memory of your project beyond what you give it, and it will not keep your files current on its own. The useful pattern is therefore a **trigger**: a [skill](#tailor-claude-to-your-work) you invoke to update a knowledge base or produce a report on demand. Nothing here maintains itself.
+
+### Keep a project knowledge base
+
+Keep your project’s durable knowledge as files Claude Code can read, in whatever format you already work in: decisions, meeting outcomes, open questions, reference documents. When the knowledge base is current, you ask it questions in plain language:
+
+``` text
+What did the team decide about the follow-up survey, and when?
+```
+
+Claude answers from the files. The catch is the word *current*. A knowledge base is only as good as its last update, and Claude will not compile one in the background. Make updating it a trigger you run: after a meeting, invoke a skill that reads your raw notes and folds the decisions into the knowledge base. Raw notes go in, a clean and current set of files comes out, and it stays useful only because the trigger keeps compiling it.
+
+> **NOTE:**
+>
+> This material usually lives in a shared drive such as Box. Keep the knowledge base to Public and Internal content only, never participant data or anything Confidential.
+
+### Draft a weekly status report
+
+Keep even a rough list of what you worked on, and Claude Code turns it into a weekly update. This is worth saving as a [skill](#tailor-claude-to-your-work) you run each week, so the report is one trigger rather than a prompt you rewrite:
+
+``` text
+Turn these notes into a weekly update with five parts: what I finished,
+what is in progress and its next step, what is blocked and why, how my
+week split across priorities, and the decisions waiting for next week.
+```
+
+Then edit the draft it gives you instead of starting from a blank page.
+
+When your notes mention people or specific figures, keep the report at the level of projects and tasks, not individuals. Remove names and any sensitive detail before you share the notes with Claude.
+
+## Prompt patterns that matter for this work
+
+Good results come from giving Claude the context it needs. It is fluent in Stata and in writing; what it lacks is the specifics of your project. A handful of patterns carry most of the difference.
+
+**Start in plan mode.** Have Claude read everything and lay out an approach before it changes anything. Use `/plan` to request planning mode, or press Shift+Tab to enter it.
+
+**Describe the outcome, not the steps.** Say what you want to end up with and let Claude choose the commands.
+
+``` text
+Make a table of take-up rates by treatment arm and export it to Word.
+```
+
+**Point at your conventions.** Instead of describing your file layout or coding style, point Claude at a file that already shows it.
+
+``` text
+Write this following the structure in 01_clean.do.
+```
+
+**Give context on an error.** An error code alone is not much to go on. Paste the log lines around the failure and say what you were doing.
+
+``` text
+This do-file stops with r(198). Here are the ten log lines around it: ...
+What is wrong?
+```
+
+**Iterate, do not restart.** Claude remembers the conversation, so refine instead of re-explaining.
+
+``` text
+Keep that, but cluster the standard errors by school.
+```
+
+What ties these patterns together is context, and that is exactly where data safety matters. **Give Claude the code, the structure, and the errors, but never personal or identifying data.** The next section makes the line concrete.
+
+## Tailor Claude to your work
+
+You should not have to re-explain your project every session. Claude can carry your context and conventions for you, and the mechanism differs between Claude Code and the chat, so keep the two separate.
+
+### In Claude Code
+
+- **`CLAUDE.md`** is a file in your project where you write the things Claude should always know: how the project is laid out, how to run it, and the conventions to follow. Claude reads it at the start of every session.
+- **Built-in memory** lets Claude remember across sessions. When you correct it, say “remember this,” and it saves the rule and applies it next time, so you stop repeating the same corrections.
+- **Skills** package reusable instructions for a recurring task. You trigger one by name, like a slash command, or Claude runs it on its own when it fits the work. This Hub ships a `knowledge-hub-generator` skill that captures its own house style.
+
+### In a Claude Project (claude.ai)
+
+In the chat, the equivalent is a **Project**: a reusable space with its own instructions and reference documents that tailors Claude to a recurring task. There are two kinds:
+
+- **Personal**, one you create for your own recurring work.
+- **Company-provided**, one your organization publishes for everyone to use.
+
+> **NOTE:**
+>
+> IPA’s Knowledge Hub Generator, the assistant used to draft pages for this Hub, is a company-provided Project.
+
+## Prompt safely
+
+Before you share anything with Claude, ask one question: does this require Claude to see individual data or personal details? If it does, reframe the request toward code and structure instead.
+
+- **Safe:** “Write a do-file that cleans a survey with these variables.” “Here is the log; why does this merge fail?” “Draft an update on this project’s progress for a partner.”
+- **Not safe:** pasting raw data or individual records, sharing a file of participant data, or naming a specific person and their details.
+
+The rule is the same one on the [orientation page](../../software/claude/index.llms.md#use-ai-safely-with-research-data): keep participant and other confidential data out of anything an AI tool can read.
+
+> **NOTE:**
+>
+> Follow the [IPA AI Usage Guidelines](https://ipastorage.box.com/s/mvr67ygvz1y3v8qmgjey67lk7msmyeks): Claude is approved for **Public** and **Internal** data only. When unsure how data is classified, contact <support@poverty-action.org>.
+
+## Go further
+
+As Claude Code becomes part of your routine, a few of its more advanced capabilities are worth exploring:
+
+- **Control how much Claude does on its own.** Permission *modes* set how often Claude pauses for approval: *Manual* asks before each action, *Plan* has it propose a plan before it changes anything, and *Auto* lets it work through routine steps while a safety check blocks risky ones. Press Shift+Tab to switch. See [Choose a permission mode](https://code.claude.com/docs/en/permission-modes).
+- **Watch the context window.** The context window is Claude’s working memory for a session, and it is finite. A custom [status line](https://code.claude.com/docs/en/statusline) keeps its usage, your running cost, and the git branch in view, and `/compact` summarizes a long conversation to free room, keeping what you tell it to. See [the context window](https://code.claude.com/docs/en/context-window).
+- **Run Claude Code in a cloud session.** [Claude Code on the web](https://code.claude.com/docs/en/claude-code-on-the-web) runs on Anthropic’s servers from your browser at [claude.ai/code](https://claude.ai/code), so a long task keeps going without tying up your own machine.
+- **Connect Claude to your tools and data.** The Model Context Protocol (MCP) lets Claude reach other tools, databases, and services. See [Connect Claude Code to tools with MCP](https://code.claude.com/docs/en/mcp).
+- **Delegate parts of a task.** Claude Code can hand focused subtasks to subagents that work in parallel, each with its own instructions. See [Subagents](https://code.claude.com/docs/en/sub-agents).
+
+Back to top

@@ -1,0 +1,267 @@
+Explanation
+
+# Administrative Data
+
+A guide to obtaining, using, and managing administrative data for research, covering access processes, data flow options, data use agreements, ethical considerations, data validation, and common challenges.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
+
+## Contributors
+
+- [David Alejandro Barona Grajales](https://poverty-action.org/people/david-barona-grajales)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - Administrative data refers to information collected, used, and stored primarily for operational purposes rather than research.
+> - While IPA projects usually rely on primary data, administrative data can also be a valuable input resource for research and impact evaluation.
+> - Accessing and using administrative data requires careful planning across four stages: information gathering, implementation, legal compliance, and data validation.
+
+## What is Administrative Data?
+
+Administrative data refers to data collected for the administration of programs. It should be systematically collected, stored and used for program operation and management decisions.
+
+Administrative data is typically collected by government agencies and organizations for registration, transaction, and record-keeping purposes and it is designed to track a program’s implementation -primarily the project’s activities and expenses- it can also include indicators on program outcomes. Examples of administrative data can include call detail records (CDR), app usage logs, credit card transactions, client information from financial institutions, electronic medical records, insurance claims, hospital records of patient visits, educational records, arrest records, and mortality records.
+
+## Standard Processes for Accessing Administrative Data
+
+Accessing administrative data involves four main steps:
+
+### 1. Finding Administrative Data
+
+Implementing partners and government agencies are valuable sources of administrative data. Common sources include:
+
+- **Health Data**: Regional/national health departments, hospitals, health insurance records
+- **Financial Data**: Banks, credit unions, credit reporting agencies
+- **Education Data**: Schools, ministries of education, standardized testing agencies
+
+### 2. Preparing a Data Request
+
+When requesting administrative data, researchers should:
+
+- **Define the time frame, format, and structure needed**: “Primary school records from January 2022 to December 2023 in CSV format”
+- **List specific variables of interest**: Student ID, school level, Teacher ID, attendance, test scores
+- **Specify whether you need identified or de-identified data**: Request de-identified data when possible to reduce ethical complexity
+- **Avoid broad requests**: Instead of “all student data,” specify exact variables, time frames needed, and frequency of updates
+
+> **TIP:**
+>
+> A Data Use Agreement (DUA) is a legal document that outlines the terms under which a data provider shares data with a research institution. DUAs are also referred to as Data Sharing Agreements (DSAs), Memoranda of Understanding (MOUs), or Non-Disclosure Agreements (NDAs), depending on the context and the parties involved.
+>
+> A well-structured DUA protects both the data provider and the research team by clarifying responsibilities, limiting liability, and ensuring that data are used only for agreed-upon purposes. The table below describes the elements that a DUA should include.
+>
+> - **Project description**: Summary of the research purpose and scope
+> - **Authorized users and analysts**: Names or roles of individuals permitted to access the data
+> - **Data security procedures**: Encryption, storage, and access control requirements
+> - **Data to be shared**: Variables, time range, and format of the dataset
+> - **Timeframe**: Duration of the agreement and data access period
+> - **Data destruction**: Procedures for deleting or returning data at the end of the project
+> - **Publication review**: Whether the data provider has the right to review outputs before publication
+> - **Data publication**: Conditions under which derived data or results may be made public
+>
+> ##### DUAs must be signed by an institutional representative
+>
+> A DUA should be executed by an authorized institutional representative, not by an individual researcher or staff member. This protects the researcher from personal liability and ensures that the institution assumes responsibility for compliance.
+>
+> ##### Tips for negotiating a DUA
+>
+> Negotiating a DUA can be a lengthy process. The following practices help move negotiations forward:
+>
+> - **Understand legal constraints from the start**: Some provisions that appear as “requirements” from the data provider may be preferences that can be modified. Understanding what is legally mandated versus negotiable saves time.
+> - **Build the relationship early**: Establishing trust with the data provider before formal negotiations often makes the process smoother.
+> - **Frame the research in terms of the provider’s mission**: If the research is relevant to the agency’s own goals, emphasize that relevance to increase their willingness to share.
+> - **Consider using an intermediary**: In complex or sensitive cases, a trusted third party can facilitate negotiations between the research team and the data provider.
+
+### 3. Implementing Data Flow Strategies
+
+#### What is Data Flow?
+
+A data flow describes the path that data travels from the administrative source to the research team, specifying who collects identifying information, who conducts the match between study records and administrative records, and who receives the final de-identified dataset. The structure of the data flow determines which parties have access to personally identifiable information at each stage of the process.
+
+The structure of a data flow determines who has access to personally identifiable information (PII) and who conducts the match between study records and administrative data. Choosing the right option depends on the sensitivity of the data, the data provider’s legal constraints, and the research team’s security infrastructure. The table below summarizes the most common configurations.
+
+| Who conducts the match | Who has access to identified data | Notes |
+|----|----|----|
+| Researcher | Researcher receives identified data from agency | Simplest, but requires strong data security on the researcher’s end |
+| Researcher, on-site at the agency | Researcher brings encrypted finder file; leaves with de-identified file | Useful when the agency restricts data from leaving its premises |
+| Researcher, on agency device | Researcher conducts match and analysis on an agency-monitored computer | Agency retains oversight of the process |
+| Data agency | Researcher never receives identified data; agency strips identifiers before transfer | Researcher agrees never to re-link the finder file with the analysis file |
+| Data agency, with third-party intermediary | No single party has access to both identifiers and outcomes | Research partner assigns study IDs; agency conducts match; researcher receives only de-identified results |
+| Data agency runs researcher-written code | Researcher never accesses raw data | Researcher writes and tests code, sends it to agency, and receives only analytic results |
+
+> **WARNING:**
+>
+> Exact matching virtually eliminates false positives but increases false negatives, which attenuates impact estimates and reduces statistical power. Probabilistic matching reduces false negatives but introduces the risk of false positives, which can be especially harmful if match quality correlates with treatment or control status. Researchers should document their matching strategy and assess whether matching errors are likely to be unrelated to treatment assignment.
+
+> **TIP:**
+>
+> A well-planned data flow strategy ensures smooth integration of administrative data:
+>
+> 1.  **Gather Identifying Information**: Determine what identifiers are available in the study sample such as national ID numbers, phone numbers, email addresses
+> 2.  **Link Datasets**: Use pre-existing identifiers to match study data with administrative data. For example, match student IDs with test records using national ID numbers
+> 3.  **Choose a Matching Strategy**:
+>     - **Exact matching**: When identifiers are identical such as national ID numbers
+>     - **Probabilistic matching**: When using combinations of name, date of birth, and location information
+> 4.  **Determine Who Performs the Link**: Clarify whether the data provider, researcher, or a third party will conduct the linkage and deindentification to maintain data security and privacy
+
+### 4. Data Validation
+
+Data validation is the process of verifying that administrative data received from a provider has the expected characteristics before it enters a project’s analysis pipeline. Unlike data cleaning, which modifies records to correct errors, data validation checks whether the data as delivered matches what was agreed upon and what the analysis assumes and needs.
+
+Administrative data validation focuses on two dimensions:
+
+- **Correctness**: The reported value reflects the true observed value, accounting for allowable measurement error.
+- **Consistency**: Each record captures the same underlying construct across deliveries and across rows.
+
+Data validation is different from data cleaning and from high-frequency checks used in survey data collection. The goal is to identify and triage errors in the data as received, not to alter the raw data.
+
+#### When to validate
+
+> **TIP:**
+>
+> The first validation should occur immediately upon receiving a new data delivery. Running checks promptly allows the research team to identify problems while there is still time to contact the data provider for corrections. Automating validation scripts reduces processing time and ensures checks are applied consistently across multiple deliveries.
+
+> **TIP:**
+>
+> Validation scripts should run on the most recent file as received, using the variable names and formats the provider uses. This approach ensures that any errors identified are attributable to the source data, not to transformations the research team has applied. Validate before converting files to project-specific formats (e.g., .dta, .RData, or a relational database).
+
+> **TIP:**
+>
+> Validation and cleaning serve different purposes and should be maintained as distinct scripts or processes. Validation documents what errors exist in the raw data. Cleaning modifies the data for analysis. Mixing the two makes it harder to trace the origin of any given value in the final analysis file and complicates future deliveries.
+
+#### Common sources of error in administrative data
+
+| Source | Examples |
+|----|----|
+| Poorly designed forms or systems | No input constraints on data type or format; ambiguous questions that respondents interpret differently |
+| Data entry errors | Misspellings, keystroke errors, misunderstanding of field definitions (e.g., annual income entered as monthly) |
+| Misreporting or reporting bias | Incentives to over- or under-report; outcomes reported by program staff who have an interest in results |
+| Data extraction errors | Incorrect queries, truncated exports, or format changes introduced during extraction |
+| Data pre-preparation by the provider | Aggregations, recodes, or transformations applied before delivery that are not documented |
+
+## Ethical Considerations for Using Administrative Data in RCTs
+
+Using administrative data in research requires adherence to ethical and legal standards. Key considerations include:
+
+### Institutional Review Board (IRB) Approval
+
+Most research using administrative data qualifies as human subjects research and requires IRB approval. This includes ensuring:
+
+- Proper handling of personally identifiable information (PII)
+- Justification for using identified vs. de-identified data
+- Security measures for protecting sensitive information
+
+### Informed Consent
+
+In some cases, researchers may need to obtain informed consent from participants before accessing administrative data. This depends on:
+
+- The type of data you access
+- Whether it is possible to de-identify the data
+- Legal requirements set by the data provider
+
+### Data Security and Compliance
+
+Researchers must implement robust security measures, including:
+
+- Encryption for storing and transferring sensitive data
+- Access controls to limit data exposure
+- Compliance with legal regulations such as the General Data Protection Regulation (GDPR) or Health Insurance Portability and Accountability Act (HIPAA), if applicable
+
+For further clarification on IRB-related issues, any project with concerns should email <humansubjects@poverty-action.org>.
+
+## Data Validation
+
+Data validation is the process of verifying that administrative data received from a provider has the expected characteristics before it enters a project’s analysis pipeline. Unlike data cleaning, which modifies records to correct errors, data validation checks whether the data as delivered matches what was agreed upon and what the analysis assumes and needs.
+
+It is equally important to be clear about what data validation is *not*:
+
+- **Not data cleaning**: Validation identifies problems; cleaning modifies data to correct them. These are separate workflows.
+- **Not a guarantee of data quality**: Validation checks whether the received data matches the agreed-upon specifications, but it does not confirm that the underlying records accurately reflect reality.
+- **Not statistical validity testing**: Validation focuses on individual records and variables, not at the level of estimates or inferential claims.
+
+Administrative data validation focuses on two dimensions:
+
+- **Correctness**: The reported value reflects the true observed value, accounting for allowable measurement error.
+- **Consistency**: Each record captures the same underlying construct across deliveries and across rows.
+
+Data validation is different from data cleaning and from high-frequency checks used in survey data collection. The goal is to identify and triage errors in the data as received, not to alter the raw data.
+
+### When to validate
+
+> **TIP:**
+>
+> The first validation should occur immediately upon receiving a new data delivery. Running checks promptly allows the research team to identify problems while there is still time to contact the data provider for corrections. Automating validation scripts reduces processing time and ensures checks are applied consistently across multiple deliveries.
+
+> **TIP:**
+>
+> Validation scripts should run on the most recent file as received, using the variable names and formats the provider uses. This approach ensures that any errors identified are attributable to the source data, not to transformations the research team has applied. Validate before converting files to project-specific formats (e.g., .dta, .RData, or a relational database).
+
+> **TIP:**
+>
+> Validation and cleaning serve different purposes and should be maintained as distinct scripts or processes. Validation documents what errors exist in the raw data. Cleaning modifies the data for analysis. Mixing the two makes it harder to trace the origin of any given value in the final analysis file and complicates future deliveries.
+
+### Common sources of error in administrative data
+
+| Source | Examples |
+|----|----|
+| Poorly designed forms or systems | No input constraints on data type or format; ambiguous questions that respondents interpret differently |
+| Data entry errors | Misspellings, keystroke errors, misunderstanding of field definitions (e.g., annual income entered as monthly) |
+| Misreporting or reporting bias | Incentives to over- or under-report; outcomes reported by program staff who have an interest in results |
+| Data extraction errors | Incorrect queries, truncated exports, or format changes introduced during extraction |
+| Data pre-preparation by the provider | Aggregations, recodes, or transformations applied before delivery that are not documented |
+
+## Challenges When Using Administrative Data
+
+While administrative data offers many advantages, researchers often face challenges such as:
+
+### Differential Coverage
+
+Treatment and control groups may appear differently in administrative records, leading to bias. Examples include:
+
+- **Identifiers Obtained After Enrollment**: In a financial literacy program evaluation, treatment group participants may be more willing to provide bank account numbers for linking with administrative data, creating selection bias.
+- **Program-Generated Data**: If the intervention encourages healthcare visits, treatment group participants will appear more frequently in health administrative records, inflating apparent impact.
+
+### Reporting Bias
+
+Some administrative data relies on self-reporting, which can introduce inaccuracies. Examples include:
+
+- **Incentives for Misreporting**: Agencies or individuals may have reasons to over- or under-report data.
+- **Human Error in Data Entry**: Manual data entry can introduce inconsistencies.
+
+### Cost of Administrative Data
+
+Administrative datasets vary in cost, depending on:
+
+- The number of records requested
+- File-years needed
+- Data preparation time required by the provider
+
+## Conclusion
+
+Administrative data is a valuable tool for randomized evaluations, offering cost-effective, accurate, and comprehensive insights. Researchers must navigate ethical, legal, and logistical challenges to ensure data quality and validity. By following standardized processes for information gathering, implementing appropriate data flow structures, executing well-designed data use agreements, and validating data at each delivery, research teams can produce reliable evidence from administrative sources.
+
+> **TIP:**
+>
+> IPA’s guide to Using Administrative Data for Monitoring and Evaluation (2016) highlights several key advantages:
+>
+> - **Cost-Effectiveness**: Administrative data reduces or eliminates the need for additional monitoring activities or surveys.
+> - **Timely Response**: Regular updates in management information systems enable faster analysis of key indicators.
+> - **Large Sample Size**: Coverage of entire beneficiary populations provides robust sample sizes.
+> - **Improved Accuracy**: Reduces social desirability bias and recall issues common in self-reported data.
+>
+> This research emphasizes that data accuracy and reliability should take precedence over cost savings. Organizations must balance data quality, actionability, and resource allocation when incorporating administrative data into their research design.
+>
+> [Download: Goldilocks Deep Dive - Using Administrative Data for Monitoring and Evaluation](../assets/files/Goldilocks-Deep-Dive-Using-Administrative-Data-for-Monitoring-and-Evaluation.pdf)
+
+Back to top

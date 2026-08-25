@@ -1,0 +1,101 @@
+Reference
+
+# Choosing the Right Chart
+
+A decision reference for selecting the chart that fits a message: table versus graph, which chart type matches which comparison, and when to use a map. This page addresses what to choose and why. For building each chart in code, see the Python lessons in this section.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Isaac Arthur](https://poverty-action.org/people/isaac-arthur)
+- Yuri M. Leomo
+
+## Contributors
+
+- [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - **The message determines the chart, not the reverse.** Choose the form that shows what the reader most needs to see.
+> - **Tables and graphs serve different purposes.** Tables present exact values; graphs reveal patterns.
+> - **A small set of chart types covers most needs.** Bars for comparison, lines for change over time, scatter plots for relationships.
+
+## The first decision: Table or Graph
+
+The first question is whether a chart is needed at all. Tables are underused and are often the clearer, more information-dense choice.
+
+| A **table** is preferable when… | A **graph** is preferable when… |
+|----|----|
+| Exact numerical values are required | A pattern or trend is the point |
+| Readers will make several localized comparisons | A relationship between variables matters |
+| Only a few numbers are involved | The shape of the data is the message |
+
+Presenting a table and a chart together is occasionally the best option, but rarely the default.
+
+## Matching the chart to the message
+
+Once a graph is warranted, the type of comparison should determine the type of chart.
+
+| When the message concerns… | Use a… |
+|----|----|
+| Comparison across categories | Bar chart (horizontal when labels are long) |
+| A part of a whole | Bar or stacked bar chart (rarely a pie) |
+| Change over time | Line chart |
+| A component of a total over time | Stacked area chart |
+| A relationship between two variables | Scatter plot |
+| A relationship with a third dimension | Bubble chart |
+| Geographic variation | Map |
+
+> **WARNING:**
+>
+> The eye judges length far more accurately than area or angle. A pie chart requires readers to compare slices by area, a task they perform poorly, particularly beyond two or three categories or when three-dimensional effects are added. A bar chart almost always conveys the same shares more accurately.
+
+## The three workhorse charts
+
+Most decision-focused communication relies on three chart types. What matters here is recognizing which message each one answers; the code to build them appears in the Python lessons of this section.
+
+- **The bar chart answers “which is larger?”** It compares values across categories. The axis should start at zero, bars should be sorted by value unless they have a natural order, orientation should turn horizontal when labels are long, and the bar that carries the message should be highlighted.
+- **The line chart answers “how did it change?”** It shows change over time. Points are connected in time order, the number of lines is kept small, and each line is labeled at its end rather than through a legend. Many series are better shown as small multiples.
+- **The scatter plot answers “are these two related?”** It shows the relationship between two variables. A fitted line is added only when it helps the reader see the pattern, and a third variable is encoded through size or color only when it is relevant.
+
+## When to use a map
+
+- A map is appropriate when the message is genuinely geographic: when location itself matters, or when the audience needs to locate results within its own territory. Maps are useful for advocacy, since a local official can immediately find their district.
+- A map is the wrong choice when geography is incidental, as a map that largely tracks population density can mislead.
+
+## Labeling a chart to stand alone
+
+Whatever the chart, three habits let it stand alone:
+
+- **The title should state the takeaway** (“Deworming added the most school days”).
+- **Lines and bars should be labeled directly** rather than through a legend.
+- **Axes should carry plain-language names.**
+
+A reader who sees only the chart, with no surrounding text, should still grasp the point.
+
+> **TIP:**
+>
+> In a phone-based tutoring evaluation in the Philippines, the headline result, that mastery of basic numeracy rose 15 percentage points after only 2.5 hours of instruction, was presented with a single before-and-after bar chart, direct labels, and a title stating the finding. It used no legend, no third dimension, and no pie. The chart type matched the message, a comparison of two values, and that was sufficient for education partners to act.
+
+## References
+
+Evergreen, Stephanie D. H. 2019. *Effective Data Visualization: The Right Chart for the Right Data*. 2nd ed. Thousand Oaks, CA: SAGE.
+
+Schwabish, Jonathan A. 2014. “An Economist’s Guide to Visualizing Data.” *Journal of Economic Perspectives* 28 (1): 209–34. https://doi.org/10.1257/jep.28.1.209.
+
+Wilke, Claus O. 2019. *Fundamentals of Data Visualization*. Sebastopol, CA: O’Reilly. https://clauswilke.com/dataviz/.
+
+## Additional Resources
+
+Datawrapper Academy. “What Chart Should I Use?” <https://academy.datawrapper.de/>.
+
+Back to top

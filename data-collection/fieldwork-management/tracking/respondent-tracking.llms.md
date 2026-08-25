@@ -1,0 +1,278 @@
+Reference
+
+# Respondent Tracking
+
+Respondent tracking maintains accurate contact information, documents all interview attempts, and prevents sample loss through systematic protocols. This reference covers outcome codes, contact information collection, tracking documentation, case management tools, and attrition management strategies.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
+
+## Contributors
+
+- Yuna Liang
+- Laura McCargo
+- Anna Mysliwiec
+- [Eric Ochieng](https://poverty-action.org/people/eric-ochieng)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **TIP:**
+>
+> - **Standardized outcome codes** enable systematic documentation of every contact attempt and accurate response rate calculations.
+> - **Comprehensive contact information** collected at baseline is critical for successful follow-up in panel studies—you cannot go back and collect it later.
+> - **Proper case management** prevents duplicate interviews, ensures enumerators locate assigned respondents, and maintains data integrity throughout fieldwork.
+
+## Overview
+
+Respondent tracking maintains accurate contact information and documents every interaction with individual study participants. While survey tracking monitors aggregate progress, respondent tracking ensures each specific individual can be located, prevents duplicate interviews, and systematically records why some respondents were not successfully interviewed.
+
+> **WARNING:**
+>
+> This guide covers respondent tracking fundamentals for all studies. For aggregate progress monitoring, see [Survey Tracking](../../../data-collection/fieldwork-management/tracking/survey-tracking.llms.md). For multi-round tracking strategies, see [Longitudinal Tracking Strategies](../../../data-collection/fieldwork-management/tracking/longitudinal-tracking.llms.md).
+
+## What is Respondent Tracking?
+
+Respondent tracking systems ensure enumerators can locate assigned respondents, maintain current contact information, document all interview attempts, record outcomes systematically, and prevent duplicate interviews.
+
+**Key functions:**
+
+- Maintain comprehensive contact databases
+- Document every interview attempt with standardized codes
+- Update information as respondents move or change numbers
+- Enable analysis of non-response patterns
+- Prevent duplicate or incorrect interviews
+- Support mop-up operations for difficult cases
+
+## Outcome Codes
+
+Standardized outcome codes document each contact attempt systematically, enabling accurate response rate calculations and identification of non-response patterns.
+
+> **TIP:**
+>
+> Permanent outcomes end tracking efforts for that individual.
+>
+> | Code | Outcome | Description | Next Action |
+> |----|----|----|----|
+> | **1** | Complete | Survey successfully completed | No further action |
+> | **2** | Refusal | Respondent declined to participate | Document reason; no further contact |
+> | **3** | Ineligible | Does not meet study criteria | Remove from sample |
+> | **4** | Deceased | Respondent has died | Remove from sample; document for records |
+> | **5** | Moved - untraceable | Permanently relocated, cannot be found | Close case; document tracking efforts |
+> | **6** | Incapacitated | Unable to participate due to health/capacity | Close case; document circumstances |
+>
+> **Important:** Permanent codes other than “Complete” require supervisor verification.
+
+> **TIP:**
+>
+> Temporary outcomes indicate tracking should continue.
+>
+> | Code | Outcome | Description | Next Action |
+> |----|----|----|----|
+> | **11** | Not home | Respondent not at location | Return at different time |
+> | **12** | Temporarily away | Respondent traveling/relocated temporarily | Document expected return; follow up |
+> | **13** | Postponed | Respondent requested different time | Schedule specific appointment |
+> | **14** | Respondent busy | Respondent present but occupied | Return at better time |
+> | **15** | No access | Security/safety prevented contact | Coordinate with community leaders |
+> | **16** | Incorrect information | Contact details inaccurate | Update information; continue tracking |
+>
+> **Best Practice:** Record detailed notes with each temporary outcome (best time to visit, who provided information, special instructions).
+
+> **TIP:**
+>
+> For Computer-Assisted Telephone Interviewing (CATI).
+>
+> | Code | Outcome | Description | Next Action |
+> |----|----|----|----|
+> | **21** | No answer | Phone rang but no one answered | Try different time of day |
+> | **22** | Voicemail | Message system activated | Leave message; try again later |
+> | **23** | Wrong number | Number belongs to different person | Update contact information |
+> | **24** | Number disconnected | Phone service no longer active | Try alternate numbers; update records |
+> | **25** | Language barrier | Language outside study scope | Note language; attempt with appropriate interviewer |
+> | **26** | Call back requested | Respondent asked for specific time | Schedule callback per request |
+
+## Collecting Contact Information
+
+Contact information depth depends on study characteristics and resources. Longitudinal studies require more comprehensive collection than single-round surveys.
+
+### Factors Affecting Collection Depth
+
+**Budget constraints** • **Survey duration** • **Follow-up timeline** • **Number of rounds**
+
+### Essential Contact Information
+
+[TABLE]
+
+### Recording Standards
+
+- **Phone numbers:** Consistent format with country code
+- **Landmarks:** Multiple types (structures, businesses, geographic features)
+- **Addresses:** Both formal and local directions
+- **Contact preferences:** Best method and times
+
+> **TIP:**
+>
+> **Good:** *“Large blue house, 50m past AGM high school on left. Behind red-sign grocery shop. Mother in green house next door.”*
+>
+> **Poor:** *“Clara Town near school.”*
+
+### Informed Consent Considerations
+
+Consent must explicitly address future contact plans and privacy protections.
+
+**Key elements:**
+
+- Future contact permission
+- Contact information storage and protection
+- Permission to contact alternates
+- Optional permission for other research
+
+> **TIP:**
+>
+> *“We would like to contact you again in \[timeframe\] for a follow-up survey. May we keep your contact information on file? We will not share your information with anyone outside the research team. We may contact the people you list as alternate contacts to help us find you if we cannot reach you directly.”*
+
+## Tracking Surveys and Tools
+
+### Tracking Survey: Purpose and Structure
+
+A separate tracking survey captures unsuccessful contact attempts, keeping this distinct from completed interviews.
+
+**Benefits:**
+
+- **Data clarity:** Survey dataset contains only successful interviews
+- **Attempt analysis:** Patterns in contact attempts and non-response
+- **Information updating:** New contact details as discovered
+- **Cost tracking:** Time and resources per respondent
+
+> **TIP:**
+>
+>     Tracking Survey Structure:
+>     ├── Respondent identification (preloaded from case management)
+>     ├── Contact outcome (standardized outcome codes)
+>     ├── Updated information (new phones, addresses, contacts - conditional)
+>     ├── Effort metrics (travel time, distance, costs - optional)
+>     └── Detailed notes and next steps
+
+### Implementation Tools
+
+Three complementary tools enable systematic tracking:
+
+[TABLE]
+
+**Resources:** [SurveyCTO Case Management](https://support.surveycto.com/hc/en-us/articles/1500000326382-Guide-to-case-management-part-1-Introduction) • [IPA GitHub Repository](https://github.com/PovertyAction)
+
+### Integration with Progress Reporting
+
+Effective tracking links three data sources:
+
+- **Master sample list**, complete roster of all respondents with baseline information
+- **Completed surveys**, successfully interviewed respondents with full data
+- **Tracking attempts**, contact history for unsuccessful attempts with outcome codes and updated information
+
+This integration reveals completion status per respondent, attempt patterns, resource allocation, and geographic/temporal non-response patterns.
+
+> **TIP:**
+>
+> ``` stata
+> progreport using "${data}/master_sample.dta", ///
+>     id(respondent_id) ///
+>     surveydata("${data}/completed_surveys.dta") ///
+>     trackingdata("${data}/tracking_attempts.dta") ///
+>     by(district) ///
+>     output("${reports}/progress_with_tracking.xlsx")
+> ```
+>
+> [IPA High-Frequency Checks Documentation](../../../data-quality/high-frequency-checks.llms.md)
+
+## Managing Attrition
+
+Attrition—loss of study participants over time—is inevitable but can be managed to minimize bias.
+
+### Key Principles
+
+**Accept that some attrition is inevitable:**
+
+- 80-90% retention is excellent for most studies
+- 100% retention is unrealistic and possibly suspicious
+- Focus on minimizing differential attrition
+
+**Focus on differential attrition:**
+
+The critical concern is whether attrition differs between treatment and control groups—this threatens internal validity more than overall attrition rate.
+
+**Monitor systematically:**
+
+- Track attrition rates by treatment arm throughout fieldwork
+- Analyze characteristics of those who attrit vs. remain
+- Investigate patterns suggesting systematic differences
+- Document attrition thoroughly in field reports
+
+### Data Collection for Attrition Analysis
+
+**Collect rich baseline data:**
+
+- Demographics and socioeconomic characteristics
+- Baseline outcomes related to study endpoints
+- Geographic and contact information
+- Variables predicting attrition risk
+
+This enables analysis of whether attrition is random or systematic.
+
+### Statistical Methods for Attrition
+
+| Method | Purpose | When to Use |
+|----|----|----|
+| **Inverse probability weighting** | Reweight sample to match baseline | Attrition predictable from baseline characteristics |
+| **Bounds analysis** | Estimate range of effects | High attrition with uncertain direction of bias |
+| **Multiple imputation** | Fill missing data using predictors | Sufficient auxiliary variables available |
+| **Sensitivity analysis** | Test robustness of conclusions | Any significant attrition |
+
+> **NOTE:**
+>
+> **For multi-round studies:** Proactive strategies can reduce attrition before it happens. See [Longitudinal Tracking Strategies](../../../data-collection/fieldwork-management/tracking/longitudinal-tracking.llms.md) for phone banking, snowballing, community engagement, and systematic data management techniques.
+
+------------------------------------------------------------------------
+
+## Best Practices
+
+These principles emerge from decades of IPA fieldwork experience.
+
+### Universal Principles
+
+1.  **Prevention beats remediation:** Collect comprehensive tracking information at baseline—you cannot go back later
+2.  **Persistence is essential:** Most successful tracking comes from repeated follow-up attempts
+3.  **Every piece of information counts:** Use even vague or incomplete leads
+4.  **Trust is foundational:** Invest time in building rapport with respondents and communities
+5.  **Context matters:** Understand daily schedules, economic activities, and social patterns
+
+### Critical Success Factors
+
+[TABLE]
+
+### Common Pitfalls to Avoid
+
+| Pitfall | Consequence | Solution |
+|----|----|----|
+| **Insufficient baseline contact info** | Cannot locate respondents in follow-up | Invest adequate survey time in tracking module |
+| **Poor attempt documentation** | Cannot assess tracking effectiveness | Implement separate tracking survey |
+| **Inadequate tracking budget** | High attrition, low response rates | Plan for 15-25% additional field costs |
+| **Low enumerator motivation** | Poor tracking effort, fabrication risks | Train thoroughly, compensate fairly, celebrate success |
+| **Ignoring partial information** | Missed tracking opportunities | Follow up on all leads however incomplete |
+| **Inconsistent outcome coding** | Cannot analyze non-response patterns | Use standardized codes, train all staff |
+| **Poor data centralization** | Teams don’t share updated info | Implement centralized database with protocols |
+
+## References
+
+- Baird, S., Hamory, J., & Miguel, E. (2008). Tracking, attrition and data quality in the Kenyan Life Panel Survey Round 1 (KLPS-1). *Center for International and Development Economics Research Working Paper Series*.
+- Blattman, C., Jamison, J. C., & Sheridan, M. (2017). Reducing crime and violence: Experimental evidence from cognitive behavioral therapy in Liberia. *American Economic Review*, 107(4), 1165-1206.
+- Thomas, D., Witoelar, F., Frankenberg, E., Sikoki, B., Strauss, J., Sumantri, C., & Suriastini, W. (2012). Cutting the costs of attrition: Results from the Indonesia Family Life Survey. *Journal of Development Economics*, 98(1), 108-123.
+
+Back to top

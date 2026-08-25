@@ -1,0 +1,75 @@
+# Getting Started with Claude AI
+
+An orientation to Claude, the AI assistant from Anthropic, and Claude Code, the version that works with the files on your computer. This page explains what these tools do, what to consider when using them with research data, and how to choose a setup path.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Juan Felipe García Rodríguez](https://poverty-action.org/people/juan-felipe-garcia-rodriguez)
+- [Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This content is adapted from the [Claude Code guide for IPA Colombia](https://github.com/juanfegarIPA/claude-code-ipa-colombia) by Juan Felipe García Rodríguez and Diego Quintero Mogollón, used under the [MIT License](https://github.com/juanfegarIPA/claude-code-ipa-colombia/blob/main/LICENSE).
+
+> **TIP:**
+>
+> - Claude is an AI assistant from Anthropic. Claude Code extends it to read and edit the files on your computer and to remember your working context between sessions.
+> - Using Claude requires a paid plan or an organizational license.
+> - Never share confidential data, including any personally identifiable information about research participants, with an AI tool.
+
+## What Claude can do
+
+Claude is an AI assistant developed by [Anthropic](https://www.anthropic.com). Like other large language model assistants, it can draft and revise text, explain and write code, summarize documents, and answer questions. It comes in two main forms:
+
+- **Chat**: the conversation interface at [claude.ai](https://claude.ai) and in the desktop app. It has no access to your files, but you can build a **Project**: a reusable space with its own instructions and reference documents that tailors Claude to a recurring task.
+- **Claude Code**: an assistant that works directly with the files on your computer, where you review each change as it happens.
+
+Anthropic also offers other ways to work with Claude, such as [Cowork](https://claude.com/product/cowork) for handing off self-contained, multi-step tasks. These guides focus on **Claude Code**.
+
+## What is Claude Code?
+
+Claude Code is a way to work with Claude directly on your computer, available in the desktop app, on the **Code** tab, and as a command line tool. Unlike a chat, Claude Code can:
+
+- **Read and edit files** on your computer, such as documents, spreadsheets, and code.
+- **Generate documents** in formats like Word, PowerPoint, and Excel.
+- **Run and repeat tasks** such as reports, formatting, and routine analysis steps.
+- **Remember how you work** between sessions, through `CLAUDE.md` context files and a memory it builds as you work together.
+
+> **IMPORTANT:**
+>
+> Claude does not replace your judgment, and it should never make decisions for you. It can gather inputs, draft options, and flag tradeoffs, but the decision and the responsibility for it stay with you. Always review what it produces before you use or share it.
+
+## Use AI safely with research data
+
+Research organizations handle data whose disclosure can harm study participants, staff, and partners. Before using any AI tool for work, know your organization’s AI policy and how your data is classified. As a rule, never put personally identifiable information about research participants into a prompt or into a file an AI tool can read.
+
+> **WARNING:**
+>
+> IPA’s use of Claude is approved for **Public** and **Internal** data only. Do not share **Confidential** or **Highly Confidential** data, which includes any personally identifiable information about research participants, staff, or partners. The [IPA AI Usage Guidelines](https://ipastorage.box.com/s/mvr67ygvz1y3v8qmgjey67lk7msmyeks) set the rules; reading them is required before using AI tools for IPA work. When unsure about a data classification, contact <support@poverty-action.org>.
+
+For AI and qualitative research data, see [AI-Assisted Qualitative Coding](../../data-collection/qualitative-methods/ai-assisted-coding.llms.md).
+
+## Choose your path
+
+[Setting Up Claude Code](../../software/claude/setup.llms.md) installs Claude Code and starts your first session. It covers two paths, and you can pick either one:
+
+- **Terminal and VS Code**, for anyone who writes code or works in version-controlled projects. Most data analysts work here.
+- **Desktop app**, for anyone who prefers a visual interface and does not code. Most project managers work here.
+
+Once you are set up, [Claude Code for Research and Project Management](../../software/claude/use-cases.llms.md) shows how to put it to work.
+
+## Additional Resources
+
+Anthropic. “Claude Code Documentation.” <https://code.claude.com/docs>.
+
+Back to top

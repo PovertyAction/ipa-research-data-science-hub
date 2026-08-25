@@ -2,26 +2,90 @@
   Heading styles
 =============================*/
 
-h1 {
-  font-family: Georgia, Gelasio, serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 26pt;
+/* Heading and body font families and sizes come from the brand files
+   (Gelasio headings, Arimo body) — do not redeclare them here. */
+
+/*===========================
+  Lead summary block
+  (::: {.custom-summary-block} at the top of a page)
+=============================*/
+
+.custom-summary-block {
+  font-size: 1.05em;
+  border-left: 4px solid #49ac57;
+  padding: 0.75em 1.25em;
+  margin-bottom: 1.5rem;
 }
 
+body.quarto-light .custom-summary-block {
+  background-color: rgb(247, 249, 251);
+}
+
+body.quarto-dark .custom-summary-block {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.custom-summary-block p:last-child {
+  margin-bottom: 0;
+}
+
+/*===========================
+  Diataxis type badge
+  (rendered by title-block.html from the page's categories metadata)
+=============================*/
+
+.diataxis-badge {
+  display: inline-block;
+  font-family: Arimo, Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0.35em 0.75em;
+  margin-bottom: 0.75rem;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  background-color: transparent;
+}
+
+/* Light mode: colors chosen for >= 4.5:1 contrast on white */
+body.quarto-light .diataxis-tutorial {
+  color: #155240;
+}
+
+body.quarto-light .diataxis-how-to {
+  color: #a53718;
+}
+
+body.quarto-light .diataxis-reference {
+  color: #2b4085;
+}
+
+body.quarto-light .diataxis-explanation {
+  color: #5b5b5e;
+}
+
+/* Dark mode: colors chosen for >= 4.5:1 contrast on #151515 */
+body.quarto-dark .diataxis-tutorial {
+  color: #49ac57;
+}
+
+body.quarto-dark .diataxis-how-to {
+  color: #fc9757;
+}
+
+body.quarto-dark .diataxis-reference {
+  color: #a0a9ea;
+}
+
+body.quarto-dark .diataxis-explanation {
+  color: #c9c9c8;
+}
+
+h1,
 h2 {
-  font-family: Arimo, Arial, sans-serif;
-  font-style: normal;
   font-weight: bold;
-  font-size: 18pt;
-}
-
-h3 {
-  font-family: Arimo, Arial, sans-serif;
-}
-
-h4 {
-  font-family: Arimo, Arial, sans-serif;
 }
 
 .navbar a {
@@ -35,8 +99,6 @@ h4 {
 =============================*/
 
 p {
-  font-family: Arimo, Arial, sans-serif;
-  font-size: 0.9em;
   margin-bottom: 1.3em;
 }
 
@@ -300,11 +362,13 @@ iframe.reveal-demo {
 
 .btn-action-primary {
   color: white;
-  background-color: #f26529;
+  /* deepened brand red-orange: #f26529 is ~3:1 against white text, below
+     the 4.5:1 AA threshold for button-size text; #c23f18 gives 5.2:1 */
+  background-color: #c23f18;
 }
 
 .btn-action-primary:hover {
-  background-color: #a53718;
+  background-color: #942e11;
   color: white;
 }
 
@@ -435,4 +499,28 @@ body.quarto-dark :not(pre)>code {
   color: #be9ffa;
   padding: 0.2em 0.4em;
   border-radius: 3px;
+}
+
+/*===========================
+  TOC metadata block
+=============================*/
+
+/* Authors/contributors/date/license under the TOC (toc.html partial).
+   Sits outside nav#TOC so Quarto's scrollspy ignores these links;
+   styles mirror the TOC list look. */
+.toc-meta ul {
+  list-style: none;
+  margin: 0 0 0.5rem 0;
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(128, 128, 128, 0.35);
+  font-size: 0.86rem;
+}
+
+.toc-meta a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.toc-meta a:hover {
+  text-decoration: underline;
 }

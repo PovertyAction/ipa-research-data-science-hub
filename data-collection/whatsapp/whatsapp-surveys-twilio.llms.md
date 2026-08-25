@@ -1,0 +1,132 @@
+How-to guide
+
+# Setting up Twilio for WhatsApp Surveys
+
+This article provides a step-by-step guide to setting up Twilio for WhatsApp surveys, offering practical insights into its implementation and pricing considerations.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
+
+## Contributors
+
+- [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+![](../../assets/images/twilio/twilio-logo.png)
+
+Twilio Logo, credit: Twilio
+
+> **TIP:**
+>
+> - Explore Twilio Console for service management, follow the step-by-step setup guide, understand Twilio’s pricing structure, and obtain WhatsApp approvals for enhanced communication capabilities.
+> - Leverage Twilio’s WhatsApp integration to automate survey distribution, track responses in real-time, and improve participant engagement.
+
+## Overview of Twilio as a Tool
+
+Twilio is a versatile cloud communications platform that enables developers and organizations to build, scale, and operate communication solutions across various channels, including SMS, voice, video, email, and WhatsApp. Its robust APIs and user-friendly interface make it a preferred choice for integrating communication functionalities into applications and workflows.
+
+### Why Choose Twilio Over Alternatives?
+
+While there are several alternatives like EngageSpark, Twilio stands out due to its:
+
+- **Scalability**: Twilio’s infrastructure handles high volumes of communication, making it suitable for both small-scale and enterprise-level projects.
+- **Flexibility**: With support for multiple communication channels, Twilio allows seamless integration across platforms, enabling organizations to diversify their outreach strategies.
+- **Developer-Friendly APIs**: Twilio provides comprehensive documentation and SDKs, making it easier for developers to implement and customize solutions.
+- **Global Reach**: Twilio’s extensive network ensures reliable communication across regions, with localized support for various countries.
+- **Advanced Features**: Features like real-time analytics, message tracking, and two-way communication enhance the overall user experience.
+- **Cost-Effectiveness**: Twilio’s pay-as-you-go pricing model ensures that organizations only pay for what they use, making it a budget-friendly option.
+
+In comparison, EngageSpark, while user-friendly, is more limited in terms of scalability, advanced features, and integration capabilities. Twilio’s robust ecosystem and flexibility make it a more comprehensive solution for organizations looking to implement sophisticated communication workflows.
+
+## Twilio for WhatsApp Surveys
+
+In today’s digital age, reaching out to participants through efficient and reliable communication channels is crucial for data collection and engagement. WhatsApp, with its widespread usage and user-friendly interface, presents an excellent platform for conducting surveys. Twilio, a cloud communications platform, offers robust tools and APIs to integrate WhatsApp into your survey workflows seamlessly.
+
+By leveraging Twilio’s capabilities, researchers and organizations can automate survey distribution, track responses in real-time, and ensure higher engagement rates. This guide will walk you through the process of setting up Twilio for WhatsApp surveys, providing practical insights into its implementation and pricing considerations.
+
+## Key Twilio Concepts for WhatsApp Surveys
+
+To use Twilio for WhatsApp surveys, it is important to understand the following key concepts:
+
+- **Twilio Console**: The centralized interface where users manage and control various Twilio services. It is the primary dashboard for configuring, monitoring, and optimizing communication functionalities.
+- **WhatsApp Functionality**: Enhanced communication capabilities unlocked by upgrading a Twilio account. This includes leveraging WhatsApp for surveys and other interactive communication.
+- **WhatsApp Sender Management**: Within the Twilio Console, users manage WhatsApp senders through the “Messaging” section. This functionality provides oversight and control over sender-related activities.
+- **API Access Request**: Users can create new senders within the Twilio Console, request access to the WhatsApp API, and submit necessary information for approval. This process enables integration with WhatsApp services.
+
+## Setting up a Twilio Console
+
+Follow these steps to set up a Twilio console for WhatsApp data collection:
+
+1.  Go to the [Twilio website](https://www.twilio.com) and sign up for an account. Provide the required information and complete the registration process.
+
+2.  After signing up, log in to your Twilio account. Verify your email and log in.
+
+    ![](../../assets/images/twilio/twilio-setup-1.gif)
+
+    Twilio setup and login
+
+3.  After logging in, navigate to the Twilio Console, the main dashboard for managing your Twilio services.
+
+4.  Click on the “Phone Numbers” dropdown in the top-left corner and select “Manage.” Then select “Buy a number” and pick a phone number in the required location.
+
+    ![](../../assets/images/twilio/twilio-setup-2.gif)
+
+    Buying a phone number in the Twilio Console
+
+5.  Upgrade the account to access WhatsApp functionalities.
+
+    ![](../../assets/images/twilio//twilio-setup-3.gif)
+
+    Upgrading the Twilio Console
+
+## Twilio Pricing and Fees
+
+Understanding Twilio’s pricing structure is crucial for budgeting WhatsApp survey projects. Below are the key pricing details:
+
+For the most up-to-date and detailed pricing information, see the [Twilio WhatsApp Pricing Page](https://www.twilio.com/en-us/whatsapp/pricing). If you are planning to conduct a WhatsApp survey, consider using the calculations included on the Twilio page to estimate your costs accurately.
+
+- **Conversation initiation cost**: USD\$0.010 per 24 hours
+- **User-initiated conversation cost**: USD\$0.006 per 24 hours
+- **Fixed monthly cost per WhatsApp number**: USD\$1.00
+- **Cost per message sent**: \$0.005
+
+*These prices might vary depending on the region where the survey is going to take place.*
+
+Twilio requires purchasing a phone number, and automatic top-ups are enabled by default to ensure service continuity.
+
+## Verifying Your Twilio Console
+
+The Twilio console verification process takes approximately **one week**. After approval, you can proceed with setting up your WhatsApp profile.
+
+1.  Navigate to “Messaging” in the Console and select the “Senders” tab to view WhatsApp senders.
+2.  Click on “Create New Sender” and fill out the necessary fields, selecting the purchased phone number.
+3.  Submit the request for WhatsApp API access.
+
+![](../../assets/images/twilio/twilio-setup-4.gif)
+
+Create WhatsApp sender
+
+For increased trust and improved response rates, consider **Meta Business Verification** to obtain a green tick for your WhatsApp sender.
+
+## Creating a WhatsApp Profile
+
+Finalize your Twilio setup by configuring your WhatsApp profile:
+
+1.  Navigate to the created sender and update the profile with an image, name, and description.
+2.  Save changes and start your first WhatsApp survey.
+
+![](../../assets/images/twilio/twilio-setup-5.gif)
+
+Create WhatsApp profile
+
+Back to top

@@ -1,0 +1,340 @@
+Tutorial
+
+# Introducing the Shell
+
+Discover the power of command-line interfaces and learn why the Unix shell is essential for automating tasks, handling large volumes of data, and interacting with remote systems. Understand how the shell provides efficient alternatives to graphical interfaces for repetitive computational tasks.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Niall Keleher](https://poverty-action.org/people/niall-keleher)
+
+## Contributors
+
+- [The Carpentries](https://carpentries.org/)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+>
+> **Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
+>
+> **Original citation:** Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+
+> **NOTE:**
+>
+> - Explain how the shell relates to the keyboard, the screen, the operating system, and users’ programs.
+> - Explain when and why command-line interfaces should be used instead of graphical interfaces.
+
+### Background
+
+Humans and computers commonly interact in many different ways, such as through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. The most widely used way to interact with personal computers is called a **graphical user interface** (GUI). With a GUI, we give instructions by clicking a mouse and using menu-driven interactions.
+
+While the visual aid of a GUI makes it intuitive to learn, this way of delivering instructions to a computer scales very poorly. Imagine the following task: for a literature search, you have to copy the third line of one thousand text files in one thousand different directories and paste it into a single file. Using a GUI, you would not only be clicking at your desk for several hours, but you could potentially also commit an error in the process of completing this repetitive task. This is where we take advantage of the Unix shell. The Unix shell is both a **command-line interface** (CLI) and a scripting language, allowing such repetitive tasks to be done automatically and fast. With the proper commands, the shell can repeat tasks with or without some modification as many times as we want. Using the shell, the task in the literature example can be accomplished in seconds.
+
+### The Terminal
+
+Before we can use the shell, we need a way to interact with it. The program that provides access to the shell is called a **terminal emulator** (or simply ‘terminal’). A terminal emulator is a program that opens a window where users can type commands and see the output from those commands.
+
+#### Opening a Terminal
+
+## Windows
+
+1.  In Windows Start menu, search for “Terminal” or “Windows Terminal”
+2.  Click to open it
+
+If you don’t have Windows Terminal installed, you can:
+
+- Download it from the [Microsoft Store](https://aka.ms/terminal) or run `winget install --id Microsoft.WindowsTerminal -e` in PowerShell
+- Or use the built-in PowerShell by searching for “PowerShell”
+
+## macOS
+
+1.  Press Cmd + Space to open Spotlight
+2.  Type “Terminal” and press Enter
+
+Alternatively, navigate to **Applications → Utilities → Terminal**.
+
+## Linux
+
+- Press Ctrl + Alt + T (works on most distributions)
+- Or search for “Terminal” in your application menu
+
+For Windows users, we recommend [Windows Terminal](https://aka.ms/terminal). It’s a modern terminal application that supports multiple shells in tabs, making it easy to switch between Bash, PowerShell, and NuShell.
+
+> **TIP:**
+>
+> ### Installing Shells
+>
+> Before configuring Windows Terminal, you’ll need to install the shells you want to use:
+>
+> **Git Bash** (provides Bash on Windows):
+>
+> 1.  Run `winget install --id Git.Git -e` in PowerShell
+> 2.  Git Bash will be automatically detected by Windows Terminal
+>
+> **PowerShell** (usually pre-installed):
+>
+> - Windows 10/11 includes PowerShell by default
+> - For the latest version, install [PowerShell 7+](https://github.com/PowerShell/PowerShell/releases) or run `winget install --id Microsoft.PowerShell -e` in PowerShell
+>
+> **NuShell**:
+>
+> 1.  Open PowerShell and install using winget:
+>
+>     ``` powershell
+>     winget install --id NuShell.NuShell -e
+>     ```
+>
+> 2.  Or download from [nushell.sh](https://www.nushell.sh/)
+>
+> ### Adding Shells to Windows Terminal
+>
+> After installing your shells, configure Windows Terminal to use them:
+>
+> 1.  Open Windows Terminal
+> 2.  Click the dropdown arrow (˅) next to the tab bar
+> 3.  Select **Settings** (or press Ctrl + ,)
+> 4.  In the left sidebar, click **Add a new profile**
+>
+> **For Git Bash:**
+>
+> - Name: `Git Bash`
+> - Command line: `C:\Program Files\Git\bin\bash.exe`
+> - Starting directory: `%USERPROFILE%`
+> - Icon: `C:\Program Files\Git\mingw64\share\git\git-for-windows.ico`
+>
+> **For NuShell:**
+>
+> - Name: `NuShell`
+> - Command line: `nu.exe` (or full path if needed)
+> - Starting directory: `%USERPROFILE%`
+> - Icon: Download from [NuShell GitHub](https://github.com/nushell/nushell)
+>
+> ### Setting a Default Shell
+>
+> 1.  In Windows Terminal Settings, click **Startup** in the left sidebar
+> 2.  Under **Default profile**, select your preferred shell
+> 3.  Click **Save**
+>
+> ### Quick Shell Switching
+>
+> Once configured, you can:
+>
+> - Click the **+** button to open a new tab with your default shell
+> - Click the dropdown arrow and select any configured shell
+> - Use Ctrl + Shift + 1/2/3 to open specific profiles
+
+#### Terminal on macOS and Linux
+
+There are many options for terminal emulators in macOS and Linux. macOS comes with Terminal.app pre-installed, which runs Bash (or Zsh on newer versions). Linux distributions include a terminal application by default. Both systems can also run NuShell after installation.
+
+### The Shell
+
+The shell is a program where users can type commands. With the shell, it’s possible to invoke complicated programs like climate modeling software or simple commands that create an empty directory with only one line of code. The most popular Unix shell is Bash (the `Bourne Again SHell` — so-called because it’s derived from a shell written by Stephen Bourne). Bash is the default shell on most modern implementations of Unix and in most packages that provide Unix-like tools for Windows. Note that ‘Git Bash’ is a piece of software that enables Windows users to use a Bash like interface when interacting with Git.
+
+Using the shell will take some effort and some time to learn. While a GUI presents you with choices to select, CLI choices are not automatically presented to you, so you must learn a few commands like new vocabulary in a language you’re studying. However, unlike a spoken language, a small number of “words” (i.e. commands) gets you a long way, and we’ll cover those essential few today.
+
+The grammar of a shell allows you to combine existing tools into powerful pipelines and handle large volumes of data automatically. Sequences of commands can be written into a *script*, improving the reproducibility of workflows.
+
+In addition, the command line is often the easiest way to interact with remote machines and supercomputers. Familiarity with the shell is near essential to run a variety of specialized tools and resources including high-performance computing systems. As clusters and cloud computing systems become more popular for scientific data crunching, being able to interact with the shell is becoming a necessary skill. We can build on the command-line skills covered here to tackle a wide range of scientific questions and computational challenges.
+
+In this lesson, we will focus on three popular shells:
+
+- **Bash**: The most common shell on macOS and Linux systems.
+- **PowerShell**: The default shell on Windows systems.
+- **NuShell**: A cross-platform shell that works on Windows, macOS, and Linux. It is particularly useful for teams working across different operating systems. And has features that make it easier to work with structured data.
+
+Let’s get started.
+
+When the shell is first opened, you are presented with a **prompt**, indicating that the shell is waiting for input.
+
+## Bash
+
+``` bash
+$
+```
+
+## PowerShell
+
+``` powershell
+PS>
+```
+
+## NuShell
+
+``` bash
+>
+```
+
+The shell typically uses `$`, `PS>`, or `>` as the prompt, but may use a different symbol depending on your shell and configuration. In the examples for this lesson, we’ll show the prompt appropriate for each shell. Most importantly, *do not type the prompt* when typing commands. Only type the command that follows the prompt. This rule applies both in these lessons and in lessons from other sources. Also note that after you type a command, you have to press the Enter key to execute it.
+
+The prompt is followed by a **text cursor**, a character that indicates the position where your typing will appear. The cursor is usually a flashing or solid block, but it can also be an underscore or a pipe. You may have seen it in a text editor program, for example.
+
+Note that your prompt might look a little different. In particular, most popular shell environments by default put your user name and the host name before the prompt symbol. Such a prompt might look like:
+
+## Bash
+
+``` bash
+amara@localhost $
+```
+
+## PowerShell
+
+``` powershell
+PS C:\Users\amara>
+```
+
+## NuShell
+
+``` bash
+C:\Users\amara>
+```
+
+The prompt might even include more than this. Do not worry if your prompt is not just a short symbol. This lesson does not depend on this additional information and it should also not get in your way. The only important item to focus on is the prompt character itself (`$`, `>`, or `PS>`) and we will see later why.
+
+Let’s try our first command, `ls`, which is short for listing. This command will list the contents of the current directory:
+
+## Bash
+
+``` bash
+ls
+```
+
+``` output
+Desktop     Downloads   Movies      Pictures
+Documents   Library     Music       Public
+```
+
+## PowerShell
+
+``` powershell
+Get-ChildItem
+```
+
+or using the built-in alias:
+
+``` powershell
+ls
+```
+
+``` output
+    Directory: C:\Users\amara
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          12/15/2024  10:30 AM                Desktop
+d----          12/10/2024   3:45 PM                Documents
+d----          12/20/2024   9:15 AM                Downloads
+d----          11/05/2024   2:00 PM                Music
+d----          12/01/2024  11:20 AM                Pictures
+```
+
+## NuShell
+
+``` bash
+ls
+```
+
+``` output
+╭───┬──────────┬──────┬──────────┬──────────────╮
+│ # │   name   │ type │   size   │   modified   │
+├───┼──────────┼──────┼──────────┼──────────────┤
+│ 0 │ Desktop  │ dir  │    0 B   │ 2 weeks ago  │
+│ 1 │ Documents│ dir  │  4.1 KiB │ 3 days ago   │
+│ 2 │ Downloads│ dir  │  2.3 MiB │ 1 hour ago   │
+│ 3 │ Music    │ dir  │    0 B   │ 1 month ago  │
+│ 4 │ Pictures │ dir  │ 15.2 MiB │ 1 week ago   │
+╰───┴──────────┴──────┴──────────┴──────────────╯
+```
+
+Note that the output format differs between shells. NuShell displays data in a structured table format by default, while PowerShell shows detailed file information including mode and timestamps.
+
+> **NOTE:**
+>
+> If the shell can’t find a program whose name is the command you typed, it will print an error message such as:
+>
+> ## Bash
+>
+> ``` bash
+> ks
+> ```
+>
+> ``` output
+> ks: command not found
+> ```
+>
+> ## PowerShell
+>
+> ``` powershell
+> ks
+> ```
+>
+> ``` output
+> ks : The term 'ks' is not recognized as the name of a cmdlet, function,
+> script file, or operable program. Check the spelling of the name, or if
+> a path was included, verify that the path is correct and try again.
+> ```
+>
+> ## NuShell
+>
+> ``` bash
+> ks
+> ```
+>
+> ``` output
+> Error: nu::shell::external_command
+>
+>   × External command failed
+>    ╭─[entry #1:1:1]
+>  1 │ ks
+>    · ─┬
+>    ·  ╰── 'ks' was not found
+>    ╰────
+> ```
+>
+> This might happen if the command was mis-typed or if the program corresponding to that command is not installed.
+
+## Amara’s Pipeline: A Typical Problem
+
+Amara, a Research Data Analyst at [Innovations for Poverty Action (IPA)](https://poverty-action.org/), has just completed data collection for a randomized control trial (RCT) evaluating an educational intervention across 50 schools. They have 1520 household survey CSV files exported from a mobile data collection app, that need to be validated before analysis can begin. Before merging and analyzing the data, they need to check each file for common data quality issues: missing household IDs, incomplete consent records, and inconsistent column headers.
+
+If Amara chooses to open each file manually to check for these issues, they will have to inspect 1520 files one by one. Even if each file takes just 30 seconds to review, the whole process will take more than 12 hours of Amara’s attention—time they could spend on analysis. With the shell, Amara can instead write a validation script that checks all files automatically, flagging only the ones that need attention.
+
+The next few lessons will explore the ways Amara can achieve this. More specifically, the lessons explain how they can:
+
+1.  Navigate to their survey data directory
+2.  Explore the structure of their CSV files
+3.  Use pipes and filters to inspect file contents
+4.  Write loops to process multiple files
+5.  Create a reusable validation script that works across different shells
+
+As a bonus, once they have built their validation pipeline, they can run it again whenever new survey data arrives—ensuring consistent data quality checks throughout the project.
+
+In order to achieve their task, Amara needs to know how to:
+
+- navigate to a file/directory
+- create a file/directory
+- inspect file contents and count records
+- chain commands together with pipes
+- iterate over multiple files with loops
+- write and run shell scripts
+
+## Key Points
+
+- A shell is a program whose primary purpose is to read commands and run other programs.
+- This lesson covers three shells: Bash (common on macOS/Linux), PowerShell (Windows default), and NuShell (cross-platform shell, recommended for teams working across Windows/MacOS/Linux).
+- Programs can be run by entering commands at the command-line prompt, though syntax varies slightly between shells.
+- The shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.
+- A significant challenge when using the shell can be knowing what commands need to be run and how to run them—this lesson provides examples in multiple shells to help.
+
+Back to top

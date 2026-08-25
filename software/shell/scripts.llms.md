@@ -1,0 +1,608 @@
+Tutorial
+
+# Shell Scripts
+
+Learn to create reusable shell scripts that automate complex workflows. Discover how to write, execute, and debug shell scripts, making your computational tasks reproducible and shareable. Apply the fundamentals of shell scripting for research automation.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Niall Keleher](https://poverty-action.org/people/niall-keleher)
+
+## Contributors
+
+- [The Carpentries](https://carpentries.org/)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+>
+> **Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
+>
+> **Original citation:** Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+
+> **NOTE:**
+>
+> - Write a shell script that runs a command or series of commands for a fixed set of files.
+> - Run a shell script from the command line.
+> - Write a shell script that operates on a set of files defined by the user on the command line.
+> - Create pipelines that include shell scripts you, and others, have written.
+
+We are finally ready to see what makes the shell such a powerful programming environment. We are going to take the commands we repeat frequently and save them in files so that we can re-run all those operations again later by typing a single command. For historical reasons, a bunch of commands saved in a file is usually called a **shell script**, but make no mistake: these are actually small programs.
+
+Not only will writing shell scripts make your work faster (you won’t have to retype the same commands over and over again), it will also make your work more accurate (fewer chances for typos) and more reproducible. If you come back to your work later (or if someone else finds your work and wants to build on it) you will be able to reproduce the same results simply by running your script, rather than having to remember or retype a long list of commands.
+
+> **NOTE:**
+>
+> You might wonder why we are using shell scripts instead of a more traditional programming language like Python, Stata, or R.
+>
+> The shell is particularly well suited to automating workflows, in other sections of this website we explore programming languages for data analysis. However, to get the most out of those languages, you will often need to use the shell to manage files, run programs, and automate tasks. Learning to write and understand shell scripts is a valuable skill that complements your programming knowledge. Plus, we don’t want to get bogged down in programming language syntax when our goal is to learn to use the shell rather than a full programming language.
+
+### Script File Conventions
+
+Each shell has different conventions for scripts:
+
+| Shell | File Extension | Run Command | Shebang (optional) |
+|----|----|----|----|
+| Bash | `.sh` | `bash script.sh` | `#!/bin/bash` |
+| PowerShell | `.ps1` | `.\script.ps1` | (not used) |
+| NuShell | `.nu` | `nu script.nu` or `source script.nu` | `#!/usr/bin/env nu` |
+
+> **NOTE:**
+>
+> On Windows, you may need to adjust your execution policy to run PowerShell scripts. If you get an error about scripts being disabled, run this command once:
+>
+> ``` powershell
+> Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+> ```
+
+### Building Validation Script
+
+Now let’s help Amara create a validation script for their survey data. We’ll build it step by step, starting simple and adding features as we go.
+
+#### Step 1: A Simple Script to Count Records
+
+Let’s start by creating a script that counts records in a CSV file. Navigate to the survey-data directory:
+
+## Bash
+
+Create a file called `count_records.sh`:
+
+``` bash
+cd exercise-data/survey-data
+nano count_records.sh
+```
+
+Add this content:
+
+``` bash
+#!/bin/bash
+# Count records in a CSV file (excluding header)
+tail -n +2 hh_baseline_001.csv | wc -l
+```
+
+Run it:
+
+``` bash
+bash count_records.sh
+```
+
+``` output
+20
+```
+
+## PowerShell
+
+Create a file called `count_records.ps1`:
+
+``` powershell
+cd exercise-data\survey-data
+notepad count_records.ps1
+```
+
+Add this content:
+
+``` powershell
+# Count records in a CSV file (excluding header)
+(Import-Csv hh_baseline_001.csv | Measure-Object).Count
+```
+
+Run it:
+
+``` powershell
+.\count_records.ps1
+```
+
+``` output
+20
+```
+
+## NuShell
+
+Create a file called `count_records.nu`:
+
+``` bash
+cd exercise-data/survey-data
+# Use your preferred editor
+```
+
+Add this content:
+
+``` bash
+# Count records in a CSV file (excluding header)
+open hh_baseline_001.csv | length
+```
+
+Run it:
+
+``` bash
+nu count_records.nu
+```
+
+``` output
+20
+```
+
+### Step 2: Adding Command-Line Arguments
+
+Our script only works with one file. Let’s make it flexible by accepting the filename as an argument:
+
+## Bash
+
+Update `count_records.sh`:
+
+``` bash
+#!/bin/bash
+# Count records in a CSV file (excluding header)
+# Usage: bash count_records.sh <filename>
+tail -n +2 "$1" | wc -l
+```
+
+In Bash, `$1` refers to the first argument passed to the script.
+
+Run it with different files:
+
+``` bash
+bash count_records.sh hh_baseline_001.csv
+bash count_records.sh hh_baseline_005.csv
+```
+
+``` output
+20
+10
+```
+
+## PowerShell
+
+Update `count_records.ps1`:
+
+``` powershell
+# Count records in a CSV file (excluding header)
+# Usage: .\count_records.ps1 <filename>
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$File
+)
+(Import-Csv $File | Measure-Object).Count
+```
+
+PowerShell uses the `param()` block to define named parameters.
+
+Run it:
+
+``` powershell
+.\count_records.ps1 -File hh_baseline_001.csv
+.\count_records.ps1 hh_baseline_005.csv
+```
+
+``` output
+20
+10
+```
+
+## NuShell
+
+Update `count_records.nu`:
+
+``` bash
+# Count records in a CSV file (excluding header)
+# Usage: nu count_records.nu <filename>
+def main [file: string] {
+    open $file | length
+}
+```
+
+NuShell uses `def main` to define the script entry point with typed parameters.
+
+Run it:
+
+``` bash
+nu count_records.nu hh_baseline_001.csv
+nu count_records.nu hh_baseline_005.csv
+```
+
+``` output
+20
+10
+```
+
+### Step 3: Building the Full Validation Script
+
+Now let’s build a complete validation script that checks for:
+
+1.  File existence
+2.  Correct header columns
+3.  Missing required fields (hhid, consent)
+
+## Bash
+
+Create `validate_survey.sh`:
+
+``` bash
+#!/bin/bash
+# validate_survey.sh - Validate survey CSV files
+# Usage: bash validate_survey.sh <file.csv>
+
+EXPECTED_HEADER="hhid,survey_date,village,treatment_arm,consent,age,education_years"
+
+# Check for correct number of arguments
+if [ $# -ne 1 ]; then
+    echo "Usage: bash validate_survey.sh <file.csv>"
+    exit 1
+fi
+
+FILE="$1"
+
+# Check if file exists
+if [ ! -f "$FILE" ]; then
+    echo "ERROR: File not found: $FILE"
+    exit 2
+fi
+
+echo "Validating: $FILE"
+echo "----------------------------------------"
+
+# Check header
+HEADER=$(head -n 1 "$FILE")
+if [ "$HEADER" = "$EXPECTED_HEADER" ]; then
+    echo "[PASS] Header matches expected columns"
+else
+    echo "[FAIL] Header mismatch"
+fi
+
+# Count total rows
+TOTAL_ROWS=$(tail -n +2 "$FILE" | wc -l)
+echo "[INFO] Total records: $TOTAL_ROWS"
+
+# Count rows with missing hhid
+MISSING_HHID=$(cut -d',' -f1 "$FILE" | tail -n +2 | grep -c "^$")
+if [ "$MISSING_HHID" -gt 0 ]; then
+    echo "[FAIL] Missing hhid: $MISSING_HHID rows"
+else
+    echo "[PASS] All rows have hhid"
+fi
+
+# Count rows with missing consent
+MISSING_CONSENT=$(cut -d',' -f5 "$FILE" | tail -n +2 | grep -c "^$")
+if [ "$MISSING_CONSENT" -gt 0 ]; then
+    echo "[FAIL] Missing consent: $MISSING_CONSENT rows"
+else
+    echo "[PASS] All rows have consent"
+fi
+
+echo "----------------------------------------"
+
+# Summary
+if [ "$MISSING_HHID" -eq 0 ] && [ "$MISSING_CONSENT" -eq 0 ]; then
+    echo "RESULT: PASS"
+else
+    echo "RESULT: FAIL"
+fi
+```
+
+## PowerShell
+
+Create `validate_survey.ps1`:
+
+``` powershell
+# validate_survey.ps1 - Validate survey CSV files
+# Usage: .\validate_survey.ps1 <file.csv>
+
+param(
+    [Parameter(Mandatory=$true, Position=0)]
+    [string]$File
+)
+
+$ExpectedHeader = "hhid,survey_date,village,treatment_arm,consent,age,education_years"
+
+# Check if file exists
+if (-not (Test-Path $File)) {
+    Write-Host "ERROR: File not found: $File" -ForegroundColor Red
+    exit 2
+}
+
+Write-Host "Validating: $File"
+Write-Host "----------------------------------------"
+
+# Read file and check header
+$Content = Get-Content $File
+$Header = $Content[0]
+
+if ($Header -eq $ExpectedHeader) {
+    Write-Host "[PASS] Header matches expected columns" -ForegroundColor Green
+} else {
+    Write-Host "[FAIL] Header mismatch" -ForegroundColor Red
+}
+
+# Import CSV for data analysis
+$Data = Import-Csv $File
+$TotalRows = $Data.Count
+Write-Host "[INFO] Total records: $TotalRows"
+
+# Check for missing hhid
+$MissingHhid = ($Data | Where-Object { $_.hhid -eq '' }).Count
+if ($MissingHhid -gt 0) {
+    Write-Host "[FAIL] Missing hhid: $MissingHhid rows" -ForegroundColor Red
+} else {
+    Write-Host "[PASS] All rows have hhid" -ForegroundColor Green
+}
+
+# Check for missing consent
+$MissingConsent = ($Data | Where-Object { $_.consent -eq '' }).Count
+if ($MissingConsent -gt 0) {
+    Write-Host "[FAIL] Missing consent: $MissingConsent rows" -ForegroundColor Red
+} else {
+    Write-Host "[PASS] All rows have consent" -ForegroundColor Green
+}
+
+Write-Host "----------------------------------------"
+
+# Summary
+if ($MissingHhid -eq 0 -and $MissingConsent -eq 0) {
+    Write-Host "RESULT: PASS" -ForegroundColor Green
+} else {
+    Write-Host "RESULT: FAIL" -ForegroundColor Red
+}
+```
+
+## NuShell
+
+Create `validate_survey.nu`:
+
+``` bash
+# validate_survey.nu - Validate survey CSV files
+# Usage: nu validate_survey.nu <file.csv>
+
+def main [file: string] {
+    let expected_columns = ["hhid", "survey_date", "village", "treatment_arm",
+                            "consent", "age", "education_years"]
+
+    # Check if file exists
+    if not ($file | path exists) {
+        print $"ERROR: File not found: ($file)"
+        exit 2
+    }
+
+    print $"Validating: ($file)"
+    print "----------------------------------------"
+
+    # Read the CSV file
+    let data = open $file
+    let actual_columns = $data | columns
+
+    # Check header
+    if $actual_columns == $expected_columns {
+        print "[PASS] Header matches expected columns"
+    } else {
+        print "[FAIL] Header mismatch"
+    }
+
+    # Count total rows
+    let total_rows = $data | length
+    print $"[INFO] Total records: ($total_rows)"
+
+    # Check for missing hhid
+    let missing_hhid = $data | where { |row|
+        ($row.hhid | is-empty) or ($row.hhid | into string | str trim | is-empty)
+    } | length
+
+    if $missing_hhid > 0 {
+        print $"[FAIL] Missing hhid: ($missing_hhid) rows"
+    } else {
+        print "[PASS] All rows have hhid"
+    }
+
+    # Check for missing consent
+    let missing_consent = $data | where { |row|
+        ($row.consent | is-empty) or ($row.consent | into string | str trim | is-empty)
+    } | length
+
+    if $missing_consent > 0 {
+        print $"[FAIL] Missing consent: ($missing_consent) rows"
+    } else {
+        print "[PASS] All rows have consent"
+    }
+
+    print "----------------------------------------"
+
+    # Summary
+    if $missing_hhid == 0 and $missing_consent == 0 {
+        print "RESULT: PASS"
+    } else {
+        print "RESULT: FAIL"
+    }
+}
+```
+
+### Running the Validation Script
+
+Let’s test our scripts on different files:
+
+## Bash
+
+``` bash
+# Test on a clean file
+bash validate_survey.sh hh_baseline_001.csv
+```
+
+``` output
+Validating: hh_baseline_001.csv
+----------------------------------------
+[PASS] Header matches expected columns
+[INFO] Total records: 20
+[PASS] All rows have hhid
+[PASS] All rows have consent
+----------------------------------------
+RESULT: PASS
+```
+
+``` bash
+# Test on a file with issues
+bash validate_survey.sh hh_baseline_009.csv
+```
+
+``` output
+Validating: hh_baseline_009.csv
+----------------------------------------
+[PASS] Header matches expected columns
+[INFO] Total records: 10
+[FAIL] Missing hhid: 3 rows
+[PASS] All rows have consent
+----------------------------------------
+RESULT: FAIL
+```
+
+## PowerShell
+
+``` powershell
+# Test on a clean file
+.\validate_survey.ps1 hh_baseline_001.csv
+```
+
+``` output
+Validating: hh_baseline_001.csv
+----------------------------------------
+[PASS] Header matches expected columns
+[INFO] Total records: 20
+[PASS] All rows have hhid
+[PASS] All rows have consent
+----------------------------------------
+RESULT: PASS
+```
+
+``` powershell
+# Test on a file with issues
+.\validate_survey.ps1 hh_baseline_009.csv
+```
+
+``` output
+Validating: hh_baseline_009.csv
+----------------------------------------
+[PASS] Header matches expected columns
+[INFO] Total records: 10
+[FAIL] Missing hhid: 3 rows
+[PASS] All rows have consent
+----------------------------------------
+RESULT: FAIL
+```
+
+## NuShell
+
+``` bash
+# Test on a clean file
+nu validate_survey.nu hh_baseline_001.csv
+```
+
+``` output
+Validating: hh_baseline_001.csv
+----------------------------------------
+[PASS] Header matches expected columns
+[INFO] Total records: 20
+[PASS] All rows have hhid
+[PASS] All rows have consent
+----------------------------------------
+RESULT: PASS
+```
+
+``` bash
+# Test on a file with issues
+nu validate_survey.nu hh_baseline_009.csv
+```
+
+``` output
+Validating: hh_baseline_009.csv
+----------------------------------------
+[PASS] Header matches expected columns
+[INFO] Total records: 10
+[FAIL] Missing hhid: 3 rows
+[PASS] All rows have consent
+----------------------------------------
+RESULT: FAIL
+```
+
+### Running Scripts in a Loop
+
+Now Amara can validate all their files at once by combining scripts with loops:
+
+## Bash
+
+``` bash
+for file in hh_baseline_*.csv; do
+    bash validate_survey.sh "$file"
+    echo ""
+done
+```
+
+## PowerShell
+
+``` powershell
+Get-ChildItem hh_baseline_*.csv | ForEach-Object {
+    .\validate_survey.ps1 $_.Name
+    Write-Output ""
+}
+```
+
+## NuShell
+
+``` bash
+ls hh_baseline_*.csv | each { |file|
+    nu validate_survey.nu $file.name
+    print ""
+}
+```
+
+### Reference Scripts
+
+The complete validation scripts are included in the `survey-data` directory for reference:
+
+- `validate_survey.sh` - Bash version
+- `validate_survey.ps1` - PowerShell version
+- `validate_survey.nu` - NuShell version
+
+You can examine these scripts to see the complete implementation, including additional error handling.
+
+## Key Points
+
+- Save commands in files (shell scripts) for reuse:
+  - **Bash**: `.sh` files, run with `bash script.sh`
+  - **PowerShell**: `.ps1` files, run with `.\script.ps1`
+  - **NuShell**: `.nu` files, run with `nu script.nu` or `source script.nu`
+- Command-line arguments differ by shell:
+  - **Bash**: `$1`, `$2`, `$@` (all arguments)
+  - **PowerShell**: Use `param()` block with named parameters
+  - **NuShell**: Use `def main [arg: type]` with typed parameters
+- Scripts make your work reproducible—you can run the same validation on new data.
+- Combine scripts with loops to process multiple files automatically.
+- Place variables in quotes if the values might have spaces in them.
+- PowerShell requires appropriate execution policy settings to run scripts.
+
+Back to top

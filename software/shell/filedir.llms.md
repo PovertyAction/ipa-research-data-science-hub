@@ -1,0 +1,306 @@
+Tutorial
+
+# Navigating Files and Directories
+
+Learn essential file system navigation using the Unix shell. Use commands for moving between directories, listing contents, and understanding absolute vs relative paths. Discover how to use tab completion to work efficiently in the command line.
+
+------------------------------------------------------------------------
+
+## Authors
+
+- [Niall Keleher](https://poverty-action.org/people/niall-keleher)
+
+## Contributors
+
+- [The Carpentries](https://carpentries.org/)
+
+## Last Modified
+
+- August 25, 2026
+
+## License
+
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+>
+> **Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
+>
+> **Original citation:** Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+
+> **NOTE:**
+>
+> - Explain the similarities and differences between a file and a directory.
+> - Translate an absolute path into a relative path and vice versa.
+> - Construct absolute and relative paths that identify specific files and directories.
+> - Use options and arguments to change the behaviour of a shell command.
+> - Demonstrate the use of tab completion and explain its advantages.
+
+The part of the operating system responsible for managing files and directories is called the **file system**. It organizes our data into files, which hold information, and directories (also called ‘folders’), which hold files or other directories.
+
+Several commands are frequently used to create, inspect, rename, and delete files and directories. To start exploring them, we’ll go to our open shell window.
+
+First, let’s find out where we are by running a command called `pwd` (which stands for ‘print working directory’). Directories are like *places*. At any time while we are using the shell, we are in exactly one place called our **current working directory**. Commands mostly read and write files in the current working directory, i.e. ‘here’, so knowing where you are before running a command is important. `pwd` shows you where you are:
+
+## Bash
+
+``` bash
+pwd
+```
+
+``` output
+/Users/amara
+```
+
+## PowerShell
+
+``` powershell
+Get-Location
+```
+
+or using the alias:
+
+``` powershell
+pwd
+```
+
+``` output
+Path
+----
+C:\Users\amara
+```
+
+## NuShell
+
+``` bash
+pwd
+```
+
+``` output
+C:\Users\amara
+```
+
+Here, the computer’s response shows Amara’s **home directory** (the exact path format differs by operating system and shell).
+
+To understand what a “home directory” is, let’s have a look at how the file system as a whole is organized. For the sake of this example, we’ll be illustrating the filesystem on our analyst Amara’s computer. After this illustration, you’ll be learning commands to explore your own filesystem, which will be constructed in a similar way, but not be exactly identical.
+
+On Amara’s computer, the filesystem looks like this:
+
+![](../../assets/images/shell/filesystem.svg)
+
+File system structure
+
+At the top is the **root directory** that holds everything else. We refer to it using a slash character, `/`, on its own; this character is the “root” of the entire file system.
+
+### Navigating to the Survey Data
+
+Now that we understand the basics, let’s help Amara navigate to their survey data. The workshop materials include a `data` directory with example files, including `survey-data/` containing CSV files from a household survey.
+
+First, let’s see what’s in our current directory:
+
+## Bash
+
+``` bash
+ls
+```
+
+``` output
+data    Documents    Downloads
+```
+
+## PowerShell
+
+``` powershell
+Get-ChildItem
+```
+
+or using the alias:
+
+``` powershell
+ls
+```
+
+``` output
+    Directory: C:\Users\amara
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          12/15/2024  10:30 AM                data
+d----          12/10/2024   3:45 PM                Documents
+d----          12/20/2024   9:15 AM                Downloads
+```
+
+## NuShell
+
+``` bash
+ls
+```
+
+``` output
+╭───┬───────────┬──────┬──────────┬──────────────╮
+│ # │   name    │ type │   size   │   modified   │
+├───┼───────────┼──────┼──────────┼──────────────┤
+│ 0 │ data      │ dir  │  4.1 KiB │ 1 hour ago   │
+│ 1 │ Documents │ dir  │  2.3 MiB │ 3 days ago   │
+│ 2 │ Downloads │ dir  │ 15.2 MiB │ 1 week ago   │
+╰───┴───────────┴──────┴──────────┴──────────────╯
+```
+
+Now let’s navigate into the `data` directory and explore its structure:
+
+## Bash
+
+``` bash
+cd data
+ls
+```
+
+``` output
+exercise-data    shell-lesson-data.zip
+```
+
+``` bash
+cd exercise-data
+ls
+```
+
+``` output
+survey-data
+```
+
+## PowerShell
+
+``` powershell
+cd data
+ls
+```
+
+``` output
+    Directory: C:\Users\amara\data
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          12/20/2024   2:00 PM                exercise-data
+-a---          09/06/2024   6:55 AM         460520 shell-lesson-data.zip
+```
+
+``` powershell
+cd exercise-data
+ls
+```
+
+``` output
+    Directory: C:\Users\amara\data\exercise-data
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          12/23/2024  10:45 AM                survey-data
+```
+
+## NuShell
+
+``` bash
+cd data
+ls
+```
+
+``` output
+╭───┬───────────────────────┬──────┬──────────┬──────────────╮
+│ # │         name          │ type │   size   │   modified   │
+├───┼───────────────────────┼──────┼──────────┼──────────────┤
+│ 0 │ exercise-data         │ dir  │  4.1 KiB │ 2 hours ago  │
+│ 1 │ shell-lesson-data.zip │ file │ 449.7 KiB│ 3 months ago │
+╰───┴───────────────────────┴──────┴──────────┴──────────────╯
+```
+
+``` bash
+cd exercise-data
+ls
+```
+
+``` output
+╭───┬─────────────┬──────┬──────────┬──────────────╮
+│ # │    name     │ type │   size   │   modified   │
+├───┼─────────────┼──────┼──────────┼──────────────┤
+│ 0 │ survey-data │ dir  │ 12.5 KiB │ 1 hour ago   │
+╰───┴─────────────┴──────┴──────────┴──────────────╯
+```
+
+The `survey-data` directory contains Amara’s household survey CSV files. Let’s take a look:
+
+## Bash
+
+``` bash
+cd survey-data
+ls
+```
+
+``` output
+expected_columns.txt    hh_baseline_003.csv    hh_baseline_007.csv
+hh_baseline_001.csv     hh_baseline_004.csv    hh_baseline_008.csv
+hh_baseline_002.csv     hh_baseline_005.csv    hh_baseline_009.csv
+                        hh_baseline_006.csv    hh_baseline_010.csv
+validate_survey.sh      validate_survey.ps1    validate_survey.nu
+```
+
+## PowerShell
+
+``` powershell
+cd survey-data
+ls
+```
+
+``` output
+    Directory: C:\Users\amara\data\exercise-data\survey-data
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          12/23/2024  10:45 AM             85 expected_columns.txt
+-a---          12/23/2024  10:45 AM           1245 hh_baseline_001.csv
+-a---          12/23/2024  10:45 AM            956 hh_baseline_002.csv
+-a---          12/23/2024  10:45 AM           1287 hh_baseline_003.csv
+...
+```
+
+## NuShell
+
+``` bash
+cd survey-data
+ls
+```
+
+``` output
+╭────┬──────────────────────┬──────┬─────────┬──────────────╮
+│  # │         name         │ type │  size   │   modified   │
+├────┼──────────────────────┼──────┼─────────┼──────────────┤
+│  0 │ expected_columns.txt │ file │    85 B │ 1 hour ago   │
+│  1 │ hh_baseline_001.csv  │ file │ 1.2 KiB │ 1 hour ago   │
+│  2 │ hh_baseline_002.csv  │ file │   956 B │ 1 hour ago   │
+│  3 │ hh_baseline_003.csv  │ file │ 1.3 KiB │ 1 hour ago   │
+│ ...│ ...                  │ ...  │   ...   │ ...          │
+│ 12 │ validate_survey.sh   │ file │ 1.5 KiB │ 1 hour ago   │
+│ 13 │ validate_survey.ps1  │ file │ 1.8 KiB │ 1 hour ago   │
+│ 14 │ validate_survey.nu   │ file │ 1.6 KiB │ 1 hour ago   │
+╰────┴──────────────────────┴──────┴─────────┴──────────────╯
+```
+
+These are a sample of the files Amara needs to validate. Each `hh_baseline_*.csv` file contains household survey data, and the `validate_survey.*` scripts (which we’ll learn to build later) can check them for common issues. In reality, Amara has 1520 such files to validate, we’re only showing a few here for demonstration.
+
+## Key Points
+
+- The file system is responsible for managing information on the disk.
+- Information is stored in files, which are stored in directories (folders).
+- Directories can also store other directories, which then form a directory tree.
+- `pwd` (or `Get-Location` in PowerShell) prints the user’s current working directory.
+- `ls [path]` (or `Get-ChildItem` in PowerShell) prints a listing of a specific file or directory.
+- `cd [path]` (or `Set-Location` in PowerShell) changes the current working directory.
+- Most commands take options that begin with a single `-` (Bash/NuShell) or `-` with full parameter names (PowerShell).
+- Directory names in a path are separated with `/` on Unix/macOS, but `\` on Windows (though PowerShell and NuShell accept both).
+- `/` on its own is the root directory on Unix; on Windows, each drive has its own root (e.g., `C:\`).
+- An absolute path specifies a location from the root of the file system.
+- A relative path specifies a location starting from the current location.
+- `.` on its own means ‘the current directory’; `..` means ‘the directory above the current one’.
+
+Back to top
