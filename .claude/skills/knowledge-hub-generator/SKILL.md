@@ -1,12 +1,11 @@
 ---
 name: knowledge-hub-generator
 description: >-
-  Draft and quality-check pages for the IPA Research and Data Science Hub in the
-  site's house style. Use when creating a new .qmd Hub page from source
-  material, adapting outside content into a Hub page, or reviewing an existing
-  page for structure, tone, frontmatter, references, and Diátaxis fit.
-  Replicates the quality-control workflow of IPA's Knowledge Hub Generator
-  assistant.
+  Draft and quality-check pages for the IPA Knowledge Hub in the site's house
+  style. Use when creating a new .qmd Hub page from source material, adapting
+  outside content into a Hub page, or reviewing an existing page for structure,
+  tone, frontmatter, references, and Diátaxis fit. Replicates the
+  quality-control workflow of IPA's Knowledge Hub Generator assistant.
 ---
 
 # Knowledge Hub Generator

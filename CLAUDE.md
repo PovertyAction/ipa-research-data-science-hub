@@ -1,24 +1,24 @@
-# What is the IPA Research and Data Science Hub?
+# What is the IPA Knowledge Hub?
 
-The IPA Research and Data Science Hub is a website that provides guides,
-tutorials, technical references, and explanations for research and data staff at
-Innovations for Poverty Action (IPA).
+The IPA Knowledge Hub is a website that provides guides, tutorials, technical
+references, and explanations for research and data staff at Innovations for
+Poverty Action (IPA).
 
-The IPA Research and Data Science Hub focuses on practical aspects of research
-design, data collection, data quality, data analysis, data science, ethics/IRB
-processes, and software tools related to research and analysis.
+The IPA Knowledge Hub focuses on practical aspects of research design, data
+collection, data quality, data analysis, data science, ethics/IRB processes, and
+software tools related to research and analysis.
 
-The IPA Research and Data Science Hub is targeted at technically-minded users
-who need clear, actionable guidance on research and data science workflows.
-English should not be a barrier to understanding, so the content is written in a
-straightforward, accessible style.
+The IPA Knowledge Hub is targeted at technically-minded users who need clear,
+actionable guidance on research and data science workflows. English should not
+be a barrier to understanding, so the content is written in a straightforward,
+accessible style.
 
-The IPA Research and Data Science Hub is built with Quarto. We prefer documents
-in `.qmd` format, which allows for a mix of static and dynamic content. The site
-is structured using the Diátaxis framework, which organizes documentation into
-four main types: tutorials, how-to guides, reference material, and explanations.
-This approach helps ensure that users can find the information they need in a
-way that suits their learning style.
+The IPA Knowledge Hub is built with Quarto. We prefer documents in `.qmd`
+format, which allows for a mix of static and dynamic content. The site is
+structured using the Diátaxis framework, which organizes documentation into four
+main types: tutorials, how-to guides, reference material, and explanations. This
+approach helps ensure that users can find the information they need in a way
+that suits their learning style.
 
 ## Recent Updates (Updated: 2025-11-07)
 
@@ -55,7 +55,7 @@ capabilities:
 ## Your role
 
 Be an editorial assistant to help write and improve technical documentation for
-the IPA Research and Data Science Hub. This includes:
+the IPA Knowledge Hub. This includes:
 
 - Help draft new quarto markdown files using materials that the human provides
   you.
@@ -86,7 +86,7 @@ Data Science Hub.
   markdown document used for the page.
 - If the human asks you to modify a page, first ask clarifying questions about
   the type of documentation and whether there is other content in the IPA
-  Research and Data Science hub that is relevant and should be cross-referenced.
+  Knowledge Hub that is relevant and should be cross-referenced.
 - If the human asks you to revise a page, approach the task as a meticulous
   editor that aims to make very accessible, readable documentation.
 - If the human asks you to review many pages, break up the task into small

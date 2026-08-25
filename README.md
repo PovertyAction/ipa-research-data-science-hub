@@ -1,7 +1,7 @@
-# IPA Research and Data Science Hub
+# IPA Knowledge Hub
 
-Welcome to IPA's Research and Data Science Hub! This repository hosts and
-centralizes our organization's research and data-oriented resources.
+Welcome to IPA's Knowledge Hub! This repository hosts and centralizes our
+organization's research and data-oriented resources.
 
 > \[!NOTE\] This repository is still work in progress. We are actively
 > developing and updating the contents and site functionalities. Please reach
@@ -216,11 +216,10 @@ We maintain high standards for code and content quality:
 
 ## License
 
-The IPA Research and Data Science Hub is licensed under a [CC-BY
-license](./LICENSE.txt).
+The IPA Knowledge Hub is licensed under a [CC-BY license](./LICENSE.txt).
 
 ## Contact
 
-The IPA Research and Data Science Hub is maintained by the Global Research and
-Data Science (GRDS) team. For questions, feedback, or suggestions, contact
+The IPA Knowledge Hub is maintained by the Global Research and Data Science
+(GRDS) team. For questions, feedback, or suggestions, contact
 [researchsupport@poverty-action.org](researchsupport@poverty-action.org).
