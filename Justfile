@@ -71,10 +71,6 @@ fmt-python:
 fmt-py f:
     uv run ruff format {{ f }}
 
-# Lint sql scripts
-lint-sql:
-    uv run sqlmesh format
-
 # Report vale errors for a file
 vale-errors f:
     vale --filter=".Level in ['error']" {{ f }}
@@ -120,7 +116,7 @@ lint-md f:
     panache lint {{ f }}
 
 #Format all code and markdown files
-fmt-all: lint-py fmt-python lint-sql fmt-markdown lint-markdown
+fmt-all: lint-py fmt-python fmt-markdown
 
 # Create a new page from template (Linux and MacOS)
 new-page dest:
