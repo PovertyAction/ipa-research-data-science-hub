@@ -12,7 +12,7 @@ Learn the essential Git workflow of making changes, staging files, and creating 
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

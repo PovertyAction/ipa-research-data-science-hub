@@ -18,7 +18,7 @@ A/B testing is a rigorous experimentation method that compares variations of a p
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

@@ -12,7 +12,7 @@ Getting started with Python for data analysis and research, including installati
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

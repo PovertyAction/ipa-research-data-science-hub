@@ -12,7 +12,7 @@ Overview of IPA’s tracking resources for fieldwork, covering survey progress t
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

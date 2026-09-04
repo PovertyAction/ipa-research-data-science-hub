@@ -16,7 +16,7 @@ Explain what software libraries are and why programmers create and use them. Wri
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

@@ -12,7 +12,7 @@ Learn how to create and manage pull requests on GitHub to propose changes, colla
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

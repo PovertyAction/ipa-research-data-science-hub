@@ -16,7 +16,7 @@ Explain key differences between integers and floating point numbers. Explain key
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

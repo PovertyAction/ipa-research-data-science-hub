@@ -12,7 +12,7 @@ Comprehensive guide to creating and managing Python virtual environments using u
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

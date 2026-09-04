@@ -12,7 +12,7 @@ Learn Git version control through hands-on tutorials, from basic concepts to adv
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

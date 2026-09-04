@@ -17,7 +17,7 @@ Apply professional themes to visualizations. Fine-tune every aspect of your plot
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

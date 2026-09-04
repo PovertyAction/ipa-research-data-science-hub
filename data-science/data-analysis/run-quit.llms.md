@@ -16,7 +16,7 @@ Launch the JupyterLab server. Create a new Python script. Create a Jupyter noteb
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

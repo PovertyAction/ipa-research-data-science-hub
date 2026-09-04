@@ -12,7 +12,7 @@ Learn how to use Git branches to work on separate tasks in parallel, experiment 
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

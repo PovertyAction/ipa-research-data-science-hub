@@ -16,7 +16,7 @@ This guide covers how to manage the full data entry process for paper surveys, f
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

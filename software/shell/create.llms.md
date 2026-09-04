@@ -16,7 +16,7 @@ Learn essential file and directory operations in the shell. Learn to create, cop
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

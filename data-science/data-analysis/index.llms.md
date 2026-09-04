@@ -16,7 +16,7 @@ Learn Python programming through practical data analysis using real-world datase
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 

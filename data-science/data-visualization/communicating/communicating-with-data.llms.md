@@ -19,7 +19,7 @@ How to turn data into a clear message: why communication is part of the analysis
 
 ## Last Modified
 
-- August 25, 2026
+- September 4, 2026
 
 ## License
 
