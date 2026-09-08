@@ -1,11 +1,14 @@
 # IPA Typst Template
 
-This is a custom Typst template for the IPA Research & Data Science Hub. It provides consistent branding and formatting for PDF documents generated from Quarto markdown files.
+This is a custom Typst template for the IPA Research & Data Science Hub. It
+provides consistent branding and formatting for PDF documents generated from
+Quarto markdown files.
 
 ## Features
 
 - **Branded header**: Features the IPA logo and site title
-- **Typography**: Georgia Regular for headings, Arial Bold for secondary titles, Arial Regular for body text
+- **Typography**: Georgia Regular for headings, Arial Bold for secondary titles,
+  Arial Regular for body text
 - **Professional formatting**: Consistent margins, spacing, and typography
 - **License footer**: Includes proper attribution and CC BY 4.0 licensing
 - **Automatic metadata**: Supports title, authors, date, abstract, and keywords
@@ -15,7 +18,8 @@ This is a custom Typst template for the IPA Research & Data Science Hub. It prov
 
 ### Using the Extension
 
-To use this template, specify the IPA Typst format in your document's YAML front matter:
+To use this template, specify the IPA Typst format in your document's YAML front
+matter:
 
 ```yaml
 ---
@@ -72,4 +76,5 @@ The template uses a professional typography scheme:
 - For Georgia: Times New Roman, serif
 - For Arial: Liberation Sans, Helvetica, sans-serif
 
-The template gracefully falls back to commonly available system fonts when the primary fonts are not available.
+The template gracefully falls back to commonly available system fonts when the
+primary fonts are not available.
