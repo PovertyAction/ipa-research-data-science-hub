@@ -1,7 +1,7 @@
 ---
 title: "Let Claude set up and run your whole analysis project"
 abstract: |
-  A workflow that puts Claude Code in charge of a multi-language analysis project, from an empty repository to a rendered deliverable. Claude can lay the foundations from a project template, wire the task runner that chains the tools, and drive the whole chain across your operating system, reading each log and fixing what breaks. You work at the level of the deliverable; Claude owns the plumbing.
+  A workflow that puts Claude Code in charge of a multi-language analysis project, from first setup to a rendered deliverable. Claude can lay the foundations, wire the task runner that chains the tools, and drive the whole chain across your operating system, reading each log and fixing what breaks. You work at the level of the deliverable; Claude owns the plumbing.
 keywords:
   - "AI"
   - "Claude"
@@ -19,12 +19,18 @@ contributors:
   - "[Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)"
 ---
 
+:::{.callout-note collapse="true" title="Recognition and Attribution"}
+
+This content is adapted from the [Claude Code guide for IPA Colombia](https://github.com/juanfegarIPA/claude-code-ipa-colombia) by Juan Felipe García Rodríguez and Diego Quintero Mogollón, used under the [MIT License](https://github.com/juanfegarIPA/claude-code-ipa-colombia/blob/main/LICENSE).
+:::
+
 :::{.callout-tip appearance="simple"}
 
 ## Key Takeaways
 
+- Claude Code does its best work inside a harness: a project where the tools, the order of the steps, and the conventions are already decided, so Claude executes rather than chooses. A project template hands you one ready-made.
 - Claude Code is multi-language and multi-platform: it works across Stata, Python, R, and shell, on Windows, macOS, and Linux, in one session.
-- It can take a project from an empty repository to a rendered deliverable: set up the foundations, wire the task runner, and run the whole chain.
+- It can take a project from first setup to a rendered deliverable: set up the foundations, wire the task runner, and run the whole chain.
 - You describe the outcome, and Claude writes the orchestration and handles the platform differences, so you never hand-wire how the tools call each other.
 - Work only with de-identified or synthetic data; never let Claude read raw participant data.
 
@@ -40,54 +46,75 @@ A real analysis rarely lives in one tool. You clean the data in Stata or R, make
 - You need to re-run an analysis end to end after a data refresh.
 - You are moving an analysis to a new machine, or handing it to a collaborator.
 
-## A stack built for reproducible research
+## A stack Claude can drive
 
-The modern research project leans on a handful of tools, and each earns its place:
+The modern research project leans on a handful of tools, and each earns its place twice over: once for your own reproducibility, and once because it gives Claude something to hold on to.
 
 - **[uv](../../virtualenv/python-uv.qmd)** keeps the analysis reproducible: the same environment rebuilds on a colleague's laptop and on yours a year from now.
-- **`just`** keeps the project's operations in one file instead of in people's heads, so a newcomer can run the analysis on day one.
+- **[`just`](https://github.com/casey/just)** is the orchestrator: it holds every operation in one file instead of in people's heads, so a newcomer can run the analysis on day one. It also carries per-platform variants of a recipe, `[windows]` and `[unix]`, so one command name works on Windows, macOS and Linux, and neither you nor Claude has to remember which shell the machine expects.
 - **[Stata](../../stata/index.qmd)** or **R** carries the analysis, and its script is the reproducible record of what happened to the data.
 - **Python** covers what sits around the analysis, from reshaping data to a figure that is easier to draw there than in Stata.
 - **[Quarto](../../quarto/index.qmd)** ties the write-up to the results, generating the report's tables and figures from the analysis so the numbers never drift out of sync.
 
-Together they make a project reproducible end to end and portable across machines and operating systems. And because every one of them is driven from the command line, a single agent can operate the whole set. Claude Code is that agent: multi-language, multi-platform, and able to run all of them in one session, reading each log and fixing what breaks as it moves from one tool to the next.
+Together they make a project reproducible end to end and portable across machines and operating systems. They also add up to a harness: every one of them is driven from the command line, declares what it needs in a file, and reports what happened in a log. That gives an agent a surface to work against and, just as important, a set of choices it does not have to make. Claude Code runs them all in one session, reading each log and fixing what breaks as it moves from one tool to the next—far more reliably than in a project where the steps live only in someone's head.
 
-## Start from a project template
+## Build the harness, or take one ready-made
 
-Claude is far more reliable when the project carries conventions it can follow. IPA publishes two public templates that bundle exactly this stack: [ipa-stata-template](https://github.com/PovertyAction/ipa-stata-template) for Stata-centered analysis and [ipa-python-template](https://github.com/PovertyAction/ipa-python-template) for Python. Both ship the task runner, the `uv` setup, and a set of Claude Code skills, so Claude starts with the map already drawn.
+The point of a harness is that the decisions are already made. Which tools the project uses, what order the analysis runs in, where data lands at each stage, what the code should look like—Claude chooses none of it. It works inside choices that are already fixed, and that is what makes its output predictable enough to trust.
 
-## Claude lays the foundations
+You can set those conventions yourself: a folder layout, one place where the environment is declared, a named command for each stage, and a `CLAUDE.md` in the project root recording the rules you want followed. A template is that same work already done.
 
-Point Claude at a new project created from a template and it can set the project up: create the Python environment, install the tooling and any Stata packages, and configure the local settings for your machine, such as the Stata executable path and your operating system. In the templates this is a single entry point, `just get-started`. Claude runs it, reads what fails, and fixes the configuration until the environment is ready. You do not need to know which tool installs what.
+IPA publishes two public templates. [ipa-stata-template](https://github.com/PovertyAction/ipa-stata-template) is the fuller harness: a numbered do-file pipeline from `00_run.do` through cleaning, analysis and figures; `data/raw` to `data/clean` to `data/final` as the path the data takes; a `Justfile` covering every stage; the `uv` environment; a root `CLAUDE.md`; and Claude Code skills carrying IPA's Stata coding standards and data-cleaning checklist. [ipa-python-template](https://github.com/PovertyAction/ipa-python-template) is a lighter Python scaffold—the `Justfile`, the `uv` setup, and the linting and pre-commit configuration—without the analysis structure.
 
-## Claude wires the orchestration
+Install [`just`](https://github.com/casey/just) once for your platform; each template's README gives the command. To use a template, create your own copy on GitHub (**Use this template → Create a new repository**), then clone it to your machine. See [Create a repository](../../git/create-repo.qmd) and [Clone a repository](../../git/clone-repo.qmd).
 
-The task runner is where the tools connect: one recipe cleans the data in Stata, another renders the report in Quarto, another lints the code. Claude writes and extends these recipes for your task, so a multi-step chain collapses to one command. It also handles what usually trips people up: the differences between PowerShell and bash, and the per-operating-system variants a cross-platform project needs. You end up with orchestration you did not have to author.
+## Set up the environment
 
-## Claude drives it
+Start Claude Code in the project folder and ask it to get the project running on your machine: create the virtual environment, install the packages the code needs, and point the configuration at your own Stata, R, or Python installation. Claude runs the setup, reads what fails, and fixes it until the environment is ready. You do not need to know which tool installs what.
 
-With the recipes in place, Claude runs the chain end to end: it cleans the data, runs the Stata analysis, produces the figures in Python, and renders the report. It reads each log as it goes, and when a step fails it reads the error, fixes the cause, and re-runs. This is the same closed loop that works for a single script, now spanning the whole stack. You react to the finished deliverable, not to each command.
+You are ready when the project's setup command finishes without an error.
+
+**From a template.** Both templates put this behind one recipe, `just get-started`. In the Stata template the machine-specific settings live in `.env`: copy `.env-example` and set `STATA_CMD` to your Stata executable. Confirm with `just --list`, which prints every command the project defines.
+
+## Put each stage behind one command
+
+Ask Claude to give every stage of the project a single named command: one to clean the data, one to run the analysis, one to render the report. A task runner keeps those definitions in a file that travels with the project, so the next person runs the analysis without reconstructing it. If the project has no task runner, ask Claude to add one and write the first few commands; if it has one, ask Claude to extend it for your task.
+
+This is also where Claude earns its keep on the awkward parts: it writes the `[windows]` and `[unix]` variants a cross-platform project needs, and `just` selects the right one at run time. You end up with orchestration you did not have to author, and a project that behaves the same on a colleague's machine as on yours.
+
+**From a template.** Both ship a `Justfile` with the stages already defined, so Claude extends a working set instead of starting from nothing. In the Stata template the order is fixed too: `00_run.do` calls the numbered do-files in sequence, so Claude adds to a pipeline rather than deciding what runs when.
+
+## Run the chain end to end
+
+With the commands in place, ask Claude to run the whole thing and hand you the finished deliverable. It cleans the data, runs the analysis, produces the figures, and renders the report, reading each log as it goes; when a step fails it reads the error, fixes the cause, and re-runs.
+
+This is the same closed loop that works for a single script, now spanning the whole stack. You react to the finished deliverable, not to each command.
+
+**From a template.** In the Stata template this is `just stata-run` to run the analysis, then `just render-report <your-report.qmd>` to produce the document.
 
 :::{.callout-warning}
 
 ## Never run on raw data
 
-Both templates lead with the same rule, and it holds for every step here: never let Claude read or process raw participant data. De-identify first, or work from a synthetic sample, and never commit data to the repository. See [Prompt safely](../use-cases.qmd#prompt-safely).
+One rule holds at every step here: never let Claude read or process raw participant data. De-identify first, or work from a synthetic sample, and never commit data to the repository. Keep the raw files outside the project folder, or deny that path in Claude Code's permission settings, so the boundary does not rest on remembering to state it in a prompt. See [Prompt safely](../use-cases.qmd#prompt-safely).
 
 :::
 
 ## A prompt to start from
 
-Adapt this to your project and its template. It hands Claude the outcome and the safe-data boundary, and lets it own the setup and the plumbing:
+Adapt this to your project:
 
 ```text
-This project was created from the IPA Stata template. Set it up on my
-machine: run get-started and configure the Stata path in .env for Windows.
-Then build the descriptive-statistics report end to end: clean the data,
-run the analysis, and render the Quarto report. Work only from the
-de-identified sample in ./data/sample, never ./data/raw. Wire any missing
-just recipes you need, read each log, and fix failures before moving on.
+Set this project up on my machine: create the environment, install what
+the code needs, and point the configuration at my Stata install on
+Windows. Then build the descriptive-statistics report end to end: clean
+the data, run the analysis, and render the Quarto report. Work only from
+the de-identified sample in ./data/sample, never ./data/raw. Give each
+stage a single named command, read each log, and fix failures before
+moving on.
 ```
+
+If you started from a template, say so in the first line and name it. Claude will use the commands the template already defines instead of inventing new ones.
 
 :::{.callout-note}
 
@@ -97,10 +124,14 @@ Claude is approved for **Public** and **Internal** data only: de-identify before
 
 :::
 
-## Additional Resources
-
-Anthropic. "Claude Code Documentation." [https://code.claude.com/docs](https://code.claude.com/docs).
+## References
 
 Innovations for Poverty Action. "ipa-stata-template." GitHub. [https://github.com/PovertyAction/ipa-stata-template](https://github.com/PovertyAction/ipa-stata-template).
 
 Innovations for Poverty Action. "ipa-python-template." GitHub. [https://github.com/PovertyAction/ipa-python-template](https://github.com/PovertyAction/ipa-python-template).
+
+Rodarmor, Casey. "just." GitHub. [https://github.com/casey/just](https://github.com/casey/just).
+
+## Additional Resources
+
+Anthropic. "Claude Code Documentation." [https://code.claude.com/docs](https://code.claude.com/docs).
