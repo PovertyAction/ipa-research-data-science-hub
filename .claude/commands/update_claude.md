@@ -1,5 +1,6 @@
 ---
-allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(find:*), Bash(grep:*), Bash(wc:*), Bash(ls:*)
+allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git status:*),
+  Bash(find:*), Bash(grep:*), Bash(wc:*), Bash(ls:*)
 description: Automatically update CLAUDE.md file based on recent code changes
 ---
 
@@ -61,7 +62,8 @@ description: Automatically update CLAUDE.md file based on recent code changes
 
 ## Your Task
 
-Based on the current CLAUDE.md content and all the git analysis above, create an updated CLAUDE.md file that:
+Based on the current CLAUDE.md content and all the git analysis above, create an
+updated CLAUDE.md file that:
 
 ## 1. Preserves Important Existing Content
 
@@ -76,7 +78,8 @@ Analyze the git diff and logs to identify:
 
 - **New Features**: What new functionality was added?
 - **API Changes**: New endpoints, modified routes, updated parameters
-- **Configuration Updates**: Changes to build tools, dependencies, environment variables
+- **Configuration Updates**: Changes to build tools, dependencies, environment
+  variables
 - **File Structure Changes**: New directories, moved files, deleted components
 - **Database Changes**: New models, schema updates, migrations
 - **Bug Fixes**: Important fixes that affect how the system works
@@ -134,7 +137,8 @@ Add a "Recent Updates" section with:
 ## 4. Smart Content Management
 
 - **Don't duplicate**: Avoid repeating information already well-documented
-- **Prioritize relevance**: Focus on changes that affect how developers work with the code
+- **Prioritize relevance**: Focus on changes that affect how developers work
+  with the code
 - **Keep it concise**: Summarize rather than listing every small change
 - **Maintain structure**: Follow existing CLAUDE.md organization
 - **Add timestamps**: Note when major updates were made
@@ -143,29 +147,36 @@ Add a "Recent Updates" section with:
 
 Provide the complete updated CLAUDE.md content, organized as:
 
-```markdown
-# Project Name
+\`\`\`markdown # Project Name
 
 ## Overview
-[Updated project description]
+
+\[Updated project description\]
 
 ## Architecture
-[Updated architecture information]
+
+\[Updated architecture information\]
 
 ## Setup & Installation
-[Updated setup instructions]
+
+\[Updated setup instructions\]
 
 ## Development Workflow
-[Updated development processes]
+
+\[Updated development processes\]
 
 ## API Documentation
-[Updated API information]
+
+\[Updated API information\]
 
 ## File Structure
-[Updated directory explanations]
+
+\[Updated directory explanations\]
 
 ## Recent Updates (Updated: YYYY-MM-DD)
-[Summary of recent changes]
+
+\[Summary of recent changes\]
 
 ## Important Notes
-[Key information for developers]
+
+\[Key information for developers\]

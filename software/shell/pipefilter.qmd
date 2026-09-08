@@ -1,45 +1,63 @@
 ---
 title: "Pipes and Filters"
-abstract: |
-  Discover the power of combining shell commands using pipes and filters. Learn to chain simple commands together to perform complex data processing tasks efficiently. Use the Unix philosophy of building powerful workflows from simple tools.
+abstract: >-
+  Discover the power of combining shell commands using pipes and filters. Learn
+  to chain simple commands together to perform complex data processing tasks
+  efficiently. Use the Unix philosophy of building powerful workflows from
+  simple tools.
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
-keywords: ["Shell", "Pipes", "Filters", "Command Chaining", "Data Processing", "Tutorial"]
+categories:
+  - tutorial
+keywords: [
+  "Shell",
+  "Pipes",
+  "Filters",
+  "Command Chaining",
+  "Data Processing",
+  "Tutorial",
+]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This page is adapted from the [Software Carpentry Shell Novice
+lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The
+Carpentries](https://carpentries.org/). The original material is licensed under
+the [Creative Commons Attribution 4.0 International License (CC BY
+4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-This page is adapted from the [Software Carpentry Shell Novice lesson](https://swcarpentry.github.io/shell-novice/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+**Changes made:** Content has been modified and expanded by Innovations for
+Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash,
+PowerShell, NuShell), and context relevant to research data management.
 
-**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples, multi-shell syntax (Bash, PowerShell, NuShell), and context relevant to research data management.
-
-**Original citation:**
-Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
+**Original citation:** Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin
+Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A.
+Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, et al. (2019, July).
+swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version
+v2019.06.1). Zenodo. <http://doi.org/10.5281/zenodo.3266823>
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
 - Redirect a command's output to a file.
 - Construct command pipelines with two or more stages.
-- Explain what usually happens if a program or pipeline isn't given any input to process.
+- Explain what usually happens if a program or pipeline isn't given any input to
+  process.
 - Explain Unix's "small pieces, loosely joined" philosophy.
-
 :::
 
-Now that we know a few basic commands, we can finally look at the shell's most powerful feature:
-the ease with which it allows us to combine existing programs in new ways.
-We'll work with the directory `data/exercise-data/survey-data`
-that contains CSV files from Amara's household survey data collection.
+Now that we know a few basic commands, we can finally look at the shell's most
+powerful feature: the ease with which it allows us to combine existing programs
+in new ways. We'll work with the directory `data/exercise-data/survey-data` that
+contains CSV files from Amara's household survey data collection.
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -87,14 +105,12 @@ ls exercise-data/survey-data
 │ ...│ ...                  │ ...  │   ...   │ ...          │
 ╰────┴──────────────────────┴──────┴─────────┴──────────────╯
 ```
-
 :::
 
-Let's navigate into that directory with `cd` and run an example command
-`wc` (word count) to count lines in a survey file:
+Let's navigate into that directory with `cd` and run an example command `wc`
+(word count) to count lines in a survey file:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -146,20 +162,18 @@ open hh_baseline_001.csv --raw | str stats
 │ chars     │   602 │
 ╰───────────┴───────╯
 ```
-
 :::
 
-`wc` is the 'word count' command: it counts the number of lines, words,
-and characters in files (from left to right, in that order). In PowerShell,
-you use `Measure-Object`, and in NuShell you can use `length` on parsed CSV
-data or `str stats` on raw files.
+`wc` is the 'word count' command: it counts the number of lines, words, and
+characters in files (from left to right, in that order). In PowerShell, you use
+`Measure-Object`, and in NuShell you can use `length` on parsed CSV data or
+`str stats` on raw files.
 
 ### Viewing and Exploring CSV Data
 
 Let's look at the contents of a survey file to understand its structure:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -206,17 +220,16 @@ open hh_baseline_001.csv | first 5
 ╰───┴───────┴─────────────┴─────────┴───────────────┴─────────┴─────┴─────────────────╯
 ```
 
-Notice how NuShell automatically parses the CSV and displays it as a formatted table!
-
+Notice how NuShell automatically parses the CSV and displays it as a formatted
+table!
 :::
 
 ### Counting Records in Survey Files
 
-One of Amara's first validation checks is to count how many records are in each file.
-Let's count the lines (remember, the first line is the header):
+One of Amara's first validation checks is to count how many records are in each
+file. Let's count the lines (remember, the first line is the header):
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -267,18 +280,16 @@ open hh_baseline_001.csv | length
 20
 ```
 
-NuShell's `open` command automatically parses the CSV and excludes the header, so it
-directly shows 20 records.
-
+NuShell's `open` command automatically parses the CSV and excludes the header,
+so it directly shows 20 records.
 :::
 
 ### Checking for Missing Values
 
-Amara needs to find rows where required fields are missing. Let's look for rows with
-missing `hhid` values:
+Amara needs to find rows where required fields are missing. Let's look for rows
+with missing `hhid` values:
 
 ::: {.panel-tabset group="Shell"}
-
 ## Bash
 
 ```bash
@@ -286,7 +297,8 @@ missing `hhid` values:
 cut -d',' -f1 hh_baseline_009.csv | tail -n +2 | grep "^$"
 ```
 
-This extracts the first column, skips the header, and finds empty lines. If you want to count them:
+This extracts the first column, skips the header, and finds empty lines. If you
+want to count them:
 
 ```bash
 cut -d',' -f1 hh_baseline_009.csv | tail -n +2 | grep -c "^$"
@@ -316,20 +328,29 @@ open hh_baseline_009.csv | where hhid == "" | length
 ```output
 3
 ```
-
 :::
 
 These piped commands show how we can combine simple tools to perform data
-validation. This is exactly what Amara needs for her survey quality checks!
+validation. This is exactly what Amara needs for their survey quality checks!
 
 ## Key Points
 
-- `wc` (Bash) / `Measure-Object` (PowerShell) / `str stats` (NuShell) counts lines, words, and characters.
-- `cat` (Bash) / `Get-Content` (PowerShell) / `open` (NuShell) displays file contents.
-- `sort` (Bash) / `Sort-Object` (PowerShell) / `sort` (NuShell) sorts its inputs.
-- `head` (Bash) / `Select-Object -First` (PowerShell) / `first` (NuShell) displays the first lines.
-- `tail` (Bash) / `Select-Object -Last` (PowerShell) / `last` (NuShell) displays the last lines.
-- `command > [file]` redirects output to a file (overwriting). In PowerShell: `command | Out-File [file]`. In NuShell: `command | save [file]`.
-- `command >> [file]` appends output to a file. In PowerShell: `command | Out-File -Append [file]`. In NuShell: `command | save --append [file]`.
-- `[first] | [second]` is a pipeline: the output of the first command is used as the input to the second (works the same in all shells).
-- The best way to use the shell is to use pipes to combine simple single-purpose programs (filters).
+- `wc` (Bash) / `Measure-Object` (PowerShell) / `str stats` (NuShell) counts
+  lines, words, and characters.
+- `cat` (Bash) / `Get-Content` (PowerShell) / `open` (NuShell) displays file
+  contents.
+- `sort` (Bash) / `Sort-Object` (PowerShell) / `sort` (NuShell) sorts its
+  inputs.
+- `head` (Bash) / `Select-Object -First` (PowerShell) / `first` (NuShell)
+  displays the first lines.
+- `tail` (Bash) / `Select-Object -Last` (PowerShell) / `last` (NuShell) displays
+  the last lines.
+- `command > [file]` redirects output to a file (overwriting). In PowerShell:
+  `command | Out-File [file]`. In NuShell: `command | save [file]`.
+- `command >> [file]` appends output to a file. In PowerShell:
+  `command | Out-File -Append [file]`. In NuShell:
+  `command | save --append [file]`.
+- `[first] | [second]` is a pipeline: the output of the first command is used as
+  the input to the second (works the same in all shells).
+- The best way to use the shell is to use pipes to combine simple single-purpose
+  programs (filters).

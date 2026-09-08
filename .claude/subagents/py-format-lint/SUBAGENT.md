@@ -1,20 +1,27 @@
 ---
 name: py-format-lint
-description: Automatically format and lint Python code using ruff. This subagent enforces code quality by running formatting and auto-fixing linting issues. Use this after writing or modifying Python files, or when you encounter linting errors that need to be fixed.
+description: Automatically format and lint Python code using ruff. This subagent
+  enforces code quality by running formatting and auto-fixing linting issues.
+  Use this after writing or modifying Python files, or when you encounter
+  linting errors that need to be fixed.
 ---
 
 # Python Format & Lint Subagent
 
-This subagent automatically formats and lints Python code using ruff, ensuring consistent code quality across the project.
+This subagent automatically formats and lints Python code using ruff, ensuring
+consistent code quality across the project.
 
 ## When to Use This Subagent
 
 Use this subagent in the following scenarios:
 
-1. **After writing new Python code** - Format and lint newly created Python files
-2. **After modifying existing Python code** - Ensure modifications maintain code quality
+1. **After writing new Python code** - Format and lint newly created Python
+   files
+2. **After modifying existing Python code** - Ensure modifications maintain code
+   quality
 3. **When linting errors are detected** - Automatically fix auto-fixable issues
-4. **Before committing changes** - Validate all Python code passes quality checks
+4. **Before committing changes** - Validate all Python code passes quality
+   checks
 5. **During code reviews** - Ensure code meets project standards
 
 ## What This Subagent Does
@@ -22,7 +29,8 @@ Use this subagent in the following scenarios:
 This subagent will:
 
 1. **Format Python code** using `just fmt-python` (runs `uv run ruff format`)
-2. **Auto-fix linting issues** using `just lint-python` (runs `uv run ruff check --fix`)
+2. **Auto-fix linting issues** using `just lint-python` (runs
+   `uv run ruff check --fix`)
 3. **Report remaining issues** that require manual intervention
 4. **Provide specific guidance** on how to fix any remaining linting errors
 
@@ -76,7 +84,8 @@ After running the commands:
    - What the issue is
    - Why it matters
    - How to fix it (with code examples if helpful)
-4. **Suggest next steps** - If issues remain, suggest whether they should be fixed or ignored
+4. **Suggest next steps** - If issues remain, suggest whether they should be
+   fixed or ignored
 
 ### Step 5: Handle Manual Fixes (if needed)
 
@@ -89,9 +98,11 @@ For issues that can't be auto-fixed:
    - W (warnings) - Style warnings (LOW)
    - SIM (simplify) - Code simplification suggestions (LOW)
 
-2. **Fix high-priority issues** - Address undefined names, errors, unused imports
+2. **Fix high-priority issues** - Address undefined names, errors, unused
+   imports
 
-3. **Consider ignoring low-priority issues** - For existing code, docstring issues can often be added later
+3. **Consider ignoring low-priority issues** - For existing code, docstring
+   issues can often be added later
 
 ## Configuration
 
@@ -243,5 +254,7 @@ This subagent integrates with the project's existing tools:
 - This subagent uses the project's existing just commands for consistency
 - All changes are made in-place (files are modified directly)
 - Review changes after running to ensure they're correct
-- For large numbers of docstring issues in existing code, consider running with `--add-noqa` to defer fixes
-- The project configuration has `fix = true` by default, so `ruff check` will auto-fix when possible
+- For large numbers of docstring issues in existing code, consider running with
+  `--add-noqa` to defer fixes
+- The project configuration has `fix = true` by default, so `ruff check` will
+  auto-fix when possible

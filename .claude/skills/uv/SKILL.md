@@ -1,13 +1,21 @@
 ---
 name: uv
-description: This skill should be used when working with Python projects that use uv for package and project management. Use this skill for running Python scripts and CLI tools with `uv run`, managing dependencies, creating projects, handling virtual environments, and executing commands within isolated project environments. Essential for projects with pyproject.toml files.
+description: This skill should be used when working with Python projects that
+  use uv for package and project management. Use this skill for running Python
+  scripts and CLI tools with `uv run`, managing dependencies, creating projects,
+  handling virtual environments, and executing commands within isolated project
+  environments. Essential for projects with pyproject.toml files.
 ---
 
 # uv - Fast Python Package and Project Manager
 
 ## Overview
 
-This skill provides guidance for using **uv**, an extremely fast Python package and project manager written in Rust. uv replaces pip, pip-tools, pipx, poetry, pyenv, virtualenv, and more while being 10-100x faster. The skill focuses particularly on `uv run` for executing code within isolated project environments.
+This skill provides guidance for using **uv**, an extremely fast Python package
+and project manager written in Rust. uv replaces pip, pip-tools, pipx, poetry,
+pyenv, virtualenv, and more while being 10-100x faster. The skill focuses
+particularly on `uv run` for executing code within isolated project
+environments.
 
 ## When to Use This Skill
 
@@ -22,18 +30,22 @@ Use this skill when:
 
 ## Core Concept: `uv run`
 
-The most important command in uv is `uv run`, which executes commands within an isolated project environment.
+The most important command in uv is `uv run`, which executes commands within an
+isolated project environment.
 
 ### Why Use `uv run`
 
-**ALWAYS use `uv run` instead of bare `python` or direct script execution when:**
+**ALWAYS use `uv run` instead of bare `python` or direct script execution
+when:**
 
 1. Running Python scripts that depend on project dependencies
 2. Executing Python CLI tools installed in the project
 3. Working within a uv-managed project (has `pyproject.toml`)
 4. Running commands that need access to the project's virtual environment
 
-**Key behavior:** `uv run` automatically ensures the project environment is current before executing the command. It installs the project into `.venv` and keeps it isolated from the system Python.
+**Key behavior:** `uv run` automatically ensures the project environment is
+current before executing the command. It installs the project into `.venv` and
+keeps it isolated from the system Python.
 
 ### Basic Usage
 
@@ -55,7 +67,8 @@ uv run bash scripts/deploy.sh
 
 ### Adding Dependencies Per-Invocation
 
-Use `--with` to include or override dependencies for a single execution without modifying `pyproject.toml`:
+Use `--with` to include or override dependencies for a single execution without
+modifying `pyproject.toml`:
 
 ```bash
 # Add a dependency temporarily
@@ -76,7 +89,8 @@ This is useful for:
 
 ### Running Scripts with Inline Dependencies
 
-Python scripts can declare their own dependencies using inline metadata. This creates isolated environments separate from the project:
+Python scripts can declare their own dependencies using inline metadata. This
+creates isolated environments separate from the project:
 
 ```python
 # /// script
@@ -93,7 +107,9 @@ import rich
 # Script code here...
 ```
 
-**Important:** When a script has inline metadata, `uv run` uses ONLY those dependencies and ignores the project's dependencies, even when run inside a project directory.
+**Important:** When a script has inline metadata, `uv run` uses ONLY those
+dependencies and ignores the project's dependencies, even when run inside a
+project directory.
 
 Initialize a script with metadata:
 
@@ -173,7 +189,8 @@ source .venv/bin/activate  # Linux/Mac
 .venv\Scripts\activate     # Windows
 ```
 
-**Best practice:** Use `uv run` instead of manually activating virtual environments. This ensures environment consistency and automatic updates.
+**Best practice:** Use `uv run` instead of manually activating virtual
+environments. This ensures environment consistency and automatic updates.
 
 ### Python Version Management
 
@@ -228,29 +245,24 @@ uv pip tree
 
 ## Decision Tree: Which Command to Use
 
-**Need to run code in this project?**
-→ Use `uv run <command>`
+**Need to run code in this project?** → Use `uv run <command>`
 
-**Need to add a package to this project?**
-→ Use `uv add <package>`
+**Need to add a package to this project?** → Use `uv add <package>`
 
-**Need to run a tool once without installing?**
-→ Use `uvx <tool>` or `uv tool run <tool>`
+**Need to run a tool once without installing?** → Use `uvx <tool>` or
+`uv tool run <tool>`
 
-**Need to create a new project?**
-→ Use `uv init [project-name]`
+**Need to create a new project?** → Use `uv init [project-name]`
 
-**Need to update dependencies to latest versions?**
-→ Use `uv lock --upgrade`
+**Need to update dependencies to latest versions?** → Use `uv lock --upgrade`
 
-**Need to sync environment after pulling changes?**
-→ Use `uv sync`
+**Need to sync environment after pulling changes?** → Use `uv sync`
 
-**Need to install a specific Python version?**
-→ Use `uv python install <version>`
+**Need to install a specific Python version?** → Use
+`uv python install <version>`
 
-**Working with legacy pip workflows?**
-→ Use `uv pip` commands as drop-in replacements
+**Working with legacy pip workflows?** → Use `uv pip` commands as drop-in
+replacements
 
 ## Key Differences from Other Tools
 
@@ -282,21 +294,29 @@ uv pip tree
 
 ## Best Practices
 
-1. **Always use `uv run` in projects** - Don't manually activate virtual environments; let uv handle environment management automatically.
+1. **Always use `uv run` in projects** - Don't manually activate virtual
+   environments; let uv handle environment management automatically.
 
-2. **Commit lockfiles** - Include `uv.lock` in version control for reproducible builds.
+2. **Commit lockfiles** - Include `uv.lock` in version control for reproducible
+   builds.
 
-3. **Pin Python versions** - Use `uv python pin` to specify project Python requirements.
+3. **Pin Python versions** - Use `uv python pin` to specify project Python
+   requirements.
 
-4. **Use `--with` for experiments** - Test dependencies temporarily without modifying `pyproject.toml`.
+4. **Use `--with` for experiments** - Test dependencies temporarily without
+   modifying `pyproject.toml`.
 
-5. **Leverage inline metadata for scripts** - Single-file scripts should declare dependencies inline for portability.
+5. **Leverage inline metadata for scripts** - Single-file scripts should declare
+   dependencies inline for portability.
 
-6. **Use `uvx` for one-off tools** - Don't pollute project dependencies with tools you run occasionally.
+6. **Use `uvx` for one-off tools** - Don't pollute project dependencies with
+   tools you run occasionally.
 
-7. **Let uv manage environments** - Trust `uv sync` to keep environments in sync; avoid manual pip installs in uv projects.
+7. **Let uv manage environments** - Trust `uv sync` to keep environments in
+   sync; avoid manual pip installs in uv projects.
 
-8. **Check `.python-version` files** - Respect project Python version specifications.
+8. **Check `.python-version` files** - Respect project Python version
+   specifications.
 
 ## Common Patterns
 
@@ -390,11 +410,13 @@ uv python pin 3.12
 
 **Problem:** Script with inline metadata doesn't use project packages.
 
-**Solution:** This is intentional. Scripts with inline metadata are isolated. Either:
+**Solution:** This is intentional. Scripts with inline metadata are isolated.
+Either:
 
 - Remove inline metadata to use project dependencies
 - Add needed dependencies to script's inline metadata
 
 ## References
 
-For detailed command options and advanced usage, see [references/cli_reference.md](references/cli_reference.md).
+For detailed command options and advanced usage, see
+[references/cli_reference.md](references/cli_reference.md).

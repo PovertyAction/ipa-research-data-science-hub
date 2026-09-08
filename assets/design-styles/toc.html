@@ -3,6 +3,11 @@
   <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;">In this resource</h2>
   $endif$
   $table-of-contents$
+</nav>
+<!-- Metadata links live outside nav#TOC: Quarto's postprocessor stamps
+     data-scroll-target on every TOC anchor, and external hrefs there crash
+     the scrollspy in quarto.js -->
+<div class="toc-meta">
   $if(authors-ipa)$
   <hr>
   <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;">Authors</h2>
@@ -37,4 +42,17 @@
     <li class="license" style="font-size: 0.86rem;"><a href=$license.url$>$license.text$</a></li>
   </ul>
   $endif$
-</nav>
+</div>
+<script>
+  // The partial renders in body flow and Quarto moves only nav#TOC into the
+  // margin sidebar, so move .toc-meta back under the TOC. Links added after
+  // the postprocessor carry no data-scroll-target, so the scrollspy in
+  // quarto.js ignores them (external hrefs there crash it).
+  (function () {
+    var meta = document.querySelector(".toc-meta");
+    var nav = document.querySelector("#quarto-margin-sidebar nav[role='doc-toc']");
+    if (meta && nav) {
+      nav.insertBefore(meta, nav.querySelector(".toc-actions"));
+    }
+  })();
+</script>

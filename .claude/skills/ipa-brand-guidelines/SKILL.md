@@ -1,15 +1,21 @@
 ---
 name: ipa-brand-guidelines
-description: Applies Innovations for Poverty Action's official brand colors and typography to any sort of artifact that may benefit from having IPA's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.
+description: Applies Innovations for Poverty Action's official brand colors and
+  typography to any sort of artifact that may benefit from having IPA's
+  look-and-feel. Use it when brand colors or style guidelines, visual
+  formatting, or company design standards apply.
 ---
 
 # IPA's Brand Styling
 
 ## Overview
 
-To access Innovations for Poverty Action's official brand identity and style resources, use this skill.
+To access Innovations for Poverty Action's official brand identity and style
+resources, use this skill.
 
-**Keywords**: branding, corporate identity, visual identity, post-processing, styling, brand colors, typography, IPA brand, visual formatting, visual design, writing guidelines
+**Keywords**: branding, corporate identity, visual identity, post-processing,
+styling, brand colors, typography, IPA brand, visual formatting, visual design,
+writing guidelines
 
 ## Brand Guidelines
 
@@ -71,7 +77,8 @@ To access Innovations for Poverty Action's official brand identity and style res
 - **Base Font**: Arimo (Google Fonts alternative to Arial)
 - **Headings**: Gelasio (Google Fonts alternative to Georgia)
 - **Monospace**: Fira Code (from Google Fonts)
-- **Note**: Arimo and Gelasio are freely available Google Fonts that closely resemble IPA's official fonts and are used for consistent web availability
+- **Note**: Arimo and Gelasio are freely available Google Fonts that closely
+  resemble IPA's official fonts and are used for consistent web availability
 
 **Monospace Styling:**
 
@@ -85,14 +92,18 @@ To access Innovations for Poverty Action's official brand identity and style res
 
 ## Writing Guidelines
 
-IPA follows strict writing guidelines to ensure clear, accessible, and professional communication. Key principles include:
+IPA follows strict writing guidelines to ensure clear, accessible, and
+professional communication. Key principles include:
 
 ### Core Principles
 
 - **Keep it short and simple**: Use concise sentences averaging 15-20 words
-- **Write clearly and avoid jargon**: Write for general audiences; explain technical terms on first use
-- **Use active voice**: Prefer "Researchers conducted a study" over "A study was conducted"
-- **Be evidence-based and objective**: Present findings neutrally without advocacy
+- **Write clearly and avoid jargon**: Write for general audiences; explain
+  technical terms on first use
+- **Use active voice**: Prefer "Researchers conducted a study" over "A study was
+  conducted"
+- **Be evidence-based and objective**: Present findings neutrally without
+  advocacy
 - **Show, don't tell**: Use concrete evidence and specific examples
 - **Maintain professional tone**: Avoid contractions, slang, and casual language
 
@@ -100,10 +111,12 @@ IPA follows strict writing guidelines to ensure clear, accessible, and professio
 
 - ✅ Use "evaluation" instead of "experiment"
 - ✅ Use "participants" or "respondents" instead of "subjects"
-- ✅ Use "Low- and Middle-Income Countries (LMICs)" instead of "developing countries"
+- ✅ Use "Low- and Middle-Income Countries (LMICs)" instead of "developing
+  countries"
 - ✅ Use "people living in poverty" instead of "poor people" or "the poor"
 - ✅ Use "randomized evaluation" for general audiences instead of "RCT"
-- ✅ Avoid "treatment" and "control" language - use descriptive alternatives like "enrolled in the program" vs. "did not receive the program"
+- ✅ Avoid "treatment" and "control" language - use descriptive alternatives
+  like "enrolled in the program" vs. "did not receive the program"
 
 ### Style Standards
 
@@ -115,7 +128,8 @@ IPA follows strict writing guidelines to ensure clear, accessible, and professio
 - Use active voice and avoid passive constructions
 - No contractions: "it is" not "it's"
 
-For complete writing guidelines, see: `.claude/skills/ipa-brand-guidelines/references/writing_guidelines.md`
+For complete writing guidelines, see:
+`.claude/skills/ipa-brand-guidelines/references/writing_guidelines.md`
 
 ## Features
 
@@ -153,7 +167,8 @@ For complete writing guidelines, see: `.claude/skills/ipa-brand-guidelines/refer
 ### Font Management
 
 - Official IPA fonts: Arial (body text) and Georgia (headings)
-- Web implementation uses Google Fonts alternatives: Arimo (resembles Arial) and Gelasio (resembles Georgia)
+- Web implementation uses Google Fonts alternatives: Arimo (resembles Arial) and
+  Gelasio (resembles Georgia)
 - Fira Code used for monospace/code elements
 - Fonts loaded from Google Fonts for consistent web availability
 - No local font installation required
@@ -165,7 +180,8 @@ For complete writing guidelines, see: `.claude/skills/ipa-brand-guidelines/refer
 - Color definitions from `assets/design-styles/light-brand.yml`
 - Applied via python-pptx's RGBColor class or CSS hex values
 - Maintains color fidelity across different systems
-- Supports categorical, sequential, and divergent color schemes for data visualization
+- Supports categorical, sequential, and divergent color schemes for data
+  visualization
 
 ### Writing Style Enforcement
 

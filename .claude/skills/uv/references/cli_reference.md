@@ -1,6 +1,7 @@
 # uv CLI Command Reference
 
-This reference provides detailed information about uv command-line interface options and advanced usage patterns.
+This reference provides detailed information about uv command-line interface
+options and advanced usage patterns.
 
 ## Core Commands
 
@@ -758,7 +759,8 @@ uv reads configuration from:
 
 1. `pyproject.toml` - Project-specific settings under `[tool.uv]`
 2. `uv.toml` - Dedicated uv configuration file
-3. User-level config: `~/.config/uv/uv.toml` (Unix) or `%APPDATA%\uv\uv.toml` (Windows)
+3. User-level config: `~/.config/uv/uv.toml` (Unix) or `%APPDATA%\uv\uv.toml`
+   (Windows)
 
 Example `pyproject.toml` configuration:
 

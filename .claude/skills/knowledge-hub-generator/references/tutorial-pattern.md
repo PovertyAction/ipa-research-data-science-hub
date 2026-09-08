@@ -1,6 +1,6 @@
 # Tutorial / how-to pattern (archetype B)
 
-The Carpentries-derived structure used across the site's hands-on pages —
+The Carpentries-derived structure used across the site's hands-on pages ---
 `data-science/data-analysis/*`, `data-science/data-visualization/*`,
 `data-science/webscraping/*`, `software/shell/*`, `software/git/*`,
 `software/python/{coding,data-processing}`, and `*/how-to-*`. Use it when the
@@ -9,14 +9,14 @@ task (how-to). The canonical example is
 `data-science/data-analysis/for-loops.qmd`.
 
 For frontmatter and shared formatting (headings, code blocks, tables, images),
-see `references/page-anatomy.md` — this file covers only what is distinct to the
-archetype.
+see `references/page-anatomy.md` --- this file covers only what is distinct to
+the archetype.
 
 ## Page skeleton
 
 In order, after the frontmatter:
 
-1. **Recognition and Attribution** — a collapsed `callout-note` crediting the
+1. **Recognition and Attribution** --- a collapsed `callout-note` crediting the
    source material. Required whenever the page adapts the Carpentries or another
    licensed source; it replaces the prose page's attribution footnote.
 
@@ -36,7 +36,7 @@ In order, after the frontmatter:
    :::
    ```
 
-2. **Learning Objectives** — a `callout-note` with a `## Learning Objectives`
+2. **Learning Objectives** --- a `callout-note` with a `## Learning Objectives`
    title and a bullet list of what the reader will be able to do. These usually
    mirror the `abstract`.
 
@@ -51,12 +51,13 @@ In order, after the frontmatter:
    :::
    ```
 
-3. **Body sections** — full-sentence `##` headings that restate the learning
-   point, not noun-phrase headings. (`## A for loop is made up of a collection, a
-   loop variable, and a body`, not `## For loop structure`.) Each section
-   interleaves short explanation with the input/output code idiom below.
+3. **Body sections** --- full-sentence `##` headings that restate the learning
+   point, not noun-phrase headings.
+   (`## A for loop is made up of a collection, a    loop variable, and a body`,
+   not `## For loop structure`.) Each section interleaves short explanation with
+   the input/output code idiom below.
 
-4. **Exercises** — a `callout-note` titled `## Exercise: <name>`, containing a
+4. **Exercises** --- a `callout-note` titled `## Exercise: <name>`, containing a
    collapsible `callout-tip` solution:
 
    ```markdown
@@ -75,7 +76,7 @@ In order, after the frontmatter:
    :::
    ```
 
-5. **Key Points** — the closer: a `callout-important` titled `## Key Points`
+5. **Key Points** --- the closer: a `callout-important` titled `## Key Points`
    summarizing the takeaways as a bullet list. Every archetype-B page ends here
    (in place of the prose page's References section).
 
@@ -93,7 +94,7 @@ In order, after the frontmatter:
 ## Code: the input/output idiom
 
 Show commands and their results as a static code block followed by a companion
-`output` block — do not use live `{python}` chunks unless the page genuinely
+`output` block --- do not use live `{python}` chunks unless the page genuinely
 renders computed output (e.g. plots). The command block's language is the tool
 (`python`, `bash`, `stata`, `powershell`); the result block is always `output`
 (or `error` for an expected error):
@@ -118,8 +119,8 @@ inline with backticks (`` `git branch` ``, `` `--force` ``).
 ## Notes
 
 - A how-to page named `how-to-*` is still authored in this archetype (Learning
-  Objectives + Key Points), even though its Diátaxis intent is "how-to" — keep
+  Objectives + Key Points), even though its Diátaxis intent is "how-to" --- keep
   the how-to focus (directions toward a goal, not a teaching lesson) while using
   this structure.
-- Public-first still applies: IPA-specific context goes in a `callout-note`
-  (see `references/page-anatomy.md`).
+- Public-first still applies: IPA-specific context goes in a `callout-note` (see
+  `references/page-anatomy.md`).

@@ -1,43 +1,53 @@
 ---
 title: "Conditionals"
-abstract: |
-  Correctly write programs that use if and else statements and simple Boolean expressions (without logical operators). Trace the execution of unnested conditionals and conditionals inside loops.
+abstract: >-
+  Correctly write programs that use if and else statements and simple Boolean
+  expressions (without logical operators). Trace the execution of unnested
+  conditionals and conditionals inside loops.
 authors-ipa:
   - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
 contributors:
   - "[The Carpentries](https://carpentries.org/)"
+categories:
+  - tutorial
 keywords: ["Python", "Programming", "Tutorial", "Data Science", "Jupyter"]
 license:
   text: "CC BY-SA"
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-note collapse="true" title="Recognition and Attribution"}
+::: {.callout-note collapse="true" title="Recognition and Attribution"}
+This page is adapted from the [Software Carpentry Python Gapminder
+lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c)
+[The Carpentries](https://carpentries.org/). The original material is licensed
+under the [Creative Commons Attribution 4.0 International License (CC BY
+4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-This page is adapted from the [Software Carpentry Python Gapminder lesson](https://swcarpentry.github.io/python-novice-gapminder/), Copyright (c) [The Carpentries](https://carpentries.org/). The original material is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+**Changes made:** Content has been modified and expanded by Innovations for
+Poverty Action (IPA) to include IPA-specific examples and context relevant to
+research data analysis.
 
-**Changes made:** Content has been modified and expanded by Innovations for Poverty Action (IPA) to include IPA-specific examples and context relevant to research data analysis.
-
-**Original citation:**
-Achterberg, et al. (2024). swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and Programming in Python (v2024.6.27.1). Zenodo. <https://doi.org/10.5281/zenodo.12167686>
+**Original citation:** Achterberg, et al. (2024).
+swcarpentry/python-novice-gapminder: Software Carpentry: Plotting and
+Programming in Python (v2024.6.27.1). Zenodo.
+<https://doi.org/10.5281/zenodo.12167686>
 :::
 
 ::: {.callout-note}
-
 ## Learning Objectives
 
-- Correctly write programs that use if and else statements and simple Boolean expressions (without logical operators).
+- Correctly write programs that use if and else statements and simple Boolean
+  expressions (without logical operators).
 - Trace the execution of unnested conditionals and conditionals inside loops.
-
 :::
 
 ## Use `if` statements to control whether or not a block of code is executed
 
-- An `if` statement (more properly called a *conditional* statement)
-  controls whether some block of code is executed or not.
+- An `if` statement (more properly called a *conditional* statement) controls
+  whether some block of code is executed or not.
 - Structure is similar to a `for` statement:
-    - First line opens with `if` and ends with a colon
-    - Body containing one or more statements is indented (usually by 4 spaces)
+  - First line opens with `if` and ends with a colon
+  - Body containing one or more statements is indented (usually by 4 spaces)
 
 ```python
 mass = 3.54
@@ -73,7 +83,8 @@ for m in masses:
 ## Use `else` to execute a block of code when an `if` condition is *not* true
 
 - `else` can be used following an `if`.
-- Allows us to specify an alternative to execute when the `if` *branch* isn't taken.
+- Allows us to specify an alternative to execute when the `if` *branch* isn't
+  taken.
 
 ```python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -120,8 +131,9 @@ for m in masses:
 
 ## Conditions are tested once, in order
 
-- Python steps through the branches of the conditional in order, testing each in turn.
-- So ordering matters.
+- Python steps through the branches of the conditional in order, testing each in
+  turn.
+- Ordering matters.
 
 ```python
 grade = 85
@@ -190,15 +202,15 @@ final velocity: 30.0
   </tr>
 </table>
 
-- The program must have a `print` statement *outside* the body of the loop
-  to show the final value of `velocity`,
-  since its value is updated by the last iteration of the loop.
+- The program must have a `print` statement *outside* the body of the loop to
+  show the final value of `velocity`, since its value is updated by the last
+  iteration of the loop.
 
 ## Compound Relations Using `and`, `or`, and Parentheses
 
-Often, you want some combination of things to be true. You can combine
-relations within a conditional using `and` and `or`. Continuing the example
-above, suppose you have
+Often, you want some combination of things to be true. You can combine relations
+within a conditional using `and` and `or`. Continuing the example above, suppose
+you have
 
 ```python
 mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
@@ -216,9 +228,9 @@ for i in range(5):
         print("Whoa!  Something is up with the data. Check it")
 ```
 
-Just like with arithmetic, you can and should use parentheses whenever there
-is possible ambiguity. A good general rule is to *always* use parentheses
-when mixing `and` and `or` in the same condition. That is, instead of:
+Just like with arithmetic, you can and should use parentheses whenever there is
+possible ambiguity. A good general rule is to *always* use parentheses when
+mixing `and` and `or` in the same condition. That is, instead of:
 
 ```python
 if mass[i] <= 2 or mass[i] >= 5 and velocity[i] > 20:
@@ -234,7 +246,6 @@ if mass[i] <= 2 or (mass[i] >= 5 and velocity[i] > 20):
 so it is perfectly clear to a reader (and to Python) what you really mean.
 
 ::: {.callout-note}
-
 ## Exercise: Tracing Execution
 
 What does this program print?
@@ -248,24 +259,21 @@ elif pressure <= 50.0:
 print(pressure)
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution
 
 ```output
 25.0
 ```
-
-:::
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise: Trimming Values
 
-Fill in the blanks so that this program creates a new list
-containing zeroes where the original list's values were negative
-and ones where the original list's values were positive.
+Fill in the blanks so that this program creates a new list containing zeroes
+where the original list's values were negative and ones where the original
+list's values were positive.
 
 ```python
 original = [-1.5, 0.2, 0.4, 0.0, -1.3, 0.4]
@@ -282,8 +290,7 @@ print(result)
 [0, 1, 1, 1, 0, 1]
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution
 
 ```python
@@ -296,12 +303,10 @@ for value in original:
         result.append(1)
 print(result)
 ```
-
-:::
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise: Processing Small Files
 
 Modify this program so that it only processes files with fewer than 50 records.
@@ -315,8 +320,7 @@ for filename in glob.glob('data/*.csv'):
         print(filename, len(contents))
 ```
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution
 
 ```python
@@ -327,12 +331,10 @@ for filename in glob.glob('data/*.csv'):
     if len(contents) < 50:
         print(filename, len(contents))
 ```
-
-:::
+:::::
 :::
 
 ::: {.callout-note}
-
 ## Exercise: Initializing
 
 Modify this program so that it finds the largest and smallest values in the list
@@ -350,11 +352,10 @@ for v in values:
 print(smallest, largest)
 ```
 
-What are the advantages and disadvantages of using this method
-to find the range of the data?
+What are the advantages and disadvantages of using this method to find the range
+of the data?
 
-::: {.callout-tip collapse="true"}
-
+::::: {.callout-tip collapse="true"}
 ## Solution
 
 ```python
@@ -368,17 +369,18 @@ for v in values:
         largest = max(largest, v)
 print(smallest, largest)
 ```
-
+:::::
 :::
-:::
 
-If you wrote `== None` instead of `is None`, that works too, but Python programmers always
-write `is None` because of the special way `None` works in the language.
+If you wrote `== None` instead of `is None`, that works too, but Python
+programmers always write `is None` because of the special way `None` works in
+the language.
 
-It can be argued that an advantage of using this method would be to make the code more readable.
-However, a disadvantage is that this code is not efficient because within each iteration of the
-`for` loop statement, there are two more loops that run over two numbers each (the `min` and
-`max` functions). It would be more efficient to iterate over each number just once:
+It can be argued that an advantage of using this method would be to make the
+code more readable. However, a disadvantage is that this code is not efficient
+because within each iteration of the `for` loop statement, there are two more
+loops that run over two numbers each (the `min` and `max` functions). It would
+be more efficient to iterate over each number just once:
 
 ```python
 values = [-2,1,65,78,-54,-24,100]
@@ -391,9 +393,10 @@ for v in values:
 print(smallest, largest)
 ```
 
-Now we have one loop, but four comparison tests. There are two ways we could improve it further:
-either use fewer comparisons in each iteration, or use two loops that each contain only one
-comparison test. The simplest solution is often the best:
+Now we have one loop, but four comparison tests. There are two ways we could
+improve it further: either use fewer comparisons in each iteration, or use two
+loops that each contain only one comparison test. The simplest solution is often
+the best:
 
 ```python
 values = [-2,1,65,78,-54,-24,100]
@@ -403,7 +406,6 @@ print(smallest, largest)
 ```
 
 ::: {.callout-important}
-
 ## Key Points
 
 - Use `if` statements to control whether or not a block of code is executed.
@@ -412,5 +414,4 @@ print(smallest, largest)
 - Use `elif` to specify additional tests.
 - Conditions are tested once, in order.
 - Create a table showing variables' values to trace a program's execution.
-
 :::

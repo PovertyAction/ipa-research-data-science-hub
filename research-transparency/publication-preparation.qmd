@@ -1,8 +1,13 @@
 ---
 title: "Data Publication Preparation"
 
-abstract: "This reference guide documents standardized procedures for preparing research materials—including data, code, and documentation—for public sharing in data repositories."
+abstract: >-
+  This reference guide documents standardized procedures for preparing research
+  materials—including data, code, and documentation—for public sharing in data
+  repositories.
 
+categories:
+  - reference
 keywords:
   - data preparation
   - data sharing
@@ -28,53 +33,57 @@ license:
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
-:::{.callout-tip appearance="simple"}
-
+::: {.callout-tip appearance="simple"}
 ## Key Takeaways
 
-* Data publication requires systematic removal of personally identifiable information (PII) while maintaining analytical integrity.
-* Complete documentation includes datasets, code, survey instruments, user-written commands, readme files, and codebooks.
-* Materials must be cleaned, tested for reproducibility, and properly documented before public sharing.
-
+- Data publication requires systematic removal of personally identifiable
+  information (PII) while maintaining analytical integrity.
+- Complete documentation includes datasets, code, survey instruments,
+  user-written commands, readme files, and codebooks.
+- Materials must be cleaned, tested for reproducibility, and properly documented
+  before public sharing.
 :::
 
 ## Purpose and Scope
 
-Data repositories allow researchers to share study materials publicly, raising research reliability by enabling verification and reuse of data. This guide documents standardized procedures for preparing materials for public sharing.
+Data repositories allow researchers to share study materials publicly, raising
+research reliability by enabling verification and reuse of data. This guide
+documents standardized procedures for preparing materials for public sharing.
 
 ## Required Materials for Publication
 
 We strongly recommend sharing the following materials:
 
-| File Type | Description | Required? |
-| ----------- | ------------- | ----------- |
-| **Datasets** | Full set of collected variables (survey, administrative data, etc.), excluding PII | Yes |
-| **Data documentation** | Context, notes on data-cleaning process, methodological details | Yes |
-| **User-written commands** | ZIP file of all custom commands/programs | If applicable |
-| **Analysis code** | Code required to reproduce publication results | If applicable |
-| **ReadMe file** | Instructions for replication, including software requirements and command lists | Yes |
-| **Codebook** | Variable labels, names, and descriptions | Yes |
-| **Survey instruments** | All questionnaires and data collection tools | Yes |
+  | File Type                 | Description                                                                        | Required?     |
+  | ------------------------- | ---------------------------------------------------------------------------------- | ------------- |
+  | **Datasets**              | Full set of collected variables (survey, administrative data, etc.), excluding PII | Yes           |
+  | **Data documentation**    | Context, notes on data-cleaning process, methodological details                    | Yes           |
+  | **User-written commands** | ZIP file of all custom commands/programs                                           | If applicable |
+  | **Analysis code**         | Code required to reproduce publication results                                     | If applicable |
+  | **ReadMe file**           | Instructions for replication, including software requirements and command lists    | Yes           |
+  | **Codebook**              | Variable labels, names, and descriptions                                           | Yes           |
+  | **Survey instruments**    | All questionnaires and data collection tools                                       | Yes           |
 
-We recommend sharing materials in the following format to encourage accessibility and long-term usability:
+We recommend sharing materials in the following format to encourage
+accessibility and long-term usability:
 
-| Material Type | Recommended Formats |
-| -------------- | ------------------- |
-| Data | `.csv`, `.json`, `.dta` (with version specified), `.parquet` (with compression-method specified)  |
-| Code | `.do`, `.py`, `.r`, use notebooks sparingly (`.ipynb`, `.Rmd`, `.qmd`) |
-| Documentation | `.pdf`, `.md`, `.txt` |
-| Codebooks | `.pdf`, `.xlsx`, `.csv` |
-| Surveys | `.pdf`, `.docx`, `.xlsx` |
+  | Material Type | Recommended Formats                                                                              |
+  | ------------- | ------------------------------------------------------------------------------------------------ |
+  | Data          | `.csv`, `.json`, `.dta` (with version specified), `.parquet` (with compression-method specified) |
+  | Code          | `.do`, `.py`, `.r`, use notebooks sparingly (`.ipynb`, `.Rmd`, `.qmd`)                           |
+  | Documentation | `.pdf`, `.md`, `.txt`                                                                            |
+  | Codebooks     | `.pdf`, `.xlsx`, `.csv`                                                                          |
+  | Surveys       | `.pdf`, `.docx`, `.xlsx`                                                                         |
 
 ### Levels of Material Sharing
 
 Replication packages can be shared at different levels of completeness:
 
-| Level | Materials Included | Enables |
-| ----- | ------------------ | ------- |
-| **Minimum** | Data and code underlying published results, ReadMe explaining file relationships, minimal study-level metadata | Verifying that tables in the published article can be reproduced by running the code; limited reuse |
-| **Recommended** | Minimum level, plus full set of collected variables (excluding PII), detailed data documentation, survey instruments | Full potential for reuse and secondary analysis; better understanding of study context for systematic reviews and policy application |
-| **Exceptional** | Recommended level, plus cleaning and variable construction code | Start-to-finish reproducibility |
+  | Level           | Materials Included                                                                                                   | Enables                                                                                                                              |
+  | --------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+  | **Minimum**     | Data and code underlying published results, ReadMe explaining file relationships, minimal study-level metadata       | Verifying that tables in the published article can be reproduced by running the code; limited reuse                                  |
+  | **Recommended** | Minimum level, plus full set of collected variables (excluding PII), detailed data documentation, survey instruments | Full potential for reuse and secondary analysis; better understanding of study context for systematic reviews and policy application |
+  | **Exceptional** | Recommended level, plus cleaning and variable construction code                                                      | Start-to-finish reproducibility                                                                                                      |
 
 ### Organizing Materials
 
@@ -103,16 +112,16 @@ study-materials/
 
 **Variable names** should be:
 
-* Short (under 32 characters)
-* Descriptive
-* Linked to survey questions where applicable
-* Free of spaces and special characters
+- Short (under 32 characters)
+- Descriptive
+- Linked to survey questions where applicable
+- Free of spaces and special characters
 
 **Variable labels** must:
 
-* Stay within Stata's 80-character limit
-* Reference survey question numbers
-* Be interpretable without additional context
+- Stay within Stata's 80-character limit
+- Reference survey question numbers
+- Be interpretable without additional context
 
 **Example**:
 
@@ -123,7 +132,8 @@ Variable label: Q1. Gender of respondent
 
 ### Categorical Variables with "Other" Options
 
-Many surveys include categorical variables with "Other, specify" options. Review these carefully to:
+Many surveys include categorical variables with "Other, specify" options. Review
+these carefully to:
 
 1. Recode responses that match existing categories
 2. Create new categories if multiple responses suggest a pattern
@@ -133,41 +143,46 @@ Many surveys include categorical variables with "Other, specify" options. Review
 
 Verify that:
 
-* All variables have descriptive labels
-* Value labels exist for all categorical variables
-* Missing value codes are consistent and documented
-* Outliers have been reviewed and documented
-* Variable types are appropriate (numeric vs. string)
-* Date variables are in standard formats
+- All variables have descriptive labels
+- Value labels exist for all categorical variables
+- Missing value codes are consistent and documented
+- Outliers have been reviewed and documented
+- Variable types are appropriate (numeric vs. string)
+- Date variables are in standard formats
 
 ## Removing Personally Identifiable Information
 
-Before sharing data publicly, all personally identifiable information (PII) must be removed or anonymized. PII includes direct identifiers (names, contact information, precise locations) and indirect identifiers (combinations of variables that could identify individuals).
+Before sharing data publicly, all personally identifiable information (PII) must
+be removed or anonymized. PII includes direct identifiers (names, contact
+information, precise locations) and indirect identifiers (combinations of
+variables that could identify individuals).
 
-:::{.callout-important}
-
+::: {.callout-important}
 ## Comprehensive PII Guidance
 
-For detailed information on identifying and removing PII, including HIPAA guidelines, detection strategies, and anonymization techniques, see the [Data Security Protocol: Personally Identifiable Information](https://data.poverty-action.org/data-security/data-security-protocol.html#personally-identifiable-information-pii) section of IPA's Data Security Hub.
-
+For detailed information on identifying and removing PII, including HIPAA
+guidelines, detection strategies, and anonymization techniques, see the [Data
+Security Protocol: Personally Identifiable
+Information](https://data.poverty-action.org/data-security/data-security-protocol.html#personally-identifiable-information-pii)
+section of IPA's Data Security Hub.
 :::
 
 ### Quick PII Removal Checklist
 
 **Always remove or anonymize**:
 
-* Names (participants, relatives, staff, enumerators)
-* Contact information (phone, email, address)
-* Geographic locations smaller than 20,000 people
-* Financial identifiers (bank accounts, credit cards)
-* Government IDs and medical identifiers
+- Names (participants, relatives, staff, enumerators)
+- Contact information (phone, email, address)
+- Geographic locations smaller than 20,000 people
+- Financial identifiers (bank accounts, credit cards)
+- Government IDs and medical identifiers
 
 **Check for PII in**:
 
-* Variable names and labels
-* String variables and free-text responses
-* Code comments and file paths
-* Survey instruments and documentation
+- Variable names and labels
+- String variables and free-text responses
+- Code comments and file paths
+- Survey instruments and documentation
 
 ## Code Documentation
 
@@ -196,9 +211,9 @@ cd "INSERT WORKING DIRECTORY HERE"
 
 2. **Clear comments explaining**:
 
-   * Major sections and subsections
-   * Complex operations
-   * Non-obvious decisions
+   - Major sections and subsections
+   - Complex operations
+   - Non-obvious decisions
 
 3. **Output linked to publications**:
 
@@ -239,9 +254,9 @@ do "code/06_figures.do"
 
 Include all custom commands (.ado files) used in your analysis:
 
-* Identify them: `which outreg2`
-* Collect from: `C:\Users\[username]\ado\plus\` or `\ado\personal\`
-* Package as: ZIP file with list in ReadMe
+- Identify them: `which outreg2`
+- Collect from: `C:\Users\[username]\ado\plus\` or `\ado\personal\`
+- Package as: ZIP file with list in ReadMe
 
 ### Code Verification
 
@@ -290,12 +305,12 @@ Before sharing, verify that:
 
 Provide complete metadata including:
 
-* Study title and description
-* Authors and affiliations
-* Geographic and temporal coverage
-* Unit of observation and sample size
-* Key variables and collection methods
-* Related publications and funding source
+- Study title and description
+- Authors and affiliations
+- Geographic and temporal coverage
+- Unit of observation and sample size
+- Key variables and collection methods
+- Related publications and funding source
 
 ## Pre-Publication Checklist
 
@@ -303,64 +318,79 @@ Before sharing materials publicly:
 
 **Data and Documentation**:
 
-* [ ] All PII removed from all materials
-* [ ] Variable labels are descriptive
-* [ ] Value labels exist for categorical variables
-* [ ] ReadMe file is complete
-* [ ] Codebook documents all variables
-* [ ] Survey instruments are included
+- [ ] All PII removed from all materials
+- [ ] Variable labels are descriptive
+- [ ] Value labels exist for categorical variables
+- [ ] ReadMe file is complete
+- [ ] Codebook documents all variables
+- [ ] Survey instruments are included
 
 **Code and Reproducibility**:
 
-* [ ] Code runs without errors from master file
-* [ ] Generated output matches publication
-* [ ] User-written commands are included
-* [ ] Working directories use generic placeholders
-* [ ] File paths are relative, not absolute
+- [ ] Code runs without errors from master file
+- [ ] Generated output matches publication
+- [ ] User-written commands are included
+- [ ] Working directories use generic placeholders
+- [ ] File paths are relative, not absolute
 
 **Metadata**:
 
-* [ ] Metadata template is complete
-* [ ] All referenced files exist
-* [ ] Contact information is current
+- [ ] Metadata template is complete
+- [ ] All referenced files exist
+- [ ] Contact information is current
 
 ## Best Practices Throughout the Project Lifecycle
 
-Following these practices during your project makes data curation and publication easier later.
+Following these practices during your project makes data curation and
+publication easier later.
 
 ### Before Data Collection
 
-* **Register a pre-analysis plan** for the study on a trial registry such as the [AEA RCT Registry](https://www.socialscienceregistry.org/)
-* **Use `_pii` suffix** in variable names for survey questions that will collect personally identifiable information---this simplifies later anonymization
-* **Set up IPA's folder structure** from the start to facilitate file management and data flow
+- **Register a pre-analysis plan** for the study on a trial registry such as the
+  [AEA RCT Registry](https://www.socialscienceregistry.org/)
+- **Use `_pii` suffix** in variable names for survey questions that will collect
+  personally identifiable information---this simplifies later anonymization
+- **Set up IPA's folder structure** from the start to facilitate file management
+  and data flow
 
 ### After Data Collection
 
-* **Anonymize data before writing cleaning code**---if PII variables are used in cleaning and shaping code, that code will break during curation and may need to be excluded from the replication package
-* **Follow coding best practices** when writing analysis code to ensure it runs smoothly without breaking
-* **Avoid post-publication code changes** that could influence outputs and create discrepancies between code results and reported findings
+- **Anonymize data before writing cleaning code**---if PII variables are used in
+  cleaning and shaping code, that code will break during curation and may need
+  to be excluded from the replication package
+- **Follow coding best practices** when writing analysis code to ensure it runs
+  smoothly without breaking
+- **Avoid post-publication code changes** that could influence outputs and
+  create discrepancies between code results and reported findings
 
 ## Sharing Procedures
 
 ### Internal Archiving
 
-**Minimum requirements** before project close include a de-identified dataset, survey instruments, and ReadMe file. **Recommended additions** are analysis code and variable construction code to enable full reproducibility of results.
+**Minimum requirements** before project close include a de-identified dataset,
+survey instruments, and ReadMe file. **Recommended additions** are analysis code
+and variable construction code to enable full reproducibility of results.
 
 ### Public Repository Options
 
-Public data repositories provide specialized infrastructure for sharing research materials with the broader scientific community. These platforms offer standardized systems for depositing, documenting, and preserving datasets beyond internal archiving.
+Public data repositories provide specialized infrastructure for sharing research
+materials with the broader scientific community. These platforms offer
+standardized systems for depositing, documenting, and preserving datasets beyond
+internal archiving.
 
 **Benefits**:
 
-* Persistent DOI for citation
-* Long-term preservation
-* Increased discoverability
-* Standard metadata formats
+- Persistent DOI for citation
+- Long-term preservation
+- Increased discoverability
+- Standard metadata formats
 
-:::{.callout-note}
-
+::: {.callout-note}
 #### IPA's Data Repository
 
-IPA maintains a data repository using Harvard's Dataverse at [dataverse.harvard.edu/dataverse/IPA](https://dataverse.harvard.edu/dataverse/IPA). For step-by-step instructions on curating and uploading a replication package, see [How to Publish a Replication Package to Dataverse](how-to-publish-dataverse.qmd).
-
+IPA maintains a data repository using Harvard's Dataverse at
+[dataverse.harvard.edu/dataverse/IPA](https://dataverse.harvard.edu/dataverse/IPA).
+For step-by-step instructions on curating and uploading a replication package,
+see [How to Publish a Replication Package to
+Dataverse](how-to-publish-dataverse.qmd).
 :::

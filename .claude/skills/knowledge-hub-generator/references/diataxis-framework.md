@@ -1,7 +1,8 @@
 > **Attribution.** The Diátaxis material reproduced below is from the Diátaxis
-> documentation framework by Daniele Procida (<https://diataxis.fr/>), used under
-> the Creative Commons Attribution-ShareAlike 4.0 International License
-> (CC BY-SA 4.0). To cite Diátaxis, refer to the website: <https://diataxis.fr/>.
+> documentation framework by Daniele Procida (<https://diataxis.fr/>), used
+> under the Creative Commons Attribution-ShareAlike 4.0 International License
+> (CC BY-SA 4.0). To cite Diátaxis, refer to the website:
+> <https://diataxis.fr/>.
 
 diataxis-documentation-framework/index.rst
 
@@ -2248,7 +2249,7 @@ the reader stands in relation to the craft in question, in a relationship of *wo
  
 ..  sidebar::
  
-	To help avoid being misled by intuition, see :ref:`compass`.
+    To help avoid being misled by intuition, see :ref:`compass`.
  
 **Reference** is what a user needs in order help *apply* knowledge and skill, while they
 are working.
