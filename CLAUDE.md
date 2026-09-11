@@ -154,9 +154,6 @@ All `.qmd` files need:
   documentation within the Diataxis Framework.
 - `license`: "CC BY-SA" unless otherwise specified
 
-Always move the `:::{.custom-summary-block}...:::` to the abstract and provide
-readability improvements.
-
 ## Architecture and Structure
 
 ### Content Organization

@@ -77,7 +77,7 @@ Field notes:
   only when there are real contributors; do not pad it.
 - **`categories`** --- required on every content page. The **first** entry is
   the page's Diátaxis type, exactly one of
-  `tutorial | how-to | reference |   explanation` (lowercase). The
+  `tutorial | how-to | reference |  explanation` (lowercase). The
   `_extensions/diataxis-badge` Lua filter and
   `assets/design-styles/title-block.html` render it as a badge above the title,
   and `how-to-guides.qmd` auto-lists every page categorized `how-to` --- so the
@@ -105,18 +105,7 @@ After the frontmatter, in order:
 1. **Optional lead image** (see "Images" below). Common on overview and section
    pages, not required.
 
-2. **Optional summary block** --- a one-sentence restatement of the abstract, as
-   the first visible text. Used mainly on software overview and `index` pages,
-   not on every page. When adapting outside material, this is where the
-   attribution footnote hangs (see "Credits").
-
-   ```markdown
-   :::{.custom-summary-block}
-   One-sentence summary of the page.
-   :::
-   ```
-
-3. **Key Takeaways** --- the near-universal opening block for prose pages. 2--4
+2. **Key Takeaways** --- the near-universal opening block for prose pages. 2--4
    points (usually 3) capturing the essential ideas:
 
    ```markdown
@@ -128,7 +117,7 @@ After the frontmatter, in order:
    :::
    ```
 
-4. **Body sections** --- start at `##`. Introduce and define terms, then develop
+3. **Body sections** --- start at `##`. Introduce and define terms, then develop
    the topic. For explanation and reference pages, break detail into
    subsections; collapsible callouts keep long pages scannable:
 
@@ -139,7 +128,7 @@ After the frontmatter, in order:
    :::
    ```
 
-5. **References / Additional Resources** at the end, when the page has sources
+4. **References / Additional Resources** at the end, when the page has sources
    (see "References" below).
 
 ## Public-first callouts
@@ -174,9 +163,7 @@ IPA staff are covered by the organization's Enterprise license. Sign in at
   not a callout:
 
   ```markdown
-  :::{.custom-summary-block}
   Summary sentence.[^source]
-  :::
 
   [^source]: Adapted from [Source Title](https://example.com/source) by Author,
   used under the [MIT License](https://example.com/license).
@@ -265,7 +252,7 @@ examples: `research-transparency/index.qmd`, `data-quality/index.qmd`):
 
 1. A short prose intro (one or two paragraphs).
 2. **`## What You Will Find Here`** --- one
-   `::: {.callout-tip    appearance="simple"}` "card" per child page or theme,
+   `::: {.callout-tip  appearance="simple"}` "card" per child page or theme,
    each with a `##` title, bullet links to the child `.qmd` files (a `-` dash
    and a one-line description after each link, or a blurb paragraph below the
    list).
