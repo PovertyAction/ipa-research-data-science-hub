@@ -12,7 +12,7 @@ Practical guide to planning and delivering enumerator training and survey manual
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

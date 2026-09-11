@@ -2,6 +2,8 @@ Explanation
 
 # GitHub
 
+GitHub is a platform for hosting and collaborating on computer code. It is a place where you can store your code, track changes, and collaborate with others. GitHub is built on top of Git, a version control system that allows you to track changes in your codebase over time. GitHub provides a web-based interface for interacting with Git repositories, as well as a desktop application (GitHub Desktop) and a command-line interface (CLI) for working with Git repositories on your local computer.
+
 ------------------------------------------------------------------------
 
 ## Authors
@@ -10,13 +12,11 @@ Explanation
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-GitHub is a platform for hosting and collaborating on computer code. It is a place where you can store your code, track changes, and collaborate with others. GitHub is built on top of Git, a version control system that allows you to track changes in your codebase over time. GitHub provides a web-based interface for interacting with Git repositories, as well as a desktop application (GitHub Desktop) and a command-line interface (CLI) for working with Git repositories on your local computer.
 
 ## How to install GitHub Software?
 

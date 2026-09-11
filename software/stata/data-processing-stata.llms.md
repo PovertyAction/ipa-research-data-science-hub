@@ -2,6 +2,8 @@ Tutorial
 
 # Data Processing in Stata
 
+This section discusses more advanced techniques to organize and generate outcomes in Stata.
+
 ------------------------------------------------------------------------
 
 ## Authors
@@ -17,13 +19,11 @@ Tutorial
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-This section discusses more advanced techniques to organize and generate outcomes in Stata.
 
 ![](../../assets/images/data-mgmt-stata.png)
 

@@ -2,6 +2,8 @@ Explanation
 
 # Getting Started with Stata
 
+This page provides a brief introduction to Stata, the statistical software used at IPA for data cleaning, processing, and analysis.
+
 ------------------------------------------------------------------------
 
 ## Authors
@@ -11,13 +13,11 @@ Explanation
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-This page provides a brief introduction to Stata, the statistical software used at IPA for data cleaning, processing, and analysis.
 
 ![](../../assets/images/statanow-collage.png)
 

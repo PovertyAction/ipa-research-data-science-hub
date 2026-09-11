@@ -25,13 +25,11 @@ Step-by-step guide to implement essential data security measures for research pr
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-This hands-on guide walks you through implementing data security protocols for research projects. Start with the 30-minute Quick Start for immediate protection, then use role-specific checklists for comprehensive implementation. Includes emergency procedures for when things go wrong.
 
 > **NOTE:**
 >

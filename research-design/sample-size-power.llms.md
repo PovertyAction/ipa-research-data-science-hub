@@ -16,7 +16,7 @@ This resource covers essential concepts of statistical power and sample size for
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
@@ -58,7 +58,7 @@ Estimated treatment effect of 0.28 SD (Banerjee et al. 2007)
 
 Sample size directly controls the width of the sampling distribution around any estimated treatment effect (\\\hat{\beta}\\). As \\N\\ increases, estimates cluster more tightly around the true effect, reducing the risk of both false positives and false negatives. The estimated treatment effect follows a normal distribution:
 
-\\ \hat{\beta} \sim \mathcal{N}\left(\beta,\\ \frac{\sigma^2}{N p(1-p)}\right) \\
+\\ \hat{\beta} \sim \mathcal{N}\left( \beta,\\ \frac{\sigma^2}{N p(1 - p)} \right) \\
 
 where \\\beta\\ is the true effect, \\\sigma^2\\ is the outcome variance, \\N\\ is the total sample size, and \\p\\ is the proportion assigned to treatment. Power increases when \\N\\ grows, \\\sigma^2\\ shrinks, or \\p\\ approaches 0.5.
 

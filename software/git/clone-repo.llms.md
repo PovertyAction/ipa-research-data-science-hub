@@ -12,7 +12,7 @@ Learn how to clone an existing GitHub repository to your local computer using VS
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

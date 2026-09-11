@@ -16,7 +16,7 @@ Learn how to perform power calculations for randomized controlled trials using S
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

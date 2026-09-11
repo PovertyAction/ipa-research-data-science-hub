@@ -2,6 +2,8 @@ Tutorial
 
 # Coding in Stata
 
+This guide shows how to work with Stata files, numerical formats, dataset creation, memory management, quality control, and useful commands.
+
 ------------------------------------------------------------------------
 
 ## Authors
@@ -17,13 +19,11 @@ Tutorial
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-This guide shows how to work with Stata files, numerical formats, dataset creation, memory management, quality control, and useful commands.
 
 > **TIP:**
 >

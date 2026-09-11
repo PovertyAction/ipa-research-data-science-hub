@@ -2,6 +2,8 @@ Explanation
 
 # Virtual Environments
 
+This page provides an overview of virtual environments for Python, R, Stata, and Docker, explaining how to create isolated workspaces for reproducible research workflows.
+
 ------------------------------------------------------------------------
 
 ## Authors
@@ -14,13 +16,11 @@ Explanation
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-Virtual environments create isolated workspaces for each project, preventing conflicts between dependencies that require different versions of the same package. This guide covers virtual environment approaches for Python (uv, venv, conda), R (renv), Stata (repado), and Docker containers. For detailed guidance, see the individual pages for each tool.
 
 ## Python Virtual Environments
 

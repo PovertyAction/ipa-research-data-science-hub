@@ -2,7 +2,7 @@ Explanation
 
 # Visual Studio Code
 
-Visual Studio Code (VS Code) is a versatile code editor used for writing, editing, and developing text-based documents and programs. It is recommended for collaborative code-first data and technology projects at IPA.
+“Visual Studio Code (VS Code) is a versatile code editor used for writing, editing, and developing text-based documents and programs. It is recommended for collaborative code-first data and technology projects at IPA.”
 
 ------------------------------------------------------------------------
 
@@ -12,13 +12,11 @@ Visual Studio Code (VS Code) is a versatile code editor used for writing, editin
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-Visual Studio Code, often referred to as “VS Code,” is a software tool for writing, editing, and developing text-based documents and programs. At IPA, we use a variety of tools for editing documents and writing code. However, we recommend using VS Code as a standard ecosystem for working on collaborative code-first data and technology projects. You may be more comfortable working with other tools like `Stata Do File Editor`, `RStudio` for `R`, or `Jupyter Notebooks`. We encourage you to work with the tools that you are most comfortable with. However, VS Code provides a common ecosystem for source-controlled, collaborative, polyglot development of data and technology solutions. We encourage IPA teams to contribute to this documentation in order to share best practices and useful settings or extensions.
 
 ## How to Install VS Code?
 

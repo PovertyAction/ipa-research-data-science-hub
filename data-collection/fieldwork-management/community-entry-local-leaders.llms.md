@@ -17,7 +17,7 @@ This guide covers how to initiate and manage relationships with communities and 
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

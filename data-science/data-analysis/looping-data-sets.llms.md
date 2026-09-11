@@ -16,7 +16,7 @@ Be able to read and write globbing expressions that match sets of files. Use glo
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

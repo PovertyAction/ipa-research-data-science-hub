@@ -12,7 +12,7 @@ Overview of IPA’s research transparency resources, covering open science princ
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

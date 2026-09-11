@@ -2,6 +2,8 @@ Explanation
 
 # Getting started with Quarto
 
+Quarto is a document authoring tool that allows you to create documents using markdown. Quarto is open source (MIT License) software developed and maintained by [Posit](https://posit.co/). It is a powerful tool that allows you to create documents with a variety of formats such as HTML websites, PDF, PowerPoint, Word, and more. Quarto is a great tool for creating documents that are easy to read and share.
+
 ------------------------------------------------------------------------
 
 ## Authors
@@ -10,13 +12,11 @@ Explanation
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-Quarto is a document authoring tool that allows you to create documents using markdown. Quarto is open source (MIT License) software developed and maintained by [Posit](https://posit.co/). It is a powerful tool that allows you to create documents with a variety of formats such as HTML websites, PDF, PowerPoint, Word, and more. Quarto is a great tool for creating documents that are easy to read and share.
 
 The following video provides a quick introduction to Quarto:
 

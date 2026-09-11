@@ -16,7 +16,7 @@ Comprehensive reference for implementing phone surveys at IPA, including survey 
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
@@ -25,8 +25,6 @@ Comprehensive reference for implementing phone surveys at IPA, including survey 
 ![](../assets/images/Colombia_Survey_2020.jpg)
 
 Phone Survey in Colombia (® IPA)
-
-Reference guide to phone survey methods used at IPA—including CATI, IVR, and SMS surveys—covering implementation criteria, operational benefits and constraints, and links to tools, templates, and academic briefs. Keywords include: phone surveys, remote data collection, survey methodology, and data collection reference.
 
 > **TIP:**
 >

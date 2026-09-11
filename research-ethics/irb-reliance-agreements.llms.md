@@ -2,6 +2,8 @@ Explanation
 
 # Reliance Agreements
 
+This page outlines when reliance agreements are needed, how to start them, and associated costs.
+
 ------------------------------------------------------------------------
 
 ## Authors
@@ -11,13 +13,11 @@ Explanation
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-This page outlines when reliance agreements are needed, how to start them, and associated costs.
 
 ![](../assets/images/agreement.jpg)
 

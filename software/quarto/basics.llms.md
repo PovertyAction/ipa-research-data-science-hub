@@ -2,6 +2,8 @@ Tutorial
 
 # Writing in Quarto
 
+This guide covers the basics of writing in Quarto, including text formatting, code blocks, callouts, and tabsets.
+
 ------------------------------------------------------------------------
 
 ## Authors
@@ -10,7 +12,7 @@ Tutorial
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

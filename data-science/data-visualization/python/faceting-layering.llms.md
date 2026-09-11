@@ -17,7 +17,7 @@ Create small multiples (faceted plots) to compare across categories. Layer multi
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

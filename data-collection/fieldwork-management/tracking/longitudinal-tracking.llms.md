@@ -19,7 +19,7 @@ Advanced tracking strategies for multi-round studies. Building on fundamental su
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

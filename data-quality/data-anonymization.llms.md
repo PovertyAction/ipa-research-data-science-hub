@@ -15,7 +15,7 @@ This guide explains what data are considered personally identifiable information
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 

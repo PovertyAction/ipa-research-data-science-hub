@@ -12,13 +12,11 @@ Guide to using Docker containers for creating reproducible, portable research en
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-Docker is a containerization platform that packages applications and their dependencies into portable, isolated containers. This guide covers Docker fundamentals, creating research environments, managing data in containers, and deploying to cloud services for reproducible research workflows.
 
 ## What is Docker?
 

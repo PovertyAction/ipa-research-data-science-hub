@@ -12,13 +12,11 @@ Comprehensive guide to creating and managing Python virtual environments using u
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-
-uv is a fast, modern Python package and project manager that simplifies virtual environment creation and dependency management. This guide covers installation, environment setup, package management, and integration with common development workflows for research and data science projects.
 
 ## What is uv?
 

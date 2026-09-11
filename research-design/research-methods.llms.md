@@ -19,7 +19,7 @@ Overview of the three main methodological traditions in impact evaluation -quant
 
 ## Last Modified
 
-- September 4, 2026
+- September 11, 2026
 
 ## License
 
@@ -28,8 +28,6 @@ Overview of the three main methodological traditions in impact evaluation -quant
 ![](../assets/images/Burkina-Faso_Health_2022.jpg)
 
 An IPA survey in Burkina Faso in 2022 (© IPA)
-
-Impact evaluation draws on three broad methodological traditions: quantitative, qualitative, and mixed methods research. This page explains what each approach does, what kinds of questions it answers, and how they work together to generate evidence that is both rigorous and useful for policy.
 
 > **TIP:**
 >
