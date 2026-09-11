@@ -142,7 +142,7 @@ ipa-knowledge-hub server:
 
 In **Claude Desktop**, which does not read a `CLAUDE.md` file, you only need to enable the ipa-knowledge-hub connector.
 
-![](../../assets/images/access-ipa-knowledge-hub.png)
+![](assets/images/access-ipa-knowledge-hub.png)
 
 Connect to the IPA Knowledge Hub from Claude Desktop
 
