@@ -71,6 +71,12 @@ Data Collection at IPA, Peru (© IPA, 2022)
 
 > **TIP:**
 >
+> - [Enumerator Database Management System (EDMS)](../data-collection/fieldwork-management/edms.llms.md)
+>
+> EDMS is a joint IPA and Global Poverty Research Lab platform that manages the full enumerator lifecycle: registration, screening, recruitment, training, and performance monitoring during data collection.
+
+> **TIP:**
+>
 > - [Community Entry and Local Leader Engagement](../data-collection/fieldwork-management/community-entry-local-leaders.llms.md)
 >
 > Successful fieldwork depends on building trust with the communities and local authorities who facilitate access to respondents. This guide covers how to prepare for and conduct community entry meetings, manage relationships with local leaders throughout data collection, and close the research team’s presence through a structured community exit.

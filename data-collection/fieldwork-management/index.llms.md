@@ -26,6 +26,7 @@ Successful data collection depends on well-managed fieldwork: trained field team
 >
 > - [Field Staff Training](../../data-collection/fieldwork-management/field-staff-training.llms.md) - Planning and delivering enumerator training and survey manuals, emphasizing safety, ethics, data quality, and retraining
 > - [Community Entry and Local Leader Engagement](../../data-collection/fieldwork-management/community-entry-local-leaders.llms.md) - Initiating and managing relationships with communities and local leaders, from entry meeting to community exit
+> - [Enumerator Database Management System (EDMS)](../../data-collection/fieldwork-management/edms.llms.md) - How IPA and the Global Poverty Research Lab track enumerator registration, screening, recruitment, training, and performance across projects
 
 > **TIP:**
 >

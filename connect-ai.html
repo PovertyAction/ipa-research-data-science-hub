@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="research design, impact evaluation, counterfactual, randomized controlled trials, quasi-experimental methods, causal inference, explanation">
+<meta name="keywords" content="AI, Claude, Claude Code, MCP, how-to guide">
 
-<title>About Research Design – Knowledge Hub</title>
+<title>Connecting AI Agents to the Knowledge Hub – Knowledge Hub</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,34 +27,68 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../research-design/research-methods.html" rel="next">
-<link href="../assets/logos/ipa-favicon.ico" rel="icon">
-<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-1926c31d272dcbca5fec92b55d7bc517.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f2d33f910791fecafc338b05b62966d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-1d12d8614fcb9ba95021b7aed06f569a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f2d33f910791fecafc338b05b62966d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/logos/ipa-favicon.ico" rel="icon">
+<script src="site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-1926c31d272dcbca5fec92b55d7bc517.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f2d33f910791fecafc338b05b62966d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1d12d8614fcb9ba95021b7aed06f569a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f2d33f910791fecafc338b05b62966d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,10 +145,10 @@ cookieconsent.run({
   
 
 
-<link rel="stylesheet" href="../assets/design-styles/styles.css">
+<link rel="stylesheet" href="assets/design-styles/styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -292,9 +326,9 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../assets/logos/IPA-primary-color-RGB.png" alt="" class="navbar-logo light-content">
-    <img src="../assets/logos/IPA-primary-color-RGB-inverted.png" alt="" class="navbar-logo dark-content">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./assets/logos/IPA-primary-color-RGB.png" alt="" class="navbar-logo light-content">
+    <img src="./assets/logos/IPA-primary-color-RGB-inverted.png" alt="" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -304,7 +338,7 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> <i class="bi bi-house-door-fill" role="img" aria-label="Home">
+    <a class="nav-link" href="./index.html"> <i class="bi bi-house-door-fill" role="img" aria-label="Home">
 </i> 
 <span class="menu-text"> </span></a>
   </li>  
@@ -314,45 +348,45 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-topics">    
         <li>
-    <a class="dropdown-item" href="../research-design/index.html">
+    <a class="dropdown-item" href="./research-design/index.html">
  <span class="dropdown-text">Research Design</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../monitoring-evaluation-learning/index.html">
+    <a class="dropdown-item" href="./monitoring-evaluation-learning/index.html">
  <span class="dropdown-text">MEL</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../research-ethics/index.html">
+    <a class="dropdown-item" href="./research-ethics/index.html">
  <span class="dropdown-text">Research Ethics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-quality/index.html">
+    <a class="dropdown-item" href="./data-quality/index.html">
  <span class="dropdown-text">Data Quality</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-security/index.html">
+    <a class="dropdown-item" href="./data-security/index.html">
  <span class="dropdown-text">Data Security</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-collection/index.html">
+    <a class="dropdown-item" href="./data-collection/index.html">
  <span class="dropdown-text">Data Collection</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-cleaning/index.html">
+    <a class="dropdown-item" href="./data-cleaning/index.html">
  <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data-science/index.html">
+    <a class="dropdown-item" href="./data-science/index.html">
  <span class="dropdown-text">Data Science</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../research-transparency/index.html">
+    <a class="dropdown-item" href="./research-transparency/index.html">
  <span class="dropdown-text">Research Transparency</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../how-to-guides.html"> 
+    <a class="nav-link" href="./how-to-guides.html"> 
 <span class="menu-text">How-to Guides</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -361,43 +395,43 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-software-guides">    
         <li>
-    <a class="dropdown-item" href="../software/index.html">
+    <a class="dropdown-item" href="./software/index.html">
  <span class="dropdown-text">Software Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/shell/index.html">
+    <a class="dropdown-item" href="./software/shell/index.html">
  <span class="dropdown-text">The Shell</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/git/index.html">
+    <a class="dropdown-item" href="./software/git/index.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/github/index.html">
+    <a class="dropdown-item" href="./software/github/index.html">
  <span class="dropdown-text">GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/vscode/index.html">
+    <a class="dropdown-item" href="./software/vscode/index.html">
  <span class="dropdown-text">VS Code</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/virtualenv/index.html">
+    <a class="dropdown-item" href="./software/virtualenv/index.html">
  <span class="dropdown-text">Virtual Environments</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/stata/index.html">
+    <a class="dropdown-item" href="./software/stata/index.html">
  <span class="dropdown-text">Stata</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/python/index.html">
+    <a class="dropdown-item" href="./software/python/index.html">
  <span class="dropdown-text">Python</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/quarto/index.html">
+    <a class="dropdown-item" href="./software/quarto/index.html">
  <span class="dropdown-text">Quarto</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/claude/index.html">
+    <a class="dropdown-item" href="./software/claude/index.html">
  <span class="dropdown-text">Claude AI</span></a>
   </li>  
     </ul>
@@ -408,21 +442,21 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teams">    
         <li>
-    <a class="dropdown-item" href="../teams/grds/index.html">
+    <a class="dropdown-item" href="./teams/grds/index.html">
  <span class="dropdown-text">Global Research and Data Science</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../teams/rfe.html">
+    <a class="dropdown-item" href="./teams/rfe.html">
  <span class="dropdown-text">Right-Fit Evidence</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../CONTRIBUTING.html"> 
+    <a class="nav-link" href="./CONTRIBUTING.html"> 
 <span class="menu-text">Contributing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../connect-ai.html"> 
+    <a class="nav-link active" href="./connect-ai.html" aria-current="page"> 
 <span class="menu-text">Connect AI</span></a>
   </li>  
 </ul>
@@ -433,95 +467,38 @@ cookieconsent.run({
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../research-design/index.html">About Research Design</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/logos/IPA-primary-color-RGB.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../assets/logos/IPA-primary-color-RGB-inverted.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../research-design/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">About Research Design</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../research-design/research-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Research Methods</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../research-design/randomization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Randomization</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../research-design/sample-size-power.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sample and Power Calculations</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../research-design/measurement.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Measurement</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../research-design/survey-translation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Survey Translation</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../research-design/addressing-rct-criticisms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Addressing Common Criticisms of RCTs</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;" class="anchored">In this resource</h2>
     <ul>
-    <li><a href="#what-is-impact-evaluation" id="toc-what-is-impact-evaluation" class="nav-link active" data-scroll-target="#what-is-impact-evaluation">What is impact evaluation?</a></li>
-    <li><a href="#methods-for-estimating-impact" id="toc-methods-for-estimating-impact" class="nav-link" data-scroll-target="#methods-for-estimating-impact">Methods for estimating impact</a></li>
-    <li><a href="#pages-in-this-section" id="toc-pages-in-this-section" class="nav-link" data-scroll-target="#pages-in-this-section">Pages in this section</a></li>
+    <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
+    <li><a href="#step-1-install-uv" id="toc-step-1-install-uv" class="nav-link" data-scroll-target="#step-1-install-uv">Step 1: Install <code>uv</code></a></li>
+    <li><a href="#step-2-register-the-knowledge-hub-server" id="toc-step-2-register-the-knowledge-hub-server" class="nav-link" data-scroll-target="#step-2-register-the-knowledge-hub-server">Step 2: Register the Knowledge Hub server</a>
+    <ul class="collapse">
+    <li><a href="#if-you-use-claude-desktop" id="toc-if-you-use-claude-desktop" class="nav-link" data-scroll-target="#if-you-use-claude-desktop">If you use Claude Desktop</a></li>
+    <li><a href="#if-you-use-claude-code" id="toc-if-you-use-claude-code" class="nav-link" data-scroll-target="#if-you-use-claude-code">If you use Claude Code</a></li>
+    </ul></li>
+    <li><a href="#step-3-tell-the-agent-to-use-the-hub" id="toc-step-3-tell-the-agent-to-use-the-hub" class="nav-link" data-scroll-target="#step-3-tell-the-agent-to-use-the-hub">Step 3: Tell the agent to use the Hub</a></li>
+    <li><a href="#step-4-ask-a-question" id="toc-step-4-ask-a-question" class="nav-link" data-scroll-target="#step-4-ask-a-question">Step 4: Ask a question</a></li>
+    <li><a href="#what-the-agent-can-and-cannot-reach" id="toc-what-the-agent-can-and-cannot-reach" class="nav-link" data-scroll-target="#what-the-agent-can-and-cannot-reach">What the agent can and cannot reach</a></li>
+    <li><a href="#add-other-documentation-sources" id="toc-add-other-documentation-sources" class="nav-link" data-scroll-target="#add-other-documentation-sources">Add other documentation sources</a></li>
     <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-    <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
     </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/connect-ai.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 <header id="title-block-header">
-    <span class="diataxis-badge diataxis-explanation">Explanation</span>
-    <h1 class="title display-7">About Research Design</h1>
+    <span class="diataxis-badge diataxis-how-to">How-to guide</span>
+    <h1 class="title display-7">Connecting AI Agents to the Knowledge Hub</h1>
+        <p class="abstract">This guide shows you how to connect an AI agent (Claude Desktop or Claude Code) to the IPA Knowledge Hub so that it answers your questions about IPA research, MEL, and data science practices using the Hub’s own documentation.</p>
     
 </header>
 
@@ -535,13 +512,7 @@ cookieconsent.run({
   <ul>
         <li class="authors-ipa" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/niall-keleher">Niall Keleher</a></li>
       </ul>
-      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Contributors</h2>
-  <ul>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/david-francisco-torres-leon">David Torres</a></li>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/cristhian-pulido">Cristhian Pulido</a></li>
-        <li class="contributors" style="font-size: 0.86rem;"><a href="https://poverty-action.org/people/kelly-montano">Kelly Montaño</a></li>
-      </ul>
-      <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
+        <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;" class="anchored">Last Modified</h2>
   <ul>
     <li class="last-modified" style="font-size: 0.86rem;">September 11, 2026</li>
   </ul>
@@ -563,71 +534,151 @@ cookieconsent.run({
     }
   })();
 </script>
-<p>Research design is a key ingredient for reliable, policy-relevant research and data science projects. It determines whether you can credibly measure and attribute observed changes to your intervention, rather than to other factors. When design is weak, no amount of analysis can recover the lost credibility, and the consequences are real: resources directed toward ineffective programs, better alternatives crowded out, and policies built on unreliable evidence. This page provides an overview of key research design considerations and links to detailed guidance on specific topics.</p>
-<section id="what-is-impact-evaluation" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-impact-evaluation">What is impact evaluation?</h2>
-<p>Impact evaluation asks a deceptively simple question: did this program work? A program’s impact is defined as the difference between the outcomes observed among participants and the outcomes those same participants <em>would have experienced</em> had the program never existed, the <strong>counterfactual</strong>. Because the counterfactual is never directly observable, every evaluation method is a strategy for constructing a credible substitute from available data.</p>
-<p>To estimate the counterfactual, researchers select a <strong>comparison group</strong> whose outcomes proxy what would have happened to participants. When that group differs systematically from participants -in observable characteristics like income or education, or in unobservable ones like motivation- any difference in outcomes may reflect those pre-existing differences rather than the program itself. This is <strong>selection bias</strong>, and it is the central methodological problem that research design must solve.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>The Balsakhi Program: How the same data yields four different answers
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The Balsakhi tutoring program in Vadodara, India, provided remedial instruction to at-risk primary school students. Because the same dataset was analyzed using different evaluation methods, it illustrates clearly how the choice of comparison group shapes results.</p>
-<p>A <strong>before-versus-after</strong> design estimated an impact of 26.42 test-score points, but this ignores natural academic progress over the school year. A <strong>simple difference</strong> between participants and non-participants produced -5.05 points, almost certainly misleading because children receiving the Balsakhi were selected for being lower-performing. A <strong>difference-in-differences</strong> design estimated 6.82 points. A <strong>randomized evaluation</strong> of a similar program produced 0.28 standard deviations: a credible result grounded in a defensible comparison.</p>
-<p>Every method rests on assumptions that should be stated, examined, and defended, not taken for granted.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="methods-for-estimating-impact" class="level2">
-<h2 class="anchored" data-anchor-id="methods-for-estimating-impact">Methods for estimating impact</h2>
-<p><strong>Quasi-experimental methods</strong> -such as difference-in-differences, regression discontinuity, and instrumental variables- do not involve random assignment. They rely on statistical techniques and specific features of program design to construct a credible comparison group, and each makes assumptions that cannot be directly tested. For descriptions of each approach, see the DIME Wiki’s <a href="https://dimewiki.worldbank.org/Experimental_Methods">Experimental Methods</a> and the DIME Wiki’s <a href="https://dimewiki.worldbank.org/Quasi-Experimental_Methods">Quasi-Experimental Methods</a>.</p>
-<p><strong>Randomized controlled trials (RCTs)</strong> assign candidates to treatment or control through a lottery, making both groups statistically equivalent at baseline on observed and unobserved characteristics. This is the only method that eliminates selection bias without assumptions about unobservable factors. For a discussion of common concerns about RCTs -including ethics, external validity, and cost- see <a href="../research-design/addressing-rct-criticisms.html">Addressing Common Criticisms of Randomized Controlled Trials</a>.</p>
-<p>Impact evaluations are not the only tool in the research toolkit. IPA’s work spans a range of study types depending on what a given question requires: pilot studies and A/B tests to develop and iterate on program designs; descriptive and process studies to understand context and diagnose gaps; long-term panel surveys and administrative datasets to track outcomes over time; and evidence synthesis to consolidate what is already known. Good research design means choosing the right approach for the question, not defaulting to any single method.</p>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>What makes a good evaluation?
+<span class="screen-reader-only">Tip</span>Key Takeaways
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A good evaluation asks questions that are policy relevant, answers them in an unbiased and definitive way, and shares the results regardless of the findings. Studies that find no impact can be just as useful as those that do. The point is to learn and improve, not to validate.</p>
-<p>A related question is whether findings from one context can inform decisions in another. Rigorous impact evaluations are designed not to replace local knowledge but to complement it: underlying human behaviors tend to generalize more than specific programs do, and a focus on mechanisms -<em>why</em> something worked- is usually more useful than asking whether an identical program produced identical results elsewhere. For a practical framework for thinking through generalizability, see Bates and Glennerster (2017) in the Additional Resources below.</p>
+<ul>
+<li>The Knowledge Hub publishes an <code>llms.txt</code> index at <a href="https://data.poverty-action.org/llms.txt">https://data.poverty-action.org/llms.txt</a> that AI agents can read to find and retrieve relevant pages.</li>
+<li>You connect an agent by installing <code>uv</code>, registering the <code>ipa-knowledge-hub</code> server, and adding a short instruction that tells the agent to consult the Hub.</li>
+<li>Once connected, the agent fetches Hub pages on demand and asks you to approve each retrieval, so you can see what it read.</li>
+</ul>
 </div>
+</div>
+<section id="before-you-start" class="level2">
+<h2 class="anchored" data-anchor-id="before-you-start">Before you start</h2>
+<p>This guide assumes you can install command line tools and edit a configuration file. If you have not used a terminal before, this task will be harder than a first exposure should be to familiarize yourself with the terminal <a href="./software/shell/index.html">shell</a>.</p>
+<p>You will need one of the following:</p>
+<ul>
+<li><strong>Claude Desktop</strong>, if you want the Hub available in a chat window.</li>
+<li><strong>Claude Code</strong>, if you work in a repository or folder from the terminal.</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note about AI tools
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See the <a href="./software/claude/index.html">Claude</a> pages of the IPA Knowledge Hub for more information about getting started with Claude.</p>
+<p>While this tutorial focuses on Claude Desktop and Claude Code, the general principles apply to other AI agents that support the Model Context Protocol (MCP).</p>
+</div>
+</div>
+<p>The setup relies on <code>mcpdoc</code>, an open source server that exposes an <code>llms.txt</code> file to AI agents through the Model Context Protocol (MCP). For background on what <code>llms.txt</code> is and why it helps agents navigate a site, see <a href="https://llmstxt.org/">llmstxt.org</a>. For the server itself, see the <a href="https://github.com/langchain-ai/mcpdoc"><code>mcpdoc</code> repository</a>.</p>
+</section>
+<section id="step-1-install-uv" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-install-uv">Step 1: Install <code>uv</code></h2>
+<p><code>uv</code> runs the <code>mcpdoc</code> server without a separate manual install. Install it once per machine.</p>
+<p>On macOS or Linux, run this in a terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>On Windows, run this in PowerShell:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="op">-</span>ExecutionPolicy ByPass <span class="op">-</span>c <span class="st">"irm https://astral.sh/uv/install.ps1 | iex"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For other installation methods, see the <a href="https://docs.astral.sh/uv/getting-started/installation/"><code>uv</code> installation docs</a>.</p>
+</section>
+<section id="step-2-register-the-knowledge-hub-server" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-register-the-knowledge-hub-server">Step 2: Register the Knowledge Hub server</h2>
+<p>The steps differ depending on which agent you use. Follow the section that matches your tool.</p>
+<section id="if-you-use-claude-desktop" class="level3">
+<h3 class="anchored" data-anchor-id="if-you-use-claude-desktop">If you use Claude Desktop</h3>
+<ol type="1">
+<li>Open <strong>Settings &gt; Developer</strong> and select <strong>Edit Config</strong>.</li>
+<li>Add the <code>ipa-knowledge-hub</code> server to the configuration file. If the file already contains an <code>mcpServers</code> block, add this entry inside it rather than pasting a second block.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"mcpServers"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"ipa-knowledge-hub"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"command"</span><span class="fu">:</span> <span class="st">"uvx"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"args"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--with"</span><span class="ot">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mcp&lt;2"</span><span class="ot">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--from"</span><span class="ot">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mcpdoc"</span><span class="ot">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mcpdoc"</span><span class="ot">,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--urls"</span><span class="ot">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"IPAdocs:https://data.poverty-action.org/llms.txt"</span><span class="ot">,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--transport"</span><span class="ot">,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"stdio"</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="3" type="1">
+<li>Save the file and restart Claude Desktop.</li>
+</ol>
+<p>After the restart, the Hub tools appear at the bottom right of the chat input. The first time the agent uses them, it asks you to approve the tool calls.</p>
+</section>
+<section id="if-you-use-claude-code" class="level3">
+<h3 class="anchored" data-anchor-id="if-you-use-claude-code">If you use Claude Code</h3>
+<p>Run this command in the repository or folder you are working in:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> mcp add ipa-knowledge-hub <span class="at">--</span> uvx <span class="at">--with</span> <span class="st">"mcp&lt;2"</span> <span class="at">--from</span> mcpdoc mcpdoc <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--urls</span> <span class="st">"IPAdocs:https://data.poverty-action.org/llms.txt"</span> <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--transport</span> stdio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>--with "mcp&lt;2"</code> pin matters: <code>uvx</code> otherwise installs <code>mcp</code> 2.x, which removed the <code>FastMCP</code> API that <code>mcpdoc</code> depends on, and the server fails to start with <code>ModuleNotFoundError: No module named 'mcp.server.fastmcp'</code>.</p>
+<p>By default, this registers the server for the current project only, so you would need to repeat the command in every repository or folder where you want the Hub available.</p>
+<p>To make the Hub available in every project instead, add <code>--scope user</code> to the command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> mcp add ipa-knowledge-hub <span class="at">--scope</span> user <span class="at">--</span> uvx <span class="at">--with</span> <span class="st">"mcp&lt;2"</span> <span class="at">--from</span> mcpdoc mcpdoc <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--urls</span> <span class="st">"IPAdocs:https://data.poverty-action.org/llms.txt"</span> <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--transport</span> stdio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To confirm the server is registered, launch Claude Code and run <code>/mcp</code> to view the available tools. Run <code>claude mcp list</code> at any time to see which servers are registered and at which scope.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❯</span> claude mcp list</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ipa-knowledge-hub:</span> uvx <span class="at">--with</span> mcp<span class="op">&lt;</span>2 <span class="at">--from</span> mcpdoc mcpdoc <span class="at">--urls</span> IPAdocs:https://data.poverty-action.org/llms.txt</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">--transport</span> stdio <span class="at">-</span> ✔ Connected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="step-3-tell-the-agent-to-use-the-hub" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-tell-the-agent-to-use-the-hub">Step 3: Tell the agent to use the Hub</h2>
+<p>Registering the server makes the tools available, but the agent will not always reach for them on its own. Add an instruction that directs it to consult the Hub whenever your question concerns IPA practices.</p>
+<p>In <strong>Claude Code</strong>, add the following to a <code>CLAUDE.md</code> file in the repository or folder you are working in:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">rules</span><span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>For ANY question about IPA data/research practices or the Knowledge Hub, use the</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ipa-knowledge-hub server:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>call list_doc_sources to get the llms.txt index</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>call fetch_docs to read it</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>reflect on the URLs in the index and on the question</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>call fetch_docs on any relevant pages, then answer</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">rules</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In <strong>Claude Desktop</strong>, which does not read a <code>CLAUDE.md</code> file, you only need to enable the ipa-knowledge-hub connector.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/images/access-ipa-knowledge-hub.png" class="img-fluid figure-img"></p>
+<figcaption>Connect to the IPA Knowledge Hub from Claude Desktop</figcaption>
+</figure>
 </div>
 </section>
-<section id="pages-in-this-section" class="level2">
-<h2 class="anchored" data-anchor-id="pages-in-this-section">Pages in this section</h2>
-<p>Good research design requires working through several interconnected decisions before data collection begins. The pages below cover the key elements, from choosing a research method to powering your study, designing randomization, and developing valid measures.</p>
-<p><strong><a href="../research-design/research-methods.html">Research Methods in Impact Evaluation</a></strong>. An overview of quantitative, qualitative, and mixed methods approaches: what each does, what questions it answers, and how they work together to generate rigorous, policy-relevant evidence.</p>
-<p><strong><a href="../research-design/sample-size-power.html">Sample Size and Power Calculations</a></strong>. A study must be adequately powered to detect effects worth detecting. Key decisions include the minimum policy-relevant effect size, expected outcome variance, and how clustering, attrition, and non-compliance affect the required sample. See also the <a href="../research-design/how-to-power-calculation.html">How-to Guide to Power Calculations</a>.</p>
-<p><strong><a href="../research-design/randomization.html">Randomization</a></strong>. The level and method of random assignment shape statistical power, spillover risk, and implementation feasibility. Key decisions include whether to randomize at the individual or cluster level, whether to stratify, and how to handle design variations such as phased rollout or encouragement designs. See also the <a href="../research-design/how-to-randomization.html">How-to Guide to Randomization</a>.</p>
-<p><strong><a href="../research-design/measurement.html">Measurement and Survey Design</a></strong>. Valid and reliable measurement of outcomes is essential for credible evaluation. This covers indicator selection, instrument design, sources of measurement error, and how to connect measurement choices to a theory of change.</p>
-<p><strong><a href="../research-design/addressing-rct-criticisms.html">Addressing Common Criticisms of Randomized Controlled Trials</a></strong>. A discussion of the most frequently raised concerns about RCTs in development research, with context for how thoughtful design addresses them.</p>
+<section id="step-4-ask-a-question" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-ask-a-question">Step 4: Ask a question</h2>
+<p>With the server registered and the instruction in place, ask the agent something the Hub covers, such as a question about IPA research methods, MEL, or data science. For example:</p>
+<blockquote class="blockquote">
+<p>How does IPA recommend planning a focus group?</p>
+</blockquote>
+<p>The agent calls <code>list_doc_sources</code> to read the <code>llms.txt</code> index, decides which pages are relevant, and calls <code>fetch_docs</code> to retrieve them before answering. You approve each retrieval as it goes, so you can see which pages informed the response.</p>
+<p>If the agent answers without consulting the Hub, restate the instruction from Step 3, or name the server directly: <em>use the ipa-knowledge-hub server to answer.</em></p>
+</section>
+<section id="what-the-agent-can-and-cannot-reach" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-agent-can-and-cannot-reach">What the agent can and cannot reach</h2>
+<p>The <code>mcpdoc</code> server restricts retrieval to the domain of the <code>llms.txt</code> file you registered. Registering the Hub’s <code>llms.txt</code> allows the agent to fetch pages on <code>data.poverty-action.org</code> and nothing else, unless you add other domains explicitly. This keeps retrieval limited to sources you have approved. For the details of this domain control, see the security note in the <a href="https://github.com/langchain-ai/mcpdoc"><code>mcpdoc</code> documentation</a>.</p>
+</section>
+<section id="add-other-documentation-sources" class="level2">
+<h2 class="anchored" data-anchor-id="add-other-documentation-sources">Add other documentation sources</h2>
+<p>You can register more than one <code>llms.txt</code> source. To include an additional site alongside the Hub, add a second <code>IPAdocs</code>-style entry in the <code>--urls</code> argument, giving it its own name and URL. Each registered domain becomes reachable to the agent under the same domain restriction described above.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<p>Banerjee, Abhijit, Shawn Cole, Esther Duflo, and Leigh Linden. 2007. “Remedying Education: Evidence from Two Randomized Experiments in India.” <em>Quarterly Journal of Economics</em> 122, no. 3: 1235–1264. <a href="https://doi.org/10.1162/qjec.122.3.1235">https://doi.org/10.1162/qjec.122.3.1235</a></p>
-<p>Bates, Mary Ann, and Rachel Glennerster. 2017. “The Generalizability Puzzle.” <em>Stanford Social Innovation Review</em>, Summer 2017. <a href="https://ssir.org/articles/entry/the_generalizability_puzzle">https://ssir.org/articles/entry/the_generalizability_puzzle</a></p>
-<p>Gertler, Paul J., Sebastian Martinez, Patrick Premand, Laura B. Rawlings, and Christel M.J. Vermeersch. 2016. <em>Impact Evaluation in Practice</em>. 2nd ed. Washington, DC: World Bank and Inter-American Development Bank. <a href="https://www.worldbank.org/en/programs/sief-trust-fund/publication/impact-evaluation-in-practice">https://www.worldbank.org/en/programs/sief-trust-fund/publication/impact-evaluation-in-practice</a></p>
-</section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<p>Abdul Latif Jameel Poverty Action Lab (J-PAL). “Introduction to Randomized Evaluations.” J-PAL Research Resources. <a href="https://www.povertyactionlab.org/resource/introduction-randomized-evaluations">https://www.povertyactionlab.org/resource/introduction-randomized-evaluations</a></p>
-<p>Bates, Mary Ann, and Rachel Glennerster. 2017. “The Generalizability Puzzle.” <em>Stanford Social Innovation Review</em>, Summer 2017. <a href="https://ssir.org/articles/entry/the_generalizability_puzzle">https://ssir.org/articles/entry/the_generalizability_puzzle</a></p>
-<p>World Bank Development Impact Evaluation (DIME). “Experimental Methods.” DIME Wiki. <a href="https://dimewiki.worldbank.org/Experimental_Methods">https://dimewiki.worldbank.org/Experimental_Methods</a></p>
-<p>World Bank Development Impact Evaluation (DIME). “Quasi-Experimental Methods.” DIME Wiki. <a href="https://dimewiki.worldbank.org/Quasi-Experimental_Methods">https://dimewiki.worldbank.org/Quasi-Experimental_Methods</a></p>
+<ul>
+<li>llms.txt specification: <a href="https://llmstxt.org/">llmstxt.org</a></li>
+<li><code>mcpdoc</code> documentation server: <a href="https://github.com/langchain-ai/mcpdoc">github.com/langchain-ai/mcpdoc</a></li>
+<li><code>uv</code> installation guide: <a href="https://docs.astral.sh/uv/getting-started/installation/">docs.astral.sh/uv</a></li>
+<li>Model Context Protocol: <a href="https://modelcontextprotocol.io/">modelcontextprotocol.io</a></li>
+</ul>
 
 
 </section>
@@ -1046,15 +1097,6 @@ cookieconsent.run({
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../research-design/research-methods.html" class="pagination-link" aria-label="Research Methods">
-        <span class="nav-page-text">Research Methods</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1063,7 +1105,7 @@ cookieconsent.run({
     </div>   
     <div class="nav-footer-center">
 
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/research-design/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/edit/main/connect-ai.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/PovertyAction/ipa-research-data-science-hub/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
