@@ -1,0 +1,243 @@
+---
+title: "Connecting AI Agents to the Knowledge Hub"
+abstract: >-
+  This guide shows you how to connect an AI agent (Claude Desktop or Claude Code) to the IPA Knowledge Hub so that it answers your questions about IPA research, MEL, and data science practices using the Hub's own documentation.
+
+#------------------------------------------------------------------
+# Authors
+#------------------------------------------------------------------
+# Authors are the main creators of the site's content, credited
+# for their work and responsible for its core development,
+# including writing and editing.
+#------------------------------------------------------------------
+authors-ipa:
+  - "[Niall Keleher](https://poverty-action.org/people/niall-keleher)"
+
+  #------------------------------------------------------------------
+  # Contributors
+  #------------------------------------------------------------------
+  # Contributors provide support, such as feedback or supplementary
+  # materials for the site. They can also be responsible for
+  # updating/maintaining the site.
+  #------------------------------------------------------------------
+  # contributors:
+  # - "[Contributor Name]()"
+
+categories:
+  - how-to
+  - AI
+keywords:
+  - "AI"
+  - "Claude"
+  - "Claude Code"
+  - "MCP"
+  - "how-to guide"
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+---
+
+::: {.callout-tip appearance="simple"}
+## Key Takeaways
+
+- The Knowledge Hub publishes an `llms.txt` index at
+  [https://data.poverty-action.org/llms.txt](https://data.poverty-action.org/llms.txt)
+  that AI agents can read to find and retrieve relevant pages.
+- You connect an agent by installing `uv`, registering the `ipa-knowledge-hub`
+  server, and adding a short instruction that tells the agent to consult the
+  Hub.
+- Once connected, the agent fetches Hub pages on demand and asks you to approve
+  each retrieval, so you can see what it read.
+:::
+
+## Before you start
+
+This guide assumes you can install command line tools and edit a configuration
+file. If you have not used a terminal before, this task will be harder than a
+first exposure should be to familiarize yourself with the terminal
+[shell](software/shell/index.qmd).
+
+You will need one of the following:
+
+- **Claude Desktop**, if you want the Hub available in a chat window.
+- **Claude Code**, if you work in a repository or folder from the terminal.
+
+::: {.callout-note appearance="simple"}
+## Note about AI tools
+
+See the [Claude](software/claude/index.qmd) pages of the IPA Knowledge Hub for
+more information about getting started with Claude.
+
+While this tutorial focuses on Claude Desktop and Claude Code, the general
+principles apply to other AI agents that support the Model Context Protocol
+(MCP).
+:::
+
+The setup relies on `mcpdoc`, an open source server that exposes an `llms.txt`
+file to AI agents through the Model Context Protocol (MCP). For background on
+what `llms.txt` is and why it helps agents navigate a site, see
+[llmstxt.org](https://llmstxt.org/). For the server itself, see the [`mcpdoc`
+repository](https://github.com/langchain-ai/mcpdoc).
+
+## Step 1: Install `uv`
+
+`uv` runs the `mcpdoc` server without a separate manual install. Install it once
+per machine.
+
+On macOS or Linux, run this in a terminal:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+On Windows, run this in PowerShell:
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+For other installation methods, see the [`uv` installation
+docs](https://docs.astral.sh/uv/getting-started/installation/).
+
+## Step 2: Register the Knowledge Hub server
+
+The steps differ depending on which agent you use. Follow the section that
+matches your tool.
+
+### If you use Claude Desktop
+
+1. Open **Settings > Developer** and select **Edit Config**.
+2. Add the `ipa-knowledge-hub` server to the configuration file. If the file
+   already contains an `mcpServers` block, add this entry inside it rather than
+   pasting a second block.
+
+```json
+{
+  "mcpServers": {
+    "ipa-knowledge-hub": {
+      "command": "uvx",
+      "args": [
+        "--with",
+        "mcp<2",
+        "--from",
+        "mcpdoc",
+        "mcpdoc",
+        "--urls",
+        "IPAdocs:https://data.poverty-action.org/llms.txt",
+        "--transport",
+        "stdio"
+      ]
+    }
+  }
+}
+```
+
+3. Save the file and restart Claude Desktop.
+
+After the restart, the Hub tools appear at the bottom right of the chat input.
+The first time the agent uses them, it asks you to approve the tool calls.
+
+### If you use Claude Code
+
+Run this command in the repository or folder you are working in:
+
+```bash
+claude mcp add ipa-knowledge-hub -- uvx --with "mcp<2" --from mcpdoc mcpdoc \
+  --urls "IPAdocs:https://data.poverty-action.org/llms.txt" \
+  --transport stdio
+```
+
+The `--with "mcp<2"` pin matters: `uvx` otherwise installs `mcp` 2.x, which
+removed the `FastMCP` API that `mcpdoc` depends on, and the server fails to
+start with `ModuleNotFoundError: No module named 'mcp.server.fastmcp'`.
+
+By default, this registers the server for the current project only, so you would
+need to repeat the command in every repository or folder where you want the Hub
+available.
+
+To make the Hub available in every project instead, add `--scope user` to the
+command:
+
+```bash
+claude mcp add ipa-knowledge-hub --scope user -- uvx --with "mcp<2" --from mcpdoc mcpdoc \
+  --urls "IPAdocs:https://data.poverty-action.org/llms.txt" \
+  --transport stdio
+```
+
+To confirm the server is registered, launch Claude Code and run `/mcp` to view
+the available tools. Run `claude mcp list` at any time to see which servers are
+registered and at which scope.
+
+```bash
+❯ claude mcp list
+ipa-knowledge-hub: uvx --with mcp<2 --from mcpdoc mcpdoc --urls IPAdocs:https://data.poverty-action.org/llms.txt
+--transport stdio - ✔ Connected
+```
+
+## Step 3: Tell the agent to use the Hub
+
+Registering the server makes the tools available, but the agent will not always
+reach for them on its own. Add an instruction that directs it to consult the Hub
+whenever your question concerns IPA practices.
+
+In **Claude Code**, add the following to a `CLAUDE.md` file in the repository or
+folder you are working in:
+
+```markdown
+<rules>
+For ANY question about IPA data/research practices or the Knowledge Hub, use the
+ipa-knowledge-hub server:
++ call list_doc_sources to get the llms.txt index
++ call fetch_docs to read it
++ reflect on the URLs in the index and on the question
++ call fetch_docs on any relevant pages, then answer
+</rules>
+```
+
+In **Claude Desktop**, which does not read a `CLAUDE.md` file, you only need to
+enable the ipa-knowledge-hub connector.
+
+![Connect to the IPA Knowledge Hub from Claude Desktop](../../assets/images/access-ipa-knowledge-hub.png)
+
+## Step 4: Ask a question
+
+With the server registered and the instruction in place, ask the agent something
+the Hub covers, such as a question about IPA research methods, MEL, or data
+science. For example:
+
+> How does IPA recommend planning a focus group?
+
+The agent calls `list_doc_sources` to read the `llms.txt` index, decides which
+pages are relevant, and calls `fetch_docs` to retrieve them before answering.
+You approve each retrieval as it goes, so you can see which pages informed the
+response.
+
+If the agent answers without consulting the Hub, restate the instruction from
+Step 3, or name the server directly: *use the ipa-knowledge-hub server to
+answer.*
+
+## What the agent can and cannot reach
+
+The `mcpdoc` server restricts retrieval to the domain of the `llms.txt` file you
+registered. Registering the Hub's `llms.txt` allows the agent to fetch pages on
+`data.poverty-action.org` and nothing else, unless you add other domains
+explicitly. This keeps retrieval limited to sources you have approved. For the
+details of this domain control, see the security note in the [`mcpdoc`
+documentation](https://github.com/langchain-ai/mcpdoc).
+
+## Add other documentation sources
+
+You can register more than one `llms.txt` source. To include an additional site
+alongside the Hub, add a second `IPAdocs`-style entry in the `--urls` argument,
+giving it its own name and URL. Each registered domain becomes reachable to the
+agent under the same domain restriction described above.
+
+## References
+
+- llms.txt specification: [llmstxt.org](https://llmstxt.org/)
+- `mcpdoc` documentation server:
+  [github.com/langchain-ai/mcpdoc](https://github.com/langchain-ai/mcpdoc)
+- `uv` installation guide:
+  [docs.astral.sh/uv](https://docs.astral.sh/uv/getting-started/installation/)
+- Model Context Protocol:
+  [modelcontextprotocol.io](https://modelcontextprotocol.io/)
