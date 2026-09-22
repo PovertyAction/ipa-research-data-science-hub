@@ -22,6 +22,8 @@ contributors:
   - "[Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)"
   - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
 
+categories:
+  - explanation
 keywords:
   - "data quality"
   - "personally identifiable information"
@@ -36,6 +38,13 @@ license:
   url: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
+::: {.callout-note appearance="simple"}
+This page supports IPA Research Protocol: **Use new UID in deidentified
+dataset**.
+
+See the full list of [IPA Research Protocols](/data-quality/index.qmd).
+:::
+
 ::: {.callout-tip appearance="simple"}
 ## Key Takeaways
 
@@ -44,6 +53,8 @@ license:
   privacy.
 - Use automated tools like Stata's `lookfor` command or manual reviews to
   identify and anonymize PII in datasets, code, and documentation.
+- Replace the original unique identifier (UID) with a new one before sharing or
+  publishing a deidentified dataset.
 :::
 
 ## What is Data Anonymization?
@@ -67,6 +78,19 @@ external individuals, usually including principal investigators and users who
 access publicly accessible materials, such as from IPA's Data Repository.
 Therefore, staff need access to strategies to remove this data to ensure the
 safety of research subjects.
+
+## Replace the Original Unique Identifier
+
+IPA's Research Protocols require that any unencrypted dataset you share or
+publish is deidentified **and** uses a new unique identifier (UID). Removing
+names and addresses is not enough. The original UID often appears in tracking
+sheets, consent logs, and other documents that link back to respondents, so the
+published dataset must not carry it.
+
+Do this at the end of the project, once you have finished matching respondents
+across survey waves and data collection activities. Keep the crosswalk between
+the old and new UIDs encrypted with the rest of your PII, following the [Data
+Security Protocol](/data-security/data-security-protocol.qmd).
 
 ## What data count as Personally Identifiable Information?
 
