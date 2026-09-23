@@ -12,7 +12,7 @@ This guide shows you how to connect an AI agent (Claude Desktop or Claude Code) 
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

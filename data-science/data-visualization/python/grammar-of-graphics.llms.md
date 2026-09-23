@@ -17,7 +17,7 @@ Understand the grammar of graphics framework. Learn how to map data to visual pr
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

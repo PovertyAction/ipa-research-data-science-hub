@@ -17,7 +17,7 @@ Learn about different types of marks (geometric objects) in seaborn.objects. Cre
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

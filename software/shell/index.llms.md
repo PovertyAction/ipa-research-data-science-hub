@@ -16,7 +16,7 @@ Discover the power of command-line interfaces and learn why the Unix shell is es
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

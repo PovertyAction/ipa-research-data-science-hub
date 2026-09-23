@@ -17,7 +17,7 @@ Learn how to customize plots with clear labels and titles. Control scales and ax
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

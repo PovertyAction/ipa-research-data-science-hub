@@ -6,7 +6,7 @@ Learnthe fundamentals of HTTP requests using gazpacho.get(). Learn to fetch web 
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

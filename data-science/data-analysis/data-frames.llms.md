@@ -16,7 +16,7 @@ Select individual values from a Pandas dataframe. Select entire rows or entire c
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

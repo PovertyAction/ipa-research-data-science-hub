@@ -21,7 +21,7 @@ This guide explores the fundamental principles of measurement and survey design 
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

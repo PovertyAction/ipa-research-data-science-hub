@@ -14,7 +14,7 @@ This section covers both sides of data visualization: how to communicate and use
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

@@ -20,7 +20,7 @@ Introduction to randomization in impact evaluations, covering theoretical founda
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

@@ -18,7 +18,7 @@ The design principles behind clear charts, including decluttering, how human per
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

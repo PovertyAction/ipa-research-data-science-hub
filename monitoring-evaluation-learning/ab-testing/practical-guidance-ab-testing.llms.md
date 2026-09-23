@@ -18,7 +18,7 @@ Effective A/B tests require focusing on strategic questions, building reliable s
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

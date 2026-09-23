@@ -17,7 +17,7 @@ Guidelines on why, when, and how to pilot your survey instrument. Covers the ite
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

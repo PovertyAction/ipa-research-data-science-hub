@@ -20,7 +20,7 @@ Overview of IPA’s data security standards and implementation guides for protec
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

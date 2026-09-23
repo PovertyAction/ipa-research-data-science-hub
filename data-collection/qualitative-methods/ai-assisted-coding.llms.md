@@ -18,7 +18,7 @@ Practical guidance for qualitative researchers on how to use large language mode
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

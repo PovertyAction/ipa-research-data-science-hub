@@ -17,7 +17,7 @@ Learn about IPA’s High Frequency Checks—systematic data quality checks perfo
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

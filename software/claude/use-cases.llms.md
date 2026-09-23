@@ -11,7 +11,7 @@ How research and project-management staff put Claude Code to work: concrete use 
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

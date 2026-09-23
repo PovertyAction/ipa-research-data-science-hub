@@ -25,7 +25,7 @@ Step-by-step guide to implement essential data security measures for research pr
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 

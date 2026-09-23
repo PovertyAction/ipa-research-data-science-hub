@@ -20,7 +20,7 @@ How to develop a robust Theory of Change, linking program activities to outcomes
 
 ## Last Modified
 
-- September 11, 2026
+- September 23, 2026
 
 ## License
 
