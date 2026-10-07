@@ -19,7 +19,7 @@ Standards for documenting datasets, focusing on Stata commands to name and label
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

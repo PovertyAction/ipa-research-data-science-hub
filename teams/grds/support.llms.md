@@ -12,7 +12,7 @@ This guide shows research teams how to scope, submit, and manage a request for s
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

@@ -16,7 +16,7 @@ This reference guide documents standardized procedures for preparing research ma
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

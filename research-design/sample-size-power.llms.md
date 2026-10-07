@@ -16,7 +16,7 @@ This resource covers essential concepts of statistical power and sample size for
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

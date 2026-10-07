@@ -12,7 +12,7 @@ Learn how to install and configure the essential software needed for Git and Git
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

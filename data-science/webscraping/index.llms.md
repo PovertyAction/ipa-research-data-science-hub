@@ -6,7 +6,7 @@ Learn the fundamentals of web scraping using gazpacho, a lightweight Python libr
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

@@ -16,7 +16,7 @@ How to design dashboards that drive decisions rather than merely display numbers
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

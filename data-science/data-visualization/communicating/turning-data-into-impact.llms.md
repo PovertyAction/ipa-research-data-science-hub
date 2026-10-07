@@ -16,7 +16,7 @@ Why sound data does not automatically change decisions, and what closes that gap
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

@@ -16,7 +16,7 @@ Learn powerful search techniques using find and grep commands. Learn to locate f
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

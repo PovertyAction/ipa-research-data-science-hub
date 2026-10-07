@@ -16,7 +16,7 @@ Explain what for loops are normally used for. Trace the execution of a simple (u
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

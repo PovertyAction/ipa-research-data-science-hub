@@ -20,7 +20,7 @@ This page explores the most frequently raised concerns about randomized controll
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

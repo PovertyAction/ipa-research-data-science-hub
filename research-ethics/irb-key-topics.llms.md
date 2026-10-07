@@ -16,7 +16,7 @@ This reference guide provides essential definitions, requirements, and procedure
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 

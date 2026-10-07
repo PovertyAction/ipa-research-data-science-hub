@@ -12,7 +12,7 @@ Overview of IPA’s data communication resources, covering how to turn analysis 
 
 ## Last Modified
 
-- September 23, 2026
+- October 7, 2026
 
 ## License
 
