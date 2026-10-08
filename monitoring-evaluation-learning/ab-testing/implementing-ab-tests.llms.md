@@ -18,7 +18,7 @@ The Learning Roadmap for A/B Testing provides a structured, four-step approach t
 
 ## Last Modified
 
-- October 7, 2026
+- October 8, 2026
 
 ## License
 

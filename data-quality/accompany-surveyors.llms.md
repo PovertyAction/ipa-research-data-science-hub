@@ -17,7 +17,7 @@ This guide provides comprehensive guidelines on why, when, and how to accompany 
 
 ## Last Modified
 
-- October 7, 2026
+- October 8, 2026
 
 ## License
 

@@ -13,7 +13,7 @@ This page outlines when reliance agreements are needed, how to start them, and a
 
 ## Last Modified
 
-- October 7, 2026
+- October 8, 2026
 
 ## License
 

@@ -16,7 +16,7 @@ This resource guides you through securing your data collected through Twilio by 
 
 ## Last Modified
 
-- October 7, 2026
+- October 8, 2026
 
 ## License
 

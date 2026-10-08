@@ -12,7 +12,7 @@ Learn how to identify, understand, and resolve merge conflicts that occur when G
 
 ## Last Modified
 
-- October 7, 2026
+- October 8, 2026
 
 ## License
 

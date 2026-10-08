@@ -19,7 +19,7 @@ This guide shows how to work with Stata files, numerical formats, dataset creati
 
 ## Last Modified
 
-- October 7, 2026
+- October 8, 2026
 
 ## License
 

@@ -13,7 +13,7 @@ Overview of the Enumerator Database Management System (EDMS), a joint IPA and Gl
 
 ## Last Modified
 
-- October 7, 2026
+- October 8, 2026
 
 ## License
 
