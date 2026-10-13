@@ -13,11 +13,20 @@ The typical IRB lifecycle consists of multiple stages including the initial appl
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page supports these IPA Research Protocols:
+>
+> - **Maintain IRB approval throughout project lifecycle**
+> - **Retire your project with all IRBs once the project is complete**
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
 
 > **TIP:**
 >

@@ -25,11 +25,17 @@ Step-by-step guide to implement essential data security measures for research pr
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page supports IPA Research Protocol: **Maintain data security plan throughout project lifecycle**.
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
 
 > **NOTE:**
 >

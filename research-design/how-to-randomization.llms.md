@@ -19,7 +19,7 @@ Step-by-step instructions for implementing stratified randomization in Stata, in
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 

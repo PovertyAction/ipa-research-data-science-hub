@@ -17,11 +17,17 @@ This guide provides comprehensive guidelines on why, when, and how to accompany 
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page supports IPA Research Protocol: **Accompany surveyors in first week of survey**.
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
 
 > **TIP:**
 >
@@ -59,7 +65,8 @@ Accompanying surveyors is a key step in ensuring high-quality data collection. I
 
 ## Monitoring and Reporting
 
-- **Research Protocol:** Accompany at least 10% of surveys to comply with best practices.
+- **Research Protocol:** Every field officer must be personally accompanied at least once during the first week of the survey. Accompaniments can be scaled down as the survey progresses, especially when supplemented by audio audits and metadata checks.
+- **Best Practice:** Many projects continue to accompany around 10% of surveys after the first week.
 - **Survey Diary:** Maintain a log of observations and feedback for continuous improvement.
 - **External Resources:** See the paper version and SurveyCTO XLSForm of IPA’s [accompaniment template](../assets/files/IPA_Accompaniment_Form_Template.xlsx) for documentation and reporting.
 

@@ -17,11 +17,17 @@ This guide explains the importance of the AEA RCT Registry for combating publica
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page supports IPA Research Protocol: **Register project with AEA**.
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
 
 > **TIP:**
 >

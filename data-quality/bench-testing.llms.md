@@ -17,11 +17,17 @@ A guide to systematically test surveys before data collection to identify and fi
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page supports IPA Research Protocol: **Bench test survey (ideally at least two weeks in advance)**.
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
 
 > **TIP:**
 >

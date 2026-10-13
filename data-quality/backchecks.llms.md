@@ -2,7 +2,7 @@ Explanation
 
 # Backchecks
 
-This page is the overall guide to backchecks. All IPA projects are required to perform backchecks for their surveys. The following sections contain IPA protocols and accumulated wisdom on how to implement a backcheck, design questionnaires, and analyze the data to take appropriate actions based on results.
+This page is the overall guide to backchecks. Backchecks are one of IPA’s Research Protocols (Minimum Must Dos), so all IPA projects are required to perform them. The following sections contain IPA protocols and accumulated wisdom on how to implement a backcheck, design questionnaires, and analyze the data to take appropriate actions based on results.
 
 ------------------------------------------------------------------------
 
@@ -18,11 +18,17 @@ This page is the overall guide to backchecks. All IPA projects are required to p
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page supports IPA Research Protocol: **Implement and act on backchecks**.
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
 
 ## Introduction: The Possibilities of the Backcheck
 

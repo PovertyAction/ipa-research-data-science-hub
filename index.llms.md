@@ -10,6 +10,8 @@
 
 [Browse How-to Guides](how-to-guides.llms.md)
 
+[IPA Research Protocols](data-quality/index.llms.md)
+
 ### Research Design
 
 Design research grounded in best practices for measuring impact. Covers sampling strategies, randomization methods, power calculations, measurement frameworks, and implementation best practices for RCTs and other research designs.
@@ -30,7 +32,7 @@ Plan for and navigate ethical considerations including informed consent, data pr
 
 ### Data Quality
 
-Implement validation, cleaning, and management practices to ensure data integrity. Covers quality assurance methods, error detection techniques, and protocols for maintaining reliable datasets.
+Follow IPA’s Research Protocols, the “Minimum Must Dos” every IPA project must meet. Covers survey planning, bench testing, piloting, accompaniments, high frequency checks, backchecks, and the Data Management System that supports them.
 
 [Explore Data Quality protocols ](data-quality/index.llms.md)
 

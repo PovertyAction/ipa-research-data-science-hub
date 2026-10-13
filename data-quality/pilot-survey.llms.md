@@ -17,11 +17,17 @@ Guidelines on why, when, and how to pilot your survey instrument. Covers the ite
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page supports IPA Research Protocol: **Pilot survey (ideally at least one week in advance)**.
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
 
 > **TIP:**
 >
@@ -30,7 +36,7 @@ Guidelines on why, when, and how to pilot your survey instrument. Covers the ite
 
 ## Why Pilot?
 
-As one of IPA’s Required Research Protocols – or MMDs – piloting is an essential step for which there are no shortcuts. Teams can use piloting for different purposes and it has numerous benefits:
+As one of IPA’s Research Protocols, piloting is an essential step for which there are no shortcuts. Teams can use piloting for different purposes and it has numerous benefits:
 
 1.  **Designing a New Survey or Important Module:**
     - Acquire knowledge of unknown phenomena/concepts and answer questions about the overall survey design.

@@ -23,13 +23,17 @@ Reference guide outlining IPA’s standards for data security, including handlin
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-This page provides IPA staff and partners with a practical overview of standards for protecting sensitive research data. It covers PII handling, password and device management, encryption (SurveyCTO and Cryptomator), AI usage, IRB compliance, and secure backup practices. A template for creating project-level Data Security Plans is included.
+> **NOTE:**
+>
+> This page supports IPA Research Protocol: **Create data security plan and set up encryption before launch**.
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
 
 > **NOTE:**
 >

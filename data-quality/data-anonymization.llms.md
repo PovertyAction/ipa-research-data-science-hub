@@ -1,3 +1,5 @@
+Explanation
+
 # Data Anonymization
 
 This guide explains what data are considered personally identifiable information, what materials require anonymization, and methods for removing PII from datasets to protect research participants’ privacy.
@@ -15,16 +17,23 @@ This guide explains what data are considered personally identifiable information
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
+> **NOTE:**
+>
+> This page supports IPA Research Protocol: **Use new UID in deidentified dataset**.
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
+
 > **TIP:**
 >
 > - Understand what constitutes Personally Identifiable Information—PII—and ensure its removal from all shared materials to protect research participants’ privacy.
 > - Use automated tools like Stata’s `lookfor` command or manual reviews to identify and anonymize PII in datasets, code, and documentation.
+> - Replace the original unique identifier (UID) with a new one before sharing or publishing a deidentified dataset.
 
 ## What is Data Anonymization?
 
@@ -33,6 +42,12 @@ Data anonymization involves removing Personally Identifiable Information (PII) f
 If PII is not necessary for the analysis, then split it from the data immediately. Usually, you do not need to share PII with principal investigators. Instead, anonymize the data immediately using the `split_pii` Stata program and share only the anonymized data with principal investigators. You can download this program through the Statistical Software Components—SSC—archive.
 
 PII includes information that researchers can use to specifically identify an individual. Due to the nature of research IPA conducts, staff manage PII of research study participants. Research teams must not release this information to external individuals, usually including principal investigators and users who access publicly accessible materials, such as from IPA’s Data Repository. Therefore, staff need access to strategies to remove this data to ensure the safety of research subjects.
+
+## Replace the Original Unique Identifier
+
+IPA’s Research Protocols require that any unencrypted dataset you share or publish is deidentified **and** uses a new unique identifier (UID). Removing names and addresses is not enough. The original UID often appears in tracking sheets, consent logs, and other documents that link back to respondents, so the published dataset must not carry it.
+
+Do this at the end of the project, once you have finished matching respondents across survey waves and data collection activities. Keep the crosswalk between the old and new UIDs encrypted with the rest of your PII, following the [Data Security Protocol](../data-security/data-security-protocol.llms.md).
 
 ## What data count as Personally Identifiable Information?
 

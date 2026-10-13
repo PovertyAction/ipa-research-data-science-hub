@@ -19,7 +19,7 @@ Best practices for data cleaning, focusing on manipulating raw data using Stata.
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 

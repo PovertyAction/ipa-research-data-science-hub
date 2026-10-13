@@ -13,7 +13,7 @@ This page provides a brief introduction to Stata, the statistical software used 
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 

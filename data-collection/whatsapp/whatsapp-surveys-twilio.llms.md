@@ -16,7 +16,7 @@ This article provides a step-by-step guide to setting up Twilio for WhatsApp sur
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 

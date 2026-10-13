@@ -18,7 +18,7 @@ A/B tests are most effective when matched to your program’s stage of developme
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 

@@ -17,7 +17,7 @@ Understand the importance of data visualization in research. Learn about the sea
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 

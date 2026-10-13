@@ -17,11 +17,21 @@ This guide covers procedures for ensuring data integrity in research, including 
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> **NOTE:**
+>
+> This page supports these IPA Research Protocols:
+>
+> - **Double enter and reconcile paper surveys**
+> - **Back up data in at least two locations**
+> - **Save all project files to long-term storage**
+>
+> See the full list of [IPA Research Protocols](../data-quality/index.llms.md).
 
 > **TIP:**
 >
@@ -42,7 +52,7 @@ Ensuring data integrity and security is crucial for high-quality research. This 
 1.  **Initial Data Entry:** Enumerators or data clerks enter data from source documents into the database.
 2.  **Second Independent Entry:** A different person re-enters the same data into a separate database.
 3.  **Comparison and Validation:** Researchers compare the two datasets to identify inconsistencies.
-4.  **Error Resolution:** Staff review discrepancies and correct them using the original source.
+4.  **Error Resolution:** A third data entry operator reviews discrepancies and reconciles them against the original paper survey. The two original operators must not compare responses with each other.
 
 **Why it Matters:**
 
@@ -63,7 +73,7 @@ Ensuring data integrity and security is crucial for high-quality research. This 
 **Steps:**
 
 1.  **Automated Backups:** Schedule automatic backups at regular intervals.
-2.  **Multiple Storage Locations:** Store backups in at least two locations, such as cloud storage or an external drive.
+2.  **Multiple Storage Locations:** IPA’s Research Protocols require at least two copies of the data at every point in the project. During data collection this usually means the SurveyCTO server plus a laptop synced to Box. Do not delete server data until it has fully synced to Box. After data collection, an external hard drive guards against the rare failure of a cloud service.
 3.  **Version Control:** Maintain different versions of files to recover previous states.
 4.  **Regular Testing:** Periodically restore files to ensure backups are functional.
 
@@ -83,9 +93,11 @@ Ensuring data integrity and security is crucial for high-quality research. This 
 
 **Definition:** Box is a secure cloud storage platform that allows teams to store, access, and share files efficiently.
 
+IPA’s Research Protocols require that **all** project files live in long-term storage (e.g. Box) in a designated folder structure. This includes raw data, final questionnaires, backcheck questionnaires, the survey manual, project log and survey notes, high frequency check files, analysis do-files, IRB documentation, and replication code.
+
 **Steps:**
 
-1.  **Upload Files to Box:** Organize files into appropriate folders.
+1.  **Upload Files to Long-Term Storage (e.g., Box):** Organize files into the designated folder structure for your country program.
 2.  **Set Access Permissions:** Restrict access based on roles, such as view-only, edit, or admin.
 3.  **Enable File Versioning:** Maintain previous versions to track changes.
 4.  **Use Encryption and Two-Factor Authentication:** Enhance data security with two-factor authentication (2FA).

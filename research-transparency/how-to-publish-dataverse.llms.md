@@ -16,7 +16,7 @@ This how-to guide provides step-by-step instructions for curating research mater
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 

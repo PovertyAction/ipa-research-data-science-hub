@@ -12,7 +12,7 @@ Overview of IPA’s fieldwork management resources, covering field staff trainin
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
@@ -45,6 +45,6 @@ Successful data collection depends on well-managed fieldwork: trained field team
 ## Related Resources
 
 - [About Data Collection](../../data-collection/index.llms.md) - Survey modes and data collection methods
-- [About Data Quality](../../data-quality/index.llms.md) - IPA’s research protocols for data quality
+- [Data Quality and IPA Research Protocols](../../data-quality/index.llms.md) - IPA’s Minimum Must Dos
 
 Back to top

@@ -16,7 +16,7 @@ Discover the power of combining shell commands using pipes and filters. Learn to
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 

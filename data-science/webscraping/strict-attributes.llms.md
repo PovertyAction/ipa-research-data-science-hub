@@ -12,7 +12,7 @@ Learn advanced HTML element selection techniques using gazpacho’s partial matc
 
 ## Last Modified
 
-- October 8, 2026
+- October 13, 2026
 
 ## License
 
