@@ -13,7 +13,7 @@ The typical IRB lifecycle consists of multiple stages including the initial appl
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

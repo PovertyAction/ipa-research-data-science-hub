@@ -12,7 +12,7 @@ Overview of IPA’s Monitoring, Evaluation, and Learning (MEL) resources, coveri
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

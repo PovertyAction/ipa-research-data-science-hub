@@ -17,7 +17,7 @@ This guide explains the importance of the AEA RCT Registry for combating publica
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

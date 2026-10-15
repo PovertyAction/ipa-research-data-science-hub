@@ -17,7 +17,7 @@ IPA’s mission to alleviate poverty requires more than just numbers; it require
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

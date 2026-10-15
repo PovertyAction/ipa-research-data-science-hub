@@ -16,7 +16,7 @@ Learn essential file system navigation using the Unix shell. Use commands for mo
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

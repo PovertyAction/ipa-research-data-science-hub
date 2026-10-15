@@ -23,7 +23,7 @@ Reference guide outlining IPA’s standards for data security, including handlin
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

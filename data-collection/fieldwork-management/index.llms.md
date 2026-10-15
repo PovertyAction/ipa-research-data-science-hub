@@ -12,7 +12,7 @@ Overview of IPA’s fieldwork management resources, covering field staff trainin
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

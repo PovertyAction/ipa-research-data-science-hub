@@ -17,7 +17,7 @@ Add statistical summaries to visualizations. Create regression lines, confidence
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

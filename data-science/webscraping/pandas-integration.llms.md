@@ -6,7 +6,7 @@ Learn to convert scraped web data into pandas DataFrames for analysis. Apply tec
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

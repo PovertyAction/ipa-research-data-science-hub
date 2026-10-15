@@ -17,7 +17,7 @@ Learn to create compelling visualizations for research using Python’s seaborn 
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 

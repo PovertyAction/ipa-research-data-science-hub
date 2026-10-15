@@ -6,7 +6,7 @@ Learn to parse HTML content using gazpacho’s Soup class. Find elements by tags
 
 ## Last Modified
 
-- October 13, 2026
+- October 15, 2026
 
 ## License
 
