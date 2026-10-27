@@ -43,8 +43,9 @@ Be able to read and write globbing expressions that match sets of files. Use glo
 
 ``` python
 import pandas as pd
-for filename in ['data/gapminder_gdp_africa.csv', 'data/gapminder_gdp_asia.csv']:
-    data = pd.read_csv(filename, index_col='country')
+
+for filename in ["data/gapminder_gdp_africa.csv", "data/gapminder_gdp_asia.csv"]:
+    data = pd.read_csv(filename, index_col="country")
     print(filename, data.min())
 ```
 
@@ -82,7 +83,8 @@ dtype: float64
 
 ``` python
 import glob
-print('all csv files in data directory:', glob.glob('data/*.csv'))
+
+print("all csv files in data directory:", glob.glob("data/*.csv"))
 ```
 
 ``` output
@@ -92,7 +94,7 @@ all csv files in data directory: ['data/gapminder_all.csv', 'data/gapminder_gdp_
 ```
 
 ``` python
-print('all PDB files:', glob.glob('*.pdb'))
+print("all PDB files:", glob.glob("*.pdb"))
 ```
 
 ``` output
@@ -104,9 +106,9 @@ all PDB files: []
 - Helps a lot if the files are named and stored systematically and consistently so that simple patterns will find the right data.
 
 ``` python
-for filename in glob.glob('data/gapminder_*.csv'):
+for filename in glob.glob("data/gapminder_*.csv"):
     data = pd.read_csv(filename)
-    print(filename, data['gdpPercap_1952'].min())
+    print(filename, data["gdpPercap_1952"].min())
 ```
 
 ``` output
@@ -141,11 +143,12 @@ data/gapminder_gdp_oceania.csv 10039.59564
 > ``` python
 > import glob
 > import pandas as pd
+>
 > fewest = ____
-> for filename in glob.glob('data/*.csv'):
+> for filename in glob.glob("data/*.csv"):
 >     dataframe = pd.____(filename)
 >     fewest = min(____, dataframe.shape[0])
-> print('smallest file has', fewest, 'records')
+> print("smallest file has", fewest, "records")
 > ```
 >
 > Note that the [`DataFrame.shape()` method](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.shape.html) returns a tuple with the number of rows and columns of the data frame.
@@ -155,11 +158,12 @@ data/gapminder_gdp_oceania.csv 10039.59564
 > > ``` python
 > > import glob
 > > import pandas as pd
-> > fewest = float('Inf')
-> > for filename in glob.glob('data/*.csv'):
+> >
+> > fewest = float("Inf")
+> > for filename in glob.glob("data/*.csv"):
 > >     dataframe = pd.read_csv(filename)
 > >     fewest = min(fewest, dataframe.shape[0])
-> > print('smallest file has', fewest, 'records')
+> > print("smallest file has", fewest, "records")
 > > ```
 > >
 > > You might have chosen to initialize the `fewest` variable with a number greater than the numbers you’re dealing with, but that could lead to trouble if you reuse the code with bigger numbers. Python permits you to use positive infinity, which will work no matter how big your numbers are. What other special strings does the [`float` function](https://docs.python.org/3/library/functions.html#float) recognize?
@@ -176,8 +180,9 @@ data/gapminder_gdp_oceania.csv 10039.59564
 > > import glob
 > > import pandas as pd
 > > import matplotlib.pyplot as plt
-> > fig, ax = plt.subplots(1,1)
-> > for filename in glob.glob('data/gapminder_gdp*.csv'):
+> >
+> > fig, ax = plt.subplots(1, 1)
+> > for filename in glob.glob("data/gapminder_gdp*.csv"):
 > >     dataframe = pd.read_csv(filename)
 > >     # extract <region> from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
 > >     # we will split the string using the split method and `_` as our separator,
@@ -187,20 +192,20 @@ data/gapminder_gdp_oceania.csv 10039.59564
 > >     # convenient abstractions for working with filesystem paths and could solve this as well:
 > >     # from pathlib import Path
 > >     # region = Path(filename).stem.split('_')[-1]
-> >     region = filename.split('_')[-1][:-4]
+> >     region = filename.split("_")[-1][:-4]
 > >     # extract the years from the columns of the dataframe
 > >     headings = dataframe.columns[1:]
-> >     years = headings.str.split('_').str.get(1)
+> >     years = headings.str.split("_").str.get(1)
 > >     # pandas raises errors when it encounters non-numeric columns in a dataframe computation
 > >     # but we can tell pandas to ignore them with the `numeric_only` parameter
 > >     dataframe.mean(numeric_only=True).plot(ax=ax, label=region)
 > >     # NOTE: another way of doing this selects just the columns with gdp in their name using the filter method
 > >     # dataframe.filter(like="gdp").mean().plot(ax=ax, label=region)
 > > # set the title and labels
-> > ax.set_title('GDP Per Capita for Regions Over Time')
+> > ax.set_title("GDP Per Capita for Regions Over Time")
 > > ax.set_xticks(range(len(years)))
 > > ax.set_xticklabels(years)
-> > ax.set_xlabel('Year')
+> > ax.set_xlabel("Year")
 > > plt.tight_layout()
 > > plt.legend()
 > > plt.show()

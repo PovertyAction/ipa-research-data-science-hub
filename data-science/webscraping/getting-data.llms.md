@@ -90,7 +90,7 @@ url = "https://example.com"
 html = get(url)
 
 # Verify it's HTML
-if html.strip().startswith('<!DOCTYPE html>') or '<html>' in html.lower():
+if html.strip().startswith("<!DOCTYPE html>") or "<html>" in html.lower():
     print("Successfully fetched HTML content")
     print(f"Content length: {len(html)} characters")
 ```
@@ -138,6 +138,7 @@ print(text)
 > from gazpacho import get
 > import json
 >
+>
 > def detect_content_type(url):
 >     """Detect the type of content returned by a URL."""
 >     try:
@@ -151,12 +152,11 @@ print(text)
 >             pass
 >
 >         # Check for HTML
->         if (content.strip().startswith('<!DOCTYPE html>') or
->             '<html>' in content.lower()):
+>         if content.strip().startswith("<!DOCTYPE html>") or "<html>" in content.lower():
 >             return "HTML"
 >
 >         # Check for XML
->         if content.strip().startswith('<?xml'):
+>         if content.strip().startswith("<?xml"):
 >             return "XML"
 >
 >         # Default to text
@@ -165,11 +165,12 @@ print(text)
 >     except Exception as e:
 >         return f"ERROR: {e}"
 >
+>
 > # Test with different URLs
 > test_urls = [
 >     "https://httpbin.org/html",
 >     "https://httpbin.org/json",
->     "https://httpbin.org/robots.txt"
+>     "https://httpbin.org/robots.txt",
 > ]
 >
 > for url in test_urls:
@@ -186,6 +187,7 @@ print(text)
 ``` python
 from gazpacho import get
 
+
 def safe_get(url):
     try:
         return get(url)
@@ -196,6 +198,7 @@ def safe_get(url):
         print(f"Unexpected error: {e}")
         return None
 
+
 # Test with unreachable URL
 html = safe_get("https://nonexistent-site-12345.com")
 ```
@@ -205,6 +208,7 @@ html = safe_get("https://nonexistent-site-12345.com")
 ``` python
 from gazpacho import get
 import time
+
 
 def get_with_retry(url, max_retries=3, delay=2):
     """Get URL with retry logic."""
@@ -223,6 +227,7 @@ def get_with_retry(url, max_retries=3, delay=2):
                 print("All attempts failed")
                 raise e
 
+
 # Test retry mechanism
 html = get_with_retry("https://httpbin.org/delay/1")
 ```
@@ -233,6 +238,7 @@ Always validate responses before processing:
 
 ``` python
 from gazpacho import get
+
 
 def validate_response(url):
     """Validate HTTP response content."""
@@ -257,6 +263,7 @@ def validate_response(url):
     except Exception as e:
         return False, f"Request failed: {e}"
 
+
 # Test validation
 url = "https://example.com"
 is_valid, message = validate_response(url)
@@ -275,12 +282,14 @@ from gazpacho import get
 # Note: gazpacho sets reasonable default headers
 # But you can inspect what headers are sent using httpbin
 
+
 def test_headers():
     """Test what headers gazpacho sends by default."""
     url = "https://httpbin.org/headers"
     response = get(url)
     print("Headers sent by gazpacho:")
     print(response)
+
 
 test_headers()
 ```
@@ -310,6 +319,7 @@ Handle different text encodings:
 ``` python
 from gazpacho import get
 
+
 def get_with_encoding(url):
     """Get content and handle encoding issues."""
     try:
@@ -318,7 +328,7 @@ def get_with_encoding(url):
         # Try to decode if needed
         if isinstance(html, bytes):
             # Try common encodings
-            encodings = ['utf-8', 'latin-1', 'cp1252']
+            encodings = ["utf-8", "latin-1", "cp1252"]
             for encoding in encodings:
                 try:
                     html = html.decode(encoding)
@@ -333,6 +343,7 @@ def get_with_encoding(url):
         print(f"Error fetching {url}: {e}")
         return None
 
+
 # Test with international content
 html = get_with_encoding("https://example.com")
 ```
@@ -345,6 +356,7 @@ html = get_with_encoding("https://example.com")
 > from gazpacho import get
 > import time
 >
+>
 > def check_urls(urls, delay=1):
 >     """Check accessibility of multiple URLs."""
 >     results = []
@@ -356,21 +368,21 @@ html = get_with_encoding("https://example.com")
 >             response_time = time.time() - start_time
 >
 >             status = {
->                 'url': url,
->                 'success': True,
->                 'content_length': len(html),
->                 'response_time': round(response_time, 2),
->                 'has_html': '<html>' in html.lower()
+>                 "url": url,
+>                 "success": True,
+>                 "content_length": len(html),
+>                 "response_time": round(response_time, 2),
+>                 "has_html": "<html>" in html.lower(),
 >             }
 >
 >         except Exception as e:
 >             status = {
->                 'url': url,
->                 'success': False,
->                 'error': str(e),
->                 'response_time': None,
->                 'content_length': 0,
->                 'has_html': False
+>                 "url": url,
+>                 "success": False,
+>                 "error": str(e),
+>                 "response_time": None,
+>                 "content_length": 0,
+>                 "has_html": False,
 >             }
 >
 >         results.append(status)
@@ -381,12 +393,13 @@ html = get_with_encoding("https://example.com")
 >
 >     return results
 >
+>
 > # Test with various URLs
 > test_urls = [
 >     "https://example.com",
 >     "https://httpbin.org/html",
 >     "https://httpbin.org/status/404",  # Will return 404
->     "https://python.org"
+>     "https://python.org",
 > ]
 >
 > results = check_urls(test_urls)
@@ -394,8 +407,10 @@ html = get_with_encoding("https://example.com")
 > # Print summary
 > print("\nSummary:")
 > for result in results:
->     if result['success']:
->         print(f"✓ {result['url']}: {result['content_length']} chars in {result['response_time']}s")
+>     if result["success"]:
+>         print(
+>             f"✓ {result['url']}: {result['content_length']} chars in {result['response_time']}s"
+>         )
 >     else:
 >         print(f"✗ {result['url']}: {result.get('error', 'Unknown error')}")
 > ```
@@ -408,6 +423,7 @@ Let’s implement an example - scraping PyPI project pages:
 from gazpacho import get
 import re
 
+
 def scrape_pypi_project(package_name):
     """Scrape basic information from a PyPI project page."""
     url = f"https://pypi.org/project/{package_name}/"
@@ -416,12 +432,16 @@ def scrape_pypi_project(package_name):
         html = get(url)
 
         # Extract project title
-        title_pattern = r'<h1[^>]*class="[^"]*package-header__name[^"]*"[^>]*>(.*?)</h1>'
+        title_pattern = (
+            r'<h1[^>]*class="[^"]*package-header__name[^"]*"[^>]*>(.*?)</h1>'
+        )
         title_match = re.search(title_pattern, html, re.DOTALL)
         title = title_match.group(1).strip() if title_match else "Not found"
 
         # Extract description
-        desc_pattern = r'<p[^>]*class="[^"]*package-description__summary[^"]*"[^>]*>(.*?)</p>'
+        desc_pattern = (
+            r'<p[^>]*class="[^"]*package-description__summary[^"]*"[^>]*>(.*?)</p>'
+        )
         desc_match = re.search(desc_pattern, html, re.DOTALL)
         description = desc_match.group(1).strip() if desc_match else "Not found"
 
@@ -429,27 +449,24 @@ def scrape_pypi_project(package_name):
         download_links = len(re.findall(r'href="[^"]*#files"', html))
 
         return {
-            'package': package_name,
-            'title': title,
-            'description': description,
-            'download_links': download_links,
-            'url': url
+            "package": package_name,
+            "title": title,
+            "description": description,
+            "download_links": download_links,
+            "url": url,
         }
 
     except Exception as e:
-        return {
-            'package': package_name,
-            'error': str(e),
-            'url': url
-        }
+        return {"package": package_name, "error": str(e), "url": url}
+
 
 # Test with popular packages
-packages = ['pandas', 'requests', 'beautifulsoup4']
+packages = ["pandas", "requests", "beautifulsoup4"]
 
 for package in packages:
     info = scrape_pypi_project(package)
 
-    if 'error' in info:
+    if "error" in info:
         print(f"Error scraping {package}: {info['error']}")
     else:
         print(f"\nPackage: {info['package']}")
@@ -469,18 +486,19 @@ from gazpacho import get
 import time
 import random
 
+
 def polite_scraper(urls, min_delay=1, max_delay=3):
     """Scrape URLs with random delays to be polite."""
     results = []
 
     for i, url in enumerate(urls):
-        print(f"Scraping {i+1}/{len(urls)}: {url}")
+        print(f"Scraping {i + 1}/{len(urls)}: {url}")
 
         try:
             html = get(url)
-            results.append({'url': url, 'content': html, 'success': True})
+            results.append({"url": url, "content": html, "success": True})
         except Exception as e:
-            results.append({'url': url, 'error': str(e), 'success': False})
+            results.append({"url": url, "error": str(e), "success": False})
 
         # Random delay between min and max
         if i < len(urls) - 1:  # Don't delay after last request
@@ -490,15 +508,14 @@ def polite_scraper(urls, min_delay=1, max_delay=3):
 
     return results
 
+
 # Example usage
-urls = [
-    "https://httpbin.org/html",
-    "https://example.com",
-    "https://python.org"
-]
+urls = ["https://httpbin.org/html", "https://example.com", "https://python.org"]
 
 results = polite_scraper(urls, min_delay=2, max_delay=4)
-print(f"\nSuccessfully scraped {sum(1 for r in results if r['success'])}/{len(results)} URLs")
+print(
+    f"\nSuccessfully scraped {sum(1 for r in results if r['success'])}/{len(results)} URLs"
+)
 ```
 
 ### Checking robots.txt
@@ -509,36 +526,34 @@ Always check robots.txt before scraping:
 from gazpacho import get
 from urllib.parse import urljoin, urlparse
 
+
 def check_robots_txt(url):
     """Check robots.txt for a given URL."""
     try:
         # Parse the URL to get the base domain
         parsed_url = urlparse(url)
         base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
-        robots_url = urljoin(base_url, '/robots.txt')
+        robots_url = urljoin(base_url, "/robots.txt")
 
         print(f"Checking {robots_url}")
         robots_content = get(robots_url)
 
-        return {
-            'url': robots_url,
-            'content': robots_content,
-            'exists': True
-        }
+        return {"url": robots_url, "content": robots_content, "exists": True}
 
     except Exception as e:
         return {
-            'url': robots_url if 'robots_url' in locals() else 'Unknown',
-            'error': str(e),
-            'exists': False
+            "url": robots_url if "robots_url" in locals() else "Unknown",
+            "error": str(e),
+            "exists": False,
         }
+
 
 # Check robots.txt for a site
 robots_info = check_robots_txt("https://python.org/some/page")
 
-if robots_info['exists']:
+if robots_info["exists"]:
     print("robots.txt content:")
-    print(robots_info['content'][:500])  # First 500 characters
+    print(robots_info["content"][:500])  # First 500 characters
 else:
     print(f"Could not access robots.txt: {robots_info['error']}")
 ```
@@ -554,6 +569,7 @@ else:
 > import re
 > from datetime import datetime
 >
+>
 > class WebScraper:
 >     def __init__(self, delay_range=(1, 3)):
 >         self.delay_range = delay_range
@@ -562,10 +578,10 @@ else:
 >     def log_request(self, url, success, details):
 >         """Log request details."""
 >         log_entry = {
->             'timestamp': datetime.now().isoformat(),
->             'url': url,
->             'success': success,
->             'details': details
+>             "timestamp": datetime.now().isoformat(),
+>             "url": url,
+>             "success": success,
+>             "details": details,
 >         }
 >         self.session_log.append(log_entry)
 >
@@ -582,30 +598,30 @@ else:
 >                 raise ValueError("Response too short or empty")
 >
 >             details = {
->                 'content_length': len(html),
->                 'response_time': round(response_time, 2),
->                 'content_type': self._detect_content_type(html)
+>                 "content_length": len(html),
+>                 "response_time": round(response_time, 2),
+>                 "content_type": self._detect_content_type(html),
 >             }
 >
 >             self.log_request(url, True, details)
 >             return html
 >
 >         except Exception as e:
->             self.log_request(url, False, {'error': str(e)})
+>             self.log_request(url, False, {"error": str(e)})
 >             raise e
 >
 >     def _detect_content_type(self, content):
 >         """Detect content type."""
 >         try:
 >             json.loads(content)
->             return 'JSON'
+>             return "JSON"
 >         except:
 >             pass
 >
->         if '<html>' in content.lower():
->             return 'HTML'
+>         if "<html>" in content.lower():
+>             return "HTML"
 >
->         return 'TEXT'
+>         return "TEXT"
 >
 >     def scrape_multiple(self, urls):
 >         """Scrape multiple URLs with proper delays."""
@@ -613,13 +629,13 @@ else:
 >
 >         for i, url in enumerate(urls):
 >             try:
->                 print(f"Scraping {i+1}/{len(urls)}: {url}")
+>                 print(f"Scraping {i + 1}/{len(urls)}: {url}")
 >                 html = self.get_with_validation(url)
->                 results.append({'url': url, 'content': html, 'success': True})
+>                 results.append({"url": url, "content": html, "success": True})
 >
 >             except Exception as e:
 >                 print(f"Error scraping {url}: {e}")
->                 results.append({'url': url, 'error': str(e), 'success': False})
+>                 results.append({"url": url, "error": str(e), "success": False})
 >
 >             # Delay between requests (except for last one)
 >             if i < len(urls) - 1:
@@ -631,14 +647,17 @@ else:
 >     def get_session_stats(self):
 >         """Get statistics for the current session."""
 >         total_requests = len(self.session_log)
->         successful_requests = sum(1 for log in self.session_log if log['success'])
+>         successful_requests = sum(1 for log in self.session_log if log["success"])
 >
 >         return {
->             'total_requests': total_requests,
->             'successful_requests': successful_requests,
->             'success_rate': successful_requests / total_requests if total_requests > 0 else 0,
->             'log': self.session_log
+>             "total_requests": total_requests,
+>             "successful_requests": successful_requests,
+>             "success_rate": successful_requests / total_requests
+>             if total_requests > 0
+>             else 0,
+>             "log": self.session_log,
 >         }
+>
 >
 > # Test the robust scraper
 > import random
@@ -649,7 +668,7 @@ else:
 >     "https://example.com",
 >     "https://httpbin.org/html",
 >     "https://httpbin.org/json",
->     "https://httpbin.org/status/404"  # This will fail
+>     "https://httpbin.org/status/404",  # This will fail
 > ]
 >
 > results = scraper.scrape_multiple(test_urls)

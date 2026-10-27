@@ -95,13 +95,9 @@ Color is one of the most powerful ways to encode information. Let’s see how it
 ``` python
 # Color by categorical variable (species)
 (
-    so.Plot(
-        penguins_clean,
-        x="bill_length_mm",
-        y="bill_depth_mm",
-        color="species"
+    so.Plot(penguins_clean, x="bill_length_mm", y="bill_depth_mm", color="species").add(
+        so.Dot()
     )
-    .add(so.Dot())
 )
 ```
 
@@ -119,12 +115,8 @@ Color can also represent continuous data:
 # Color by continuous variable (body mass)
 (
     so.Plot(
-        penguins_clean,
-        x="bill_length_mm",
-        y="bill_depth_mm",
-        color="body_mass_g"
-    )
-    .add(so.Dot())
+        penguins_clean, x="bill_length_mm", y="bill_depth_mm", color="body_mass_g"
+    ).add(so.Dot())
 )
 ```
 
@@ -144,12 +136,8 @@ Size is excellent for showing magnitude or importance:
 # Size by continuous variable
 (
     so.Plot(
-        penguins_clean,
-        x="bill_length_mm",
-        y="bill_depth_mm",
-        pointsize="body_mass_g"
-    )
-    .add(so.Dot())
+        penguins_clean, x="bill_length_mm", y="bill_depth_mm", pointsize="body_mass_g"
+    ).add(so.Dot())
 )
 ```
 
@@ -167,9 +155,8 @@ Let’s get more sophisticated by combining color AND size:
         x="bill_length_mm",
         y="bill_depth_mm",
         color="species",
-        pointsize="body_mass_g"
-    )
-    .add(so.Dot(alpha=0.6))  # Added transparency to see overlapping points
+        pointsize="body_mass_g",
+    ).add(so.Dot(alpha=0.6))  # Added transparency to see overlapping points
 )
 ```
 
@@ -190,12 +177,8 @@ Shape (called `marker` in seaborn.objects) is useful for categorical variables, 
 # Different shapes for different categories
 (
     so.Plot(
-        penguins_clean,
-        x="bill_length_mm",
-        y="bill_depth_mm",
-        marker="species"
-    )
-    .add(so.Dot())
+        penguins_clean, x="bill_length_mm", y="bill_depth_mm", marker="species"
+    ).add(so.Dot())
 )
 ```
 
@@ -215,9 +198,8 @@ For maximum clarity and accessibility (including for colorblind viewers), combin
         x="bill_length_mm",
         y="bill_depth_mm",
         color="species",
-        marker="species"
-    )
-    .add(so.Dot())
+        marker="species",
+    ).add(so.Dot())
 )
 ```
 
@@ -229,24 +211,10 @@ Alpha controls transparency and is useful when points overlap:
 
 ``` python
 # Without alpha - hard to see overlapping points
-(
-    so.Plot(
-        penguins_clean,
-        x="flipper_length_mm",
-        y="body_mass_g"
-    )
-    .add(so.Dot())
-)
+(so.Plot(penguins_clean, x="flipper_length_mm", y="body_mass_g").add(so.Dot()))
 
 # With alpha - can see density of overlapping points
-(
-    so.Plot(
-        penguins_clean,
-        x="flipper_length_mm",
-        y="body_mass_g"
-    )
-    .add(so.Dot(alpha=0.5))
-)
+(so.Plot(penguins_clean, x="flipper_length_mm", y="body_mass_g").add(so.Dot(alpha=0.5)))
 ```
 
 Where many points overlap, the color becomes darker, showing areas of high density.
@@ -262,16 +230,18 @@ import numpy as np
 np.random.seed(42)
 n = 200
 
-research_data = pd.DataFrame({
-    'household_income': np.random.lognormal(10, 1, n),
-    'years_education': np.random.normal(8, 3, n),
-    'household_size': np.random.randint(1, 10, n),
-    'county': np.random.choice(['Nairobi', 'Kisumu', 'Mombasa', 'Nakuru'], n),
-    'program_participant': np.random.choice(['Yes', 'No'], n)
-})
+research_data = pd.DataFrame(
+    {
+        "household_income": np.random.lognormal(10, 1, n),
+        "years_education": np.random.normal(8, 3, n),
+        "household_size": np.random.randint(1, 10, n),
+        "county": np.random.choice(["Nairobi", "Kisumu", "Mombasa", "Nakuru"], n),
+        "program_participant": np.random.choice(["Yes", "No"], n),
+    }
+)
 
 # Ensure positive values
-research_data['years_education'] = research_data['years_education'].clip(lower=0)
+research_data["years_education"] = research_data["years_education"].clip(lower=0)
 ```
 
 Now let’s visualize this data with multiple aesthetics:
@@ -285,9 +255,8 @@ Now let’s visualize this data with multiple aesthetics:
         y="household_income",
         color="county",
         pointsize="household_size",
-        marker="program_participant"
-    )
-    .add(so.Dot(alpha=0.6))
+        marker="program_participant",
+    ).add(so.Dot(alpha=0.6))
 )
 ```
 
@@ -320,7 +289,7 @@ That’s **five** variables in one visualization!
 > >
 > > ``` python
 > > # Clean data to remove missing sex values
-> > penguins_complete = penguins.dropna(subset=['sex'])
+> > penguins_complete = penguins.dropna(subset=["sex"])
 > >
 > > (
 > >     so.Plot(
@@ -328,9 +297,8 @@ That’s **five** variables in one visualization!
 > >         x="flipper_length_mm",
 > >         y="body_mass_g",
 > >         color="island",
-> >         marker="sex"
-> >     )
-> >     .add(so.Dot(alpha=0.7))
+> >         marker="sex",
+> >     ).add(so.Dot(alpha=0.7))
 > > )
 > > ```
 > >
@@ -354,9 +322,8 @@ That’s **five** variables in one visualization!
 > >         y="bill_depth_mm",
 > >         color="species",
 > >         pointsize="body_mass_g",
-> >         marker="sex"
-> >     )
-> >     .add(so.Dot(alpha=0.5))
+> >         marker="sex",
+> >     ).add(so.Dot(alpha=0.5))
 > > )
 > > ```
 > >

@@ -87,9 +87,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-b3b05533756b65102542bf1d1302b2e4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-c5ec8c7c8cbd04670bf0d36eb8fc4983.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-dacb15ae91776f6bebfe04479a704d39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -994,20 +994,22 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">8</span>, alpha<span class="op">=</span><span class="fl">0.7</span>))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    .theme({</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.facecolor"</span>: <span class="st">"#f8f9fa"</span>,     <span class="co"># Light gray background</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.edgecolor"</span>: <span class="st">"#343a40"</span>,      <span class="co"># Dark edges</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.linewidth"</span>: <span class="fl">1.5</span>,            <span class="co"># Thicker borders</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"grid.color"</span>: <span class="st">"white"</span>,            <span class="co"># White grid lines</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"grid.linewidth"</span>: <span class="fl">1.2</span>,            <span class="co"># Thicker grid</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    .label(</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Custom Theme Example"</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    .theme(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"axes.facecolor"</span>: <span class="st">"#f8f9fa"</span>,  <span class="co"># Light gray background</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"axes.edgecolor"</span>: <span class="st">"#343a40"</span>,  <span class="co"># Dark edges</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"axes.linewidth"</span>: <span class="fl">1.5</span>,  <span class="co"># Thicker borders</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">"grid.color"</span>: <span class="st">"white"</span>,  <span class="co"># White grid lines</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"grid.linewidth"</span>: <span class="fl">1.2</span>,  <span class="co"># Thicker grid</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    .label(</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Custom Theme Example"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="common-theme-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="common-theme-parameters">Common Theme Parameters</h3>
 <table class="caption-top table">
@@ -1097,62 +1099,60 @@ cookieconsent.run({
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create realistic program data</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>time_points <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">12</span>]</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> [<span class="st">'Control'</span>, <span class="st">'Treatment'</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> [<span class="st">"Control"</span>, <span class="st">"Treatment"</span>]</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>program_data <span class="op">=</span> []</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> groups:</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> time <span class="kw">in</span> time_points:</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> group <span class="op">==</span> <span class="st">'Control'</span>:</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> group <span class="op">==</span> <span class="st">"Control"</span>:</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            mean <span class="op">=</span> <span class="dv">50</span> <span class="op">+</span> time <span class="op">*</span> <span class="fl">0.4</span> <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            mean <span class="op">=</span> <span class="dv">50</span> <span class="op">+</span> time <span class="op">*</span> <span class="fl">1.2</span> <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        values <span class="op">=</span> np.random.normal(mean, <span class="dv">8</span>, n)</span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> val <span class="kw">in</span> values:</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>            program_data.append({</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                <span class="st">'group'</span>: group,</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">'month'</span>: time,</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                <span class="st">'outcome'</span>: val</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            })</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>program_df <span class="op">=</span> pd.DataFrame(program_data)</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Create publication-quality plot</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> (</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    so.Plot(program_df, x<span class="op">=</span><span class="st">"month"</span>, y<span class="op">=</span><span class="st">"outcome"</span>, color<span class="op">=</span><span class="st">"group"</span>)</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Data layer</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.2</span>, pointsize<span class="op">=</span><span class="dv">4</span>))</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Statistical layers</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(linewidth<span class="op">=</span><span class="dv">3</span>), so.Agg())</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    .add(so.Band(alpha<span class="op">=</span><span class="fl">0.15</span>), so.Est())</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Styling</span></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    .scale(</span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>so.Nominal([<span class="st">"#666666"</span>, <span class="st">"#E69F00"</span>]),  <span class="co"># Colorblind-safe</span></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>so.Continuous().tick(at<span class="op">=</span>time_points),</span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>(<span class="dv">30</span>, <span class="dv">80</span>)</span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    .label(</span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Impact of Microfinance Training on Household Savings</span><span class="ch">\n</span><span class="st">Randomized Controlled Trial, 2022-2023"</span>,</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Months Since Baseline"</span>,</span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Monthly Savings (KSh, thousands)"</span>,</span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Group"</span></span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>    .theme({</span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.facecolor"</span>: <span class="st">"white"</span>,</span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.edgecolor"</span>: <span class="st">"#333333"</span>,</span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.linewidth"</span>: <span class="fl">1.2</span>,</span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>        <span class="st">"grid.color"</span>: <span class="st">"#e5e5e5"</span>,</span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>        <span class="st">"grid.linewidth"</span>: <span class="fl">0.8</span>,</span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>        <span class="st">"figure.figsize"</span>: (<span class="dv">8</span>, <span class="dv">5</span>),</span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.labelsize"</span>: <span class="dv">11</span>,</span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.titlesize"</span>: <span class="dv">12</span>,</span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">"legend.fontsize"</span>: <span class="dv">10</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Display</span></span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>            program_data.append({<span class="st">"group"</span>: group, <span class="st">"month"</span>: time, <span class="st">"outcome"</span>: val})</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>program_df <span class="op">=</span> pd.DataFrame(program_data)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Create publication-quality plot</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> (</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    so.Plot(program_df, x<span class="op">=</span><span class="st">"month"</span>, y<span class="op">=</span><span class="st">"outcome"</span>, color<span class="op">=</span><span class="st">"group"</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Data layer</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.2</span>, pointsize<span class="op">=</span><span class="dv">4</span>))</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Statistical layers</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(linewidth<span class="op">=</span><span class="dv">3</span>), so.Agg())</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    .add(so.Band(alpha<span class="op">=</span><span class="fl">0.15</span>), so.Est())</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Styling</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    .scale(</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>so.Nominal([<span class="st">"#666666"</span>, <span class="st">"#E69F00"</span>]),  <span class="co"># Colorblind-safe</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>so.Continuous().tick(at<span class="op">=</span>time_points),</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>(<span class="dv">30</span>, <span class="dv">80</span>),</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    .label(</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Impact of Microfinance Training on Household Savings</span><span class="ch">\n</span><span class="st">Randomized Controlled Trial, 2022-2023"</span>,</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Months Since Baseline"</span>,</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Monthly Savings (KSh, thousands)"</span>,</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Group"</span>,</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>    .theme(</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>            <span class="st">"axes.facecolor"</span>: <span class="st">"white"</span>,</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>            <span class="st">"axes.edgecolor"</span>: <span class="st">"#333333"</span>,</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>            <span class="st">"axes.linewidth"</span>: <span class="fl">1.2</span>,</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>            <span class="st">"grid.color"</span>: <span class="st">"#e5e5e5"</span>,</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>            <span class="st">"grid.linewidth"</span>: <span class="fl">0.8</span>,</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>            <span class="st">"figure.figsize"</span>: (<span class="dv">8</span>, <span class="dv">5</span>),</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>            <span class="st">"axes.labelsize"</span>: <span class="dv">11</span>,</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>            <span class="st">"axes.titlesize"</span>: <span class="dv">12</span>,</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>            <span class="st">"legend.fontsize"</span>: <span class="dv">10</span>,</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Display</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="saving-figures" class="level2">
 <h2 class="anchored" data-anchor-id="saving-figures">Saving Figures</h2>
@@ -1202,7 +1202,7 @@ cookieconsent.run({
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Penguin Measurements with Annotation"</span>,</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span>,</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
@@ -1212,24 +1212,25 @@ cookieconsent.run({
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Add annotation</span></span>
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>ax.annotate(</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Largest penguins'</span>,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Largest penguins"</span>,</span>
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    xy<span class="op">=</span>(<span class="dv">230</span>, <span class="dv">6000</span>),</span>
 <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    xytext<span class="op">=</span>(<span class="dv">215</span>, <span class="dv">5500</span>),</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">'-&gt;'</span>, color<span class="op">=</span><span class="st">'red'</span>, lw<span class="op">=</span><span class="fl">1.5</span>),</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>, color<span class="op">=</span><span class="st">"red"</span>, lw<span class="op">=</span><span class="fl">1.5</span>),</span>
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    fontsize<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'red'</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"red"</span>,</span>
 <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add text box</span></span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>ax.text(</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="dv">175</span>, <span class="dv">3200</span>,</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Smallest penguins</span><span class="ch">\n</span><span class="st">found here'</span>,</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    fontsize<span class="op">=</span><span class="dv">9</span>,</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">'round'</span>, facecolor<span class="op">=</span><span class="st">'wheat'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="dv">175</span>,</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3200</span>,</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Smallest penguins</span><span class="ch">\n</span><span class="st">found here"</span>,</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    fontsize<span class="op">=</span><span class="dv">9</span>,</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">"round"</span>, facecolor<span class="op">=</span><span class="st">"wheat"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="multi-panel-publication-figure" class="level2">
 <h2 class="anchored" data-anchor-id="multi-panel-publication-figure">Multi-Panel Publication Figure</h2>
@@ -1247,7 +1248,7 @@ cookieconsent.run({
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"A. Flipper Length vs Body Mass"</span>,</span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span>,</span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
@@ -1256,31 +1257,27 @@ cookieconsent.run({
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
 <span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    .facet(row<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    .add(so.Bars(), so.Hist(bins<span class="op">=</span><span class="dv">20</span>))</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    .label(</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"B. Body Mass Distributions"</span>,</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Count"</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Panel C: Means with error bars</span></span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>panel_c <span class="op">=</span> (</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">10</span>), so.Agg())</span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    .add(so.Dash(width<span class="op">=</span><span class="fl">0.5</span>), so.Est())</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"colorblind"</span>)</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>    .label(</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"C. Mean Body Mass by Species"</span>,</span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Species"</span>,</span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span></span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Display each panel</span></span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>panel_a</span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>panel_b</span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>panel_c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    .label(title<span class="op">=</span><span class="st">"B. Body Mass Distributions"</span>, x<span class="op">=</span><span class="st">"Body Mass (g)"</span>, y<span class="op">=</span><span class="st">"Count"</span>)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Panel C: Means with error bars</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>panel_c <span class="op">=</span> (</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">10</span>), so.Agg())</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    .add(so.Dash(width<span class="op">=</span><span class="fl">0.5</span>), so.Est())</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    .scale(color<span class="op">=</span><span class="st">"colorblind"</span>)</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    .label(</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"C. Mean Body Mass by Species"</span>,</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Species"</span>,</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span>,</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Display each panel</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>panel_a</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>panel_b</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>panel_c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="best-practices-checklist" class="level2">
 <h2 class="anchored" data-anchor-id="best-practices-checklist">Best Practices Checklist</h2>
@@ -1453,7 +1450,7 @@ cookieconsent.run({
 <div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tips_clean <span class="op">=</span> tips.copy()</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>tips_clean[<span class="st">'tip_percent'</span>] <span class="op">=</span> (tips_clean[<span class="st">'tip'</span>] <span class="op">/</span> tips_clean[<span class="st">'total_bill'</span>]) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>tips_clean[<span class="st">"tip_percent"</span>] <span class="op">=</span> (tips_clean[<span class="st">"tip"</span>] <span class="op">/</span> tips_clean[<span class="st">"total_bill"</span>]) <span class="op">*</span> <span class="dv">100</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set theme</span></span>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"white"</span>, context<span class="op">=</span><span class="st">"paper"</span>)</span>
@@ -1469,20 +1466,18 @@ cookieconsent.run({
 <span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Tipping Patterns by Day and Meal Time"</span>,</span>
 <span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Day of Week"</span>,</span>
 <span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Tip Percentage (%)"</span>,</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Meal Time"</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Meal Time"</span>,</span>
 <span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    .theme({</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"figure.figsize"</span>: (<span class="dv">8</span>, <span class="dv">5</span>),</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.facecolor"</span>: <span class="st">"white"</span>,</span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"grid.color"</span>: <span class="st">"#e5e5e5"</span></span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Save</span></span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>plot.save(<span class="st">"tips_analysis.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>plot.save(<span class="st">"tips_analysis.pdf"</span>)</span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>plot  <span class="co"># Display</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    .theme(</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"figure.figsize"</span>: (<span class="dv">8</span>, <span class="dv">5</span>), <span class="st">"axes.facecolor"</span>: <span class="st">"white"</span>, <span class="st">"grid.color"</span>: <span class="st">"#e5e5e5"</span>}</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Save</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>plot.save(<span class="st">"tips_analysis.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>plot.save(<span class="st">"tips_analysis.pdf"</span>)</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>plot  <span class="co"># Display</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>

@@ -51,8 +51,8 @@ time = [0, 1, 2, 3]
 position = [0, 100, 200, 300]
 
 plt.plot(time, position)
-plt.xlabel('Time (hr)')
-plt.ylabel('Position (km)')
+plt.xlabel("Time (hr)")
+plt.ylabel("Position (km)")
 ```
 
 ![A line chart showing time (hr) relative to position (km), using the values provided in the code block above. By default, the plotted line is blue against a white background, and the axes have been scaled automatically to fit the range of the input data.](../../assets/images/data-analysis/9_simple_position_time_plot.svg)
@@ -77,7 +77,7 @@ This command can also be used within a Notebook - for instance, to display multi
 ``` python
 import pandas as pd
 
-data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
+data = pd.read_csv("data/gapminder_gdp_oceania.csv", index_col="country")
 
 # Extract year from last 4 characters of each column name
 # The current column names are structured as 'gdpPercap_(year)',
@@ -85,13 +85,13 @@ data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
 # To do this we use replace(), which removes from the string the characters stated in the argument
 # This method works on strings, so we use replace() from Pandas Series.str vectorized string functions
 
-years = data.columns.str.replace('gdpPercap_', '')
+years = data.columns.str.replace("gdpPercap_", "")
 
 # Convert year values to integers, saving results back to dataframe
 
 data.columns = years.astype(int)
 
-data.loc['Australia'].plot()
+data.loc["Australia"].plot()
 ```
 
 ![GDP plot for Australia](../../assets/images/data-analysis/9_gdp_australia.svg)
@@ -103,7 +103,7 @@ data.loc['Australia'].plot()
 
 ``` python
 data.T.plot()
-plt.ylabel('GDP per capita')
+plt.ylabel("GDP per capita")
 ```
 
 ![GDP plot for Australia and New Zealand](../../assets/images/data-analysis/9_gdp_australia_nz.svg)
@@ -113,9 +113,9 @@ plt.ylabel('GDP per capita')
 - For example, do a bar plot using a fancier style.
 
 ``` python
-plt.style.use('ggplot')
-data.T.plot(kind='bar')
-plt.ylabel('GDP per capita')
+plt.style.use("ggplot")
+data.T.plot(kind="bar")
+plt.ylabel("GDP per capita")
 ```
 
 ![GDP barplot for Australia](../../assets/images/data-analysis/9_gdp_bar.svg)
@@ -129,9 +129,9 @@ plt.ylabel('GDP per capita')
 
 ``` python
 years = data.columns
-gdp_australia = data.loc['Australia']
+gdp_australia = data.loc["Australia"]
 
-plt.plot(years, gdp_australia, 'g--')
+plt.plot(years, gdp_australia, "g--")
 ```
 
 ![GDP formatted plot for Australia](../../assets/images/data-analysis/9_gdp_australia_formatted.svg)
@@ -140,17 +140,17 @@ plt.plot(years, gdp_australia, 'g--')
 
 ``` python
 # Select two countries' worth of data.
-gdp_australia = data.loc['Australia']
-gdp_nz = data.loc['New Zealand']
+gdp_australia = data.loc["Australia"]
+gdp_nz = data.loc["New Zealand"]
 
 # Plot with differently-colored markers.
-plt.plot(years, gdp_australia, 'b-', label='Australia')
-plt.plot(years, gdp_nz, 'g-', label='New Zealand')
+plt.plot(years, gdp_australia, "b-", label="Australia")
+plt.plot(years, gdp_nz, "g-", label="New Zealand")
 
 # Create legend.
-plt.legend(loc='upper left')
-plt.xlabel('Year')
-plt.ylabel('GDP per capita ($)')
+plt.legend(loc="upper left")
+plt.xlabel("Year")
+plt.ylabel("GDP per capita ($)")
 ```
 
 ## Adding a Legend
@@ -162,8 +162,8 @@ This can be done in `matplotlib` in two stages:
 - Provide a label for each dataset in the figure:
 
 ``` python
-plt.plot(years, gdp_australia, label='Australia')
-plt.plot(years, gdp_nz, label='New Zealand')
+plt.plot(years, gdp_australia, label="Australia")
+plt.plot(years, gdp_nz, label="New Zealand")
 ```
 
 - Instruct `matplotlib` to create the legend.
@@ -186,7 +186,7 @@ plt.scatter(gdp_australia, gdp_nz)
 ![GDP correlation using plt.scatter](../../assets/images/data-analysis/9_gdp_correlation_plt.svg)
 
 ``` python
-data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
+data.T.plot.scatter(x="Australia", y="New Zealand")
 ```
 
 ![GDP correlation using data.T.plot.scatter](../../assets/images/data-analysis/9_gdp_correlation_data.svg)
@@ -196,20 +196,20 @@ data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
 > Fill in the blanks below to plot the minimum GDP per capita over time for all the countries in Europe. Modify it again to plot the maximum GDP per capita over time for Europe.
 >
 > ``` python
-> data_europe = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
-> data_europe.____.plot(label='min')
+> data_europe = pd.read_csv("data/gapminder_gdp_europe.csv", index_col="country")
+> data_europe.____.plot(label="min")
 > data_europe.____
-> plt.legend(loc='best')
+> plt.legend(loc="best")
 > plt.xticks(rotation=90)
 > ```
 >
 > > **TIP:**
 > >
 > > ``` python
-> > data_europe = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
-> > data_europe.min().plot(label='min')
-> > data_europe.max().plot(label='max')
-> > plt.legend(loc='best')
+> > data_europe = pd.read_csv("data/gapminder_gdp_europe.csv", index_col="country")
+> > data_europe.min().plot(label="min")
+> > data_europe.max().plot(label="max")
+> > plt.legend(loc="best")
 > > plt.xticks(rotation=90)
 > > ```
 > >
@@ -224,8 +224,8 @@ data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
 > > **TIP:**
 > >
 > > ``` python
-> > data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col='country')
-> > data_asia.describe().T.plot(kind='scatter', x='min', y='max')
+> > data_asia = pd.read_csv("data/gapminder_gdp_asia.csv", index_col="country")
+> > data_asia.describe().T.plot(kind="scatter", x="min", y="max")
 > > ```
 > >
 > > ![Correlations Solution 1](../../assets/images/data-analysis/9_correlations_solution1.svg)
@@ -235,7 +235,7 @@ data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
 > > You might note that the variability in the maximum is much higher than that of the minimum. Take a look at the maximum and the max indexes:
 > >
 > > ``` python
-> > data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col='country')
+> > data_asia = pd.read_csv("data/gapminder_gdp_asia.csv", index_col="country")
 > > data_asia.max().plot()
 > > print(data_asia.idxmax())
 > > print(data_asia.idxmin())
@@ -250,9 +250,10 @@ data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
 > This short program creates a plot showing the correlation between GDP and life expectancy for 2007, normalizing marker size by population:
 >
 > ``` python
-> data_all = pd.read_csv('data/gapminder_all.csv', index_col='country')
-> data_all.plot(kind='scatter', x='gdpPercap_2007', y='lifeExp_2007',
->               s=data_all['pop_2007']/1e6)
+> data_all = pd.read_csv("data/gapminder_all.csv", index_col="country")
+> data_all.plot(
+>     kind="scatter", x="gdpPercap_2007", y="lifeExp_2007", s=data_all["pop_2007"] / 1e6
+> )
 > ```
 >
 > Using online help and other resources, explain what each argument to `plot` does.
@@ -274,7 +275,7 @@ data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
 If you are satisfied with the plot you see you may want to save it to a file, perhaps to include it in a publication. There is a function in the matplotlib.pyplot module that accomplishes this: [savefig](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html). Calling this function, e.g. with
 
 ``` python
-plt.savefig('my_figure.png')
+plt.savefig("my_figure.png")
 ```
 
 will save the current figure to the file `my_figure.png`. The file format will automatically be deduced from the file name extension (other formats are pdf, ps, eps and svg).
@@ -284,9 +285,9 @@ Note that functions in `plt` refer to a global figure variable and after a figur
 When using dataframes, data is often generated and plotted to screen in one line. In addition to using `plt.savefig`, we can save a reference to the current figure in a local variable (with `plt.gcf`) and call the `savefig` class method from that variable to save the figure to file.
 
 ``` python
-data.plot(kind='bar')
-fig = plt.gcf() # get current figure
-fig.savefig('my_figure.png')
+data.plot(kind="bar")
+fig = plt.gcf()  # get current figure
+fig.savefig("my_figure.png")
 ```
 
 ## Making your plots accessible

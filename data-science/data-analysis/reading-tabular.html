@@ -88,9 +88,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b3b05533756b65102542bf1d1302b2e4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c5ec8c7c8cbd04670bf0d36eb8fc4983.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-dacb15ae91776f6bebfe04479a704d39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -886,7 +886,7 @@ cookieconsent.run({
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data_oceania <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_oceania.csv'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data_oceania <span class="op">=</span> pd.read_csv(<span class="st">"data/gapminder_gdp_oceania.csv"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_oceania)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>       country  gdpPercap_1952  gdpPercap_1957  gdpPercap_1962  \
 0    Australia     10039.59564     10949.64959     12217.22686
@@ -931,8 +931,10 @@ cookieconsent.run({
 <li>Pass the name of the column to <code>read_csv</code> as its <code>index_col</code> parameter to do this.</li>
 <li>Naming the dataframe <code>data_oceania_country</code> tells us which region the data includes (<code>oceania</code>) and how it is indexed (<code>country</code>).</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_oceania_country <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_oceania.csv'</span>, index_col<span class="op">=</span><span class="st">'country'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_oceania_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_oceania_country <span class="op">=</span> pd.read_csv(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data/gapminder_gdp_oceania.csv"</span>, index_col<span class="op">=</span><span class="st">"country"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_oceania_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>             gdpPercap_1952  gdpPercap_1957  gdpPercap_1962  gdpPercap_1967  \
 country
 Australia       10039.59564     10949.64959     12217.22686     14526.12465
@@ -1076,7 +1078,7 @@ max      23424.766830    26997.936570    30687.754730    34435.367440</code></pr
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>To read in a CSV, we use <code>pd.read_csv</code> and pass the filename <code>'data/gapminder_gdp_americas.csv'</code> to it. We also once again pass the column name <code>'country'</code> to the parameter <code>index_col</code> in order to index by country. The summary statistics can be displayed with the <code>DataFrame.describe()</code> method.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_americas <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_americas.csv'</span>, index_col<span class="op">=</span><span class="st">'country'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_americas <span class="op">=</span> pd.read_csv(<span class="st">"data/gapminder_gdp_americas.csv"</span>, index_col<span class="op">=</span><span class="st">"country"</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>data_americas.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -1201,7 +1203,7 @@ max      23424.766830    26997.936570    30687.754730    34435.367440</code></pr
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We need to specify the path to the file of interest in the call to <code>pd.read_csv</code>. We first need to ‘jump’ out of the folder <code>thesis</code> using ‘../’ and then into the folder <code>field_data</code> using ‘field_data/’. Then we can specify the filename `microbes.csv. The result is as follows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data_microbes <span class="op">=</span> pd.read_csv(<span class="st">'../field_data/microbes.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data_microbes <span class="op">=</span> pd.read_csv(<span class="st">"../field_data/microbes.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1231,7 +1233,7 @@ max      23424.766830    26997.936570    30687.754730    34435.367440</code></pr
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>In order to write the DataFrame <code>data_americas</code> to a file called <code>processed.csv</code>, execute the following command:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data_americas.to_csv(<span class="st">'processed.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data_americas.to_csv(<span class="st">"processed.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For help on <code>read_csv</code> or <code>to_csv</code>, you could execute, for example:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(data_americas.to_csv)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(pd.read_csv)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

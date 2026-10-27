@@ -88,9 +88,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b3b05533756b65102542bf1d1302b2e4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c5ec8c7c8cbd04670bf0d36eb8fc4983.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-dacb15ae91776f6bebfe04479a704d39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -874,9 +874,10 @@ cookieconsent.run({
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pressure <span class="op">=</span> <span class="fl">103.9</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adjust(t):</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    temperature <span class="op">=</span> t <span class="op">*</span> <span class="fl">1.43</span> <span class="op">/</span> pressure</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> temperature</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adjust(t):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    temperature <span class="op">=</span> t <span class="op">*</span> <span class="fl">1.43</span> <span class="op">/</span> pressure</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> temperature</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>pressure</code> is a <em>global variable</em>.
 <ul>
@@ -890,8 +891,8 @@ cookieconsent.run({
 <li>Remember: a function parameter is a variable that is automatically assigned a value when the function is called.</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'adjusted:'</span>, adjust(<span class="fl">0.9</span>))</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'temperature after call:'</span>, temperature)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"adjusted:"</span>, adjust(<span class="fl">0.9</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"temperature after call:"</span>, temperature)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>adjusted: 0.01238691049085659</code></pre>
 <pre class="error"><code>Traceback (most recent call last):
   File "/Users/swcarpentry/foo.py", line 8, in &lt;module&gt;
@@ -910,11 +911,13 @@ NameError: name 'temperature' is not defined</code></pre>
 <p>Trace the values of all variables in this program as it is executed. (Use ‘—’ as the value of variables before and after they exist.)</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>limit <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clip(value):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">min</span>(<span class="bu">max</span>(<span class="fl">0.0</span>, value), limit)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>value <span class="op">=</span> <span class="op">-</span><span class="fl">22.5</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clip(value))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clip(value):</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">min</span>(<span class="bu">max</span>(<span class="fl">0.0</span>, value), limit)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>value <span class="op">=</span> <span class="op">-</span><span class="fl">22.5</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clip(value))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">

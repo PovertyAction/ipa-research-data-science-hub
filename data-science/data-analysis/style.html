@@ -88,9 +88,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b3b05533756b65102542bf1d1302b2e4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c5ec8c7c8cbd04670bf0d36eb8fc4983.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-dacb15ae91776f6bebfe04479a704d39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -892,7 +892,7 @@ cookieconsent.run({
 <h2 class="anchored" data-anchor-id="use-assertions-to-check-for-internal-errors">Use assertions to check for internal errors</h2>
 <p>Assertions are a simple but powerful method for making sure that the context in which your code is executing is as you expect.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_bulk_density(mass, volume):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''Return dry bulk density = powder mass / powder volume.'''</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return dry bulk density = powder mass / powder volume."""</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> volume <span class="op">&gt;</span> <span class="dv">0</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mass <span class="op">/</span> volume</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If the assertion is <code>False</code>, the Python interpreter raises an <code>AssertionError</code> runtime exception. The source code for the expression that failed will be displayed as part of the error message. To ignore assertions in your code run the interpreter with the ‘-O’ (optimize) switch. Assertions should contain only simple checks and never change the state of the program. For example, an assertion should never contain an assignment.</p>
@@ -907,7 +907,8 @@ cookieconsent.run({
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(values) <span class="op">/</span> <span class="bu">len</span>(values)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(average)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(average)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>Help on function average in module __main__:
 
 average(values)
@@ -934,19 +935,20 @@ average(values)
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Find maximum edit distance between multiple sequences."</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This finds the maximum distance between all sequences.</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> overall_max(sequences):</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''Determine overall maximum edit distance.'''</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    highest <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> left <span class="kw">in</span> sequences:</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> right <span class="kw">in</span> sequences:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="co">'''Avoid checking sequence against itself.'''</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> left <span class="op">!=</span> right:</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                this <span class="op">=</span> edit_distance(left, right)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                highest <span class="op">=</span> <span class="bu">max</span>(highest, this)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report.</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> highest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> overall_max(sequences):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Determine overall maximum edit distance."""</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    highest <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> left <span class="kw">in</span> sequences:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> right <span class="kw">in</span> sequences:</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="co">"""Avoid checking sequence against itself."""</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> left <span class="op">!=</span> right:</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                this <span class="op">=</span> edit_distance(left, right)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                highest <span class="op">=</span> <span class="bu">max</span>(highest, this)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report.</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> highest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -981,8 +983,8 @@ average(values)
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> middle(a, b, c):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''Return the middle value of three.</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes the values can actually be compared.'''</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return the middle value of three.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes the values can actually be compared."""</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    values <span class="op">=</span> [a, b, c]</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    values.sort()</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> values[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1008,20 +1010,22 @@ average(values)
 <li>Compare your rewrite with your neighbor’s. What did you do the same? What did you do differently, and why?</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">'et cetera'</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"et cetera"</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> n:</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print('at', j)</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    new <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    new <span class="op">=</span> <span class="st">""</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(s)):</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        left <span class="op">=</span> j<span class="op">-</span><span class="dv">1</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        right <span class="op">=</span> (j<span class="op">+</span><span class="dv">1</span>)<span class="op">%</span><span class="bu">len</span>(s)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> s[left]<span class="op">==</span>s[right]: new <span class="op">=</span> new <span class="op">+</span> <span class="st">'-'</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: new <span class="op">=</span> new <span class="op">+</span> <span class="st">'*'</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    s<span class="op">=</span><span class="st">''</span>.join(new)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        left <span class="op">=</span> j <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        right <span class="op">=</span> (j <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="bu">len</span>(s)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> s[left] <span class="op">==</span> s[right]:</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            new <span class="op">=</span> new <span class="op">+</span> <span class="st">"-"</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            new <span class="op">=</span> new <span class="op">+</span> <span class="st">"*"</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="st">""</span>.join(new)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1046,20 +1050,21 @@ average(values)
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    input_string_length <span class="op">=</span> <span class="bu">len</span>(input_string)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    old <span class="op">=</span> input_string</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        new <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        new <span class="op">=</span> <span class="st">""</span></span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># iterate through characters in previous string</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(input_string_length):</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> j<span class="op">-</span><span class="dv">1</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            right <span class="op">=</span> (j<span class="op">+</span><span class="dv">1</span>) <span class="op">%</span> input_string_length  <span class="co"># ensure right index wraps around</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> j <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            right <span class="op">=</span> (j <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> input_string_length  <span class="co"># ensure right index wraps around</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> old[left] <span class="op">==</span> old[right]:</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                new <span class="op">=</span> new <span class="op">+</span> <span class="st">'-'</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                new <span class="op">=</span> new <span class="op">+</span> <span class="st">"-"</span></span>
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>                new <span class="op">=</span> new <span class="op">+</span> <span class="st">'*'</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>                new <span class="op">=</span> new <span class="op">+</span> <span class="st">"*"</span></span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(new)</span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># store new string as old</span></span>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        old <span class="op">=</span> new</span>
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>string_machine(<span class="st">'et cetera'</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>string_machine(<span class="st">"et cetera"</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="output"><code>et cetera
 *****-***
 ----*-*--

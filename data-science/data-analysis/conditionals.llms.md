@@ -45,11 +45,11 @@ Correctly write programs that use if and else statements and simple Boolean expr
 ``` python
 mass = 3.54
 if mass > 3.0:
-    print(mass, 'is large')
+    print(mass, "is large")
 
 mass = 2.07
 if mass > 3.0:
-    print (mass, 'is large')
+    print(mass, "is large")
 ```
 
 ``` output
@@ -65,7 +65,7 @@ if mass > 3.0:
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 3.0:
-        print(m, 'is large')
+        print(m, "is large")
 ```
 
 ``` output
@@ -82,9 +82,9 @@ for m in masses:
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 3.0:
-        print(m, 'is large')
+        print(m, "is large")
     else:
-        print(m, 'is small')
+        print(m, "is small")
 ```
 
 ``` output
@@ -106,11 +106,11 @@ for m in masses:
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 9.0:
-        print(m, 'is HUGE')
+        print(m, "is HUGE")
     elif m > 3.0:
-        print(m, 'is large')
+        print(m, "is large")
     else:
-        print(m, 'is small')
+        print(m, "is small")
 ```
 
 ``` output
@@ -129,11 +129,11 @@ for m in masses:
 ``` python
 grade = 85
 if grade >= 90:
-    print('grade is A')
+    print("grade is A")
 elif grade >= 80:
-    print('grade is B')
+    print("grade is B")
 elif grade >= 70:
-    print('grade is C')
+    print("grade is C")
 ```
 
 ``` output
@@ -145,9 +145,9 @@ grade is B
 ``` python
 velocity = 10.0
 if velocity > 20.0:
-    print('moving too fast')
+    print("moving too fast")
 else:
-    print('adjusting velocity')
+    print("adjusting velocity")
     velocity = 50.0
 ```
 
@@ -159,15 +159,15 @@ adjusting velocity
 
 ``` python
 velocity = 10.0
-for i in range(5): # execute the loop 5 times
-    print(i, ':', velocity)
+for i in range(5):  # execute the loop 5 times
+    print(i, ":", velocity)
     if velocity > 20.0:
-        print('moving too fast')
+        print("moving too fast")
         velocity = velocity - 5.0
     else:
-        print('moving too slow')
+        print("moving too slow")
         velocity = velocity + 10.0
-print('final velocity:', velocity)
+print("final velocity:", velocity)
 ```
 
 ``` output
@@ -198,7 +198,7 @@ final velocity: 30.0
 Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`. Continuing the example above, suppose you have
 
 ``` python
-mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
+mass = [3.54, 2.07, 9.22, 1.86, 1.71]
 velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
 
 i = 0
@@ -297,7 +297,8 @@ so it is perfectly clear to a reader (and to Python) what you really mean.
 > > ``` python
 > > import glob
 > > import pandas as pd
-> > for filename in glob.glob('data/*.csv'):
+> >
+> > for filename in glob.glob("data/*.csv"):
 > >     contents = pd.read_csv(filename)
 > >     if len(contents) < 50:
 > >         print(filename, len(contents))
@@ -324,7 +325,7 @@ so it is perfectly clear to a reader (and to Python) what you really mean.
 > > **TIP:**
 > >
 > > ``` python
-> > values = [-2,1,65,78,-54,-24,100]
+> > values = [-2, 1, 65, 78, -54, -24, 100]
 > > smallest, largest = None, None
 > > for v in values:
 > >     if smallest is None and largest is None:
@@ -340,7 +341,7 @@ If you wrote `== None` instead of `is None`, that works too, but Python programm
 It can be argued that an advantage of using this method would be to make the code more readable. However, a disadvantage is that this code is not efficient because within each iteration of the `for` loop statement, there are two more loops that run over two numbers each (the `min` and `max` functions). It would be more efficient to iterate over each number just once:
 
 ``` python
-values = [-2,1,65,78,-54,-24,100]
+values = [-2, 1, 65, 78, -54, -24, 100]
 smallest, largest = None, None
 for v in values:
     if smallest is None or v < smallest:
@@ -353,7 +354,7 @@ print(smallest, largest)
 Now we have one loop, but four comparison tests. There are two ways we could improve it further: either use fewer comparisons in each iteration, or use two loops that each contain only one comparison test. The simplest solution is often the best:
 
 ``` python
-values = [-2,1,65,78,-54,-24,100]
+values = [-2, 1, 65, 78, -54, -24, 100]
 smallest = min(values)
 largest = max(values)
 print(smallest, largest)

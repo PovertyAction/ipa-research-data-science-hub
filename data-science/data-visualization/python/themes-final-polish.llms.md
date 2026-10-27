@@ -138,18 +138,20 @@ For plot-specific customization, use `.theme()`:
 (
     so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
     .add(so.Dot(pointsize=8, alpha=0.7))
-    .theme({
-        "axes.facecolor": "#f8f9fa",     # Light gray background
-        "axes.edgecolor": "#343a40",      # Dark edges
-        "axes.linewidth": 1.5,            # Thicker borders
-        "grid.color": "white",            # White grid lines
-        "grid.linewidth": 1.2,            # Thicker grid
-    })
+    .theme(
+        {
+            "axes.facecolor": "#f8f9fa",  # Light gray background
+            "axes.edgecolor": "#343a40",  # Dark edges
+            "axes.linewidth": 1.5,  # Thicker borders
+            "grid.color": "white",  # White grid lines
+            "grid.linewidth": 1.2,  # Thicker grid
+        }
+    )
     .label(
         title="Custom Theme Example",
         x="Flipper Length (mm)",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -206,24 +208,20 @@ sns.set_theme(style="white", context="paper")
 # Create realistic program data
 np.random.seed(42)
 time_points = [0, 3, 6, 9, 12]
-groups = ['Control', 'Treatment']
+groups = ["Control", "Treatment"]
 
 program_data = []
 for group in groups:
     for time in time_points:
         n = 50
-        if group == 'Control':
+        if group == "Control":
             mean = 50 + time * 0.4 + np.random.normal(0, 1)
         else:
             mean = 50 + time * 1.2 + np.random.normal(0, 1)
 
         values = np.random.normal(mean, 8, n)
         for val in values:
-            program_data.append({
-                'group': group,
-                'month': time,
-                'outcome': val
-            })
+            program_data.append({"group": group, "month": time, "outcome": val})
 
 program_df = pd.DataFrame(program_data)
 
@@ -239,25 +237,27 @@ plot = (
     .scale(
         color=so.Nominal(["#666666", "#E69F00"]),  # Colorblind-safe
         x=so.Continuous().tick(at=time_points),
-        y=(30, 80)
+        y=(30, 80),
     )
     .label(
         title="Impact of Microfinance Training on Household Savings\nRandomized Controlled Trial, 2022-2023",
         x="Months Since Baseline",
         y="Monthly Savings (KSh, thousands)",
-        color="Group"
+        color="Group",
     )
-    .theme({
-        "axes.facecolor": "white",
-        "axes.edgecolor": "#333333",
-        "axes.linewidth": 1.2,
-        "grid.color": "#e5e5e5",
-        "grid.linewidth": 0.8,
-        "figure.figsize": (8, 5),
-        "axes.labelsize": 11,
-        "axes.titlesize": 12,
-        "legend.fontsize": 10
-    })
+    .theme(
+        {
+            "axes.facecolor": "white",
+            "axes.edgecolor": "#333333",
+            "axes.linewidth": 1.2,
+            "grid.color": "#e5e5e5",
+            "grid.linewidth": 0.8,
+            "figure.figsize": (8, 5),
+            "axes.labelsize": 11,
+            "axes.titlesize": 12,
+            "legend.fontsize": 10,
+        }
+    )
 )
 
 # Display
@@ -319,7 +319,7 @@ plot = (
         title="Penguin Measurements with Annotation",
         x="Flipper Length (mm)",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 
@@ -329,20 +329,21 @@ ax = fig.axes[0]
 
 # Add annotation
 ax.annotate(
-    'Largest penguins',
+    "Largest penguins",
     xy=(230, 6000),
     xytext=(215, 5500),
-    arrowprops=dict(arrowstyle='->', color='red', lw=1.5),
+    arrowprops=dict(arrowstyle="->", color="red", lw=1.5),
     fontsize=10,
-    color='red'
+    color="red",
 )
 
 # Add text box
 ax.text(
-    175, 3200,
-    'Smallest penguins\nfound here',
+    175,
+    3200,
+    "Smallest penguins\nfound here",
     fontsize=9,
-    bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+    bbox=dict(boxstyle="round", facecolor="wheat", alpha=0.5),
 )
 
 plt.tight_layout()
@@ -367,7 +368,7 @@ panel_a = (
         title="A. Flipper Length vs Body Mass",
         x="Flipper Length (mm)",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 
@@ -376,11 +377,7 @@ panel_b = (
     so.Plot(penguins, x="body_mass_g")
     .facet(row="species")
     .add(so.Bars(), so.Hist(bins=20))
-    .label(
-        title="B. Body Mass Distributions",
-        x="Body Mass (g)",
-        y="Count"
-    )
+    .label(title="B. Body Mass Distributions", x="Body Mass (g)", y="Count")
 )
 
 # Panel C: Means with error bars
@@ -393,7 +390,7 @@ panel_c = (
         title="C. Mean Body Mass by Species",
         x="Species",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 
@@ -556,7 +553,7 @@ sns.set_theme(style="whitegrid", context="poster")
 > > ``` python
 > > # Prepare data
 > > tips_clean = tips.copy()
-> > tips_clean['tip_percent'] = (tips_clean['tip'] / tips_clean['total_bill']) * 100
+> > tips_clean["tip_percent"] = (tips_clean["tip"] / tips_clean["total_bill"]) * 100
 > >
 > > # Set theme
 > > sns.set_theme(style="white", context="paper")
@@ -572,13 +569,11 @@ sns.set_theme(style="whitegrid", context="poster")
 > >         title="Tipping Patterns by Day and Meal Time",
 > >         x="Day of Week",
 > >         y="Tip Percentage (%)",
-> >         color="Meal Time"
+> >         color="Meal Time",
 > >     )
-> >     .theme({
-> >         "figure.figsize": (8, 5),
-> >         "axes.facecolor": "white",
-> >         "grid.color": "#e5e5e5"
-> >     })
+> >     .theme(
+> >         {"figure.figsize": (8, 5), "axes.facecolor": "white", "grid.color": "#e5e5e5"}
+> >     )
 > > )
 > >
 > > # Save

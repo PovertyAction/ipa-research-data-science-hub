@@ -137,10 +137,7 @@ Let’s create a simple scatter plot showing the relationship between flipper le
 
 ``` python
 # Create a plot using seaborn.objects
-(
-    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g")
-    .add(so.Dot())
-)
+(so.Plot(penguins, x="flipper_length_mm", y="body_mass_g").add(so.Dot()))
 ```
 
 Let’s break down what’s happening here:
@@ -166,13 +163,9 @@ Let’s improve our plot by adding more information:
 ``` python
 # Enhanced plot with color by species
 (
-    so.Plot(
-        penguins,
-        x="flipper_length_mm",
-        y="body_mass_g",
-        color="species"
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species").add(
+        so.Dot()
     )
-    .add(so.Dot())
 )
 ```
 
@@ -220,13 +213,9 @@ Now we can see that different penguin species cluster in different parts of the 
 > >
 > > ``` python
 > > (
-> >     so.Plot(
-> >         penguins,
-> >         x="bill_length_mm",
-> >         y="bill_depth_mm",
-> >         color="species"
+> >     so.Plot(penguins, x="bill_length_mm", y="bill_depth_mm", color="species").add(
+> >         so.Dot()
 > >     )
-> >     .add(so.Dot())
 > > )
 > > ```
 > >
@@ -263,9 +252,8 @@ Once you’ve created a plot you’re happy with, you can save it:
 
 ``` python
 # Create and save a plot
-plot = (
-    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
-    .add(so.Dot())
+plot = so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species").add(
+    so.Dot()
 )
 
 # Save to file

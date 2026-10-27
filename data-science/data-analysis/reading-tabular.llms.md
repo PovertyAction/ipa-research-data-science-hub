@@ -49,7 +49,7 @@ Import the Pandas library. Use Pandas to load a simple CSV data set. Get some ba
 ``` python
 import pandas as pd
 
-data_oceania = pd.read_csv('data/gapminder_gdp_oceania.csv')
+data_oceania = pd.read_csv("data/gapminder_gdp_oceania.csv")
 print(data_oceania)
 ```
 
@@ -91,7 +91,9 @@ print(data_oceania)
 - Naming the dataframe `data_oceania_country` tells us which region the data includes (`oceania`) and how it is indexed (`country`).
 
 ``` python
-data_oceania_country = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
+data_oceania_country = pd.read_csv(
+    "data/gapminder_gdp_oceania.csv", index_col="country"
+)
 print(data_oceania_country)
 ```
 
@@ -239,7 +241,7 @@ max      23424.766830    26997.936570    30687.754730    34435.367440
 > > To read in a CSV, we use `pd.read_csv` and pass the filename `'data/gapminder_gdp_americas.csv'` to it. We also once again pass the column name `'country'` to the parameter `index_col` in order to index by country. The summary statistics can be displayed with the `DataFrame.describe()` method.
 > >
 > > ``` python
-> > data_americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
+> > data_americas = pd.read_csv("data/gapminder_gdp_americas.csv", index_col="country")
 > > data_americas.describe()
 > > ```
 
@@ -349,7 +351,7 @@ max      23424.766830    26997.936570    30687.754730    34435.367440
 > > We need to specify the path to the file of interest in the call to `pd.read_csv`. We first need to ‘jump’ out of the folder `thesis` using ‘../’ and then into the folder `field_data` using ‘field_data/’. Then we can specify the filename \`microbes.csv. The result is as follows:
 > >
 > > ``` python
-> > data_microbes = pd.read_csv('../field_data/microbes.csv')
+> > data_microbes = pd.read_csv("../field_data/microbes.csv")
 > > ```
 
 > **NOTE:**
@@ -361,7 +363,7 @@ max      23424.766830    26997.936570    30687.754730    34435.367440
 > > In order to write the DataFrame `data_americas` to a file called `processed.csv`, execute the following command:
 > >
 > > ``` python
-> > data_americas.to_csv('processed.csv')
+> > data_americas.to_csv("processed.csv")
 > > ```
 > >
 > > For help on `read_csv` or `to_csv`, you could execute, for example:

@@ -59,8 +59,8 @@ Explain what software libraries are and why programmers create and use them. Wri
 ``` python
 import math
 
-print('pi is', math.pi)
-print('cos(pi) is', math.cos(math.pi))
+print("pi is", math.pi)
+print("cos(pi) is", math.cos(math.pi))
 ```
 
 ``` output
@@ -112,7 +112,7 @@ FUNCTIONS
 ``` python
 from math import cos, pi
 
-print('cos(pi) is', cos(pi))
+print("cos(pi) is", cos(pi))
 ```
 
 ``` output
@@ -127,7 +127,7 @@ cos(pi) is -1.0
 ``` python
 import math as m
 
-print('cos(pi) is', m.cos(m.pi))
+print("cos(pi) is", m.cos(m.pi))
 ```
 
 ``` output
@@ -156,7 +156,7 @@ cos(pi) is -1.0
 > You want to select a random character from a string:
 >
 > ``` python
-> bases = 'ACTTGCTTGAC'
+> bases = "ACTTGCTTGAC"
 > ```
 >
 > 1.  Which [standard library](https://docs.python.org/3/library/) module could help you?
@@ -207,9 +207,10 @@ cos(pi) is -1.0
 > Rearrange the following statements so that a random DNA base is printed and its index in the string. Not all statements may be needed. Feel free to use/add intermediate variables.
 >
 > ``` python
-> bases="ACTTGCTTGAC"
+> bases = "ACTTGCTTGAC"
 > import math
 > import random
+>
 > ___ = random.randrange(n_bases)
 > ___ = len(bases)
 > print("random base ", bases[___], "base index", ___)
@@ -220,6 +221,7 @@ cos(pi) is -1.0
 > > ``` python
 > > import math
 > > import random
+> >
 > > bases = "ACTTGCTTGAC"
 > > n_bases = len(bases)
 > > idx = random.randrange(n_bases)
@@ -248,6 +250,7 @@ cos(pi) is -1.0
 >
 > ``` python
 > import math as m
+>
 > angle = ____.degrees(____.pi / 2)
 > print(____)
 > ```
@@ -256,6 +259,7 @@ cos(pi) is -1.0
 > >
 > > ``` python
 > > import math as m
+> >
 > > angle = m.degrees(m.pi / 2)
 > > print(angle)
 > > ```
@@ -264,6 +268,7 @@ cos(pi) is -1.0
 > >
 > > ``` python
 > > import math
+> >
 > > angle = math.degrees(math.pi / 2)
 > > print(angle)
 > > ```
@@ -311,6 +316,7 @@ cos(pi) is -1.0
 > >
 > > ``` python
 > > from math import degrees, pi
+> >
 > > angle = degrees(pi / 2)
 > > print(angle)
 > > ```
@@ -324,6 +330,7 @@ cos(pi) is -1.0
 >
 > ``` python
 > from math import log
+>
 > log(0)
 > ```
 >

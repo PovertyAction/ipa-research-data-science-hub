@@ -88,9 +88,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b3b05533756b65102542bf1d1302b2e4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c5ec8c7c8cbd04670bf0d36eb8fc4983.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-dacb15ae91776f6bebfe04479a704d39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -941,7 +941,8 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install gazpacho</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Verify installation</strong>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gazpacho</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gazpacho.__version__)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gazpacho.__version__)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="common-installation-issues" class="level3">
 <h3 class="anchored" data-anchor-id="common-installation-issues">Common Installation Issues</h3>
@@ -1092,7 +1093,7 @@ cookieconsent.run({
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sites <span class="op">=</span> [</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://httpbin.org/html"</span>,</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://example.com"</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://httpbin.org/json"</span>  <span class="co"># This returns JSON, not HTML</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://httpbin.org/json"</span>,  <span class="co"># This returns JSON, not HTML</span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> site <span class="kw">in</span> sites:</span>
@@ -1122,19 +1123,21 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> get</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_get(url, max_retries<span class="op">=</span><span class="dv">3</span>):</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attempt <span class="kw">in</span> <span class="bu">range</span>(max_retries):</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> get(url)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Attempt </span><span class="sc">{</span>attempt <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> failed: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> attempt <span class="op">&lt;</span> max_retries <span class="op">-</span> <span class="dv">1</span>:</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                time.sleep(<span class="dv">2</span>)  <span class="co"># Wait before retry</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> e</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Use safe_get for unreliable connections</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> safe_get(<span class="st">"https://example.com"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_get(url, max_retries<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attempt <span class="kw">in</span> <span class="bu">range</span>(max_retries):</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> get(url)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Attempt </span><span class="sc">{</span>attempt <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> failed: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> attempt <span class="op">&lt;</span> max_retries <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                time.sleep(<span class="dv">2</span>)  <span class="co"># Wait before retry</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> e</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Use safe_get for unreliable connections</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> safe_get(<span class="st">"https://example.com"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="debugging-tips" class="level3">
 <h3 class="anchored" data-anchor-id="debugging-tips">Debugging Tips</h3>
@@ -1166,34 +1169,32 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> get</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scrape_page_title(url):</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Extract the title from a webpage."""</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fetch the HTML</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        html <span class="op">=</span> get(url)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Find the title using regex</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        title_match <span class="op">=</span> re.search(<span class="vs">r'&lt;title&gt;</span><span class="kw">(</span><span class="dv">.</span><span class="op">*?</span><span class="kw">)</span><span class="vs">&lt;/title&gt;'</span>, html, re.IGNORECASE)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> title_match:</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>            title <span class="op">=</span> title_match.group(<span class="dv">1</span>).strip()</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> title</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"No title found"</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Test with different websites</span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> [</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://example.com"</span>,</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://httpbin.org/html"</span>,</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://python.org"</span></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> url <span class="kw">in</span> urls:</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> scrape_page_title(url)</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scrape_page_title(url):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Extract the title from a webpage."""</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fetch the HTML</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        html <span class="op">=</span> get(url)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Find the title using regex</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        title_match <span class="op">=</span> re.search(<span class="vs">r"&lt;title&gt;</span><span class="kw">(</span><span class="dv">.</span><span class="op">*?</span><span class="kw">)</span><span class="vs">&lt;/title&gt;"</span>, html, re.IGNORECASE)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> title_match:</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>            title <span class="op">=</span> title_match.group(<span class="dv">1</span>).strip()</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> title</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"No title found"</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Test with different websites</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> [<span class="st">"https://example.com"</span>, <span class="st">"https://httpbin.org/html"</span>, <span class="st">"https://python.org"</span>]</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> url <span class="kw">in</span> urls:</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> scrape_page_title(url)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1208,24 +1209,26 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> get</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> analyze_webpage(url):</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Analyze basic elements of a webpage."""</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    html <span class="op">=</span> get(url)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count different elements</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    title_count <span class="op">=</span> <span class="bu">len</span>(re.findall(<span class="vs">r'&lt;title&gt;'</span>, html, re.IGNORECASE))</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    h1_count <span class="op">=</span> <span class="bu">len</span>(re.findall(<span class="vs">r'&lt;h1&gt;'</span>, html, re.IGNORECASE))</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    p_count <span class="op">=</span> <span class="bu">len</span>(re.findall(<span class="vs">r'&lt;p&gt;'</span>, html, re.IGNORECASE))</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    link_count <span class="op">=</span> <span class="bu">len</span>(re.findall(<span class="vs">r'&lt;a</span><span class="dv">\s</span><span class="op">+</span><span class="pp">[^&gt;]</span><span class="op">*</span><span class="vs">href'</span>, html, re.IGNORECASE))</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Analysis of </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Titles: </span><span class="sc">{</span>title_count<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  H1 tags: </span><span class="sc">{</span>h1_count<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Paragraphs: </span><span class="sc">{</span>p_count<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Links: </span><span class="sc">{</span>link_count<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze different pages</span></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>analyze_webpage(<span class="st">"https://example.com"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> analyze_webpage(url):</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Analyze basic elements of a webpage."""</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    html <span class="op">=</span> get(url)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count different elements</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    title_count <span class="op">=</span> <span class="bu">len</span>(re.findall(<span class="vs">r"&lt;title&gt;"</span>, html, re.IGNORECASE))</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    h1_count <span class="op">=</span> <span class="bu">len</span>(re.findall(<span class="vs">r"&lt;h1&gt;"</span>, html, re.IGNORECASE))</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    p_count <span class="op">=</span> <span class="bu">len</span>(re.findall(<span class="vs">r"&lt;p&gt;"</span>, html, re.IGNORECASE))</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    link_count <span class="op">=</span> <span class="bu">len</span>(re.findall(<span class="vs">r"&lt;a</span><span class="dv">\s</span><span class="op">+</span><span class="pp">[^&gt;]</span><span class="op">*</span><span class="vs">href"</span>, html, re.IGNORECASE))</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Analysis of </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Titles: </span><span class="sc">{</span>title_count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  H1 tags: </span><span class="sc">{</span>h1_count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Paragraphs: </span><span class="sc">{</span>p_count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Links: </span><span class="sc">{</span>link_count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze different pages</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>analyze_webpage(<span class="st">"https://example.com"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1237,22 +1240,24 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> get</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> polite_scraper(urls, delay<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Scrape multiple URLs with delays."""</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> url <span class="kw">in</span> urls:</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Scraping </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">..."</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        html <span class="op">=</span> get(url)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        results.append(html)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Be polite - wait between requests</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        time.sleep(delay)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> [<span class="st">"https://example.com"</span>, <span class="st">"https://httpbin.org/html"</span>]</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>pages <span class="op">=</span> polite_scraper(urls, delay<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> polite_scraper(urls, delay<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Scrape multiple URLs with delays."""</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> url <span class="kw">in</span> urls:</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Scraping </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">..."</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        html <span class="op">=</span> get(url)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        results.append(html)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Be polite - wait between requests</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        time.sleep(delay)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> [<span class="st">"https://example.com"</span>, <span class="st">"https://httpbin.org/html"</span>]</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>pages <span class="op">=</span> polite_scraper(urls, delay<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="user-agent-headers" class="level3">
 <h3 class="anchored" data-anchor-id="user-agent-headers">User Agent Headers</h3>
@@ -1286,16 +1291,17 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> get</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> robust_get(url, retries<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">2</span>):</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(retries):</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> get(url)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">&lt;</span> retries <span class="op">-</span> <span class="dv">1</span>:</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                time.sleep(delay)</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> e</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> robust_get(url, retries<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">2</span>):</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(retries):</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> get(url)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">&lt;</span> retries <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                time.sleep(delay)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> e</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1317,40 +1323,42 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> get</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_first_scraper(url):</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""A complete first scraper example."""</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 1: Fetch the webpage</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Fetching </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">..."</span>)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        html <span class="op">=</span> get(url)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 2: Check if successful</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> html:</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Failed to fetch content"</span>)</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Successfully fetched </span><span class="sc">{</span><span class="bu">len</span>(html)<span class="sc">}</span><span class="ss"> characters"</span>)</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 3: Extract title</span></span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>        title_match <span class="op">=</span> re.search(<span class="vs">r'&lt;title&gt;</span><span class="kw">(</span><span class="dv">.</span><span class="op">*?</span><span class="kw">)</span><span class="vs">&lt;/title&gt;'</span>, html, re.IGNORECASE)</span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> title_match.group(<span class="dv">1</span>).strip() <span class="cf">if</span> title_match <span class="cf">else</span> <span class="st">"No title"</span></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Page title: </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 4: Count links</span></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>        links <span class="op">=</span> re.findall(<span class="vs">r'&lt;a</span><span class="dv">\s</span><span class="op">+</span><span class="pp">[^&gt;]</span><span class="op">*</span><span class="vs">href'</span>, html, re.IGNORECASE)</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Number of links: </span><span class="sc">{</span><span class="bu">len</span>(links)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 5: Save HTML</span></span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>        filename <span class="op">=</span> <span class="ss">f"scraped_</span><span class="sc">{</span>url<span class="sc">.</span>split(<span class="st">'//'</span>)[<span class="dv">1</span>]<span class="sc">.</span>replace(<span class="st">'/'</span>, <span class="st">'_'</span>)<span class="sc">}</span><span class="ss">.html"</span></span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'w'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> f:</span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>            f.write(html)</span>
-<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"HTML saved to </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your scraper</span></span>
-<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>my_first_scraper(<span class="st">"https://example.com"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_first_scraper(url):</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""A complete first scraper example."""</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 1: Fetch the webpage</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Fetching </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">..."</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        html <span class="op">=</span> get(url)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 2: Check if successful</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> html:</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Failed to fetch content"</span>)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Successfully fetched </span><span class="sc">{</span><span class="bu">len</span>(html)<span class="sc">}</span><span class="ss"> characters"</span>)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 3: Extract title</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>        title_match <span class="op">=</span> re.search(<span class="vs">r"&lt;title&gt;</span><span class="kw">(</span><span class="dv">.</span><span class="op">*?</span><span class="kw">)</span><span class="vs">&lt;/title&gt;"</span>, html, re.IGNORECASE)</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> title_match.group(<span class="dv">1</span>).strip() <span class="cf">if</span> title_match <span class="cf">else</span> <span class="st">"No title"</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Page title: </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 4: Count links</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>        links <span class="op">=</span> re.findall(<span class="vs">r"&lt;a</span><span class="dv">\s</span><span class="op">+</span><span class="pp">[^&gt;]</span><span class="op">*</span><span class="vs">href"</span>, html, re.IGNORECASE)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Number of links: </span><span class="sc">{</span><span class="bu">len</span>(links)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 5: Save HTML</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>        filename <span class="op">=</span> <span class="ss">f"scraped_</span><span class="sc">{</span>url<span class="sc">.</span>split(<span class="st">'//'</span>)[<span class="dv">1</span>]<span class="sc">.</span>replace(<span class="st">'/'</span>, <span class="st">'_'</span>)<span class="sc">}</span><span class="ss">.html"</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>            f.write(html)</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"HTML saved to </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your scraper</span></span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>my_first_scraper(<span class="st">"https://example.com"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>

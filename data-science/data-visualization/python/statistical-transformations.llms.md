@@ -98,12 +98,12 @@ Often you want to show both:
 (
     so.Plot(penguins, x="species", y="body_mass_g", color="species")
     .add(so.Dot(alpha=0.3), so.Jitter(width=0.3))  # Raw data with jitter
-    .add(so.Bar(alpha=0.5), so.Agg())               # Mean as bars
+    .add(so.Bar(alpha=0.5), so.Agg())  # Mean as bars
     .label(
         title="Penguin Body Mass: Individual Values and Means",
         x="Species",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -118,20 +118,13 @@ np.random.seed(42)
 months = np.repeat(range(1, 13), 20)  # 20 observations per month
 values = months * 2 + np.random.normal(0, 5, len(months))
 
-time_data = pd.DataFrame({
-    'month': months,
-    'value': values
-})
+time_data = pd.DataFrame({"month": months, "value": values})
 
 (
     so.Plot(time_data, x="month", y="value")
     .add(so.Dot(alpha=0.2, color="gray"))  # All data points
     .add(so.Line(color="red", linewidth=3), so.Agg())  # Mean line
-    .label(
-        title="Monthly Values: Raw Data and Mean Trend",
-        x="Month",
-        y="Value"
-    )
+    .label(title="Monthly Values: Raw Data and Mean Trend", x="Month", y="Value")
 )
 ```
 
@@ -144,12 +137,12 @@ time_data = pd.DataFrame({
 (
     so.Plot(penguins, x="species", y="body_mass_g", color="species")
     .add(so.Dot(pointsize=10), so.Agg())  # Mean as points
-    .add(so.Dash(width=0.5), so.Est())     # Confidence intervals as error bars
+    .add(so.Dash(width=0.5), so.Est())  # Confidence intervals as error bars
     .label(
         title="Mean Body Mass with 95% Confidence Intervals",
         x="Species",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -163,12 +156,8 @@ For trends over time or continuous variables:
 (
     so.Plot(time_data, x="month", y="value")
     .add(so.Line(linewidth=2.5), so.Agg())  # Mean line
-    .add(so.Band(alpha=0.2), so.Est())       # Confidence band
-    .label(
-        title="Monthly Trend with 95% Confidence Band",
-        x="Month",
-        y="Value"
-    )
+    .add(so.Band(alpha=0.2), so.Est())  # Confidence band
+    .label(title="Monthly Trend with 95% Confidence Band", x="Month", y="Value")
 )
 ```
 
@@ -185,7 +174,7 @@ For trends over time or continuous variables:
     .label(
         title="Flipper Length vs Body Mass (Linear Fit)",
         x="Flipper Length (mm)",
-        y="Body Mass (g)"
+        y="Body Mass (g)",
     )
 )
 ```
@@ -198,7 +187,7 @@ For curved relationships:
 # Create data with curved relationship
 x = np.linspace(0, 10, 100)
 y = 2 * x - 0.3 * x**2 + np.random.normal(0, 2, 100)
-curve_data = pd.DataFrame({'x': x, 'y': y})
+curve_data = pd.DataFrame({"x": x, "y": y})
 
 # Linear fit (underfits)
 (
@@ -234,7 +223,7 @@ Show separate regression lines for different categories:
         title="Flipper-Mass Relationship by Species",
         x="Flipper Length (mm)",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -248,11 +237,7 @@ Visualize distributions:
 (
     so.Plot(penguins, x="body_mass_g")
     .add(so.Bars(), so.Hist())
-    .label(
-        title="Distribution of Penguin Body Mass",
-        x="Body Mass (g)",
-        y="Count"
-    )
+    .label(title="Distribution of Penguin Body Mass", x="Body Mass (g)", y="Count")
 )
 ```
 
@@ -285,7 +270,7 @@ Visualize distributions:
         title="Body Mass Distributions by Species",
         x="Body Mass (g)",
         y="Count",
-        color="Species"
+        color="Species",
     )
 )
 
@@ -294,11 +279,7 @@ Visualize distributions:
     so.Plot(penguins, x="body_mass_g")
     .facet(row="species")
     .add(so.Bars(), so.Hist(bins=20))
-    .label(
-        title="Body Mass Distributions by Species",
-        x="Body Mass (g)",
-        y="Count"
-    )
+    .label(title="Body Mass Distributions by Species", x="Body Mass (g)", y="Count")
 )
 ```
 
@@ -311,11 +292,7 @@ Count occurrences in categories:
 (
     so.Plot(penguins, x="species")
     .add(so.Bar(), so.Count())
-    .label(
-        title="Number of Penguins by Species",
-        x="Species",
-        y="Count"
-    )
+    .label(title="Number of Penguins by Species", x="Species", y="Count")
 )
 
 # Count by two variables
@@ -323,10 +300,7 @@ Count occurrences in categories:
     so.Plot(penguins, x="species", color="sex")
     .add(so.Bar(), so.Count())
     .label(
-        title="Penguin Counts by Species and Sex",
-        x="Species",
-        y="Count",
-        color="Sex"
+        title="Penguin Counts by Species and Sex", x="Species", y="Count", color="Sex"
     )
 )
 ```
@@ -341,21 +315,17 @@ np.random.seed(42)
 
 # Pre and post measurements for treatment and control
 eval_data = []
-for group in ['Control', 'Treatment']:
-    for time in ['Baseline', 'Endline']:
+for group in ["Control", "Treatment"]:
+    for time in ["Baseline", "Endline"]:
         n = 100
-        if group == 'Control':
-            mean = 50 if time == 'Baseline' else 52
+        if group == "Control":
+            mean = 50 if time == "Baseline" else 52
         else:
-            mean = 50 if time == 'Baseline' else 65
+            mean = 50 if time == "Baseline" else 65
 
         values = np.random.normal(mean, 10, n)
         for val in values:
-            eval_data.append({
-                'group': group,
-                'time': time,
-                'score': val
-            })
+            eval_data.append({"group": group, "time": time, "score": val})
 
 eval_df = pd.DataFrame(eval_data)
 
@@ -374,7 +344,7 @@ eval_df = pd.DataFrame(eval_data)
         title="Agricultural Training Program Impact\nBaseline to Endline Comparison",
         x="Time Point",
         y="Food Security Score",
-        color="Group"
+        color="Group",
     )
 )
 ```
@@ -402,7 +372,7 @@ Show percentile bands instead of confidence intervals:
         title="Body Mass: Median and Interquartile Range",
         x="Species",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -425,7 +395,7 @@ Create rich analytical visualizations:
         title="Bill Length vs Body Mass by Species\nwith Linear Regression and 95% CI",
         x="Bill Length (mm)",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -455,7 +425,7 @@ Create rich analytical visualizations:
 > >         title="Average Tips by Day of Week (with 95% CI)",
 > >         x="Day",
 > >         y="Tip Amount ($)",
-> >         color="Day"
+> >         color="Day",
 > >     )
 > > )
 > > ```
@@ -479,7 +449,7 @@ Create rich analytical visualizations:
 > >         .label(
 > >             title=f"Distribution of Total Bills ({n_bins} bins)",
 > >             x="Total Bill ($)",
-> >             y="Count"
+> >             y="Count",
 > >         )
 > >     )
 > > ```
@@ -511,7 +481,7 @@ Create rich analytical visualizations:
 > >         title="Bill Dimensions by Species with Linear Fits",
 > >         x="Bill Length (mm)",
 > >         y="Bill Depth (mm)",
-> >         color="Species"
+> >         color="Species",
 > >     )
 > > )
 > > ```

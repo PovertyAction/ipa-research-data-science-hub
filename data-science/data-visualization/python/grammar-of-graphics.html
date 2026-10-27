@@ -88,9 +88,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-b3b05533756b65102542bf1d1302b2e4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-c5ec8c7c8cbd04670bf0d36eb8fc4983.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-dacb15ae91776f6bebfe04479a704d39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -988,14 +988,10 @@ cookieconsent.run({
 <p>Color is one of the most powerful ways to encode information. Let’s see how it works:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Color by categorical variable (species)</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        penguins_clean,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"bill_length_mm"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"species"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins_clean, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, color<span class="op">=</span><span class="st">"species"</span>).add(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        so.Dot()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here, each species gets a different color automatically. Seaborn:</p>
 <ul>
 <li>Assigns distinct colors to each category</li>
@@ -1008,13 +1004,9 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Color by continuous variable (body mass)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        penguins_clean,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"bill_length_mm"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"body_mass_g"</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        penguins_clean, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, color<span class="op">=</span><span class="st">"body_mass_g"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    ).add(so.Dot())</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Notice how the color gradient shows the range of body mass values. Lighter or darker colors indicate higher or lower values.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1041,13 +1033,9 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Size by continuous variable</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        penguins_clean,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"bill_length_mm"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"body_mass_g"</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        penguins_clean, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, pointsize<span class="op">=</span><span class="st">"body_mass_g"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    ).add(so.Dot())</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Larger dots represent penguins with greater body mass. This creates a “bubble plot” where we’re visualizing three variables simultaneously!</p>
 <section id="combining-multiple-aesthetics" class="level3">
 <h3 class="anchored" data-anchor-id="combining-multiple-aesthetics">Combining Multiple Aesthetics</h3>
@@ -1059,10 +1047,9 @@ cookieconsent.run({
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"bill_length_mm"</span>,</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"species"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"body_mass_g"</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.6</span>))  <span class="co"># Added transparency to see overlapping points</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    ).add(so.Dot(alpha<span class="op">=</span><span class="fl">0.6</span>))  <span class="co"># Added transparency to see overlapping points</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now we’re showing <strong>four</strong> variables at once:</p>
 <ul>
 <li>Bill length (x-axis)</li>
@@ -1079,13 +1066,9 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Different shapes for different categories</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        penguins_clean,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"bill_length_mm"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"species"</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        penguins_clean, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, marker<span class="op">=</span><span class="st">"species"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    ).add(so.Dot())</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1110,34 +1093,19 @@ cookieconsent.run({
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"bill_length_mm"</span>,</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"species"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"species"</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    ).add(so.Dot())</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now species are distinguished by both color AND shape - making the plot accessible to everyone!</p>
 </section>
 <section id="using-alpha-transparency" class="level2">
 <h2 class="anchored" data-anchor-id="using-alpha-transparency">Using Alpha (Transparency)</h2>
 <p>Alpha controls transparency and is useful when points overlap:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Without alpha - hard to see overlapping points</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        penguins_clean,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"flipper_length_mm"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"body_mass_g"</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># With alpha - can see density of overlapping points</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    so.Plot(</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        penguins_clean,</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"flipper_length_mm"</span>,</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"body_mass_g"</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.5</span>))</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(so.Plot(penguins_clean, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>).add(so.Dot()))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># With alpha - can see density of overlapping points</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>(so.Plot(penguins_clean, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>).add(so.Dot(alpha<span class="op">=</span><span class="fl">0.5</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Where many points overlap, the color becomes darker, showing areas of high density.</p>
 </section>
 <section id="research-example-education-and-income-data" class="level2">
@@ -1149,16 +1117,18 @@ cookieconsent.run({
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">200</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>research_data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'household_income'</span>: np.random.lognormal(<span class="dv">10</span>, <span class="dv">1</span>, n),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'years_education'</span>: np.random.normal(<span class="dv">8</span>, <span class="dv">3</span>, n),</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'household_size'</span>: np.random.randint(<span class="dv">1</span>, <span class="dv">10</span>, n),</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'county'</span>: np.random.choice([<span class="st">'Nairobi'</span>, <span class="st">'Kisumu'</span>, <span class="st">'Mombasa'</span>, <span class="st">'Nakuru'</span>], n),</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'program_participant'</span>: np.random.choice([<span class="st">'Yes'</span>, <span class="st">'No'</span>], n)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure positive values</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>research_data[<span class="st">'years_education'</span>] <span class="op">=</span> research_data[<span class="st">'years_education'</span>].clip(lower<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>research_data <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"household_income"</span>: np.random.lognormal(<span class="dv">10</span>, <span class="dv">1</span>, n),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"years_education"</span>: np.random.normal(<span class="dv">8</span>, <span class="dv">3</span>, n),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"household_size"</span>: np.random.randint(<span class="dv">1</span>, <span class="dv">10</span>, n),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"county"</span>: np.random.choice([<span class="st">"Nairobi"</span>, <span class="st">"Kisumu"</span>, <span class="st">"Mombasa"</span>, <span class="st">"Nakuru"</span>], n),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"program_participant"</span>: np.random.choice([<span class="st">"Yes"</span>, <span class="st">"No"</span>], n),</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure positive values</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>research_data[<span class="st">"years_education"</span>] <span class="op">=</span> research_data[<span class="st">"years_education"</span>].clip(lower<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now let’s visualize this data with multiple aesthetics:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rich multi-dimensional visualization</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -1168,10 +1138,9 @@ cookieconsent.run({
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"household_income"</span>,</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"county"</span>,</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"household_size"</span>,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"program_participant"</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.6</span>))</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"program_participant"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    ).add(so.Dot(alpha<span class="op">=</span><span class="fl">0.6</span>))</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This single plot shows:</p>
 <ul>
 <li>Education level (x-axis)</li>
@@ -1215,7 +1184,7 @@ cookieconsent.run({
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean data to remove missing sex values</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>penguins_complete <span class="op">=</span> penguins.dropna(subset<span class="op">=</span>[<span class="st">'sex'</span>])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>penguins_complete <span class="op">=</span> penguins.dropna(subset<span class="op">=</span>[<span class="st">"sex"</span>])</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    so.Plot(</span>
@@ -1223,10 +1192,9 @@ cookieconsent.run({
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"flipper_length_mm"</span>,</span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"island"</span>,</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"sex"</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.7</span>))</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"sex"</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    ).add(so.Dot(alpha<span class="op">=</span><span class="fl">0.7</span>))</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>What patterns do you see? Do males and females differ in body mass? Do penguins from different islands cluster differently?</p>
 </div>
 </div>
@@ -1267,10 +1235,9 @@ cookieconsent.run({
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"species"</span>,</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"sex"</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.5</span>))</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"sex"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    ).add(so.Dot(alpha<span class="op">=</span><span class="fl">0.5</span>))</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Discussion</strong>: While technically you can encode many variables, there’s a limit to how much information people can process visually. Generally:</p>
 <ul>
 <li>3-4 variables is very manageable</li>

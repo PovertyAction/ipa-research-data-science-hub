@@ -60,8 +60,9 @@ The `.label()` method adds titles and axis labels to your plot:
 ``` python
 # Basic plot without labels - not ready to share!
 (
-    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species")
-    .add(so.Dot())
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species").add(
+        so.Dot()
+    )
 )
 
 # Now with proper labels - ready for presentation!
@@ -72,7 +73,7 @@ The `.label()` method adds titles and axis labels to your plot:
         title="Relationship Between Flipper Length and Body Mass in Penguins",
         x="Flipper Length (mm)",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -96,7 +97,7 @@ The `.label()` method accepts several arguments:
         x="bill_length_mm",
         y="bill_depth_mm",
         color="species",
-        pointsize="body_mass_g"
+        pointsize="body_mass_g",
     )
     .add(so.Dot(alpha=0.6))
     .label(
@@ -104,7 +105,7 @@ The `.label()` method accepts several arguments:
         x="Bill Length (mm)",
         y="Bill Depth (mm)",
         color="Penguin Species",
-        pointsize="Body Mass (g)"
+        pointsize="Body Mass (g)",
     )
 )
 ```
@@ -120,7 +121,7 @@ For longer titles, use `\n` for line breaks:
     .label(
         title="Impact of Flipper Length on Body Mass:\nAnalysis of Three Penguin Species in Antarctica",
         x="Flipper Length (mm)",
-        y="Body Mass (g)"
+        y="Body Mass (g)",
     )
 )
 ```
@@ -159,12 +160,12 @@ Control the range of your axes:
     .add(so.Dot())
     .scale(
         x=(170, 230),  # Only show flipper lengths between 170-230mm
-        y=(2500, 6500)  # Only show body mass between 2500-6500g
+        y=(2500, 6500),  # Only show body mass between 2500-6500g
     )
     .label(
         title="Penguin Measurements (Zoomed)",
         x="Flipper Length (mm)",
-        y="Body Mass (g)"
+        y="Body Mass (g)",
     )
 )
 ```
@@ -191,7 +192,7 @@ Control color palettes:
         title="Colorblind-Friendly Palette",
         x="Flipper Length (mm)",
         y="Body Mass (g)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -220,7 +221,7 @@ For continuous data:
     .add(so.Dot())
     .scale(
         x=so.Continuous().tick(at=[180, 200, 220]),
-        y=so.Continuous().tick(at=[3000, 4000, 5000, 6000])
+        y=so.Continuous().tick(at=[3000, 4000, 5000, 6000]),
     )
 )
 ```
@@ -232,11 +233,13 @@ For research data with different units:
 ``` python
 # Create income data example
 np.random.seed(42)
-income_data = pd.DataFrame({
-    'education_years': np.random.uniform(0, 20, 100),
-    'annual_income': np.random.uniform(50000, 500000, 100),
-    'county': np.random.choice(['Nairobi', 'Kisumu', 'Mombasa'], 100)
-})
+income_data = pd.DataFrame(
+    {
+        "education_years": np.random.uniform(0, 20, 100),
+        "annual_income": np.random.uniform(50000, 500000, 100),
+        "county": np.random.choice(["Nairobi", "Kisumu", "Mombasa"], 100),
+    }
+)
 
 # Format as thousands with 'K' suffix
 from matplotlib.ticker import FuncFormatter
@@ -248,7 +251,7 @@ from matplotlib.ticker import FuncFormatter
         title="Income by Education Level Across Counties",
         x="Years of Education",
         y="Annual Income (KSh)",
-        color="County"
+        color="County",
     )
 )
 ```
@@ -264,22 +267,18 @@ periods = [0, 6, 12, 18, 24]  # Months
 treatment_baseline = 45
 control_baseline = 46
 
-program_data = pd.DataFrame({
-    'month': periods * 2,
-    'outcome': (
-        [control_baseline, 47, 48, 49, 50] +  # Control group
-        [treatment_baseline, 50, 55, 60, 65]   # Treatment group
-    ),
-    'lower_ci': (
-        [43, 44, 45, 46, 47] +
-        [43, 47, 52, 57, 62]
-    ),
-    'upper_ci': (
-        [47, 50, 51, 52, 53] +
-        [47, 53, 58, 63, 68]
-    ),
-    'group': ['Control'] * 5 + ['Treatment'] * 5
-})
+program_data = pd.DataFrame(
+    {
+        "month": periods * 2,
+        "outcome": (
+            [control_baseline, 47, 48, 49, 50]  # Control group
+            + [treatment_baseline, 50, 55, 60, 65]  # Treatment group
+        ),
+        "lower_ci": ([43, 44, 45, 46, 47] + [43, 47, 52, 57, 62]),
+        "upper_ci": ([47, 50, 51, 52, 53] + [47, 53, 58, 63, 68]),
+        "group": ["Control"] * 5 + ["Treatment"] * 5,
+    }
+)
 
 # Create publication-ready plot
 (
@@ -289,13 +288,13 @@ program_data = pd.DataFrame({
     .add(so.Dot(pointsize=10), y="outcome")
     .scale(
         x=so.Continuous().tick(at=[0, 6, 12, 18, 24]),
-        color=so.Nominal(["#E69F00", "#56B4E9"])  # Custom colors
+        color=so.Nominal(["#E69F00", "#56B4E9"]),  # Custom colors
     )
     .label(
         title="Impact of Agricultural Training Program on Crop Yields\nRandomized Controlled Trial: 2021-2023",
         x="Months Since Baseline",
         y="Average Yield (bags per acre)",
-        color="Group"
+        color="Group",
     )
 )
 ```
@@ -342,7 +341,7 @@ This plot is ready for:
     .label(
         title="Colorblind-Safe Visualization",
         x="Flipper Length (mm)",
-        y="Body Mass (g)"
+        y="Body Mass (g)",
     )
 )
 ```
@@ -359,14 +358,14 @@ Use multiple aesthetics for critical distinctions:
         x="bill_length_mm",
         y="bill_depth_mm",
         color="species",
-        marker="species"  # Shape also encodes species
+        marker="species",  # Shape also encodes species
     )
     .add(so.Dot(pointsize=8))
     .label(
         title="Penguin Bill Measurements (Accessible Design)",
         x="Bill Length (mm)",
         y="Bill Depth (mm)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -395,7 +394,7 @@ Use multiple aesthetics for critical distinctions:
 > >         x="flipper_length_mm",
 > >         y="body_mass_g",
 > >         color="species",
-> >         pointsize="bill_length_mm"
+> >         pointsize="bill_length_mm",
 > >     )
 > >     .add(so.Dot(alpha=0.6))
 > >     .label(
@@ -403,7 +402,7 @@ Use multiple aesthetics for critical distinctions:
 > >         x="Flipper Length (mm)",
 > >         y="Body Mass (g)",
 > >         color="Species",
-> >         pointsize="Bill Length (mm)"
+> >         pointsize="Bill Length (mm)",
 > >     )
 > > )
 > > ```
@@ -413,10 +412,9 @@ Use multiple aesthetics for critical distinctions:
 > Create sample data for household income (which often follows a log-normal distribution):
 >
 > ``` python
-> income_data = pd.DataFrame({
->     'households': range(100),
->     'income': np.random.lognormal(10, 1, 100)
-> })
+> income_data = pd.DataFrame(
+>     {"households": range(100), "income": np.random.lognormal(10, 1, 100)}
+> )
 > ```
 >
 > Create two plots:
@@ -436,7 +434,7 @@ Use multiple aesthetics for critical distinctions:
 > >     .label(
 > >         title="Household Income (Linear Scale)",
 > >         x="Household ID",
-> >         y="Annual Income (KSh)"
+> >         y="Annual Income (KSh)",
 > >     )
 > > )
 > >
@@ -448,7 +446,7 @@ Use multiple aesthetics for critical distinctions:
 > >     .label(
 > >         title="Household Income (Log Scale)",
 > >         x="Household ID",
-> >         y="Annual Income (KSh, log scale)"
+> >         y="Annual Income (KSh, log scale)",
 > >     )
 > > )
 > > ```
@@ -474,17 +472,21 @@ Use multiple aesthetics for critical distinctions:
 > > ``` python
 > > # Create data
 > > np.random.seed(42)
-> > schools = ['School A', 'School B', 'School C', 'School D', 'School E']
-> > test_data = pd.DataFrame({
-> >     'school': np.repeat(schools, 20),
-> >     'score': np.concatenate([
-> >         np.random.normal(75, 10, 20),  # School A
-> >         np.random.normal(68, 12, 20),  # School B
-> >         np.random.normal(82, 8, 20),   # School C
-> >         np.random.normal(71, 11, 20),  # School D
-> >         np.random.normal(79, 9, 20)    # School E
-> >     ])
-> > })
+> > schools = ["School A", "School B", "School C", "School D", "School E"]
+> > test_data = pd.DataFrame(
+> >     {
+> >         "school": np.repeat(schools, 20),
+> >         "score": np.concatenate(
+> >             [
+> >                 np.random.normal(75, 10, 20),  # School A
+> >                 np.random.normal(68, 12, 20),  # School B
+> >                 np.random.normal(82, 8, 20),  # School C
+> >                 np.random.normal(71, 11, 20),  # School D
+> >                 np.random.normal(79, 9, 20),  # School E
+> >             ]
+> >         ),
+> >     }
+> > )
 > >
 > > # Create publication-ready plot
 > > (
@@ -493,13 +495,13 @@ Use multiple aesthetics for critical distinctions:
 > >     .add(so.Dot(alpha=0.3), so.Jitter(0.3))
 > >     .scale(
 > >         color="colorblind",
-> >         y=(0, 100)  # Test scores range from 0-100
+> >         y=(0, 100),  # Test scores range from 0-100
 > >     )
 > >     .label(
 > >         title="Primary School Mathematics Test Scores: Nairobi County, 2023",
 > >         x="School",
 > >         y="Test Score (out of 100)",
-> >         color="School"
+> >         color="School",
 > >     )
 > > )
 > > ```

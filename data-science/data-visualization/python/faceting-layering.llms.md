@@ -68,7 +68,7 @@ The `.facet()` method creates small multiples:
     .label(
         title="Bill Dimensions Across Penguin Species",
         x="Bill Length (mm)",
-        y="Bill Depth (mm)"
+        y="Bill Depth (mm)",
     )
 )
 ```
@@ -86,7 +86,7 @@ This creates three side-by-side plots, one for each species.
     .label(
         title="Bill Dimensions Across Penguin Species",
         x="Bill Length (mm)",
-        y="Bill Depth (mm)"
+        y="Bill Depth (mm)",
     )
 )
 ```
@@ -104,7 +104,7 @@ Create a grid of panels:
     .label(
         title="Penguin Body Measurements by Species and Sex",
         x="Flipper Length (mm)",
-        y="Body Mass (g)"
+        y="Body Mass (g)",
     )
 )
 ```
@@ -162,7 +162,7 @@ You can combine faceting and color for even more dimensions:
         title="Body Measurements: Species (panels) and Sex (colors)",
         x="Flipper Length (mm)",
         y="Body Mass (g)",
-        color="Sex"
+        color="Sex",
     )
 )
 ```
@@ -174,25 +174,31 @@ Imagine comparing program outcomes across different implementation sites:
 ``` python
 # Create multi-site program data
 np.random.seed(42)
-sites = ['Site A', 'Site B', 'Site C', 'Site D']
+sites = ["Site A", "Site B", "Site C", "Site D"]
 n_per_site = 50
 
-site_data = pd.DataFrame({
-    'site': np.repeat(sites, n_per_site),
-    'baseline_score': np.concatenate([
-        np.random.normal(50, 10, n_per_site),
-        np.random.normal(48, 12, n_per_site),
-        np.random.normal(52, 8, n_per_site),
-        np.random.normal(49, 11, n_per_site)
-    ]),
-    'endline_score': np.concatenate([
-        np.random.normal(65, 10, n_per_site),  # Good improvement
-        np.random.normal(55, 12, n_per_site),  # Modest improvement
-        np.random.normal(70, 8, n_per_site),   # Great improvement
-        np.random.normal(58, 11, n_per_site)   # Modest improvement
-    ]),
-    'group': np.tile(['Treatment', 'Control'], n_per_site * 2)
-})
+site_data = pd.DataFrame(
+    {
+        "site": np.repeat(sites, n_per_site),
+        "baseline_score": np.concatenate(
+            [
+                np.random.normal(50, 10, n_per_site),
+                np.random.normal(48, 12, n_per_site),
+                np.random.normal(52, 8, n_per_site),
+                np.random.normal(49, 11, n_per_site),
+            ]
+        ),
+        "endline_score": np.concatenate(
+            [
+                np.random.normal(65, 10, n_per_site),  # Good improvement
+                np.random.normal(55, 12, n_per_site),  # Modest improvement
+                np.random.normal(70, 8, n_per_site),  # Great improvement
+                np.random.normal(58, 11, n_per_site),  # Modest improvement
+            ]
+        ),
+        "group": np.tile(["Treatment", "Control"], n_per_site * 2),
+    }
+)
 
 # Visualize impact across sites
 (
@@ -204,7 +210,7 @@ site_data = pd.DataFrame({
         title="Program Impact Across Implementation Sites",
         x="Baseline Score",
         y="Endline Score",
-        color="Group"
+        color="Group",
     )
 )
 ```
@@ -221,20 +227,17 @@ Show both data and trend:
 
 ``` python
 # Create time series data
-months = pd.date_range('2023-01', periods=12, freq='M')
-monthly_data = pd.DataFrame({
-    'month': months,
-    'value': [45, 48, 52, 55, 58, 62, 65, 68, 71, 74, 77, 80]
-})
+months = pd.date_range("2023-01", periods=12, freq="M")
+monthly_data = pd.DataFrame(
+    {"month": months, "value": [45, 48, 52, 55, 58, 62, 65, 68, 71, 74, 77, 80]}
+)
 
 (
     so.Plot(monthly_data, x="month", y="value")
     .add(so.Line(linewidth=2, color="steelblue"))
     .add(so.Dot(pointsize=8, color="steelblue"))
     .label(
-        title="Monthly Program Enrollment Trend",
-        x="Month",
-        y="Number of Participants"
+        title="Monthly Program Enrollment Trend", x="Month", y="Number of Participants"
     )
 )
 ```
@@ -245,22 +248,20 @@ Show summaries with uncertainty:
 
 ``` python
 # Summary data with confidence intervals
-summary_data = pd.DataFrame({
-    'category': ['Group A', 'Group B', 'Group C'],
-    'mean': [75, 82, 68],
-    'lower': [70, 78, 63],
-    'upper': [80, 86, 73]
-})
+summary_data = pd.DataFrame(
+    {
+        "category": ["Group A", "Group B", "Group C"],
+        "mean": [75, 82, 68],
+        "lower": [70, 78, 63],
+        "upper": [80, 86, 73],
+    }
+)
 
 (
     so.Plot(summary_data, x="category")
     .add(so.Bar(alpha=0.7, color="steelblue"), y="mean")
     .add(so.Dash(width=0.5), ymin="lower", ymax="upper")
-    .label(
-        title="Mean Scores with 95% Confidence Intervals",
-        x="Group",
-        y="Score"
-    )
+    .label(title="Mean Scores with 95% Confidence Intervals", x="Group", y="Score")
 )
 ```
 
@@ -276,7 +277,7 @@ Raw data with regression line:
     .label(
         title="Flipper Length vs Body Mass (with Linear Fit)",
         x="Flipper Length (mm)",
-        y="Body Mass (g)"
+        y="Body Mass (g)",
     )
 )
 ```
@@ -296,7 +297,7 @@ The real power comes from combining these techniques:
         title="Bill Dimensions by Species Across Islands (with Trend Lines)",
         x="Bill Length (mm)",
         y="Bill Depth (mm)",
-        color="Species"
+        color="Species",
     )
 )
 ```
@@ -320,11 +321,7 @@ Faceting is excellent for comparing distributions:
     so.Plot(penguins, x="body_mass_g")
     .facet(col="species")
     .add(so.Bars(), so.Hist(bins=20))
-    .label(
-        title="Body Mass Distributions by Species",
-        x="Body Mass (g)",
-        y="Count"
-    )
+    .label(title="Body Mass Distributions by Species", x="Body Mass (g)", y="Count")
 )
 ```
 
@@ -334,10 +331,12 @@ When you have many categories, wrap them into multiple rows:
 
 ``` python
 # Create data with many categories
-many_categories = pd.DataFrame({
-    'value': np.random.randn(600),
-    'category': np.repeat([f'Cat {i}' for i in range(1, 13)], 50)
-})
+many_categories = pd.DataFrame(
+    {
+        "value": np.random.randn(600),
+        "category": np.repeat([f"Cat {i}" for i in range(1, 13)], 50),
+    }
+)
 
 (
     so.Plot(many_categories, x="value")
@@ -355,26 +354,23 @@ Let’s create a comprehensive impact evaluation figure:
 # Create realistic program evaluation data
 np.random.seed(123)
 time_points = [0, 3, 6, 9, 12]
-sites = ['Rural North', 'Rural South', 'Urban East']
+sites = ["Rural North", "Rural South", "Urban East"]
 
 eval_data = []
 for site in sites:
-    for group in ['Control', 'Treatment']:
+    for group in ["Control", "Treatment"]:
         for time in time_points:
             n_obs = 30
-            if group == 'Control':
+            if group == "Control":
                 mean = 50 + time * 0.5  # Modest improvement
             else:
                 mean = 50 + time * 1.5  # Better improvement
 
             values = np.random.normal(mean, 8, n_obs)
             for val in values:
-                eval_data.append({
-                    'site': site,
-                    'group': group,
-                    'month': time,
-                    'outcome': val
-                })
+                eval_data.append(
+                    {"site": site, "group": group, "month": time, "outcome": val}
+                )
 
 eval_df = pd.DataFrame(eval_data)
 
@@ -384,13 +380,13 @@ eval_df = pd.DataFrame(eval_data)
     .facet(col="site")
     .add(so.Dots(alpha=0.2, pointsize=3))  # Individual observations
     .add(so.Line(linewidth=2.5), so.Agg())  # Mean trajectory
-    .add(so.Band(alpha=0.2), so.Est())      # Confidence intervals
+    .add(so.Band(alpha=0.2), so.Est())  # Confidence intervals
     .scale(color=so.Nominal(["#E69F00", "#56B4E9"]))
     .label(
         title="Agricultural Training Program Impact by Site\n12-Month Follow-up Period",
         x="Months Since Baseline",
         y="Household Food Security Score",
-        color="Group"
+        color="Group",
     )
 )
 ```
@@ -450,7 +446,7 @@ Perfect for a research paper or policy brief!
 > >         title="Penguin Measurements by Island and Species",
 > >         x="Flipper Length (mm)",
 > >         y="Body Mass (g)",
-> >         color="Species"
+> >         color="Species",
 > >     )
 > > )
 > > ```
@@ -478,8 +474,8 @@ Perfect for a research paper or policy brief!
 > > ``` python
 > > # Create data
 > > np.random.seed(42)
-> > schools = ['School A', 'School B', 'School C']
-> > groups = ['Control', 'Treatment']
+> > schools = ["School A", "School B", "School C"]
+> > groups = ["Control", "Treatment"]
 > > months = [0, 6, 12, 18]
 > >
 > > education_data = []
@@ -487,19 +483,16 @@ Perfect for a research paper or policy brief!
 > >     for group in groups:
 > >         for month in months:
 > >             # Treatment effect grows over time
-> >             if group == 'Control':
+> >             if group == "Control":
 > >                 mean_score = 65 + month * 0.3
 > >             else:
 > >                 mean_score = 65 + month * 0.8  # Stronger effect
 > >
 > >             scores = np.random.normal(mean_score, 8, 25)
 > >             for score in scores:
-> >                 education_data.append({
-> >                     'school': school,
-> >                     'group': group,
-> >                     'month': month,
-> >                     'score': score
-> >                 })
+> >                 education_data.append(
+> >                     {"school": school, "group": group, "month": month, "score": score}
+> >                 )
 > >
 > > edu_df = pd.DataFrame(education_data)
 > >
@@ -514,7 +507,7 @@ Perfect for a research paper or policy brief!
 > >         title="Mathematics Intervention Impact Across Three Schools",
 > >         x="Months Since Baseline",
 > >         y="Math Test Score",
-> >         color="Group"
+> >         color="Group",
 > >     )
 > > )
 > > ```

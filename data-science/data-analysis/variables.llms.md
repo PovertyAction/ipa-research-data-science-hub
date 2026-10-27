@@ -57,7 +57,7 @@ Write programs that assign scalar values to variables and perform calculations w
 
   ``` python
   age = 42
-  first_name = 'Ahmed'
+  first_name = "Ahmed"
   ```
 
 ## Use `print` to display values
@@ -69,7 +69,7 @@ Write programs that assign scalar values to variables and perform calculations w
 - The values passed to the function are called **arguments**
 
 ``` python
-print(first_name, 'is', age, 'years old')
+print(first_name, "is", age, "years old")
 ```
 
 ``` output
@@ -120,7 +120,7 @@ NameError: name 'last_name' is not defined
 
 ``` python
 age = age + 3
-print('Age in three years:', age)
+print("Age in three years:", age)
 ```
 
 ``` output
@@ -139,7 +139,7 @@ Age in three years: 45
 A line of Python code, print(atom_name\[0\]), demonstrates that using the zero index will output just the initial letter, in this case ‘h’ for helium.
 
 ``` python
-atom_name = 'helium'
+atom_name = "helium"
 print(atom_name[0])
 ```
 
@@ -157,7 +157,7 @@ h
 - Taking a slice does not change the contents of the original string. Instead, taking a slice returns a copy of part of the original string.
 
 ``` python
-atom_name = 'sodium'
+atom_name = "sodium"
 print(atom_name[0:3])
 ```
 
@@ -168,7 +168,7 @@ sod
 ## Use the built-in function `len` to find the length of a string
 
 ``` python
-print(len('helium'))
+print(len("helium"))
 ```
 
 ``` output
@@ -188,8 +188,8 @@ print(len('helium'))
 
 ``` python
 flabadab = 42
-ewr_422_yY = 'Ahmed'
-print(ewr_422_yY, 'is', flabadab, 'years old')
+ewr_422_yY = "Ahmed"
+print(ewr_422_yY, "is", flabadab, "years old")
 ```
 
 - Use meaningful variable names to help other people understand what the program does.
@@ -201,11 +201,11 @@ print(ewr_422_yY, 'is', flabadab, 'years old')
 >
 > ``` python
 > # Command  # Value of x   # Value of y   # Value of swap #
-> x = 1.0    #              #              #               #
-> y = 3.0    #              #              #               #
-> swap = x   #              #              #               #
-> x = y      #              #              #               #
-> y = swap   #              #              #               #
+> x = 1.0  #              #              #               #
+> y = 3.0  #              #              #               #
+> swap = x  #              #              #               #
+> x = y  #              #              #               #
+> y = swap  #              #              #               #
 > ```
 >
 > > **TIP:**
@@ -226,9 +226,9 @@ print(ewr_422_yY, 'is', flabadab, 'years old')
 > What is the final value of `position` in the program below? (Try to predict the value without running the program, then check your prediction.)
 >
 > ``` python
-> initial = 'left'
+> initial = "left"
 > position = initial
-> initial = 'right'
+> initial = "right"
 > ```
 >
 > > **TIP:**
@@ -286,8 +286,8 @@ print(ewr_422_yY, 'is', flabadab, 'years old')
 > What does the following program print?
 >
 > ``` python
-> atom_name = 'carbon'
-> print('atom_name[1:3] is:', atom_name[1:3])
+> atom_name = "carbon"
+> print("atom_name[1:3] is:", atom_name[1:3])
 > ```
 >
 > > **TIP:**

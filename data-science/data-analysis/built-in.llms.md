@@ -42,7 +42,7 @@ Explain the purpose of functions. Correctly call built-in Python functions. Corr
 
 ``` python
 # This sentence isn't executed by Python.
-adjustment = 0.5   # Neither is this - anything after '#' is ignored.
+adjustment = 0.5  # Neither is this - anything after '#' is ignored.
 ```
 
 ## A function may take zero or more arguments
@@ -56,9 +56,9 @@ adjustment = 0.5   # Neither is this - anything after '#' is ignored.
   - Must always use parentheses, even if they’re empty, so that Python knows a function is being called.
 
 ``` python
-print('before')
+print("before")
 print()
-print('after')
+print("after")
 ```
 
 ``` output
@@ -73,8 +73,8 @@ after
 - If the function doesn’t have a useful result to return, it usually returns the special value `None`. `None` is a Python object that stands in anytime there is no value.
 
 ``` python
-result = print('example')
-print('result of print is', result)
+result = print("example")
+print("result of print is", result)
 ```
 
 ``` output
@@ -91,7 +91,7 @@ result of print is None
 
 ``` python
 print(max(1, 2, 3))
-print(min('a', 'A', '0'))
+print(min("a", "A", "0"))
 ```
 
 ``` output
@@ -106,7 +106,7 @@ print(min('a', 'A', '0'))
 - And they must be given things that can meaningfully be compared.
 
 ``` python
-print(max(1, 'a'))
+print(max(1, "a"))
 ```
 
 ``` error
@@ -147,13 +147,17 @@ round(3.712, 1)
 - Some methods are used for internal Python operations, and are marked with double underlines.
 
 ``` python
-my_string = 'Hello world!'  # creation of a string object
+my_string = "Hello world!"  # creation of a string object
 
-print(len(my_string))       # the len function takes a string as an argument and returns the length of the string
+print(
+    len(my_string)
+)  # the len function takes a string as an argument and returns the length of the string
 
-print(my_string.swapcase()) # calling the swapcase method on the my_string object
+print(my_string.swapcase())  # calling the swapcase method on the my_string object
 
-print(my_string.__len__())  # calling the internal __len__ method on the my_string object, used by len(my_string)
+print(
+    my_string.__len__()
+)  # calling the internal __len__ method on the my_string object, used by len(my_string)
 ```
 
 ``` output
@@ -165,8 +169,8 @@ hELLO WORLD!
 - You might even see them chained together. They operate left to right.
 
 ``` python
-print(my_string.isupper())          # Not all the letters are uppercase
-print(my_string.upper())            # This capitalizes all the letters
+print(my_string.isupper())  # Not all the letters are uppercase
+print(my_string.upper())  # This capitalizes all the letters
 
 print(my_string.upper().isupper())  # Now all the letters are uppercase
 ```
@@ -252,7 +256,7 @@ SyntaxError: unexpected EOF while parsing
 
 ``` python
 age = 53
-remaining = 100 - aege # mis-spelled 'age'
+remaining = 100 - aege  # mis-spelled 'age'
 ```
 
 ``` error

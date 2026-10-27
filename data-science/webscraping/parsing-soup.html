@@ -88,9 +88,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b3b05533756b65102542bf1d1302b2e4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c5ec8c7c8cbd04670bf0d36eb8fc4983.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-dacb15ae91776f6bebfe04479a704d39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -953,11 +953,11 @@ cookieconsent.run({
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Find first occurrence of a tag</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> soup.find(<span class="st">'h1'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> soup.find(<span class="st">"h1"</span>)</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Title: </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Find first paragraph</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>first_paragraph <span class="op">=</span> soup.find(<span class="st">'p'</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>first_paragraph <span class="op">=</span> soup.find(<span class="st">"p"</span>)</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"First paragraph: </span><span class="sc">{</span>first_paragraph<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="finding-by-class" class="level3">
@@ -975,11 +975,11 @@ cookieconsent.run({
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Find element by class</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>intro <span class="op">=</span> soup.find(<span class="st">'p'</span>, {<span class="st">'class'</span>: <span class="st">'intro'</span>})</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>intro <span class="op">=</span> soup.find(<span class="st">"p"</span>, {<span class="st">"class"</span>: <span class="st">"intro"</span>})</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Intro: </span><span class="sc">{</span>intro<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Find div with header class</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>header <span class="op">=</span> soup.find(<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'header'</span>})</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>header <span class="op">=</span> soup.find(<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"header"</span>})</span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Header: </span><span class="sc">{</span>header<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="finding-by-multiple-attributes" class="level3">
@@ -996,18 +996,12 @@ cookieconsent.run({
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Find by multiple attributes</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>username_input <span class="op">=</span> soup.find(<span class="st">'input'</span>, {</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'type'</span>: <span class="st">'text'</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'name'</span>: <span class="st">'username'</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Username input: </span><span class="sc">{</span>username_input<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Find by type and class</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>submit_button <span class="op">=</span> soup.find(<span class="st">'input'</span>, {</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'type'</span>: <span class="st">'submit'</span>,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'class'</span>: <span class="st">'btn'</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Submit button: </span><span class="sc">{</span>submit_button<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>username_input <span class="op">=</span> soup.find(<span class="st">"input"</span>, {<span class="st">"type"</span>: <span class="st">"text"</span>, <span class="st">"name"</span>: <span class="st">"username"</span>})</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Username input: </span><span class="sc">{</span>username_input<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Find by type and class</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>submit_button <span class="op">=</span> soup.find(<span class="st">"input"</span>, {<span class="st">"type"</span>: <span class="st">"submit"</span>, <span class="st">"class"</span>: <span class="st">"btn"</span>})</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Submit button: </span><span class="sc">{</span>submit_button<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1038,10 +1032,10 @@ cookieconsent.run({
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Practice different finding methods</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> soup.find(<span class="st">'h2'</span>, {<span class="st">'class'</span>: <span class="st">'post-title'</span>})</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>author <span class="op">=</span> soup.find(<span class="st">'span'</span>, {<span class="st">'class'</span>: <span class="st">'author'</span>})</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>date <span class="op">=</span> soup.find(<span class="st">'time'</span>)</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>highlight <span class="op">=</span> soup.find(<span class="st">'p'</span>, {<span class="st">'class'</span>: <span class="st">'highlight'</span>})</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> soup.find(<span class="st">"h2"</span>, {<span class="st">"class"</span>: <span class="st">"post-title"</span>})</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>author <span class="op">=</span> soup.find(<span class="st">"span"</span>, {<span class="st">"class"</span>: <span class="st">"author"</span>})</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>date <span class="op">=</span> soup.find(<span class="st">"time"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>highlight <span class="op">=</span> soup.find(<span class="st">"p"</span>, {<span class="st">"class"</span>: <span class="st">"highlight"</span>})</span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Title: </span><span class="sc">{</span>title<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Author: </span><span class="sc">{</span>author<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1070,7 +1064,7 @@ cookieconsent.run({
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Find all list items</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>all_items <span class="op">=</span> soup.find(<span class="st">'li'</span>)  <span class="co"># This returns the first item</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>all_items <span class="op">=</span> soup.find(<span class="st">"li"</span>)  <span class="co"># This returns the first item</span></span>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"First item: </span><span class="sc">{</span>all_items<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># To get all items, we need to use different approach</span></span>
@@ -1096,14 +1090,14 @@ cookieconsent.run({
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Find parent element first</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>card <span class="op">=</span> soup.find(<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'card'</span>})</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>card <span class="op">=</span> soup.find(<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"card"</span>})</span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Card found: </span><span class="sc">{</span>card <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Find nested elements</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>header <span class="op">=</span> soup.find(<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'card-header'</span>})</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> soup.find(<span class="st">'h3'</span>)</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>body <span class="op">=</span> soup.find(<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'card-body'</span>})</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>button <span class="op">=</span> soup.find(<span class="st">'a'</span>, {<span class="st">'class'</span>: <span class="st">'btn'</span>})</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>header <span class="op">=</span> soup.find(<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"card-header"</span>})</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> soup.find(<span class="st">"h3"</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>body <span class="op">=</span> soup.find(<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"card-body"</span>})</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>button <span class="op">=</span> soup.find(<span class="st">"a"</span>, {<span class="st">"class"</span>: <span class="st">"btn"</span>})</span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Header: </span><span class="sc">{</span>header<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Title: </span><span class="sc">{</span>title<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1131,9 +1125,9 @@ cookieconsent.run({
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract text content</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> soup.find(<span class="st">'h2'</span>, {<span class="st">'class'</span>: <span class="st">'name'</span>})</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> soup.find(<span class="st">'span'</span>, {<span class="st">'class'</span>: <span class="st">'price'</span>})</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>description <span class="op">=</span> soup.find(<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'description'</span>})</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> soup.find(<span class="st">"h2"</span>, {<span class="st">"class"</span>: <span class="st">"name"</span>})</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> soup.find(<span class="st">"span"</span>, {<span class="st">"class"</span>: <span class="st">"price"</span>})</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>description <span class="op">=</span> soup.find(<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"description"</span>})</span>
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Product: </span><span class="sc">{</span>name<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Price: </span><span class="sc">{</span>price<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1155,9 +1149,9 @@ cookieconsent.run({
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract attribute values</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> soup.find(<span class="st">'img'</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>link <span class="op">=</span> soup.find(<span class="st">'a'</span>, {<span class="st">'class'</span>: <span class="st">'contact'</span>})</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>timestamp <span class="op">=</span> soup.find(<span class="st">'time'</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> soup.find(<span class="st">"img"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>link <span class="op">=</span> soup.find(<span class="st">"a"</span>, {<span class="st">"class"</span>: <span class="st">"contact"</span>})</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>timestamp <span class="op">=</span> soup.find(<span class="st">"time"</span>)</span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Image source: </span><span class="sc">{</span>image<span class="sc">.</span>attrs[<span class="st">'src'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Image alt text: </span><span class="sc">{</span>image<span class="sc">.</span>attrs[<span class="st">'alt'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1165,7 +1159,7 @@ cookieconsent.run({
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"DateTime: </span><span class="sc">{</span>timestamp<span class="sc">.</span>attrs[<span class="st">'datetime'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing attributes safely</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> image.attrs.get(<span class="st">'width'</span>, <span class="st">'Not specified'</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> image.attrs.get(<span class="st">"width"</span>, <span class="st">"Not specified"</span>)</span>
 <span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Image width: </span><span class="sc">{</span>width<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="working-with-complex-structures" class="level3">
@@ -1200,13 +1194,13 @@ cookieconsent.run({
 <span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract table data</span></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> soup.find(<span class="st">'table'</span>, {<span class="st">'class'</span>: <span class="st">'data-table'</span>})</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> soup.find(<span class="st">"table"</span>, {<span class="st">"class"</span>: <span class="st">"data-table"</span>})</span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Table found: </span><span class="sc">{</span>table <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract individual cells</span></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>first_name <span class="op">=</span> soup.find(<span class="st">'td'</span>, {<span class="st">'class'</span>: <span class="st">'name'</span>})</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>first_age <span class="op">=</span> soup.find(<span class="st">'td'</span>, {<span class="st">'class'</span>: <span class="st">'age'</span>})</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>first_city <span class="op">=</span> soup.find(<span class="st">'td'</span>, {<span class="st">'class'</span>: <span class="st">'city'</span>})</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>first_name <span class="op">=</span> soup.find(<span class="st">"td"</span>, {<span class="st">"class"</span>: <span class="st">"name"</span>})</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>first_age <span class="op">=</span> soup.find(<span class="st">"td"</span>, {<span class="st">"class"</span>: <span class="st">"age"</span>})</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>first_city <span class="op">=</span> soup.find(<span class="st">"td"</span>, {<span class="st">"class"</span>: <span class="st">"city"</span>})</span>
 <span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"First row: </span><span class="sc">{</span>first_name<span class="sc">.</span>text<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>first_age<span class="sc">.</span>text<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>first_city<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1222,29 +1216,31 @@ cookieconsent.run({
 <p>Let’s parse a real website structure:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> get, Soup</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_example_com():</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parse the example.com homepage."""</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">"https://example.com"</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    html <span class="op">=</span> get(url)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    soup <span class="op">=</span> Soup(html)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract key elements</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> soup.find(<span class="st">'title'</span>)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    h1 <span class="op">=</span> soup.find(<span class="st">'h1'</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    paragraphs <span class="op">=</span> soup.find(<span class="st">'p'</span>)  <span class="co"># Gets first paragraph</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    links <span class="op">=</span> soup.find(<span class="st">'a'</span>)  <span class="co"># Gets first link</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Parsing example.com:"</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Page title: </span><span class="sc">{</span>title<span class="sc">.</span>text <span class="cf">if</span> title <span class="cf">else</span> <span class="st">'Not found'</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Main heading: </span><span class="sc">{</span>h1<span class="sc">.</span>text <span class="cf">if</span> h1 <span class="cf">else</span> <span class="st">'Not found'</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"First paragraph: </span><span class="sc">{</span>paragraphs<span class="sc">.</span>text <span class="cf">if</span> paragraphs <span class="cf">else</span> <span class="st">'Not found'</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> links:</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"First link text: </span><span class="sc">{</span>links<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"First link href: </span><span class="sc">{</span>links<span class="sc">.</span>attrs<span class="sc">.</span>get(<span class="st">'href'</span>, <span class="st">'No href'</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the parser</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>parse_example_com()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_example_com():</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parse the example.com homepage."""</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">"https://example.com"</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    html <span class="op">=</span> get(url)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    soup <span class="op">=</span> Soup(html)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract key elements</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> soup.find(<span class="st">"title"</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    h1 <span class="op">=</span> soup.find(<span class="st">"h1"</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    paragraphs <span class="op">=</span> soup.find(<span class="st">"p"</span>)  <span class="co"># Gets first paragraph</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    links <span class="op">=</span> soup.find(<span class="st">"a"</span>)  <span class="co"># Gets first link</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Parsing example.com:"</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Page title: </span><span class="sc">{</span>title<span class="sc">.</span>text <span class="cf">if</span> title <span class="cf">else</span> <span class="st">'Not found'</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Main heading: </span><span class="sc">{</span>h1<span class="sc">.</span>text <span class="cf">if</span> h1 <span class="cf">else</span> <span class="st">'Not found'</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"First paragraph: </span><span class="sc">{</span>paragraphs<span class="sc">.</span>text <span class="cf">if</span> paragraphs <span class="cf">else</span> <span class="st">'Not found'</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> links:</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"First link text: </span><span class="sc">{</span>links<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"First link href: </span><span class="sc">{</span>links<span class="sc">.</span>attrs<span class="sc">.</span>get(<span class="st">'href'</span>, <span class="st">'No href'</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the parser</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>parse_example_com()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1254,59 +1250,60 @@ cookieconsent.run({
 <p>Let’s implement an example - parsing PyPI project pages:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> get, Soup</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_pypi_project(package_name):</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parse PyPI project page for package information."""</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"https://pypi.org/project/</span><span class="sc">{</span>package_name<span class="sc">}</span><span class="ss">/"</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fetch and parse HTML</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        html <span class="op">=</span> get(url)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> Soup(html)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract project name</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        title_element <span class="op">=</span> soup.find(<span class="st">'h1'</span>, {<span class="st">'class'</span>: <span class="st">'package-header__name'</span>})</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        project_name <span class="op">=</span> title_element.text.strip() <span class="cf">if</span> title_element <span class="cf">else</span> <span class="st">"Unknown"</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract description</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        desc_element <span class="op">=</span> soup.find(<span class="st">'p'</span>, {<span class="st">'class'</span>: <span class="st">'package-description__summary'</span>})</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        description <span class="op">=</span> desc_element.text.strip() <span class="cf">if</span> desc_element <span class="cf">else</span> <span class="st">"No description"</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract version information</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        version_element <span class="op">=</span> soup.find(<span class="st">'h1'</span>, {<span class="st">'class'</span>: <span class="st">'package-header__name'</span>})</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Version is often in a separate element or part of the title</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract installation command</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        install_element <span class="op">=</span> soup.find(<span class="st">'span'</span>, {<span class="st">'id'</span>: <span class="st">'pip-command'</span>})</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        install_cmd <span class="op">=</span> install_element.text.strip() <span class="cf">if</span> install_element <span class="cf">else</span> <span class="ss">f"pip install </span><span class="sc">{</span>package_name<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>            <span class="st">'name'</span>: project_name,</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">'description'</span>: description,</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">'install_command'</span>: install_cmd,</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">'url'</span>: url,</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">'success'</span>: <span class="va">True</span></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">'name'</span>: package_name,</span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>            <span class="st">'error'</span>: <span class="bu">str</span>(e),</span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>            <span class="st">'url'</span>: url,</span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>            <span class="st">'success'</span>: <span class="va">False</span></span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_pypi_project(package_name):</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parse PyPI project page for package information."""</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"https://pypi.org/project/</span><span class="sc">{</span>package_name<span class="sc">}</span><span class="ss">/"</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fetch and parse HTML</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        html <span class="op">=</span> get(url)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> Soup(html)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract project name</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        title_element <span class="op">=</span> soup.find(<span class="st">"h1"</span>, {<span class="st">"class"</span>: <span class="st">"package-header__name"</span>})</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        project_name <span class="op">=</span> title_element.text.strip() <span class="cf">if</span> title_element <span class="cf">else</span> <span class="st">"Unknown"</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract description</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        desc_element <span class="op">=</span> soup.find(<span class="st">"p"</span>, {<span class="st">"class"</span>: <span class="st">"package-description__summary"</span>})</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        description <span class="op">=</span> desc_element.text.strip() <span class="cf">if</span> desc_element <span class="cf">else</span> <span class="st">"No description"</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract version information</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        version_element <span class="op">=</span> soup.find(<span class="st">"h1"</span>, {<span class="st">"class"</span>: <span class="st">"package-header__name"</span>})</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Version is often in a separate element or part of the title</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract installation command</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        install_element <span class="op">=</span> soup.find(<span class="st">"span"</span>, {<span class="st">"id"</span>: <span class="st">"pip-command"</span>})</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>        install_cmd <span class="op">=</span> (</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>            install_element.text.strip()</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> install_element</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span> <span class="ss">f"pip install </span><span class="sc">{</span>package_name<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"name"</span>: project_name,</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">"description"</span>: description,</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">"install_command"</span>: install_cmd,</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">"url"</span>: url,</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">"success"</span>: <span class="va">True</span>,</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">"name"</span>: package_name, <span class="st">"error"</span>: <span class="bu">str</span>(e), <span class="st">"url"</span>: url, <span class="st">"success"</span>: <span class="va">False</span>}</span>
 <span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Test with popular packages</span></span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>packages <span class="op">=</span> [<span class="st">'requests'</span>, <span class="st">'beautifulsoup4'</span>, <span class="st">'pandas'</span>]</span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> package <span class="kw">in</span> packages:</span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> parse_pypi_project(package)</span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result[<span class="st">'success'</span>]:</span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">--- </span><span class="sc">{</span>result[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss"> ---"</span>)</span>
-<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Description: </span><span class="sc">{</span>result[<span class="st">'description'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Install: </span><span class="sc">{</span>result[<span class="st">'install_command'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Error parsing </span><span class="sc">{</span>package<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>result[<span class="st">'error'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Test with popular packages</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>packages <span class="op">=</span> [<span class="st">"requests"</span>, <span class="st">"beautifulsoup4"</span>, <span class="st">"pandas"</span>]</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> package <span class="kw">in</span> packages:</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> parse_pypi_project(package)</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result[<span class="st">"success"</span>]:</span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">--- </span><span class="sc">{</span>result[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss"> ---"</span>)</span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Description: </span><span class="sc">{</span>result[<span class="st">'description'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Install: </span><span class="sc">{</span>result[<span class="st">'install_command'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Error parsing </span><span class="sc">{</span>package<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>result[<span class="st">'error'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="advanced-parsing-techniques" class="level2">
 <h2 class="anchored" data-anchor-id="advanced-parsing-techniques">Advanced Parsing Techniques</h2>
@@ -1315,86 +1312,94 @@ cookieconsent.run({
 <p>Create functions for common parsing patterns:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> Soup</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_by_text(soup, tag, text_content):</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Find element by tag and text content."""</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is a simplified version - gazpacho doesn't have built-in text search</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># You would need to implement this by checking element text</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    elements <span class="op">=</span> soup.find(tag)  <span class="co"># This gets first matching tag</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> elements <span class="kw">and</span> text_content <span class="kw">in</span> elements.text:</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> elements</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_links(soup):</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Extract all links with their text and href."""</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    links <span class="op">=</span> []</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Note: This is simplified - in practice you'd need to find all 'a' tags</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    link <span class="op">=</span> soup.find(<span class="st">'a'</span>)</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> link:</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        links.append({</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">'text'</span>: link.text,</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">'href'</span>: link.attrs.get(<span class="st">'href'</span>, <span class="st">''</span>),</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">'title'</span>: link.attrs.get(<span class="st">'title'</span>, <span class="st">''</span>)</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> links</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;div&gt;</span></span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;a href="https://example.com" title="Example Site"&gt;Visit Example&lt;/a&gt;</span></span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;a href="mailto:contact@example.com"&gt;Contact Us&lt;/a&gt;</span></span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/div&gt;</span></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>links <span class="op">=</span> extract_links(soup)</span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Extracted links:"</span>)</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> link <span class="kw">in</span> links:</span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>link[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>link[<span class="st">'href'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_by_text(soup, tag, text_content):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Find element by tag and text content."""</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is a simplified version - gazpacho doesn't have built-in text search</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># You would need to implement this by checking element text</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    elements <span class="op">=</span> soup.find(tag)  <span class="co"># This gets first matching tag</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> elements <span class="kw">and</span> text_content <span class="kw">in</span> elements.text:</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> elements</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_links(soup):</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Extract all links with their text and href."""</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    links <span class="op">=</span> []</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Note: This is simplified - in practice you'd need to find all 'a' tags</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    link <span class="op">=</span> soup.find(<span class="st">"a"</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> link:</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        links.append(</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">"text"</span>: link.text,</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>                <span class="st">"href"</span>: link.attrs.get(<span class="st">"href"</span>, <span class="st">""</span>),</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>                <span class="st">"title"</span>: link.attrs.get(<span class="st">"title"</span>, <span class="st">""</span>),</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> links</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;div&gt;</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;a href="https://example.com" title="Example Site"&gt;Visit Example&lt;/a&gt;</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;a href="mailto:contact@example.com"&gt;Contact Us&lt;/a&gt;</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/div&gt;</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>links <span class="op">=</span> extract_links(soup)</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Extracted links:"</span>)</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> link <span class="kw">in</span> links:</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>link[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>link[<span class="st">'href'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="error-safe-parsing" class="level3">
 <h3 class="anchored" data-anchor-id="error-safe-parsing">Error-Safe Parsing</h3>
 <p>Handle missing elements gracefully:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gazpacho <span class="im">import</span> get, Soup</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_extract(element, attribute<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Safely extract text or attribute from element."""</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> element <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> attribute:</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> element.attrs.get(attribute, <span class="va">None</span>)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> element.text.strip() <span class="cf">if</span> element.text <span class="cf">else</span> <span class="va">None</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_article(html):</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parse article with error handling."""</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    soup <span class="op">=</span> Soup(html)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Safely extract elements</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    title_elem <span class="op">=</span> soup.find(<span class="st">'h1'</span>, {<span class="st">'class'</span>: <span class="st">'article-title'</span>})</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    author_elem <span class="op">=</span> soup.find(<span class="st">'span'</span>, {<span class="st">'class'</span>: <span class="st">'author'</span>})</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    date_elem <span class="op">=</span> soup.find(<span class="st">'time'</span>)</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    content_elem <span class="op">=</span> soup.find(<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'content'</span>})</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'title'</span>: safe_extract(title_elem),</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">'author'</span>: safe_extract(author_elem),</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">'date'</span>: safe_extract(date_elem, <span class="st">'datetime'</span>),</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">'content'</span>: safe_extract(content_elem)</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Test with incomplete HTML</span></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>incomplete_html <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;article&gt;</span></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;h1 class="article-title"&gt;Sample Article&lt;/h1&gt;</span></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;div class="content"&gt;Article content here.&lt;/div&gt;</span></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/article&gt;</span></span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> parse_article(incomplete_html)</span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Parsed article:"</span>)</span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> result.items():</span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value <span class="cf">if</span> value <span class="cf">else</span> <span class="st">'Not found'</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_extract(element, attribute<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Safely extract text or attribute from element."""</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> element <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> attribute:</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> element.attrs.get(attribute, <span class="va">None</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> element.text.strip() <span class="cf">if</span> element.text <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_article(html):</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parse article with error handling."""</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    soup <span class="op">=</span> Soup(html)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Safely extract elements</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    title_elem <span class="op">=</span> soup.find(<span class="st">"h1"</span>, {<span class="st">"class"</span>: <span class="st">"article-title"</span>})</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    author_elem <span class="op">=</span> soup.find(<span class="st">"span"</span>, {<span class="st">"class"</span>: <span class="st">"author"</span>})</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    date_elem <span class="op">=</span> soup.find(<span class="st">"time"</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    content_elem <span class="op">=</span> soup.find(<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"content"</span>})</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"title"</span>: safe_extract(title_elem),</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"author"</span>: safe_extract(author_elem),</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"date"</span>: safe_extract(date_elem, <span class="st">"datetime"</span>),</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">"content"</span>: safe_extract(content_elem),</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Test with incomplete HTML</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>incomplete_html <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;article&gt;</span></span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;h1 class="article-title"&gt;Sample Article&lt;/h1&gt;</span></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;div class="content"&gt;Article content here.&lt;/div&gt;</span></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/article&gt;</span></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> parse_article(incomplete_html)</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Parsed article:"</span>)</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> result.items():</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value <span class="cf">if</span> value <span class="cf">else</span> <span class="st">'Not found'</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1410,114 +1415,118 @@ cookieconsent.run({
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NewsArticleParser:</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.parsed_articles <span class="op">=</span> []</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> parse_article(<span class="va">self</span>, html):</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Parse a news article from HTML."""</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> Soup(html)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Try multiple selectors for common news article structures</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        title_selectors <span class="op">=</span> [</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'h1'</span>, {<span class="st">'class'</span>: <span class="st">'headline'</span>}),</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'h1'</span>, {<span class="st">'class'</span>: <span class="st">'title'</span>}),</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'h1'</span>, {}),</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'title'</span>, {})</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        ]</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        author_selectors <span class="op">=</span> [</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'span'</span>, {<span class="st">'class'</span>: <span class="st">'author'</span>}),</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'byline'</span>}),</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'p'</span>, {<span class="st">'class'</span>: <span class="st">'author'</span>})</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>        ]</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>        date_selectors <span class="op">=</span> [</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'time'</span>, {}),</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'span'</span>, {<span class="st">'class'</span>: <span class="st">'date'</span>}),</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'publish-date'</span>})</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>        ]</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract title</span></span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> <span class="va">self</span>._find_with_selectors(soup, title_selectors)</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract author</span></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>        author <span class="op">=</span> <span class="va">self</span>._find_with_selectors(soup, author_selectors)</span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract date</span></span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>        date <span class="op">=</span> <span class="va">self</span>._find_with_selectors(soup, date_selectors)</span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract content paragraphs</span></span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>        content_paragraphs <span class="op">=</span> <span class="va">self</span>._extract_content(soup)</span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>            <span class="st">'title'</span>: title,</span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>            <span class="st">'author'</span>: author,</span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>            <span class="st">'date'</span>: date,</span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>            <span class="st">'content'</span>: content_paragraphs,</span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>            <span class="st">'word_count'</span>: <span class="bu">len</span>(<span class="st">' '</span>.join(content_paragraphs).split()) <span class="cf">if</span> content_paragraphs <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _find_with_selectors(<span class="va">self</span>, soup, selectors):</span>
-<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Try multiple selectors to find an element."""</span></span>
-<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> tag, attrs <span class="kw">in</span> selectors:</span>
-<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>            element <span class="op">=</span> soup.find(tag, attrs)</span>
-<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> element <span class="kw">and</span> element.text.strip():</span>
-<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> element.text.strip()</span>
-<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _extract_content(<span class="va">self</span>, soup):</span>
-<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Extract article content paragraphs."""</span></span>
-<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Try to find content container</span></span>
-<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>        content_selectors <span class="op">=</span> [</span>
-<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'article-content'</span>}),</span>
-<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'div'</span>, {<span class="st">'class'</span>: <span class="st">'content'</span>}),</span>
-<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'article'</span>, {}),</span>
-<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'main'</span>, {})</span>
-<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a>        ]</span>
-<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a>        content_container <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> tag, attrs <span class="kw">in</span> content_selectors:</span>
-<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a>            container <span class="op">=</span> soup.find(tag, attrs)</span>
-<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> container:</span>
-<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a>                content_container <span class="op">=</span> container</span>
-<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb16-77"><a href="#cb16-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If no container found, look for paragraphs</span></span>
-<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> content_container:</span>
-<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a>            content_container <span class="op">=</span> soup</span>
-<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-82"><a href="#cb16-82" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract paragraphs (simplified - would need to find all p tags)</span></span>
-<span id="cb16-83"><a href="#cb16-83" aria-hidden="true" tabindex="-1"></a>        paragraph <span class="op">=</span> content_container.find(<span class="st">'p'</span>)</span>
-<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> paragraph:</span>
-<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> [paragraph.text.strip()]</span>
-<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
-<span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the parser</span></span>
-<span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a>test_html <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb16-91"><a href="#cb16-91" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;article&gt;</span></span>
-<span id="cb16-92"><a href="#cb16-92" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;h1 class="headline"&gt;Breaking News: Important Discovery&lt;/h1&gt;</span></span>
-<span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;div class="byline"&gt;</span></span>
-<span id="cb16-94"><a href="#cb16-94" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;span class="author"&gt;Jane Reporter&lt;/span&gt;</span></span>
-<span id="cb16-95"><a href="#cb16-95" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;time datetime="2023-01-15T10:30:00"&gt;January 15, 2023&lt;/time&gt;</span></span>
-<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/div&gt;</span></span>
-<span id="cb16-97"><a href="#cb16-97" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;div class="article-content"&gt;</span></span>
-<span id="cb16-98"><a href="#cb16-98" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;p&gt;This is the first paragraph of the news article with important information.&lt;/p&gt;</span></span>
-<span id="cb16-99"><a href="#cb16-99" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;p&gt;This is the second paragraph with more details about the story.&lt;/p&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NewsArticleParser:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.parsed_articles <span class="op">=</span> []</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> parse_article(<span class="va">self</span>, html):</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Parse a news article from HTML."""</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> Soup(html)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Try multiple selectors for common news article structures</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>        title_selectors <span class="op">=</span> [</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"h1"</span>, {<span class="st">"class"</span>: <span class="st">"headline"</span>}),</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"h1"</span>, {<span class="st">"class"</span>: <span class="st">"title"</span>}),</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"h1"</span>, {}),</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"title"</span>, {}),</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>        author_selectors <span class="op">=</span> [</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"span"</span>, {<span class="st">"class"</span>: <span class="st">"author"</span>}),</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"byline"</span>}),</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"p"</span>, {<span class="st">"class"</span>: <span class="st">"author"</span>}),</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>        date_selectors <span class="op">=</span> [</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"time"</span>, {}),</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"span"</span>, {<span class="st">"class"</span>: <span class="st">"date"</span>}),</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"publish-date"</span>}),</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract title</span></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> <span class="va">self</span>._find_with_selectors(soup, title_selectors)</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract author</span></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>        author <span class="op">=</span> <span class="va">self</span>._find_with_selectors(soup, author_selectors)</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract date</span></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>        date <span class="op">=</span> <span class="va">self</span>._find_with_selectors(soup, date_selectors)</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract content paragraphs</span></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>        content_paragraphs <span class="op">=</span> <span class="va">self</span>._extract_content(soup)</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>            <span class="st">"title"</span>: title,</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>            <span class="st">"author"</span>: author,</span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>            <span class="st">"date"</span>: date,</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>            <span class="st">"content"</span>: content_paragraphs,</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>            <span class="st">"word_count"</span>: <span class="bu">len</span>(<span class="st">" "</span>.join(content_paragraphs).split())</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> content_paragraphs</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span> <span class="dv">0</span>,</span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _find_with_selectors(<span class="va">self</span>, soup, selectors):</span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Try multiple selectors to find an element."""</span></span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> tag, attrs <span class="kw">in</span> selectors:</span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>            element <span class="op">=</span> soup.find(tag, attrs)</span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> element <span class="kw">and</span> element.text.strip():</span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> element.text.strip()</span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _extract_content(<span class="va">self</span>, soup):</span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Extract article content paragraphs."""</span></span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Try to find content container</span></span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>        content_selectors <span class="op">=</span> [</span>
+<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"article-content"</span>}),</span>
+<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"div"</span>, {<span class="st">"class"</span>: <span class="st">"content"</span>}),</span>
+<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"article"</span>, {}),</span>
+<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a>            (<span class="st">"main"</span>, {}),</span>
+<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a>        content_container <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> tag, attrs <span class="kw">in</span> content_selectors:</span>
+<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a>            container <span class="op">=</span> soup.find(tag, attrs)</span>
+<span id="cb16-77"><a href="#cb16-77" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> container:</span>
+<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a>                content_container <span class="op">=</span> container</span>
+<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If no container found, look for paragraphs</span></span>
+<span id="cb16-82"><a href="#cb16-82" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> content_container:</span>
+<span id="cb16-83"><a href="#cb16-83" aria-hidden="true" tabindex="-1"></a>            content_container <span class="op">=</span> soup</span>
+<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract paragraphs (simplified - would need to find all p tags)</span></span>
+<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a>        paragraph <span class="op">=</span> content_container.find(<span class="st">"p"</span>)</span>
+<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> paragraph:</span>
+<span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> [paragraph.text.strip()]</span>
+<span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb16-91"><a href="#cb16-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-92"><a href="#cb16-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the parser</span></span>
+<span id="cb16-94"><a href="#cb16-94" aria-hidden="true" tabindex="-1"></a>test_html <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb16-95"><a href="#cb16-95" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;article&gt;</span></span>
+<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;h1 class="headline"&gt;Breaking News: Important Discovery&lt;/h1&gt;</span></span>
+<span id="cb16-97"><a href="#cb16-97" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;div class="byline"&gt;</span></span>
+<span id="cb16-98"><a href="#cb16-98" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;span class="author"&gt;Jane Reporter&lt;/span&gt;</span></span>
+<span id="cb16-99"><a href="#cb16-99" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;time datetime="2023-01-15T10:30:00"&gt;January 15, 2023&lt;/time&gt;</span></span>
 <span id="cb16-100"><a href="#cb16-100" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/div&gt;</span></span>
-<span id="cb16-101"><a href="#cb16-101" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/article&gt;</span></span>
-<span id="cb16-102"><a href="#cb16-102" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb16-103"><a href="#cb16-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-104"><a href="#cb16-104" aria-hidden="true" tabindex="-1"></a>parser <span class="op">=</span> NewsArticleParser()</span>
-<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a>article_data <span class="op">=</span> parser.parse_article(test_html)</span>
-<span id="cb16-106"><a href="#cb16-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Parsed News Article:"</span>)</span>
-<span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Title: </span><span class="sc">{</span>article_data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-109"><a href="#cb16-109" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Author: </span><span class="sc">{</span>article_data[<span class="st">'author'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-110"><a href="#cb16-110" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Date: </span><span class="sc">{</span>article_data[<span class="st">'date'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-111"><a href="#cb16-111" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Content: </span><span class="sc">{</span><span class="bu">len</span>(article_data[<span class="st">'content'</span>])<span class="sc">}</span><span class="ss"> paragraphs"</span>)</span>
-<span id="cb16-112"><a href="#cb16-112" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Word count: </span><span class="sc">{</span>article_data[<span class="st">'word_count'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-101"><a href="#cb16-101" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;div class="article-content"&gt;</span></span>
+<span id="cb16-102"><a href="#cb16-102" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;p&gt;This is the first paragraph of the news article with important information.&lt;/p&gt;</span></span>
+<span id="cb16-103"><a href="#cb16-103" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;p&gt;This is the second paragraph with more details about the story.&lt;/p&gt;</span></span>
+<span id="cb16-104"><a href="#cb16-104" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/div&gt;</span></span>
+<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/article&gt;</span></span>
+<span id="cb16-106"><a href="#cb16-106" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a>parser <span class="op">=</span> NewsArticleParser()</span>
+<span id="cb16-109"><a href="#cb16-109" aria-hidden="true" tabindex="-1"></a>article_data <span class="op">=</span> parser.parse_article(test_html)</span>
+<span id="cb16-110"><a href="#cb16-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-111"><a href="#cb16-111" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Parsed News Article:"</span>)</span>
+<span id="cb16-112"><a href="#cb16-112" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Title: </span><span class="sc">{</span>article_data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-113"><a href="#cb16-113" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Author: </span><span class="sc">{</span>article_data[<span class="st">'author'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-114"><a href="#cb16-114" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Date: </span><span class="sc">{</span>article_data[<span class="st">'date'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-115"><a href="#cb16-115" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Content: </span><span class="sc">{</span><span class="bu">len</span>(article_data[<span class="st">'content'</span>])<span class="sc">}</span><span class="ss"> paragraphs"</span>)</span>
+<span id="cb16-116"><a href="#cb16-116" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Word count: </span><span class="sc">{</span>article_data[<span class="st">'word_count'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1540,11 +1549,11 @@ cookieconsent.run({
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract menu items (simplified approach)</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>menu <span class="op">=</span> soup.find(<span class="st">'ul'</span>, {<span class="st">'class'</span>: <span class="st">'menu'</span>})</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>menu <span class="op">=</span> soup.find(<span class="st">"ul"</span>, {<span class="st">"class"</span>: <span class="st">"menu"</span>})</span>
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> menu:</span>
 <span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># In practice, you'd need to find all li elements</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    first_item <span class="op">=</span> soup.find(<span class="st">'li'</span>)</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    first_link <span class="op">=</span> soup.find(<span class="st">'a'</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    first_item <span class="op">=</span> soup.find(<span class="st">"li"</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    first_link <span class="op">=</span> soup.find(<span class="st">"a"</span>)</span>
 <span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"First menu item: </span><span class="sc">{</span>first_link<span class="sc">.</span>text<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span>first_link<span class="sc">.</span>attrs[<span class="st">'href'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -1573,9 +1582,9 @@ cookieconsent.run({
 <span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> Soup(html)</span>
 <span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract table data (simplified)</span></span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> soup.find(<span class="st">'table'</span>, {<span class="st">'class'</span>: <span class="st">'scores'</span>})</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> soup.find(<span class="st">"table"</span>, {<span class="st">"class"</span>: <span class="st">"scores"</span>})</span>
 <span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> table:</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    first_cell <span class="op">=</span> soup.find(<span class="st">'td'</span>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    first_cell <span class="op">=</span> soup.find(<span class="st">"td"</span>)</span>
 <span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"First data cell: </span><span class="sc">{</span>first_cell<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>

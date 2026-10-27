@@ -45,8 +45,8 @@ Explain why programs need collections of values. Write programs that create flat
 
 ``` python
 pressures = [0.273, 0.275, 0.277, 0.275, 0.276]
-print('pressures:', pressures)
-print('length:', len(pressures))
+print("pressures:", pressures)
+print("length:", len(pressures))
 ```
 
 ``` output
@@ -59,8 +59,8 @@ length: 5
 - Just like strings.
 
 ``` python
-print('zeroth item of pressures:', pressures[0])
-print('fourth item of pressures:', pressures[4])
+print("zeroth item of pressures:", pressures[0])
+print("fourth item of pressures:", pressures[4])
 ```
 
 ``` output
@@ -74,7 +74,7 @@ fourth item of pressures: 0.276
 
 ``` python
 pressures[0] = 0.265
-print('pressures is now:', pressures)
+print("pressures is now:", pressures)
 ```
 
 ``` output
@@ -87,9 +87,9 @@ pressures is now: [0.265, 0.275, 0.277, 0.275, 0.276]
 
 ``` python
 primes = [2, 3, 5]
-print('primes is initially:', primes)
+print("primes is initially:", primes)
 primes.append(7)
-print('primes has become:', primes)
+print("primes has become:", primes)
 ```
 
 ``` output
@@ -108,11 +108,11 @@ primes has become: [2, 3, 5, 7]
 ``` python
 teen_primes = [11, 13, 17, 19]
 middle_aged_primes = [37, 41, 43, 47]
-print('primes is currently:', primes)
+print("primes is currently:", primes)
 primes.extend(teen_primes)
-print('primes has now become:', primes)
+print("primes has now become:", primes)
 primes.append(middle_aged_primes)
-print('primes has finally become:', primes)
+print("primes has finally become:", primes)
 ```
 
 ``` output
@@ -130,9 +130,9 @@ Note that while `extend` maintains the “flat” structure of the list, appendi
 
 ``` python
 primes = [2, 3, 5, 7, 9]
-print('primes before removing last item:', primes)
+print("primes before removing last item:", primes)
 del primes[4]
-print('primes after removing last item:', primes)
+print("primes after removing last item:", primes)
 ```
 
 ``` output
@@ -151,7 +151,7 @@ primes after removing last item: [2, 3, 5, 7]
 - A single list may contain numbers, strings, and anything else.
 
 ``` python
-goals = [1, 'Create lists.', 2, 'Extract items from lists.', 3, 'Modify lists.']
+goals = [1, "Create lists.", 2, "Extract items from lists.", 3, "Modify lists."]
 ```
 
 ## Character strings can be indexed like lists
@@ -159,9 +159,9 @@ goals = [1, 'Create lists.', 2, 'Extract items from lists.', 3, 'Modify lists.']
 - Get single characters from a character string using indexes in square brackets.
 
 ``` python
-element = 'carbon'
-print('zeroth character:', element[0])
-print('third character:', element[3])
+element = "carbon"
+print("zeroth character:", element[0])
+print("third character:", element[3])
 ```
 
 ``` output
@@ -177,7 +177,7 @@ third character: b
 - Python considers the string to be a single value with parts, not a collection of values.
 
 ``` python
-element[0] = 'C'
+element[0] = "C"
 ```
 
 ``` error
@@ -193,7 +193,7 @@ TypeError: 'str' object does not support item assignment
   - Cannot be detected as the code is parsed because the index might be calculated based on data.
 
 ``` python
-print('99th element of element is:', element[99])
+print("99th element of element is:", element[99])
 ```
 
 ``` output
@@ -209,9 +209,9 @@ IndexError: string index out of range
 > values.____(1)
 > values.____(3)
 > values.____(5)
-> print('first time:', values)
+> print("first time:", values)
 > values = values[____]
-> print('second time:', values)
+> print("second time:", values)
 > ```
 >
 > ``` output
@@ -226,9 +226,9 @@ IndexError: string index out of range
 > > values.append(1)
 > > values.append(3)
 > > values.append(5)
-> > print('first time:', values)
+> > print("first time:", values)
 > > values = values[1:]
-> > print('second time:', values)
+> > print("second time:", values)
 > > ```
 
 > **NOTE:**
@@ -244,8 +244,8 @@ IndexError: string index out of range
 > Given this:
 >
 > ``` python
-> print('string to list:', list('tin'))
-> print('list to string:', ''.join(['g', 'o', 'l', 'd']))
+> print("string to list:", list("tin"))
+> print("list to string:", "".join(["g", "o", "l", "d"]))
 > ```
 >
 > ``` output
@@ -266,7 +266,7 @@ IndexError: string index out of range
 > What does the following program print?
 >
 > ``` python
-> element = 'helium'
+> element = "helium"
 > print(element[-1])
 > ```
 >
@@ -289,7 +289,7 @@ IndexError: string index out of range
 > What does the following program print?
 >
 > ``` python
-> element = 'fluorine'
+> element = "fluorine"
 > print(element[::2])
 > print(element[::-1])
 > ```
@@ -314,7 +314,7 @@ IndexError: string index out of range
 > What does the following program print?
 >
 > ``` python
-> element = 'lithium'
+> element = "lithium"
 > print(element[0:20])
 > print(element[-1:3])
 > ```
@@ -333,16 +333,16 @@ IndexError: string index out of range
 >
 > ``` python
 > # Program A
-> letters = list('gold')
+> letters = list("gold")
 > result = sorted(letters)
-> print('letters is', letters, 'and result is', result)
+> print("letters is", letters, "and result is", result)
 > ```
 >
 > ``` python
 > # Program B
-> letters = list('gold')
+> letters = list("gold")
 > result = letters.sort()
-> print('letters is', letters, 'and result is', result)
+> print("letters is", letters, "and result is", result)
 > ```
 >
 > > **TIP:**
@@ -367,18 +367,18 @@ IndexError: string index out of range
 >
 > ``` python
 > # Program A
-> old = list('gold')
-> new = old      # simple assignment
-> new[0] = 'D'
-> print('new is', new, 'and old is', old)
+> old = list("gold")
+> new = old  # simple assignment
+> new[0] = "D"
+> print("new is", new, "and old is", old)
 > ```
 >
 > ``` python
 > # Program B
-> old = list('gold')
-> new = old[:]   # assigning a slice
-> new[0] = 'D'
-> print('new is', new, 'and old is', old)
+> old = list("gold")
+> new = old[:]  # assigning a slice
+> new[0] = "D"
+> print("new is", new, "and old is", old)
 > ```
 >
 > > **TIP:**

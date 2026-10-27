@@ -88,9 +88,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-b3b05533756b65102542bf1d1302b2e4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-c5ec8c7c8cbd04670bf0d36eb8fc4983.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-dacb15ae91776f6bebfe04479a704d39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -907,21 +907,22 @@ cookieconsent.run({
 <p>The <code>.label()</code> method adds titles and axis labels to your plot:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic plot without labels - not ready to share!</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Now with proper labels - ready for presentation!</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    .label(</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Relationship Between Flipper Length and Body Mass in Penguins"</span>,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>).add(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        so.Dot()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Now with proper labels - ready for presentation!</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    so.Plot(penguins, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    .label(</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Relationship Between Flipper Length and Body Mass in Penguins"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="components-of-.label" class="level3">
 <h3 class="anchored" data-anchor-id="components-of-.label">Components of .label()</h3>
 <p>The <code>.label()</code> method accepts several arguments:</p>
@@ -940,7 +941,7 @@ cookieconsent.run({
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"bill_length_mm"</span>,</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"species"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"body_mass_g"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.6</span>))</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    .label(</span>
@@ -948,7 +949,7 @@ cookieconsent.run({
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Bill Length (mm)"</span>,</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Bill Depth (mm)"</span>,</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Penguin Species"</span>,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"Body Mass (g)"</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -962,7 +963,7 @@ cookieconsent.run({
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    .label(</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Impact of Flipper Length on Body Mass:</span><span class="ch">\n</span><span class="st">Analysis of Three Penguin Species in Antarctica"</span>,</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -995,12 +996,12 @@ cookieconsent.run({
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    .scale(</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>(<span class="dv">170</span>, <span class="dv">230</span>),  <span class="co"># Only show flipper lengths between 170-230mm</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>(<span class="dv">2500</span>, <span class="dv">6500</span>)  <span class="co"># Only show body mass between 2500-6500g</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>(<span class="dv">2500</span>, <span class="dv">6500</span>),  <span class="co"># Only show body mass between 2500-6500g</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    .label(</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Penguin Measurements (Zoomed)"</span>,</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -1034,7 +1035,7 @@ cookieconsent.run({
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Colorblind-Friendly Palette"</span>,</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span>,</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Common palettes for categorical data:</p>
@@ -1062,7 +1063,7 @@ cookieconsent.run({
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot())</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    .scale(</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>so.Continuous().tick(at<span class="op">=</span>[<span class="dv">180</span>, <span class="dv">200</span>, <span class="dv">220</span>]),</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>so.Continuous().tick(at<span class="op">=</span>[<span class="dv">3000</span>, <span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">6000</span>])</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>so.Continuous().tick(at<span class="op">=</span>[<span class="dv">3000</span>, <span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">6000</span>]),</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -1071,25 +1072,27 @@ cookieconsent.run({
 <p>For research data with different units:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create income data example</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>income_data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'education_years'</span>: np.random.uniform(<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">100</span>),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'annual_income'</span>: np.random.uniform(<span class="dv">50000</span>, <span class="dv">500000</span>, <span class="dv">100</span>),</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'county'</span>: np.random.choice([<span class="st">'Nairobi'</span>, <span class="st">'Kisumu'</span>, <span class="st">'Mombasa'</span>], <span class="dv">100</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Format as thousands with 'K' suffix</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> FuncFormatter</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    so.Plot(income_data, x<span class="op">=</span><span class="st">"education_years"</span>, y<span class="op">=</span><span class="st">"annual_income"</span>, color<span class="op">=</span><span class="st">"county"</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.6</span>))</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    .label(</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Income by Education Level Across Counties"</span>,</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Years of Education"</span>,</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Annual Income (KSh)"</span>,</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"County"</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>income_data <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"education_years"</span>: np.random.uniform(<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">100</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"annual_income"</span>: np.random.uniform(<span class="dv">50000</span>, <span class="dv">500000</span>, <span class="dv">100</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"county"</span>: np.random.choice([<span class="st">"Nairobi"</span>, <span class="st">"Kisumu"</span>, <span class="st">"Mombasa"</span>], <span class="dv">100</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Format as thousands with 'K' suffix</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> FuncFormatter</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    so.Plot(income_data, x<span class="op">=</span><span class="st">"education_years"</span>, y<span class="op">=</span><span class="st">"annual_income"</span>, color<span class="op">=</span><span class="st">"county"</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.6</span>))</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    .label(</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Income by Education Level Across Counties"</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Years of Education"</span>,</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Annual Income (KSh)"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"County"</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="real-research-example-program-impact" class="level2">
@@ -1101,40 +1104,36 @@ cookieconsent.run({
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>treatment_baseline <span class="op">=</span> <span class="dv">45</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>control_baseline <span class="op">=</span> <span class="dv">46</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>program_data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'month'</span>: periods <span class="op">*</span> <span class="dv">2</span>,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'outcome'</span>: (</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        [control_baseline, <span class="dv">47</span>, <span class="dv">48</span>, <span class="dv">49</span>, <span class="dv">50</span>] <span class="op">+</span>  <span class="co"># Control group</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        [treatment_baseline, <span class="dv">50</span>, <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">65</span>]   <span class="co"># Treatment group</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lower_ci'</span>: (</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">43</span>, <span class="dv">44</span>, <span class="dv">45</span>, <span class="dv">46</span>, <span class="dv">47</span>] <span class="op">+</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">43</span>, <span class="dv">47</span>, <span class="dv">52</span>, <span class="dv">57</span>, <span class="dv">62</span>]</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'upper_ci'</span>: (</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">47</span>, <span class="dv">50</span>, <span class="dv">51</span>, <span class="dv">52</span>, <span class="dv">53</span>] <span class="op">+</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">47</span>, <span class="dv">53</span>, <span class="dv">58</span>, <span class="dv">63</span>, <span class="dv">68</span>]</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'group'</span>: [<span class="st">'Control'</span>] <span class="op">*</span> <span class="dv">5</span> <span class="op">+</span> [<span class="st">'Treatment'</span>] <span class="op">*</span> <span class="dv">5</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Create publication-ready plot</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    so.Plot(program_data, x<span class="op">=</span><span class="st">"month"</span>, color<span class="op">=</span><span class="st">"group"</span>)</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    .add(so.Band(alpha<span class="op">=</span><span class="fl">0.2</span>), ymin<span class="op">=</span><span class="st">"lower_ci"</span>, ymax<span class="op">=</span><span class="st">"upper_ci"</span>)</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(linewidth<span class="op">=</span><span class="fl">2.5</span>), y<span class="op">=</span><span class="st">"outcome"</span>)</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">10</span>), y<span class="op">=</span><span class="st">"outcome"</span>)</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    .scale(</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>so.Continuous().tick(at<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">24</span>]),</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>so.Nominal([<span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>])  <span class="co"># Custom colors</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    .label(</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Impact of Agricultural Training Program on Crop Yields</span><span class="ch">\n</span><span class="st">Randomized Controlled Trial: 2021-2023"</span>,</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Months Since Baseline"</span>,</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Average Yield (bags per acre)"</span>,</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Group"</span></span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>program_data <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"month"</span>: periods <span class="op">*</span> <span class="dv">2</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"outcome"</span>: (</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            [control_baseline, <span class="dv">47</span>, <span class="dv">48</span>, <span class="dv">49</span>, <span class="dv">50</span>]  <span class="co"># Control group</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">+</span> [treatment_baseline, <span class="dv">50</span>, <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">65</span>]  <span class="co"># Treatment group</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"lower_ci"</span>: ([<span class="dv">43</span>, <span class="dv">44</span>, <span class="dv">45</span>, <span class="dv">46</span>, <span class="dv">47</span>] <span class="op">+</span> [<span class="dv">43</span>, <span class="dv">47</span>, <span class="dv">52</span>, <span class="dv">57</span>, <span class="dv">62</span>]),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"upper_ci"</span>: ([<span class="dv">47</span>, <span class="dv">50</span>, <span class="dv">51</span>, <span class="dv">52</span>, <span class="dv">53</span>] <span class="op">+</span> [<span class="dv">47</span>, <span class="dv">53</span>, <span class="dv">58</span>, <span class="dv">63</span>, <span class="dv">68</span>]),</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"group"</span>: [<span class="st">"Control"</span>] <span class="op">*</span> <span class="dv">5</span> <span class="op">+</span> [<span class="st">"Treatment"</span>] <span class="op">*</span> <span class="dv">5</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Create publication-ready plot</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    so.Plot(program_data, x<span class="op">=</span><span class="st">"month"</span>, color<span class="op">=</span><span class="st">"group"</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    .add(so.Band(alpha<span class="op">=</span><span class="fl">0.2</span>), ymin<span class="op">=</span><span class="st">"lower_ci"</span>, ymax<span class="op">=</span><span class="st">"upper_ci"</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    .add(so.Line(linewidth<span class="op">=</span><span class="fl">2.5</span>), y<span class="op">=</span><span class="st">"outcome"</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">10</span>), y<span class="op">=</span><span class="st">"outcome"</span>)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    .scale(</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>so.Continuous().tick(at<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">24</span>]),</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>so.Nominal([<span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>]),  <span class="co"># Custom colors</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    .label(</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Impact of Agricultural Training Program on Crop Yields</span><span class="ch">\n</span><span class="st">Randomized Controlled Trial: 2021-2023"</span>,</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Months Since Baseline"</span>,</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Average Yield (bags per acre)"</span>,</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Group"</span>,</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This plot is ready for:</p>
 <ul>
 <li>Stakeholder presentations</li>
@@ -1179,7 +1178,7 @@ cookieconsent.run({
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    .label(</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Colorblind-Safe Visualization"</span>,</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -1193,14 +1192,14 @@ cookieconsent.run({
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"bill_length_mm"</span>,</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"species"</span>,</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"species"</span>  <span class="co"># Shape also encodes species</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">"species"</span>,  <span class="co"># Shape also encodes species</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(pointsize<span class="op">=</span><span class="dv">8</span>))</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    .label(</span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Penguin Bill Measurements (Accessible Design)"</span>,</span>
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Bill Length (mm)"</span>,</span>
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Bill Depth (mm)"</span>,</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span>,</span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -1243,7 +1242,7 @@ cookieconsent.run({
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"flipper_length_mm"</span>,</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"species"</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"bill_length_mm"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"bill_length_mm"</span>,</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.6</span>))</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    .label(</span>
@@ -1251,7 +1250,7 @@ cookieconsent.run({
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Flipper Length (mm)"</span>,</span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Body Mass (g)"</span>,</span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"Species"</span>,</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"Bill Length (mm)"</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        pointsize<span class="op">=</span><span class="st">"Bill Length (mm)"</span>,</span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1270,10 +1269,9 @@ cookieconsent.run({
 </div>
 <div class="callout-body-container callout-body">
 <p>Create sample data for household income (which often follows a log-normal distribution):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>income_data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'households'</span>: <span class="bu">range</span>(<span class="dv">100</span>),</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'income'</span>: np.random.lognormal(<span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>income_data <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"households"</span>: <span class="bu">range</span>(<span class="dv">100</span>), <span class="st">"income"</span>: np.random.lognormal(<span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">100</span>)}</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Create two plots:</p>
 <ol type="1">
 <li>One with a linear y-axis</li>
@@ -1299,7 +1297,7 @@ cookieconsent.run({
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    .label(</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Household Income (Linear Scale)"</span>,</span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Household ID"</span>,</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Annual Income (KSh)"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Annual Income (KSh)"</span>,</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
@@ -1311,7 +1309,7 @@ cookieconsent.run({
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    .label(</span>
 <span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Household Income (Log Scale)"</span>,</span>
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Household ID"</span>,</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Annual Income (KSh, log scale)"</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Annual Income (KSh, log scale)"</span>,</span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The log scale is often more effective for income data because it:</p>
@@ -1357,34 +1355,38 @@ cookieconsent.run({
 <div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>schools <span class="op">=</span> [<span class="st">'School A'</span>, <span class="st">'School B'</span>, <span class="st">'School C'</span>, <span class="st">'School D'</span>, <span class="st">'School E'</span>]</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'school'</span>: np.repeat(schools, <span class="dv">20</span>),</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'score'</span>: np.concatenate([</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        np.random.normal(<span class="dv">75</span>, <span class="dv">10</span>, <span class="dv">20</span>),  <span class="co"># School A</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        np.random.normal(<span class="dv">68</span>, <span class="dv">12</span>, <span class="dv">20</span>),  <span class="co"># School B</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        np.random.normal(<span class="dv">82</span>, <span class="dv">8</span>, <span class="dv">20</span>),   <span class="co"># School C</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        np.random.normal(<span class="dv">71</span>, <span class="dv">11</span>, <span class="dv">20</span>),  <span class="co"># School D</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        np.random.normal(<span class="dv">79</span>, <span class="dv">9</span>, <span class="dv">20</span>)    <span class="co"># School E</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    ])</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create publication-ready plot</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    so.Plot(test_data, x<span class="op">=</span><span class="st">"school"</span>, y<span class="op">=</span><span class="st">"score"</span>, color<span class="op">=</span><span class="st">"school"</span>)</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(alpha<span class="op">=</span><span class="fl">0.7</span>))</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.3</span>), so.Jitter(<span class="fl">0.3</span>))</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    .scale(</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"colorblind"</span>,</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">100</span>)  <span class="co"># Test scores range from 0-100</span></span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    .label(</span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Primary School Mathematics Test Scores: Nairobi County, 2023"</span>,</span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"School"</span>,</span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Test Score (out of 100)"</span>,</span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"School"</span></span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>schools <span class="op">=</span> [<span class="st">"School A"</span>, <span class="st">"School B"</span>, <span class="st">"School C"</span>, <span class="st">"School D"</span>, <span class="st">"School E"</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"school"</span>: np.repeat(schools, <span class="dv">20</span>),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"score"</span>: np.concatenate(</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                np.random.normal(<span class="dv">75</span>, <span class="dv">10</span>, <span class="dv">20</span>),  <span class="co"># School A</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                np.random.normal(<span class="dv">68</span>, <span class="dv">12</span>, <span class="dv">20</span>),  <span class="co"># School B</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                np.random.normal(<span class="dv">82</span>, <span class="dv">8</span>, <span class="dv">20</span>),  <span class="co"># School C</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>                np.random.normal(<span class="dv">71</span>, <span class="dv">11</span>, <span class="dv">20</span>),  <span class="co"># School D</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>                np.random.normal(<span class="dv">79</span>, <span class="dv">9</span>, <span class="dv">20</span>),  <span class="co"># School E</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create publication-ready plot</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>    so.Plot(test_data, x<span class="op">=</span><span class="st">"school"</span>, y<span class="op">=</span><span class="st">"score"</span>, color<span class="op">=</span><span class="st">"school"</span>)</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    .add(so.Bar(alpha<span class="op">=</span><span class="fl">0.7</span>))</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    .add(so.Dot(alpha<span class="op">=</span><span class="fl">0.3</span>), so.Jitter(<span class="fl">0.3</span>))</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    .scale(</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"colorblind"</span>,</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">100</span>),  <span class="co"># Test scores range from 0-100</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    .label(</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Primary School Mathematics Test Scores: Nairobi County, 2023"</span>,</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"School"</span>,</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"Test Score (out of 100)"</span>,</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"School"</span>,</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>

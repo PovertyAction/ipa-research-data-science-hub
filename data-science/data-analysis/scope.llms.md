@@ -46,6 +46,7 @@ Identify local and global variables. Identify parameters as local variables. Rea
 ``` python
 pressure = 103.9
 
+
 def adjust(t):
     temperature = t * 1.43 / pressure
     return temperature
@@ -60,8 +61,8 @@ def adjust(t):
   - Remember: a function parameter is a variable that is automatically assigned a value when the function is called.
 
 ``` python
-print('adjusted:', adjust(0.9))
-print('temperature after call:', temperature)
+print("adjusted:", adjust(0.9))
+print("temperature after call:", temperature)
 ```
 
 ``` output
@@ -82,8 +83,10 @@ NameError: name 'temperature' is not defined
 > ``` python
 > limit = 100
 >
+>
 > def clip(value):
 >     return min(max(0.0, value), limit)
+>
 >
 > value = -22.5
 > print(clip(value))

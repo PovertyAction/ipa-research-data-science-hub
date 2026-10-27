@@ -88,9 +88,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b3b05533756b65102542bf1d1302b2e4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c5ec8c7c8cbd04670bf0d36eb8fc4983.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-846a8f162d3e1060b6e3d840e53975d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-dacb15ae91776f6bebfe04479a704d39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e25f4ea8eb70edd4ab989858a4727fe0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -887,8 +887,8 @@ cookieconsent.run({
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>position <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.plot(time, position)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (hr)'</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Position (km)'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Time (hr)"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Position (km)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../../assets/images/data-analysis/9_simple_position_time_plot.svg" class="img-fluid" alt="A line chart showing time (hr) relative to position (km), using the values provided in the code block above. By default, the plotted line is blue against a white background, and the axes have been scaled automatically to fit the range of the input data."></p>
 </section>
 <section id="display-all-open-figures" class="level2">
@@ -906,7 +906,7 @@ cookieconsent.run({
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_oceania.csv'</span>, index_col<span class="op">=</span><span class="st">'country'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"data/gapminder_gdp_oceania.csv"</span>, index_col<span class="op">=</span><span class="st">"country"</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract year from last 4 characters of each column name</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The current column names are structured as 'gdpPercap_(year)',</span></span>
@@ -914,13 +914,13 @@ cookieconsent.run({
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># To do this we use replace(), which removes from the string the characters stated in the argument</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># This method works on strings, so we use replace() from Pandas Series.str vectorized string functions</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> data.columns.<span class="bu">str</span>.replace(<span class="st">'gdpPercap_'</span>, <span class="st">''</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> data.columns.<span class="bu">str</span>.replace(<span class="st">"gdpPercap_"</span>, <span class="st">""</span>)</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert year values to integers, saving results back to dataframe</span></span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> years.astype(<span class="bu">int</span>)</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="st">'Australia'</span>].plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>data.loc[<span class="st">"Australia"</span>].plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../../assets/images/data-analysis/9_gdp_australia.svg" class="img-fluid" alt="GDP plot for Australia"></p>
 </section>
 <section id="select-and-transform-data-then-plot-it" class="level2">
@@ -930,7 +930,7 @@ cookieconsent.run({
 <li>We can transpose the data in order to plot multiple series.</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data.T.plot()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'GDP per capita'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"GDP per capita"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../../assets/images/data-analysis/9_gdp_australia_nz.svg" class="img-fluid" alt="GDP plot for Australia and New Zealand"></p>
 </section>
 <section id="many-styles-of-plot-are-available" class="level2">
@@ -938,9 +938,9 @@ cookieconsent.run({
 <ul>
 <li>For example, do a bar plot using a fancier style.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data.T.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'GDP per capita'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">"ggplot"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data.T.plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"GDP per capita"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../../assets/images/data-analysis/9_gdp_bar.svg" class="img-fluid" alt="GDP barplot for Australia"></p>
 </section>
 <section id="data-can-also-be-plotted-by-calling-the-matplotlib-plot-function-directly" class="level2">
@@ -953,25 +953,25 @@ cookieconsent.run({
 <section id="get-australia-data-from-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="get-australia-data-from-dataframe">Get Australia data from dataframe</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> data.columns</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>gdp_australia <span class="op">=</span> data.loc[<span class="st">'Australia'</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>gdp_australia <span class="op">=</span> data.loc[<span class="st">"Australia"</span>]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_australia, <span class="st">'g--'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_australia, <span class="st">"g--"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../../assets/images/data-analysis/9_gdp_australia_formatted.svg" class="img-fluid" alt="GDP formatted plot for Australia"></p>
 </section>
 <section id="can-plot-many-sets-of-data-together" class="level2">
 <h2 class="anchored" data-anchor-id="can-plot-many-sets-of-data-together">Can plot many sets of data together</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select two countries' worth of data.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gdp_australia <span class="op">=</span> data.loc[<span class="st">'Australia'</span>]</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>gdp_nz <span class="op">=</span> data.loc[<span class="st">'New Zealand'</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gdp_australia <span class="op">=</span> data.loc[<span class="st">"Australia"</span>]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>gdp_nz <span class="op">=</span> data.loc[<span class="st">"New Zealand"</span>]</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with differently-colored markers.</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_australia, <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Australia'</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_nz, <span class="st">'g-'</span>, label<span class="op">=</span><span class="st">'New Zealand'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_australia, <span class="st">"b-"</span>, label<span class="op">=</span><span class="st">"Australia"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_nz, <span class="st">"g-"</span>, label<span class="op">=</span><span class="st">"New Zealand"</span>)</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create legend.</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'GDP per capita ($)'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">"upper left"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"GDP per capita ($)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="adding-a-legend" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-legend">Adding a Legend</h2>
@@ -980,8 +980,8 @@ cookieconsent.run({
 <ul>
 <li>Provide a label for each dataset in the figure:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_australia, label<span class="op">=</span><span class="st">'Australia'</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_nz, label<span class="op">=</span><span class="st">'New Zealand'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_australia, label<span class="op">=</span><span class="st">"Australia"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.plot(years, gdp_nz, label<span class="op">=</span><span class="st">"New Zealand"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Instruct <code>matplotlib</code> to create the legend.</li>
 </ul>
@@ -994,7 +994,7 @@ cookieconsent.run({
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(gdp_australia, gdp_nz)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../../assets/images/data-analysis/9_gdp_correlation_plt.svg" class="img-fluid" alt="GDP correlation using plt.scatter"></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data.T.plot.scatter(x <span class="op">=</span> <span class="st">'Australia'</span>, y <span class="op">=</span> <span class="st">'New Zealand'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data.T.plot.scatter(x<span class="op">=</span><span class="st">"Australia"</span>, y<span class="op">=</span><span class="st">"New Zealand"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../../assets/images/data-analysis/9_gdp_correlation_data.svg" class="img-fluid" alt="GDP correlation using data.T.plot.scatter"></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1007,10 +1007,10 @@ cookieconsent.run({
 </div>
 <div class="callout-body-container callout-body">
 <p>Fill in the blanks below to plot the minimum GDP per capita over time for all the countries in Europe. Modify it again to plot the maximum GDP per capita over time for Europe.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_europe <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_europe.csv'</span>, index_col<span class="op">=</span><span class="st">'country'</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data_europe.____.plot(label<span class="op">=</span><span class="st">'min'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_europe <span class="op">=</span> pd.read_csv(<span class="st">"data/gapminder_gdp_europe.csv"</span>, index_col<span class="op">=</span><span class="st">"country"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data_europe.____.plot(label<span class="op">=</span><span class="st">"min"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>data_europe.____</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">"best"</span>)</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -1024,10 +1024,10 @@ cookieconsent.run({
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_europe <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_europe.csv'</span>, index_col<span class="op">=</span><span class="st">'country'</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>data_europe.<span class="bu">min</span>().plot(label<span class="op">=</span><span class="st">'min'</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>data_europe.<span class="bu">max</span>().plot(label<span class="op">=</span><span class="st">'max'</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_europe <span class="op">=</span> pd.read_csv(<span class="st">"data/gapminder_gdp_europe.csv"</span>, index_col<span class="op">=</span><span class="st">"country"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>data_europe.<span class="bu">min</span>().plot(label<span class="op">=</span><span class="st">"min"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>data_europe.<span class="bu">max</span>().plot(label<span class="op">=</span><span class="st">"max"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">"best"</span>)</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1063,12 +1063,12 @@ cookieconsent.run({
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_asia <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_asia.csv'</span>, index_col<span class="op">=</span><span class="st">'country'</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data_asia.describe().T.plot(kind<span class="op">=</span><span class="st">'scatter'</span>, x<span class="op">=</span><span class="st">'min'</span>, y<span class="op">=</span><span class="st">'max'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_asia <span class="op">=</span> pd.read_csv(<span class="st">"data/gapminder_gdp_asia.csv"</span>, index_col<span class="op">=</span><span class="st">"country"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data_asia.describe().T.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"min"</span>, y<span class="op">=</span><span class="st">"max"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="../../assets/images/data-analysis/9_correlations_solution1.svg" class="img-fluid" alt="Correlations Solution 1"></p>
 <p>No particular correlations can be seen between the minimum and maximum GDP values year on year. It seems the fortunes of asian countries do not rise and fall together.</p>
 <p>You might note that the variability in the maximum is much higher than that of the minimum. Take a look at the maximum and the max indexes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data_asia <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_asia.csv'</span>, index_col<span class="op">=</span><span class="st">'country'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data_asia <span class="op">=</span> pd.read_csv(<span class="st">"data/gapminder_gdp_asia.csv"</span>, index_col<span class="op">=</span><span class="st">"country"</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>data_asia.<span class="bu">max</span>().plot()</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_asia.idxmax())</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_asia.idxmin())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1090,9 +1090,10 @@ cookieconsent.run({
 </div>
 <div class="callout-body-container callout-body">
 <p>This short program creates a plot showing the correlation between GDP and life expectancy for 2007, normalizing marker size by population:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data_all <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_all.csv'</span>, index_col<span class="op">=</span><span class="st">'country'</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>data_all.plot(kind<span class="op">=</span><span class="st">'scatter'</span>, x<span class="op">=</span><span class="st">'gdpPercap_2007'</span>, y<span class="op">=</span><span class="st">'lifeExp_2007'</span>,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              s<span class="op">=</span>data_all[<span class="st">'pop_2007'</span>]<span class="op">/</span><span class="fl">1e6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data_all <span class="op">=</span> pd.read_csv(<span class="st">"data/gapminder_all.csv"</span>, index_col<span class="op">=</span><span class="st">"country"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>data_all.plot(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"gdpPercap_2007"</span>, y<span class="op">=</span><span class="st">"lifeExp_2007"</span>, s<span class="op">=</span>data_all[<span class="st">"pop_2007"</span>] <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Using online help and other resources, explain what each argument to <code>plot</code> does.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
@@ -1120,13 +1121,13 @@ cookieconsent.run({
 <section id="saving-your-plot-to-a-file" class="level2">
 <h2 class="anchored" data-anchor-id="saving-your-plot-to-a-file">Saving your plot to a file</h2>
 <p>If you are satisfied with the plot you see you may want to save it to a file, perhaps to include it in a publication. There is a function in the matplotlib.pyplot module that accomplishes this: <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html">savefig</a>. Calling this function, e.g.&nbsp;with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"my_figure.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>will save the current figure to the file <code>my_figure.png</code>. The file format will automatically be deduced from the file name extension (other formats are pdf, ps, eps and svg).</p>
 <p>Note that functions in <code>plt</code> refer to a global figure variable and after a figure has been displayed to the screen (e.g.&nbsp;with <code>plt.show</code>) matplotlib will make this variable refer to a new empty figure. Therefore, make sure you call <code>plt.savefig</code> before the plot is displayed to the screen, otherwise you may find a file with an empty plot.</p>
 <p>When using dataframes, data is often generated and plotted to screen in one line. In addition to using <code>plt.savefig</code>, we can save a reference to the current figure in a local variable (with <code>plt.gcf</code>) and call the <code>savefig</code> class method from that variable to save the figure to file.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.gcf() <span class="co"># get current figure</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">'my_figure.png'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data.plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.gcf()  <span class="co"># get current figure</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"my_figure.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="making-your-plots-accessible" class="level2">
 <h2 class="anchored" data-anchor-id="making-your-plots-accessible">Making your plots accessible</h2>

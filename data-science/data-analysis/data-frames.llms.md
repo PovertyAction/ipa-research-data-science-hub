@@ -55,7 +55,8 @@ To access a value at the position `[i,j]` of a DataFrame, we have two options, d
 
 ``` python
 import pandas as pd
-data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+
+data = pd.read_csv("data/gapminder_gdp_europe.csv", index_col="country")
 print(data.iloc[0, 0])
 ```
 
@@ -123,7 +124,7 @@ Name: gdpPercap_1952, dtype: float64
 ## Select multiple columns or rows using `DataFrame.loc` and a named slice
 
 ``` python
-print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'])
+print(data.loc["Italy":"Poland", "gdpPercap_1962":"gdpPercap_1972"])
 ```
 
 ``` output
@@ -145,7 +146,7 @@ In the above code, we discover that **slicing using `loc` is inclusive at both e
 - E.g., calculate max of a slice.
 
 ``` python
-print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].max())
+print(data.loc["Italy":"Poland", "gdpPercap_1962":"gdpPercap_1972"].max())
 ```
 
 ``` output
@@ -156,7 +157,7 @@ dtype: float64
 ```
 
 ``` python
-print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].min())
+print(data.loc["Italy":"Poland", "gdpPercap_1962":"gdpPercap_1972"].min())
 ```
 
 ``` output
@@ -173,11 +174,11 @@ dtype: float64
 
 ``` python
 # Use a subset of data to keep output readable.
-subset = data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
-print('Subset of data:\n', subset)
+subset = data.loc["Italy":"Poland", "gdpPercap_1962":"gdpPercap_1972"]
+print("Subset of data:\n", subset)
 
 # Which values were greater than 10000 ?
-print('\nWhere are values large?\n', subset > 10000)
+print("\nWhere are values large?\n", subset > 10000)
 ```
 
 ``` output
@@ -249,7 +250,7 @@ For instance, let’s say we want to have a clearer view on how the European cou
 
 ``` python
 mask_higher = data > data.mean()
-wealth_score = mask_higher.aggregate('sum', axis=1) / len(data.columns)
+wealth_score = mask_higher.aggregate("sum", axis=1) / len(data.columns)
 print(wealth_score)
 ```
 
@@ -321,7 +322,7 @@ print(data.groupby(wealth_score).sum())
 > ``` python
 > import pandas as pd
 >
-> data_europe = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+> data_europe = pd.read_csv("data/gapminder_gdp_europe.csv", index_col="country")
 > ```
 >
 > Write an expression to find the Per Capita GDP of Serbia in 2007.
@@ -331,7 +332,7 @@ print(data.groupby(wealth_score).sum())
 > > The selection can be done by using the labels for both the row (“Serbia”) and the column (“gdpPercap_2007”):
 > >
 > > ``` python
-> > print(data_europe.loc['Serbia', 'gdpPercap_2007'])
+> > print(data_europe.loc["Serbia", "gdpPercap_2007"])
 > > ```
 > >
 > > The output is
@@ -347,7 +348,7 @@ print(data.groupby(wealth_score).sum())
 >
 > ``` python
 > print(data_europe.iloc[0:2, 0:2])
-> print(data_europe.loc['Albania':'Belgium', 'gdpPercap_1952':'gdpPercap_1962'])
+> print(data_europe.loc["Albania":"Belgium", "gdpPercap_1952":"gdpPercap_1962"])
 > ```
 >
 > > **TIP:**
@@ -378,11 +379,11 @@ print(data.groupby(wealth_score).sum())
 > Explain what each line in the following short program does: what is in `first`, `second`, etc.?
 >
 > ``` python
-> first = pd.read_csv('data/gapminder_all.csv', index_col='country')
-> second = first[first['continent'] == 'Americas']
-> third = second.drop('Puerto Rico')
-> fourth = third.drop('continent', axis = 1)
-> fourth.to_csv('result.csv')
+> first = pd.read_csv("data/gapminder_all.csv", index_col="country")
+> second = first[first["continent"] == "Americas"]
+> third = second.drop("Puerto Rico")
+> fourth = third.drop("continent", axis=1)
+> fourth.to_csv("result.csv")
 > ```
 >
 > > **TIP:**
@@ -390,31 +391,31 @@ print(data.groupby(wealth_score).sum())
 > > Let’s go through this piece of code line by line.
 > >
 > > ``` python
-> > first = pd.read_csv('data/gapminder_all.csv', index_col='country')
+> > first = pd.read_csv("data/gapminder_all.csv", index_col="country")
 > > ```
 > >
 > > This line loads the dataset containing the GDP data from all countries into a dataframe called `first`. The `index_col='country'` parameter selects which column to use as the row labels in the dataframe.
 > >
 > > ``` python
-> > second = first[first['continent'] == 'Americas']
+> > second = first[first["continent"] == "Americas"]
 > > ```
 > >
 > > This line makes a selection: only those rows of `first` for which the ‘continent’ column matches ‘Americas’ are extracted. Notice how the Boolean expression inside the brackets, `first['continent'] == 'Americas'`, is used to select only those rows where the expression is true. Try printing this expression! Can you print also its individual True/False elements? (hint: first assign the expression to a variable)
 > >
 > > ``` python
-> > third = second.drop('Puerto Rico')
+> > third = second.drop("Puerto Rico")
 > > ```
 > >
 > > As the syntax suggests, this line drops the row from `second` where the label is ‘Puerto Rico’. The resulting dataframe `third` has one row less than the original dataframe `second`.
 > >
 > > ``` python
-> > fourth = third.drop('continent', axis = 1)
+> > fourth = third.drop("continent", axis=1)
 > > ```
 > >
 > > Again we apply the drop function, but in this case we are dropping not a row but a whole column. To accomplish this, we need to specify also the `axis` parameter (we want to drop the second column which has index 1).
 > >
 > > ``` python
-> > fourth.to_csv('result.csv')
+> > fourth.to_csv("result.csv")
 > > ```
 > >
 > > The final step is to write the data that we have been working on to a csv file. Pandas makes this easy with the `to_csv()` function. The only required argument to the function is the filename. Note that the file will be written in the directory from which you started the Jupyter or Python session.
@@ -424,7 +425,7 @@ print(data.groupby(wealth_score).sum())
 > Explain in simple terms what `idxmin` and `idxmax` do in the short program below. When would you use these methods?
 >
 > ``` python
-> data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+> data = pd.read_csv("data/gapminder_gdp_europe.csv", index_col="country")
 > print(data.idxmin())
 > print(data.idxmax())
 > ```
@@ -449,19 +450,19 @@ print(data.groupby(wealth_score).sum())
 > > 1:
 > >
 > > ``` python
-> > data['gdpPercap_1982']
+> > data["gdpPercap_1982"]
 > > ```
 > >
 > > 2:
 > >
 > > ``` python
-> > data.loc['Denmark',:]
+> > data.loc["Denmark", :]
 > > ```
 > >
 > > 3:
 > >
 > > ``` python
-> > data.loc[:,'gdpPercap_1985':]
+> > data.loc[:, "gdpPercap_1985":]
 > > ```
 > >
 > > Pandas is smart enough to recognize the number at the end of the column label and does not give you an error, although no column named `gdpPercap_1985` actually exists. This is useful if new columns are added to the CSV file later.
@@ -469,7 +470,7 @@ print(data.groupby(wealth_score).sum())
 > > 4:
 > >
 > > ``` python
-> > data['gdpPercap_2007']/data['gdpPercap_1952']
+> > data["gdpPercap_2007"] / data["gdpPercap_1952"]
 > > ```
 
 > **NOTE:**
@@ -492,8 +493,8 @@ print(data.groupby(wealth_score).sum())
 > >
 > > ``` python
 > > # by name
-> > data["col_name"]   # as a Series
-> > data[["col_name"]] # as a DataFrame
+> > data["col_name"]  # as a Series
+> > data[["col_name"]]  # as a DataFrame
 > >
 > > # by name using .loc
 > > data.T.loc["col_name"]  # as a Series
@@ -503,8 +504,8 @@ print(data.groupby(wealth_score).sum())
 > > data.col_name
 > >
 > > # by index (iloc)
-> > data.iloc[:, col_index]   # as a Series
-> > data.iloc[:, [col_index]] # as a DataFrame
+> > data.iloc[:, col_index]  # as a Series
+> > data.iloc[:, [col_index]]  # as a DataFrame
 > >
 > > # using a mask
 > > data.T[data.T.index == "col_name"].T
@@ -514,16 +515,16 @@ print(data.groupby(wealth_score).sum())
 > >
 > > ``` python
 > > # by name using .loc
-> > data.loc["row_name"] # as a Series
-> > data.loc[["row_name"]] # as a DataFrame
+> > data.loc["row_name"]  # as a Series
+> > data.loc[["row_name"]]  # as a DataFrame
 > >
 > > # by name
-> > data.T["row_name"] # as a Series
-> > data.T[["row_name"]].T # as a DataFrame
+> > data.T["row_name"]  # as a Series
+> > data.T[["row_name"]].T  # as a DataFrame
 > >
 > > # by index
-> > data.iloc[row_index]   # as a Series
-> > data.iloc[[row_index]]   # as a DataFrame
+> > data.iloc[row_index]  # as a Series
+> > data.iloc[[row_index]]  # as a DataFrame
 > >
 > > # using mask
 > > data[data.index == "row_name"]
@@ -533,7 +534,7 @@ print(data.groupby(wealth_score).sum())
 > >
 > > ``` python
 > > # by column/row names
-> > data["column_name"]["row_name"]         # as a Series
+> > data["column_name"]["row_name"]  # as a Series
 > >
 > > data[["col_name"]].loc["row_name"]  # as a Series
 > > data[["col_name"]].loc[["row_name"]]  # as a DataFrame
@@ -543,18 +544,30 @@ print(data.groupby(wealth_score).sum())
 > > data.loc[["row_name"]][["col_name"]]  # as a DataFrame
 > >
 > > data.loc["row_name", "col_name"]  # as a value
-> > data.loc[["row_name"], "col_name"]  # as a Series. Preserves index. Column name is moved to `.name`.
-> > data.loc["row_name", ["col_name"]]  # as a Series. Index is moved to `.name.` Sets index to column name.
-> > data.loc[["row_name"], ["col_name"]]  # as a DataFrame (preserves original index and column name)
+> > data.loc[
+> >     ["row_name"], "col_name"
+> > ]  # as a Series. Preserves index. Column name is moved to `.name`.
+> > data.loc[
+> >     "row_name", ["col_name"]
+> > ]  # as a Series. Index is moved to `.name.` Sets index to column name.
+> > data.loc[
+> >     ["row_name"], ["col_name"]
+> > ]  # as a DataFrame (preserves original index and column name)
 > >
 > > # by column/row names: Dot notation
 > > data.col_name.row_name
 > >
 > > # by column/row indices
-> > data.iloc[row_index, col_index] # as a value
-> > data.iloc[[row_index], col_index] # as a Series. Preserves index. Column name is moved to `.name`
-> > data.iloc[row_index, [col_index]] # as a Series. Index is moved to `.name.` Sets index to column name.
-> > data.iloc[[row_index], [col_index]] # as a DataFrame (preserves original index and column name)
+> > data.iloc[row_index, col_index]  # as a value
+> > data.iloc[
+> >     [row_index], col_index
+> > ]  # as a Series. Preserves index. Column name is moved to `.name`
+> > data.iloc[
+> >     row_index, [col_index]
+> > ]  # as a Series. Index is moved to `.name.` Sets index to column name.
+> > data.iloc[
+> >     [row_index], [col_index]
+> > ]  # as a DataFrame (preserves original index and column name)
 > >
 > > # column name + row index
 > > data["col_name"][row_index]
@@ -627,7 +640,7 @@ print(data.groupby(wealth_score).sum())
 > Python includes a `dir()` function that can be used to display all of the available methods (functions) that are built into a data object. In Episode 4, we used some methods with a string. But we can see many more are available by using `dir()`:
 >
 > ``` python
-> my_string = 'Hello world!'   # creation of a string object
+> my_string = "Hello world!"  # creation of a string object
 > dir(my_string)
 > ```
 >

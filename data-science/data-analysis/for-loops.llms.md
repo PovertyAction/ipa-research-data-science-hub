@@ -125,8 +125,8 @@ for kitten in [2, 3, 5]:
 ``` python
 primes = [2, 3, 5]
 for p in primes:
-    squared = p ** 2
-    cubed = p ** 3
+    squared = p**2
+    cubed = p**3
     print(p, squared, cubed)
 ```
 
@@ -144,7 +144,7 @@ for p in primes:
   - Exactly the legal indices of a list or character string of length N
 
 ``` python
-print('a range is not a list: range(0, 3)')
+print("a range is not a list: range(0, 3)")
 for number in range(0, 3):
     print(number)
 ```
@@ -166,7 +166,7 @@ a range is not a list: range(0, 3)
 # Sum the first 10 integers.
 total = 0
 for number in range(10):
-   total = total + (number + 1)
+    total = total + (number + 1)
 print(total)
 ```
 
@@ -320,7 +320,7 @@ print(result)
 > >
 > > ``` python
 > > total = 0
-> > data = [1,2,2,5]
+> > data = [1, 2, 2, 5]
 > > cumulative = []
 > > for number in data:
 > >     total = total + number
@@ -369,8 +369,8 @@ print(result)
 > 3.  Fix the error.
 >
 > ``` python
-> seasons = ['Spring', 'Summer', 'Fall', 'Winter']
-> print('My favorite season is ', seasons[4])
+> seasons = ["Spring", "Summer", "Fall", "Winter"]
+> print("My favorite season is ", seasons[4])
 > ```
 >
 > > **TIP:**
@@ -378,8 +378,8 @@ print(result)
 > > This list has 4 elements and the index to access the last element in the list is `3`.
 > >
 > > ``` python
-> > seasons = ['Spring', 'Summer', 'Fall', 'Winter']
-> > print('My favorite season is ', seasons[3])
+> > seasons = ["Spring", "Summer", "Fall", "Winter"]
+> > print("My favorite season is ", seasons[3])
 > > ```
 
 > **IMPORTANT:**

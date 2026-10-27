@@ -59,9 +59,9 @@ Explain and identify the difference between function definition and function cal
 
 ``` python
 def print_greeting():
-    print('Hello!')
-    print('The weather is nice today.')
-    print('Right?')
+    print("Hello!")
+    print("The weather is nice today.")
+    print("Right?")
 ```
 
 ## Defining a function does not run it
@@ -88,8 +88,9 @@ Hello!
 
 ``` python
 def print_date(year, month, day):
-    joined = str(year) + '/' + str(month) + '/' + str(day)
+    joined = str(year) + "/" + str(month) + "/" + str(day)
     print(joined)
+
 
 print_date(1871, 3, 19)
 ```
@@ -127,7 +128,7 @@ def average(values):
 
 ``` python
 a = average([1, 3, 4])
-print('average of actual values:', a)
+print("average of actual values:", a)
 ```
 
 ``` output
@@ -135,7 +136,7 @@ average of actual values: 2.6666666666666665
 ```
 
 ``` python
-print('average of empty list:', average([]))
+print("average of empty list:", average([]))
 ```
 
 ``` output
@@ -147,7 +148,7 @@ average of empty list: None
 
 ``` python
 result = print_date(1871, 3, 19)
-print('result of call is:', result)
+print("result of call is:", result)
 ```
 
 ``` output
@@ -173,9 +174,9 @@ def another_function
 >
 > ``` python
 > def another_function():
->   print("Syntax errors are annoying.")
->   print("But at least Python tells us about them!")
->   print("They are usually not too hard to fix.")
+>     print("Syntax errors are annoying.")
+>     print("But at least Python tells us about them!")
+>     print("They are usually not too hard to fix.")
 > ```
 
 ## Exercise: Definition and Use
@@ -184,9 +185,10 @@ What does the following program print?
 
 ``` python
 def report(pressure):
-    print('pressure is', pressure)
+    print("pressure is", pressure)
 
-print('calling', report, 22.5)
+
+print("calling", report, 22.5)
 ```
 
 > **TIP:**
@@ -250,6 +252,7 @@ Fill in the blanks to create a function that takes a single filename as an argum
 ``` python
 import pandas as pd
 
+
 def min_in_data(____):
     data = ____
     return ____
@@ -259,6 +262,7 @@ def min_in_data(____):
 >
 > ``` python
 > import pandas as pd
+>
 >
 > def min_in_data(filename):
 >     data = pd.read_csv(filename)
@@ -302,7 +306,7 @@ Earlier we saw this function:
 
 ``` python
 def print_date(year, month, day):
-    joined = str(year) + '/' + str(month) + '/' + str(day)
+    joined = str(year) + "/" + str(month) + "/" + str(day)
     print(joined)
 ```
 
@@ -328,8 +332,8 @@ The code below will run on a label-printer for chicken eggs. A digital scale wil
 
 ``` python
 import random
-for i in range(10):
 
+for i in range(10):
     # simulating the mass of a chicken egg
     # the (random) mass will be 70 +/- 20 grams
     mass = 70 + 20.0 * (2.0 * random.random() - 1.0)
@@ -352,8 +356,8 @@ The if-block that classifies the eggs might be useful in other situations, so to
 ``` python
 # revised version
 import random
-for i in range(10):
 
+for i in range(10):
     # simulating the mass of a chicken egg
     # the (random) mass will be 70 +/- 20 grams
     mass = 70 + 20.0 * (2.0 * random.random() - 1.0)
@@ -392,8 +396,8 @@ Assume that the following code has been executed:
 ``` python
 import pandas as pd
 
-data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col=0)
-japan = data_asia.loc['Japan']
+data_asia = pd.read_csv("data/gapminder_gdp_asia.csv", index_col=0)
+japan = data_asia.loc["Japan"]
 ```
 
 1.  Complete the statements below to obtain the average GDP for Japan across the years reported for the 1980s.
@@ -457,7 +461,7 @@ japan = data_asia.loc['Japan']
 > The function can now be called by:
 >
 > ``` python
-> avg_gdp_in_decade('Japan','asia',1983)
+> avg_gdp_in_decade("Japan", "asia", 1983)
 > ```
 >
 > ``` output
@@ -490,15 +494,16 @@ In mathematics, a [dynamical system](https://en.wikipedia.org/wiki/Dynamical_sys
 >     population = [initial_population]
 >
 >     for t in range(t_final):
->         population.append( logistic_map(population[t], r) )
+>         population.append(logistic_map(population[t], r))
 >     ```
 >
 > 3.  ``` python
 >     def iterate(initial_population, t_final, r):
 >         population = [initial_population]
 >         for t in range(t_final):
->             population.append( logistic_map(population[t], r) )
+>             population.append(logistic_map(population[t], r))
 >         return population
+>
 >
 >     for period in (10, 100, 1000):
 >         population = iterate(0.5, period, 1)
@@ -524,16 +529,17 @@ def calculate_life_quartile(exp):
         return 1
     elif exp >= 58.41 and exp < 67.05:
         # This observation is in the second quartile
-       return 2
+        return 2
     elif exp >= 67.05 and exp < 71.70:
         # This observation is in the third quartile
-       return 3
+        return 3
     elif exp >= 71.70:
         # This observation is in the fourth quartile
-       return 4
+        return 4
     else:
         # This observation has bad data
-       return None
+        return None
+
 
 calculate_life_quartile(62.5)
 ```
@@ -545,8 +551,8 @@ calculate_life_quartile(62.5)
 That function would typically be used within a `for` loop, but Pandas has a different, more efficient way of doing the same thing, and that is by *applying* a function to a dataframe or a portion of a dataframe. Here is an example, using the definition above.
 
 ``` python
-data = pd.read_csv('data/gapminder_all.csv')
-data['life_qrtl'] = data['lifeExp_1952'].apply(calculate_life_quartile)
+data = pd.read_csv("data/gapminder_all.csv")
+data["life_qrtl"] = data["lifeExp_1952"].apply(calculate_life_quartile)
 ```
 
 There is a lot in that second line, so let’s take it piece by piece. On the right side of the `=` we start with `data['lifeExp']`, which is the column in the dataframe called `data` labeled `lifExp`. We use the `apply()` to do what it says, apply the `calculate_life_quartile` to the value of this column for every row in the dataframe.
