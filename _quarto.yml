@@ -3,6 +3,7 @@ project:
   output-dir: _site
   resources:
     - "assets/images/**/*.mp4"
+    - "assets/fonts/*.woff2"
   render:
     - "*.qmd"
     - "*.md"
@@ -19,13 +20,10 @@ website:
   title: "Knowledge Hub"
   llms-txt: true
   favicon: "assets/logos/ipa-favicon.ico"
-  cookie-consent:
-    type: implied
-    style: simple
-  google-analytics:
-    tracking-id: "G-5YYP29ZV82"
-    storage: cookies
-    anonymize-ip: true
+  # Cookie notice and Google Analytics (G-5YYP29ZV82) are handled by
+
+  # assets/design-styles/before-body.html, not Quarto's cookie-consent and
+  # google-analytics options
   bread-crumbs: true
   # announcement:
 
@@ -526,12 +524,15 @@ format:
     toc: true
     appendix-style: none # removes "Reuse" appendix section
     theme:
-      light: [litera, brand, assets/design-styles/light-theme.scss]
-      dark: [litera, brand, assets/design-styles/dark-theme.scss]
+      light: [litera, brand, assets/design-styles/light-theme.scss, assets/design-styles/callouts.scss]
+      dark: [litera, brand, assets/design-styles/dark-theme.scss, assets/design-styles/callouts.scss]
     code-copy: true
     code-overflow: wrap
     css:
+      - ./assets/design-styles/fonts.css
       - ./assets/design-styles/styles.css
+    include-in-header:
+      - ./assets/design-styles/in-header.html
     include-before-body:
       - ./assets/design-styles/before-body.html
     toc-title: "In this resource"

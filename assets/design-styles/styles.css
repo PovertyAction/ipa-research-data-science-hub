@@ -426,72 +426,99 @@ main img {
   overflow-x: auto;
 }
 
-/* Cookie banner (Quarto cookie-consent, style: simple): use the site font */
-.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-title,
-.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-text,
-.termsfeed-com---nb.termsfeed-com---nb-simple button {
-  font-family: Arimo, Arial, sans-serif;
+/* Cookie notice (before-body.html): a slim IPA dark-green box in the
+   bottom-left corner that does not block reading */
+.cookie-notice {
+  position: fixed;
+  z-index: 1050;
+  left: 1rem;
+  bottom: 1rem;
+  max-width: 32rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem 0.75rem 0.75rem 1.1rem;
+  background-color: #155240;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
-/* Default box is half the screen wide with 51px padding; keep it compact */
-.termsfeed-com---nb.termsfeed-com---nb-simple {
-  max-width: 30rem;
+.cookie-notice-text {
+  flex: 1 1 15rem;
+  margin: 0;
 }
 
-.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-main-container {
-  padding: 1.25rem 1.5rem;
+.cookie-notice-actions {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-title {
-  font-size: 1.15rem;
-  margin-bottom: 0.4rem;
+.cookie-notice button {
+  min-height: 2.25rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid #fff;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-text {
-  font-size: 0.95rem;
-  margin-bottom: 0.9rem;
+.cookie-notice-accept {
+  background-color: #fff;
+  color: #155240;
 }
 
-/* On phones the default box was indented, padded 51px, and covered over half
-   the screen; make it a compact full-width bar with the buttons side by side */
+.cookie-notice-accept:hover {
+  background-color: #ceecee;
+}
+
+.cookie-notice-decline {
+  background-color: transparent;
+  color: #fff;
+}
+
+.cookie-notice-decline:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* the theme's link-colored focus ring disappears on dark green */
+.cookie-notice :focus-visible {
+  outline-color: #fff !important;
+}
+
+/* Phones: full-width bar with equal buttons */
 @media (max-width: 575.98px) {
-  .termsfeed-com---nb.termsfeed-com---nb-simple {
-    left: 0;
-    right: 0;
+  .cookie-notice {
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
     max-width: none;
   }
 
-  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-main-container {
-    padding: 1rem 1.25rem;
+  .cookie-notice-actions {
+    width: 100%;
   }
 
-  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-title {
-    font-size: 1.05rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-text {
-    font-size: 0.875rem;
-    line-height: 1.4;
-    margin-bottom: 0.75rem;
-  }
-
-  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-buttons-container {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-buttons-container button {
+  .cookie-notice button {
     flex: 1;
-    margin: 0;
     min-height: 44px;
   }
 }
 
-/* Cookie-consent shrinks its footer link to 0.8em (about 10px); match the
-   other footer links instead */
-div.cookie-consent-footer {
-  font-size: inherit;
+/* "Cookie preferences" in the footer reopens the notice; styled as a link */
+.cookie-preferences-footer button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* Touch screens: sidebar, table of contents, and footer links are ~18px
@@ -501,7 +528,8 @@ div.cookie-consent-footer {
   #TOC .nav-link,
   .toc-meta a,
   .toc-actions a,
-  .nav-footer a {
+  .nav-footer a,
+  .cookie-preferences-footer button {
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
   }
@@ -585,7 +613,7 @@ body.quarto-dark :not(pre)>code {
 /* Authors/contributors/date/license under the TOC (toc.html partial).
    Sits outside nav#TOC so Quarto's scrollspy ignores these links;
    styles mirror the TOC list look. */
-.sidebar nav[role="doc-toc"] > h2.toc-title-small,
+.toc-title-small,
 .toc-meta-title {
   font-size: 0.86rem;
   font-weight: 600;

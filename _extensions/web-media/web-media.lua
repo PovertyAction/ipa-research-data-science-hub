@@ -5,7 +5,9 @@ Quarto filter for content images and tables in HTML output.
   recordings can be written as ordinary Markdown images:
     ![Create Twilio flow](/assets/images/twilio/twilio-design-5.mp4)
   The image alt text becomes the video's aria-label. `controls` lets readers
-  pause the motion (WCAG 2.2.2).
+  pause the motion (WCAG 2.2.2). Videos do not autoplay on load:
+  preload="metadata" fetches only enough to size the box, and before-body.html
+  plays each one (data-autoplay) as it scrolls into view.
 - Figures get their caption as alt text when no fig-alt is set (Quarto
   otherwise leaves the <img> with no alt).
 - Other images get loading="lazy" so the browser fetches them only as the
@@ -31,7 +33,7 @@ local function video(img)
     style = ' style="' .. escape(style) .. '"'
   end
   return pandoc.RawInline("html", string.format(
-    '<video src="%s" autoplay loop muted playsinline controls%s aria-label="%s"></video>',
+    '<video src="%s" data-autoplay preload="metadata" loop muted playsinline controls%s aria-label="%s"></video>',
     escape(img.src), style, escape(pandoc.utils.stringify(img.caption))))
 end
 

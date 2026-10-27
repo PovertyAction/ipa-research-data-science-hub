@@ -78,6 +78,16 @@ $mermaid-node-fg-color: $gray-100;
 $mermaid-label-bg-color: $gray-900;
 $mermaid-label-fg-color: $gray-100;
 
+// Callout colors: lighter brand tints so the icon and border show on the dark
+// background (the brand dark-blue was ~2:1 here). Rules in callouts.scss.
+$callout-color-note: #a0a9ea; // divergent-3
+$callout-color-tip: #49ac57; // ipa-green
+$callout-color-important: #f26529; // red-orange
+$callout-color-warning: #fc9757; // divergent-4
+$callout-color-caution: #fc9757;
+$hub-callout-border-alpha: 0.45;
+$hub-callout-tint-alpha: 0.06;
+
 /*-- scss:rules --*/
 
 // Focus ring color for styles.css (see light-theme.scss)
@@ -87,6 +97,13 @@ $mermaid-label-fg-color: $gray-100;
 
 .navbar .dropdown-menu {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+// Figure captions default to $secondary (#707073), 3.7:1 on the dark
+// background; use the muted text color instead (>= 4.5:1)
+figcaption,
+.figure-caption {
+  color: $text-muted;
 }
 
 // Mermaid edge-label chips: mermaid injects a hard-coded light background

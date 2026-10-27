@@ -1,6 +1,9 @@
-<nav id="$idprefix$TOC" role="doc-toc">
+<!-- The title is a label, not a heading: the margin column comes before the
+     page's <h1> in the source, so a heading here would lead the heading list.
+     id="toc-title" is kept because quarto.js looks it up. -->
+<nav id="$idprefix$TOC" role="doc-toc"$if(toc-title)$ aria-labelledby="toc-title"$endif$>
   $if(toc-title)$
-  <h2 class="toc-title-small">$toc-title$</h2>
+  <p class="toc-title-small" id="toc-title">$toc-title$</p>
   $endif$
   $table-of-contents$
 </nav>
