@@ -70,13 +70,9 @@ We've already seen `so.Dot()` - it's perfect for showing:
 ```python
 # Basic scatter plot
 (
-    so.Plot(
-        penguins,
-        x="flipper_length_mm",
-        y="body_mass_g",
-        color="species"
+    so.Plot(penguins, x="flipper_length_mm", y="body_mass_g", color="species").add(
+        so.Dot()
     )
-    .add(so.Dot())
 )
 ```
 
@@ -98,17 +94,16 @@ We've already seen `so.Dot()` - it's perfect for showing:
 ```python
 # First, let's create some time series data
 # Imagine tracking monthly program enrollment
-months = pd.date_range('2023-01-01', periods=12, freq='M')
-enrollment_data = pd.DataFrame({
-    'month': months,
-    'enrolled': [120, 145, 162, 180, 195, 210, 235, 248, 265, 282, 295, 310],
-    'program': 'Microfinance Training'
-})
-
-(
-    so.Plot(enrollment_data, x="month", y="enrolled")
-    .add(so.Line())
+months = pd.date_range("2023-01-01", periods=12, freq="M")
+enrollment_data = pd.DataFrame(
+    {
+        "month": months,
+        "enrolled": [120, 145, 162, 180, 195, 210, 235, 248, 265, 282, 295, 310],
+        "program": "Microfinance Training",
+    }
 )
+
+(so.Plot(enrollment_data, x="month", y="enrolled").add(so.Line()))
 ```
 
 ### Lines with Markers
@@ -117,11 +112,7 @@ You can combine lines with dots to show both the trend and individual data
 points:
 
 ```python
-(
-    so.Plot(enrollment_data, x="month", y="enrolled")
-    .add(so.Line())
-    .add(so.Dot())
-)
+(so.Plot(enrollment_data, x="month", y="enrolled").add(so.Line()).add(so.Dot()))
 ```
 
 ### Multiple Lines
@@ -130,20 +121,31 @@ Comparing trends across groups:
 
 ```python
 # Create data for multiple programs
-months_extended = pd.date_range('2023-01-01', periods=12, freq='M')
-multi_program_data = pd.DataFrame({
-    'month': list(months_extended) * 3,
-    'enrolled':
-        [120, 145, 162, 180, 195, 210, 235, 248, 265, 282, 295, 310] +  # Program A
-        [80, 95, 102, 118, 135, 155, 168, 185, 198, 215, 228, 242] +      # Program B
-        [200, 198, 205, 210, 218, 222, 235, 242, 255, 265, 278, 290],     # Program C
-    'program': ['Microfinance'] * 12 + ['Agriculture'] * 12 + ['Education'] * 12
-})
-
-(
-    so.Plot(multi_program_data, x="month", y="enrolled", color="program")
-    .add(so.Line())
+months_extended = pd.date_range("2023-01-01", periods=12, freq="M")
+multi_program_data = pd.DataFrame(
+    {
+        "month": list(months_extended) * 3,
+        "enrolled": [
+            120,
+            145,
+            162,
+            180,
+            195,
+            210,
+            235,
+            248,
+            265,
+            282,
+            295,
+            310,
+        ]  # Program A
+        + [80, 95, 102, 118, 135, 155, 168, 185, 198, 215, 228, 242]  # Program B
+        + [200, 198, 205, 210, 218, 222, 235, 242, 255, 265, 278, 290],  # Program C
+        "program": ["Microfinance"] * 12 + ["Agriculture"] * 12 + ["Education"] * 12,
+    }
 )
+
+(so.Plot(multi_program_data, x="month", y="enrolled", color="program").add(so.Line()))
 ```
 
 ::: {.callout-note}
@@ -171,10 +173,7 @@ multi_program_data = pd.DataFrame({
 
 ```python
 # Average body mass by species
-(
-    so.Plot(penguins, x="species", y="body_mass_g", color="species")
-    .add(so.Bar())
-)
+(so.Plot(penguins, x="species", y="body_mass_g", color="species").add(so.Bar()))
 ```
 
 Note: By default, `so.Bar()` aggregates data (usually by taking the mean).
@@ -183,12 +182,9 @@ Note: By default, `so.Bar()` aggregates data (usually by taking the mean).
 
 ```python
 # Compare by both species and sex
-penguins_complete = penguins.dropna(subset=['sex'])
+penguins_complete = penguins.dropna(subset=["sex"])
 
-(
-    so.Plot(penguins_complete, x="species", y="body_mass_g", color="sex")
-    .add(so.Bar())
-)
+(so.Plot(penguins_complete, x="species", y="body_mass_g", color="sex").add(so.Bar()))
 ```
 
 ### Horizontal Bars
@@ -197,21 +193,20 @@ Sometimes horizontal bars are clearer, especially with long category names:
 
 ```python
 # Create survey response data
-survey_data = pd.DataFrame({
-    'response': [
-        'Strongly Agree',
-        'Agree',
-        'Neutral',
-        'Disagree',
-        'Strongly Disagree'
-    ],
-    'count': [45, 78, 23, 12, 5]
-})
-
-(
-    so.Plot(survey_data, x="count", y="response")
-    .add(so.Bar())
+survey_data = pd.DataFrame(
+    {
+        "response": [
+            "Strongly Agree",
+            "Agree",
+            "Neutral",
+            "Disagree",
+            "Strongly Disagree",
+        ],
+        "count": [45, 78, 23, 12, 5],
+    }
 )
+
+(so.Plot(survey_data, x="count", y="response").add(so.Bar()))
 ```
 
 ::: {.callout-note}
@@ -236,12 +231,9 @@ survey_data = pd.DataFrame({
 ```python
 # Cumulative enrollment over time
 cumulative_data = enrollment_data.copy()
-cumulative_data['cumulative_enrolled'] = cumulative_data['enrolled'].cumsum()
+cumulative_data["cumulative_enrolled"] = cumulative_data["enrolled"].cumsum()
 
-(
-    so.Plot(cumulative_data, x="month", y="cumulative_enrolled")
-    .add(so.Area())
-)
+(so.Plot(cumulative_data, x="month", y="cumulative_enrolled").add(so.Area()))
 ```
 
 ### Stacked Areas
@@ -250,20 +242,34 @@ Great for showing composition over time:
 
 ```python
 # Budget allocation over time
-budget_data = pd.DataFrame({
-    'year': list(range(2018, 2024)) * 3,
-    'amount': [
-        30, 32, 35, 38, 40, 42,  # Research
-        20, 22, 25, 28, 30, 33,  # Training
-        15, 18, 20, 22, 25, 28   # Admin
-    ],
-    'category': ['Research'] * 6 + ['Training'] * 6 + ['Admin'] * 6
-})
-
-(
-    so.Plot(budget_data, x="year", y="amount", color="category")
-    .add(so.Area())
+budget_data = pd.DataFrame(
+    {
+        "year": list(range(2018, 2024)) * 3,
+        "amount": [
+            30,
+            32,
+            35,
+            38,
+            40,
+            42,  # Research
+            20,
+            22,
+            25,
+            28,
+            30,
+            33,  # Training
+            15,
+            18,
+            20,
+            22,
+            25,
+            28,  # Admin
+        ],
+        "category": ["Research"] * 6 + ["Training"] * 6 + ["Admin"] * 6,
+    }
 )
+
+(so.Plot(budget_data, x="year", y="amount", color="category").add(so.Area()))
 ```
 
 ::: {.callout-note}
@@ -286,12 +292,14 @@ budget_data = pd.DataFrame({
 ```python
 # Create data with error ranges
 # Imagine tracking income with confidence intervals
-income_data = pd.DataFrame({
-    'year': range(2018, 2024),
-    'mean_income': [450, 480, 520, 550, 590, 630],
-    'lower_ci': [420, 445, 485, 510, 545, 580],
-    'upper_ci': [480, 515, 555, 590, 635, 680]
-})
+income_data = pd.DataFrame(
+    {
+        "year": range(2018, 2024),
+        "mean_income": [450, 480, 520, 550, 590, 630],
+        "lower_ci": [420, 445, 485, 510, 545, 580],
+        "upper_ci": [480, 515, 555, 590, 635, 680],
+    }
+)
 
 (
     so.Plot(income_data, x="year")
@@ -316,12 +324,14 @@ One of the most powerful features is combining marks in layers:
 
 ```python
 # Research example: Survey responses over time with confidence
-survey_trend = pd.DataFrame({
-    'round': [1, 2, 3, 4, 5],
-    'satisfaction': [3.2, 3.5, 3.8, 4.1, 4.3],
-    'lower': [2.9, 3.2, 3.5, 3.8, 4.0],
-    'upper': [3.5, 3.8, 4.1, 4.4, 4.6]
-})
+survey_trend = pd.DataFrame(
+    {
+        "round": [1, 2, 3, 4, 5],
+        "satisfaction": [3.2, 3.5, 3.8, 4.1, 4.3],
+        "lower": [2.9, 3.2, 3.5, 3.8, 4.0],
+        "upper": [3.5, 3.8, 4.1, 4.4, 4.6],
+    }
+)
 
 (
     so.Plot(survey_trend, x="round")
@@ -348,14 +358,16 @@ np.random.seed(42)
 periods = 6
 treatment_effect = np.array([0, 0, 5, 8, 12, 15])  # Effect starts after period 2
 
-impact_data = pd.DataFrame({
-    'period': list(range(periods)) * 2,
-    'outcome': (
-        [50, 52, 55, 58, 62, 65] +  # Control group
-        [50, 52, 60, 66, 74, 80]    # Treatment group (with effect)
-    ),
-    'group': ['Control'] * periods + ['Treatment'] * periods
-})
+impact_data = pd.DataFrame(
+    {
+        "period": list(range(periods)) * 2,
+        "outcome": (
+            [50, 52, 55, 58, 62, 65]  # Control group
+            + [50, 52, 60, 66, 74, 80]  # Treatment group (with effect)
+        ),
+        "group": ["Control"] * periods + ["Treatment"] * periods,
+    }
+)
 
 # Create visualization
 (
@@ -439,15 +451,43 @@ Create sample data for a research scenario:
 
 ```python
 # Create data
-months = pd.date_range('2023-01-01', periods=12, freq='M')
-savings_data = pd.DataFrame({
-    'month': list(months) * 2,
-    'savings': (
-        [5000, 5200, 5500, 5800, 6100, 6500, 6900, 7200, 7600, 8000, 8300, 8700] +  # Village A
-        [4500, 4600, 4800, 5100, 5400, 5800, 6100, 6500, 6800, 7200, 7500, 7900]     # Village B
-    ),
-    'village': ['Village A'] * 12 + ['Village B'] * 12
-})
+months = pd.date_range("2023-01-01", periods=12, freq="M")
+savings_data = pd.DataFrame(
+    {
+        "month": list(months) * 2,
+        "savings": (
+            [
+                5000,
+                5200,
+                5500,
+                5800,
+                6100,
+                6500,
+                6900,
+                7200,
+                7600,
+                8000,
+                8300,
+                8700,
+            ]  # Village A
+            + [
+                4500,
+                4600,
+                4800,
+                5100,
+                5400,
+                5800,
+                6100,
+                6500,
+                6800,
+                7200,
+                7500,
+                7900,
+            ]  # Village B
+        ),
+        "village": ["Village A"] * 12 + ["Village B"] * 12,
+    }
+)
 
 # Visualize
 (

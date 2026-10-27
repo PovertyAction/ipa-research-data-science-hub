@@ -51,15 +51,15 @@ import stata_setup
 stata_flavor = "se"  # SE for Special Edition, MP for Multiprocessor
 
 if platform.system() == "Linux":
-  candidates = glob.glob("/usr/local/stata*")
+    candidates = glob.glob("/usr/local/stata*")
 elif platform.system() == "Windows":
-  candidates = glob.glob("C:/Program Files/Stata*")
+    candidates = glob.glob("C:/Program Files/Stata*")
 else:
-  raise ValueError("Unsupported operating system")
+    raise ValueError("Unsupported operating system")
 
 valid = [p for p in candidates if glob.glob(f"{p}/utilities/pystata/config.py")]
 if not valid:
-  raise FileNotFoundError("No Stata installation with pystata found")
+    raise FileNotFoundError("No Stata installation with pystata found")
 
 stata_path = sorted(valid)[-1]
 print(f"Setting up Stata with path: {stata_path} and flavor: {stata_flavor}")
