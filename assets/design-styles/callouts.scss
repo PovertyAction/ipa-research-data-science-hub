@@ -1,0 +1,28 @@
+/*-- scss:defaults --*/
+
+// Shared by both themes (listed last in each theme in _quarto.yml). The
+// callout colors themselves are set per theme in light-theme.scss and
+// dark-theme.scss; these alphas can be overridden there too.
+$hub-callout-border-alpha: 0.35 !default;
+$hub-callout-tint-alpha: 0.035 !default;
+
+/*-- scss:rules --*/
+
+// Callouts: a hairline border in the callout's color plus a faint tint of
+// it, instead of Quarto's 5px colored stripe down the left side
+@each $name, $color in (
+  "note": $callout-color-note,
+  "tip": $callout-color-tip,
+  "important": $callout-color-important,
+  "warning": $callout-color-warning,
+  "caution": $callout-color-caution
+) {
+  div.callout-#{$name}.callout {
+    border: 1px solid rgba($color, $hub-callout-border-alpha);
+    background-color: rgba($color, $hub-callout-tint-alpha);
+  }
+}
+
+div.callout {
+  border-radius: 0.5rem;
+}

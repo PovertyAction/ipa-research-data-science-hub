@@ -14,6 +14,19 @@ $dropdown-link-hover-color: #414042;
 // brand base font instead
 $font-family-serif: Arimo, Arial, sans-serif;
 
+// litera sets Bootstrap buttons to the system font stack (Segoe UI, Roboto);
+// keep buttons on the brand base font too (DESIGN.md: Three Voices Rule)
+$btn-font-family: Arimo, Arial, sans-serif;
+
+// Callout colors from the brand palette (litera's defaults are off-brand);
+// each is >= 3:1 on white so the callout icon stays visible. Border and tint
+// rules live in callouts.scss.
+$callout-color-note: #2b4085; // dark-blue
+$callout-color-tip: #35874e; // sequential-3 green
+$callout-color-important: #730000; // divergent-6
+$callout-color-warning: #c8420a; // divergent-5
+$callout-color-caution: #c8420a;
+
 // Mermaid diagrams: explicit colors because the values Quarto derives from
 // the brand palette give green text on gray fills (unreadable)
 $mermaid-bg-color: #ffffff;
@@ -27,6 +40,20 @@ $mermaid-label-bg-color: #ffffff;
 $mermaid-label-fg-color: #414042;
 
 /*-- scss:rules --*/
+
+// Hub tokens: theme-dependent values the plain CSS files (styles.css,
+// index.css) share. Brand palette colors come from Quarto's --brand-*
+// variables instead. Same names are set in dark-theme.scss.
+//   --hub-focus-color     keyboard focus ring. Not --bs-link-color: the navbar
+//                         sets data-bs-theme="dark", which swaps that variable
+//                         to a pale green
+//   --hub-rule-color      hairline dividers (header border, section bands)
+//   --hub-secondary-text  secondary paragraphs on the homepage
+:root {
+  --hub-focus-color: #{$link-color};
+  --hub-rule-color: #dee2e6;
+  --hub-secondary-text: #545555;
+}
 
 .navbar .dropdown-menu {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);

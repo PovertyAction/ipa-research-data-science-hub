@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: _site
+  resources:
+    - "assets/images/**/*.mp4"
+    - "assets/fonts/*.woff2"
   render:
     - "*.qmd"
     - "*.md"
@@ -9,6 +12,8 @@ project:
     - "!LICENSE.md"
     - "!CLAUDE.md"
     - "!AGENTS.md"
+    - "!PRODUCT.md"
+    - "!DESIGN.md"
     - "!docs/"
     - "!extensions/"
     - "!source-docs/"
@@ -16,13 +21,10 @@ website:
   title: "Knowledge Hub"
   llms-txt: true
   favicon: "assets/logos/ipa-favicon.ico"
-  cookie-consent:
-    type: implied
-    style: simple
-  google-analytics:
-    tracking-id: "G-5YYP29ZV82"
-    storage: cookies
-    anonymize-ip: true
+  # Cookie notice and Google Analytics (G-5YYP29ZV82) are handled by
+
+  # assets/design-styles/before-body.html, not Quarto's cookie-consent and
+  # google-analytics options
   bread-crumbs: true
   # announcement:
 
@@ -47,7 +49,7 @@ website:
     background: white
     logo-alt: "IPA logo."
     collapse: true
-    collapse-below: lg
+    collapse-below: xl
     toggle-position: left
     tools-collapse: true
     pinned: false
@@ -513,18 +515,27 @@ highlight-style:
 filters:
   - git-dates
   - diataxis-badge
+  # pre-ast: must run before Quarto parses figures (see web-media.lua)
+
+  - at: pre-ast
+    path: _extensions/web-media/web-media.lua
 format:
   html:
     respect-user-color-scheme: true
     toc: true
     appendix-style: none # removes "Reuse" appendix section
     theme:
-      light: [litera, brand, assets/design-styles/light-theme.scss]
-      dark: [litera, brand, assets/design-styles/dark-theme.scss]
+      light: [litera, brand, assets/design-styles/light-theme.scss, assets/design-styles/callouts.scss]
+      dark: [litera, brand, assets/design-styles/dark-theme.scss, assets/design-styles/callouts.scss]
     code-copy: true
     code-overflow: wrap
     css:
+      - ./assets/design-styles/fonts.css
       - ./assets/design-styles/styles.css
+    include-in-header:
+      - ./assets/design-styles/in-header.html
+    include-before-body:
+      - ./assets/design-styles/before-body.html
     toc-title: "In this resource"
     template-partials:
       - ./assets/design-styles/toc.html

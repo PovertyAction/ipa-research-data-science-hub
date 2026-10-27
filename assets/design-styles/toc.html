@@ -1,45 +1,49 @@
-<nav id="$idprefix$TOC" role="doc-toc">
+<!-- The title is a label, not a heading: the margin column comes before the
+     page's <h1> in the source, so a heading here would lead the heading list.
+     id="toc-title" is kept because quarto.js looks it up. -->
+<nav id="$idprefix$TOC" role="doc-toc"$if(toc-title)$ aria-labelledby="toc-title"$endif$>
   $if(toc-title)$
-  <h2 style="font-size: 0.86rem; font-weight: 600 ; line-height: 1.55rem;">In this resource</h2>
+  <p class="toc-title-small" id="toc-title">$toc-title$</p>
   $endif$
   $table-of-contents$
 </nav>
 <!-- Metadata links live outside nav#TOC: Quarto's postprocessor stamps
      data-scroll-target on every TOC anchor, and external hrefs there crash
-     the scrollspy in quarto.js -->
+     the scrollspy in quarto.js. Labels are <p>, not headings, so the margin
+     column does not add headings ahead of the page's <h1>. -->
 <div class="toc-meta">
   $if(authors-ipa)$
   <hr>
-  <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;">Authors</h2>
+  <p class="toc-meta-title">Authors</p>
   <ul>
     $for(authors-ipa)$
-    <li class="authors-ipa" style="font-size: 0.86rem;">$authors-ipa$</li>
+    <li class="authors-ipa">$authors-ipa$</li>
     $endfor$
   </ul>
   $endif$
   $if(contributors)$
-  <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;">Contributors</h2>
+  <p class="toc-meta-title">Contributors</p>
   <ul>
     $for(contributors)$
-    <li class="contributors" style="font-size: 0.86rem;">$contributors$</li>
+    <li class="contributors">$contributors$</li>
     $endfor$
   </ul>
   $endif$
   $if(date-modified)$
-  <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;">Last Modified</h2>
+  <p class="toc-meta-title">Last Modified</p>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">$date-modified$</li>
+    <li class="last-modified">$date-modified$</li>
   </ul>
   $elseif(date)$
-  <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;">Last Modified</h2>
+  <p class="toc-meta-title">Last Modified</p>
   <ul>
-    <li class="last-modified" style="font-size: 0.86rem;">$date$</li>
+    <li class="last-modified">$date$</li>
   </ul>
   $endif$
   $if(license)$
-  <h2 style="font-size: 0.86rem; font-weight: 600; line-height: 1.55rem;">License</h2>
+  <p class="toc-meta-title">License</p>
   <ul>
-    <li class="license" style="font-size: 0.86rem;"><a href=$license.url$>$license.text$</a></li>
+    <li class="license"><a href="$license.url$">$license.text$</a></li>
   </ul>
   $endif$
 </div>

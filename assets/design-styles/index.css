@@ -28,20 +28,23 @@
 }
 
 body.quarto-light .hero-banner {
-    background: #155240;
-    /* light end darkened to #3f9953 so white text keeps >= 3:1 contrast */
-    background: linear-gradient(90deg, #155240 0%, #3f9953 100%);
+    background: var(--brand-dark-green);
+    /* light end is sequential-2 (#3f9953), not ipa-green, so white text keeps
+       >= 3:1 contrast */
+    background: linear-gradient(90deg, var(--brand-dark-green) 0%, var(--brand-sequential-2) 100%);
     color: #fff;
 }
 
 body.quarto-dark .hero-banner {
-    background: #155240;
-    background: linear-gradient(90deg, #0d3328 0%, #155240 100%);
+    background: var(--brand-dark-green);
+    /* #0d3328: a darker shade of dark-green, not in the palette */
+    background: linear-gradient(90deg, #0d3328 0%, var(--brand-dark-green) 100%);
     color: #fff;
 }
 
+/* 2.5rem on desktop; scales down so the title takes 3 lines, not 4, on phones */
 .hero-banner h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.9rem, 1.2rem + 3vw, 2.5rem);
 }
 
 
@@ -81,18 +84,23 @@ body.quarto-dark .hero-banner h3 {
 
 .hero-banner .btn-action {
     background-color: #fff;
-    color: #155240;
+    color: var(--brand-dark-green);
     font-weight: 600;
 }
 
 .hero-banner .btn-action:hover {
-    background-color: #ceecee;
-    color: #155240;
+    background-color: var(--brand-blue-accent);
+    color: var(--brand-dark-green);
 }
 
 .hero-banner a:not(.btn) {
     text-decoration: underline;
     text-underline-offset: 3px;
+}
+
+/* the theme's link-colored focus ring disappears on the green gradient */
+.hero-banner :focus-visible {
+    outline-color: #fff !important;
 }
 
 .hero-banner h3 {
@@ -120,14 +128,14 @@ body.quarto-dark .hero-banner h3 {
 
 body.quarto-light .alt-background {
     background-color: rgb(247, 249, 251);
-    border-top: 1px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
+    border-top: 1px solid var(--hub-rule-color);
+    border-bottom: 1px solid var(--hub-rule-color);
 }
 
 body.quarto-dark .alt-background {
     background-color: #17212B;
-    border-top: 1px solid #151515;
-    border-bottom: 1px solid #151515;
+    border-top: 1px solid var(--brand-near-black);
+    border-bottom: 1px solid var(--brand-near-black);
 }
 
 .start-here h3 {
@@ -139,12 +147,8 @@ body.quarto-dark .alt-background {
     margin-bottom: 0.3rem;
 }
 
-body.quarto-light .start-here-item p:last-of-type {
-    color: rgb(84, 85, 85);
-}
-
-body.quarto-dark .start-here-item p:last-of-type {
-    color: rgb(200, 200, 200);
+.start-here-item p:last-of-type {
+    color: var(--hub-secondary-text);
 }
 
 .features {
@@ -181,14 +185,7 @@ body.quarto-dark .start-here-item p:last-of-type {
 
 .feature p:first-of-type {
     margin-bottom: 0.2rem;
-}
-
-body.quarto-light .feature p:first-of-type {
-    color: rgb(84, 85, 85);
-}
-
-body.quarto-dark .feature p:first-of-type {
-    color: rgb(200, 200, 200);
+    color: var(--hub-secondary-text);
 }
 
 .get-started {
