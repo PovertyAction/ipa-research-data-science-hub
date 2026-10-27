@@ -16,7 +16,7 @@ Learn how to design WhatsApp surveys using Twilio’s Content Template Builder, 
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

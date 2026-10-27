@@ -16,7 +16,7 @@ Explain why programs need collections of values. Write programs that create flat
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

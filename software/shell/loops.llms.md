@@ -16,7 +16,7 @@ Automate repetitive tasks using shell loops. Learn to write for loops that proce
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

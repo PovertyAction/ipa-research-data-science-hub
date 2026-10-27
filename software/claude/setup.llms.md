@@ -11,7 +11,7 @@ How to install Claude Code and start your first session, whether you work in the
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

@@ -17,7 +17,7 @@ This guide covers procedures for ensuring data integrity in research, including 
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

@@ -12,7 +12,7 @@ Quarto is a document authoring tool that allows you to create documents using ma
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

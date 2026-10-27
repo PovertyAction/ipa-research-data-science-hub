@@ -12,7 +12,7 @@ Learn Python fundamentals including variables, data types, and built-in function
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

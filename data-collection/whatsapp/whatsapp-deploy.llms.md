@@ -16,7 +16,7 @@ Learn how to prepare, configure, and deploy WhatsApp surveys using Twilio integr
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

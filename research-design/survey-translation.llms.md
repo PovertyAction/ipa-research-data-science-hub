@@ -16,7 +16,7 @@ Survey translation and back translation are critical processes that ensure resea
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

@@ -16,7 +16,7 @@ Learn to create reusable shell scripts that automate complex workflows. Discover
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

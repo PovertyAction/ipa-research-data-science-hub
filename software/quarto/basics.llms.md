@@ -12,7 +12,7 @@ This guide covers the basics of writing in Quarto, including text formatting, co
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

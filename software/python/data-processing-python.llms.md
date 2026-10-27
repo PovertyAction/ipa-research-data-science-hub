@@ -12,7 +12,7 @@ Learn to load, explore, visualize, and clean data using pandas and matplotlib. T
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

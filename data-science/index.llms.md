@@ -16,7 +16,7 @@ Hands-on tutorials for learning Python programming, data analysis, visualization
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

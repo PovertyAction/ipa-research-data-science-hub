@@ -19,7 +19,7 @@ A practical guide for planning and implementing in-person surveys in development
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

@@ -17,7 +17,7 @@ A decision reference for selecting the chart that fits a message: table versus g
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

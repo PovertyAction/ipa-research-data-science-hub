@@ -19,7 +19,7 @@ A step-by-step guide to installing DataSure, setting up your first project, impo
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

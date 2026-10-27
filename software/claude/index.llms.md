@@ -11,7 +11,7 @@ An orientation to Claude, the AI assistant from Anthropic, and Claude Code, the 
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 

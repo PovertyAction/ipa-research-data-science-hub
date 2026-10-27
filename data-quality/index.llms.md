@@ -18,7 +18,7 @@ Every research project at IPA is required to follow IPA’s Research Protocols, 
 
 ## Last Modified
 
-- October 15, 2026
+- October 27, 2026
 
 ## License
 
