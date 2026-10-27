@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Resolving Git Conflicts
@@ -6,15 +8,15 @@ Learn how to identify, understand, and resolve merge conflicts that occur when G
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -183,13 +185,13 @@ Unmerged paths:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-![](../../assets/images/git/conflict.svg)
+![The Conflicting Changes](../../assets/images/git/conflict.svg)
 
 The Conflicting Changes
 
 Git detects that the changes made in one copy overlap with those made in the other and stops us from trampling on our previous work. It also marks that conflict in the affected file, `campaigns.txt`.
 
-![](../../assets/images/git/vscode-merge-conflict.png)
+![Merge conflict in campaigns.txt](../../assets/images/git/vscode-merge-conflict.png)
 
 Merge conflict in campaigns.txt
 
@@ -201,7 +203,7 @@ Let’s keep both of these events, but save Loki’s reveal for after the invade
 
 VS Code will prompt you to “Resolve in Merge Editor”. Click this button.
 
-![](../../assets/images/git/vscode-merge-editor.png)
+![Resolving the merge conflict with the merge editor](../../assets/images/git/vscode-merge-editor.png)
 
 Resolving the merge conflict with the merge editor
 
@@ -217,7 +219,7 @@ Bolivar proposes the Bolivarian federation after the victory.
 
 We want to click “Accept Combination (Current First)”. You should now see the resolved version with both lines, the line from the `main` branch first. Click “Complete Merge”.
 
-![](../../assets/images/git/vscode-merge-resolved.png)
+![The bottom pane contains the resolved campaigns.txt contents](../../assets/images/git/vscode-merge-resolved.png)
 
 The bottom pane contains the resolved campaigns.txt contents
 

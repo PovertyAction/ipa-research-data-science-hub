@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Software Guides

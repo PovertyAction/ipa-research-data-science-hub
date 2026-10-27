@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Setting up Twilio for WhatsApp Surveys
@@ -6,23 +8,23 @@ This article provides a step-by-step guide to setting up Twilio for WhatsApp sur
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../../assets/images/twilio/twilio-logo.png)
+![Twilio Logo, credit: Twilio](../../assets/images/twilio/twilio-logo.png)
 
 Twilio Logo, credit: Twilio
 
@@ -71,21 +73,15 @@ Follow these steps to set up a Twilio console for WhatsApp data collection:
 
 2.  After signing up, log in to your Twilio account. Verify your email and log in.
 
-    ![](../../assets/images/twilio/twilio-setup-1.gif)
-
     Twilio setup and login
 
 3.  After logging in, navigate to the Twilio Console, the main dashboard for managing your Twilio services.
 
 4.  Click on the “Phone Numbers” dropdown in the top-left corner and select “Manage.” Then select “Buy a number” and pick a phone number in the required location.
 
-    ![](../../assets/images/twilio/twilio-setup-2.gif)
-
     Buying a phone number in the Twilio Console
 
 5.  Upgrade the account to access WhatsApp functionalities.
-
-    ![](../../assets/images/twilio//twilio-setup-3.gif)
 
     Upgrading the Twilio Console
 
@@ -112,8 +108,6 @@ The Twilio console verification process takes approximately **one week**. After 
 2.  Click on “Create New Sender” and fill out the necessary fields, selecting the purchased phone number.
 3.  Submit the request for WhatsApp API access.
 
-![](../../assets/images/twilio/twilio-setup-4.gif)
-
 Create WhatsApp sender
 
 For increased trust and improved response rates, consider **Meta Business Verification** to obtain a green tick for your WhatsApp sender.
@@ -124,8 +118,6 @@ Finalize your Twilio setup by configuring your WhatsApp profile:
 
 1.  Navigate to the created sender and update the profile with an image, name, and description.
 2.  Save changes and start your first WhatsApp survey.
-
-![](../../assets/images/twilio/twilio-setup-5.gif)
 
 Create WhatsApp profile
 

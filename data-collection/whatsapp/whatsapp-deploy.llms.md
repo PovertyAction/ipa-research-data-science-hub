@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Deploying a WhatsApp Survey
@@ -6,19 +8,19 @@ Learn how to prepare, configure, and deploy WhatsApp surveys using Twilio integr
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -61,7 +63,7 @@ Follow these steps to construct your cases file:
 
 Your cases file should look like this:
 
-![](../../assets/images/twilio/twilio-deploy-1.png)
+![Cases file example](../../assets/images/twilio/twilio-deploy-1.png)
 
 Cases file example
 
@@ -77,7 +79,7 @@ A final step before launching a WhatsApp survey is to configure the Google Sheet
     - Navigate to “Functions (Classic)” and select “Configure.”
     - In the “Dependencies” section, complete the specified fields, as illustrated in the provided image.
 
-![](../../assets/images/twilio/twilio-deploy-2.png)
+![Dependencies configuration snapshot](../../assets/images/twilio/twilio-deploy-2.png)
 
 Dependencies configuration snapshot
 
@@ -85,7 +87,7 @@ Dependencies configuration snapshot
     - `client_email`: *twilio-data-connector-to-gsuit@twilio-gsuite-connection.iam.gserviceaccount.com*
     - `sheetId`: Retrieve this from the link of your Google Sheet. It is the alphanumeric group in the link after “/d/” and before the next “/.”
 
-![](../../assets/images/twilio/twilio-deploy-4.png)
+![Environment variables configuration snapshot](../../assets/images/twilio/twilio-deploy-4.png)
 
 Environment variables configuration snapshot
 
@@ -112,7 +114,7 @@ Environment variables configuration snapshot
 
 8.  **Header Alignment in Google Sheet**: Align the variable names defined in step 7 with the headers of your Google Sheet columns to let Twilio know how to populate the data in the document.
 
-![](../../assets/images/twilio/twilio-deploy-3.png)
+![Google Sheet example](../../assets/images/twilio/twilio-deploy-3.png)
 
 Google Sheet example
 

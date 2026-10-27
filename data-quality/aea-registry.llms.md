@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # AEA RCT Registry
@@ -6,20 +8,20 @@ This guide explains the importance of the AEA RCT Registry for combating publica
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -55,7 +57,7 @@ The AEA RCT Registry is a website for registering RCTs in the social sciences, e
     - From the draft trial main page, click the **“Manage Collaborator”** button (orange, upper right corner).
     - Add collaborators using their registered email address.
 
-![](../assets/images/aea-registry-1.png)
+![AEA RCT Registry trial page with the orange Manage Collaborators button in the upper right](../assets/images/aea-registry-1.png)
 
 #### Managing Collaborators
 
@@ -64,7 +66,7 @@ The AEA RCT Registry is a website for registering RCTs in the social sciences, e
 - Change the email in the ‘Primary Investigator’ field from your email to the PI’s email using the dropdown menu.
 - The **“Trial Information”** page will update automatically with the assigned PI.
 
-![](../assets/images/aea-registry-2.png)
+![AEA RCT Registry collaborators page: a Primary Investigator dropdown with an Update Trial button, and a Collaborators list with Add Collaborator and Remove Collaborator buttons](../assets/images/aea-registry-2.png)
 
 ### What to do before clicking the **“Register Trial”** button
 

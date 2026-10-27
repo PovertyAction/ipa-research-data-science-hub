@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Field Staff Training
@@ -6,19 +8,19 @@ Practical guide to planning and delivering enumerator training and survey manual
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../../assets/images/Ecuador_Training_2022.jpeg)
+![Field Staff Training in Guayaquil, Ecuador (© IPA, 2022)](../../assets/images/Ecuador_Training_2022.jpeg)
 
 Field Staff Training in Guayaquil, Ecuador (© IPA, 2022)
 

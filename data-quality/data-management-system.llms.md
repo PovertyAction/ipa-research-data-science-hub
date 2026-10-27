@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Reference
 
 # IPA’s Data Management System
@@ -6,20 +8,20 @@ IPA’s Data Management System, or DMS, is a package of Stata and Excel tools th
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Ishmail Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 - [Lindsey Shaughnessy]()
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido]()
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

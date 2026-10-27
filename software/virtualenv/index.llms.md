@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Virtual Environments
@@ -6,19 +8,19 @@ This page provides an overview of virtual environments for Python, R, Stata, and
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Contributors
+Contributors
 
 - [Kristoffer Bjärkefur](https://github.com/kbjarkefur)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

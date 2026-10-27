@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Dashboards for Decisions
@@ -6,19 +8,19 @@ How to design dashboards that drive decisions rather than merely display numbers
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - Yuri M. Leomo
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

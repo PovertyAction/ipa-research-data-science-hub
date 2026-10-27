@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # About Qualitative Methods
@@ -6,24 +8,24 @@ IPA’s mission to alleviate poverty requires more than just numbers; it require
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Nicolás Romero](https://poverty-action.org/people/nicolas-romero)
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../../assets/images/intro-qual-methods-fg.jpg)
+![Focus group conducted by the qualitative research team in Tumaco, Colombia—German Acosta](../../assets/images/intro-qual-methods-fg.jpg)
 
 Focus group conducted by the qualitative research team in Tumaco, Colombia—German Acosta
 
@@ -54,7 +56,7 @@ Addressing poverty is about more than measuring income or access to resources; i
 
 Qualitative research does not stand alone—it complements quantitative methods to create a more holistic understanding. For example, qualitative data can explain anomalies in survey results, uncover mechanisms of change in randomized controlled trials or RCTs, and provide actionable insights for scaling successful programs.
 
-![](../../assets/images/intro-qual-methods-1.jpg)
+![Qualitative data collection in Tumaco, Colombia, photo by German Acosta](../../assets/images/intro-qual-methods-1.jpg)
 
 Qualitative data collection in Tumaco, Colombia, photo by German Acosta
 

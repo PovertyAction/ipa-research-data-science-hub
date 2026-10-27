@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Practical Guidance for A/B Testing
@@ -6,21 +8,21 @@ Effective A/B tests require focusing on strategic questions, building reliable s
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Andrés Parrado](https://poverty-action.org/people/andres-parrado)
 - [Eduardo Vargas Sanchez](https://poverty-action.org/people/eduardo-vargas-sanchez)
 - [Mariana Rodríguez](https://poverty-action.org/people/mariana-rodriguez)
 
-## Contributors
+Contributors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

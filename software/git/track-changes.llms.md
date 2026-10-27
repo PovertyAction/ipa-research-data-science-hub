@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Tracking Changes
@@ -6,15 +8,15 @@ Learn the essential Git workflow of making changes, staging files, and creating 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -244,7 +246,7 @@ To allow for this, Git has a special *staging area* where it keeps track of thin
 >
 > If you think of Git as taking snapshots of changes over the life of a project, `git add` specifies *what* will go in a snapshot (putting things in the staging area), and `git commit` then *actually takes* the snapshot, and makes a permanent record of it (as a commit). If you don’t have anything staged when you type `git commit`, Git will prompt you to use `git commit -a` or `git commit --all`, which is kind of like gathering *everyone* for the picture! However, it’s almost always better to explicitly add things to the staging area, because you might commit changes you forgot you made. (Going back to snapshots, you might get the extra with incomplete makeup walking on the stage for the snapshot because you used `-a`!) Try to stage things manually, or you might find yourself searching for “git undo commit” more than you would like!
 
-![](../../assets/images/git/git-staging-area.svg)
+![The Git Staging Area](../../assets/images/git/git-staging-area.svg)
 
 The Git Staging Area
 

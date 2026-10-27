@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Reference
 
 # Data Publication Preparation
@@ -6,19 +8,19 @@ This reference guide documents standardized procedures for preparing research ma
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Contributors
+Contributors
 
 - Angie Ibrahim
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

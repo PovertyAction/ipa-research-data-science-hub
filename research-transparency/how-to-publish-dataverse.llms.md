@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # How to Publish a Replication Package to Dataverse
@@ -6,19 +8,19 @@ This how-to guide provides step-by-step instructions for curating research mater
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Contributors
+Contributors
 
 - Angie Ibrahim
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -57,7 +59,7 @@ Within your replication folder (named with the study title and primary PI), crea
 └── Dataverse Files/    # Final package for publication
 ```
 
-![](../assets/images/dataverse/dataverse_folders.png)
+![Folder Structure](../assets/images/dataverse/dataverse_folders.png)
 
 Folder Structure
 
@@ -306,7 +308,7 @@ With your package prepared, upload to IPA’s Dataverse repository.
 2.  Click the “+ Add Data” button on the right side
 3.  Select “New Dataset”
 
-![](../assets/images/dataverse/dataverse_new_dataset.png)
+![Add New Dataset](../assets/images/dataverse/dataverse_new_dataset.png)
 
 Add New Dataset
 
@@ -343,7 +345,7 @@ Upload the double-compressed folder when prompted to add files.
 3.  Complete any remaining metadata fields
 4.  Save changes
 
-![](../assets/images/dataverse/dataverse_save_dataset.png)
+![Save Dataset](../assets/images/dataverse/dataverse_save_dataset.png)
 
 Save Dataset
 
@@ -354,7 +356,7 @@ Save Dataset
 3.  Scroll to “Guestbook” and select “IPA Dataverse”
 4.  Save changes
 
-![](../assets/images/dataverse/dataverse_edit_terms.png)
+![Edit Terms](../assets/images/dataverse/dataverse_edit_terms.png)
 
 Edit Terms
 
@@ -364,7 +366,7 @@ Edit Terms
 2.  Confirm the guestbook is enabled
 3.  Click “Publish Dataset”
 
-![](../assets/images/dataverse/dataverse_publish_dataset.png)
+![Publish Dataset](../assets/images/dataverse/dataverse_publish_dataset.png)
 
 Publish Dataset
 

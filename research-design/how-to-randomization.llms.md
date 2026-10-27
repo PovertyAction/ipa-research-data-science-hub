@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Guide to Randomization
@@ -6,22 +8,22 @@ Step-by-step instructions for implementing stratified randomization in Stata, in
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Rosemarie Sandino]()
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Radhika Jain]()
 - [Devika Lakhote]()
 - [Laura Feeney]()
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

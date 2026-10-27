@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Survey Translation and Back Translation
@@ -6,19 +8,19 @@ Survey translation and back translation are critical processes that ensure resea
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Rosemarie Sandino](https://github.com/rsandino)
 
-## Contributors
+Contributors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 

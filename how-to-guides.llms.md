@@ -1,5 +1,7 @@
 # How-to Guides
 
+[Skip to main content](#quarto-document-content)
+
 Every how-to guide on the Hub in one place: practical, step-by-step directions for research and data tasks, from randomization and power calculations to data security, tracking, and publishing to Dataverse.
 
 How-to guides give practical directions for a task you already know you need to do. Use the filter box to find a guide, or browse the table. For background and concepts, see each topic’s section in the navigation instead.

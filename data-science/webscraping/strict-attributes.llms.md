@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Advanced Selection and Attributes
@@ -6,15 +8,15 @@ Learn advanced HTML element selection techniques using gazpacho’s partial matc
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Variables and Assignment
@@ -6,19 +8,19 @@ Write programs that assign scalar values to variables and perform calculations w
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Contributors
+Contributors
 
 - [The Carpentries](https://carpentries.org/)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -134,7 +136,7 @@ Age in three years: 45
 - Indices are numbered from 0.
 - Use the position’s index in square brackets to get the character at that position.
 
-![](figures/2_indexing.svg)
+![A line of Python code, print(atom_name\[0\]), demonstrates that using the zero index will output just the initial letter, in this case ‘h’ for helium.](figures/2_indexing.svg)
 
 A line of Python code, print(atom_name\[0\]), demonstrates that using the zero index will output just the initial letter, in this case ‘h’ for helium.
 

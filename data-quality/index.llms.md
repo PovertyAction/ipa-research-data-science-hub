@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Data Quality and IPA Research Protocols
@@ -6,21 +8,21 @@ Every research project at IPA is required to follow IPA’s Research Protocols, 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -28,7 +30,7 @@ Every research project at IPA is required to follow IPA’s Research Protocols, 
 >
 > A summary list of IPA’s Research Protocols is also available at [poverty-action.org/research-protocols](https://poverty-action.org/research-protocols). Projects that need help meeting a protocol can contact IPA’s Global Research and Data Science team, to learn about GRDS see [GRDS Team Page](../teams/grds/).
 
-![](../assets/images/mmd/mmds.png)
+![IPA Research Protocols for High-Quality Research (® David Torres)](../assets/images/mmd/mmds.png)
 
 IPA Research Protocols for High-Quality Research (® David Torres)
 

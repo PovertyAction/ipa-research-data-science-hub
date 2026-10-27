@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # What is A/B Testing?
@@ -6,21 +8,21 @@ A/B testing is a rigorous experimentation method that compares variations of a p
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Andrés Parrado](https://poverty-action.org/people/andres-parrado)
 - [Eduardo Vargas Sanchez](https://poverty-action.org/people/eduardo-vargas-sanchez)
 - [Mariana Rodríguez](https://poverty-action.org/people/mariana-rodriguez)
 
-## Contributors
+Contributors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -48,7 +50,7 @@ Both methodologies can be used for learning and evaluation purposes, but their s
 
 The distinction we emphasize in this resource is practical: A/B testing can continuously generate rapid, actionable evidence for internal, short-term decision-making, whereas RCTs usually focus on assessing overall program impact with an external evaluator and a long-run lens.
 
-![](../../assets/images/ab-testing-intro.png)
+![A/B testing experimentation cycle (© IPA)](../../assets/images/ab-testing-intro.png)
 
 A/B testing experimentation cycle (© IPA)
 

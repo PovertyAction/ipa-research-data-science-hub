@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # AI-Assisted Qualitative Coding
@@ -6,21 +8,21 @@ Practical guidance for qualitative researchers on how to use large language mode
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 - [Kwadwo Agyapon-Ntra](https://poverty-action.org/people/kwadwo-agyapon-ntra)
 - [Jack Cavanagh (JPAL)]()
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Reference
 
 # Data Security Protocol
@@ -6,11 +8,11 @@ Reference guide outlining IPA’s standards for data security, including handlin
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 - Cristhian Pulido
@@ -21,11 +23,11 @@ Reference guide outlining IPA’s standards for data security, including handlin
 - [Benjamin Afful](https://poverty-action.org/people/benjamin-afful)
 - [Fred Nyamasyo](https://poverty-action.org/people/fred-nyamasyo)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

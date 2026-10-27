@@ -1,19 +1,21 @@
 # Getting Started with Claude AI
 
+[Skip to main content](#quarto-document-content)
+
 An orientation to Claude, the AI assistant from Anthropic, and Claude Code, the version that works with the files on your computer. This page explains what these tools do, what to consider when using them with research data, and how to choose a setup path.
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Juan Felipe García Rodríguez](https://poverty-action.org/people/juan-felipe-garcia-rodriguez)
 - [Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

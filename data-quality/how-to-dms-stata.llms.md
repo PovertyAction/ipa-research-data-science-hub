@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Guide to IPA’s Data Management System
@@ -6,15 +8,15 @@ Learn to set up and use IPA’s Data Management System for comprehensive data qu
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Ishmail Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -386,7 +388,7 @@ To resolve this error, we need to set-up the correction sheet. Navigate to `3_ch
 
 #### correction sheet for duplicates
 
-![](../assets/images/dms_duplicates_corrections.jpg)
+![duplicates_corrections](../assets/images/dms_duplicates_corrections.jpg)
 
 duplicates_corrections
 
@@ -396,7 +398,7 @@ duplicates_corrections
 
 #### correction sheet for other issues
 
-![](../assets/images/dms_duplicates_corrections.jpg)
+![other_corrections](../assets/images/dms_duplicates_corrections.jpg)
 
 other_corrections
 

@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Labels, Scales, and Customization
@@ -6,20 +8,20 @@ Learn how to customize plots with clear labels and titles. Control scales and ax
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Ishmail Baako](https://poverty-action.org/people/ishmail-baako)
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Contributors
+Contributors
 
 - [The Carpentries](https://carpentries.org/)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

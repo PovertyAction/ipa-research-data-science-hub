@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Getting Started with Stata
@@ -6,20 +8,20 @@ This page provides a brief introduction to Stata, the statistical software used 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../../assets/images/statanow-collage.png)
+![Stata Interface](../../assets/images/statanow-collage.png)
 
 Stata Interface
 
@@ -54,7 +56,7 @@ If Stata requires purchasing or securing a license from StataCorp. At IPA, staff
 
 Stata’s interface is designed to provide users with a user-friendly environment that allows them to interact with the software and perform statistical analyses efficiently. That being said, there are several windows and tools (explained below) that you can use to interact with the software and conduct your work.
 
-![](../../assets/images/stata-interface.png)
+![Stata’s User Interface](../../assets/images/stata-interface.png)
 
 Stata’s User Interface
 
@@ -70,13 +72,13 @@ Besides the five main windows, Stata offers other specialized tools and features
 
 You can use the menus and toolbars contained in Stata’s graphical user interface rather than writing code to perform common tasks, such as opening datasets, running statistical analyses, and creating graphs. We refer to this method as **point-and-click**. To execute a specific task, you can simply click on the “Run” button in the toolbar.
 
-![](../../assets/images/stata-point-click.png)
+![Example of point-and-click interaction](../../assets/images/stata-point-click.png)
 
 Example of point-and-click interaction
 
 However, a more typical (and recommended) approach involves typing “commands” into the program to manipulate and analyze large quantities of data; we refer to this as the **commandline**. This may feel unfamiliar if you don’t have a background in statistical analysis or coding, but most data-oriented professionals use the command-line approach as it eliminates the need to navigate menus and toolbars. It also allows for easier automation and scripting of analyses, which can be helpful for more advanced users.
 
-![](../../assets/images/stata-command-line.gif)
+![Example of Stata commands](../../assets/images/stata-command-line.gif)
 
 Example of Stata commands
 
@@ -100,7 +102,7 @@ While working in Stata, you will often need to import or export files into direc
 
 Whenever you open up Stata, Stata sets a default directory. You can see this directory at the bottom left corner of the Stata window.
 
-![](../../assets/images/stata-working-directory.jpg)
+![Stata Working Directory](../../assets/images/stata-working-directory.jpg)
 
 Stata Working Directory
 
@@ -129,7 +131,7 @@ When working with Stata, it is important to keep a good file system that allows 
 
 A **relative path** denotes a file path in relation to the current working directory, while an absolute path denotes a file’s path at a fixed location on a disk. In most cases, you want to use relative paths. Examine the folder shown below. Take notice of the path at the top as well as the subfolders in this folder.
 
-![](../../assets/images/stata-relative-path.jpg)
+![Absolute vs. Relative Paths in Stata](../../assets/images/stata-relative-path.jpg)
 
 Absolute vs. Relative Paths in Stata
 

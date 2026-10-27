@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Backchecks
@@ -6,21 +8,21 @@ This page is the overall guide to backchecks. Backchecks are one of IPA’s Rese
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Rosemarie Santino Torres](https://github.com/rsandino)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 

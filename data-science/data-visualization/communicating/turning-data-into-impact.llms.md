@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Turning Data into Impact
@@ -6,19 +8,19 @@ Why sound data does not automatically change decisions, and what closes that gap
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Criss Anne Mallari](https://poverty-action.org/people/criss-anne-mallari)
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

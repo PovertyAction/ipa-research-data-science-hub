@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # How to Use DataSure
@@ -6,22 +8,22 @@ A step-by-step guide to installing DataSure, setting up your first project, impo
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 - [Wesley Kirui](https://poverty-action.org/people/wesley-kirui)
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Contributors
+Contributors
 
 - [Dania Ochoa](https://poverty-action.org/people/dania-ochoa)
 - [Laura Lahoz](https://poverty-action.org/people/laura-lahoz)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

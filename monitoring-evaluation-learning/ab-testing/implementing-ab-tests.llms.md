@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Implementing A/B Tests
@@ -6,21 +8,21 @@ The Learning Roadmap for A/B Testing provides a structured, four-step approach t
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Andrés Parrado](https://poverty-action.org/people/andres-parrado)
 - [Eduardo Vargas Sanchez](https://poverty-action.org/people/eduardo-vargas-sanchez)
 - [Mariana Rodríguez](https://poverty-action.org/people/mariana-rodriguez)
 
-## Contributors
+Contributors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -50,7 +52,7 @@ I. **Aligning A/B testing with learning needs**
 
 In the sections that follow, we describe each step in detail, drawing from our experience supporting organizations that were new to A/B testing but eager to make it a meaningful part of their strategy.
 
-![](../../assets/images/learning-roadmap-ab-testing.png)
+![Learning Roadmap for A/B Testing (© IPA)](../../assets/images/learning-roadmap-ab-testing.png)
 
 Learning Roadmap for A/B Testing (© IPA)
 
@@ -142,7 +144,7 @@ For each potential change, rate both relevance and implementation feasibility on
 - 2 is moderate relevance / moderate implementation feasibility
 - 3 is high relevance / high implementation feasibility
 
-![](../../assets/images/prioritization-matrix.png)
+![Prioritization criteria](../../assets/images/prioritization-matrix.png)
 
 Prioritization criteria
 

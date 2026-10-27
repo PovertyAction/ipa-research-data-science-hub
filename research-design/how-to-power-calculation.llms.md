@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Guide to Power Calculations
@@ -6,19 +8,19 @@ Learn how to perform power calculations for randomized controlled trials using S
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 
-## Contributors
+Contributors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Variable Management
@@ -6,22 +8,22 @@ Data cleaning practices to help you manage data and ensure data integrity and re
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Kayla Wilding](https://github.com/wildingka)
 - [Michael Rosenbaum](https://github.com/mfrosenbaum)
 - [Rosemarie Sandino](https://github.com/rsandino)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [Wesley Kirui](https://poverty-action.org/people/wesley-kirui)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

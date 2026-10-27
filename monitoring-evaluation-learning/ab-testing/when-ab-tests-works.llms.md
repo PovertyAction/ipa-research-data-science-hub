@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # When A/B Tests Work
@@ -6,21 +8,21 @@ A/B tests are most effective when matched to your program’s stage of developme
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Andrés Parrado](https://poverty-action.org/people/andres-parrado)
 - [Eduardo Vargas Sanchez](https://poverty-action.org/people/eduardo-vargas-sanchez)
 - [Mariana Rodríguez](https://poverty-action.org/people/mariana-rodriguez)
 
-## Contributors
+Contributors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -38,7 +40,7 @@ A/B testing is a powerful method, but it is not the right tool for every situati
 
 To identify when to do A/B testing, IPA’s Right-Fit Evidence Unit proposes an overarching framework that guides learning activities across programs’ stages of development. The Stage-Based Learning framework helps organizations identify their learning needs based on program maturity[^1]. Each stage –Ideate, Refine, Prove, Adapt, and Scale– is associated with particular types of learning needs, and those needs call for different methods that can generate insights that are credible, actionable, cost-effective, and are likely to generate transportable knowledge.
 
-![](../../assets/images/stage-based-learning.png)
+![Stage-Based Learning (© IPA)](../../assets/images/stage-based-learning.png)
 
 Stage-Based Learning (© IPA)
 

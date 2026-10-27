@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Communicating with Data
@@ -6,22 +8,22 @@ How to turn data into a clear message: why communication is part of the analysis
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - Yuri M. Leomo
 - Daniela López
 - [Criss Anne Mallari](https://poverty-action.org/people/criss-anne-mallari)
 - [Ana Gabriela Tamayo](https://poverty-action.org/people/ana-tamayo-alatriste)
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

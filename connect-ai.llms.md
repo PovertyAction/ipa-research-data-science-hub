@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Connecting AI Agents to the Knowledge Hub
@@ -6,15 +8,15 @@ This guide shows you how to connect an AI agent (Claude Desktop or Claude Code) 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -142,7 +144,7 @@ ipa-knowledge-hub server:
 
 In **Claude Desktop**, which does not read a `CLAUDE.md` file, you only need to enable the ipa-knowledge-hub connector.
 
-![](assets/images/access-ipa-knowledge-hub.png)
+![Connect to the IPA Knowledge Hub from Claude Desktop](assets/images/access-ipa-knowledge-hub.png)
 
 Connect to the IPA Knowledge Hub from Claude Desktop
 

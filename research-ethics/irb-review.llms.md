@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # IRB Review Requirements
@@ -6,19 +8,19 @@ Guidance on when IRB review requirements apply, including exemptions from review
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Alexandra Krstić](https://poverty-action.org/people/alexandra-krstic)
 
-## Contributors
+Contributors
 
 - [Daniela Carrillo](https://poverty-action.org/people/daniela-carrillo)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

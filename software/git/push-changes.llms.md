@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Pushing changes to GitHub
@@ -6,15 +8,15 @@ Learn how to synchronize your local Git repository with a remote repository on G
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -97,19 +99,19 @@ Pulling has no effect in this case because the two repositories are already sync
 
 Let’s verify that our changes made it to GitHub: go to your **browser window with the GitHub repo and refresh** the page.
 
-![](../../assets/images/git/github-pushed-changes.png)
+![Changes have been pushed](../../assets/images/git/github-pushed-changes.png)
 
 Changes have been pushed
 
 You should now see the `campaigns.txt` file. **Click on the file**, and you can see the contents of the file are the same as in VS Code.
 
-![](../../assets/images/git/github-earth.png)
+![View campaigns.txt](../../assets/images/git/github-earth.png)
 
 View campaigns.txt
 
 Now **click on the “History” link**. You should see each commit made to the file, even though we only pushed once.
 
-![](../../assets/images/git/github-earth-history.png)
+![View campaigns.txt commits](../../assets/images/git/github-earth-history.png)
 
 View campaigns.txt commits
 

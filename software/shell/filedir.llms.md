@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Navigating Files and Directories
@@ -6,19 +8,19 @@ Learn essential file system navigation using the Unix shell. Use commands for mo
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Contributors
+Contributors
 
 - [The Carpentries](https://carpentries.org/)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -88,7 +90,7 @@ To understand what a “home directory” is, let’s have a look at how the fil
 
 On Amara’s computer, the filesystem looks like this:
 
-![](../../assets/images/shell/filesystem.svg)
+![The file system is made up of a root directory that contains sub-directories titled bin, data, users, and tmp](../../assets/images/shell/filesystem.svg)
 
 File system structure
 

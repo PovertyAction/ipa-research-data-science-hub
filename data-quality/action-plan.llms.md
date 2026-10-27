@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Data Quality Action Plan
@@ -6,21 +8,21 @@ This guide outlines the Data Quality Action Plan, a tool designed to help IPA re
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Camilo Rodríguez Meléndez](https://poverty-action.org/people/camilo-rodriguez-melendez)
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -45,7 +47,7 @@ Preparing for data collection often involves juggling multiple tasks, which can 
 
 The DQAP focuses on eight core data quality tasks, each designed to address specific issues during data collection. This template serves as a centralized repository for planning and tracking these activities, ensuring a comprehensive approach to data quality management.
 
-![](../assets/images/dqap_intro.png)
+![Main data quality activities](../assets/images/dqap_intro.png)
 
 Main data quality activities
 
@@ -62,7 +64,7 @@ The DQAP aims to establish a systematic approach to data quality management, wit
 
 The DQAP tool is a spreadsheet template with five sheets, three of which require input: DataQuality_Tasks, DMS, and Issues and Actions.
 
-![](../assets/images/dqap-main-page.png)
+![Main Page of the Data Quality Action Plan](../assets/images/dqap-main-page.png)
 
 Main Page of the Data Quality Action Plan
 

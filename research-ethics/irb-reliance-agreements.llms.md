@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Reliance Agreements
@@ -6,20 +8,20 @@ This page outlines when reliance agreements are needed, how to start them, and a
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Alexandra Krstić](https://poverty-action.org/people/alexandra-krstic)
 - [Daniela Carrillo](https://poverty-action.org/people/daniela-carrillo)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../assets/images/agreement.jpg)
+![IRB Reliance Agreements (® Unsplash)](../assets/images/agreement.jpg)
 
 IRB Reliance Agreements (® Unsplash)
 

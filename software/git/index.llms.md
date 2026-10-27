@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Git
@@ -6,15 +8,15 @@ Learn Git version control through hands-on tutorials, from basic concepts to adv
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -34,7 +36,7 @@ At its most basic level, version control software helps us register and track se
 
 There are many more reasons to use version control, and we’ll explore some of these in the library context, but first let’s learn a bit about a popular version control tool called Git.
 
-[![](../../assets/images/git/phd101212s.png)](http://www.phdcomics.com)
+[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531](../../assets/images/git/phd101212s.png)](http://www.phdcomics.com)
 
 Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531
 
@@ -56,19 +58,19 @@ Git was originally developed to help software developers work collaboratively on
 
 Version control systems start with a base version of the document and then save just the changes you made at each step of the way. You can think of it as a tape: if you rewind the tape and start at the base document, then you can play back each change and end up with your latest version.
 
-![](../../assets/images/git/play-changes.svg)
+![Changes Are Saved Sequentially](../../assets/images/git/play-changes.svg)
 
 Changes Are Saved Sequentially
 
 Once you think of changes as separate from the document itself, you can then think about “playing back” different sets of changes onto the base document and getting different versions of the document. For example, two users can make independent sets of changes based on the same document.
 
-![](../../assets/images/git/versions.svg)
+![Different Versions Can be Saved](../../assets/images/git/versions.svg)
 
 Different Versions Can be Saved
 
 Unless there are conflicts, you can even play two sets of changes onto the same base document.
 
-![](../../assets/images/git/merge.svg)
+![Multiple Versions Can be Merged](../../assets/images/git/merge.svg)
 
 Multiple Versions Can be Merged
 
@@ -88,7 +90,7 @@ Ready to start learning Git? Our comprehensive tutorial series will take you fro
 
 Click on the image below to watch a video with an introduction to Git for beginners:
 
-[![](https://github.blog/wp-content/uploads/2024/05/GitHub-for-beginners.png?resize=1600%2C840)](https://youtu.be/r8jQ9hVA2qs)
+[![A brief introduction to Git for beginners](https://github.blog/wp-content/uploads/2024/05/GitHub-for-beginners.png?resize=1600%2C840)](https://youtu.be/r8jQ9hVA2qs)
 
 A brief introduction to Git for beginners
 
@@ -109,7 +111,7 @@ Complete these lessons in order for a structured learning experience:
 
 Click on the image below to watch a video on basic Git commands:
 
-[![](https://github.blog/wp-content/uploads/2024/05/GitHub-for-beginners.png?resize=1600%2C840)](https://youtu.be/rE2zRhZdjFU?si=8Mdt6BjH5F7truAq)
+[![Basic Git Commands](https://github.blog/wp-content/uploads/2024/05/GitHub-for-beginners.png?resize=1600%2C840)](https://youtu.be/rE2zRhZdjFU?si=8Mdt6BjH5F7truAq)
 
 Basic Git Commands
 

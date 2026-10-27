@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Enumerator Database Management System (EDMS)
@@ -6,16 +8,16 @@ Overview of the Enumerator Database Management System (EDMS), a joint IPA and Gl
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 - [Karen Gabriela Rojas](https://poverty-action.org/people/karen-rojas)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # How to Implement Data Security Protocols
@@ -6,12 +8,12 @@ Step-by-step guide to implement essential data security measures for research pr
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 - [Ernest Ostro](https://poverty-action.org/people/ernest-ostro)
 
-## Contributors
+Contributors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
@@ -23,11 +25,11 @@ Step-by-step guide to implement essential data security measures for research pr
 - [Fred Nyamasyo](https://poverty-action.org/people/fred-nyamasyo)
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

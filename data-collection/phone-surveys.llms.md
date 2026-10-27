@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Reference
 
 # Phone Surveys: Best Practices and Tools
@@ -6,23 +8,23 @@ Comprehensive reference for implementing phone surveys at IPA, including survey 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../assets/images/Colombia_Survey_2020.jpg)
+![Phone Survey in Colombia (® IPA)](../assets/images/Colombia_Survey_2020.jpg)
 
 Phone Survey in Colombia (® IPA)
 

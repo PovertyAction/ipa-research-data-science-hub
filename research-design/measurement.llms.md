@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Measurement and Survey Design
@@ -6,12 +8,12 @@ This guide explores the fundamental principles of measurement and survey design 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 - [Karisha Anne Cruz](https://poverty-action.org/people/karisha-anne-cruz)
@@ -19,11 +21,11 @@ This guide explores the fundamental principles of measurement and survey design 
 - Cristhian Pulido
 - Andreas Tiemann
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

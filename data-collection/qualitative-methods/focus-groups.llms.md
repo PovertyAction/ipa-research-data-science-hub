@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Conducting Focus Groups
@@ -6,7 +8,7 @@ Practical guidance for researchers and practitioners on how to plan and conduct 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Dahian Dimaté](https://poverty-action.org/people/dahian-dimate)
 - [Karen Moreno](https://poverty-action.org/people/karen-moreno-pinto)
@@ -14,7 +16,7 @@ Practical guidance for researchers and practitioners on how to plan and conduct 
 - [Nicól Lesmes](https://poverty-action.org/people/nicol-lesmes-guerrero)
 - [Nicolás Romero](https://poverty-action.org/people/nicolas-romero)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
@@ -22,15 +24,15 @@ Practical guidance for researchers and practitioners on how to plan and conduct 
 - [German Acosta](https://poverty-action.org/people/german-acosta)
 - [Nicholas Guecha](https://poverty-action.org/people/nicholas-guecha)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../../assets/images/focus-group-intro.jpeg)
+![Focus group conducted by the qualitative research team in IPA Colombia (® Nicol Lesmes)](../../assets/images/focus-group-intro.jpeg)
 
 Focus group conducted by the qualitative research team in IPA Colombia (® Nicol Lesmes)
 
@@ -190,7 +192,7 @@ There are situations that could take place during a focus group that you should 
 
 When conducting focus groups, it is important to avoid common mistakes that can compromise the effectiveness of the session and the quality of the collected data. Some of the most critical mistakes are described here:
 
-![](../../assets/images/focus-group-mistakes.png)
+![Figure 1. Common mistakes made when conducting focus groups](../../assets/images/focus-group-mistakes.png)
 
 Figure 1. Common mistakes made when conducting focus groups
 

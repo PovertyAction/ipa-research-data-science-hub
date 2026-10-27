@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Data Processing in Stata
@@ -6,26 +8,26 @@ This section discusses more advanced techniques to organize and generate outcome
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Michael Rosenbaum](https://github.com/mfrosenbaum)
 - [Kayla Wilding](https://github.com/wildingka)
 - [Rosemarie Sandino](https://github.com/rsandino)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [Wesley Kirui](https://poverty-action.org/people/wesley-kirui)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../../assets/images/data-mgmt-stata.png)
+![Stata window with the Statistics menu open, a linear regression dialog, and a graph window](../../assets/images/data-mgmt-stata.png)
 
 ## Sorting data
 

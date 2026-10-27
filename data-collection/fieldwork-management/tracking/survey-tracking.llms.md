@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Survey Tracking
@@ -6,15 +8,15 @@ Survey tracking monitors aggregate fieldwork progress using standardized metrics
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

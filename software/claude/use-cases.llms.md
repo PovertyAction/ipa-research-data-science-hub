@@ -1,19 +1,21 @@
 # Claude Code for Research and Project Management
 
+[Skip to main content](#quarto-document-content)
+
 How research and project-management staff put Claude Code to work: concrete use cases across data analysis and operations, the few prompt patterns that matter most for this work, and how to have Claude remember your preferences over time.
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Juan Felipe García Rodríguez](https://poverty-action.org/people/juan-felipe-garcia-rodriguez)
 - [Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

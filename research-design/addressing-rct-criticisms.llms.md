@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Addressing Common Criticisms of Randomized Controlled Trials
@@ -6,7 +8,7 @@ This page explores the most frequently raised concerns about randomized controll
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - Julia Brown
 - Lucia Goin
@@ -14,15 +16,15 @@ This page explores the most frequently raised concerns about randomized controll
 - Katherine Hoffmann
 - Kim Smith
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

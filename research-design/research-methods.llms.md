@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Research Methods in Impact Evaluation
@@ -6,26 +8,26 @@ Overview of the three main methodological traditions in impact evaluation -quant
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Alina Bitran](https://poverty-action.org/people/alina-bitran)
 - Germán Acosta
 - [Nicolás Romero](https://poverty-action.org/people/nicolas-romero)
 - [Fernando Tavara](https://poverty-action.org/people/fernando-adrian-tavara-ramirez)
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../assets/images/Burkina-Faso_Health_2022.jpg)
+![An IPA survey in Burkina Faso in 2022 (© IPA)](../assets/images/Burkina-Faso_Health_2022.jpg)
 
 An IPA survey in Burkina Faso in 2022 (© IPA)
 

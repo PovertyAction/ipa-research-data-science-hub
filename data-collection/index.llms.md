@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Reference
 
 # Data Collection at IPA
@@ -6,26 +8,26 @@ IPA employs various data collection methods to ensure comprehensive and high-qua
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido]()
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 - [Wesley Kirui](https://poverty-action.org/people/wesley-kirui)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../assets/images/Peru_Survey_2009.jpg)
+![Data Collection at IPA, Peru (© IPA, 2022)](../assets/images/Peru_Survey_2009.jpg)
 
 Data Collection at IPA, Peru (© IPA, 2022)
 

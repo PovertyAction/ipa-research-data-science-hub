@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # WhatsApp Surveys: An Innovative and Low-Cost Solution for Remote Data Collection
@@ -6,19 +8,19 @@ WhatsApp has become a powerful tool for data collection, offering a cost-effecti
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -60,7 +62,7 @@ WhatsApp has become a powerful tool for data collection, offering a cost-effecti
 
 IPA has successfully implemented WhatsApp surveys in various projects across different regions.
 
-![](../../assets/images/whatsapp/whatsapp-intro.jpg)
+![WhatsApp Surveys: Temporary Statute of Protection for Venezuelans](../../assets/images/whatsapp/whatsapp-intro.jpg)
 
 WhatsApp Surveys: Temporary Statute of Protection for Venezuelans
 

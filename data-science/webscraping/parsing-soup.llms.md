@@ -1,14 +1,16 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Parsing HTML with Soup Objects
 
 Learn to parse HTML content using gazpacho’s Soup class. Find elements by tags, classes, and attributes, navigating HTML structure, and extracting text and data from web pages.
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

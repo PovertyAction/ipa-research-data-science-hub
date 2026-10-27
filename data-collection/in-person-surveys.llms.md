@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # In-Person Surveys: Implementation Guide
@@ -6,22 +8,22 @@ A practical guide for planning and implementing in-person surveys in development
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Contributors
+Contributors
 
 - [Charlette Emomeri](https://poverty-action.org/people/charlette-emomeri)
 - [Eunice Kioko](https://poverty-action.org/people/eunice-kioko)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

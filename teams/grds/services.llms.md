@@ -1,20 +1,22 @@
 # GRDS Services Reference
 
+[Skip to main content](#quarto-document-content)
+
 This page describes the services the Global Research & Data Science (GRDS) team offers IPA research teams: the five service areas, the three ways teams can engage GRDS, and the typical outputs and timelines for each.
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 - [Dennis Kembero](https://poverty-action.org/people/dennis-ongwae)
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

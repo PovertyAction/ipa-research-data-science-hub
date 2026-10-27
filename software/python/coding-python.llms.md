@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Coding in Python
@@ -6,15 +8,15 @@ Learn Python fundamentals including variables, data types, and built-in function
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Kwadwo Agyapon-Ntra](https://poverty-action.org/people/kwadwo-agyapon-ntra)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

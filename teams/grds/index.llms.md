@@ -1,12 +1,14 @@
 # Global Research and Data Science
 
+[Skip to main content](#quarto-document-content)
+
 The Global Research and Data Science (GRDS) Unit at IPA builds tools and data systems that enable high-quality data collection and application of data science methods to improve research efficiency and replicability grounded in ethical principles.
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

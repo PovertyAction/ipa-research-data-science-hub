@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # About IPA IRB
@@ -6,20 +8,20 @@ Institutional Review Boards exist to protect the rights, safety, and welfare of 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Alexandra Krstić](https://poverty-action.org/people/alexandra-krstic)
 - [Daniela Carrillo](https://poverty-action.org/people/daniela-carrillo)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../assets/images/research-ethics.jpg)
+![Research Ethics (c) European Network of Research Ethics and Research Integrity](../assets/images/research-ethics.jpg)
 
 Research Ethics (c) European Network of Research Ethics and Research Integrity
 

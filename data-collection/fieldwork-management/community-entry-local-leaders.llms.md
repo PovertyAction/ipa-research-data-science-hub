@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Community Entry and Local Leader Engagement
@@ -6,20 +8,20 @@ This guide covers how to initiate and manage relationships with communities and 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Justus Mugango]()
 - [Santiago Sanchez Guiu](https://poverty-action.org/people/santiago-sanchez-guiu)
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

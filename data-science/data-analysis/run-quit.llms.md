@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Running and Quitting
@@ -6,19 +8,19 @@ Launch the JupyterLab server. Create a new Python script. Create a Jupyter noteb
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Contributors
+Contributors
 
 - [The Carpentries](https://carpentries.org/)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -124,7 +126,7 @@ The Menu Bar at the top of JupyterLab has the top-level menus that expose variou
 
 A screenshot of the default Menu Bar is provided below.
 
-![](../../assets/images/data-analysis/0_jupyterlab_menu_bar.png)
+![JupyterLab Menu Bar](../../assets/images/data-analysis/0_jupyterlab_menu_bar.png)
 
 JupyterLab Menu Bar
 
@@ -132,7 +134,7 @@ JupyterLab Menu Bar
 
 The left sidebar contains a number of commonly used tabs, such as a file browser (showing the contents of the directory where the JupyterLab server was launched), a list of running kernels and terminals, the command palette, and a list of open tabs in the main work area. A screenshot of the default Left Side Bar is provided below.
 
-![](../../assets/images/data-analysis/0_jupyterlab_left_side_bar.png)
+![JupyterLab Left Side Bar](../../assets/images/data-analysis/0_jupyterlab_left_side_bar.png)
 
 JupyterLab Left Side Bar
 
@@ -144,7 +146,7 @@ The main work area in JupyterLab enables you to arrange documents (notebooks, te
 
 If you do not see the Launcher tab, click the blue plus sign under the “File” and “Edit” menus and it will appear.
 
-![](../../assets/images/data-analysis/0_jupyterlab_main_work_area.png)
+![JupyterLab Main Work Area](../../assets/images/data-analysis/0_jupyterlab_main_work_area.png)
 
 JupyterLab Main Work Area
 
@@ -169,7 +171,7 @@ Additional notes on Jupyter notebooks.
 
 Below is a screenshot of a Jupyter notebook running inside JupyterLab. If you are interested in more details, then see the [official notebook documentation](https://jupyterlab.readthedocs.io/en/stable/user/notebook.html).
 
-![](../../assets/images/data-analysis/0_jupyterlab_notebook_screenshot.png)
+![Example Jupyter Notebook](../../assets/images/data-analysis/0_jupyterlab_notebook_screenshot.png)
 
 Example Jupyter Notebook
 
@@ -183,7 +185,7 @@ Example Jupyter Notebook
 >
 > In the JupyterLab Main Work Area you can arrange documents into panels of tabs. Here is an example from the [official documentation](https://jupyterlab.readthedocs.io/en/stable/).
 >
-> ![](../../assets/images/data-analysis/0_multipanel_jupyterlab_screenshot.png)
+> ![Multi-panel JupyterLab](../../assets/images/data-analysis/0_multipanel_jupyterlab_screenshot.png)
 >
 > Multi-panel JupyterLab
 >

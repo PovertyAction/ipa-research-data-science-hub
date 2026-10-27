@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # WhatsApp and Data Security
@@ -6,19 +8,19 @@ This resource guides you through securing your data collected through Twilio by 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -36,7 +38,7 @@ Ensuring the security of sensitive data is crucial, especially when dealing with
 1.  Navigate to “Functions/Services/Create Service” within your Twilio console
 2.  Create a service called “encrypt”
 
-![](../../assets/images/twilio/twilio-encrypt-1.png)
+![Encrypt Service](../../assets/images/twilio/twilio-encrypt-1.png)
 
 Encrypt Service
 
@@ -47,13 +49,13 @@ Encrypt Service
 
 \
 
-![](../../assets/images/twilio/twilio-encrypt-2.png)
+![Encrypt configuration snapshot](../../assets/images/twilio/twilio-encrypt-2.png)
 
 Encrypt configuration snapshot
 
 4.  Modify the secret_key and store it securely on your computer. Modify line 50 as shown in the next image.
 
-![](../../assets/images/twilio/twilio-encrypt-3.png)
+![Change encryption key](../../assets/images/twilio/twilio-encrypt-3.png)
 
 Change encryption key
 
@@ -63,14 +65,14 @@ Change encryption key
 
 1.  Just before the function widget that publishes to Google Sheets, create a function widget for encryption.
 
-![](../../assets/images/twilio/twilio-encrypt-4.png)
+![Encryption Widget Configuration](../../assets/images/twilio/twilio-encrypt-4.png)
 
 Encryption Widget Configuration
 
 2.  Select the service you created and set the environment as “UI” as shown in the previous image.
 3.  Choose the name of the function you created and input the variables to be encrypted as function parameters.
 
-![](../../assets/images/twilio/twilio-encrypt-5.png)
+![Encryption Widget Configuration Example](../../assets/images/twilio/twilio-encrypt-5.png)
 
 Encryption Widget Configuration Example
 
@@ -80,7 +82,7 @@ Encryption Widget Configuration Example
 
 1.  In the function responsible for publishing to Google Sheets, replace `{widgets.variable_name.inbound.Body}` with `{widgets.name_of_your_encryption_widget.parsed.name_of_the_variable}`
 
-![](../../assets/images/twilio/twilio-encrypt-6.png)
+![Example of the configuration of the publish function](../../assets/images/twilio/twilio-encrypt-6.png)
 
 Example of the configuration of the publish function
 

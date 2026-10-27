@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Writing in Quarto
@@ -6,15 +8,15 @@ This guide covers the basics of writing in Quarto, including text formatting, co
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Wamuyu Wanjohi](https://poverty-action.org/people/wamuyu-wanjohi)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

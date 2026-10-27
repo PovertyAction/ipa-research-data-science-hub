@@ -1,8 +1,10 @@
 # Contributing to the IPA Knowledge Hub
 
+[Skip to main content](#quarto-document-content)
+
 Guidelines and instructions for contributing content, code, and improvements to the IPA Knowledge Hub. This guide covers the development workflow, writing standards, content creation process, and technical requirements for contributors.
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 

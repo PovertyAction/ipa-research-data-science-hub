@@ -1,14 +1,16 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Getting Started with Gazpacho
 
 Learn the fundamentals of gazpacho, a simple Python library for web scraping. Install the library, understand basic concepts, and write your first web scraping script.
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

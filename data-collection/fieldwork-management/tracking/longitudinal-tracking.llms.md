@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Longitudinal Tracking Strategies
@@ -6,22 +8,22 @@ Advanced tracking strategies for multi-round studies. Building on fundamental su
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Contributors
+Contributors
 
 - Yuna Liang
 - Laura McCargo
 - Anna Mysliwiec
 - [Eric Ochieng](https://poverty-action.org/people/eric-ochieng)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

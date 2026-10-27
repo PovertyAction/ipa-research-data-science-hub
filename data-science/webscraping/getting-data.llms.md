@@ -1,14 +1,16 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Making HTTP Requests and Getting Data
 
 Learnthe fundamentals of HTTP requests using gazpacho.get(). Learn to fetch web pages, handle different response types, implement error handling, and work with various websites effectively.
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

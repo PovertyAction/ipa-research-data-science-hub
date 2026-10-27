@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Randomization
@@ -6,23 +8,23 @@ Introduction to randomization in impact evaluations, covering theoretical founda
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Rosemarie Sandino]()
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 - [Radhika Jain]()
 - [Devika Lakhote]()
 - [Laura Feeney]()
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

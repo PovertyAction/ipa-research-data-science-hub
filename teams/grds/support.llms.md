@@ -1,20 +1,22 @@
 # How to Request Support from GRDS
 
+[Skip to main content](#quarto-document-content)
+
 This guide shows research teams how to scope, submit, and manage a request for support from the Global Research & Data Science (GRDS) team, from initial planning through delivery.
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 - [Dennis Kembero](https://poverty-action.org/people/dennis-ongwae)
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

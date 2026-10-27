@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Sample Size and Power Calculations
@@ -6,23 +8,23 @@ This resource covers essential concepts of statistical power and sample size for
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 
-## Contributors
+Contributors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../assets/images/power-intro.jpg)
+![An IPA survey in Myanmar in 2020 (© IPA)](../assets/images/power-intro.jpg)
 
 An IPA survey in Myanmar in 2020 (© IPA)
 
@@ -50,7 +52,7 @@ Power matters for three interconnected reasons. Underpowered studies produce inc
 >
 > A randomized controlled trial (RCT) of the Balsakhi tutoring program enrolled 23,000 students in India. The program provided two hours of daily remedial instruction in small groups to children age 7 to 12. Test scores improved by 0.28 standard deviations (SDs) for students who received tutoring. The large sample gave the study sufficient power to detect this modest effect with confidence. If the sample had been smaller, the study might have found no statistically significant impact, not because the program failed, but because the study lacked the sensitivity to measure it.
 
-![](../assets/images/power_3.png)
+![Estimated treatment effect of 0.28 SD (Banerjee et al. 2007)](../assets/images/power_3.png)
 
 Estimated treatment effect of 0.28 SD (Banerjee et al. 2007)
 
@@ -62,11 +64,11 @@ Sample size directly controls the width of the sampling distribution around any 
 
 where \\\beta\\ is the true effect, \\\sigma^2\\ is the outcome variance, \\N\\ is the total sample size, and \\p\\ is the proportion assigned to treatment. Power increases when \\N\\ grows, \\\sigma^2\\ shrinks, or \\p\\ approaches 0.5.
 
-![](../assets/images/power_1.png)
+![N = 200: Wide estimate range](../assets/images/power_1.png)
 
 N = 200: Wide estimate range
 
-![](../assets/images/power_2.png)
+![N = 2,000: Narrow estimate range](../assets/images/power_2.png)
 
 N = 2,000: Narrow estimate range
 
@@ -92,35 +94,35 @@ Reducing \\\alpha\\ tightens the rejection threshold, which increases \\\kappa\\
 >
 > **Step 1: State hypotheses.** The null hypothesis (\\H_0\\) assumes no effect (\\\beta = 0\\). The alternative hypothesis (\\H_1\\) proposes an effect exists (\\\beta \neq 0\\, or directional if one-sided).
 >
-> ![](../assets/images/power_ht1.png)
+> ![Null and alternative distributions](../assets/images/power_ht1.png)
 >
 > Null and alternative distributions
 >
 > **Step 2: Estimate the treatment effect.** Calculate \\\hat{\beta}\\ from the data and place it on the sampling distribution.
 >
-> ![](../assets/images/power_ht2.png)
+> ![Estimating the treatment effect](../assets/images/power_ht2.png)
 >
 > Estimating the treatment effect
 >
 > **Step 3: Set critical values.** At \\\alpha = 0.05\\ (two-sided), the rejection regions begin at approximately ±1.96 standard errors from zero.
 >
-> ![](../assets/images/power_ht3.png)
+> ![Critical values at 5% significance](../assets/images/power_ht3.png)
 >
 > Critical values at 5% significance
 >
 > **Step 4: Make a decision.** If \\\hat{\beta}\\ falls in the rejection region, reject \\H_0\\ and conclude the effect is statistically significant. If \\\hat{\beta}\\ falls within the bounds, fail to reject \\H_0\\.
 >
-> ![](../assets/images/power_ht4_1.png)
+> ![Fail to reject H_0](../assets/images/power_ht4_1.png)
 >
 > Fail to reject \\H_0\\
 >
-> ![](../assets/images/power_ht4_2.png)
+> ![Reject H_0](../assets/images/power_ht4_2.png)
 >
 > Reject \\H_0\\
 
 Power equals the proportion of the alternative distribution (\\H_1\\) that falls beyond the critical value. The less the two distributions overlap, the higher the power.
 
-![](../assets/images/power_7.png)
+![Low, medium, and high power scenarios](../assets/images/power_7.png)
 
 Low, medium, and high power scenarios
 
@@ -136,25 +138,25 @@ Six factors directly determine the statistical power of a study. The first four 
 
 **Minimum detectable effect (MDE).** The MDE is the smallest treatment effect the study is designed to detect. Researchers should set it based on the smallest effect that would be policy-relevant or cost-effective to implement, not on convenience. Smaller MDEs require larger samples to achieve the same power.
 
-![](../assets/images/power_8.png)
+![MDE: smaller effects require larger samples](../assets/images/power_8.png)
 
 MDE: smaller effects require larger samples
 
 **Sample size (\\N\\).** More observations narrow the sampling distribution and increase the probability of detecting the true effect. This is the most direct lever researchers control.
 
-![](../assets/images/power_9.png)
+![Sample size: small vs. large sample distributions](../assets/images/power_9.png)
 
 Sample size: small vs. large sample distributions
 
 **Outcome variance (\\\sigma^2\\).** Higher variance in the outcome measure makes it harder to isolate the treatment signal. The most effective way to reduce residual variance is to collect a baseline measurement of the primary outcome variable. Controlling for additional covariates beyond the baseline offers only marginal gains and should not substitute for adequate sample size.
 
-![](../assets/images/power_10.png)
+![Outcome variance: narrow vs. wide distributions](../assets/images/power_10.png)
 
 Outcome variance: narrow vs. wide distributions
 
 **Sample allocation.** Power is maximized when treatment and control groups are equal in size (\\p = 0.5\\). Unequal splits reduce power even when total \\N\\ is held constant.
 
-![](../assets/images/power_11.png)
+![Equal vs. unequal allocation](../assets/images/power_11.png)
 
 Equal vs. unequal allocation
 
@@ -176,13 +178,13 @@ Equal vs. unequal allocation
 >
 > **Non-compliance** occurs when participants do not adhere to their assigned condition. It reduces power by compressing the estimated treatment effect toward zero, effectively shrinking the MDE. Increasing compliance is one of the strongest levers available to improve power after the study design is set.
 >
-> ![](../assets/images/power_12.png)
+> ![Non-compliance reduces the effective effect size](../assets/images/power_12.png)
 >
 > Non-compliance reduces the effective effect size
 >
 > **Attrition** is the loss of participants during the study. It reduces power by shrinking the effective sample size. If attrition is correlated with treatment assignment -for example, more participants in the control group drop out- the estimated effect is also no longer unbiased.
 >
-> ![](../assets/images/power_13.png)
+> ![Attrition reduces effective sample size](../assets/images/power_13.png)
 >
 > Attrition reduces effective sample size
 >

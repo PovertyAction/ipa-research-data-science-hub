@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Data Cleaning
@@ -6,26 +8,26 @@ Best practices for data cleaning, focusing on manipulating raw data using Stata.
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Kayla Wilding](https://github.com/wildingka)
 - [Michael Rosenbaum](https://github.com/mfrosenbaum)
 - [Rosemarie Sandino](https://github.com/rsandino)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [Wesley Kirui](https://poverty-action.org/people/wesley-kirui)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../assets/images/ipa-gprl-logos.png)
+![Logos of Innovations for Poverty Action and the Northwestern Global Poverty Research Lab](../assets/images/ipa-gprl-logos.png)
 
 Proper data cleaning is essential for analytical accuracy. Raw data requires modification before analysis. These modifications constitute cleaning. The cleaning process should always be reproducible, well documented, and defensive; the code should tell the user if the data is not as expected.
 
@@ -39,7 +41,7 @@ At a high level, data transitions from a format that reflects the collection str
 
 This entire process constitutes a data flow. At GPRL and IPA, the data flow includes four key steps that take place in statistical software. Differences in the data may make it impossible to follow this order exactly. Deidentification should happen as soon as possible in the data flow if the data contains PII:
 
-![](../assets/images/data-flow.png)
+![Data Flow Process](../assets/images/data-flow.png)
 
 Data Flow Process
 

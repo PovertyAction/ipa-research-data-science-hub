@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Data Visualization
@@ -6,17 +8,17 @@ This section covers both sides of data visualization: how to communicate and use
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Ishmail Baako](https://poverty-action.org/people/ishmail-baako)
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

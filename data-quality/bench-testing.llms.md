@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Bench Testing
@@ -6,20 +8,20 @@ A guide to systematically test surveys before data collection to identify and fi
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -92,13 +94,13 @@ Enumerator training provides a crucial opportunity for final survey validation:
 
 As enumerators inevitably find issues and bugs within the survey, be sure to write these down and track all changes. One solution is to include the “comments” field type in SurveyCTO. SurveyCTO forms allow for a “comments” field type, where enumerators can add comments to survey questions while administering a survey. In order to use this, include a “comments” field type, and name the variable. See the example below:
 
-![](../assets/images/bench-test-1.png)
+![Comments field type](../assets/images/bench-test-1.png)
 
 Comments field type
 
 This field type creates an option for every question in the survey where enumerators can comment on the question. This can include survey logic issues, missing options, confusing wording, or any other issues an enumerator has with a question. It appears next to other options as a pencil while administering the survey:
 
-![](../assets/images/bench-test-2.png) ![](../assets/images/bench-test-3.png)
+![SurveyCTO Collect question screen with the pencil comment icon in the top toolbar](../assets/images/bench-test-2.png) ![SurveyCTO Collect dialog titled Add a comment on this field, with Cancel and OK buttons](../assets/images/bench-test-3.png)
 
 The system exports comments as media files, similar to audio audits or images. The files appear in a directory under the variable name you assigned to the comments field type. For this example, they would appear under the variable `q_comments`. IPA’s Data Management System includes the command `-ipacheckcomment-`, which compiles these files into a summary sheet in the outputs. There is also a user-written Stata command named `-remedia-` that helps rename and move media files.
 

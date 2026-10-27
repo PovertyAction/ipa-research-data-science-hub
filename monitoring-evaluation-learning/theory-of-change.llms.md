@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # Theory of Change
@@ -6,7 +8,7 @@ How to develop a robust Theory of Change, linking program activities to outcomes
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Manuel Bustamante](https://poverty-action.org/people/manuel-bustamante)
 - [Mariana Rodriguez](https://poverty-action.org/people/mariana-rodriguez)
@@ -14,19 +16,19 @@ How to develop a robust Theory of Change, linking program activities to outcomes
 - [Simon Rubio](https://poverty-action.org/people/simon-rubio)
 - [Alejandro Mojica Godoy](https://poverty-action.org/people/alejandro-mojica-godoy)
 
-## Contributors
+Contributors
 
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../assets/images/Uganda_Survey_2018.jpg)
+![IPA field team conducting surveys in Uganda (© IPA)](../assets/images/Uganda_Survey_2018.jpg)
 
 IPA field team conducting surveys in Uganda (© IPA)
 
@@ -133,7 +135,7 @@ A comprehensive ToC consists of five key components that form a logical chain fr
 
 ### Visual Representation
 
-![](../assets/images/toc_1.png)
+![Theory of Change Components Diagram](../assets/images/toc_1.png)
 
 Theory of Change Components Diagram
 

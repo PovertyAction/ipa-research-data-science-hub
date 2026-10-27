@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Coding in Stata
@@ -6,22 +8,22 @@ This guide shows how to work with Stata files, numerical formats, dataset creati
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Michael Rosenbaum](https://github.com/mfrosenbaum)
 - [Kayla Wilding](https://github.com/wildingka)
 - [Rosemarie Sandino](https://github.com/rsandino)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [Wesley Kirui](https://poverty-action.org/people/wesley-kirui)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

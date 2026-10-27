@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 How-to guide
 
 # Qualitative Interviews
@@ -6,7 +8,7 @@ Practical guidance for researchers and practitioners on how to plan and conduct 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Dahian Dimaté](https://poverty-action.org/people/dahian-dimate)
 - [Karen Moreno](https://poverty-action.org/people/karen-moreno-pinto)
@@ -14,7 +16,7 @@ Practical guidance for researchers and practitioners on how to plan and conduct 
 - [Nicól Lesmes](https://poverty-action.org/people/nicol-lesmes-guerrero)
 - [Nicolás Romero](https://poverty-action.org/people/nicolas-romero)
 
-## Contributors
+Contributors
 
 - [Cristhian Pulido](https://poverty-action.org/people/cristhian-pulido)
 - [David Torres](https://poverty-action.org/people/david-francisco-torres-leon)
@@ -22,15 +24,15 @@ Practical guidance for researchers and practitioners on how to plan and conduct 
 - [German Acosta](https://poverty-action.org/people/german-acosta)
 - [Nicholas Guecha](https://poverty-action.org/people/nicholas-guecha)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![](../../assets/images/interview-intro.jpg)
+![Interview conducted by the qualitative research team in Tumaco, Colombia (credit: German Acosta)](../../assets/images/interview-intro.jpg)
 
 Interview conducted by the qualitative research team in Tumaco, Colombia (credit: German Acosta)
 
@@ -202,7 +204,7 @@ There are situations that could take place during a qualitative interview that y
 
 When conducting qualitative interviews, avoid some mistakes so that the research activity, objectives, and the integrity of the person being interviewed are protected. Some mistakes are described here:
 
-![](../../assets/images/interviews-mistakes.png)
+![Common mistakes made when conducting interviews](../../assets/images/interviews-mistakes.png)
 
 Common mistakes made when conducting interviews
 

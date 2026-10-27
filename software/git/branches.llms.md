@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Branches
@@ -6,15 +8,15 @@ Learn how to use Git branches to work on separate tasks in parallel, experiment 
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -327,7 +329,7 @@ branch 'heimdall-aware' set up to track 'origin/heimdall-aware'.
 
 Now, we can go back to GitHub and verify that we have a new branch named heimdall-aware.
 
-![](../../assets/images/git/github-branch-pushed.png)
+![GitHub has the branch heimdall-aware](../../assets/images/git/github-branch-pushed.png)
 
 GitHub has the branch heimdall-aware
 

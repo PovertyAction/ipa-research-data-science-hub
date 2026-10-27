@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Reference
 
 # Choosing the Right Chart
@@ -6,20 +8,20 @@ A decision reference for selecting the chart that fits a message: table versus g
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Isaac Arthur](https://poverty-action.org/people/isaac-arthur)
 - Yuri M. Leomo
 
-## Contributors
+Contributors
 
 - [Kelly Montaño](https://poverty-action.org/people/kelly-montano)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

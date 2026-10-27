@@ -1,19 +1,21 @@
 # Setting Up Claude Code
 
+[Skip to main content](#quarto-document-content)
+
 How to install Claude Code and start your first session, whether you work in the terminal and VS Code or prefer the desktop app. Covers what you need before you start and the install steps for each path, and points to the official documentation for the details Anthropic maintains.
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Juan Felipe García Rodríguez](https://poverty-action.org/people/juan-felipe-garcia-rodriguez)
 - [Diego Quintero Mogollón](https://poverty-action.org/people/diego-quintero-mogollon)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

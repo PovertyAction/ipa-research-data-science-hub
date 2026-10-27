@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Pull Requests
@@ -6,15 +8,15 @@ Learn how to create and manage pull requests on GitHub to propose changes, colla
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -37,7 +39,7 @@ On GitHub, in your `multiverse` repo, **click on the “Pull Requests” tab**.
 
 Then **click “New pull request”**. Alternatively, GitHub will see your new branch with recent changes and will prompt you to “Compare & pull request”. Click this button to also be taken to the new pull request page.
 
-![](../../assets/images/git/github-open-pr.png)
+![Open a Pull Request on GitHub for branch heimdall-aware](../../assets/images/git/github-open-pr.png)
 
 Open a Pull Request on GitHub for branch heimdall-aware
 
@@ -47,7 +49,7 @@ Next, we need to give our PR a title. By default, your PR will get the title fro
 
 **Click “Create pull request”**.
 
-![](../../assets/images/git/github-pr-opened.png)
+![Pull Request is created](../../assets/images/git/github-pr-opened.png)
 
 Pull Request is created
 

@@ -1,14 +1,16 @@
+[Skip to main content](#quarto-document-content)
+
 Tutorial
 
 # Introduction to Web Scraping with Gazpacho
 
 Learn the fundamentals of web scraping using gazpacho, a lightweight Python library that simplifies extracting data from websites. Apply essential techniques for collecting data from web pages for research and analysis.
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 

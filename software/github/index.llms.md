@@ -1,3 +1,5 @@
+[Skip to main content](#quarto-document-content)
+
 Explanation
 
 # GitHub
@@ -6,15 +8,15 @@ GitHub is a platform for hosting and collaborating on computer code. It is a pla
 
 ------------------------------------------------------------------------
 
-## Authors
+Authors
 
 - [Niall Keleher](https://poverty-action.org/people/niall-keleher)
 
-## Last Modified
+Last Modified
 
 - October 27, 2026
 
-## License
+License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -64,8 +66,6 @@ brew install gh
 See [instructions](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop) for getting started with GitHub Desktop.
 
 In the File menu, select “Options” and then in the “Accounts” options select “Sign in to GitHub.com” and “Continue with browser” to authenticate with your GitHub account.
-
-![](../../assets/images/git/github-desktop-auth.gif)
 
 GitHub Desktop Authentication
 
