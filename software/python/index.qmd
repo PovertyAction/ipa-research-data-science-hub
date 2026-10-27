@@ -237,10 +237,7 @@ import seaborn.objects as so
 penguins = sns.load_dataset("penguins")
 
 # Create a simple plot
-(
-    so.Plot(penguins, x="bill_length_mm", y="bill_depth_mm")
-    .add(so.Dot())
-)
+(so.Plot(penguins, x="bill_length_mm", y="bill_depth_mm").add(so.Dot()))
 ```
 
 If this works without errors, the installation is complete.
@@ -265,6 +262,7 @@ uv pip install --upgrade seaborn
 
 ```python
 import matplotlib.pyplot as plt
+
 # ... your plotting code ...
 plt.show()
 ```

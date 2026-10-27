@@ -93,6 +93,7 @@ pip install gazpacho
 
 ```python
 import gazpacho
+
 print(gazpacho.__version__)
 ```
 
@@ -255,7 +256,7 @@ from gazpacho import get
 sites = [
     "https://httpbin.org/html",
     "https://example.com",
-    "https://httpbin.org/json"  # This returns JSON, not HTML
+    "https://httpbin.org/json",  # This returns JSON, not HTML
 ]
 
 for site in sites:
@@ -290,6 +291,7 @@ except Exception as e:
 from gazpacho import get
 import time
 
+
 def safe_get(url, max_retries=3):
     for attempt in range(max_retries):
         try:
@@ -300,6 +302,7 @@ def safe_get(url, max_retries=3):
                 time.sleep(2)  # Wait before retry
             else:
                 raise e
+
 
 # Use safe_get for unreliable connections
 html = safe_get("https://example.com")
@@ -343,6 +346,7 @@ Let's put it all together with a practical example:
 from gazpacho import get
 import re
 
+
 def scrape_page_title(url):
     """Extract the title from a webpage."""
     try:
@@ -350,7 +354,7 @@ def scrape_page_title(url):
         html = get(url)
 
         # Find the title using regex
-        title_match = re.search(r'<title>(.*?)</title>', html, re.IGNORECASE)
+        title_match = re.search(r"<title>(.*?)</title>", html, re.IGNORECASE)
 
         if title_match:
             title = title_match.group(1).strip()
@@ -361,12 +365,9 @@ def scrape_page_title(url):
     except Exception as e:
         return f"Error: {e}"
 
+
 # Test with different websites
-urls = [
-    "https://example.com",
-    "https://httpbin.org/html",
-    "https://python.org"
-]
+urls = ["https://example.com", "https://httpbin.org/html", "https://python.org"]
 
 for url in urls:
     title = scrape_page_title(url)
@@ -382,21 +383,23 @@ Practice extracting different HTML elements:
 from gazpacho import get
 import re
 
+
 def analyze_webpage(url):
     """Analyze basic elements of a webpage."""
     html = get(url)
 
     # Count different elements
-    title_count = len(re.findall(r'<title>', html, re.IGNORECASE))
-    h1_count = len(re.findall(r'<h1>', html, re.IGNORECASE))
-    p_count = len(re.findall(r'<p>', html, re.IGNORECASE))
-    link_count = len(re.findall(r'<a\s+[^>]*href', html, re.IGNORECASE))
+    title_count = len(re.findall(r"<title>", html, re.IGNORECASE))
+    h1_count = len(re.findall(r"<h1>", html, re.IGNORECASE))
+    p_count = len(re.findall(r"<p>", html, re.IGNORECASE))
+    link_count = len(re.findall(r"<a\s+[^>]*href", html, re.IGNORECASE))
 
     print(f"Analysis of {url}:")
     print(f"  Titles: {title_count}")
     print(f"  H1 tags: {h1_count}")
     print(f"  Paragraphs: {p_count}")
     print(f"  Links: {link_count}")
+
 
 # Analyze different pages
 analyze_webpage("https://example.com")
@@ -413,6 +416,7 @@ analyze_webpage("https://example.com")
 from gazpacho import get
 import time
 
+
 def polite_scraper(urls, delay=1):
     """Scrape multiple URLs with delays."""
     results = []
@@ -426,6 +430,7 @@ def polite_scraper(urls, delay=1):
         time.sleep(delay)
 
     return results
+
 
 urls = ["https://example.com", "https://httpbin.org/html"]
 pages = polite_scraper(urls, delay=2)
@@ -474,6 +479,7 @@ pip install certifi
 from gazpacho import get
 import time
 
+
 def robust_get(url, retries=3, delay=2):
     for i in range(retries):
         try:
@@ -501,6 +507,7 @@ Create a script that:
 from gazpacho import get
 import re
 
+
 def my_first_scraper(url):
     """A complete first scraper example."""
     try:
@@ -516,22 +523,23 @@ def my_first_scraper(url):
         print(f"Successfully fetched {len(html)} characters")
 
         # Step 3: Extract title
-        title_match = re.search(r'<title>(.*?)</title>', html, re.IGNORECASE)
+        title_match = re.search(r"<title>(.*?)</title>", html, re.IGNORECASE)
         title = title_match.group(1).strip() if title_match else "No title"
         print(f"Page title: {title}")
 
         # Step 4: Count links
-        links = re.findall(r'<a\s+[^>]*href', html, re.IGNORECASE)
+        links = re.findall(r"<a\s+[^>]*href", html, re.IGNORECASE)
         print(f"Number of links: {len(links)}")
 
         # Step 5: Save HTML
         filename = f"scraped_{url.split('//')[1].replace('/', '_')}.html"
-        with open(filename, 'w', encoding='utf-8') as f:
+        with open(filename, "w", encoding="utf-8") as f:
             f.write(html)
         print(f"HTML saved to {filename}")
 
     except Exception as e:
         print(f"Error: {e}")
+
 
 # Test your scraper
 my_first_scraper("https://example.com")

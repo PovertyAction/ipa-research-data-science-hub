@@ -76,7 +76,7 @@ print(weight_kg)
 We can also do arithmetic with variables:
 
 ```{python}
-print('weight in pounds:', 2.2 * weight_kg)
+print("weight in pounds:", 2.2 * weight_kg)
 ```
 
 ### Variable Names
@@ -88,14 +88,14 @@ Variable names can contain letters, digits, and underscores. However, they:
 
 ```{python}
 # Valid variable names
-patient_id = 'inflam_001'
+patient_id = "inflam_001"
 patient_weight = 75.0
 patient1_age = 45
 
 # Display the variables
-print('Patient ID:', patient_id)
-print('Patient weight:', patient_weight, 'kg')
-print('Patient age:', patient1_age, 'years')
+print("Patient ID:", patient_id)
+print("Patient weight:", patient_weight, "kg")
+print("Patient age:", patient1_age, "years")
 ```
 
 ### Changing Variables
@@ -104,10 +104,10 @@ We can change the value of a variable by assigning it a new value:
 
 ```{python}
 weight_kg = 60.3
-print('weight in kilograms:', weight_kg)
+print("weight in kilograms:", weight_kg)
 
 weight_kg = 65.0
-print('weight in kilograms is now:', weight_kg)
+print("weight in kilograms is now:", weight_kg)
 ```
 
 Notice that when we assign a new value to a variable, it does not change other
@@ -116,10 +116,15 @@ variables that might have used the old value:
 ```{python}
 weight_kg = 60.3
 weight_lb = 2.2 * weight_kg
-print('weight in kilograms:', weight_kg, 'and in pounds:', weight_lb)
+print("weight in kilograms:", weight_kg, "and in pounds:", weight_lb)
 
 weight_kg = 65.0
-print('weight in kilograms is now:', weight_kg, 'and weight in pounds is still:', weight_lb)
+print(
+    "weight in kilograms is now:",
+    weight_kg,
+    "and weight in pounds is still:",
+    weight_lb,
+)
 ```
 
 ## Data Types
@@ -137,13 +142,13 @@ discover as you progress.
 
 ```{python}
 # Examples of different data types
-patient_age = 25          # integer
-patient_weight = 68.5     # float
-patient_name = 'Alice'    # string
+patient_age = 25  # integer
+patient_weight = 68.5  # float
+patient_name = "Alice"  # string
 
-print('Patient name:', patient_name)
-print('Patient age:', patient_age)
-print('Patient weight:', patient_weight)
+print("Patient name:", patient_name)
+print("Patient age:", patient_age)
+print("Patient weight:", patient_weight)
 ```
 
 ### Finding the Type of a Variable
@@ -152,7 +157,7 @@ We can use the built-in function `type()` to find out what type a value has:
 
 ```{python}
 print(type(60.3))
-print(type('hello world'))
+print(type("hello world"))
 print(type(25))
 ```
 
@@ -161,20 +166,20 @@ print(type(25))
 Strings must be enclosed in quotes (either single or double):
 
 ```{python}
-patient_id = 'inflam_001'
+patient_id = "inflam_001"
 patient_name = "John Doe"
 
-print('Patient ID:', patient_id)
-print('Patient name:', patient_name)
+print("Patient ID:", patient_id)
+print("Patient name:", patient_name)
 ```
 
 We can add strings together (concatenation):
 
 ```{python}
-prefix = 'inflam_'
-patient_number = '001'
+prefix = "inflam_"
+patient_number = "001"
 patient_id = prefix + patient_number
-print('Full patient ID:', patient_id)
+print("Full patient ID:", patient_id)
 ```
 
 ## Built-in Functions
@@ -188,8 +193,8 @@ variables.)
 The `print()` function displays values:
 
 ```{python}
-print('Hello, world!')
-print('Patient weight:', 68.5, 'kg')
+print("Hello, world!")
+print("Patient weight:", 68.5, "kg")
 ```
 
 You can print multiple values by separating them with commas:
@@ -197,7 +202,7 @@ You can print multiple values by separating them with commas:
 ```{python}
 weight_kg = 68.5
 weight_lb = 2.2 * weight_kg
-print('Weight:', weight_kg, 'kg =', weight_lb, 'lbs')
+print("Weight:", weight_kg, "kg =", weight_lb, "lbs")
 ```
 
 ### Mathematical Operations
@@ -209,13 +214,13 @@ Python supports common mathematical operations:
 a = 10
 b = 3
 
-print('Addition:', a + b)
-print('Subtraction:', a - b)
-print('Multiplication:', a * b)
-print('Division:', a / b)
-print('Integer division:', a // b)
-print('Remainder:', a % b)
-print('Power:', a ** b)
+print("Addition:", a + b)
+print("Subtraction:", a - b)
+print("Multiplication:", a * b)
+print("Division:", a / b)
+print("Integer division:", a // b)
+print("Remainder:", a % b)
+print("Power:", a**b)
 ```
 
 ## Getting Help
@@ -267,13 +272,13 @@ Create variables for a patient's information and display them:
 #| code-summary: "Show the code"
 #| eval: false
 
-patient_name = 'Sarah Johnson'
+patient_name = "Sarah Johnson"
 patient_age = 34
 patient_height = 165.0  # in cm
 
-print('Patient:', patient_name)
-print('Age:', patient_age, 'years')
-print('Height:', patient_height, 'cm')
+print("Patient:", patient_name)
+print("Age:", patient_age, "years")
+print("Height:", patient_height, "cm")
 ```
 
 ### Exercise 2: Data Type Investigation
@@ -291,9 +296,9 @@ Use the `type()` function to check:
 #| code-summary: "Show the code"
 #| eval: false
 
-print('Type of 3.25:', type(3.25)) # Expect float
-print('Type of 3:', type(3)) # Expect int
-print('Type of "3.25":', type('3.25')) # Expect str
+print("Type of 3.25:", type(3.25))  # Expect float
+print("Type of 3:", type(3))  # Expect int
+print('Type of "3.25":', type("3.25"))  # Expect str
 ```
 
 ### Exercise 3: Calculations
@@ -317,11 +322,11 @@ height_cm = 175.0
 height_m = height_cm / 100
 
 # Calculate BMI
-bmi = weight_kg / (height_m ** 2)
+bmi = weight_kg / (height_m**2)
 
-print('Patient weight:', weight_kg, 'kg')
-print('Patient height:', height_m, 'm')
-print('Patient BMI:', round(bmi, 1))
+print("Patient weight:", weight_kg, "kg")
+print("Patient height:", height_m, "m")
+print("Patient BMI:", round(bmi, 1))
 ```
 
 The expected outcome is **22.9**

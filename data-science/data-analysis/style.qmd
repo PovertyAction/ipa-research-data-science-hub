@@ -93,7 +93,7 @@ which your code is executing is as you expect.
 
 ```python
 def calc_bulk_density(mass, volume):
-    '''Return dry bulk density = powder mass / powder volume.'''
+    """Return dry bulk density = powder mass / powder volume."""
     assert volume > 0
     return mass / volume
 ```
@@ -119,6 +119,7 @@ def average(values):
     if len(values) == 0:
         return None
     return sum(values) / len(values)
+
 
 help(average)
 ```
@@ -154,13 +155,14 @@ a syntax error or a runtime error?
 "Find maximum edit distance between multiple sequences."
 # This finds the maximum distance between all sequences.
 
+
 def overall_max(sequences):
-    '''Determine overall maximum edit distance.'''
+    """Determine overall maximum edit distance."""
 
     highest = 0
     for left in sequences:
         for right in sequences:
-            '''Avoid checking sequence against itself.'''
+            """Avoid checking sequence against itself."""
             if left != right:
                 this = edit_distance(left, right)
                 highest = max(highest, this)
@@ -198,8 +200,8 @@ def middle(a, b, c):
 
 ```python
 def middle(a, b, c):
-    '''Return the middle value of three.
-    Assumes the values can actually be compared.'''
+    """Return the middle value of three.
+    Assumes the values can actually be compared."""
     values = [a, b, c]
     values.sort()
     return values[1]
@@ -219,18 +221,20 @@ def middle(a, b, c):
 
 ```python
 n = 10
-s = 'et cetera'
+s = "et cetera"
 print(s)
 i = 0
 while i < n:
     # print('at', j)
-    new = ''
+    new = ""
     for j in range(len(s)):
-        left = j-1
-        right = (j+1)%len(s)
-        if s[left]==s[right]: new = new + '-'
-        else: new = new + '*'
-    s=''.join(new)
+        left = j - 1
+        right = (j + 1) % len(s)
+        if s[left] == s[right]:
+            new = new + "-"
+        else:
+            new = new + "*"
+    s = "".join(new)
     print(s)
     i += 1
 ```
@@ -252,20 +256,21 @@ def string_machine(input_string, iterations):
     input_string_length = len(input_string)
     old = input_string
     for i in range(iterations):
-        new = ''
+        new = ""
         # iterate through characters in previous string
         for j in range(input_string_length):
-            left = j-1
-            right = (j+1) % input_string_length  # ensure right index wraps around
+            left = j - 1
+            right = (j + 1) % input_string_length  # ensure right index wraps around
             if old[left] == old[right]:
-                new = new + '-'
+                new = new + "-"
             else:
-                new = new + '*'
+                new = new + "*"
         print(new)
         # store new string as old
         old = new
 
-string_machine('et cetera', 10)
+
+string_machine("et cetera", 10)
 ```
 
 ```output

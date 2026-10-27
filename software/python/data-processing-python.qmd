@@ -196,10 +196,10 @@ maximum for each numeric column.
 For individual columns, we can calculate specific statistics:
 
 ```{python}
-print("Mean life expectancy:", df['lifeExp'].mean())
-print("Median GDP per capita:", df['gdpPercap'].median())
-print("Maximum population:", df['pop'].max())
-print("Minimum year:", df['year'].min())
+print("Mean life expectancy:", df["lifeExp"].mean())
+print("Median GDP per capita:", df["gdpPercap"].median())
+print("Maximum population:", df["pop"].max())
+print("Minimum year:", df["year"].min())
 ```
 
 ### Selecting Data
@@ -215,7 +215,7 @@ To select a single column:
 
 ```{python}
 # Select the lifeExp column
-life_expectancy = df['lifeExp']
+life_expectancy = df["lifeExp"]
 print(life_expectancy.head())
 ```
 
@@ -223,7 +223,7 @@ To select multiple columns:
 
 ```{python}
 # Select country, year, and life expectancy
-subset = df[['country', 'year', 'lifeExp']]
+subset = df[["country", "year", "lifeExp"]]
 print(subset.head())
 ```
 
@@ -255,7 +255,7 @@ To select a specific value:
 
 ```{python}
 # Life expectancy for the first row
-first_life_exp = df.loc[0, 'lifeExp']
+first_life_exp = df.loc[0, "lifeExp"]
 print(f"First life expectancy value: {first_life_exp}")
 ```
 
@@ -266,7 +266,7 @@ Boolean conditions. This is sometimes called "Boolean masking."
 
 ```{python}
 # Create a Boolean mask for data from 2007
-mask_2007 = df['year'] == 2007
+mask_2007 = df["year"] == 2007
 
 # Use the mask to filter the data
 data_2007 = df[mask_2007]
@@ -278,9 +278,9 @@ You can combine multiple conditions:
 
 ```{python}
 # High GDP countries in 2007
-high_gdp_2007 = df[(df['year'] == 2007) & (df['gdpPercap'] > 30000)]
+high_gdp_2007 = df[(df["year"] == 2007) & (df["gdpPercap"] > 30000)]
 print(f"High GDP countries in 2007: {len(high_gdp_2007)}")
-print(high_gdp_2007[['country', 'gdpPercap']])
+print(high_gdp_2007[["country", "gdpPercap"]])
 ```
 
 ::: {.callout-tip}
@@ -295,7 +295,7 @@ Often, we want to compute statistics for different groups in our data. The
 
 ```{python}
 # Average life expectancy by continent
-continent_life_exp = df.groupby('continent')['lifeExp'].mean()
+continent_life_exp = df.groupby("continent")["lifeExp"].mean()
 print(continent_life_exp)
 ```
 
@@ -308,11 +308,9 @@ You can group by multiple columns and calculate multiple statistics:
 
 ```{python}
 # Multiple statistics by continent
-continent_stats = df.groupby('continent').agg({
-    'lifeExp': ['mean', 'min', 'max'],
-    'gdpPercap': 'mean',
-    'pop': 'sum'
-})
+continent_stats = df.groupby("continent").agg(
+    {"lifeExp": ["mean", "min", "max"], "gdpPercap": "mean", "pop": "sum"}
+)
 print(continent_stats)
 ```
 

@@ -115,11 +115,11 @@ html = """
 soup = Soup(html)
 
 # Find first occurrence of a tag
-title = soup.find('h1')
+title = soup.find("h1")
 print(f"Title: {title}")
 
 # Find first paragraph
-first_paragraph = soup.find('p')
+first_paragraph = soup.find("p")
 print(f"First paragraph: {first_paragraph}")
 ```
 
@@ -140,11 +140,11 @@ html = """
 soup = Soup(html)
 
 # Find element by class
-intro = soup.find('p', {'class': 'intro'})
+intro = soup.find("p", {"class": "intro"})
 print(f"Intro: {intro}")
 
 # Find div with header class
-header = soup.find('div', {'class': 'header'})
+header = soup.find("div", {"class": "header"})
 print(f"Header: {header}")
 ```
 
@@ -164,17 +164,11 @@ html = """
 soup = Soup(html)
 
 # Find by multiple attributes
-username_input = soup.find('input', {
-    'type': 'text',
-    'name': 'username'
-})
+username_input = soup.find("input", {"type": "text", "name": "username"})
 print(f"Username input: {username_input}")
 
 # Find by type and class
-submit_button = soup.find('input', {
-    'type': 'submit',
-    'class': 'btn'
-})
+submit_button = soup.find("input", {"type": "submit", "class": "btn"})
 print(f"Submit button: {submit_button}")
 ```
 
@@ -203,10 +197,10 @@ html = """
 soup = Soup(html)
 
 # Practice different finding methods
-title = soup.find('h2', {'class': 'post-title'})
-author = soup.find('span', {'class': 'author'})
-date = soup.find('time')
-highlight = soup.find('p', {'class': 'highlight'})
+title = soup.find("h2", {"class": "post-title"})
+author = soup.find("span", {"class": "author"})
+date = soup.find("time")
+highlight = soup.find("p", {"class": "highlight"})
 
 print(f"Title: {title.text}")
 print(f"Author: {author.text}")
@@ -236,7 +230,7 @@ html = """
 soup = Soup(html)
 
 # Find all list items
-all_items = soup.find('li')  # This returns the first item
+all_items = soup.find("li")  # This returns the first item
 print(f"First item: {all_items}")
 
 # To get all items, we need to use different approach
@@ -265,14 +259,14 @@ html = """
 soup = Soup(html)
 
 # Find parent element first
-card = soup.find('div', {'class': 'card'})
+card = soup.find("div", {"class": "card"})
 print(f"Card found: {card is not None}")
 
 # Find nested elements
-header = soup.find('div', {'class': 'card-header'})
-title = soup.find('h3')
-body = soup.find('div', {'class': 'card-body'})
-button = soup.find('a', {'class': 'btn'})
+header = soup.find("div", {"class": "card-header"})
+title = soup.find("h3")
+body = soup.find("div", {"class": "card-body"})
+button = soup.find("a", {"class": "btn"})
 
 print(f"Header: {header}")
 print(f"Title: {title.text}")
@@ -302,9 +296,9 @@ html = """
 soup = Soup(html)
 
 # Extract text content
-name = soup.find('h2', {'class': 'name'})
-price = soup.find('span', {'class': 'price'})
-description = soup.find('div', {'class': 'description'})
+name = soup.find("h2", {"class": "name"})
+price = soup.find("span", {"class": "price"})
+description = soup.find("div", {"class": "description"})
 
 print(f"Product: {name.text}")
 print(f"Price: {price.text}")
@@ -329,9 +323,9 @@ html = """
 soup = Soup(html)
 
 # Extract attribute values
-image = soup.find('img')
-link = soup.find('a', {'class': 'contact'})
-timestamp = soup.find('time')
+image = soup.find("img")
+link = soup.find("a", {"class": "contact"})
+timestamp = soup.find("time")
 
 print(f"Image source: {image.attrs['src']}")
 print(f"Image alt text: {image.attrs['alt']}")
@@ -339,7 +333,7 @@ print(f"Link href: {link.attrs['href']}")
 print(f"DateTime: {timestamp.attrs['datetime']}")
 
 # Handle missing attributes safely
-width = image.attrs.get('width', 'Not specified')
+width = image.attrs.get("width", "Not specified")
 print(f"Image width: {width}")
 ```
 
@@ -377,13 +371,13 @@ html = """
 soup = Soup(html)
 
 # Extract table data
-table = soup.find('table', {'class': 'data-table'})
+table = soup.find("table", {"class": "data-table"})
 print(f"Table found: {table is not None}")
 
 # Extract individual cells
-first_name = soup.find('td', {'class': 'name'})
-first_age = soup.find('td', {'class': 'age'})
-first_city = soup.find('td', {'class': 'city'})
+first_name = soup.find("td", {"class": "name"})
+first_age = soup.find("td", {"class": "age"})
+first_city = soup.find("td", {"class": "city"})
 
 print(f"First row: {first_name.text}, {first_age.text}, {first_city.text}")
 ```
@@ -396,6 +390,7 @@ Let's parse a real website structure:
 ```python
 from gazpacho import get, Soup
 
+
 def parse_example_com():
     """Parse the example.com homepage."""
     url = "https://example.com"
@@ -403,10 +398,10 @@ def parse_example_com():
     soup = Soup(html)
 
     # Extract key elements
-    title = soup.find('title')
-    h1 = soup.find('h1')
-    paragraphs = soup.find('p')  # Gets first paragraph
-    links = soup.find('a')  # Gets first link
+    title = soup.find("title")
+    h1 = soup.find("h1")
+    paragraphs = soup.find("p")  # Gets first paragraph
+    links = soup.find("a")  # Gets first link
 
     print("Parsing example.com:")
     print(f"Page title: {title.text if title else 'Not found'}")
@@ -416,6 +411,7 @@ def parse_example_com():
     if links:
         print(f"First link text: {links.text}")
         print(f"First link href: {links.attrs.get('href', 'No href')}")
+
 
 # Run the parser
 parse_example_com()
@@ -429,6 +425,7 @@ Let's implement an example - parsing PyPI project pages:
 ```python
 from gazpacho import get, Soup
 
+
 def parse_pypi_project(package_name):
     """Parse PyPI project page for package information."""
     url = f"https://pypi.org/project/{package_name}/"
@@ -439,44 +436,44 @@ def parse_pypi_project(package_name):
         soup = Soup(html)
 
         # Extract project name
-        title_element = soup.find('h1', {'class': 'package-header__name'})
+        title_element = soup.find("h1", {"class": "package-header__name"})
         project_name = title_element.text.strip() if title_element else "Unknown"
 
         # Extract description
-        desc_element = soup.find('p', {'class': 'package-description__summary'})
+        desc_element = soup.find("p", {"class": "package-description__summary"})
         description = desc_element.text.strip() if desc_element else "No description"
 
         # Extract version information
-        version_element = soup.find('h1', {'class': 'package-header__name'})
+        version_element = soup.find("h1", {"class": "package-header__name"})
         # Version is often in a separate element or part of the title
 
         # Extract installation command
-        install_element = soup.find('span', {'id': 'pip-command'})
-        install_cmd = install_element.text.strip() if install_element else f"pip install {package_name}"
+        install_element = soup.find("span", {"id": "pip-command"})
+        install_cmd = (
+            install_element.text.strip()
+            if install_element
+            else f"pip install {package_name}"
+        )
 
         return {
-            'name': project_name,
-            'description': description,
-            'install_command': install_cmd,
-            'url': url,
-            'success': True
+            "name": project_name,
+            "description": description,
+            "install_command": install_cmd,
+            "url": url,
+            "success": True,
         }
 
     except Exception as e:
-        return {
-            'name': package_name,
-            'error': str(e),
-            'url': url,
-            'success': False
-        }
+        return {"name": package_name, "error": str(e), "url": url, "success": False}
+
 
 # Test with popular packages
-packages = ['requests', 'beautifulsoup4', 'pandas']
+packages = ["requests", "beautifulsoup4", "pandas"]
 
 for package in packages:
     result = parse_pypi_project(package)
 
-    if result['success']:
+    if result["success"]:
         print(f"\n--- {result['name']} ---")
         print(f"Description: {result['description']}")
         print(f"Install: {result['install_command']}")
@@ -493,6 +490,7 @@ Create functions for common parsing patterns:
 ```python
 from gazpacho import Soup
 
+
 def find_by_text(soup, tag, text_content):
     """Find element by tag and text content."""
     # This is a simplified version - gazpacho doesn't have built-in text search
@@ -502,18 +500,22 @@ def find_by_text(soup, tag, text_content):
         return elements
     return None
 
+
 def extract_links(soup):
     """Extract all links with their text and href."""
     links = []
     # Note: This is simplified - in practice you'd need to find all 'a' tags
-    link = soup.find('a')
+    link = soup.find("a")
     if link:
-        links.append({
-            'text': link.text,
-            'href': link.attrs.get('href', ''),
-            'title': link.attrs.get('title', '')
-        })
+        links.append(
+            {
+                "text": link.text,
+                "href": link.attrs.get("href", ""),
+                "title": link.attrs.get("title", ""),
+            }
+        )
     return links
+
 
 # Example usage
 html = """
@@ -537,6 +539,7 @@ Handle missing elements gracefully:
 ```python
 from gazpacho import get, Soup
 
+
 def safe_extract(element, attribute=None):
     """Safely extract text or attribute from element."""
     if element is None:
@@ -547,22 +550,24 @@ def safe_extract(element, attribute=None):
     else:
         return element.text.strip() if element.text else None
 
+
 def parse_article(html):
     """Parse article with error handling."""
     soup = Soup(html)
 
     # Safely extract elements
-    title_elem = soup.find('h1', {'class': 'article-title'})
-    author_elem = soup.find('span', {'class': 'author'})
-    date_elem = soup.find('time')
-    content_elem = soup.find('div', {'class': 'content'})
+    title_elem = soup.find("h1", {"class": "article-title"})
+    author_elem = soup.find("span", {"class": "author"})
+    date_elem = soup.find("time")
+    content_elem = soup.find("div", {"class": "content"})
 
     return {
-        'title': safe_extract(title_elem),
-        'author': safe_extract(author_elem),
-        'date': safe_extract(date_elem, 'datetime'),
-        'content': safe_extract(content_elem)
+        "title": safe_extract(title_elem),
+        "author": safe_extract(author_elem),
+        "date": safe_extract(date_elem, "datetime"),
+        "content": safe_extract(content_elem),
     }
+
 
 # Test with incomplete HTML
 incomplete_html = """
@@ -588,6 +593,7 @@ from gazpacho import get, Soup
 import re
 from datetime import datetime
 
+
 class NewsArticleParser:
     def __init__(self):
         self.parsed_articles = []
@@ -598,22 +604,22 @@ class NewsArticleParser:
 
         # Try multiple selectors for common news article structures
         title_selectors = [
-            ('h1', {'class': 'headline'}),
-            ('h1', {'class': 'title'}),
-            ('h1', {}),
-            ('title', {})
+            ("h1", {"class": "headline"}),
+            ("h1", {"class": "title"}),
+            ("h1", {}),
+            ("title", {}),
         ]
 
         author_selectors = [
-            ('span', {'class': 'author'}),
-            ('div', {'class': 'byline'}),
-            ('p', {'class': 'author'})
+            ("span", {"class": "author"}),
+            ("div", {"class": "byline"}),
+            ("p", {"class": "author"}),
         ]
 
         date_selectors = [
-            ('time', {}),
-            ('span', {'class': 'date'}),
-            ('div', {'class': 'publish-date'})
+            ("time", {}),
+            ("span", {"class": "date"}),
+            ("div", {"class": "publish-date"}),
         ]
 
         # Extract title
@@ -629,11 +635,13 @@ class NewsArticleParser:
         content_paragraphs = self._extract_content(soup)
 
         return {
-            'title': title,
-            'author': author,
-            'date': date,
-            'content': content_paragraphs,
-            'word_count': len(' '.join(content_paragraphs).split()) if content_paragraphs else 0
+            "title": title,
+            "author": author,
+            "date": date,
+            "content": content_paragraphs,
+            "word_count": len(" ".join(content_paragraphs).split())
+            if content_paragraphs
+            else 0,
         }
 
     def _find_with_selectors(self, soup, selectors):
@@ -648,10 +656,10 @@ class NewsArticleParser:
         """Extract article content paragraphs."""
         # Try to find content container
         content_selectors = [
-            ('div', {'class': 'article-content'}),
-            ('div', {'class': 'content'}),
-            ('article', {}),
-            ('main', {})
+            ("div", {"class": "article-content"}),
+            ("div", {"class": "content"}),
+            ("article", {}),
+            ("main", {}),
         ]
 
         content_container = None
@@ -666,11 +674,12 @@ class NewsArticleParser:
             content_container = soup
 
         # Extract paragraphs (simplified - would need to find all p tags)
-        paragraph = content_container.find('p')
+        paragraph = content_container.find("p")
         if paragraph:
             return [paragraph.text.strip()]
 
         return []
+
 
 # Test the parser
 test_html = """
@@ -719,11 +728,11 @@ html = """
 soup = Soup(html)
 
 # Extract menu items (simplified approach)
-menu = soup.find('ul', {'class': 'menu'})
+menu = soup.find("ul", {"class": "menu"})
 if menu:
     # In practice, you'd need to find all li elements
-    first_item = soup.find('li')
-    first_link = soup.find('a')
+    first_item = soup.find("li")
+    first_link = soup.find("a")
 
     print(f"First menu item: {first_link.text} -> {first_link.attrs['href']}")
 ```
@@ -755,9 +764,9 @@ html = """
 soup = Soup(html)
 
 # Extract table data (simplified)
-table = soup.find('table', {'class': 'scores'})
+table = soup.find("table", {"class": "scores"})
 if table:
-    first_cell = soup.find('td')
+    first_cell = soup.find("td")
     print(f"First data cell: {first_cell.text}")
 ```
 
