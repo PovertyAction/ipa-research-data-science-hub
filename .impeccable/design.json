@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-27T22:25:57+00:00",
+  "generatedAt": "2026-10-27T22:54:54+00:00",
   "title": "Design System: IPA Knowledge Hub",
   "extensions": {
     "colorMeta": {
@@ -397,6 +397,21 @@
           "#f2f2f2"
         ],
         "cssVar": "--brand-off-white"
+      },
+      "twilight-periwinkle": {
+        "role": "secondary",
+        "displayName": "Twilight Periwinkle",
+        "canonical": "#8b9bd1",
+        "tonalRamp": [
+          "#161d37",
+          "#24315b",
+          "#334480",
+          "#4158a4",
+          "#667bc2",
+          "#91a1d4",
+          "#c1c9e6",
+          "#edeff8"
+        ]
       }
     },
     "typographyMeta": {
@@ -435,6 +450,10 @@
       "code": {
         "displayName": "Code",
         "purpose": "Code blocks and inline code (inline weight 500)."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Table-of-contents title and page metadata."
       }
     },
     "shadows": [
@@ -535,6 +554,14 @@
       "description": "Arimo bold navbar links with the shared focus ring.",
       "html": "<nav class=\"ds-nav\"><a href=\"#\">Topics</a><a href=\"#\" aria-current=\"page\">How-to Guides</a><a href=\"#\">Software Guides</a></nav>",
       "css": ".ds-nav{display:flex;gap:1.25rem;padding:0.75rem 1rem;background:#fff;border-bottom:1px solid #dee2e6;} .ds-nav a{font-family: Arimo, Arial, sans-serif;font-weight:700;font-size:16.36px;color:#414042;text-decoration:none;} .ds-nav a:hover,.ds-nav a[aria-current]{color:#2b4085;} .ds-nav a:focus-visible{outline:2px solid #2b4085;outline-offset:2px;}"
+    },
+    {
+      "name": "Code Block",
+      "kind": "custom",
+      "refersTo": "code-block",
+      "description": "Light-mode code block: Paper Grey panel, Canopy Green text, Fira Code.",
+      "html": "<div class=\"ds-code\"><pre><code><span class=\"ds-co\"># Clone the repository</span>\ngit clone https://github.com/PovertyAction/ipa-research-data-science-hub</code></pre></div>",
+      "css": ".ds-code{background:#f1f2f2;color:#155240;border-radius:0.25rem;padding:0.6rem 0.8rem;} .ds-code pre{margin:0;font-family:'Fira Code',monospace;font-size:15px;line-height:1.5;font-variant-ligatures:none;white-space:pre-wrap;} .ds-co{color:#5e5e5e;font-style:italic;}"
     }
   ],
   "narrative": {
@@ -570,7 +597,7 @@
       },
       {
         "name": "The Reading Measure Rule",
-        "body": "Keep running text in the 900px body column (about 65–75 characters per line). Wide content (tables, code output) scrolls inside its own box instead of widening the column.",
+        "body": "Keep running text in the 900px body column (about 65--75 characters per line). Wide content (tables, code output) scrolls inside its own box instead of widening the column.",
         "section": "typography"
       },
       {
@@ -580,7 +607,7 @@
       },
       {
         "name": "The No-Stripe Rule",
-        "body": "No thick colored border on one side of a box. Callouts use a full 1px border plus a faint tint, never Quarto's default 5px left stripe.",
+        "body": "No thick colored border on one side of a box. Callouts use a full 1px border plus a faint tint, never Quarto's default 5px left stripe; dark-mode code blocks use a 1px Rule Grey frame, not a left stripe.",
         "section": "shapes"
       }
     ],
@@ -590,7 +617,8 @@
       "**Do** give every content page exactly one Diátaxis category so it gets its badge.",
       "**Do** use pills for actions and labels, and 0.5rem corners for containers.",
       "**Do** keep running text in the body column and let wide tables and code scroll inside their own box.",
-      "**Do** write screen recordings as `![alt text](file.mp4)` and give every image alt text."
+      "**Do** write screen recordings as `![alt text](file.mp4)` and give every image alt text.",
+      "**Do** check syntax-highlighting colors at 4.5:1 in both themes when changing the code themes."
     ],
     "donts": [
       "**Don't** hard-code palette hex values in CSS.",

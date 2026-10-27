@@ -18,6 +18,7 @@ colors:
   periwinkle: "#a0a9ea"
   apricot: "#fc9757"
   lavender: "#be9ffa"
+  twilight-periwinkle: "#8b9bd1"
   charcoal-ink: "#414042"
   graphite: "#545555"
   slate-muted: "#6a737b"
@@ -64,6 +65,11 @@ typography:
     fontSize: "15.3px"
     fontWeight: 400
     lineHeight: 1.5
+  small:
+    fontFamily: "Arimo, Arial, sans-serif"
+    fontSize: "0.86rem"
+    fontWeight: 400
+    lineHeight: 1.8
   label:
     fontFamily: "Arimo, Arial, sans-serif"
     fontSize: "0.72rem"
@@ -129,6 +135,11 @@ components:
     textColor: "{colors.canopy-green}"
     rounded: "{rounded.pill}"
     padding: "0.35rem 1rem"
+  code-block:
+    backgroundColor: "{colors.paper-grey}"
+    textColor: "{colors.canopy-green}"
+    typography: "{typography.code}"
+    rounded: "{rounded.sm}"
 ---
 
 # Design System: IPA Knowledge Hub
@@ -194,6 +205,8 @@ and `dark-brand.yml`; Quarto exposes them as `var(--brand-<name>)` (for example
   in light mode, Note callouts, Reference badges.
 - **Periwinkle** (`periwinkle`): Navy's dark-mode counterpart for Note callouts
   and Reference badges.
+- **Twilight Periwinkle** (`twilight-periwinkle`): code comments in dark mode,
+  replacing Dracula's #6272a4 (3.9:1) to reach 7.2:1.
 
 ### Tertiary
 
@@ -245,8 +258,10 @@ new color.
 
 ## Typography
 
-**Display Font:** Gelasio (with Georgia, serif) **Body Font:** Arimo (with
-Arial, sans-serif) **Label/Mono Font:** Fira Code (with monospace)
+- **Display Font:** Gelasio (with Georgia, serif)
+- **Body Font:** Arimo (with Arial, sans-serif); also every button, through
+  `$btn-font-family` (Litera's default is the system font)
+- **Label/Mono Font:** Fira Code (with monospace)
 
 **Character:** A bookish transitional serif for headings over a neutral, highly
 legible grotesque for reading and interface text: the published protocol's
@@ -265,10 +280,17 @@ authority with a working document's clarity.
 - **Nav** (Arimo 700, 16.36px): navbar links. Sidebar links are Arimo 400 at
   15.7px; TOC links Arimo 400 at 14.9px.
 - **Caption** (Arimo 400, 15.3px): figure captions, centered and italic.
+- **Small** (Arimo 400, 0.86rem): table-of-contents title (600) and page
+  metadata (authors, contributors, last modified, license). The cookie notice
+  text is 0.9rem.
 - **Label** (Arimo 700, 0.72rem, 0.06em tracking, uppercase): the Diátaxis
   page-type badge only.
 - **Code** (Fira Code 400, inline 500, 16.36px): code blocks and inline code,
   ligatures off.
+
+Syntax highlighting uses Quarto's **Arrow** theme in light mode and **Dracula**
+in dark mode, with one override: Dracula comments use Twilight Periwinkle so
+they pass 4.5:1.
 
 ### Named Rules
 
@@ -325,12 +347,14 @@ that float over the page (menus, the cookie notice) cast a shadow.
 
 Soft-edged and confident. Interactive and labeling elements are pills (buttons,
 the Diátaxis badge, cookie-notice buttons); containers use rounded corners
-(callouts 0.5rem, the cookie notice 0.75rem); small utility surfaces (inline
-code, the skip link) use 0.25rem. Borders are hairlines (1px) in the element's
-own meaning color at partial opacity, or Stone/Rule Grey for neutral frames.
+(callouts 0.5rem, the cookie notice 0.75rem); small utility surfaces (code
+blocks, inline code, the skip link) use 0.25rem. Borders are hairlines (1px) in
+the element's own meaning color at partial opacity, or Stone/Rule Grey for
+neutral frames.
 
 **The No-Stripe Rule.** No thick colored border on one side of a box. Callouts
-use a full 1px border plus a faint tint, never Quarto's default 5px left stripe.
+use a full 1px border plus a faint tint, never Quarto's default 5px left stripe;
+dark-mode code blocks use a 1px Rule Grey frame, not a left stripe.
 
 ## Components
 
@@ -340,6 +364,7 @@ Confident pills with a single clear job.
 
 - **Shape:** fully rounded (`{rounded.pill}`), minimum width 165px on the
   homepage.
+- **Type:** Arimo (Nav typography), never the system font.
 - **Hero button:** Paper White with Canopy Green text on the green hero band;
   hover turns Mist Teal.
 - **Action button:** Ember Orange with white text on the grey band; hover
@@ -388,6 +413,16 @@ A slim floating box, not a banner: one sentence and two buttons.
   followed by authorship metadata; a skip link ("Skip to main content") is the
   first focusable element on every page.
 
+### Code blocks
+
+- **Light:** Paper Grey background with Canopy Green text, `{rounded.sm}`, no
+  border; Arrow highlighting.
+- **Dark:** translucent black panel (50%) with a 1px `--hub-rule-color` frame,
+  `{rounded.sm}`; Dracula highlighting with Twilight Periwinkle comments.
+- **Inline code:** Fira Code 500; Canopy Green on Paper Grey in light mode,
+  Lavender on a faint white tint in dark mode.
+- A copy button sits in the top-right corner of every block.
+
 ### Media
 
 - Screen recordings are short MP4 videos written as ordinary Markdown images;
@@ -411,6 +446,8 @@ A slim floating box, not a banner: one sentence and two buttons.
   scroll inside their own box.
 - **Do** write screen recordings as `![alt text](file.mp4)` and give every image
   alt text.
+- **Do** check syntax-highlighting colors at 4.5:1 in both themes when changing
+  the code themes.
 
 ### Don't:
 

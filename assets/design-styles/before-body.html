@@ -8,6 +8,16 @@
   document.body.prepend(document.currentScript.previousElementSibling);
 </script>
 <script>
+  // Listing pages: Quarto renders the category filter title as an <h5> in
+  // the margin, ahead of the page's <h1>. Keep its look, drop it from the
+  // heading outline so the page title leads.
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("h5.quarto-listing-category-title").forEach(function (h) {
+      h.setAttribute("role", "presentation");
+    });
+  });
+</script>
+<script>
   // Screen recordings (web-media filter) play like GIFs, but only while near
   // the viewport, so a page with several downloads each one as the reader
   // reaches it. Readers who ask for reduced motion (and browsers without

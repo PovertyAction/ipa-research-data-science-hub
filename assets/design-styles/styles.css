@@ -315,7 +315,7 @@ iframe.reveal-demo {
 
 .btn-action {
   min-width: 165px;
-  border-radius: 30px;
+  border-radius: 999px;
   border: none;
 }
 
@@ -599,7 +599,9 @@ code {
 /* Dark theme code block improvements for readability */
 body.quarto-dark pre.sourceCode {
   background-color: rgba(0, 0, 0, 0.5) !important;
-  border-left: 3px solid #333333;
+  /* hairline frame like light mode's code blocks, not a left stripe */
+  border: 1px solid var(--hub-rule-color);
+  border-radius: 0.25rem;
   padding: 1em;
 }
 
