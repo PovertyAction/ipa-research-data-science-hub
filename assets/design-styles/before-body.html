@@ -19,3 +19,18 @@
     });
   }
 </script>
+<script>
+  // Quarto's cookie-consent library hard-codes its banner text, which says the
+  // site shows "personalized content and targeted ads". The Hub does neither
+  // (it only runs Google Analytics), so drop that clause. Quarto registers the
+  // banner in <head>, so its DOMContentLoaded handler has run before this one.
+  document.addEventListener("DOMContentLoaded", function () {
+    var text = document.querySelector(".termsfeed-com---nb .cc-nb-text");
+    if (text) {
+      text.textContent =
+        "We use cookies and other tracking technologies to improve your " +
+        "browsing experience on our website, to analyze our website traffic, " +
+        "and to understand where our visitors are coming from.";
+    }
+  });
+</script>

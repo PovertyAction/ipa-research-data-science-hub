@@ -1,5 +1,5 @@
 --[[
-Quarto filter for content images in HTML output.
+Quarto filter for content images and tables in HTML output.
 
 - Images whose source ends in .mp4 become a muted, looping <video>, so screen
   recordings can be written as ordinary Markdown images:
@@ -11,6 +11,9 @@ Quarto filter for content images in HTML output.
 - Other images get loading="lazy" so the browser fetches them only as the
   reader scrolls near them. The first image on a page is skipped because it is
   often visible on load. Images that already set `loading` are left alone.
+- Tables get Quarto's `responsive` class, which wraps them in Bootstrap's
+  .table-responsive so a wide table scrolls inside its own box instead of
+  pushing the whole page sideways on narrow screens.
 ]]--
 
 local seen = 0
@@ -53,4 +56,12 @@ function Image(img)
   end
   -- always return img: returning nil would discard the fig-alt set above
   return img
+end
+
+function Table(tbl)
+  if not quarto.doc.is_format("html") or tbl.classes:includes("responsive") then
+    return nil
+  end
+  tbl.classes:insert("responsive")
+  return tbl
 end

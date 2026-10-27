@@ -83,58 +83,14 @@ strong {
 }
 
 
-@media (min-width: 1020px) {
+/* The navbar collapses to the menu button below Bootstrap's xl breakpoint
+   (collapse-below: xl in _quarto.yml): the full set of links needs ~1200px
+   and wrapped onto two lines on narrower laptops */
+@media (min-width: 1200px) {
   .navbar-brand-container {
     margin-right: 1em;
   }
-}
 
-
-
-@media (max-width: 1060px) and (min-width: 991.98px) {
-
-  #navbarCollapse ul:last-of-type a.nav-link {
-    padding-left: .25em;
-    padding-right: .25em;
-  }
-
-  .navbar #quarto-search {
-    margin-left: .1em;
-  }
-
-  .navbar #quarto-search input {
-    font-size: 85%;
-    margin-left: .1rem;
-    font-weight: 400;
-  }
-
-  .navbar .bi-github {
-    font-size: .8em;
-  }
-
-  .navbar .aa-Autocomplete {
-    border-color: #12853d;
-  }
-
-  .navbar .aa-Autocomplete .aa-Form {
-    width: 20rem;
-    margin-right: 0rem;
-    padding: 7px;
-    height: 2rem;
-    border-color: #c4c4c4;
-    background-color: #ffffff;
-  }
-
-  .navbar .aa-Autocomplete .aa-SubmitIcon {
-    transform: scale(0.8);
-    margin-left: -4px;
-    margin-right: 3px;
-  }
-
-}
-
-
-@media (min-width: 991.98px) {
   body.quarto-light #quarto-header {
     border-bottom: 1px solid #dee2e6;
   }
@@ -446,6 +402,116 @@ span.color-box {
   /* Space between box and text */
   border: 1px solid #000;
   /* Border color */
+}
+
+/*===========================
+  Narrow screens and touch
+=============================*/
+
+/* Long bare URLs (e.g. in References) are one unbreakable word; let them
+   wrap rather than push the page sideways on phones */
+main {
+  overflow-wrap: break-word;
+}
+
+/* Code-cell plots carry a fixed width attribute; keep them in the column */
+main img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Data frames printed by code cells are raw HTML tables that the
+   web-media filter cannot mark responsive; scroll them in place */
+.cell-output-display {
+  overflow-x: auto;
+}
+
+/* Cookie banner (Quarto cookie-consent, style: simple): use the site font */
+.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-title,
+.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-text,
+.termsfeed-com---nb.termsfeed-com---nb-simple button {
+  font-family: Arimo, Arial, sans-serif;
+}
+
+/* Default box is half the screen wide with 51px padding; keep it compact */
+.termsfeed-com---nb.termsfeed-com---nb-simple {
+  max-width: 30rem;
+}
+
+.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-main-container {
+  padding: 1.25rem 1.5rem;
+}
+
+.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-text {
+  font-size: 0.95rem;
+  margin-bottom: 0.9rem;
+}
+
+/* On phones the default box was indented, padded 51px, and covered over half
+   the screen; make it a compact full-width bar with the buttons side by side */
+@media (max-width: 575.98px) {
+  .termsfeed-com---nb.termsfeed-com---nb-simple {
+    left: 0;
+    right: 0;
+    max-width: none;
+  }
+
+  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-main-container {
+    padding: 1rem 1.25rem;
+  }
+
+  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-text {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+
+  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-buttons-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .termsfeed-com---nb.termsfeed-com---nb-simple .cc-nb-buttons-container button {
+    flex: 1;
+    margin: 0;
+    min-height: 44px;
+  }
+}
+
+/* Cookie-consent shrinks its footer link to 0.8em (about 10px); match the
+   other footer links instead */
+div.cookie-consent-footer {
+  font-size: inherit;
+}
+
+/* Touch screens: sidebar, table of contents, and footer links are ~18px
+   tall; pad them toward the 44px touch target size */
+@media (pointer: coarse) {
+  .sidebar-navigation .sidebar-item .sidebar-link,
+  #TOC .nav-link,
+  .toc-meta a,
+  .toc-actions a,
+  .nav-footer a {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+
+  /* inline links ignore vertical padding for layout */
+  .toc-meta a,
+  .toc-actions a,
+  .nav-footer a {
+    display: inline-block;
+  }
 }
 
 /*===========================
