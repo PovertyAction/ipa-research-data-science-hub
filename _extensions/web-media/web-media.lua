@@ -6,6 +6,8 @@ Quarto filter for content images in HTML output.
     ![Create Twilio flow](/assets/images/twilio/twilio-design-5.mp4)
   The image alt text becomes the video's aria-label. `controls` lets readers
   pause the motion (WCAG 2.2.2).
+- Figures get their caption as alt text when no fig-alt is set (Quarto
+  otherwise leaves the <img> with no alt).
 - Other images get loading="lazy" so the browser fetches them only as the
   reader scrolls near them. The first image on a page is skipped because it is
   often visible on load. Images that already set `loading` are left alone.
@@ -37,10 +39,18 @@ function Image(img)
   if img.src:lower():match("%.mp4$") then
     return video(img)
   end
-  seen = seen + 1
-  if seen == 1 or img.attributes["loading"] ~= nil then
-    return nil
+  -- Quarto moves a figure's caption into <figcaption> and leaves the <img>
+  -- with no alt at all, which leaves linked figures without a name. Reuse the
+  -- caption as fig-alt unless the author set one. Runs at pre-ast (see
+  -- _quarto.yml) because Quarto reads fig-alt when it parses figures.
+  if #img.caption > 0 and img.attributes["fig-alt"] == nil
+      and img.attributes["alt"] == nil then
+    img.attributes["fig-alt"] = pandoc.utils.stringify(img.caption)
   end
-  img.attributes["loading"] = "lazy"
+  seen = seen + 1
+  if seen > 1 and img.attributes["loading"] == nil then
+    img.attributes["loading"] = "lazy"
+  end
+  -- always return img: returning nil would discard the fig-alt set above
   return img
 end

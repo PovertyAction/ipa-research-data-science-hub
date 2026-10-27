@@ -1,0 +1,21 @@
+<!-- First focusable element on every page: lets keyboard users jump past the
+     navbar and sidebar. Target is Quarto's <main>, or the role="main" div on
+     the custom-layout homepage. -->
+<a class="skip-link visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+<script>
+  // Quarto places include-before-body inside <main>; move the link to the
+  // start of <body> so it comes before the navbar in tab order
+  document.body.prepend(document.currentScript.previousElementSibling);
+</script>
+<script>
+  // Screen recordings autoplay like GIFs (web-media filter). Readers who ask
+  // their system for reduced motion get them paused; controls still play them.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("video[autoplay]").forEach(function (video) {
+        video.removeAttribute("autoplay");
+        video.pause();
+      });
+    });
+  }
+</script>
