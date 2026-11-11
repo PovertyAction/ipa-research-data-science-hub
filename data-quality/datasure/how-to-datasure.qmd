@@ -211,19 +211,27 @@ project stores your imported datasets, configuration settings, quality check
 outputs, correction history, and prep logs, all in a local cache on your
 computer.
 
+The **Start Here** page lists your projects, one row per project. Each row shows
+the project name, when you last used it, and how many datasets and check pages
+it has. Use the search box to find a project by name.
+
 ### Creating a new project
 
-1. On the **Start Here** page, select **Create New Project** from the project
-   dropdown.
+1. On the **Start Here** page, click **+ New Project**.
 
-2. Enter a descriptive project name. Project names can contain letters, numbers,
+2. In the **New Project** dialog, keep **Start from scratch** selected.
+
+3. Enter a descriptive project name. Project names can contain letters, numbers,
    spaces, dashes, and underscores, and must be at least three characters long.
 
    Good examples: `TCAI Baseline 2026`, `Kidigo DDEP Endline 2024`,
    `ORS-Zinc Midline 2020`
 
-3. Click **Create Project**. DataSure generates a unique project ID from the
-   name and sets up the local cache folder structure automatically.
+4. Click **Create Project**. DataSure generates a unique project ID from the
+   name, sets up the local cache folder structure, and opens the project.
+
+To start from another project's setup instead of from scratch, see [Reusing a
+project's setup](#reusing-a-projects-setup).
 
 ::: {.callout-tip}
 Use one project per survey wave or data collection phase. A consistent naming
@@ -233,16 +241,73 @@ projects over time and to hand off projects to colleagues.
 
 ### Opening an existing project
 
-1. On the **Start Here** page, select the project from the dropdown. DataSure
-   automatically highlights the most recently used project.
-2. DataSure shows the project's creation date and last-used date below the
-   selector.
-3. Click **Load Project**.
+On the **Start Here** page, find the project in the list and click **Open**.
+
+### Reusing a project's setup
+
+A **configuration file** saves a project's setup so you or a colleague can reuse
+it. Use it to start the next survey round with the same checks, or to
+share a working setup with another team.
+
+The configuration file includes:
+
+- Import sources
+- Prep steps
+- Check pages, with their settings and check tables
+- Missing-value codes
+- Corrections and back check mismatch attributions, if you choose to include
+  them
+
+The file never contains survey data, passwords, or file paths from your
+computer, so you can share it by email. When you apply it, you sign in to
+SurveyCTO again and select local files on the computer doing the import.
+
+#### Export a configuration file
+
+1. On the **Start Here** page, find the project and open its **More** menu.
+2. Select **Export configuration**.
+3. Choose whether to keep **Include record-level decisions (corrections and
+   backcheck attribution)** ticked. DataSure ticks it by default. Untick it to
+   share only the setup, for example when you start a new survey round with the same
+   checks.
+4. Click **Download configuration** to save the file. The file is a `.json`
+   file.
+
+#### Create a project from a configuration file
+
+1. On the **Start Here** page, click **+ New Project**.
+2. In the **New Project** dialog, select **From a configuration file**.
+3. Upload the configuration file. DataSure confirms which project the file came
+   from.
+4. Enter a project name.
+5. Click **Create Project & Continue**. DataSure creates the project and guides
+   you through connecting it to your data sources.
+
+#### Update an existing project from a configuration file
+
+1. On the **Start Here** page, find the project and open its **More** menu.
+2. Select **Update from configuration** and upload the configuration file.
+
+When DataSure applies a configuration file to a project:
+
+- DataSure only creates a check page if the project has no page with the same
+  name and you have imported the page's dataset. DataSure lists any pages it
+  skips. Existing pages keep their own settings.
+- DataSure merges missing-value codes with the project's codes. If both use the
+  same label, the code from the file replaces the project's code.
+- DataSure applies everything in the file without asking you to confirm each
+  item.
+
+::: {.callout-note}
+A configuration file exported from DataSure 1.1 does not include check tables
+or missing-value codes. You can still apply it, but DataSure shows a warning,
+and you need to set up those items again by hand.
+:::
 
 ### Deleting a project
 
-To permanently delete a project and all its data, expand the **Delete Project**
-section under the project selector. DataSure will ask you to confirm before
+To permanently delete a project and all its data, open the project's **More**
+menu and select **Delete project**. DataSure will ask you to confirm before
 deleting. This action cannot be undone.
 
 ![The Start Here page with an existing project selected, showing creation and last-used dates and the Load Project button.](images/datasure_project_selector.png){fig-alt="DataSure Start Here page with an existing project selected in the dropdown, displaying the project creation date and last-used date, and the Load Project button." .lightbox}
