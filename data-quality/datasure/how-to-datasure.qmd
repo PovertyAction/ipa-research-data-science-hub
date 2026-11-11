@@ -143,9 +143,10 @@ datasure --help
 
 DataSure records who made every correction, acceptance, and back check
 attribution. By default, it uses your computer login. To use your own name
-instead, click **Reviewer** near the bottom of the sidebar and enter your name
-under **Reviewer name**. DataSure saves it as soon as you type it and remembers
-it across sessions. Leave the box blank to go back to your computer login.
+instead, click the **Reviewer** button near the bottom of the sidebar, which
+shows the current name, and enter your name under **Reviewer name**. DataSure
+saves it when you press Enter or click away, and remembers it across sessions.
+Leave the box blank to go back to your computer login.
 
 Set your reviewer name before you start correcting data, so that the Correction
 Log shows who made each entry.
@@ -624,7 +625,7 @@ Each check has two sections:
 - **Results**: The actual check output, including summary statistics, charts,
   and tables of flagged records.
 
-Use the **Column Selector** within each tab to choose which columns to include
+Use the **Column Selector** within each check to choose which columns to include
 in that check. This is useful for focusing on the variables most relevant to
 your project.
 
@@ -650,11 +651,11 @@ Key metrics shown:
 - **Subgroup progress**: Progress broken down by a grouping variable you choose,
   such as region or enumerator team
 
-### Survey Progress tab
+### Progress tab
 
-The Survey Progress tab provides a more detailed view of collection pacing. It
-is most useful for project managers who need to monitor whether the team is on
-track to meet the target sample size by the end of the data collection period.
+The Progress tab provides a more detailed view of collection pacing. It is most
+useful for project managers who need to monitor whether the team is on track to
+meet the target sample size by the end of the data collection period.
 
 Configure the tab settings before reviewing results:
 
@@ -729,6 +730,11 @@ stays disabled, with a message that explains what is missing, until:
   another record
 - You have entered a reason and a note
 
+If you choose **Drop** for every record, DataSure asks you to confirm first,
+because the ID disappears from the data. On a card for an unmatched backcheck,
+you can only choose **Modify ID** or **Drop**, and the new ID must exist in the
+survey data.
+
 After you save, the card disappears and **Resolved** goes up by one. DataSure
 logs each change in the Correction Log with the source `duplicates`. To undo a
 change, remove it from the Correction Log on the **Correct Data** page (Step 6).
@@ -740,9 +746,9 @@ followed by a completed interview, use **Records to Include** to leave out the
 record you do not need.
 :::
 
-### Missing Data tab
+### Missing Values tab
 
-The Missing Data tab shows the extent and patterns of incomplete responses
+The Missing Values tab shows the extent and patterns of incomplete responses
 across your dataset.
 
 Before reviewing results, configure your missing value codes:
@@ -823,14 +829,14 @@ reason, and click **Apply**:
 
 Accepting a value that breaks a hard limit asks you to confirm first. An
 acceptance covers one check: accepting an outlier does not accept a constraint
-violation on the same value. If the value changes later, the acceptance lapses
-and DataSure flags the value again.
+violation on the same value. If the value changes later, the acceptance no
+longer applies and DataSure flags the value again.
 
 Use the toggles above each table to choose what it shows:
 
-- **Show only flagged values** (on by default): Show only flagged values. Turn
-  it off to see every checked value, including corrected values that are now in
-  range.
+- **Show only flagged values** (on by default): Hide values that are not
+  flagged. Turn it off to see every checked value, including corrected values
+  that are now in range.
 - **Show reviewed**: Show accepted flags and corrected values, highlighted in
   green with the reason.
 - **Show only reviewed**: Show only accepted and corrected values.
@@ -900,8 +906,8 @@ click **Apply**:
 DataSure draws accepted points in green on the map, labels them **Accepted**,
 and leaves them out of the outlier count. Turn on **Show reviewed** to list them
 in the table with the reason. If either coordinate changes later, the acceptance
-lapses and DataSure flags the point again. DataSure logs every review in the
-Correction Log with the source `gps`.
+no longer applies and DataSure flags the point again. DataSure logs every review
+in the Correction Log with the source `gps`.
 
 ::: {.callout-note}
 Correcting coordinates requires separate latitude and longitude columns. If your
@@ -925,9 +931,9 @@ Select up to 10 columns to analyze. For each column, you can choose between:
 - **Summary Statistics**: Count, mean, standard deviation, min, max, and
   percentiles
 
-### Back Checks tab
+### Backchecks tab
 
-The Back Checks tab compares original survey responses against re-interview
+The Backchecks tab compares original survey responses against re-interview
 validation data to measure enumerator reliability.
 
 Before reviewing results, configure the tab:
@@ -1000,9 +1006,12 @@ Attribution never changes the data, the mismatch counts, or the regular error
 rate. It changes only the **adjusted error rate**, which DataSure shows next to
 the regular error rate for each enumerator and backchecker. The adjusted rate
 leaves out the mismatches attributed to someone else, so DataSure measures each
-person on their own mistakes. For example, an enumerator with 10 values compared
-and 4 mismatches, one attributed to the respondent and one to the backchecker,
-has an error rate of 40% and an adjusted error rate of 20%.
+person on their own mistakes: the enumerator adjusted rate leaves out mismatches
+attributed to the backchecker or the respondent, and the backchecker adjusted
+rate leaves out those attributed to the enumerator or the respondent.
+Unattributed mismatches count against both. For example, an enumerator with 10
+values compared and 4 mismatches, one attributed to the respondent and one to
+the backchecker, has an error rate of 40% and an adjusted error rate of 20%.
 
 ## Step 6: Correct Data
 
@@ -1019,13 +1028,13 @@ You can fix most flagged values on the check that found them, using the
 Data** page to correct any record, including records that no check flagged, and
 to review or undo entries. Both write to the same Correction Log.
 
-  | Where                  | What You Can Do                                                         |
-  | ---------------------- | ----------------------------------------------------------------------- |
-  | Outliers & Constraints | Modify value, remove value, accept                                      |
-  | GPS Checks             | Modify coordinates, remove coordinates, remove observation, accept      |
-  | Duplicates             | Keep, Modify ID, or Drop each record on a duplicate ID card             |
-  | Backchecks             | Attribute a mismatch to its error source (the data does not change)     |
-  | Correct Data page      | Modify value, remove value, remove row, for any record and column       |
+  | Where                  | What You Can Do                                                          |
+  | ---------------------- | -----------------------------------------------------------------------  |
+  | Outliers & Constraints | Modify value, remove value, accept                                       |
+  | GPS Checks             | Modify coordinates, remove coordinates, remove observation, accept       |
+  | Duplicates             | Keep, Modify ID, or Drop each record on a duplicate ID card              |
+  | Backchecks             | Attribute a mismatch to its error source (the data does not change)      |
+  | Correct Data page      | Modify value, remove value, remove row, for any survey record and column |
 
 ### Choosing a check page and dataset
 
@@ -1080,6 +1089,10 @@ values, action, reason, and timestamp, each entry shows:
   reviewer name](#setting-your-reviewer-name))
 - **Status**: Whether DataSure applied the entry successfully the last time it
   loaded the data, with the reason if it did not
+- **Check type**: For an accept entry, the check it applies to
+- **Severity**: For an acceptance of a constraint violation past a hard limit,
+  `hard`. DataSure highlights these rows in red so that a reviewer can check
+  them
 
 Use the **Source** and **Action** filters above the log to show only the entries
 you need. The filters combine: for example, select the `gps` source and the
