@@ -59,8 +59,23 @@ formats, automatically runs a comprehensive set of quality checks, and presents
 the results in clear, interactive dashboards. When issues are found, DataSure
 provides tools to record and track corrections with a full audit trail.
 
-[![Latest DataSure version on
-PyPI](https://img.shields.io/pypi/v/datasure?label=latest%20version)](https://pypi.org/project/datasure/)
+Latest DataSure version on PyPI:
+[1.2.1](https://pypi.org/project/datasure/){#datasure-version}
+
+```{=html}
+<script>
+  // Replace the fallback version above with the latest release from PyPI.
+  fetch("https://pypi.org/pypi/datasure/json")
+    .then((response) => response.json())
+    .then((data) => {
+      const link = document.getElementById("datasure-version");
+      const version = data.info.version;
+      link.textContent = version;
+      link.href = "https://pypi.org/project/datasure/" + version + "/";
+    })
+    .catch(() => {});
+</script>
+```
 
 To see what changed in each version, read the [DataSure release
 notes](https://github.com/PovertyAction/datasure/blob/main/RELEASENOTES.md).
