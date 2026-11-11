@@ -695,8 +695,6 @@ Use the **Column Selector** within each check to choose which columns to include
 in that check. This is useful for focusing on the variables most relevant to
 your project.
 
-![A DQA Report page with the Summary tab open, showing the submission trend chart and quality metric cards.](images/datasure_summary_tab.png){fig-alt="DataSure DQA Report page with the Summary tab selected, displaying a submission trend line chart and quality metric cards for duplicate rate, missing data rate, outlier rate, and backcheck error rate." .lightbox}
-
 ### Summary tab
 
 The Summary tab is the starting point for each monitoring session. It gives a
@@ -716,6 +714,21 @@ Key metrics shown:
   choose
 - **Subgroup progress**: Progress broken down by a grouping variable you choose,
   such as region or enumerator team
+
+The **Check health** section shows a status for each check:
+
+- **No issues**: The check found nothing to review.
+- **Flagged**: The check found issues to review.
+- **Not set up**: The check needs columns that you have not selected yet. Click
+  **Set up** to configure it.
+- **Not applicable**: The check does not apply to this dataset. DataSure shows
+  the reason.
+
+Click **Open** to go to a check's results. By default, the **Change** and
+**Resolved** columns compare against yesterday. To compare against another
+period, expand **Comparison period**.
+
+![The Check health section of the Summary tab, with one row per check showing its status, outstanding issues, change, and resolved issues.](images/datasure_check_health.png){fig-alt="DataSure Check health section on the Summary tab of the Household HFC report. A note says it shows changes since yesterday. The table has the columns Check, Status, Outstanding, Change, and Resolved, grouped under Overview and Data integrity. Progress shows No issues, with 5,561 of 6,000 submissions and 71 new submissions since yesterday. Missing Values shows Flagged, with 26 of 481 columns all missing. Duplicates shows Flagged, with 7 duplicate IDs. Outliers & Constraints and GPS Checks show Not set up, each with a Set up button. The other rows have an Open button." .lightbox}
 
 ### Progress tab
 
