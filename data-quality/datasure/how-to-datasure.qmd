@@ -139,7 +139,7 @@ datasure --host 0.0.0.0 --port 8080
 datasure --help
 ```
 
-### Setting your reviewer name
+### Setting your reviewer name {#sec-reviewer-name}
 
 DataSure records who made every correction, acceptance, and back check
 attribution. By default, it uses your computer login. To use your own name
@@ -232,7 +232,7 @@ change the order of the list.
    name, sets up the local cache folder structure, and opens the project.
 
 To start from another project's setup instead of from scratch, see [Reusing a
-project's setup](#reusing-a-projects-setup).
+project's setup](#sec-reuse-setup).
 
 ::: {.callout-tip}
 Use one project per survey wave or data collection phase. A consistent naming
@@ -244,11 +244,11 @@ projects over time and to hand off projects to colleagues.
 
 On the **Start Here** page, find the project in the list and click **Open**.
 
-### Reusing a project's setup
+### Reusing a project's setup {#sec-reuse-setup}
 
 A **configuration file** saves a project's setup so you or a colleague can reuse
-it. Use it to start the next survey round with the same checks, or to
-share a working setup with another team.
+it. Use it to start the next survey round with the same checks, or to share a
+working setup with another team.
 
 The configuration file includes:
 
@@ -269,8 +269,8 @@ SurveyCTO again and select local files on the computer doing the import.
 2. Select **Export configuration**.
 3. Choose whether to keep **Include record-level decisions (corrections and
    backcheck attribution)** ticked. DataSure ticks it by default. Untick it to
-   share only the setup, for example when you start a new survey round with the same
-   checks.
+   share only the setup, for example when you start a new survey round with the
+   same checks.
 4. Click **Download configuration** to save the file. The file is a `.json`
    file.
 
@@ -302,9 +302,9 @@ When DataSure applies a configuration file to a project:
   item.
 
 ::: {.callout-note}
-A configuration file exported from DataSure 1.1 does not include check tables
-or missing-value codes. You can still apply it, but DataSure shows a warning,
-and you need to set up those items again by hand.
+A configuration file exported from DataSure 1.1 does not include check tables or
+missing-value codes. You can still apply it, but DataSure shows a warning, and
+you need to set up those items again by hand.
 :::
 
 ### Deleting a project
@@ -569,13 +569,17 @@ condition, and any required values.
 
 ### Reviewing and editing preparation steps
 
-DataSure shows all preparation steps you add in a log below the dataset preview.
-Each step records the action type, the affected column, and the time you applied
-it. You can review this log to confirm that DataSure applied each step
-correctly.
+DataSure lists every preparation step you add in the **Change Log** below the
+dataset preview. Each row shows the step's action, its status, and a description
+of what the step did, such as which columns it removed and how many columns
+remain. Check the log to confirm that each step worked.
 
-DataSure applies preparation steps in order. If you need to remove a step, you
-can delete it from the log.
+DataSure applies the steps in order each time it loads the data. If it can't
+apply a step, for example because a new import no longer has a column the step
+uses, the status is **Failed** and the description says why. DataSure skips the
+failed step and still applies the others. To fix it, click **Remove data prep
+step**, select the step under **Select Action to Remove**, click **Remove**, and
+confirm. Then add the step again with the right settings.
 
 ![The Change Log on the Prepare Data page, with one successful step and one failed step.](images/datasure_prep_log.png){fig-alt="DataSure Prepare Data page for the Household Survey dataset. Under Apply Changes are the Add data prep step and Remove data prep step buttons. Below them, the Change Log table has three columns: action, status, and description. The first row is a step that removes columns. Its status is Successful, and its description says the step removed 1 column, birthyy_99, leaving 478 columns. The second row is a step that removes rows. Its status is Failed, and its description says the step could not be reapplied because DataSure could not find the column village_name." .lightbox}
 
@@ -611,16 +615,16 @@ You must provide only the **Key Column**. All other columns are optional, but
 omitting them will disable the checks that depend on them. The table below
 describes each column field and which modules it affects.
 
-  | Field                   | Required | What It Represents                                                                                                                                                              | Affected Checks                                                          | Example Values                                  |
-  | ----------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------- |
-  | **Key Column**          | Yes      | A column where every single row has a unique value. Used to identify specific records for corrections and to track flagged issues across check modules.                         | All modules                                                              | `KEY`, `uuid`, `_uuid`                          |
-  | **ID Column**           | No       | The respondent identifier. May repeat if the same respondent appears in multiple rows. Without it, duplicate detection and back check matching are unavailable.                 | Duplicates, Back Checks, Survey Progress                                 | `hhid`, `respondent_id`, `hh_id`                |
-  | **Enumerator Column**   | No       | Identifies the field staff member who collected each record. Without it, all enumerator-level breakdowns are unavailable.                                                       | Enumerator Stats, Missing Data (by enumerator), Outliers (by enumerator) | `enum_name`, `enumerator_id`, `interviewer`     |
-  | **Date Column**         | No       | The date and time when an enumerator submitted the survey or conducted the interview. Must be in datetime format. Without it, all time-based charts and trends are unavailable. | Summary, Survey Progress, Enumerator Stats, Missing Data (over time)     | `submissiondate`, `starttime`, `date_collected` |
-  | **Team Column**         | No       | Identifies the team or group the enumerator belongs to. When provided, Enumerator Stats adds team-level breakdowns alongside individual breakdowns.                             | Enumerator Stats                                                         | `team_id`, `supervisor_name`, `region_team`     |
-  | **Duration Column**     | No       | The interview duration, typically in seconds. SurveyCTO records this automatically in a column called `duration`. Without it, duration statistics are unavailable.              | Enumerator Stats                                                         | `duration`, `interview_duration`                |
-  | **Form Version Column** | No       | The survey form version used for each submission. SurveyCTO stores this as `formdef_version`. Without it, the Summary tab omits form version tracking.                          | Summary                                                                  | `formdef_version`, `form_version`               |
-  | **Survey Target**       | No       | The expected total number of completed interviews. Without it, progress charts display submission trends but without a target reference line.                                   | Summary, Survey Progress                                                 | `200`, `500`, `1500`                            |
+  | Field                   | Required | What It Represents                                                                                                                                                                | Affected Checks                                                          | Example Values                                  |
+  | ----------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------   | ------------------------------------------------------------------------ | ----------------------------------------------- |
+  | **Key Column**          | Yes      | A column where every single row has a unique value. Used to identify specific records for corrections and to track flagged issues across check modules.                           | All modules                                                              | `KEY`, `uuid`, `_uuid`                          |
+  | **ID Column**           | No       | The respondent identifier. May repeat if the same respondent appears in multiple rows. Without it, duplicate detection and back check matching are unavailable.                   | Duplicates, Back Checks, Survey Progress                                 | `hhid`, `respondent_id`, `hh_id`                |
+  | **Enumerator Column**   | No       | Identifies the field staff member who collected each record. Without it, all enumerator-level breakdowns are unavailable.                                                         | Enumerator Stats, Missing Data (by enumerator), Outliers (by enumerator) | `enum_name`, `enumerator_id`, `interviewer`     |
+  | **Date Column**         | No       | The date and time when an enumerator submitted the survey or conducted the interview. Must be in datetime format. Without it, all time-based charts and trends are unavailable.   | Summary, Survey Progress, Enumerator Stats, Missing Data (over time)     | `submissiondate`, `starttime`, `date_collected` |
+  | **Team Column**         | No       | Identifies the team or group the enumerator belongs to. When provided, Enumerator Stats adds team-level breakdowns alongside individual breakdowns.                               | Enumerator Stats                                                         | `team_id`, `supervisor_name`, `region_team`     |
+  | **Duration Column**     | No       | The interview duration, typically in seconds. SurveyCTO records this automatically in a column called `duration`. Without it, duration statistics are unavailable.                | Enumerator Stats                                                         | `duration`, `interview_duration`                |
+  | **Form Version Column** | No       | The survey form version used for each submission. SurveyCTO stores this as `formdef_version`. Without it, the Summary check omits form version tracking.                          | Summary                                                                  | `formdef_version`, `form_version`               |
+  | **Survey Target**       | No       | The expected total number of completed interviews. Without it, progress charts display submission trends but without a target reference line.                                     | Summary, Survey Progress                                                 | `200`, `500`, `1500`                            |
 
 ::: {.callout-tip}
 The **Key Column** and **ID Column** serve different purposes. The Key Column
@@ -697,9 +701,9 @@ Use the **Column Selector** within each check to choose which columns to include
 in that check. This is useful for focusing on the variables most relevant to
 your project.
 
-### Summary tab
+### Summary
 
-The Summary tab is the starting point for each monitoring session. It gives a
+The Summary check is the starting point for each monitoring session. It gives a
 high-level picture of your data collection at a glance.
 
 Key metrics shown:
@@ -730,32 +734,32 @@ Click **Open** to go to a check's results. By default, the **Change** and
 **Resolved** columns compare against yesterday. To compare against another
 period, expand **Comparison period**.
 
-![The Check health section of the Summary tab, with one row per check showing its status, outstanding issues, change, and resolved issues.](images/datasure_check_health.png){fig-alt="DataSure Check health section on the Summary tab of the Household HFC report. A note says it shows changes since yesterday. The table has the columns Check, Status, Outstanding, Change, and Resolved, grouped under Overview and Data integrity. Progress shows No issues, with 5,561 of 6,000 submissions and 71 new submissions since yesterday. Missing Values shows Flagged, with 26 of 481 columns all missing. Duplicates shows Flagged, with 7 duplicate IDs. Outliers & Constraints and GPS Checks show Not set up, each with a Set up button. The other rows have an Open button." .lightbox}
+![The Check health section of the Summary check, with one row per check showing its status, outstanding issues, change, and resolved issues.](images/datasure_check_health.png){fig-alt="DataSure Check health section on the Summary check of the Household HFC report. A note says it shows changes since yesterday. The table has the columns Check, Status, Outstanding, Change, and Resolved, grouped under Overview and Data integrity. Progress shows No issues, with 5,561 of 6,000 submissions and 71 new submissions since yesterday. Missing Values shows Flagged, with 26 of 481 columns all missing. Duplicates shows Flagged, with 7 duplicate IDs. Outliers & Constraints and GPS Checks show Not set up, each with a Set up button. The other rows have an Open button." .lightbox}
 
-### Progress tab
+### Progress
 
-The Progress tab provides a more detailed view of collection pacing. It is most
-useful for project managers who need to monitor whether the team is on track to
-meet the target sample size by the end of the data collection period.
+The Progress check provides a more detailed view of collection pacing. It is
+most useful for project managers who need to monitor whether the team is on
+track to meet the target sample size by the end of the data collection period.
 
-Configure the tab settings before reviewing results:
+Configure the check settings before reviewing results:
 
 - Select the **Survey ID**, **Date**, and **Enumerator** columns
 - Enter the **Target Number of Interviews**
 - Optionally, specify **Consent** and **Completion** columns and their expected
   values (for example, `consent = "yes"` and `completion_status = "complete"`)
 
-The tab then shows submission trends, attempt rates per respondent, and consent
-and completion rates over time.
+The check then shows submission trends, attempt rates per respondent, and
+consent and completion rates over time.
 
 ![The Progress check showing submission progress toward the target and a weekly chart of interviews.](images/datasure_progress_tracking.png){fig-alt="DataSure Progress check for the Household HFC report. The Progress Summary shows a submission progress bar at 92.68 percent, a target of 6,000 interviews, and 5,561 submitted interviews. Below, Progress Over Time has Daily, Weekly, and Monthly buttons, with Weekly selected. The bar chart shows the number of interviews per week from August 31 to November 9, 2026, with a dashed line for the average of 505.55 interviews. Weeks below the average are red and the other weeks are green." .lightbox}
 
-### Duplicates tab
+### Duplicates
 
-The Duplicates tab identifies records that share the same value in columns that
-should be unique.
+The Duplicates check identifies records that share the same value in columns
+that should be unique.
 
-Configure the tab settings:
+Configure the check settings:
 
 - Select the **Survey ID** column (the respondent identifier to check for
   duplicates)
@@ -829,9 +833,9 @@ followed by a completed interview, use **Records to Include** to leave out the
 record you do not need.
 :::
 
-### Missing Values tab
+### Missing Values
 
-The Missing Values tab shows the extent and patterns of incomplete responses
+The Missing Values check shows the extent and patterns of incomplete responses
 across your dataset.
 
 Before reviewing results, configure your missing value codes:
@@ -841,7 +845,7 @@ Before reviewing results, configure your missing value codes:
 - **Missing Codes**: The numeric codes used in the dataset to represent these
   categories, such as `-99`, `-88`, `-77`. Separate multiple codes with commas.
 
-The tab then shows:
+The check then shows:
 
 - Overall and per-column missing rates
 - A breakdown by category (null, Don't Know, Refused, Not Applicable)
@@ -852,15 +856,15 @@ The tab then shows:
   systematic patterns, such as when respondents skip an entire block of
   questions.
 
-![The Missing Data tab showing the nullity matrix and per-column missing rate table.](images/datasure_nullity_matrix.png){fig-alt="DataSure DQA Report Missing Data tab showing a nullity matrix grid with red blocks indicating missing values, alongside a per-column missing rate table sorted by highest missingness." .lightbox}
+![The Missing Values check showing the nullity matrix and per-column missing rate table.](images/datasure_nullity_matrix.png){fig-alt="DataSure DQA Report Missing Values check showing a nullity matrix grid with red blocks indicating missing values, alongside a per-column missing rate table sorted by highest missingness." .lightbox}
 
-### Outliers & Constraints tab
+### Outliers & Constraints
 
-The Outliers & Constraints tab flags numeric values that are statistically
+The Outliers & Constraints check flags numeric values that are statistically
 unusual, and values that break the limits you set for a column. Both may
 indicate data entry errors or implausible responses.
 
-The tab requires additional setup before showing results. Click **Add
+The check requires additional setup before showing results. Click **Add
 Outlier/Constraint Column** for each numeric variable you want to check:
 
 1. **Select Columns**: Choose the column or columns to check. You can search by
@@ -927,16 +931,16 @@ Use the toggles above each table to choose what it shows:
 DataSure logs every review in the Correction Log with the source `outliers` or
 `constraints`.
 
-### Enumerator Stats tab
+### Enumerator Stats
 
-The Enumerator Stats tab monitors the productivity and data quality of
-individual field staff. It is one of the most actionable tabs during active data
-collection because it helps you identify which enumerators need follow-up.
+The Enumerator Stats check monitors the productivity and data quality of
+individual field staff. It is one of the most actionable checks during active
+data collection because it helps you identify which enumerators need follow-up.
 
-Configure the tab settings to map your dataset's columns to the expected fields
-(Enumerator, Date, Duration, Team, etc.).
+Configure the check settings to map your dataset's columns to the expected
+fields (Enumerator, Date, Duration, Team, etc.).
 
-The tab shows:
+The check shows:
 
 - **Overview metrics**: Total enumerators, active enumerators in the past 7
   days, and submission range across enumerators
@@ -949,13 +953,13 @@ The tab shows:
 - **Statistics by enumerator**: Compare any numeric column across enumerators to
   detect systematic differences in how questions were answered
 
-![The Enumerator Stats tab showing the productivity heat map with enumerators as rows and dates as columns.](images/datasure_enumerator_stats.png){fig-alt="DataSure DQA Report Enumerator Stats tab displaying a productivity heat map grid with enumerators as rows and collection dates as columns, colored by submission count per day." .lightbox}
+![The Enumerator Stats check showing the productivity heat map with enumerators as rows and dates as columns.](images/datasure_enumerator_stats.png){fig-alt="DataSure DQA Report Enumerator Stats check displaying a productivity heat map grid with enumerators as rows and collection dates as columns, colored by submission count per day." .lightbox}
 
-### GPS Checks tab
+### GPS Checks
 
-The GPS Checks tab validates geographic coordinate data.
+The GPS Checks page validates geographic coordinate data.
 
-Configure the tab to specify whether your GPS data uses separate latitude and
+Configure the check to specify whether your GPS data uses separate latitude and
 longitude columns or a single combined column. Optionally specify an accuracy
 column (SurveyCTO stores GPS accuracy in a separate column).
 
@@ -963,7 +967,7 @@ The interactive map needs a Mapbox access token. You can get one free from your
 [Mapbox account](https://account.mapbox.com/). Enter it under **Your Mapbox API
 Key** in the GPS settings and click **Save Mapbox Token**. DataSure stores the
 token securely on your computer and uses it for all your projects, so you only
-need to enter it once. Without a token, the tab still lists GPS outliers but
+need to enter it once. Without a token, the check still lists GPS outliers but
 does not show the map.
 
 The results show:
@@ -998,11 +1002,11 @@ configuration uses a single combined GPS column, the only action available is
 **remove observation**.
 :::
 
-![The GPS Checks tab showing the map of interview locations and the outliers table, with Show reviewed turned on and an accepted record highlighted.](images/datasure_gps_outlier_check.png){fig-alt="DataSure GPS Checks tab with a Mapbox map of western and northern India showing interview locations as blue markers and outliers as red markers. Below the map, the View Outliers Data table has the Show reviewed toggle turned on. Each row has a Review button and columns for key, submission date, enumerator name, latitude, longitude, review status, and review reason. The first row is highlighted in green with the status Reviewed and an accept reason." .lightbox}
+![The GPS Checks page showing the map of interview locations and the outliers table, with Show reviewed turned on and an accepted record highlighted.](images/datasure_gps_outlier_check.png){fig-alt="DataSure GPS Checks page with a Mapbox map of western and northern India showing interview locations as blue markers and outliers as red markers. Below the map, the View Outliers Data table has the Show reviewed toggle turned on. Each row has a Review button and columns for key, submission date, enumerator name, latitude, longitude, review status, and review reason. The first row is highlighted in green with the status Reviewed and an accept reason." .lightbox}
 
-### Descriptive Stats tab
+### Descriptive Stats
 
-The Descriptive Stats tab shows distribution summaries for selected variables.
+The Descriptive Stats check shows distribution summaries for selected variables.
 It is useful for reviewing the composition of your data and detecting unusual
 distributions that might indicate collection problems, such as all respondents
 reporting the same income value.
@@ -1014,12 +1018,12 @@ Select up to 10 columns to analyze. For each column, you can choose between:
 - **Summary Statistics**: Count, mean, standard deviation, min, max, and
   percentiles
 
-### Backchecks tab
+### Backchecks
 
-The Backchecks tab compares original survey responses against re-interview
+The Backchecks page compares original survey responses against re-interview
 validation data to measure enumerator reliability.
 
-Before reviewing results, configure the tab:
+Before reviewing results, configure the check:
 
 1. Map the survey ID, key, enumerator, and date columns.
 2. Set the **Backcheck target (%)**, the share of surveys you plan to back
@@ -1041,7 +1045,7 @@ Before reviewing results, configure the tab:
      missing in either dataset, `ignore_missing_values`, or compare all records
      including those with missing values, `compare_all`
 
-The comparison uses the same records as the Duplicates tab: its **Records to
+The comparison uses the same records as the Duplicates check: its **Records to
 Include** filters apply, and DataSure leaves out records with a duplicated ID
 until you resolve the duplicate. A warning above the comparison details counts
 the records left out.
@@ -1071,7 +1075,7 @@ backchecker, along with a record-level table showing each comparison.
 #### Attributing mismatches
 
 Backcheck results measure how well the team collected the data, so you cannot
-correct or accept a mismatch on this tab. Instead, record who caused it. Click
+correct or accept a mismatch on this page. Instead, record who caused it. Click
 **Review** on a mismatch in the comparison details table and choose the error
 source:
 
@@ -1173,7 +1177,7 @@ values, action, reason, and timestamp, each entry shows:
 - **Source**: The page that made the entry: `corrections_page` (the Correct Data
   page), `outliers`, `constraints`, `duplicates`, or `gps`
 - **User**: Who made the entry, taken from your reviewer name (see [Setting your
-  reviewer name](#setting-your-reviewer-name))
+  reviewer name](#sec-reviewer-name))
 - **Status**: Whether DataSure applied the entry successfully the last time it
   loaded the data, with the reason if it did not
 - **Check type**: For an accept entry, the check it applies to
@@ -1205,7 +1209,7 @@ correct key and column, and that the entry's Status in the Correction Log is
 Corrections should always follow an investigation, not precede one. Before
 correcting a record, confirm the root cause.
 
-1. Identify the issue in a DQA Report tab.
+1. Identify the issue on a DQA Report page.
 2. Investigate: is it a data entry error, a survey programming bug, or a
    legitimate extreme value?
 3. Consult field notes, supervisor reports, or the enumerator directly if
