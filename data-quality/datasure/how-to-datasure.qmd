@@ -7,7 +7,7 @@ abstract: >-
   for data managers and survey coordinators implementing DataSure for field data
   collection.
 
-date: "2026-05-18"
+date: "2026-11-11"
 
 authors-ipa:
   - "[Ishmail Azindoo Baako](https://poverty-action.org/people/ishmail-azindoo-baako)"
@@ -108,9 +108,9 @@ uv tool install datasure
 datasure --version
 ```
 
-You should see a version number, for example `datasure 1.0.0`. If you see an
-error, confirm that you installed `uv` correctly and that your system path
-updated after installation.
+You should see `datasure` followed by the version number you installed. If you
+see an error, confirm that you installed `uv` correctly and that your system
+path updated after installation.
 
 ## Launching DataSure
 
@@ -138,6 +138,18 @@ datasure --host 0.0.0.0 --port 8080
 # View all available options
 datasure --help
 ```
+
+### Setting your reviewer name {#sec-reviewer-name}
+
+DataSure records who made every correction, acceptance, and back check
+attribution. By default, it uses your computer login. To use your own name
+instead, click the **Reviewer** button near the bottom of the sidebar, which
+shows the current name, and enter your name under **Reviewer name**. DataSure
+saves it when you press Enter or click away, and remembers it across sessions.
+Leave the box blank to go back to your computer login.
+
+Set your reviewer name before you start correcting data, so that the Correction
+Log shows who made each entry.
 
 ## Getting Familiar: Try Demo Mode First
 
@@ -199,19 +211,28 @@ project stores your imported datasets, configuration settings, quality check
 outputs, correction history, and prep logs, all in a local cache on your
 computer.
 
+The **Start Here** page lists your projects, one row per project. Each row shows
+the project name, when you last used it, and how many datasets and check pages
+it has. Use the search box to find a project by name, and the sort menu to
+change the order of the list.
+
 ### Creating a new project
 
-1. On the **Start Here** page, select **Create New Project** from the project
-   dropdown.
+1. On the **Start Here** page, click **+ New Project**.
 
-2. Enter a descriptive project name. Project names can contain letters, numbers,
+2. In the **New Project** dialog, keep **Start from scratch** selected.
+
+3. Enter a descriptive project name. Project names can contain letters, numbers,
    spaces, dashes, and underscores, and must be at least three characters long.
 
    Good examples: `TCAI Baseline 2026`, `Kidigo DDEP Endline 2024`,
    `ORS-Zinc Midline 2020`
 
-3. Click **Create Project**. DataSure generates a unique project ID from the
-   name and sets up the local cache folder structure automatically.
+4. Click **Create Project**. DataSure generates a unique project ID from the
+   name, sets up the local cache folder structure, and opens the project.
+
+To start from another project's setup instead of from scratch, see [Reusing a
+project's setup](#sec-reuse-setup).
 
 ::: {.callout-tip}
 Use one project per survey wave or data collection phase. A consistent naming
@@ -221,19 +242,81 @@ projects over time and to hand off projects to colleagues.
 
 ### Opening an existing project
 
-1. On the **Start Here** page, select the project from the dropdown. DataSure
-   automatically highlights the most recently used project.
-2. DataSure shows the project's creation date and last-used date below the
-   selector.
-3. Click **Load Project**.
+On the **Start Here** page, find the project in the list and click **Open**.
+
+### Reusing a project's setup {#sec-reuse-setup}
+
+A **configuration file** saves a project's setup so you or a colleague can reuse
+it. Use it to start the next survey round with the same checks, or to share a
+working setup with another team.
+
+The configuration file includes:
+
+- Import sources
+- Prep steps
+- Check pages, with their settings and check tables
+- Missing-value codes
+- Corrections and back check mismatch attributions, if you choose to include
+  them
+
+The file omits full datasets, but included record-level decisions can contain
+participant identifiers, survey values, GPS coordinates, and reviewer names.
+Untick **Include record-level decisions (corrections and backcheck
+attribution)** to export only the setup. Review the file before sharing and use
+an approved secure channel for sensitive information. When you apply it, sign in
+to SurveyCTO again and select local files on the computer doing the import.
+
+#### Export a configuration file
+
+1. On the **Start Here** page, find the project and open its **More** menu.
+2. Select **Export configuration**.
+3. Choose whether to keep **Include record-level decisions (corrections and
+   backcheck attribution)** ticked. DataSure ticks it by default. Untick it to
+   share only the setup, for example when you start a new survey round with the
+   same checks.
+4. Click **Download configuration** to save the file. The file is a `.json`
+   file.
+
+#### Create a project from a configuration file
+
+1. On the **Start Here** page, click **+ New Project**.
+2. In the **New Project** dialog, select **From a configuration file**.
+3. Upload the configuration file. DataSure confirms which project the file came
+   from.
+4. Enter a project name.
+5. Click **Create Project & Continue**. DataSure creates the project and guides
+   you through connecting it to your data sources.
+
+![The New Project dialog with the configuration file options shown.](images/datasure_import_project_config.png){fig-alt="DataSure New Project dialog open over the Start Here page. It has a Project name box, Start from scratch and From a configuration file buttons, and a note that DataSure will create the project and then walk you through matching it to a configuration file exported from another DataSure project. Below are a Configuration file box with an Upload button that accepts JSON files up to 1GB, a note asking for a project name and a valid configuration file, and a Create Project & Continue button that is not yet active." .lightbox}
+
+#### Update an existing project from a configuration file
+
+1. On the **Start Here** page, find the project and open its **More** menu.
+2. Select **Update from configuration** and upload the configuration file.
+
+When DataSure applies a configuration file to a project:
+
+- DataSure only creates a check page if the project has no page with the same
+  name and you have imported the page's dataset. DataSure lists any pages it
+  skips. Existing pages keep their own settings.
+- DataSure merges missing-value codes with the project's codes. If both use the
+  same label, the code from the file replaces the project's code.
+- DataSure applies everything in the file without asking you to confirm each
+  item.
+
+::: {.callout-note}
+A configuration file exported from DataSure 1.1 does not include check tables or
+missing-value codes. You can still apply it, but DataSure shows a warning, and
+you need to set up those items again by hand.
+:::
 
 ### Deleting a project
 
-To permanently delete a project and all its data, expand the **Delete Project**
-section under the project selector. DataSure will ask you to confirm before
+To permanently delete a project and all its data, open the project's **More**
+menu and select **Delete project**. DataSure will ask you to confirm before
 deleting. This action cannot be undone.
 
-![The Start Here page with an existing project selected, showing creation and last-used dates and the Load Project button.](images/datasure_project_selector.png){fig-alt="DataSure Start Here page with an existing project selected in the dropdown, displaying the project creation date and last-used date, and the Load Project button." .lightbox}
+![The Start Here page listing the DataSure Demo and three projects, each with an Open button and a More menu.](images/datasure_project_selector.png){fig-alt="DataSure Start Here page titled Your Projects. At the top are a search box, a sort menu set to Last used, and a + New Project button. Below is the DataSure Demo row with Resume, Restart, and Export buttons, followed by a list of projects. Each project row shows the project name, the last-used date and time, the number of datasets and check pages, an Open button, and a More menu." .lightbox}
 
 ## Step 2: Import Data
 
@@ -489,15 +572,19 @@ condition, and any required values.
 
 ### Reviewing and editing preparation steps
 
-DataSure shows all preparation steps you add in a log below the dataset preview.
-Each step records the action type, the affected column, and the time you applied
-it. You can review this log to confirm that DataSure applied each step
-correctly.
+DataSure lists every preparation step you add in the **Change Log** below the
+dataset preview. Each row shows the step's action, its status, and a description
+of what the step did, such as which columns it removed and how many columns
+remain. Check the log to confirm that each step worked.
 
-DataSure applies preparation steps in order. If you need to remove a step, you
-can delete it from the log.
+DataSure applies the steps in order each time it loads the data. If it can't
+apply a step, for example because a new import no longer has a column the step
+uses, the status is **Failed** and the description says why. DataSure skips the
+failed step and still applies the others. To fix it, click **Remove data prep
+step**, select the step under **Select Action to Remove**, click **Remove**, and
+confirm. Then add the step again with the right settings.
 
-![The preparation log showing applied steps with action type, affected column, and timestamp.](images/datasure_prep_log.png){fig-alt="DataSure Prepare Data page showing the preparation log table with rows for each applied step, listing the action type, affected column, and timestamp." .lightbox}
+![The Change Log on the Prepare Data page, with one successful step and one failed step.](images/datasure_prep_log.png){fig-alt="DataSure Prepare Data page for the Household Survey dataset. Under Apply Changes are the Add data prep step and Remove data prep step buttons. Below them, the Change Log table has three columns: action, status, and description. The first row is a step that removes columns. Its status is Successful, and its description says the step removed 1 column, birthyy_99, leaving 478 columns. The second row is a step that removes rows. Its status is Failed, and its description says the step could not be reapplied because DataSure could not find the column village_name." .lightbox}
 
 ## Step 4: Configure Quality Checks
 
@@ -531,16 +618,16 @@ You must provide only the **Key Column**. All other columns are optional, but
 omitting them will disable the checks that depend on them. The table below
 describes each column field and which modules it affects.
 
-  | Field                   | Required | What It Represents                                                                                                                                                              | Affected Checks                                                          | Example Values                                  |
-  | ----------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------- |
-  | **Key Column**          | Yes      | A column where every single row has a unique value. Used to identify specific records for corrections and to track flagged issues across check modules.                         | All modules                                                              | `KEY`, `uuid`, `_uuid`                          |
-  | **ID Column**           | No       | The respondent identifier. May repeat if the same respondent appears in multiple rows. Without it, duplicate detection and back check matching are unavailable.                 | Duplicates, Back Checks, Survey Progress                                 | `hhid`, `respondent_id`, `hh_id`                |
-  | **Enumerator Column**   | No       | Identifies the field staff member who collected each record. Without it, all enumerator-level breakdowns are unavailable.                                                       | Enumerator Stats, Missing Data (by enumerator), Outliers (by enumerator) | `enum_name`, `enumerator_id`, `interviewer`     |
-  | **Date Column**         | No       | The date and time when an enumerator submitted the survey or conducted the interview. Must be in datetime format. Without it, all time-based charts and trends are unavailable. | Summary, Survey Progress, Enumerator Stats, Missing Data (over time)     | `submissiondate`, `starttime`, `date_collected` |
-  | **Team Column**         | No       | Identifies the team or group the enumerator belongs to. When provided, Enumerator Stats adds team-level breakdowns alongside individual breakdowns.                             | Enumerator Stats                                                         | `team_id`, `supervisor_name`, `region_team`     |
-  | **Duration Column**     | No       | The interview duration, typically in seconds. SurveyCTO records this automatically in a column called `duration`. Without it, duration statistics are unavailable.              | Enumerator Stats                                                         | `duration`, `interview_duration`                |
-  | **Form Version Column** | No       | The survey form version used for each submission. SurveyCTO stores this as `formdef_version`. Without it, the Summary tab omits form version tracking.                          | Summary                                                                  | `formdef_version`, `form_version`               |
-  | **Survey Target**       | No       | The expected total number of completed interviews. Without it, progress charts display submission trends but without a target reference line.                                   | Summary, Survey Progress                                                 | `200`, `500`, `1500`                            |
+  | Field                   | Required | What It Represents                                                                                                                                                                | Affected Checks                                                          | Example Values                                  |
+  | ----------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------   | ------------------------------------------------------------------------ | ----------------------------------------------- |
+  | **Key Column**          | Yes      | A column where every single row has a unique value. Used to identify specific records for corrections and to track flagged issues across check modules.                           | All modules                                                              | `KEY`, `uuid`, `_uuid`                          |
+  | **ID Column**           | No       | The respondent identifier. May repeat if the same respondent appears in multiple rows. Without it, duplicate detection and back check matching are unavailable.                   | Duplicates, Back Checks, Survey Progress                                 | `hhid`, `respondent_id`, `hh_id`                |
+  | **Enumerator Column**   | No       | Identifies the field staff member who collected each record. Without it, all enumerator-level breakdowns are unavailable.                                                         | Enumerator Stats, Missing Data (by enumerator), Outliers (by enumerator) | `enum_name`, `enumerator_id`, `interviewer`     |
+  | **Date Column**         | No       | The date and time when an enumerator submitted the survey or conducted the interview. Must be in datetime format. Without it, all time-based charts and trends are unavailable.   | Summary, Survey Progress, Enumerator Stats, Missing Data (over time)     | `submissiondate`, `starttime`, `date_collected` |
+  | **Team Column**         | No       | Identifies the team or group the enumerator belongs to. When provided, Enumerator Stats adds team-level breakdowns alongside individual breakdowns.                               | Enumerator Stats                                                         | `team_id`, `supervisor_name`, `region_team`     |
+  | **Duration Column**     | No       | The interview duration, typically in seconds. SurveyCTO records this automatically in a column called `duration`. Without it, duration statistics are unavailable.                | Enumerator Stats                                                         | `duration`, `interview_duration`                |
+  | **Form Version Column** | No       | The survey form version used for each submission. SurveyCTO stores this as `formdef_version`. Without it, the Summary check omits form version tracking.                          | Summary                                                                  | `formdef_version`, `form_version`               |
+  | **Survey Target**       | No       | The expected total number of completed interviews. Without it, progress charts display submission trends but without a target reference line.                                     | Summary, Survey Progress                                                 | `200`, `500`, `1500`                            |
 
 ::: {.callout-tip}
 The **Key Column** and **ID Column** serve different purposes. The Key Column
@@ -589,10 +676,23 @@ Navigate to your DQA Report from the sidebar. Reports update automatically each
 time you import new data. During active data collection, review them at least
 once per day.
 
-### Navigating check tabs
+### Navigating checks
 
-Each DQA Report page has nine tabs, one for each quality check module. Each tab
-has two sections:
+Each DQA Report page groups the nine checks into four groups. Choose a group,
+then a check:
+
+  | Group          | Checks                                                         |
+  | -------------- | -------------------------------------------------------------- |
+  | Overview       | Summary, Progress                                              |
+  | Data integrity | Missing Values, Duplicates, Outliers & Constraints, GPS Checks |
+  | Field team     | Enumerator Stats, Backchecks                                   |
+  | Exploration    | Descriptive Stats                                              |
+
+Only the check you select runs, so the page stays responsive. The page reopens
+on the check you last viewed, and each check remembers its filters and sort
+order. Click **Reset filters** beside a check's settings to clear them.
+
+Each check has two sections:
 
 - **Settings**: Configure display options and thresholds for that specific
   check. DataSure saves these settings and keeps them across sessions, so you do
@@ -600,15 +700,13 @@ has two sections:
 - **Results**: The actual check output, including summary statistics, charts,
   and tables of flagged records.
 
-Use the **Column Selector** within each tab to choose which columns to include
+Use the **Column Selector** within each check to choose which columns to include
 in that check. This is useful for focusing on the variables most relevant to
 your project.
 
-![A DQA Report page with the Summary tab open, showing the submission trend chart and quality metric cards.](images/datasure_summary_tab.png){fig-alt="DataSure DQA Report page with the Summary tab selected, displaying a submission trend line chart and quality metric cards for duplicate rate, missing data rate, outlier rate, and backcheck error rate." .lightbox}
+### Summary
 
-### Summary tab
-
-The Summary tab is the starting point for each monitoring session. It gives a
+The Summary check is the starting point for each monitoring session. It gives a
 high-level picture of your data collection at a glance.
 
 Key metrics shown:
@@ -619,51 +717,128 @@ Key metrics shown:
   spot slowdowns or unusual spikes
 - **Progress bar**: Percentage toward your Survey Target (if configured), with
   average daily submission rate
-- **Data quality overview**: At-a-glance percentages for duplicate rate, outlier
-  rate, missing data rate, and backcheck error rate
+- **Check health**: One row per check, showing its status, the issues still
+  outstanding, the issues already resolved through corrections, acceptances, or
+  attributions, and how they changed since yesterday or over another period you
+  choose
 - **Subgroup progress**: Progress broken down by a grouping variable you choose,
   such as region or enumerator team
 
-### Survey Progress tab
+The **Check health** section shows a status for each check:
 
-The Survey Progress tab provides a more detailed view of collection pacing. It
-is most useful for project managers who need to monitor whether the team is on
+- **No issues**: The check found nothing to review.
+- **Flagged**: The check found issues to review.
+- **Not set up**: The check needs columns that you have not selected yet. Click
+  **Set up** to configure it.
+- **Not applicable**: The check does not apply to this dataset. DataSure shows
+  the reason.
+
+Click **Open** to go to a check's results. By default, the **Change** and
+**Resolved** columns compare against yesterday. To compare against another
+period, expand **Comparison period**.
+
+![The Check health section of the Summary check, with one row per check showing its status, outstanding issues, change, and resolved issues.](images/datasure_check_health.png){fig-alt="DataSure Check health section on the Summary check of the Household HFC report. A note says it shows changes since yesterday. The table has the columns Check, Status, Outstanding, Change, and Resolved, grouped under Overview and Data integrity. Progress shows No issues, with 5,561 of 6,000 submissions and 71 new submissions since yesterday. Missing Values shows Flagged, with 26 of 481 columns all missing. Duplicates shows Flagged, with 7 duplicate IDs. Outliers & Constraints and GPS Checks show Not set up, each with a Set up button. The other rows have an Open button." .lightbox}
+
+### Progress
+
+The Progress check provides a more detailed view of collection pacing. It is
+most useful for project managers who need to monitor whether the team is on
 track to meet the target sample size by the end of the data collection period.
 
-Configure the tab settings before reviewing results:
+Configure the check settings before reviewing results:
 
 - Select the **Survey ID**, **Date**, and **Enumerator** columns
 - Enter the **Target Number of Interviews**
 - Optionally, specify **Consent** and **Completion** columns and their expected
   values (for example, `consent = "yes"` and `completion_status = "complete"`)
 
-The tab then shows submission trends, attempt rates per respondent, and consent
-and completion rates over time.
+The check then shows submission trends, attempt rates per respondent, and
+consent and completion rates over time.
 
-![The Survey Progress tab showing a cumulative submissions chart with a target reference line and completion rate summary.](images/datasure_progress_tracking.png){fig-alt="DataSure DQA Report Survey Progress tab displaying a cumulative submissions chart with a target reference line and a completion rate summary panel." .lightbox}
+![The Progress check showing submission progress toward the target and a weekly chart of interviews.](images/datasure_progress_tracking.png){fig-alt="DataSure Progress check for the Household HFC report. The Progress Summary shows a submission progress bar at 92.68 percent, a target of 6,000 interviews, and 5,561 submitted interviews. Below, Progress Over Time has Daily, Weekly, and Monthly buttons, with Weekly selected. The bar chart shows the number of interviews per week from August 31 to November 9, 2026, with a dashed line for the average of 505.55 interviews. Weeks below the average are red and the other weeks are green." .lightbox}
 
-### Duplicates tab
+### Duplicates
 
-The Duplicates tab identifies records that share the same value in columns that
-should be unique.
+The Duplicates check identifies records that share the same value in columns
+that should be unique.
 
-Configure the tab settings:
+Configure the check settings:
 
 - Select the **Survey ID** column (the respondent identifier to check for
   duplicates)
+
 - Optionally add other columns to check, such as phone numbers or national ID
   numbers
 
-The results show the total number of duplicates found, which columns have
-duplicates, and a table listing every duplicate record. You can filter the table
-to focus on specific columns.
+- Optionally set **Records to Include** to check only the records that match a
+  condition, for example `consent == Yes`. Use it to leave out a failed first
+  attempt when the enumerator interviewed the respondent again under the same ID.
+  The filter applies as soon as you set it.
 
-When you identify a duplicate to resolve, use the **Correct Data** page (Step 6)
-to either modify the incorrect ID or remove the duplicate record.
+Metrics at the top show the number of **Duplicate IDs**, the **Records
+involved**, **Missing IDs**, and the number of duplicate IDs already
+**Resolved** through corrections.
 
-### Missing Data tab
+#### Comparing duplicate records on ID cards
 
-The Missing Data tab shows the extent and patterns of incomplete responses
+DataSure shows one card for each duplicate ID. The card places the records side
+by side, one column per record, and highlights the fields that differ. Use the
+toggles to change what each card shows:
+
+- **Compare all fields**: show every column, not only the key, date, enumerator,
+  team, and any extra columns you selected
+- **Only differing fields**: hide fields that are the same in every record
+
+Search the cards by ID or KEY, and sort them by group size or by latest date.
+Click **Download duplicates (CSV)** to export every record on the matching
+cards.
+
+![The Duplicates check with summary metrics and an ID card that compares three records sharing one ID.](images/datasure_duplicates_id_card.png){fig-alt="DataSure Duplicates check for the Household HFC report. Metrics at the top show 7 duplicate IDs, 15 records involved, 0 missing IDs, and 0 resolved. Below are a search box for ID or KEY, a Sort by menu set to Group size, and a Download duplicates (CSV) button. The ID card for hhid UP031-017 shows 3 records submitted between September 12 and October 23, 2026, with Compare all fields and Only differing fields toggles. A table compares the records side by side, with one column per record. The KEY, submissiondate, and enum_name rows are highlighted because they differ, and the team_id row is not. Under Resolve, each record has Keep, Modify ID, and Drop options, with Keep selected." .lightbox}
+
+If your check configuration includes a backcheck dataset, a **Survey data** /
+**Backcheck data** switcher appears above the cards. The backcheck view shows
+duplicate backcheck IDs, and backchecks whose ID does not appear in the survey
+data (**Unmatched IDs**).
+
+#### Resolving a duplicate ID
+
+Investigate the duplicate first. Then, on the card, choose an action for each
+record:
+
+  | Action        | What it Does                                    | When to Use                                           |
+  | ------------- | ----------------------------------------------- | ----------------------------------------------------- |
+  | **Keep**      | Leaves the record and its ID unchanged          | The record holds the correct ID                       |
+  | **Modify ID** | Changes the record's ID to a new ID you enter   | The enumerator entered the wrong ID                   |
+  | **Drop**      | Removes the record from the dataset             | The record is a repeat submission or a test interview |
+
+Choose a **Reason**, enter a **Note**, and click **Save**. DataSure saves every
+change on the card in one step, so a card is never partly resolved. **Save**
+stays disabled, with a message that explains what is missing, until:
+
+- At most one record keeps the ID
+- Every new ID is filled in, valid for the ID column, and not already used by
+  another record
+- You have entered a reason and a note
+
+If you choose **Drop** for every record, DataSure asks you to confirm first,
+because the ID disappears from the data. On a card for an unmatched backcheck,
+you can only choose **Modify ID** or **Drop**, and the new ID must exist in the
+survey data.
+
+After you save, the card disappears and **Resolved** goes up by one. DataSure
+logs each change in the Correction Log with the source `duplicates`. To undo a
+change, remove it from the Correction Log on the **Correct Data** page (Step 6).
+
+::: {.callout-note}
+You cannot accept a duplicate ID as valid, because an ID must belong to one
+record. If two records legitimately share an ID, such as a failed first attempt
+followed by a completed interview, use **Records to Include** to leave out the
+record you do not need.
+:::
+
+### Missing Values
+
+The Missing Values check shows the extent and patterns of incomplete responses
 across your dataset.
 
 Before reviewing results, configure your missing value codes:
@@ -673,7 +848,7 @@ Before reviewing results, configure your missing value codes:
 - **Missing Codes**: The numeric codes used in the dataset to represent these
   categories, such as `-99`, `-88`, `-77`. Separate multiple codes with commas.
 
-The tab then shows:
+The check then shows:
 
 - Overall and per-column missing rates
 - A breakdown by category (null, Don't Know, Refused, Not Applicable)
@@ -684,15 +859,16 @@ The tab then shows:
   systematic patterns, such as when respondents skip an entire block of
   questions.
 
-![The Missing Data tab showing the nullity matrix and per-column missing rate table.](images/datasure_nullity_matrix.png){fig-alt="DataSure DQA Report Missing Data tab showing a nullity matrix grid with red blocks indicating missing values, alongside a per-column missing rate table sorted by highest missingness." .lightbox}
+![The Missing Values check showing the nullity matrix and per-column missing rate table.](images/datasure_nullity_matrix.png){fig-alt="DataSure DQA Report Missing Values check showing a nullity matrix grid with red blocks indicating missing values, alongside a per-column missing rate table sorted by highest missingness." .lightbox}
 
-### Outliers tab
+### Outliers & Constraints
 
-The Outliers tab flags numeric values that are statistically unusual and may
+The Outliers & Constraints check flags numeric values that are statistically
+unusual, and values that break the limits you set for a column. Both may
 indicate data entry errors or implausible responses.
 
-The tab requires additional setup before showing results. Click **Add Outlier
-Column** for each numeric variable you want to check:
+The check requires additional setup before showing results. Click **Add
+Outlier/Constraint Column** for each numeric variable you want to check:
 
 1. **Select Columns**: Choose the column or columns to check. You can search by
    exact name or by pattern:
@@ -714,27 +890,60 @@ Column** for each numeric variable you want to check:
    IQR multiplier of 1.0) flag more records; higher values flag fewer. Start
    with the default and adjust based on domain knowledge.
 
-4. **Soft Minimum / Soft Maximum** (optional): Set known valid ranges for a
-   variable. The tool flags any value below the soft minimum or above the soft
-   maximum as an outlier regardless of the statistical threshold. For example,
-   land area should always be greater than 0, and age should be between 15 and 95.
+4. **Constraints** (optional): Set known limits for a variable. DataSure flags
+   any value outside these limits as a constraint violation, regardless of the
+   statistical threshold:
+   - **Hard Min / Hard Max**: Values that are impossible, for example a negative
+     land area.
+   - **Soft Min / Soft Max**: Values that are possible but unlikely and need a
+     follow-up, for example a respondent age above 95.
 
-![The Add Outlier Column dialog showing the column search field, detection method selector, multiplier input, and soft min/max fields.](images/datasure_outlier_config.png){fig-alt="DataSure Outliers tab Add Outlier Column dialog with a column search field, detection method dropdown showing IQR and Standard Deviation options, a multiplier input, and optional soft minimum and maximum fields." .lightbox}
+![The dialog for adding outlier and constraint columns, showing the column selector, outlier options, and optional hard and soft minimum and maximum constraints.](images/datasure_outlier_config.png){fig-alt="DataSure dialog for adding outlier and constraint columns. The top section has a search type dropdown set to exact and a column selector with share_cover_well selected. The Outlier Options section has an Enable Outlier Checks toggle, a detection method dropdown set to Interquartile Range, a multiplier of 1.50, and an outlier threshold of 20 percent. The Constraint Options section has optional fields for Hard minimum 0, Hard maximum 30, Soft minimum 2, and Soft maximum 15. A button to add the configuration is at the bottom." .lightbox}
 
 The results show a summary table with outlier counts and statistics per column,
-and a record-level table listing each flagged value and why the tool flagged it.
-Clicking on a column shows a box plot with outliers highlighted.
+a table of constraint violations, and a record-level table listing each flagged
+value and why DataSure flagged it. Clicking on a column shows a box plot with
+outliers highlighted.
 
-### Enumerator Stats tab
+#### Reviewing flagged values
 
-The Enumerator Stats tab monitors the productivity and data quality of
-individual field staff. It is one of the most actionable tabs during active data
-collection because it helps you identify which enumerators need follow-up.
+Each row of the constraint violations table and the outlier inspection table
+starts with a **Review** button. Click it to open a form with the record's KEY,
+the column, and the current value already filled in. Choose an action, enter a
+reason, and click **Apply**:
 
-Configure the tab settings to map your dataset's columns to the expected fields
-(Enumerator, Date, Duration, Team, etc.).
+- **modify value**: Replace the value with the correct one.
+- **remove value**: Set the value to missing.
+- **accept**: Record that you reviewed the value and it is correct. DataSure
+  hides the flag and leaves it out of the counts. The data does not change.
 
-The tab shows:
+Accepting a value that breaks a hard limit asks you to confirm first. An
+acceptance covers one check: accepting an outlier does not accept a constraint
+violation on the same value. If the value changes later, the acceptance no
+longer applies and DataSure flags the value again.
+
+Use the toggles above each table to choose what it shows:
+
+- **Show only flagged values** (on by default): Hide values that are not
+  flagged. Turn it off to see every checked value, including corrected values
+  that are now in range.
+- **Show reviewed**: Show accepted flags and corrected values, highlighted in
+  green with the reason.
+- **Show only reviewed**: Show only accepted and corrected values.
+
+DataSure logs every review in the Correction Log with the source `outliers` or
+`constraints`.
+
+### Enumerator Stats
+
+The Enumerator Stats check monitors the productivity and data quality of
+individual field staff. It is one of the most actionable checks during active
+data collection because it helps you identify which enumerators need follow-up.
+
+Configure the check settings to map your dataset's columns to the expected
+fields (Enumerator, Date, Duration, Team, etc.).
+
+The check shows:
 
 - **Overview metrics**: Total enumerators, active enumerators in the past 7
   days, and submission range across enumerators
@@ -747,15 +956,22 @@ The tab shows:
 - **Statistics by enumerator**: Compare any numeric column across enumerators to
   detect systematic differences in how questions were answered
 
-![The Enumerator Stats tab showing the productivity heat map with enumerators as rows and dates as columns.](images/datasure_enumerator_stats.png){fig-alt="DataSure DQA Report Enumerator Stats tab displaying a productivity heat map grid with enumerators as rows and collection dates as columns, colored by submission count per day." .lightbox}
+![The Enumerator Stats check showing the productivity heat map with enumerators as rows and dates as columns.](images/datasure_enumerator_stats.png){fig-alt="DataSure DQA Report Enumerator Stats check displaying a productivity heat map grid with enumerators as rows and collection dates as columns, colored by submission count per day." .lightbox}
 
-### GPS Checks tab
+### GPS Checks
 
-The GPS Checks tab validates geographic coordinate data.
+The GPS Checks page validates geographic coordinate data.
 
-Configure the tab to specify whether your GPS data uses separate latitude and
+Configure the check to specify whether your GPS data uses separate latitude and
 longitude columns or a single combined column. Optionally specify an accuracy
 column (SurveyCTO stores GPS accuracy in a separate column).
+
+The interactive map needs a Mapbox access token. You can get one free from your
+[Mapbox account](https://account.mapbox.com/). Enter it under **Your Mapbox API
+Key** in the GPS settings and click **Save Mapbox Token**. DataSure stores the
+token securely on your computer and uses it for all your projects, so you only
+need to enter it once. Without a token, the check still lists GPS outliers but
+does not show the map.
 
 The results show:
 
@@ -765,11 +981,35 @@ The results show:
 - A table of flagged records: missing coordinates, out-of-range values (latitude
   outside -90 to 90, longitude outside -180 to 180), and low-accuracy readings
 
-![The GPS Checks tab showing the interactive map with interview location markers and the flagged records table.](images/datasure_gps_outlier_check.png){fig-alt="DataSure DQA Report GPS Checks tab displaying an interactive map with colored markers for all interview locations and outlier locations highlighted, alongside a table of flagged GPS records." .lightbox}
+#### Reviewing GPS outliers
 
-### Descriptive Stats tab
+Expand **View Outliers Data** to see the table of GPS outliers. Each row starts
+with a **Review** button. Click it to open a form with the record's KEY,
+latitude, and longitude already filled in. Choose an action, enter a reason, and
+click **Apply**:
 
-The Descriptive Stats tab shows distribution summaries for selected variables.
+- **modify coordinates**: Enter a new latitude and longitude.
+- **remove coordinates**: Clear the latitude and longitude.
+- **remove observation**: Remove the record from the dataset.
+- **accept**: Record that you reviewed the location and it is correct.
+
+DataSure draws accepted points in green on the map, labels them **Accepted**,
+and leaves them out of the outlier count. Turn on **Show reviewed** to list them
+in the table with the reason. If either coordinate changes later, the acceptance
+no longer applies and DataSure flags the point again. DataSure logs every review
+in the Correction Log with the source `gps`.
+
+::: {.callout-note}
+Correcting coordinates requires separate latitude and longitude columns. If your
+configuration uses a single combined GPS column, the only action available is
+**remove observation**.
+:::
+
+![The GPS Checks page showing the map of interview locations and the outliers table, with Show reviewed turned on and an accepted record highlighted.](images/datasure_gps_outlier_check.png){fig-alt="DataSure GPS Checks page with a Mapbox map of western and northern India showing interview locations as blue markers and outliers as red markers. Below the map, the View Outliers Data table has the Show reviewed toggle turned on. Each row has a Review button and columns for key, submission date, enumerator name, latitude, longitude, review status, and review reason. The first row is highlighted in green with the status Reviewed and an accept reason." .lightbox}
+
+### Descriptive Stats
+
+The Descriptive Stats check shows distribution summaries for selected variables.
 It is useful for reviewing the composition of your data and detecting unusual
 distributions that might indicate collection problems, such as all respondents
 reporting the same income value.
@@ -781,16 +1021,22 @@ Select up to 10 columns to analyze. For each column, you can choose between:
 - **Summary Statistics**: Count, mean, standard deviation, min, max, and
   percentiles
 
-### Back Checks tab
+### Backchecks
 
-The Back Checks tab compares original survey responses against re-interview
+The Backchecks page compares original survey responses against re-interview
 validation data to measure enumerator reliability.
 
-Before reviewing results, configure the tab:
+Before reviewing results, configure the check:
 
 1. Map the survey ID, key, enumerator, and date columns.
-2. Set your target backcheck rate.
-3. Click **Add a back check column** for each variable to validate. For each
+2. Set the **Backcheck target (%)**, the share of surveys you plan to back
+   check. If you leave it blank, DataSure uses the target from the check
+   configuration, or 10% if neither is set.
+3. Optionally set an **Error rate target (%)**. DataSure highlights every error
+   rate above it in the enumerator and backchecker statistics.
+4. Optionally set an **Eligibility Filter** to count only the surveys that can
+   be back checked, for example `consent` in `1`.
+5. Click **Add a back check column** for each variable to validate. For each
    column, set:
    - **Category**: A grouping number (1, 2, 3) used to organize columns in the
      results table
@@ -802,25 +1048,102 @@ Before reviewing results, configure the tab:
      missing in either dataset, `ignore_missing_values`, or compare all records
      including those with missing values, `compare_all`
 
-The results show error rates by column, by enumerator, and by back-checker,
-along with a record-level table showing each comparison.
+The comparison uses the same records as the Duplicates check: its **Records to
+Include** filters apply, and DataSure leaves out records with a duplicated ID
+until you resolve the duplicate. A warning above the comparison details counts
+the records left out.
 
-> *[Screenshot: The Back Checks tab showing the error rate by enumerator table,
-> sorted by highest error rate, and the record-level comparison table.]*
+#### Tracking coverage against your target
+
+The **Targets** section shows how much of your survey you have back checked:
+
+- **Backcheck Coverage**: The share of eligible surveys that have a matching
+  backcheck, compared with your target percentage.
+- **Backchecks vs Expected**: The number of backchecks completed against the
+  number expected. DataSure shows this only when the check configuration sets a
+  survey target.
+
+The enumerator statistics also show each enumerator's coverage, including
+enumerators with no backchecks yet, and highlight coverage below the target.
+
+![The Backchecks Report showing the summary, the Targets section, and the error rates with their adjusted rates.](images/datasure_backcheck_summary.png){fig-alt="DataSure Backchecks Report page. The Backchecks Summary shows 5,556 survey observations, 612 backcheck observations, 25 enumerators, 5 back checkers, and 11.5% mismatches attributed. The Targets section shows backcheck coverage of 11.0%, 1 point above the 10% target, and 610 of 600 expected backchecks. The Error Rates section shows a total error rate of 0.89% with an adjusted rate of 0.82%, category 1 with the same rates, category 2 with no values compared, and category 3 at 0.00%." .lightbox}
+
+#### Reading error rates
+
+The **Error Rates** section shows the overall error rate and the error rate for
+each category: the number of mismatches divided by the number of values
+compared. The results also show error rates by column, by enumerator, and by
+backchecker, along with a record-level table showing each comparison.
+
+#### Attributing mismatches
+
+Backcheck results measure how well the team collected the data, so you cannot
+correct or accept a mismatch on this page. Instead, record who caused it. Click
+**Review** on a mismatch in the comparison details table and choose the error
+source:
+
+  | Error Source     | Meaning                                    | Note Required |
+  | ---------------- | ------------------------------------------ | ------------- |
+  | **Enumerator**   | The survey value is wrong                  | No            |
+  | **Backchecker**  | The backcheck value is wrong               | Yes           |
+  | **Respondent**   | The respondent gave different answers      | Yes           |
+  | **Unattributed** | No source yet, or clear an earlier choice  | No            |
+
+To attribute several mismatches at once, select their rows, then click
+**Review** on one of the selected rows. The **Attribution log** below the table
+lists every attribution, with who made it and when. **Mismatches Attributed** in
+the summary shows the share of mismatches that have an error source.
+
+![The comparison details table filtered to mismatches, with a Review button on each row, and the Attribution log below it.](images/datasure_backcheck_attribution.png){fig-alt="DataSure Backchecks comparison details with the Mismatches Only filter selected, showing 23 comparison records. Each row has a checkbox, a Review button, and columns for error source, survey key, backcheck key, column name, survey value, backcheck value, match status, and category. The first three mismatches are attributed to the enumerator, the backchecker, and the respondent, and the rest are unattributed. The Attribution log below lists those three attributions with the error source, note, user, and date." .lightbox}
+
+Attribution never changes the data, the mismatch counts, or the regular error
+rate. It changes only the **adjusted error rate**, which DataSure shows next to
+the regular error rate for each enumerator and backchecker. The adjusted rate
+leaves out the mismatches attributed to someone else, so DataSure measures each
+person on their own mistakes: the enumerator adjusted rate leaves out mismatches
+attributed to the backchecker or the respondent, and the backchecker adjusted
+rate leaves out those attributed to the enumerator or the respondent.
+Unattributed mismatches count against both. For example, an enumerator with 10
+values compared and 4 mismatches, one attributed to the respondent and one to
+the backchecker, has an error rate of 40% and an adjusted error rate of 20%.
 
 ## Step 6: Correct Data
 
 The **Correct Data** page provides a structured workflow for fixing data quality
-issues found in your DQA Reports. The system logs every correction with the
-original value, new value, reason, action type, and timestamp. This creates a
-full audit trail that is also used to auto generate Stata do-files in the
-Replication Package.
+issues found in your DQA Reports. DataSure logs every correction with the
+original value, new value, reason, action type, timestamp, the page that made
+it, and who made it. This creates a full audit trail that DataSure also uses to
+auto generate Stata do-files in the Replication Package.
 
-Navigate to **Correct Data** from the sidebar.
+### Where to make corrections
+
+You can fix most flagged values on the check that found them, using the
+**Review** buttons and duplicate ID cards described in Step 5. Use the **Correct
+Data** page to correct any record, including records that no check flagged, and
+to review or undo entries. Both write to the same Correction Log.
+
+  | Where                  | What You Can Do                                                          |
+  | ---------------------- | -----------------------------------------------------------------------  |
+  | Outliers & Constraints | Modify value, remove value, accept                                       |
+  | GPS Checks             | Modify coordinates, remove coordinates, remove observation, accept       |
+  | Duplicates             | Keep, Modify ID, or Drop each record on a duplicate ID card              |
+  | Backchecks             | Attribute a mismatch to its error source (the data does not change)      |
+  | Correct Data page      | Modify value, remove value, remove row, for any survey record and column |
+
+### Choosing a check page and dataset
+
+Navigate to **Correct Data** from the sidebar. The buttons at the top of the
+page list your check pages, one for each check configuration. The page opens on
+the check page you last reviewed.
+
+If the check page has a backcheck dataset, a **Survey data** / **Backcheck
+data** switcher picks which dataset to correct. Each dataset has its own
+Correction Log. On backcheck data, you can only modify the ID or remove a row,
+because backcheck results measure data quality.
 
 ### Adding a correction
 
-1. Click **Add correction**.
+1. Click **Add correction step**.
 2. Select the **Key** of the record you want to modify. This is the unique row
    identifier from the Key Column you specified in your check configuration.
 3. Select the **Action**:
@@ -848,18 +1171,48 @@ Navigate to **Correct Data** from the sidebar.
 
 ![The Add Correction dialog showing the Key selector, Action dropdown, Column selector, Current Value, New Value, and Reason fields.](images/datasure_adding_correction.png){fig-alt="DataSure Correct Data page showing the Add Correction dialog with a Key selector, Action dropdown set to Modify Value, a Column selector, an auto populated Current Value field, a New Value input, and a required Reason field." .lightbox}
 
+### Reviewing the Correction Log
+
+The Correction Log lists every entry for the selected dataset, including the
+corrections and acceptances you made on check pages. Besides the key, column,
+values, action, reason, and timestamp, each entry shows:
+
+- **Source**: The page that made the entry: `corrections_page` (the Correct Data
+  page), `outliers`, `constraints`, `duplicates`, or `gps`
+- **User**: Who made the entry, taken from your reviewer name (see [Setting your
+  reviewer name](#sec-reviewer-name))
+- **Status**: Whether DataSure applied the entry successfully the last time it
+  loaded the data, with the reason if it did not
+- **Check type**: For an accept entry, the check it applies to
+- **Severity**: For an acceptance of a constraint violation past a hard limit,
+  `hard`. DataSure highlights these rows in red so that a reviewer can check
+  them
+
+Use the **Source** and **Action** filters above the log to show only the entries
+you need. The filters combine: for example, select the `gps` source and the
+`accept` action to show only GPS acceptances.
+
+### Undoing a correction
+
+DataSure has no edit or undo button. To undo a correction or an acceptance,
+remove its entry from the Correction Log with **Remove correction step**.
+DataSure applies the remaining entries again, and any flag that the entry
+resolved comes back. This is the only way to undo an entry, including entries
+made on check pages.
+
 ### Verifying a correction
 
-After applying a correction, navigate back to the relevant DQA Report tab and
-confirm the flagged issue no longer appears. If it persists, check that you
-selected the correct key and column.
+After applying a correction, navigate back to the relevant check and confirm the
+flagged issue no longer appears. If it persists, check that you selected the
+correct key and column, and that the entry's Status in the Correction Log is
+`Successful`.
 
 ### Recommended correction workflow
 
 Corrections should always follow an investigation, not precede one. Before
 correcting a record, confirm the root cause.
 
-1. Identify the issue in a DQA Report tab.
+1. Identify the issue on a DQA Report page.
 2. Investigate: is it a data entry error, a survey programming bug, or a
    legitimate extreme value?
 3. Consult field notes, supervisor reports, or the enumerator directly if
@@ -876,7 +1229,7 @@ indicate that the team surveyed a respondent twice. The correct action depends
 on the investigation outcome.
 :::
 
-![The Correct Data page showing the correction history table with logged corrections, reasons, and timestamps.](images/datasure_corrections_log.png){fig-alt="DataSure Correct Data page displaying the correction history table with multiple logged entries, each showing the action type, affected column, original value, new value, reason, and timestamp." .lightbox}
+![The Correct Data page showing the Survey data and Backcheck data switcher, the buttons to add and remove correction steps, and the Correction Log with its Source and Action filters.](images/datasure_corrections_log.png){fig-alt="DataSure Correct Data page for a check configuration. A Dataset switcher with Survey data selected sits above the Add correction step and Remove correction step buttons. The Correction Log below has Source filters for Duplicates and GPS and Action filters for Accept and Remove row. The log table lists six entries, each with the date, user, key, survey ID, action, status, check type, severity, column, current value, new value, and reason. One entry accepts a GPS value and five remove rows, and all have the status Successful." .lightbox}
 
 ## Step 7: Export a Replication Package
 
@@ -934,10 +1287,13 @@ the survey questionnaire XLS file from the server and include it in the
    that DataSure shows the correct dataset and key column.
 3. Expand **What is inside the zip?** to preview the full directory structure
    before building.
-4. Click **Build Replication Package**. DataSure assembles the package in the
+4. If you plan to share the package outside your team, check **Exclude reviewer
+   names**. DataSure leaves the User column blank in the exported
+   `correction_log.csv`. The project's own Correction Log does not change.
+5. Click **Build Replication Package**. DataSure assembles the package in the
    background and shows progress as it builds each component.
 
-{{< video images/datasure_replication_export.mp4 title="The Replication Package page showing the page selector, configuration details, directory tree preview, and the Build Replication Package button." >}}
+{{< video images/datasure_replication_export.mp4 title="The Export Replication Package page: selecting a check page, turning on Exclude reviewer names, building the package, confirming the PII notice, and downloading the zip file." >}}
 
 ### Downloading the package
 

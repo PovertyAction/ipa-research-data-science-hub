@@ -88,12 +88,14 @@ Describe the data sources used in this analysis:
 
 # Example data
 np.random.seed(42)
-data = pd.DataFrame({
-    'date': pd.date_range('2024-01-01', periods=100),
-    'metric1': np.cumsum(np.random.randn(100)) + 100,
-    'metric2': np.cumsum(np.random.randn(100)) + 50,
-    'category': np.random.choice(['Category A', 'Category B', 'Category C'], 100)
-})
+data = pd.DataFrame(
+    {
+        "date": pd.date_range("2024-01-01", periods=100),
+        "metric1": np.cumsum(np.random.randn(100)) + 100,
+        "metric2": np.cumsum(np.random.randn(100)) + 50,
+        "category": np.random.choice(["Category A", "Category B", "Category C"], 100),
+    }
+)
 ```
 
 ## Methodology
@@ -125,15 +127,17 @@ Describe quality checks performed on the data and analysis.
 #| label: tbl-overview
 #| tbl-cap: "Data Overview"
 
-overview = pd.DataFrame({
-    'Metric': ['Sample Size', 'Date Range', 'Categories', 'Missing Values'],
-    'Value': [
-        len(data),
-        f"{data['date'].min().strftime('%Y-%m-%d')} to {data['date'].max().strftime('%Y-%m-%d')}",
-        len(data['category'].unique()),
-        data.isnull().sum().sum()
-    ]
-})
+overview = pd.DataFrame(
+    {
+        "Metric": ["Sample Size", "Date Range", "Categories", "Missing Values"],
+        "Value": [
+            len(data),
+            f"{data['date'].min().strftime('%Y-%m-%d')} to {data['date'].max().strftime('%Y-%m-%d')}",
+            len(data["category"].unique()),
+            data.isnull().sum().sum(),
+        ],
+    }
+)
 overview
 ```
 
@@ -146,10 +150,10 @@ overview
 #| fig-cap: "Metric 1 Trends Over Time"
 
 plt.figure(figsize=(10, 5))
-plt.plot(data['date'], data['metric1'], linewidth=2)
-plt.xlabel('Date')
-plt.ylabel('Metric 1')
-plt.title('Metric 1 Trends')
+plt.plot(data["date"], data["metric1"], linewidth=2)
+plt.xlabel("Date")
+plt.ylabel("Metric 1")
+plt.title("Metric 1 Trends")
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
@@ -167,14 +171,19 @@ Key observations for Metric 1:
 #| label: fig-metric2
 #| fig-cap: "Metric 2 by Category"
 
-category_means = data.groupby('category')['metric2'].agg(['mean', 'std']).reset_index()
+category_means = data.groupby("category")["metric2"].agg(["mean", "std"]).reset_index()
 
 plt.figure(figsize=(8, 6))
-plt.bar(category_means['category'], category_means['mean'],
-        yerr=category_means['std'], capsize=5, alpha=0.7)
-plt.xlabel('Category')
-plt.ylabel('Metric 2 (Mean ± SD)')
-plt.title('Metric 2 by Category')
+plt.bar(
+    category_means["category"],
+    category_means["mean"],
+    yerr=category_means["std"],
+    capsize=5,
+    alpha=0.7,
+)
+plt.xlabel("Category")
+plt.ylabel("Metric 2 (Mean ± SD)")
+plt.title("Metric 2 by Category")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
@@ -186,10 +195,16 @@ plt.show()
 #| label: tbl-comparison
 #| tbl-cap: "Comparison by Category"
 
-comparison = data.groupby('category').agg({
-    'metric1': ['mean', 'std', 'min', 'max'],
-    'metric2': ['mean', 'std', 'min', 'max']
-}).round(2)
+comparison = (
+    data.groupby("category")
+    .agg(
+        {
+            "metric1": ["mean", "std", "min", "max"],
+            "metric2": ["mean", "std", "min", "max"],
+        }
+    )
+    .round(2)
+)
 
 comparison
 ```
@@ -203,12 +218,14 @@ Present any statistical tests and their results:
 #| tbl-cap: "Statistical Test Results"
 
 # Add your statistical tests here
-stats_results = pd.DataFrame({
-    'Test': ['Comparison 1', 'Comparison 2'],
-    'Statistic': [2.34, 1.89],
-    'P-value': [0.042, 0.089],
-    'Significance': ['*', 'ns']
-})
+stats_results = pd.DataFrame(
+    {
+        "Test": ["Comparison 1", "Comparison 2"],
+        "Statistic": [2.34, 1.89],
+        "P-value": [0.042, 0.089],
+        "Significance": ["*", "ns"],
+    }
+)
 
 stats_results
 ```
@@ -285,6 +302,7 @@ List data sources, literature citations, or other references used.
 #| label: technical-info
 
 import sys
+
 print(f"Analysis Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 print(f"Python Version: {sys.version.split()[0]}")
 print(f"Pandas Version: {pd.__version__}")
