@@ -33,7 +33,6 @@ venv:
     uv sync
     uv tool install pre-commit
     uv run pre-commit install
-    uv tool install panache-cli==3.14.0
 
 # sync R environment, requires that R, RScript are in PATH
 renv:
@@ -97,23 +96,23 @@ vale-warnings-all:
 
 # Format all markdown and config files
 fmt-markdown:
-    panache format .
+    -uv run pre-commit run panache-format --all-files
 
 # Format a single markdown file, "f"
 fmt-md f:
-    panache format {{ f }}
+    -uv run pre-commit run panache-format --files {{ f }}
 
 # Check format of all markdown files
 fmt-check-markdown:
-    panache format --check .
+    uv run pre-commit run panache-format --all-files --show-diff-on-failure
 
 # Lint all markdown files for semantic issues
 lint-markdown:
-    panache lint .
+    uv run pre-commit run panache-lint --all-files --hook-stage manual
 
 # Lint a single markdown file, "f"
 lint-md f:
-    panache lint {{ f }}
+    uv run pre-commit run panache-lint --files {{ f }} --hook-stage manual
 
 #Format all code and markdown files
 fmt-all: lint-py fmt-python fmt-markdown
