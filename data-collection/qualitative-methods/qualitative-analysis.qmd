@@ -1,0 +1,460 @@
+---
+title: "Qualitative Data Quality and Analysis"
+abstract: >-
+  How to move from interview, focus group, and observation records to findings
+  that program teams can act on. Covers trustworthiness and audit trails,
+  quality checks after data collection, codebooks and coding, theme development
+  and validation, careful use of counts, and reporting for program decisions.
+
+categories:
+  - how-to
+  - Data Collection
+keywords:
+  - qualitative research
+  - qualitative analysis
+  - thematic analysis
+  - coding
+  - codebook
+  - trustworthiness
+  - data quality
+  - how-to guide
+license:
+  text: "CC BY-SA"
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+
+  #------------------------------------------------------------------
+  # Authors
+  #------------------------------------------------------------------
+  # Authors are the main creators of the site's content, credited
+  # for their work and responsible for its core development,
+  # including writing and editing.
+  #------------------------------------------------------------------
+authors-ipa:
+  - "[James Opot](https://poverty-action.org/people/james-opot)"
+  - "Edgar Morkewa"
+  - "[Dean Muraya](https://poverty-action.org/people/dean-muraya)"
+---
+
+::: {.callout-tip appearance="simple"}
+## Key Takeaways
+
+- Qualitative data quality is judged by **trustworthiness**: credibility,
+  confirmability, transferability, and dependability. An audit trail lets anyone
+  trace a finding back to the original data.
+- Check transcripts, translations, and consent records before analysis starts.
+  Document limitations instead of dropping data.
+- Use a codebook, keep the number of codes manageable, and code only what
+  informs your learning questions.
+- A theme is a claim about what the data shows, not a topic label. Validate each
+  theme against the original data before you report it.
+- Counts add weight, quotes add meaning. Report both, and end each finding with
+  a recommendation that a program team can act on.
+:::
+
+## Overview
+
+Interview transcripts, focus group notes, observation records, and field notes
+are large and unstructured. Analysis organizes this material so that patterns
+become visible and lead to useful conclusions. In monitoring, evaluation, and
+learning (MEL), the goal is not only to describe what participants said, but to
+identify insights that can inform program adjustments.[^source]
+
+This guide follows the path from raw recordings to reported findings:
+
+```{mermaid}
+flowchart LR
+  A[Raw recordings] --> B[Transcription]
+  B --> C[Cleaned transcripts]
+  C --> D[Coding]
+  D --> E[Themes]
+  E --> F[Insights]
+```
+
+Quality assurance is not a single step. It applies at every stage, from how you
+make recordings to how you draw conclusions.
+
+## Trustworthiness: What qualitative data quality means
+
+Most frameworks describe the quality of qualitative data as **trustworthiness**,
+made up of four elements. Treat each element as a target.
+
+  | Element             | The question it asks                                                                   | What undermines it                                                      |
+  | ---------           | ----------------------                                                                 | --------------------                                                    |
+  | **Credibility**     | Does the data accurately reflect what participants said and meant?                     | Edited transcripts, intimidating settings, leading questions            |
+  | **Confirmability**  | Can the data support the interpretation made?                                          | Conclusions that go beyond what the evidence shows                      |
+  | **Transferability** | Does the report give readers enough context to judge whether findings apply elsewhere? | Missing detail on who was interviewed, where, and under what conditions |
+  | **Dependability**   | Were methods applied consistently and systematically?                                  | Inconsistent procedures and undocumented decisions                      |
+
+  : Four elements of trustworthiness {#tbl-trustworthiness}
+
+Each element maps to a phase of the research:
+
+- **Planning: dependable design.** A clear research question, suitable methods,
+  and appropriate sampling lay the foundation.
+- **Data collection and processing: credible data.** Careful collection and
+  processing make sure evidence is complete and accurately captured.
+- **Analysis: confirmable analysis.** Documented analytical decisions let others
+  trace and verify your reasoning.
+- **Throughout: context that supports transfer.** Rich description at every
+  stage lets readers judge whether findings apply to their own setting.
+
+### Keep an audit trail
+
+An audit trail is a record of the decisions, procedures, and materials used at
+each stage of the research. It lets you, or anyone else, trace a conclusion back
+to the original data. Without one, it is hard to tell whether a finding reflects
+what participants said or what the researcher expected. A complete audit trail
+covers four stages:
+
+1. **Data collection artifacts:** audio recordings, field diaries, observation
+   notes, consent forms.
+2. **Data processing:** transcripts, translations, anonymization decisions.
+3. **Coding and analysis notes:** codebooks, analytic memos, inter-coder checks.
+4. **Reporting:** how findings were drawn from the analysis and presented.
+
+Ask yourself: if a colleague challenged one of your findings, could you show
+them the evidence trail that led to it?
+
+::: {.callout-note collapse="true"}
+## Example: Tracing a finding through the audit trail
+
+This is an illustrative scenario. A report on a play-based program concludes:
+
+> Drawing activities are particularly effective in facilitating emotional
+> expression and trauma processing in displaced children, and might be expanded
+> across households, schools, and clinic settings.
+
+The audit trail for one clinic interview shows four problems:
+
+- **Credibility.** The audio recording has the respondent saying, "The toys are
+  locked in that supply room but I can't..." and then stopping when the clinic
+  director enters. The field diary notes that the respondent lowered their
+  voice. The transcript leaves the interrupted sentence out, so the data no
+  longer reflects what the respondent was trying to say.
+- **Confirmability.** The respondent described their experience with play as
+  "mixed." The analysis treats one positive example about drawing as evidence
+  that art activities are effective.
+- **Transferability.** A finding from one clinic is generalized to households
+  and schools, and the report gives no detail about the settings that would let
+  readers judge this.
+- **Dependability.** The team chose workplaces as interview locations so that
+  respondents could "speak freely," but the field notes show that the
+  supervisor's presence changed the conversation. The report does not mention
+  this.
+:::
+
+## Quality checks before analysis
+
+### Use quality controls during data collection
+
+Several controls help keep data consistent and authentic while you collect it.
+Choose the ones that fit your project's scale and risk.
+
+  | Purpose                     | Quality controls                                                                                                                                                                                                                                                                                                                                                                                                                |
+  | ---------                   | -----------------                                                                                                                                                                                                                                                                                                                                                                                                               |
+  | **Consistent data**         | Review incoming data daily ([high-frequency checks](/data-quality/high-frequency-checks.qmd)); re-interview a sample of respondents on selected questions ([backchecks](/data-quality/backchecks.qmd)); make unannounced visits to observe sessions ([accompanying field staff](/data-quality/accompany-surveyors.qmd)); have more than one analyst code the same data; process and document data within 24 hours of collection |
+  | **Authentic perspectives**  | Probing questions; extended time in the research setting to build trust; triangulation across sources, methods, or researchers; descriptive, analytic, and reflexive field notes; confirming interpretations with participants (member checking)                                                                                                                                                                                |
+  | **Ethics and consent**      | Documented informed consent; researcher reflexivity; written rationale for methodological choices; anonymization that keeps data linkages; locked devices and encrypted storage and transfer                                                                                                                                                                                                                                    |
+  | **Structured data capture** | Audio recordings for accurate transcripts; photos or diagrams of the setting; field notes on setting, tone, non-verbal cues, and anomalies; shorthand during sessions, expanded into full notes within 24 hours; separate spaces in notes for description and interpretation                                                                                                                                                    |
+
+  : Quality controls for qualitative data collection {#tbl-quality-controls}
+
+### Review the data after collection
+
+Before analysis, confirm that what you collected is complete, accurate, and
+ready to use:
+
+- **Transcription quality.** Transcripts should be verbatim and include relevant
+  non-verbal cues such as pauses, tone, emphasis, and interruptions. Spot-check
+  transcripts against recordings, especially for complex or sensitive content.
+- **Completeness.** Confirm that all planned sessions were conducted,
+  documented, and saved. Flag incomplete sessions and significant deviations
+  from the guide.
+- **Initial review.** Read a sample of transcripts to check that responses
+  address the research questions. Look for signs of interviewer bias, leading
+  questions, or respondent fatigue.
+- **Documentation.** Record quality issues, interviewer reflections, and
+  contextual notes that may affect interpretation.
+
+Some problems are common in field settings. The aim is not to exclude data, but
+to understand its limits and handle it transparently:
+
+  | Situation                                                | How to handle it                                                                                                      |
+  | -----------                                              | ------------------                                                                                                    |
+  | Missing or unclear audio                                 | Rely on detailed interviewer notes, but avoid strong conclusions based on those sessions alone.                       |
+  | Partial transcripts or skipped questions                 | Note the gaps so they are not read as a lack of response or concern.                                                  |
+  | Translation inconsistencies                              | Have a bilingual colleague review key sections, and cross-check important quotes to make sure the meaning holds.      |
+  | Unclear consent documentation                            | Set those sessions aside or use them cautiously, and document the decision.                                           |
+  | Interviewer effects such as leading questions or fatigue | Log them as context and consider them when interpreting patterns, especially when a finding relies on a few sessions. |
+
+  : Handling common data quality problems {#tbl-data-problems}
+
+::: {.callout-warning}
+## Protect transcripts and recordings
+
+Store transcripts and recordings securely, remove identifiers where needed, and
+limit access to authorized members of the research team. See [Data
+Security](/data-security/index.qmd) for more guidance.
+:::
+
+## Analyze the data
+
+Qualitative analysis is iterative. You will return to earlier steps as your
+understanding develops. At every step, check that your work still connects to
+your research or learning questions.
+
+### Choose an analysis approach
+
+  | Approach            | When to use it                                                      |
+  | ----------          | ----------------                                                    |
+  | Thematic analysis   | Identifying patterns across data                                    |
+  | Content analysis    | Categorizing and counting themes                                    |
+  | Framework analysis  | Comparing responses across groups or sites with a structured matrix |
+  | Case study analysis | Deep exploration of one program, person, or context                 |
+
+  : Common approaches to qualitative analysis {#tbl-approaches}
+
+Thematic analysis is the most common approach in MEL work. Many teams combine
+approaches, for example by coding thematically and then organizing findings in a
+framework matrix to compare sites.
+
+### Read everything first
+
+Read all transcripts at least twice before coding: once for general
+understanding, then again to note early patterns. Starting to code too early
+risks missing patterns that cut across the dataset. As you read, note:
+
+- Issues raised repeatedly across participants
+- Responses that are unexpected, contradictory, or especially strong
+- Early signs of implementation barriers, enablers, or unintended effects
+- Statements that suggest specific program adjustments
+
+AI tools can summarize transcripts or highlight frequent topics, which helps
+with large volumes of text. Treat their outputs as aids, not analysis. Automated
+summaries can miss nuance, misread context, or overweight frequently used words.
+Review any AI output alongside the original transcripts.
+
+### Build a codebook and code the data
+
+A **code** is a short label attached to a segment of text that describes what
+the segment is about. Coding reduces the volume of the data, lets you move
+between detail and broad patterns, and creates a way to filter and retrieve
+excerpts.
+
+There are two main types of code:
+
+  | Type         | Question it answers      | Example                                                    |
+  | ------       | ---------------------    | ---------                                                  |
+  | Descriptive  | What is being discussed? | "play materials," "safe space," "peer interaction"         |
+  | Interpretive | What does it mean?       | "sense of normalcy," "emotional release," "trust building" |
+
+  : Descriptive and interpretive codes {#tbl-code-types}
+
+You can also decide how to read the text and where codes come from:
+
+- **Semantic codes** take words at face value. **Latent codes** capture
+  underlying meaning. A child who says "I play with my friends here" might get
+  the semantic code *peer play* and the latent code *social reintegration*.
+  Start semantic, then add latent codes as your understanding deepens.
+- **Inductive codes** emerge from the data. **Deductive codes** come from
+  theory, prior research, or your theory of change. Combining both keeps your
+  analysis grounded in theory and responsive to what participants said.
+
+Organize codes in a **coding frame**. A *flat frame* lists all codes at one
+level; it is simple but becomes hard to manage as codes multiply. A
+*hierarchical frame* groups sub-codes under parent codes, such as *peer
+connections* and *group participation* under *social wellbeing*. It takes more
+thought up front but makes themes easier to build.
+
+Write a **codebook** that defines each code, states what it includes and
+excludes, and gives an example. A codebook is essential when more than one
+person codes, and it makes your analysis easier to verify. Follow these
+principles:
+
+- Aim for consistency and transparency; there is rarely a single correct code.
+- Apply more than one code to a segment if it covers more than one topic.
+- Add new codes as they emerge, and record the decision in the codebook.
+- Keep the number of codes manageable. About 30 to 40 codes is a reasonable
+  upper limit for one round of coding.
+- Code what informs your learning questions. You do not need to code off-topic
+  discussion or purely descriptive passages.
+
+You can code in qualitative data analysis software, such as NVivo, ATLAS.ti,
+MAXQDA, or Dedoose, or in a spreadsheet or word processor. What matters is that
+the team applies the same codes consistently and documents its decisions. To add
+a language model as a review layer, see [AI-Assisted Qualitative
+Coding](ai-assisted-coding.qmd).
+
+### Develop themes
+
+Group related codes into categories, then build **themes** that answer your
+learning questions. Each step moves up a level of abstraction:
+
+  | Level    | What it is                                    | Example                                                                                           |
+  | -------  | -----------                                   | ---------                                                                                         |
+  | Code     | A tag that assigns meaning to text            | *peer connection*, *collaborative play*                                                           |
+  | Category | A group of related codes                      | *social outcomes*                                                                                 |
+  | Theme    | An interpretive claim that answers a question | "Access to safe play spaces helps children who were socially withdrawn rebuild peer connections." |
+
+  : From codes to themes {#tbl-abstraction}
+
+A theme is not a topic. It is a claim about what the data shows, so write it as
+a full sentence. Strong themes reflect an underlying issue, constraint, or
+enabler, not a single activity or opinion. As a guide:
+
+- Aim for about 6 to 10 broad themes, each with no more than 4 or 5 codes.
+- Write a short definition for each theme.
+- Draw a thematic map that shows how themes relate to each other.
+- Test each theme by asking: *if we acted on this, what would we change in how
+  the program is designed or delivered?* Refine or combine themes that cannot
+  inform action.
+
+### Validate themes
+
+Validation checks that themes reflect participants' views and are not driven by
+selective reading or a few strong voices. Go back to the original data and ask:
+
+- Does this theme accurately represent what participants said?
+- Are there contradictory cases?
+- Would a colleague coding the same data reach similar themes?
+- Does the theme appear across participant groups, sites, and interviewers?
+
+Validation does not need a formal inter-coder reliability exercise. Revisiting
+the excerpts behind each theme and discussing them with a colleague or
+supervisor catches many blind spots.
+
+Judge the **strength of evidence** for each theme. Themes that appear across
+many interviews or groups are stronger signals than those raised by one or two
+participants. Label less common perspectives as emerging or context-specific,
+but do not drop them: a point made once may still matter.
+
+### Use counts carefully
+
+Simple counts can show the weight of evidence behind a finding, reveal patterns
+across groups or sites, support triangulation, and make findings easier for
+decision-makers to absorb. "Peer connection appeared in 22 of 25 caregiver
+interviews" is more informative than "many caregivers mentioned peer
+connection."
+
+Useful forms of counting include:
+
+- **Frequency:** how often a code appears
+- **Prevalence across sources:** whether different respondent types agree
+- **Comparative matrices:** how patterns differ across sites, groups, or time
+- **Co-occurrence:** which codes appear together
+
+Use counts with care. Qualitative samples are purposive, not random, so they do
+not support statistical inference. More mentions do not mean more importance.
+Always pair a count with a quote or example that shows what it means.
+
+### Interpret the findings
+
+Interpretation explains what validated themes mean for the program. Connect each
+theme back to your learning questions and your [theory of
+change](/monitoring-evaluation-learning/theory-of-change.qmd), and ask:
+
+- What does this suggest about how participants experience the program?
+- Which program assumptions does it support, and which need revisiting?
+- What explains differences across groups, locations, or delivery approaches?
+- Which parts of the program design or delivery could realistically change?
+
+Match the confidence of your conclusions to the evidence. Where several sources
+point to the same explanation, treat the finding as a strong signal for action.
+Where evidence is mixed or limited to specific settings, frame the insight as a
+hypothesis to test.
+
+## Report findings for decisions
+
+Good qualitative reporting is:
+
+- **Concise:** a few key messages, not everything you heard. Five to eight
+  themes is enough for most MEL reports.
+- **Grounded:** every claim is anchored in data through quotes and examples.
+- **Action-oriented:** findings lead to clear recommendations.
+
+Test your report by asking: *if a program manager reads this, will they know
+what to do next?*
+
+Structure the report around what is working well, what barriers exist, and
+specific recommendations. For each recommendation, say what could change, who is
+responsible, and when it could be tested. Include a short description of
+methods: how many interviews or focus groups, with which participant groups, and
+how the data was coded.
+
+For each finding, use a four-part structure:
+
+1. **Theme:** the finding, stated as a claim.
+2. **Evidence:** counts and one or two illustrative quotes.
+3. **Why it matters:** what the finding means for the program's theory.
+4. **What to do next:** a specific, feasible recommendation.
+
+When presenting evidence:
+
+- Choose quotes that are vivid and specific, not generic.
+- Attribute quotes by respondent type and site without compromising anonymity,
+  for example "(Caregiver, Site A)."
+- Report what is common and what is meaningful, even if rare.
+- Show variation and disagreement; it adds credibility.
+- Use language that reflects the method: "caregivers reported" or "children
+  described," not "the data proves" or "X causes Y."
+
+::: {.callout-note collapse="true"}
+## Worked example: From quotes to a program adjustment
+
+This illustrative example follows one finding from a caregiver-focused program
+that uses play to support children's wellbeing.
+
+**1. Raw data.** Excerpts from caregiver interviews and focus groups include:
+
+> "I know play is important, but by the time I finish chores there is no time
+> left, and my child is usually tired or restless."
+>
+> "When my child is upset, I don't know what to do. I try the games but they
+> just cry more."
+>
+> "I want to do the activities but on hard days my child is not in the mood and
+> neither am I."
+
+**2. Codes applied.** *Caregiver time constraints*, *competing household
+responsibilities*, *child emotional state as barrier*, *caregiver emotional
+capacity*, *barriers to play-based interaction*.
+
+**3. Theme.** *Constraints on integrating play-based activities into daily
+routines*, defined as household-level structural and emotional factors that
+prevent caregivers from consistently applying play-based strategies, even when
+they understand and value them.
+
+**4. Validation.** The pattern appeared in 9 of 12 caregiver interviews and 4 of
+4 focus groups, across sites and among both mothers and fathers. The three
+caregivers who did not mention it had more household support. No caregiver
+described play as easy to fit into daily life. Strength of evidence: strong.
+
+**5. Interpretation.** The theory of change assumes that caregivers with
+knowledge and basic skills will use play in daily routines. The data suggests
+this does not fully hold. Caregivers value play, but time, energy, household
+demands, and their child's emotional state get in the way. This is a feasibility
+gap, not a knowledge or motivation gap.
+
+**6. Reported finding.**
+
+- **Finding:** Caregivers value play-based activities but struggle to use them
+  consistently when their child is distressed or the household is under
+  pressure.
+- **Evidence:** Raised in 9 of 12 caregiver interviews and 4 of 4 focus groups,
+  especially among caregivers with younger children and limited support.
+- **Implication:** Program guidance may assume more caregiver capacity and
+  household stability than exists in practice.
+- **Program adjustment:** Add simple emotional regulation techniques to
+  caregiver sessions, emphasize flexible low-effort play for stressful moments,
+  and adapt content to address feasibility as well as skills.
+:::
+
+### Common mistakes
+
+- Drawing conclusions after reading only a few transcripts
+- Coding minor details instead of focusing on learning questions
+- Treating a single participant's quote as a general finding
+- Leaving analytical decisions undocumented
+
+[^source]: Adapted from the Innovations for Poverty Action Right-Fit Evidence
+    Unit's qualitative research methods training on data quality and analysis.
