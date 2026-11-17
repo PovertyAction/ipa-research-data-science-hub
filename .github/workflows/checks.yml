@@ -23,14 +23,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      checks: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - uses: errata-ai/vale-action@518a9136acc6e6668ce7c00d367051e0941e87ff # 3.0.0
         with:
-          reporter: github-pr-check # Alternatives: github-pr-check, github-pr-review, github-check
+          reporter: github-pr-annotations # Alternatives: github-pr-check, github-pr-review, github-check
           fail_on_error: false
           filter_mode: diff_context # Alternatives: added, diff_context, file, nofilter
           vale_flags: "--minAlertLevel=error"

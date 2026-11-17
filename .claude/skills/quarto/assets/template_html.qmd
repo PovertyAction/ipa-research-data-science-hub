@@ -45,7 +45,7 @@ import seaborn as sns
 
 # Set visualization defaults
 sns.set_theme(style="whitegrid")
-plt.rcParams['figure.dpi'] = 100
+plt.rcParams["figure.dpi"] = 100
 ```
 
 ```{python}
@@ -56,11 +56,13 @@ plt.rcParams['figure.dpi'] = 100
 # data = pd.read_csv("path/to/data.csv")
 
 # Example data
-data = pd.DataFrame({
-    'x': np.random.randn(100),
-    'y': np.random.randn(100),
-    'category': np.random.choice(['A', 'B', 'C'], 100)
-})
+data = pd.DataFrame(
+    {
+        "x": np.random.randn(100),
+        "y": np.random.randn(100),
+        "category": np.random.choice(["A", "B", "C"], 100),
+    }
+)
 ```
 
 ## Data Description
@@ -84,15 +86,15 @@ data.describe()
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 
-axes[0].hist(data['x'], bins=20, edgecolor='black')
-axes[0].set_title('Distribution of X')
-axes[0].set_xlabel('X')
-axes[0].set_ylabel('Frequency')
+axes[0].hist(data["x"], bins=20, edgecolor="black")
+axes[0].set_title("Distribution of X")
+axes[0].set_xlabel("X")
+axes[0].set_ylabel("Frequency")
 
-axes[1].hist(data['y'], bins=20, edgecolor='black')
-axes[1].set_title('Distribution of Y')
-axes[1].set_xlabel('Y')
-axes[1].set_ylabel('Frequency')
+axes[1].hist(data["y"], bins=20, edgecolor="black")
+axes[1].set_title("Distribution of Y")
+axes[1].set_xlabel("Y")
+axes[1].set_ylabel("Frequency")
 
 plt.tight_layout()
 plt.show()
@@ -106,11 +108,11 @@ plt.show()
 #| echo: true
 
 plt.figure(figsize=(8, 6))
-sns.scatterplot(data=data, x='x', y='y', hue='category', alpha=0.6)
-plt.title('Scatter Plot of X vs Y')
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.legend(title='Category')
+sns.scatterplot(data=data, x="x", y="y", hue="category", alpha=0.6)
+plt.title("Scatter Plot of X vs Y")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.legend(title="Category")
 plt.show()
 ```
 
@@ -147,6 +149,7 @@ Include supplementary materials here.
 #| echo: false
 
 import sys
+
 print(f"Python version: {sys.version}")
 print(f"Pandas version: {pd.__version__}")
 print(f"NumPy version: {np.__version__}")

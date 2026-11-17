@@ -58,11 +58,13 @@ sns.set_theme(style="whitegrid")
 # data = pd.read_csv("path/to/data.csv")
 
 # Example data
-data = pd.DataFrame({
-    'variable1': np.random.randn(100),
-    'variable2': np.random.randn(100),
-    'group': np.random.choice(['Group A', 'Group B', 'Group C'], 100)
-})
+data = pd.DataFrame(
+    {
+        "variable1": np.random.randn(100),
+        "variable2": np.random.randn(100),
+        "group": np.random.choice(["Group A", "Group B", "Group C"], 100),
+    }
+)
 ```
 
 ## Data Overview
@@ -72,10 +74,11 @@ data = pd.DataFrame({
 #| tbl-cap: "Summary Statistics"
 #| echo: false
 
-summary = data.groupby('group').agg({
-    'variable1': ['mean', 'std', 'count'],
-    'variable2': ['mean', 'std', 'count']
-}).round(3)
+summary = (
+    data.groupby("group")
+    .agg({"variable1": ["mean", "std", "count"], "variable2": ["mean", "std", "count"]})
+    .round(3)
+)
 
 summary
 ```
@@ -90,17 +93,17 @@ summary
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
-data.boxplot(column='variable1', by='group', ax=axes[0])
-axes[0].set_title('Variable 1 by Group')
-axes[0].set_xlabel('Group')
-axes[0].set_ylabel('Variable 1')
+data.boxplot(column="variable1", by="group", ax=axes[0])
+axes[0].set_title("Variable 1 by Group")
+axes[0].set_xlabel("Group")
+axes[0].set_ylabel("Variable 1")
 
-data.boxplot(column='variable2', by='group', ax=axes[1])
-axes[1].set_title('Variable 2 by Group')
-axes[1].set_xlabel('Group')
-axes[1].set_ylabel('Variable 2')
+data.boxplot(column="variable2", by="group", ax=axes[1])
+axes[1].set_title("Variable 2 by Group")
+axes[1].set_xlabel("Group")
+axes[1].set_ylabel("Variable 2")
 
-plt.suptitle('')  # Remove default title
+plt.suptitle("")  # Remove default title
 plt.tight_layout()
 plt.show()
 ```
@@ -112,14 +115,13 @@ plt.show()
 #| fig-cap: "Relationship between Variables"
 
 plt.figure(figsize=(8, 6))
-for group in data['group'].unique():
-    subset = data[data['group'] == group]
-    plt.scatter(subset['variable1'], subset['variable2'],
-                label=group, alpha=0.6, s=50)
+for group in data["group"].unique():
+    subset = data[data["group"] == group]
+    plt.scatter(subset["variable1"], subset["variable2"], label=group, alpha=0.6, s=50)
 
-plt.xlabel('Variable 1')
-plt.ylabel('Variable 2')
-plt.title('Scatter Plot by Group')
+plt.xlabel("Variable 1")
+plt.ylabel("Variable 2")
+plt.title("Scatter Plot by Group")
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
@@ -141,12 +143,14 @@ plt.show()
 #| echo: false
 
 # Example: Add your statistical tests here
-results = pd.DataFrame({
-    'Test': ['ANOVA Variable 1', 'ANOVA Variable 2'],
-    'Statistic': [2.45, 1.89],
-    'P-value': [0.092, 0.157],
-    'Conclusion': ['Not significant', 'Not significant']
-})
+results = pd.DataFrame(
+    {
+        "Test": ["ANOVA Variable 1", "ANOVA Variable 2"],
+        "Statistic": [2.45, 1.89],
+        "P-value": [0.092, 0.157],
+        "Conclusion": ["Not significant", "Not significant"],
+    }
+)
 
 results
 ```
