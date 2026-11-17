@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-05-18">
+<meta name="dcterms.date" content="2026-11-11">
 <meta name="keywords" content="data quality, high-frequency checks, data management system, SurveyCTO, survey monitoring, DataSure, how-to guide">
 
 <title>How to Use DataSure – Knowledge Hub</title>
@@ -87,9 +87,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-47407c29e8f0cbb45854e90f85b31c93.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5b26a88363b6d3e64851187dd8e57bd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-683e26763be4833af34bc5ab9e02cc93.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5b26a88363b6d3e64851187dd8e57bd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c998cfb2a636471d846c634f35d81847.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-afddfdaff87ff1df138a711b4912c6d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-c998cfb2a636471d846c634f35d81847.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -648,6 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <li><a href="#launching-datasure" id="toc-launching-datasure" class="nav-link" data-scroll-target="#launching-datasure">Launching DataSure</a>
     <ul class="collapse">
     <li><a href="#command-line-options" id="toc-command-line-options" class="nav-link" data-scroll-target="#command-line-options">Command-line options</a></li>
+    <li><a href="#sec-reviewer-name" id="toc-sec-reviewer-name" class="nav-link" data-scroll-target="#sec-reviewer-name">Setting your reviewer name</a></li>
     </ul></li>
     <li><a href="#getting-familiar-try-demo-mode-first" id="toc-getting-familiar-try-demo-mode-first" class="nav-link" data-scroll-target="#getting-familiar-try-demo-mode-first">Getting Familiar: Try Demo Mode First</a>
     <ul class="collapse">
@@ -659,6 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="collapse">
     <li><a href="#creating-a-new-project" id="toc-creating-a-new-project" class="nav-link" data-scroll-target="#creating-a-new-project">Creating a new project</a></li>
     <li><a href="#opening-an-existing-project" id="toc-opening-an-existing-project" class="nav-link" data-scroll-target="#opening-an-existing-project">Opening an existing project</a></li>
+    <li><a href="#sec-reuse-setup" id="toc-sec-reuse-setup" class="nav-link" data-scroll-target="#sec-reuse-setup">Reusing a project’s setup</a></li>
     <li><a href="#deleting-a-project" id="toc-deleting-a-project" class="nav-link" data-scroll-target="#deleting-a-project">Deleting a project</a></li>
     </ul></li>
     <li><a href="#step-2-import-data" id="toc-step-2-import-data" class="nav-link" data-scroll-target="#step-2-import-data">Step 2: Import Data</a>
@@ -683,20 +685,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul></li>
     <li><a href="#step-5-review-your-dqa-reports" id="toc-step-5-review-your-dqa-reports" class="nav-link" data-scroll-target="#step-5-review-your-dqa-reports">Step 5: Review Your DQA Reports</a>
     <ul class="collapse">
-    <li><a href="#navigating-check-tabs" id="toc-navigating-check-tabs" class="nav-link" data-scroll-target="#navigating-check-tabs">Navigating check tabs</a></li>
-    <li><a href="#summary-tab" id="toc-summary-tab" class="nav-link" data-scroll-target="#summary-tab">Summary tab</a></li>
-    <li><a href="#survey-progress-tab" id="toc-survey-progress-tab" class="nav-link" data-scroll-target="#survey-progress-tab">Survey Progress tab</a></li>
-    <li><a href="#duplicates-tab" id="toc-duplicates-tab" class="nav-link" data-scroll-target="#duplicates-tab">Duplicates tab</a></li>
-    <li><a href="#missing-data-tab" id="toc-missing-data-tab" class="nav-link" data-scroll-target="#missing-data-tab">Missing Data tab</a></li>
-    <li><a href="#outliers-tab" id="toc-outliers-tab" class="nav-link" data-scroll-target="#outliers-tab">Outliers tab</a></li>
-    <li><a href="#enumerator-stats-tab" id="toc-enumerator-stats-tab" class="nav-link" data-scroll-target="#enumerator-stats-tab">Enumerator Stats tab</a></li>
-    <li><a href="#gps-checks-tab" id="toc-gps-checks-tab" class="nav-link" data-scroll-target="#gps-checks-tab">GPS Checks tab</a></li>
-    <li><a href="#descriptive-stats-tab" id="toc-descriptive-stats-tab" class="nav-link" data-scroll-target="#descriptive-stats-tab">Descriptive Stats tab</a></li>
-    <li><a href="#back-checks-tab" id="toc-back-checks-tab" class="nav-link" data-scroll-target="#back-checks-tab">Back Checks tab</a></li>
+    <li><a href="#navigating-checks" id="toc-navigating-checks" class="nav-link" data-scroll-target="#navigating-checks">Navigating checks</a></li>
+    <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+    <li><a href="#progress" id="toc-progress" class="nav-link" data-scroll-target="#progress">Progress</a></li>
+    <li><a href="#duplicates" id="toc-duplicates" class="nav-link" data-scroll-target="#duplicates">Duplicates</a></li>
+    <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing Values</a></li>
+    <li><a href="#outliers-constraints" id="toc-outliers-constraints" class="nav-link" data-scroll-target="#outliers-constraints">Outliers &amp; Constraints</a></li>
+    <li><a href="#enumerator-stats" id="toc-enumerator-stats" class="nav-link" data-scroll-target="#enumerator-stats">Enumerator Stats</a></li>
+    <li><a href="#gps-checks" id="toc-gps-checks" class="nav-link" data-scroll-target="#gps-checks">GPS Checks</a></li>
+    <li><a href="#descriptive-stats" id="toc-descriptive-stats" class="nav-link" data-scroll-target="#descriptive-stats">Descriptive Stats</a></li>
+    <li><a href="#backchecks" id="toc-backchecks" class="nav-link" data-scroll-target="#backchecks">Backchecks</a></li>
     </ul></li>
     <li><a href="#step-6-correct-data" id="toc-step-6-correct-data" class="nav-link" data-scroll-target="#step-6-correct-data">Step 6: Correct Data</a>
     <ul class="collapse">
+    <li><a href="#where-to-make-corrections" id="toc-where-to-make-corrections" class="nav-link" data-scroll-target="#where-to-make-corrections">Where to make corrections</a></li>
+    <li><a href="#choosing-a-check-page-and-dataset" id="toc-choosing-a-check-page-and-dataset" class="nav-link" data-scroll-target="#choosing-a-check-page-and-dataset">Choosing a check page and dataset</a></li>
     <li><a href="#adding-a-correction" id="toc-adding-a-correction" class="nav-link" data-scroll-target="#adding-a-correction">Adding a correction</a></li>
+    <li><a href="#reviewing-the-correction-log" id="toc-reviewing-the-correction-log" class="nav-link" data-scroll-target="#reviewing-the-correction-log">Reviewing the Correction Log</a></li>
+    <li><a href="#undoing-a-correction" id="toc-undoing-a-correction" class="nav-link" data-scroll-target="#undoing-a-correction">Undoing a correction</a></li>
     <li><a href="#verifying-a-correction" id="toc-verifying-a-correction" class="nav-link" data-scroll-target="#verifying-a-correction">Verifying a correction</a></li>
     <li><a href="#recommended-correction-workflow" id="toc-recommended-correction-workflow" class="nav-link" data-scroll-target="#recommended-correction-workflow">Recommended correction workflow</a></li>
     </ul></li>
@@ -972,7 +978,7 @@ Note
 <section id="step-3-verify-the-installation" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-verify-the-installation">Step 3: Verify the installation</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datasure</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You should see a version number, for example <code>datasure 1.0.0</code>. If you see an error, confirm that you installed <code>uv</code> correctly and that your system path updated after installation.</p>
+<p>You should see <code>datasure</code> followed by the version number you installed. If you see an error, confirm that you installed <code>uv</code> correctly and that your system path updated after installation.</p>
 </section>
 </section>
 <section id="launching-datasure" class="level2">
@@ -994,6 +1000,11 @@ Note
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View all available options</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">datasure</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sec-reviewer-name" class="level3">
+<h3 class="anchored" data-anchor-id="sec-reviewer-name">Setting your reviewer name</h3>
+<p>DataSure records who made every correction, acceptance, and back check attribution. By default, it uses your computer login. To use your own name instead, click the <strong>Reviewer</strong> button near the bottom of the sidebar, which shows the current name, and enter your name under <strong>Reviewer name</strong>. DataSure saves it when you press Enter or click away, and remembers it across sessions. Leave the box blank to go back to your computer login.</p>
+<p>Set your reviewer name before you start correcting data, so that the Correction Log shows who made each entry.</p>
 </section>
 </section>
 <section id="getting-familiar-try-demo-mode-first" class="level2">
@@ -1037,14 +1048,17 @@ Note
 <section id="step-1-create-or-open-a-project" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-create-or-open-a-project">Step 1: Create or Open a Project</h2>
 <p>DataSure organizes each survey or data collection exercise as a <strong>project</strong>. A project stores your imported datasets, configuration settings, quality check outputs, correction history, and prep logs, all in a local cache on your computer.</p>
+<p>The <strong>Start Here</strong> page lists your projects, one row per project. Each row shows the project name, when you last used it, and how many datasets and check pages it has. Use the search box to find a project by name, and the sort menu to change the order of the list.</p>
 <section id="creating-a-new-project" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-new-project">Creating a new project</h3>
 <ol type="1">
-<li><p>On the <strong>Start Here</strong> page, select <strong>Create New Project</strong> from the project dropdown.</p></li>
+<li><p>On the <strong>Start Here</strong> page, click <strong>+ New Project</strong>.</p></li>
+<li><p>In the <strong>New Project</strong> dialog, keep <strong>Start from scratch</strong> selected.</p></li>
 <li><p>Enter a descriptive project name. Project names can contain letters, numbers, spaces, dashes, and underscores, and must be at least three characters long.</p>
 <p>Good examples: <code>TCAI Baseline 2026</code>, <code>Kidigo DDEP Endline 2024</code>, <code>ORS-Zinc Midline 2020</code></p></li>
-<li><p>Click <strong>Create Project</strong>. DataSure generates a unique project ID from the name and sets up the local cache folder structure automatically.</p></li>
+<li><p>Click <strong>Create Project</strong>. DataSure generates a unique project ID from the name, sets up the local cache folder structure, and opens the project.</p></li>
 </ol>
+<p>To start from another project’s setup instead of from scratch, see <a href="#sec-reuse-setup">Reusing a project’s setup</a>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1061,19 +1075,79 @@ Tip
 </section>
 <section id="opening-an-existing-project" class="level3">
 <h3 class="anchored" data-anchor-id="opening-an-existing-project">Opening an existing project</h3>
+<p>On the <strong>Start Here</strong> page, find the project in the list and click <strong>Open</strong>.</p>
+</section>
+<section id="sec-reuse-setup" class="level3">
+<h3 class="anchored" data-anchor-id="sec-reuse-setup">Reusing a project’s setup</h3>
+<p>A <strong>configuration file</strong> saves a project’s setup so you or a colleague can reuse it. Use it to start the next survey round with the same checks, or to share a working setup with another team.</p>
+<p>The configuration file includes:</p>
+<ul>
+<li>Import sources</li>
+<li>Prep steps</li>
+<li>Check pages, with their settings and check tables</li>
+<li>Missing-value codes</li>
+<li>Corrections and back check mismatch attributions, if you choose to include them</li>
+</ul>
+<p>The file omits full datasets, but included record-level decisions can contain participant identifiers, survey values, GPS coordinates, and reviewer names. Untick <strong>Include record-level decisions (corrections and backcheck attribution)</strong> to export only the setup. Review the file before sharing and use an approved secure channel for sensitive information. When you apply it, sign in to SurveyCTO again and select local files on the computer doing the import.</p>
+<section id="export-a-configuration-file" class="level4">
+<h4 class="anchored" data-anchor-id="export-a-configuration-file">Export a configuration file</h4>
 <ol type="1">
-<li>On the <strong>Start Here</strong> page, select the project from the dropdown. DataSure automatically highlights the most recently used project.</li>
-<li>DataSure shows the project’s creation date and last-used date below the selector.</li>
-<li>Click <strong>Load Project</strong>.</li>
+<li>On the <strong>Start Here</strong> page, find the project and open its <strong>More</strong> menu.</li>
+<li>Select <strong>Export configuration</strong>.</li>
+<li>Choose whether to keep <strong>Include record-level decisions (corrections and backcheck attribution)</strong> ticked. DataSure ticks it by default. Untick it to share only the setup, for example when you start a new survey round with the same checks.</li>
+<li>Click <strong>Download configuration</strong> to save the file. The file is a <code>.json</code> file.</li>
 </ol>
+</section>
+<section id="create-a-project-from-a-configuration-file" class="level4">
+<h4 class="anchored" data-anchor-id="create-a-project-from-a-configuration-file">Create a project from a configuration file</h4>
+<ol type="1">
+<li>On the <strong>Start Here</strong> page, click <strong>+ New Project</strong>.</li>
+<li>In the <strong>New Project</strong> dialog, select <strong>From a configuration file</strong>.</li>
+<li>Upload the configuration file. DataSure confirms which project the file came from.</li>
+<li>Enter a project name.</li>
+<li>Click <strong>Create Project &amp; Continue</strong>. DataSure creates the project and guides you through connecting it to your data sources.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_import_project_config.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The New Project dialog with the configuration file options shown."><img src="images/datasure_import_project_config.png" class="img-fluid figure-img" loading="lazy" alt="DataSure New Project dialog open over the Start Here page. It has a Project name box, Start from scratch and From a configuration file buttons, and a note that DataSure will create the project and then walk you through matching it to a configuration file exported from another DataSure project. Below are a Configuration file box with an Upload button that accepts JSON files up to 1GB, a note asking for a project name and a valid configuration file, and a Create Project &amp; Continue button that is not yet active."></a></p>
+<figcaption>The New Project dialog with the configuration file options shown.</figcaption>
+</figure>
+</div>
+</section>
+<section id="update-an-existing-project-from-a-configuration-file" class="level4">
+<h4 class="anchored" data-anchor-id="update-an-existing-project-from-a-configuration-file">Update an existing project from a configuration file</h4>
+<ol type="1">
+<li>On the <strong>Start Here</strong> page, find the project and open its <strong>More</strong> menu.</li>
+<li>Select <strong>Update from configuration</strong> and upload the configuration file.</li>
+</ol>
+<p>When DataSure applies a configuration file to a project:</p>
+<ul>
+<li>DataSure only creates a check page if the project has no page with the same name and you have imported the page’s dataset. DataSure lists any pages it skips. Existing pages keep their own settings.</li>
+<li>DataSure merges missing-value codes with the project’s codes. If both use the same label, the code from the file replaces the project’s code.</li>
+<li>DataSure applies everything in the file without asking you to confirm each item.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A configuration file exported from DataSure 1.1 does not include check tables or missing-value codes. You can still apply it, but DataSure shows a warning, and you need to set up those items again by hand.</p>
+</div>
+</div>
+</section>
 </section>
 <section id="deleting-a-project" class="level3">
 <h3 class="anchored" data-anchor-id="deleting-a-project">Deleting a project</h3>
-<p>To permanently delete a project and all its data, expand the <strong>Delete Project</strong> section under the project selector. DataSure will ask you to confirm before deleting. This action cannot be undone.</p>
+<p>To permanently delete a project and all its data, open the project’s <strong>More</strong> menu and select <strong>Delete project</strong>. DataSure will ask you to confirm before deleting. This action cannot be undone.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_project_selector.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The Start Here page with an existing project selected, showing creation and last-used dates and the Load Project button."><img src="images/datasure_project_selector.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Start Here page with an existing project selected in the dropdown, displaying the project creation date and last-used date, and the Load Project button."></a></p>
-<figcaption>The Start Here page with an existing project selected, showing creation and last-used dates and the Load Project button.</figcaption>
+<p><a href="images/datasure_project_selector.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="The Start Here page listing the DataSure Demo and three projects, each with an Open button and a More menu."><img src="images/datasure_project_selector.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Start Here page titled Your Projects. At the top are a search box, a sort menu set to Last used, and a + New Project button. Below is the DataSure Demo row with Resume, Restart, and Export buttons, followed by a list of projects. Each project row shows the project name, the last-used date and time, the number of datasets and check pages, an Open button, and a More menu."></a></p>
+<figcaption>The Start Here page listing the DataSure Demo and three projects, each with an Open button and a More menu.</figcaption>
 </figure>
 </div>
 </section>
@@ -1100,7 +1174,7 @@ Tip
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_surveycto_login_page.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="The SurveyCTO import tab showing server credential fields, connected form list, and Import Data button."><img src="images/datasure_surveycto_login_page.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Import Data page with the SurveyCTO tab selected, showing server name, username, and password fields, a list of available forms to import, and the Import Data button."></a></p>
+<p><a href="images/datasure_surveycto_login_page.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="The SurveyCTO import tab showing server credential fields, connected form list, and Import Data button."><img src="images/datasure_surveycto_login_page.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Import Data page with the SurveyCTO tab selected, showing server name, username, and password fields, a list of available forms to import, and the Import Data button."></a></p>
 <figcaption>The SurveyCTO import tab showing server credential fields, connected form list, and Import Data button.</figcaption>
 </figure>
 </div>
@@ -1118,7 +1192,7 @@ Tip
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_local_file_upload.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="The Local Files import tab showing the upload area with a file loaded, the alias input field, and the Load Data button."><img src="images/datasure_local_file_upload.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Import Data page with the Local Files tab selected, showing a drag-and-drop upload area with a file loaded, an alias input field, and the Load Data button."></a></p>
+<p><a href="images/datasure_local_file_upload.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="The Local Files import tab showing the upload area with a file loaded, the alias input field, and the Load Data button."><img src="images/datasure_local_file_upload.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Import Data page with the Local Files tab selected, showing a drag-and-drop upload area with a file loaded, an alias input field, and the Load Data button."></a></p>
 <figcaption>The Local Files import tab showing the upload area with a file loaded, the alias input field, and the Load Data button.</figcaption>
 </figure>
 </div>
@@ -1209,7 +1283,7 @@ Important
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_prep_actions_selector.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="The Transform Column dialog showing the column selector, function dropdown, and additional parameter fields."><img src="images/datasure_prep_actions_selector.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Prepare Data page showing the Transform Column dialog with a column selector dropdown, a function selector listing all available transformation options, and conditional parameter fields that appear based on the selected function."></a></p>
+<p><a href="images/datasure_prep_actions_selector.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="The Transform Column dialog showing the column selector, function dropdown, and additional parameter fields."><img src="images/datasure_prep_actions_selector.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Prepare Data page showing the Transform Column dialog with a column selector dropdown, a function selector listing all available transformation options, and conditional parameter fields that appear based on the selected function."></a></p>
 <figcaption>The Transform Column dialog showing the column selector, function dropdown, and additional parameter fields.</figcaption>
 </figure>
 </div>
@@ -1268,7 +1342,7 @@ Important
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1277,7 +1351,7 @@ Important
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <section id="transform-column" class="level4">
 <h4 class="anchored" data-anchor-id="transform-column">Transform Column</h4>
@@ -1712,12 +1786,12 @@ Warning
 </section>
 <section id="reviewing-and-editing-preparation-steps" class="level3">
 <h3 class="anchored" data-anchor-id="reviewing-and-editing-preparation-steps">Reviewing and editing preparation steps</h3>
-<p>DataSure shows all preparation steps you add in a log below the dataset preview. Each step records the action type, the affected column, and the time you applied it. You can review this log to confirm that DataSure applied each step correctly.</p>
-<p>DataSure applies preparation steps in order. If you need to remove a step, you can delete it from the log.</p>
+<p>DataSure lists every preparation step you add in the <strong>Change Log</strong> below the dataset preview. Each row shows the step’s action, its status, and a description of what the step did, such as which columns it removed and how many columns remain. Check the log to confirm that each step worked.</p>
+<p>DataSure applies the steps in order each time it loads the data. If it can’t apply a step, for example because a new import no longer has a column the step uses, the status is <strong>Failed</strong> and the description says why. DataSure skips the failed step and still applies the others. To fix it, click <strong>Remove data prep step</strong>, select the step under <strong>Select Action to Remove</strong>, click <strong>Remove</strong>, and confirm. Then add the step again with the right settings.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_prep_log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="The preparation log showing applied steps with action type, affected column, and timestamp."><img src="images/datasure_prep_log.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Prepare Data page showing the preparation log table with rows for each applied step, listing the action type, affected column, and timestamp."></a></p>
-<figcaption>The preparation log showing applied steps with action type, affected column, and timestamp.</figcaption>
+<p><a href="images/datasure_prep_log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="The Change Log on the Prepare Data page, with one successful step and one failed step."><img src="images/datasure_prep_log.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Prepare Data page for the Household Survey dataset. Under Apply Changes are the Add data prep step and Remove data prep step buttons. Below them, the Change Log table has three columns: action, status, and description. The first row is a step that removes columns. Its status is Successful, and its description says the step removed 1 column, birthyy_99, leaving 478 columns. The second row is a step that removes rows. Its status is Failed, and its description says the step could not be reapplied because DataSure could not find the column village_name."></a></p>
+<figcaption>The Change Log on the Prepare Data page, with one successful step and one failed step.</figcaption>
 </figure>
 </div>
 </section>
@@ -1738,7 +1812,7 @@ Warning
 <p>DataSure validates your inputs when you submit. If any required fields are missing or column selections are invalid, it will show a specific error message.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_config_page_prefilled.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="The Add New Check Configuration dialog fully filled out with example values for all fields."><img src="images/datasure_config_page_prefilled.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Configure Checks page showing the Add New Check Configuration dialog with all fields completed, including page name, survey dataset, key column, ID column, enumerator column, date column, and other optional settings."></a></p>
+<p><a href="images/datasure_config_page_prefilled.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="The Add New Check Configuration dialog fully filled out with example values for all fields."><img src="images/datasure_config_page_prefilled.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Configure Checks page showing the Add New Check Configuration dialog with all fields completed, including page name, survey dataset, key column, ID column, enumerator column, date column, and other optional settings."></a></p>
 <figcaption>The Add New Check Configuration dialog fully filled out with example values for all fields.</figcaption>
 </figure>
 </div>
@@ -1810,7 +1884,7 @@ Warning
 <tr class="odd">
 <td><strong>Form Version Column</strong></td>
 <td>No</td>
-<td>The survey form version used for each submission. SurveyCTO stores this as <code>formdef_version</code>. Without it, the Summary tab omits form version tracking.</td>
+<td>The survey form version used for each submission. SurveyCTO stores this as <code>formdef_version</code>. Without it, the Summary check omits form version tracking.</td>
 <td>Summary</td>
 <td><code>formdef_version</code>, <code>form_version</code></td>
 </tr>
@@ -1902,7 +1976,7 @@ Note
 <p>To edit an existing configuration, click <strong>Edit Check Configuration</strong> and select the configuration to modify. To delete a configuration, click <strong>Remove Check Configuration</strong>. Removing a configuration also removes its DQA Report page from the sidebar, but does not delete the underlying data.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_config_logs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="The Configure Checks page showing a saved configuration in the configuration table with Edit and Remove buttons."><img src="images/datasure_config_logs.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Configure Checks page displaying the configuration table with a saved check configuration entry and visible Edit and Remove action buttons."></a></p>
+<p><a href="images/datasure_config_logs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="The Configure Checks page showing a saved configuration in the configuration table with Edit and Remove buttons."><img src="images/datasure_config_logs.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Configure Checks page displaying the configuration table with a saved check configuration entry and visible Edit and Remove action buttons."></a></p>
 <figcaption>The Configure Checks page showing a saved configuration in the configuration table with Edit and Remove buttons.</figcaption>
 </figure>
 </div>
@@ -1912,70 +1986,186 @@ Note
 <h2 class="anchored" data-anchor-id="step-5-review-your-dqa-reports">Step 5: Review Your DQA Reports</h2>
 <p>After saving a check configuration, a <strong>DQA Report</strong> page appears in the sidebar with the name you gave the configuration. This is where you review the results of all nine quality check modules.</p>
 <p>Navigate to your DQA Report from the sidebar. Reports update automatically each time you import new data. During active data collection, review them at least once per day.</p>
-<section id="navigating-check-tabs" class="level3">
-<h3 class="anchored" data-anchor-id="navigating-check-tabs">Navigating check tabs</h3>
-<p>Each DQA Report page has nine tabs, one for each quality check module. Each tab has two sections:</p>
+<section id="navigating-checks" class="level3">
+<h3 class="anchored" data-anchor-id="navigating-checks">Navigating checks</h3>
+<p>Each DQA Report page groups the nine checks into four groups. Choose a group, then a check:</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Checks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Overview</td>
+<td>Summary, Progress</td>
+</tr>
+<tr class="even">
+<td>Data integrity</td>
+<td>Missing Values, Duplicates, Outliers &amp; Constraints, GPS Checks</td>
+</tr>
+<tr class="odd">
+<td>Field team</td>
+<td>Enumerator Stats, Backchecks</td>
+</tr>
+<tr class="even">
+<td>Exploration</td>
+<td>Descriptive Stats</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Only the check you select runs, so the page stays responsive. The page reopens on the check you last viewed, and each check remembers its filters and sort order. Click <strong>Reset filters</strong> beside a check’s settings to clear them.</p>
+<p>Each check has two sections:</p>
 <ul>
 <li><strong>Settings</strong>: Configure display options and thresholds for that specific check. DataSure saves these settings and keeps them across sessions, so you do not need to reconfigure them each time.</li>
 <li><strong>Results</strong>: The actual check output, including summary statistics, charts, and tables of flagged records.</li>
 </ul>
-<p>Use the <strong>Column Selector</strong> within each tab to choose which columns to include in that check. This is useful for focusing on the variables most relevant to your project.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/datasure_summary_tab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="A DQA Report page with the Summary tab open, showing the submission trend chart and quality metric cards."><img src="images/datasure_summary_tab.png" class="img-fluid figure-img" loading="lazy" alt="DataSure DQA Report page with the Summary tab selected, displaying a submission trend line chart and quality metric cards for duplicate rate, missing data rate, outlier rate, and backcheck error rate."></a></p>
-<figcaption>A DQA Report page with the Summary tab open, showing the submission trend chart and quality metric cards.</figcaption>
-</figure>
-</div>
+<p>Use the <strong>Column Selector</strong> within each check to choose which columns to include in that check. This is useful for focusing on the variables most relevant to your project.</p>
 </section>
-<section id="summary-tab" class="level3">
-<h3 class="anchored" data-anchor-id="summary-tab">Summary tab</h3>
-<p>The Summary tab is the starting point for each monitoring session. It gives a high-level picture of your data collection at a glance.</p>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<p>The Summary check is the starting point for each monitoring session. It gives a high-level picture of your data collection at a glance.</p>
 <p>Key metrics shown:</p>
 <ul>
 <li><strong>Submission totals</strong>: Total interviews today, this week, this month, and all time</li>
 <li><strong>Submission trend</strong>: A line chart showing submissions over time, so you can spot slowdowns or unusual spikes</li>
 <li><strong>Progress bar</strong>: Percentage toward your Survey Target (if configured), with average daily submission rate</li>
-<li><strong>Data quality overview</strong>: At-a-glance percentages for duplicate rate, outlier rate, missing data rate, and backcheck error rate</li>
+<li><strong>Check health</strong>: One row per check, showing its status, the issues still outstanding, the issues already resolved through corrections, acceptances, or attributions, and how they changed since yesterday or over another period you choose</li>
 <li><strong>Subgroup progress</strong>: Progress broken down by a grouping variable you choose, such as region or enumerator team</li>
 </ul>
+<p>The <strong>Check health</strong> section shows a status for each check:</p>
+<ul>
+<li><strong>No issues</strong>: The check found nothing to review.</li>
+<li><strong>Flagged</strong>: The check found issues to review.</li>
+<li><strong>Not set up</strong>: The check needs columns that you have not selected yet. Click <strong>Set up</strong> to configure it.</li>
+<li><strong>Not applicable</strong>: The check does not apply to this dataset. DataSure shows the reason.</li>
+</ul>
+<p>Click <strong>Open</strong> to go to a check’s results. By default, the <strong>Change</strong> and <strong>Resolved</strong> columns compare against yesterday. To compare against another period, expand <strong>Comparison period</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_check_health.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="The Check health section of the Summary check, with one row per check showing its status, outstanding issues, change, and resolved issues."><img src="images/datasure_check_health.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Check health section on the Summary check of the Household HFC report. A note says it shows changes since yesterday. The table has the columns Check, Status, Outstanding, Change, and Resolved, grouped under Overview and Data integrity. Progress shows No issues, with 5,561 of 6,000 submissions and 71 new submissions since yesterday. Missing Values shows Flagged, with 26 of 481 columns all missing. Duplicates shows Flagged, with 7 duplicate IDs. Outliers &amp; Constraints and GPS Checks show Not set up, each with a Set up button. The other rows have an Open button."></a></p>
+<figcaption>The Check health section of the Summary check, with one row per check showing its status, outstanding issues, change, and resolved issues.</figcaption>
+</figure>
+</div>
 </section>
-<section id="survey-progress-tab" class="level3">
-<h3 class="anchored" data-anchor-id="survey-progress-tab">Survey Progress tab</h3>
-<p>The Survey Progress tab provides a more detailed view of collection pacing. It is most useful for project managers who need to monitor whether the team is on track to meet the target sample size by the end of the data collection period.</p>
-<p>Configure the tab settings before reviewing results:</p>
+<section id="progress" class="level3">
+<h3 class="anchored" data-anchor-id="progress">Progress</h3>
+<p>The Progress check provides a more detailed view of collection pacing. It is most useful for project managers who need to monitor whether the team is on track to meet the target sample size by the end of the data collection period.</p>
+<p>Configure the check settings before reviewing results:</p>
 <ul>
 <li>Select the <strong>Survey ID</strong>, <strong>Date</strong>, and <strong>Enumerator</strong> columns</li>
 <li>Enter the <strong>Target Number of Interviews</strong></li>
 <li>Optionally, specify <strong>Consent</strong> and <strong>Completion</strong> columns and their expected values (for example, <code>consent = "yes"</code> and <code>completion_status = "complete"</code>)</li>
 </ul>
-<p>The tab then shows submission trends, attempt rates per respondent, and consent and completion rates over time.</p>
+<p>The check then shows submission trends, attempt rates per respondent, and consent and completion rates over time.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_progress_tracking.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="The Survey Progress tab showing a cumulative submissions chart with a target reference line and completion rate summary."><img src="images/datasure_progress_tracking.png" class="img-fluid figure-img" loading="lazy" alt="DataSure DQA Report Survey Progress tab displaying a cumulative submissions chart with a target reference line and a completion rate summary panel."></a></p>
-<figcaption>The Survey Progress tab showing a cumulative submissions chart with a target reference line and completion rate summary.</figcaption>
+<p><a href="images/datasure_progress_tracking.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="The Progress check showing submission progress toward the target and a weekly chart of interviews."><img src="images/datasure_progress_tracking.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Progress check for the Household HFC report. The Progress Summary shows a submission progress bar at 92.68 percent, a target of 6,000 interviews, and 5,561 submitted interviews. Below, Progress Over Time has Daily, Weekly, and Monthly buttons, with Weekly selected. The bar chart shows the number of interviews per week from August 31 to November 9, 2026, with a dashed line for the average of 505.55 interviews. Weeks below the average are red and the other weeks are green."></a></p>
+<figcaption>The Progress check showing submission progress toward the target and a weekly chart of interviews.</figcaption>
 </figure>
 </div>
 </section>
-<section id="duplicates-tab" class="level3">
-<h3 class="anchored" data-anchor-id="duplicates-tab">Duplicates tab</h3>
-<p>The Duplicates tab identifies records that share the same value in columns that should be unique.</p>
-<p>Configure the tab settings:</p>
+<section id="duplicates" class="level3">
+<h3 class="anchored" data-anchor-id="duplicates">Duplicates</h3>
+<p>The Duplicates check identifies records that share the same value in columns that should be unique.</p>
+<p>Configure the check settings:</p>
 <ul>
-<li>Select the <strong>Survey ID</strong> column (the respondent identifier to check for duplicates)</li>
-<li>Optionally add other columns to check, such as phone numbers or national ID numbers</li>
+<li><p>Select the <strong>Survey ID</strong> column (the respondent identifier to check for duplicates)</p></li>
+<li><p>Optionally add other columns to check, such as phone numbers or national ID numbers</p></li>
+<li><p>Optionally set <strong>Records to Include</strong> to check only the records that match a condition, for example <code>consent == Yes</code>. Use it to leave out a failed first attempt when the enumerator interviewed the respondent again under the same ID. The filter applies as soon as you set it.</p></li>
 </ul>
-<p>The results show the total number of duplicates found, which columns have duplicates, and a table listing every duplicate record. You can filter the table to focus on specific columns.</p>
-<p>When you identify a duplicate to resolve, use the <strong>Correct Data</strong> page (Step 6) to either modify the incorrect ID or remove the duplicate record.</p>
+<p>Metrics at the top show the number of <strong>Duplicate IDs</strong>, the <strong>Records involved</strong>, <strong>Missing IDs</strong>, and the number of duplicate IDs already <strong>Resolved</strong> through corrections.</p>
+<section id="comparing-duplicate-records-on-id-cards" class="level4">
+<h4 class="anchored" data-anchor-id="comparing-duplicate-records-on-id-cards">Comparing duplicate records on ID cards</h4>
+<p>DataSure shows one card for each duplicate ID. The card places the records side by side, one column per record, and highlights the fields that differ. Use the toggles to change what each card shows:</p>
+<ul>
+<li><strong>Compare all fields</strong>: show every column, not only the key, date, enumerator, team, and any extra columns you selected</li>
+<li><strong>Only differing fields</strong>: hide fields that are the same in every record</li>
+</ul>
+<p>Search the cards by ID or KEY, and sort them by group size or by latest date. Click <strong>Download duplicates (CSV)</strong> to export every record on the matching cards.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_duplicates_id_card.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="The Duplicates check with summary metrics and an ID card that compares three records sharing one ID."><img src="images/datasure_duplicates_id_card.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Duplicates check for the Household HFC report. Metrics at the top show 7 duplicate IDs, 15 records involved, 0 missing IDs, and 0 resolved. Below are a search box for ID or KEY, a Sort by menu set to Group size, and a Download duplicates (CSV) button. The ID card for hhid UP031-017 shows 3 records submitted between September 12 and October 23, 2026, with Compare all fields and Only differing fields toggles. A table compares the records side by side, with one column per record. The KEY, submissiondate, and enum_name rows are highlighted because they differ, and the team_id row is not. Under Resolve, each record has Keep, Modify ID, and Drop options, with Keep selected."></a></p>
+<figcaption>The Duplicates check with summary metrics and an ID card that compares three records sharing one ID.</figcaption>
+</figure>
+</div>
+<p>If your check configuration includes a backcheck dataset, a <strong>Survey data</strong> / <strong>Backcheck data</strong> switcher appears above the cards. The backcheck view shows duplicate backcheck IDs, and backchecks whose ID does not appear in the survey data (<strong>Unmatched IDs</strong>).</p>
 </section>
-<section id="missing-data-tab" class="level3">
-<h3 class="anchored" data-anchor-id="missing-data-tab">Missing Data tab</h3>
-<p>The Missing Data tab shows the extent and patterns of incomplete responses across your dataset.</p>
+<section id="resolving-a-duplicate-id" class="level4">
+<h4 class="anchored" data-anchor-id="resolving-a-duplicate-id">Resolving a duplicate ID</h4>
+<p>Investigate the duplicate first. Then, on the card, choose an action for each record:</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 41%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Action</th>
+<th>What it Does</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Keep</strong></td>
+<td>Leaves the record and its ID unchanged</td>
+<td>The record holds the correct ID</td>
+</tr>
+<tr class="even">
+<td><strong>Modify ID</strong></td>
+<td>Changes the record’s ID to a new ID you enter</td>
+<td>The enumerator entered the wrong ID</td>
+</tr>
+<tr class="odd">
+<td><strong>Drop</strong></td>
+<td>Removes the record from the dataset</td>
+<td>The record is a repeat submission or a test interview</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Choose a <strong>Reason</strong>, enter a <strong>Note</strong>, and click <strong>Save</strong>. DataSure saves every change on the card in one step, so a card is never partly resolved. <strong>Save</strong> stays disabled, with a message that explains what is missing, until:</p>
+<ul>
+<li>At most one record keeps the ID</li>
+<li>Every new ID is filled in, valid for the ID column, and not already used by another record</li>
+<li>You have entered a reason and a note</li>
+</ul>
+<p>If you choose <strong>Drop</strong> for every record, DataSure asks you to confirm first, because the ID disappears from the data. On a card for an unmatched backcheck, you can only choose <strong>Modify ID</strong> or <strong>Drop</strong>, and the new ID must exist in the survey data.</p>
+<p>After you save, the card disappears and <strong>Resolved</strong> goes up by one. DataSure logs each change in the Correction Log with the source <code>duplicates</code>. To undo a change, remove it from the Correction Log on the <strong>Correct Data</strong> page (Step 6).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You cannot accept a duplicate ID as valid, because an ID must belong to one record. If two records legitimately share an ID, such as a failed first attempt followed by a completed interview, use <strong>Records to Include</strong> to leave out the record you do not need.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="missing-values" class="level3">
+<h3 class="anchored" data-anchor-id="missing-values">Missing Values</h3>
+<p>The Missing Values check shows the extent and patterns of incomplete responses across your dataset.</p>
 <p>Before reviewing results, configure your missing value codes:</p>
 <ul>
 <li><strong>Missing Labels</strong>: Names for categories of missing responses, such as <code>Don't Know</code>, <code>Refused</code>, <code>Not Applicable</code></li>
 <li><strong>Missing Codes</strong>: The numeric codes used in the dataset to represent these categories, such as <code>-99</code>, <code>-88</code>, <code>-77</code>. Separate multiple codes with commas.</li>
 </ul>
-<p>The tab then shows:</p>
+<p>The check then shows:</p>
 <ul>
 <li>Overall and per-column missing rates</li>
 <li>A breakdown by category (null, Don’t Know, Refused, Not Applicable)</li>
@@ -1985,15 +2175,15 @@ Note
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_nullity_matrix.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="The Missing Data tab showing the nullity matrix and per-column missing rate table."><img src="images/datasure_nullity_matrix.png" class="img-fluid figure-img" loading="lazy" alt="DataSure DQA Report Missing Data tab showing a nullity matrix grid with red blocks indicating missing values, alongside a per-column missing rate table sorted by highest missingness."></a></p>
-<figcaption>The Missing Data tab showing the nullity matrix and per-column missing rate table.</figcaption>
+<p><a href="images/datasure_nullity_matrix.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="The Missing Values check showing the nullity matrix and per-column missing rate table."><img src="images/datasure_nullity_matrix.png" class="img-fluid figure-img" loading="lazy" alt="DataSure DQA Report Missing Values check showing a nullity matrix grid with red blocks indicating missing values, alongside a per-column missing rate table sorted by highest missingness."></a></p>
+<figcaption>The Missing Values check showing the nullity matrix and per-column missing rate table.</figcaption>
 </figure>
 </div>
 </section>
-<section id="outliers-tab" class="level3">
-<h3 class="anchored" data-anchor-id="outliers-tab">Outliers tab</h3>
-<p>The Outliers tab flags numeric values that are statistically unusual and may indicate data entry errors or implausible responses.</p>
-<p>The tab requires additional setup before showing results. Click <strong>Add Outlier Column</strong> for each numeric variable you want to check:</p>
+<section id="outliers-constraints" class="level3">
+<h3 class="anchored" data-anchor-id="outliers-constraints">Outliers &amp; Constraints</h3>
+<p>The Outliers &amp; Constraints check flags numeric values that are statistically unusual, and values that break the limits you set for a column. Both may indicate data entry errors or implausible responses.</p>
+<p>The check requires additional setup before showing results. Click <strong>Add Outlier/Constraint Column</strong> for each numeric variable you want to check:</p>
 <ol type="1">
 <li><p><strong>Select Columns</strong>: Choose the column or columns to check. You can search by exact name or by pattern:</p>
 <ul>
@@ -2008,21 +2198,42 @@ Note
 <li><strong>Standard Deviation</strong>: Flags values more than 3 standard deviations from the mean. More sensitive; suitable when the data is approximately normally distributed.</li>
 </ul></li>
 <li><p><strong>Multiplier</strong>: Adjust the sensitivity threshold. Lower values (for example, IQR multiplier of 1.0) flag more records; higher values flag fewer. Start with the default and adjust based on domain knowledge.</p></li>
-<li><p><strong>Soft Minimum / Soft Maximum</strong> (optional): Set known valid ranges for a variable. The tool flags any value below the soft minimum or above the soft maximum as an outlier regardless of the statistical threshold. For example, land area should always be greater than 0, and age should be between 15 and 95.</p></li>
+<li><p><strong>Constraints</strong> (optional): Set known limits for a variable. DataSure flags any value outside these limits as a constraint violation, regardless of the statistical threshold:</p>
+<ul>
+<li><strong>Hard Min / Hard Max</strong>: Values that are impossible, for example a negative land area.</li>
+<li><strong>Soft Min / Soft Max</strong>: Values that are possible but unlikely and need a follow-up, for example a respondent age above 95.</li>
+</ul></li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_outlier_config.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="The Add Outlier Column dialog showing the column search field, detection method selector, multiplier input, and soft min/max fields."><img src="images/datasure_outlier_config.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Outliers tab Add Outlier Column dialog with a column search field, detection method dropdown showing IQR and Standard Deviation options, a multiplier input, and optional soft minimum and maximum fields."></a></p>
-<figcaption>The Add Outlier Column dialog showing the column search field, detection method selector, multiplier input, and soft min/max fields.</figcaption>
+<p><a href="images/datasure_outlier_config.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="The dialog for adding outlier and constraint columns, showing the column selector, outlier options, and optional hard and soft minimum and maximum constraints."><img src="images/datasure_outlier_config.png" class="img-fluid figure-img" loading="lazy" alt="DataSure dialog for adding outlier and constraint columns. The top section has a search type dropdown set to exact and a column selector with share_cover_well selected. The Outlier Options section has an Enable Outlier Checks toggle, a detection method dropdown set to Interquartile Range, a multiplier of 1.50, and an outlier threshold of 20 percent. The Constraint Options section has optional fields for Hard minimum 0, Hard maximum 30, Soft minimum 2, and Soft maximum 15. A button to add the configuration is at the bottom."></a></p>
+<figcaption>The dialog for adding outlier and constraint columns, showing the column selector, outlier options, and optional hard and soft minimum and maximum constraints.</figcaption>
 </figure>
 </div>
-<p>The results show a summary table with outlier counts and statistics per column, and a record-level table listing each flagged value and why the tool flagged it. Clicking on a column shows a box plot with outliers highlighted.</p>
+<p>The results show a summary table with outlier counts and statistics per column, a table of constraint violations, and a record-level table listing each flagged value and why DataSure flagged it. Clicking on a column shows a box plot with outliers highlighted.</p>
+<section id="reviewing-flagged-values" class="level4">
+<h4 class="anchored" data-anchor-id="reviewing-flagged-values">Reviewing flagged values</h4>
+<p>Each row of the constraint violations table and the outlier inspection table starts with a <strong>Review</strong> button. Click it to open a form with the record’s KEY, the column, and the current value already filled in. Choose an action, enter a reason, and click <strong>Apply</strong>:</p>
+<ul>
+<li><strong>modify value</strong>: Replace the value with the correct one.</li>
+<li><strong>remove value</strong>: Set the value to missing.</li>
+<li><strong>accept</strong>: Record that you reviewed the value and it is correct. DataSure hides the flag and leaves it out of the counts. The data does not change.</li>
+</ul>
+<p>Accepting a value that breaks a hard limit asks you to confirm first. An acceptance covers one check: accepting an outlier does not accept a constraint violation on the same value. If the value changes later, the acceptance no longer applies and DataSure flags the value again.</p>
+<p>Use the toggles above each table to choose what it shows:</p>
+<ul>
+<li><strong>Show only flagged values</strong> (on by default): Hide values that are not flagged. Turn it off to see every checked value, including corrected values that are now in range.</li>
+<li><strong>Show reviewed</strong>: Show accepted flags and corrected values, highlighted in green with the reason.</li>
+<li><strong>Show only reviewed</strong>: Show only accepted and corrected values.</li>
+</ul>
+<p>DataSure logs every review in the Correction Log with the source <code>outliers</code> or <code>constraints</code>.</p>
 </section>
-<section id="enumerator-stats-tab" class="level3">
-<h3 class="anchored" data-anchor-id="enumerator-stats-tab">Enumerator Stats tab</h3>
-<p>The Enumerator Stats tab monitors the productivity and data quality of individual field staff. It is one of the most actionable tabs during active data collection because it helps you identify which enumerators need follow-up.</p>
-<p>Configure the tab settings to map your dataset’s columns to the expected fields (Enumerator, Date, Duration, Team, etc.).</p>
-<p>The tab shows:</p>
+</section>
+<section id="enumerator-stats" class="level3">
+<h3 class="anchored" data-anchor-id="enumerator-stats">Enumerator Stats</h3>
+<p>The Enumerator Stats check monitors the productivity and data quality of individual field staff. It is one of the most actionable checks during active data collection because it helps you identify which enumerators need follow-up.</p>
+<p>Configure the check settings to map your dataset’s columns to the expected fields (Enumerator, Date, Duration, Team, etc.).</p>
+<p>The check shows:</p>
 <ul>
 <li><strong>Overview metrics</strong>: Total enumerators, active enumerators in the past 7 days, and submission range across enumerators</li>
 <li><strong>Enumerator summary table</strong>: Per-enumerator statistics including total submissions, active days, missing value rates, mean and median interview duration, and consent and completion rates</li>
@@ -2031,15 +2242,16 @@ Note
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_enumerator_stats.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="The Enumerator Stats tab showing the productivity heat map with enumerators as rows and dates as columns."><img src="images/datasure_enumerator_stats.png" class="img-fluid figure-img" loading="lazy" alt="DataSure DQA Report Enumerator Stats tab displaying a productivity heat map grid with enumerators as rows and collection dates as columns, colored by submission count per day."></a></p>
-<figcaption>The Enumerator Stats tab showing the productivity heat map with enumerators as rows and dates as columns.</figcaption>
+<p><a href="images/datasure_enumerator_stats.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="The Enumerator Stats check showing the productivity heat map with enumerators as rows and dates as columns."><img src="images/datasure_enumerator_stats.png" class="img-fluid figure-img" loading="lazy" alt="DataSure DQA Report Enumerator Stats check displaying a productivity heat map grid with enumerators as rows and collection dates as columns, colored by submission count per day."></a></p>
+<figcaption>The Enumerator Stats check showing the productivity heat map with enumerators as rows and dates as columns.</figcaption>
 </figure>
 </div>
 </section>
-<section id="gps-checks-tab" class="level3">
-<h3 class="anchored" data-anchor-id="gps-checks-tab">GPS Checks tab</h3>
-<p>The GPS Checks tab validates geographic coordinate data.</p>
-<p>Configure the tab to specify whether your GPS data uses separate latitude and longitude columns or a single combined column. Optionally specify an accuracy column (SurveyCTO stores GPS accuracy in a separate column).</p>
+<section id="gps-checks" class="level3">
+<h3 class="anchored" data-anchor-id="gps-checks">GPS Checks</h3>
+<p>The GPS Checks page validates geographic coordinate data.</p>
+<p>Configure the check to specify whether your GPS data uses separate latitude and longitude columns or a single combined column. Optionally specify an accuracy column (SurveyCTO stores GPS accuracy in a separate column).</p>
+<p>The interactive map needs a Mapbox access token. You can get one free from your <a href="https://account.mapbox.com/">Mapbox account</a>. Enter it under <strong>Your Mapbox API Key</strong> in the GPS settings and click <strong>Save Mapbox Token</strong>. DataSure stores the token securely on your computer and uses it for all your projects, so you only need to enter it once. Without a token, the check still lists GPS outliers but does not show the map.</p>
 <p>The results show:</p>
 <ul>
 <li>Total GPS records, valid coordinates, and invalid coordinates</li>
@@ -2047,16 +2259,40 @@ Note
 <li>An interactive map with all interview locations plotted as markers</li>
 <li>A table of flagged records: missing coordinates, out-of-range values (latitude outside -90 to 90, longitude outside -180 to 180), and low-accuracy readings</li>
 </ul>
+<section id="reviewing-gps-outliers" class="level4">
+<h4 class="anchored" data-anchor-id="reviewing-gps-outliers">Reviewing GPS outliers</h4>
+<p>Expand <strong>View Outliers Data</strong> to see the table of GPS outliers. Each row starts with a <strong>Review</strong> button. Click it to open a form with the record’s KEY, latitude, and longitude already filled in. Choose an action, enter a reason, and click <strong>Apply</strong>:</p>
+<ul>
+<li><strong>modify coordinates</strong>: Enter a new latitude and longitude.</li>
+<li><strong>remove coordinates</strong>: Clear the latitude and longitude.</li>
+<li><strong>remove observation</strong>: Remove the record from the dataset.</li>
+<li><strong>accept</strong>: Record that you reviewed the location and it is correct.</li>
+</ul>
+<p>DataSure draws accepted points in green on the map, labels them <strong>Accepted</strong>, and leaves them out of the outlier count. Turn on <strong>Show reviewed</strong> to list them in the table with the reason. If either coordinate changes later, the acceptance no longer applies and DataSure flags the point again. DataSure logs every review in the Correction Log with the source <code>gps</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Correcting coordinates requires separate latitude and longitude columns. If your configuration uses a single combined GPS column, the only action available is <strong>remove observation</strong>.</p>
+</div>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_gps_outlier_check.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="The GPS Checks tab showing the interactive map with interview location markers and the flagged records table."><img src="images/datasure_gps_outlier_check.png" class="img-fluid figure-img" loading="lazy" alt="DataSure DQA Report GPS Checks tab displaying an interactive map with colored markers for all interview locations and outlier locations highlighted, alongside a table of flagged GPS records."></a></p>
-<figcaption>The GPS Checks tab showing the interactive map with interview location markers and the flagged records table.</figcaption>
+<p><a href="images/datasure_gps_outlier_check.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="The GPS Checks page showing the map of interview locations and the outliers table, with Show reviewed turned on and an accepted record highlighted."><img src="images/datasure_gps_outlier_check.png" class="img-fluid figure-img" loading="lazy" alt="DataSure GPS Checks page with a Mapbox map of western and northern India showing interview locations as blue markers and outliers as red markers. Below the map, the View Outliers Data table has the Show reviewed toggle turned on. Each row has a Review button and columns for key, submission date, enumerator name, latitude, longitude, review status, and review reason. The first row is highlighted in green with the status Reviewed and an accept reason."></a></p>
+<figcaption>The GPS Checks page showing the map of interview locations and the outliers table, with Show reviewed turned on and an accepted record highlighted.</figcaption>
 </figure>
 </div>
 </section>
-<section id="descriptive-stats-tab" class="level3">
-<h3 class="anchored" data-anchor-id="descriptive-stats-tab">Descriptive Stats tab</h3>
-<p>The Descriptive Stats tab shows distribution summaries for selected variables. It is useful for reviewing the composition of your data and detecting unusual distributions that might indicate collection problems, such as all respondents reporting the same income value.</p>
+</section>
+<section id="descriptive-stats" class="level3">
+<h3 class="anchored" data-anchor-id="descriptive-stats">Descriptive Stats</h3>
+<p>The Descriptive Stats check shows distribution summaries for selected variables. It is useful for reviewing the composition of your data and detecting unusual distributions that might indicate collection problems, such as all respondents reporting the same income value.</p>
 <p>Select up to 10 columns to analyze. For each column, you can choose between:</p>
 <ul>
 <li><strong>One-Way Table</strong>: Frequency distribution for a single variable</li>
@@ -2064,13 +2300,15 @@ Note
 <li><strong>Summary Statistics</strong>: Count, mean, standard deviation, min, max, and percentiles</li>
 </ul>
 </section>
-<section id="back-checks-tab" class="level3">
-<h3 class="anchored" data-anchor-id="back-checks-tab">Back Checks tab</h3>
-<p>The Back Checks tab compares original survey responses against re-interview validation data to measure enumerator reliability.</p>
-<p>Before reviewing results, configure the tab:</p>
+<section id="backchecks" class="level3">
+<h3 class="anchored" data-anchor-id="backchecks">Backchecks</h3>
+<p>The Backchecks page compares original survey responses against re-interview validation data to measure enumerator reliability.</p>
+<p>Before reviewing results, configure the check:</p>
 <ol type="1">
 <li>Map the survey ID, key, enumerator, and date columns.</li>
-<li>Set your target backcheck rate.</li>
+<li>Set the <strong>Backcheck target (%)</strong>, the share of surveys you plan to back check. If you leave it blank, DataSure uses the target from the check configuration, or 10% if neither is set.</li>
+<li>Optionally set an <strong>Error rate target (%)</strong>. DataSure highlights every error rate above it in the enumerator and backchecker statistics.</li>
+<li>Optionally set an <strong>Eligibility Filter</strong> to count only the surveys that can be back checked, for example <code>consent</code> in <code>1</code>.</li>
 <li>Click <strong>Add a back check column</strong> for each variable to validate. For each column, set:
 <ul>
 <li><strong>Category</strong>: A grouping number (1, 2, 3) used to organize columns in the results table</li>
@@ -2078,20 +2316,130 @@ Note
 <li><strong>Comparison Condition</strong>: Whether to skip comparisons when a value is missing in either dataset, <code>ignore_missing_values</code>, or compare all records including those with missing values, <code>compare_all</code></li>
 </ul></li>
 </ol>
-<p>The results show error rates by column, by enumerator, and by back-checker, along with a record-level table showing each comparison.</p>
-<blockquote class="blockquote">
-<p><em>[Screenshot: The Back Checks tab showing the error rate by enumerator table, sorted by highest error rate, and the record-level comparison table.]</em></p>
-</blockquote>
+<p>The comparison uses the same records as the Duplicates check: its <strong>Records to Include</strong> filters apply, and DataSure leaves out records with a duplicated ID until you resolve the duplicate. A warning above the comparison details counts the records left out.</p>
+<section id="tracking-coverage-against-your-target" class="level4">
+<h4 class="anchored" data-anchor-id="tracking-coverage-against-your-target">Tracking coverage against your target</h4>
+<p>The <strong>Targets</strong> section shows how much of your survey you have back checked:</p>
+<ul>
+<li><strong>Backcheck Coverage</strong>: The share of eligible surveys that have a matching backcheck, compared with your target percentage.</li>
+<li><strong>Backchecks vs Expected</strong>: The number of backchecks completed against the number expected. DataSure shows this only when the check configuration sets a survey target.</li>
+</ul>
+<p>The enumerator statistics also show each enumerator’s coverage, including enumerators with no backchecks yet, and highlight coverage below the target.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_backcheck_summary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="The Backchecks Report showing the summary, the Targets section, and the error rates with their adjusted rates."><img src="images/datasure_backcheck_summary.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Backchecks Report page. The Backchecks Summary shows 5,556 survey observations, 612 backcheck observations, 25 enumerators, 5 back checkers, and 11.5% mismatches attributed. The Targets section shows backcheck coverage of 11.0%, 1 point above the 10% target, and 610 of 600 expected backchecks. The Error Rates section shows a total error rate of 0.89% with an adjusted rate of 0.82%, category 1 with the same rates, category 2 with no values compared, and category 3 at 0.00%."></a></p>
+<figcaption>The Backchecks Report showing the summary, the Targets section, and the error rates with their adjusted rates.</figcaption>
+</figure>
+</div>
+</section>
+<section id="reading-error-rates" class="level4">
+<h4 class="anchored" data-anchor-id="reading-error-rates">Reading error rates</h4>
+<p>The <strong>Error Rates</strong> section shows the overall error rate and the error rate for each category: the number of mismatches divided by the number of values compared. The results also show error rates by column, by enumerator, and by backchecker, along with a record-level table showing each comparison.</p>
+</section>
+<section id="attributing-mismatches" class="level4">
+<h4 class="anchored" data-anchor-id="attributing-mismatches">Attributing mismatches</h4>
+<p>Backcheck results measure how well the team collected the data, so you cannot correct or accept a mismatch on this page. Instead, record who caused it. Click <strong>Review</strong> on a mismatch in the comparison details table and choose the error source:</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 59%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Error Source</th>
+<th>Meaning</th>
+<th>Note Required</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Enumerator</strong></td>
+<td>The survey value is wrong</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td><strong>Backchecker</strong></td>
+<td>The backcheck value is wrong</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td><strong>Respondent</strong></td>
+<td>The respondent gave different answers</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td><strong>Unattributed</strong></td>
+<td>No source yet, or clear an earlier choice</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>To attribute several mismatches at once, select their rows, then click <strong>Review</strong> on one of the selected rows. The <strong>Attribution log</strong> below the table lists every attribution, with who made it and when. <strong>Mismatches Attributed</strong> in the summary shows the share of mismatches that have an error source.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/datasure_backcheck_attribution.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="The comparison details table filtered to mismatches, with a Review button on each row, and the Attribution log below it."><img src="images/datasure_backcheck_attribution.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Backchecks comparison details with the Mismatches Only filter selected, showing 23 comparison records. Each row has a checkbox, a Review button, and columns for error source, survey key, backcheck key, column name, survey value, backcheck value, match status, and category. The first three mismatches are attributed to the enumerator, the backchecker, and the respondent, and the rest are unattributed. The Attribution log below lists those three attributions with the error source, note, user, and date."></a></p>
+<figcaption>The comparison details table filtered to mismatches, with a Review button on each row, and the Attribution log below it.</figcaption>
+</figure>
+</div>
+<p>Attribution never changes the data, the mismatch counts, or the regular error rate. It changes only the <strong>adjusted error rate</strong>, which DataSure shows next to the regular error rate for each enumerator and backchecker. The adjusted rate leaves out the mismatches attributed to someone else, so DataSure measures each person on their own mistakes: the enumerator adjusted rate leaves out mismatches attributed to the backchecker or the respondent, and the backchecker adjusted rate leaves out those attributed to the enumerator or the respondent. Unattributed mismatches count against both. For example, an enumerator with 10 values compared and 4 mismatches, one attributed to the respondent and one to the backchecker, has an error rate of 40% and an adjusted error rate of 20%.</p>
+</section>
 </section>
 </section>
 <section id="step-6-correct-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-6-correct-data">Step 6: Correct Data</h2>
-<p>The <strong>Correct Data</strong> page provides a structured workflow for fixing data quality issues found in your DQA Reports. The system logs every correction with the original value, new value, reason, action type, and timestamp. This creates a full audit trail that is also used to auto generate Stata do-files in the Replication Package.</p>
-<p>Navigate to <strong>Correct Data</strong> from the sidebar.</p>
+<p>The <strong>Correct Data</strong> page provides a structured workflow for fixing data quality issues found in your DQA Reports. DataSure logs every correction with the original value, new value, reason, action type, timestamp, the page that made it, and who made it. This creates a full audit trail that DataSure also uses to auto generate Stata do-files in the Replication Package.</p>
+<section id="where-to-make-corrections" class="level3">
+<h3 class="anchored" data-anchor-id="where-to-make-corrections">Where to make corrections</h3>
+<p>You can fix most flagged values on the check that found them, using the <strong>Review</strong> buttons and duplicate ID cards described in Step 5. Use the <strong>Correct Data</strong> page to correct any record, including records that no check flagged, and to review or undo entries. Both write to the same Correction Log.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Where</th>
+<th>What You Can Do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Outliers &amp; Constraints</td>
+<td>Modify value, remove value, accept</td>
+</tr>
+<tr class="even">
+<td>GPS Checks</td>
+<td>Modify coordinates, remove coordinates, remove observation, accept</td>
+</tr>
+<tr class="odd">
+<td>Duplicates</td>
+<td>Keep, Modify ID, or Drop each record on a duplicate ID card</td>
+</tr>
+<tr class="even">
+<td>Backchecks</td>
+<td>Attribute a mismatch to its error source (the data does not change)</td>
+</tr>
+<tr class="odd">
+<td>Correct Data page</td>
+<td>Modify value, remove value, remove row, for any survey record and column</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="choosing-a-check-page-and-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-a-check-page-and-dataset">Choosing a check page and dataset</h3>
+<p>Navigate to <strong>Correct Data</strong> from the sidebar. The buttons at the top of the page list your check pages, one for each check configuration. The page opens on the check page you last reviewed.</p>
+<p>If the check page has a backcheck dataset, a <strong>Survey data</strong> / <strong>Backcheck data</strong> switcher picks which dataset to correct. Each dataset has its own Correction Log. On backcheck data, you can only modify the ID or remove a row, because backcheck results measure data quality.</p>
+</section>
 <section id="adding-a-correction" class="level3">
 <h3 class="anchored" data-anchor-id="adding-a-correction">Adding a correction</h3>
 <ol type="1">
-<li>Click <strong>Add correction</strong>.</li>
+<li>Click <strong>Add correction step</strong>.</li>
 <li>Select the <strong>Key</strong> of the record you want to modify. This is the unique row identifier from the Key Column you specified in your check configuration.</li>
 <li>Select the <strong>Action</strong>:</li>
 </ol>
@@ -2142,20 +2490,36 @@ Note
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_adding_correction.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="The Add Correction dialog showing the Key selector, Action dropdown, Column selector, Current Value, New Value, and Reason fields."><img src="images/datasure_adding_correction.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Correct Data page showing the Add Correction dialog with a Key selector, Action dropdown set to Modify Value, a Column selector, an auto populated Current Value field, a New Value input, and a required Reason field."></a></p>
+<p><a href="images/datasure_adding_correction.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="The Add Correction dialog showing the Key selector, Action dropdown, Column selector, Current Value, New Value, and Reason fields."><img src="images/datasure_adding_correction.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Correct Data page showing the Add Correction dialog with a Key selector, Action dropdown set to Modify Value, a Column selector, an auto populated Current Value field, a New Value input, and a required Reason field."></a></p>
 <figcaption>The Add Correction dialog showing the Key selector, Action dropdown, Column selector, Current Value, New Value, and Reason fields.</figcaption>
 </figure>
 </div>
 </section>
+<section id="reviewing-the-correction-log" class="level3">
+<h3 class="anchored" data-anchor-id="reviewing-the-correction-log">Reviewing the Correction Log</h3>
+<p>The Correction Log lists every entry for the selected dataset, including the corrections and acceptances you made on check pages. Besides the key, column, values, action, reason, and timestamp, each entry shows:</p>
+<ul>
+<li><strong>Source</strong>: The page that made the entry: <code>corrections_page</code> (the Correct Data page), <code>outliers</code>, <code>constraints</code>, <code>duplicates</code>, or <code>gps</code></li>
+<li><strong>User</strong>: Who made the entry, taken from your reviewer name (see <a href="#sec-reviewer-name">Setting your reviewer name</a>)</li>
+<li><strong>Status</strong>: Whether DataSure applied the entry successfully the last time it loaded the data, with the reason if it did not</li>
+<li><strong>Check type</strong>: For an accept entry, the check it applies to</li>
+<li><strong>Severity</strong>: For an acceptance of a constraint violation past a hard limit, <code>hard</code>. DataSure highlights these rows in red so that a reviewer can check them</li>
+</ul>
+<p>Use the <strong>Source</strong> and <strong>Action</strong> filters above the log to show only the entries you need. The filters combine: for example, select the <code>gps</code> source and the <code>accept</code> action to show only GPS acceptances.</p>
+</section>
+<section id="undoing-a-correction" class="level3">
+<h3 class="anchored" data-anchor-id="undoing-a-correction">Undoing a correction</h3>
+<p>DataSure has no edit or undo button. To undo a correction or an acceptance, remove its entry from the Correction Log with <strong>Remove correction step</strong>. DataSure applies the remaining entries again, and any flag that the entry resolved comes back. This is the only way to undo an entry, including entries made on check pages.</p>
+</section>
 <section id="verifying-a-correction" class="level3">
 <h3 class="anchored" data-anchor-id="verifying-a-correction">Verifying a correction</h3>
-<p>After applying a correction, navigate back to the relevant DQA Report tab and confirm the flagged issue no longer appears. If it persists, check that you selected the correct key and column.</p>
+<p>After applying a correction, navigate back to the relevant check and confirm the flagged issue no longer appears. If it persists, check that you selected the correct key and column, and that the entry’s Status in the Correction Log is <code>Successful</code>.</p>
 </section>
 <section id="recommended-correction-workflow" class="level3">
 <h3 class="anchored" data-anchor-id="recommended-correction-workflow">Recommended correction workflow</h3>
 <p>Corrections should always follow an investigation, not precede one. Before correcting a record, confirm the root cause.</p>
 <ol type="1">
-<li>Identify the issue in a DQA Report tab.</li>
+<li>Identify the issue on a DQA Report page.</li>
 <li>Investigate: is it a data entry error, a survey programming bug, or a legitimate extreme value?</li>
 <li>Consult field notes, supervisor reports, or the enumerator directly if needed.</li>
 <li>Apply the correction with a specific documented reason.</li>
@@ -2177,8 +2541,8 @@ Warning
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_corrections_log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="The Correct Data page showing the correction history table with logged corrections, reasons, and timestamps."><img src="images/datasure_corrections_log.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Correct Data page displaying the correction history table with multiple logged entries, each showing the action type, affected column, original value, new value, reason, and timestamp."></a></p>
-<figcaption>The Correct Data page showing the correction history table with logged corrections, reasons, and timestamps.</figcaption>
+<p><a href="images/datasure_corrections_log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="The Correct Data page showing the Survey data and Backcheck data switcher, the buttons to add and remove correction steps, and the Correction Log with its Source and Action filters."><img src="images/datasure_corrections_log.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Correct Data page for a check configuration. A Dataset switcher with Survey data selected sits above the Add correction step and Remove correction step buttons. The Correction Log below has Source filters for Duplicates and GPS and Action filters for Accept and Remove row. The log table lists six entries, each with the date, user, key, survey ID, action, status, check type, severity, column, current value, new value, and reason. One entry accepts a GPS value and five remove rows, and all have the status Successful."></a></p>
+<figcaption>The Correct Data page showing the Survey data and Backcheck data switcher, the buttons to add and remove correction steps, and the Correction Log with its Source and Action filters.</figcaption>
 </figure>
 </div>
 </section>
@@ -2221,9 +2585,10 @@ Warning
 <li>On the <strong>Replication Package</strong> page, select the <strong>Page Name</strong> corresponding to the check configuration you want to export.</li>
 <li>Review the configuration details that appear below the selector to confirm that DataSure shows the correct dataset and key column.</li>
 <li>Expand <strong>What is inside the zip?</strong> to preview the full directory structure before building.</li>
+<li>If you plan to share the package outside your team, check <strong>Exclude reviewer names</strong>. DataSure leaves the User column blank in the exported <code>correction_log.csv</code>. The project’s own Correction Log does not change.</li>
 <li>Click <strong>Build Replication Package</strong>. DataSure assembles the package in the background and shows progress as it builds each component.</li>
 </ol>
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title="The Replication Package page showing the page selector, configuration details, directory tree preview, and the Build Replication Package button."><source src="images/datasure_replication_export.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title="The Export Replication Package page: selecting a check page, turning on Exclude reviewer names, building the package, confirming the PII notice, and downloading the zip file."><source src="images/datasure_replication_export.mp4"></video></div>
 </section>
 <section id="downloading-the-package" class="level3">
 <h3 class="anchored" data-anchor-id="downloading-the-package">Downloading the package</h3>
@@ -2249,7 +2614,7 @@ Warning
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/datasure_replication_download.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="The download section showing the PII confirmation checkbox checked and the Download button."><img src="images/datasure_replication_download.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Replication Package page download section with the PII confirmation checkbox checked and the Download replication package zip button visible."></a></p>
+<p><a href="images/datasure_replication_download.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="The download section showing the PII confirmation checkbox checked and the Download button."><img src="images/datasure_replication_download.png" class="img-fluid figure-img" loading="lazy" alt="DataSure Replication Package page download section with the PII confirmation checkbox checked and the Download replication package zip button visible."></a></p>
 <figcaption>The download section showing the PII confirmation checkbox checked and the Download button.</figcaption>
 </figure>
 </div>

@@ -25,6 +25,10 @@ License
 
 - [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 
+> **NOTE:**
+>
+> [DataSure](../data-quality/datasure/index.llms.md) is IPA’s next-generation tool for high-frequency data quality checks. The DMS will remain available, so teams that already use it can keep doing so. However, once DataSure is mature, IPA plans to stop developing the DMS, and it may no longer receive updates. IPA recommends DataSure for new projects.
+
 # An error occurred.
 
 Unable to execute JavaScript.

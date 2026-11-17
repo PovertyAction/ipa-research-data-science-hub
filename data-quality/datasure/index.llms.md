@@ -40,7 +40,9 @@ DataSure is IPA’s Data Management System (DMS) Dashboard, a free, open-source 
 
 DataSure runs locally on your computer and opens in a web browser. It connects directly to your SurveyCTO server or accepts uploaded data files in common formats, automatically runs a comprehensive set of quality checks, and presents the results in clear, interactive dashboards. When issues are found, DataSure provides tools to record and track corrections with a full audit trail.
 
-The current version of DataSure is **0.8.0**.
+Latest DataSure version on PyPI: [1.2.1](https://pypi.org/project/datasure/)
+
+To see what changed in each version, read the [DataSure release notes](https://github.com/PovertyAction/datasure/blob/main/RELEASENOTES.md).
 
 [![DataSure Summary dashboard displaying submission trend chart and progress toward target sample size](images/summary_page_submission_details.png)](images/summary_page_submission_details.png "The DataSure Summary dashboard showing submission trends, collection progress, and key data quality metrics.")
 
@@ -56,7 +58,7 @@ DataSure directly supports the following MMD requirements:
 - **Backchecks**: DataSure’s Back Checks module compares survey responses against re-interview validation data to identify discrepancies and measure enumerator reliability. See [Backchecks](../../data-quality/backchecks.llms.md) for background on the backcheck protocol.
 - **Survey progress tracking**: DataSure tracks submissions in real time, reporting daily, weekly, and monthly progress toward your survey target.
 
-DataSure is an alternative to IPA’s Stata-based DMS (`ipacheck`), not a replacement. Teams that already use Stata can continue using `ipacheck`. DataSure is especially useful for teams that do not use Stata, or that prefer a visual dashboard interface. See [IPA’s Data Management System](../../data-quality/data-management-system.llms.md) for more on the Stata-based DMS.
+DataSure is IPA’s next-generation tool for high-frequency data quality checks. Over time, it will take over from IPA’s Stata-based DMS (`ipacheck`). The DMS will remain available, so teams that already use it can keep doing so. However, once DataSure is mature, IPA plans to stop developing the DMS, and it may no longer receive updates. IPA recommends DataSure for new projects, especially for teams that do not use Stata or that prefer a visual dashboard. See [IPA’s Data Management System](../../data-quality/data-management-system.llms.md) for more on the Stata-based DMS.
 
 ## What DataSure Checks
 

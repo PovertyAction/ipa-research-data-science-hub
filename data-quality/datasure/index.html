@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-11-11">
 <meta name="keywords" content="data quality, high-frequency checks, data management system, survey monitoring, DataSure, explanation">
 
 <title>DataSure – Knowledge Hub</title>
@@ -52,9 +53,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-47407c29e8f0cbb45854e90f85b31c93.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5b26a88363b6d3e64851187dd8e57bd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-683e26763be4833af34bc5ab9e02cc93.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5b26a88363b6d3e64851187dd8e57bd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c998cfb2a636471d846c634f35d81847.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-afddfdaff87ff1df138a711b4912c6d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-c998cfb2a636471d846c634f35d81847.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -843,7 +844,20 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="what-is-datasure">What is DataSure?</h2>
 <p>DataSure is IPA’s Data Management System (DMS) Dashboard, a free, open-source application for monitoring and improving survey data quality during field data collection. Built by IPA’s <a href="https://poverty-action.org/research-support">Global Research and Data Science (GRDS) team</a>, DataSure gives data managers, survey coordinators, and research teams an interactive dashboard for reviewing the quality of their survey data as it is collected.</p>
 <p>DataSure runs locally on your computer and opens in a web browser. It connects directly to your SurveyCTO server or accepts uploaded data files in common formats, automatically runs a comprehensive set of quality checks, and presents the results in clear, interactive dashboards. When issues are found, DataSure provides tools to record and track corrections with a full audit trail.</p>
-<p>The current version of DataSure is <strong>0.8.0</strong>.</p>
+<p>Latest DataSure version on PyPI: <a href="https://pypi.org/project/datasure/" id="datasure-version">1.2.1</a></p>
+<script>
+  // Replace the fallback version above with the latest release from PyPI.
+  fetch("https://pypi.org/pypi/datasure/json")
+    .then((response) => response.json())
+    .then((data) => {
+      const link = document.getElementById("datasure-version");
+      const version = data.info.version;
+      link.textContent = version;
+      link.href = "https://pypi.org/project/datasure/" + version + "/";
+    })
+    .catch(() => {});
+</script>
+<p>To see what changed in each version, read the <a href="https://github.com/PovertyAction/datasure/blob/main/RELEASENOTES.md">DataSure release notes</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/summary_page_submission_details.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The DataSure Summary dashboard showing submission trends, collection progress, and key data quality metrics."><img src="images/summary_page_submission_details.png" class="img-fluid figure-img" alt="DataSure Summary dashboard displaying submission trend chart and progress toward target sample size"></a></p>
@@ -860,7 +874,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Backchecks</strong>: DataSure’s Back Checks module compares survey responses against re-interview validation data to identify discrepancies and measure enumerator reliability. See <a href="../../data-quality/backchecks.html">Backchecks</a> for background on the backcheck protocol.</li>
 <li><strong>Survey progress tracking</strong>: DataSure tracks submissions in real time, reporting daily, weekly, and monthly progress toward your survey target.</li>
 </ul>
-<p>DataSure is an alternative to IPA’s Stata-based DMS (<code>ipacheck</code>), not a replacement. Teams that already use Stata can continue using <code>ipacheck</code>. DataSure is especially useful for teams that do not use Stata, or that prefer a visual dashboard interface. See <a href="../../data-quality/data-management-system.html">IPA’s Data Management System</a> for more on the Stata-based DMS.</p>
+<p>DataSure is IPA’s next-generation tool for high-frequency data quality checks. Over time, it will take over from IPA’s Stata-based DMS (<code>ipacheck</code>). The DMS will remain available, so teams that already use it can keep doing so. However, once DataSure is mature, IPA plans to stop developing the DMS, and it may no longer receive updates. IPA recommends DataSure for new projects, especially for teams that do not use Stata or that prefer a visual dashboard. See <a href="../../data-quality/data-management-system.html">IPA’s Data Management System</a> for more on the Stata-based DMS.</p>
 </section>
 <section id="what-datasure-checks" class="level2">
 <h2 class="anchored" data-anchor-id="what-datasure-checks">What DataSure Checks</h2>
