@@ -28,13 +28,15 @@ repos:
     hooks:
       - id: validate-pyproject
   - repo: https://github.com/jolars/panache-pre-commit
-    rev: v3.17.1
+    rev: v3.18.0
     hooks:
       - id: panache-format
+      - id: panache-lint
+        stages: [manual]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     #   exclude: (.github/pull_request_template.md|LICENSE.md)
 
-    rev: v0.17.3
+    rev: v0.17.5
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
