@@ -14,7 +14,7 @@ Authors
 
 Last Modified
 
-- October 27, 2026
+- November 17, 2026
 
 License
 
@@ -294,9 +294,9 @@ $$
 
 ## Result
 
-**Inline math:** The formula \\E = mc^2\\ is famous.
+**Inline math:** The formula $E = mc^2$ is famous.
 
-**Block equations:** \\ \text{Treatment Effect} = \bar{Y}\_{\text{treatment}} - \bar{Y}\_{\text{control}} \\
+**Block equations:** $$\text{Treatment Effect} = \bar{Y}_{\text{treatment}} - \bar{Y}_{\text{control}}$$
 
 ## Tables
 

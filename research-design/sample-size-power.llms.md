@@ -18,7 +18,7 @@ Contributors
 
 Last Modified
 
-- October 27, 2026
+- November 17, 2026
 
 License
 
@@ -58,11 +58,11 @@ Estimated treatment effect of 0.28 SD (Banerjee et al. 2007)
 
 ## How Sample Size Determines Precision
 
-Sample size directly controls the width of the sampling distribution around any estimated treatment effect (\\\hat{\beta}\\). As \\N\\ increases, estimates cluster more tightly around the true effect, reducing the risk of both false positives and false negatives. The estimated treatment effect follows a normal distribution:
+Sample size directly controls the width of the sampling distribution around any estimated treatment effect ($\hat{\beta}$). As $N$ increases, estimates cluster more tightly around the true effect, reducing the risk of both false positives and false negatives. The estimated treatment effect follows a normal distribution:
 
-\\ \hat{\beta} \sim \mathcal{N}\left( \beta,\\ \frac{\sigma^2}{N p(1 - p)} \right) \\
+$$\hat{\beta} \sim \mathcal{N}\left( \beta,\; \frac{\sigma^2}{N p(1 - p)} \right)$$
 
-where \\\beta\\ is the true effect, \\\sigma^2\\ is the outcome variance, \\N\\ is the total sample size, and \\p\\ is the proportion assigned to treatment. Power increases when \\N\\ grows, \\\sigma^2\\ shrinks, or \\p\\ approaches 0.5.
+where $\beta$ is the true effect, $\sigma^2$ is the outcome variance, $N$ is the total sample size, and $p$ is the proportion assigned to treatment. Power increases when $N$ grows, $\sigma^2$ shrinks, or $p$ approaches 0.5.
 
 ![N = 200: Wide estimate range](../assets/images/power_1.png)
 
@@ -74,53 +74,53 @@ N = 2,000: Narrow estimate range
 
 Larger samples improve power, but each additional observation has a cost in time, money, and personnel. The goal is to find the smallest sample that reliably detects an effect worth detecting.
 
-| Factor                                | Effect on required sample size |
-|---------------------------------------|--------------------------------|
-| Smaller expected effect size          | Larger sample needed           |
-| Higher outcome variance               | Larger sample needed           |
-| Lower significance level (\\\alpha\\) | Larger sample needed           |
-| Higher desired power (\\1 - \kappa\\) | Larger sample needed           |
-| Clustered or stratified design        | Larger sample needed           |
+| Factor                              | Effect on required sample size |
+|-------------------------------------|--------------------------------|
+| Smaller expected effect size        | Larger sample needed           |
+| Higher outcome variance             | Larger sample needed           |
+| Lower significance level ($\alpha$) | Larger sample needed           |
+| Higher desired power ($1 - \kappa$) | Larger sample needed           |
+| Clustered or stratified design      | Larger sample needed           |
 
 ## Statistical Inference: Errors and Thresholds
 
-Every hypothesis test produces two possible errors. A **Type I error** (\\\alpha\\) occurs when a study concludes an effect exists when none does: a false positive. A **Type II error** (\\\kappa\\) occurs when a study misses a real effect: a false negative. Power is defined as \\1 - \kappa\\.
+Every hypothesis test produces two possible errors. A **Type I error** ($\alpha$) occurs when a study concludes an effect exists when none does: a false positive. A **Type II error** ($\kappa$) occurs when a study misses a real effect: a false negative. Power is defined as $1 - \kappa$.
 
-Reducing \\\alpha\\ tightens the rejection threshold, which increases \\\kappa\\ and reduces power. Researchers must choose a significance level that balances these risks. The standard choice is \\\alpha = 0.05\\, though values between 0.01 and 0.10 appear in the literature.
+Reducing $\alpha$ tightens the rejection threshold, which increases $\kappa$ and reduces power. Researchers must choose a significance level that balances these risks. The standard choice is $\alpha = 0.05$, though values between 0.01 and 0.10 appear in the literature.
 
 ### The Hypothesis Testing Framework
 
 > **TIP:**
 >
-> **Step 1: State hypotheses.** The null hypothesis (\\H_0\\) assumes no effect (\\\beta = 0\\). The alternative hypothesis (\\H_1\\) proposes an effect exists (\\\beta \neq 0\\, or directional if one-sided).
+> **Step 1: State hypotheses.** The null hypothesis ($H_0$) assumes no effect ($\beta = 0$). The alternative hypothesis ($H_1$) proposes an effect exists ($\beta \neq 0$, or directional if one-sided).
 >
 > ![Null and alternative distributions](../assets/images/power_ht1.png)
 >
 > Null and alternative distributions
 >
-> **Step 2: Estimate the treatment effect.** Calculate \\\hat{\beta}\\ from the data and place it on the sampling distribution.
+> **Step 2: Estimate the treatment effect.** Calculate $\hat{\beta}$ from the data and place it on the sampling distribution.
 >
 > ![Estimating the treatment effect](../assets/images/power_ht2.png)
 >
 > Estimating the treatment effect
 >
-> **Step 3: Set critical values.** At \\\alpha = 0.05\\ (two-sided), the rejection regions begin at approximately ±1.96 standard errors from zero.
+> **Step 3: Set critical values.** At $\alpha = 0.05$ (two-sided), the rejection regions begin at approximately ±1.96 standard errors from zero.
 >
 > ![Critical values at 5% significance](../assets/images/power_ht3.png)
 >
 > Critical values at 5% significance
 >
-> **Step 4: Make a decision.** If \\\hat{\beta}\\ falls in the rejection region, reject \\H_0\\ and conclude the effect is statistically significant. If \\\hat{\beta}\\ falls within the bounds, fail to reject \\H_0\\.
+> **Step 4: Make a decision.** If $\hat{\beta}$ falls in the rejection region, reject $H_0$ and conclude the effect is statistically significant. If $\hat{\beta}$ falls within the bounds, fail to reject $H_0$.
 >
 > ![Fail to reject H_0](../assets/images/power_ht4_1.png)
 >
-> Fail to reject \\H_0\\
+> Fail to reject $H_0$
 >
 > ![Reject H_0](../assets/images/power_ht4_2.png)
 >
-> Reject \\H_0\\
+> Reject $H_0$
 
-Power equals the proportion of the alternative distribution (\\H_1\\) that falls beyond the critical value. The less the two distributions overlap, the higher the power.
+Power equals the proportion of the alternative distribution ($H_1$) that falls beyond the critical value. The less the two distributions overlap, the higher the power.
 
 ![Low, medium, and high power scenarios](../assets/images/power_7.png)
 
@@ -142,19 +142,19 @@ Six factors directly determine the statistical power of a study. The first four 
 
 MDE: smaller effects require larger samples
 
-**Sample size (\\N\\).** More observations narrow the sampling distribution and increase the probability of detecting the true effect. This is the most direct lever researchers control.
+**Sample size (**$N$). More observations narrow the sampling distribution and increase the probability of detecting the true effect. This is the most direct lever researchers control.
 
 ![Sample size: small vs. large sample distributions](../assets/images/power_9.png)
 
 Sample size: small vs. large sample distributions
 
-**Outcome variance (\\\sigma^2\\).** Higher variance in the outcome measure makes it harder to isolate the treatment signal. The most effective way to reduce residual variance is to collect a baseline measurement of the primary outcome variable. Controlling for additional covariates beyond the baseline offers only marginal gains and should not substitute for adequate sample size.
+**Outcome variance (**$\sigma^2$). Higher variance in the outcome measure makes it harder to isolate the treatment signal. The most effective way to reduce residual variance is to collect a baseline measurement of the primary outcome variable. Controlling for additional covariates beyond the baseline offers only marginal gains and should not substitute for adequate sample size.
 
 ![Outcome variance: narrow vs. wide distributions](../assets/images/power_10.png)
 
 Outcome variance: narrow vs. wide distributions
 
-**Sample allocation.** Power is maximized when treatment and control groups are equal in size (\\p = 0.5\\). Unequal splits reduce power even when total \\N\\ is held constant.
+**Sample allocation.** Power is maximized when treatment and control groups are equal in size ($p = 0.5$). Unequal splits reduce power even when total $N$ is held constant.
 
 ![Equal vs. unequal allocation](../assets/images/power_11.png)
 
@@ -164,11 +164,11 @@ Equal vs. unequal allocation
 >
 > Many field evaluations randomize at the group level -schools, communities, or health facilities- rather than at the individual level. Individuals within the same cluster tend to be more similar to each other than to individuals in other clusters. This similarity reduces the effective information each additional observation provides and must be accounted for in power calculations.
 >
-> The degree of within-cluster similarity is captured by the **intra-cluster correlation coefficient (ICC)**, denoted \\\rho\\. The **design effect (DEFF)** quantifies the cost of the clustered design relative to simple random assignment:
+> The degree of within-cluster similarity is captured by the **intra-cluster correlation coefficient (ICC)**, denoted $\rho$. The **design effect (DEFF)** quantifies the cost of the clustered design relative to simple random assignment:
 >
-> \\ DEFF = 1 + (m - 1)\rho \\
+> $$DEFF = 1 + (m - 1)\rho$$
 >
-> where \\m\\ is the average cluster size. The required sample size under a clustered design equals the simple-random-sample size multiplied by DEFF. Typical ICC values in development economics evaluations range from 0.05 to 0.30. When ICC is high, adding more clusters increases power more efficiently than adding more individuals within existing clusters.
+> where $m$ is the average cluster size. The required sample size under a clustered design equals the simple-random-sample size multiplied by DEFF. Typical ICC values in development economics evaluations range from 0.05 to 0.30. When ICC is high, adding more clusters increases power more efficiently than adding more individuals within existing clusters.
 >
 > > **WARNING:**
 > >
