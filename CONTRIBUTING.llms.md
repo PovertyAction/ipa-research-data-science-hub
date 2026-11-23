@@ -6,7 +6,7 @@ Guidelines and instructions for contributing content, code, and improvements to 
 
 Last Modified
 
-- November 17, 2026
+- November 23, 2026
 
 Thank you for your interest in contributing to the IPA Research and Data Science Hub! This document provides guidelines and instructions for contributing to the project.
 
